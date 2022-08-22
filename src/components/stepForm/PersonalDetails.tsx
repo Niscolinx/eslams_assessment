@@ -54,6 +54,7 @@ export default function PersonalDetails() {
                         required
                         id='email'
                         name='email'
+                        type='email'
                         label='Email Address'
                         fullWidth
                         autoComplete='email address'
@@ -65,6 +66,7 @@ export default function PersonalDetails() {
                         id='password'
                         name='password'
                         label='Password'
+                        type='password'
                         fullWidth
                         autoComplete='password'
                         variant='standard'

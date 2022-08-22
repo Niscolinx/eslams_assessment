@@ -70,6 +70,14 @@ input[type='number']::-webkit-outer-spin-button {
         backdrop-filter: blur(40px);
     }
 
+
+    &-form{
+        
+        background: #E8E7E7;
+border: 1px solid rgba(0, 0, 0, 0.17);
+box-shadow: -20px -20px 50px #F3F3F3, 20px 20px 60px rgba(174, 174, 192, 0.4);
+border-radius: 10px;
+    }
     // &__main {
     //     display: grid;
     //     background: red;
