@@ -165,17 +165,17 @@ const Register = ({ providers }: LoginProps) => {
 
             <div className='register__main'>
                 <div className='section-1 relative'>
-                        <div className='flex section-1__container relative z-2 mt-[7rem]'>
-                            <Image
-                                src='/hero-player.png'
-                                width='433px'
-                                height='461px'
-                            />
-                        </div>
+                    <div className='flex section-1__container relative z-2 mt-[7rem]'>
+                        <Image
+                            src='/hero-player.png'
+                            width='433px'
+                            height='461px'
+                        />
+                    </div>
 
-                        <h1 className='heroText text-[22px] md:text-[96px] lg:text- absolute top-[6rem] left-[5rem] absolute uppercase'>
-                            Shoot for the stars
-                        </h1>
+                    <h1 className='heroText text-[22px] md:text-[96px] lg:text- absolute top-[6rem] left-[5rem] absolute uppercase'>
+                        Shoot for the stars
+                    </h1>
                 </div>
 
                 <div className='w-full md:(grid) relative mt-20 register__form'>
@@ -244,9 +244,8 @@ const Register = ({ providers }: LoginProps) => {
                             </button>
                         </div>
                     </form>
-
-                    <div className='section-signup'></div>
                 </div>
+                <div className='section-signup'></div>
             </div>
         </div>
     )
