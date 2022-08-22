@@ -15,6 +15,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
 export default function PersonalDetails() {
     const [gender, setGender] = useState('male')
+    const [eyeIcon, setEyeIcon] = useState(false)
 
     const [value, setValue] = useState<Date | null>(null)
 
@@ -76,7 +77,7 @@ export default function PersonalDetails() {
                     variant='standard'
                     
                     />
-                    <AiOutlineEyeInvisible/>
+                    <AiOutlineEyeInvisible onClick={toggleEyeIcon}/>
                     </div>
                 </Grid>
                 <Grid item xs={12} sm={6}>
