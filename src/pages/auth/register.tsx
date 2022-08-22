@@ -169,7 +169,7 @@ const Register = ({ providers }: LoginProps) => {
                             <Image
                                 src='/hero-player.png'
                                 width='433px'
-                                height='561px'
+                                height='461px'
                             />
                         </div>
 
@@ -178,7 +178,7 @@ const Register = ({ providers }: LoginProps) => {
                         </h1>
                 </div>
 
-                <div className='w-full md:(grid) relative mt-20'>
+                <div className='w-full md:(grid) relative mt-20 register__form'>
                     <form
                         id='login'
                         className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2 justify-self-end grid'

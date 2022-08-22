@@ -76,8 +76,12 @@ input[type='number']::-webkit-outer-spin-button {
         grid-column: 1 / -1;
     }
 
+
+    &__form{
+        max-width: 550px;
+    }
     .section-1 {
-    max-width: 634px;
+    max-width: 834px;
 
     //position: absolute;
     // max-width: 533px;
