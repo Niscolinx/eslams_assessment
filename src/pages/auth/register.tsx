@@ -164,7 +164,8 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
             </header>
 
-            <div className='grid md:(grid-cols-16)'>
+            <div className='grid md:(grid-cols-16) relative'>
+                <div className="register__overlay"></div>
                 <div className='section-1 relative'>
                     <div className='flex section-1__container relative z-2 mt-[7rem]'>
                         <Image

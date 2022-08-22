@@ -23,7 +23,7 @@ export default function PersonalDetails() {
     const toggleEyeIcon = () => {
         setEyeIcon(prev => !prev)
 
-        const password = document.getElementById('password')
+        let password = document.querySelector('#password') as HTMLInputElement
         
         if (password) {
             console.log({password})

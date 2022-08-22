@@ -9,8 +9,6 @@ body {
     box-sizing: border-box;
 }
 
-
-
 *,
 *::after,
 *::before {
@@ -70,13 +68,28 @@ input[type='number']::-webkit-outer-spin-button {
         backdrop-filter: blur(40px);
     }
 
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 533px;
+        height: 661px;
+        background: linear-gradient(
+            187.03deg,
+            rgba(255, 0, 0, 0.12) 51.88%,
+            rgba(159, 15, 50, 0) 94.51%
+        );
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        backdrop-filter: blur(40px);
 
-    &-form{
-        
-        background: #E8E7E7;
-border: 1px solid rgba(0, 0, 0, 0.17);
-box-shadow: -20px -20px 50px #F3F3F3, 20px 20px 60px rgba(174, 174, 192, 0.4);
-border-radius: 10px;
+    }
+
+    &-form {
+        background: #e8e7e7;
+        border: 1px solid rgba(0, 0, 0, 0.17);
+        box-shadow: -20px -20px 50px #f3f3f3,
+            20px 20px 60px rgba(174, 174, 192, 0.4);
+        border-radius: 10px;
     }
     // &__main {
     //     display: grid;
@@ -86,23 +99,6 @@ border-radius: 10px;
 
     .section-1 {
         grid-column: 1 / 9;
-
-        &__overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 533px;
-            height: 661px;
-            background: linear-gradient(
-                187.03deg,
-                rgba(255, 0, 0, 0.12) 51.88%,
-                rgba(159, 15, 50, 0) 94.51%
-            );
-            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-            backdrop-filter: blur(40px);
-
-            background: red;
-        }
     }
 
     &__form {
