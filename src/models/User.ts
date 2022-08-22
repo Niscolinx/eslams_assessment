@@ -6,25 +6,7 @@ export interface IUser {
     username: string
     email: string
     phoneNumber: string
-    isMining: boolean
-    mineTokenEndingTime: string
-    watchVideoAgainIn: string
-    role: string
-    referralBonus: number
-    tokensMined: number
-    videoMined: number
-    portfolio: number
-    upliner: string
-    status: string
-    watchedVideo: boolean
-    isVerified: boolean
-    password: string
-    referrals: any[]
-    referralLink: string
-    usdtAddress: string
-    pendingWithdrawals: any[]
-    approvedWithdrawals: any[]
-    transfers: any[]
+   
 }
 
 const userSchema = new Schema<IUser>(
