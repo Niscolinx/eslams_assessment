@@ -139,6 +139,9 @@ const Login = ({ providers }: LoginProps) => {
 
     return (
         <>
+        <header>
+            
+        </header>
 
             <Image src='/hero-player.png' width='100%' height="100%"/>
             <div className='w-full md:(grid)'>
