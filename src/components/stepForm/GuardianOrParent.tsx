@@ -63,26 +63,7 @@ export default function GuardianOrParent() {
                     />
                     ,
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id='mobileNumber'
-                        name='mobileNumber'
-                        label='mobile Number'
-                        fullWidth
-                        variant='outlined'
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id='mobileNumber'
-                        name='mobileNumber'
-                        label='mobile Number'
-                        fullWidth
-                        variant='outlined'
-                    />
-                </Grid>
+                
             </Grid>
         </React.Fragment>
     )
