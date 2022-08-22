@@ -177,6 +177,10 @@ const Register = ({ providers }: LoginProps) => {
                     <h1 className='heroText text-[22px] md:text-[5rem] absolute top-[6rem] left-[2rem] absolute uppercase'>
                         Shoot for the <span className='ml-10'>stars</span>
                     </h1>
+
+                    <div className="section-1__overLay">
+                        
+                    </div>
                 </div>
 
                 {/* <div className='w-full md:(grid) relative mt-20 register__form'>

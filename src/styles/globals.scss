@@ -72,25 +72,25 @@ input[type='number']::-webkit-outer-spin-button {
         grid-template-columns: repeat(16, 1fr);
     }
 
-   
     .section-1 {
         max-width: 734px;
         grid-column: 1 / 9;
 
-        //position: absolute;
-        // max-width: 533px;
-        max-height: 661px;
-
-        background: linear-gradient(
-            187.03deg,
-            rgba(255, 0, 0, 0.12) 51.88%,
-            rgba(159, 15, 50, 0) 94.51%
-        );
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-        backdrop-filter: blur(40px);
+        &__overlay {
+            position: absolute;
+            max-width: 533px;
+            max-height: 661px;
+            background: linear-gradient(
+                187.03deg,
+                rgba(255, 0, 0, 0.12) 51.88%,
+                rgba(159, 15, 50, 0) 94.51%
+            );
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            backdrop-filter: blur(40px);
+        }
     }
 
-     &__form {
+    &__form {
         max-width: 550px;
         grid-column: 9 / -1;
     }
