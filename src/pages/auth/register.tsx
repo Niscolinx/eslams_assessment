@@ -173,12 +173,12 @@ const Register = ({ providers }: LoginProps) => {
                             />
                         </div>
 
-                        <h1 className='heroText text-[22px] md:text-[96px] absolute top-[1rem] left-0 absolute'>
+                        <h1 className='heroText text-[22px] md:text-[96px] absolute top-[7rem] left-0 absolute'>
                             Shoot for the stars
                         </h1>
                 </div>
 
-                <div className='w-full md:(grid) relative'>
+                <div className='w-full md:(grid) relative mt-20'>
                     <form
                         id='login'
                         className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2 justify-self-end grid'
