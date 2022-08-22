@@ -140,7 +140,7 @@ const Register = ({ providers }: LoginProps) => {
         <div className='register'>
             <header></header>
 
-            <div className='grid'>
+            <div className='grid grid-cols-2'>
                 <div className='section-1 relative'>
                     <div className="flex section-1__container">
 
@@ -150,7 +150,7 @@ const Register = ({ providers }: LoginProps) => {
                         height='661px'
                         />
                         </div>
-                    <h1 className='heroText text-[7rem] absolute top-0 left-0'>Shoot for the stars</h1>
+                    <h1 className='heroText text-[3rem] md:text-[7rem] absolute top-0 left-0'>Shoot for the stars</h1>
                 </div>
 
                 <div className='w-full md:(grid) relative'>
