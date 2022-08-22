@@ -41,17 +41,17 @@ export default function AddressForm() {
                         name='email'
                         label='Email Address'
                         fullWidth
-                        autoComplete='Your email address'
+                        autoComplete='email address'
                         variant='outlined'
                     />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={6}>
                     <TextField
-                        id='address2'
-                        name='address2'
-                        label='Address line 2'
+                        id='password'
+                        name='password'
+                        label='Password'
                         fullWidth
-                        autoComplete='shipping address-line2'
+                        autoComplete='password'
                         variant='outlined'
                     />
                 </Grid>
