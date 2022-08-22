@@ -245,20 +245,7 @@ const Register = ({ providers }: LoginProps) => {
                         </div>
                     </form>
 
-                    <div className='grid mt-10 gap-2 px-8 justify-start'>
-                        <Link href='/auth/register'>
-                            <button className='bg-orange-300 text-[#1a1a2d] rounded px-2 py-1 text-left justify-self-start'>
-                                Register
-                            </button>
-                        </Link>
-
-                        <a
-                            className='inline-block align-baseline text-sm text-blue-500 hover:text-blue-800'
-                            href='#'
-                        >
-                            Forgot Password?
-                        </a>
-                    </div>
+                   
                     <div className='section-signup'></div>
                 </div>
             </div>
