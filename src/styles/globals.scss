@@ -73,6 +73,10 @@ input[type='number']::-webkit-outer-spin-button {
         backdrop-filter: blur(40px);
     }
 
+    &__main{
+        grid-column: 1 / -1;
+    }
+
     .section-1 {
     max-width: 634px;
 

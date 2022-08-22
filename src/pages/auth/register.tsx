@@ -163,7 +163,7 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
             </header>
 
-            <div className='grid grid-cols-2'>
+            <div className='grid grid-cols-2 register__main'>
                 <div className='section-1 relative pb-20'>
                     <div className='flex section-1__container relative z-2 mt-[1rem]'>
                         <Image
