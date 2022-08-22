@@ -4,8 +4,39 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
+import { FormControl, FormLabel, RadioGroup, Radio } from '@mui/material'
+import { useState } from 'react'
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
-export default function AddressForm() {
+export default function PersonalDetails() {
+    const [gender, setGender] = useState('male')
+    const [eyeIcon, setEyeIcon] = useState(false)
+    const [password, setPassword] = useState('')
+
+    const [value, setValue] = useState<Date | null>(null)
+
+    const toggleEyeIcon = () => {
+        setEyeIcon(prev => !prev)
+
+        const password = document.getElementById('password')
+        
+        if (password) {
+            console.log({password})
+            if (eyeIcon) {
+                password.type = 'text'
+            } else {
+                password.type = 'password'
+            }
+
+        }
+    }
+
+
     return (
         <React.Fragment>
             {/* <Typography variant='h6' gutterBottom>
@@ -20,7 +51,7 @@ export default function AddressForm() {
                         label='First name'
                         fullWidth
                         autoComplete='given-name'
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -31,7 +62,7 @@ export default function AddressForm() {
                         label='Last name'
                         fullWidth
                         autoComplete='family-name'
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -39,75 +70,90 @@ export default function AddressForm() {
                         required
                         id='email'
                         name='email'
+                        type='email'
                         label='Email Address'
                         fullWidth
-                        autoComplete='email address'
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
+                    <div className="flex items-center relative">
+
                     <TextField
-                        id='password'
-                        name='password'
-                        label='Password'
-                        fullWidth
-                        autoComplete='password'
-                        variant='outlined'
+                    required
+                    id='password'
+                    name='password'
+                    label='Password'
+                    type='password'
+                    fullWidth
+                    variant='standard'
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id='city'
-                        name='city'
-                        label='City'
-                        fullWidth
-                        autoComplete='shipping address-level2'
-                        variant='outlined'
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        id='state'
-                        name='state'
-                        label='State/Province/Region'
-                        fullWidth
-                        variant='outlined'
-                    />
+                    {<span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
+                        
+                        {eyeIcon ? <AiOutlineEyeInvisible onClick={toggleEyeIcon}/> : <AiOutlineEye onClick={toggleEyeIcon}/>}
+                    </span>
+                    }
+                    
+                    </div>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id='zip'
-                        name='zip'
-                        label='Zip / Postal code'
+                        id='mobileNumber'
+                        name='mobileNumber'
+                        label='mobile Number'
                         fullWidth
-                        autoComplete='shipping postal-code'
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id='country'
-                        name='country'
-                        label='Country'
-                        fullWidth
-                        autoComplete='shipping country'
-                        variant='outlined'
-                    />
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DesktopDatePicker
+                        
+                            label='Date of Birth'
+                            value={value}
+                            minDate={new Date('2017-01-01')}
+                            onChange={(newValue) => {
+                                setValue(newValue)
+                            }}
+                            renderInput={(params) => (
+                                <TextField {...params} variant='standard' required />
+                            )}
+                        />
+                    </LocalizationProvider>
                 </Grid>
-                <Grid item xs={12}>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                color='secondary'
-                                name='saveAddress'
-                                value='yes'
+
+                <Grid item xs={12} sm={6}>
+                    <FormControl>
+                        <FormLabel id='demo-controlled-radio-buttons-group'>
+                            Gender
+                        </FormLabel>
+                        <RadioGroup
+                            aria-labelledby='demo-controlled-radio-buttons-group'
+                            name='controlled-radio-buttons-group'
+                            value={gender}
+                            onChange={(e) => setGender(e.target.value)}
+                        >
+                            <FormControlLabel
+                                value='male'
+                                control={<Radio />}
+                                label='Male'
                             />
-                        }
-                        label='Use this address for payment details'
-                    />
+                            <FormControlLabel
+                                value='female'
+                                control={<Radio />}
+                                label='Female'
+                            />
+                            <FormControlLabel
+                                value='prefer not to say'
+                                control={<Radio />}
+                                label='Prefer not to say'
+                            />
+                        </RadioGroup>
+                    </FormControl>
                 </Grid>
             </Grid>
         </React.Fragment>

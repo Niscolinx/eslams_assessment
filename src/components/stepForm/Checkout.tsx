@@ -12,16 +12,18 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
+
 import PersonalDetails from './PersonalDetails'
-import PaymentForm from './PaymentForm'
+import GuardianOrParent from './GuardianOrParent'
 import Review from './Review'
 
 function Copyright() {
     return (
         <Typography variant='body2' color='text.secondary' align='center'>
             {'Copyright © '}
-            <Link color='inherit' href='https://mui.com/'>
-                Your Website
+            <Link color='inherit' href='/'>
+                Eslams
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -36,7 +38,7 @@ function getStepContent(step: number) {
         case 0:
             return <PersonalDetails />
         case 1:
-            return <PaymentForm />
+            return <GuardianOrParent />
         case 2:
             return <Review />
         default:
@@ -57,9 +59,14 @@ export default function Checkout() {
         setActiveStep(activeStep - 1)
     }
 
+    const nextButton = (
+        <span className='flex items-center gap-3'>
+            Next <HiOutlineArrowNarrowRight />
+        </span>
+    )
+
     return (
         <ThemeProvider theme={theme}>
-            <CssBaseline />
             <AppBar
                 position='absolute'
                 color='default'
@@ -71,14 +78,16 @@ export default function Checkout() {
             >
                 {/* <Toolbar>
                     <Typography variant='h6' color='inherit' noWrap>
-                        Company name
+                    Company name
                     </Typography>
                 </Toolbar> */}
             </AppBar>
             <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
+                <CssBaseline />
                 <Paper
                     variant='outlined'
                     sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+                    className='register-form'
                 >
                     <Typography
                         component='h2'
@@ -88,7 +97,7 @@ export default function Checkout() {
                     >
                         Get Started with eslams
                     </Typography>
-                    <Typography component='p' align="center">
+                    <Typography component='p' align='center'>
                         Create an account and step into greatness
                     </Typography>
                     <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
@@ -135,7 +144,7 @@ export default function Checkout() {
                                     >
                                         {activeStep === steps.length - 1
                                             ? 'Place order'
-                                            : 'Next'}
+                                            : nextButton}
                                     </Button>
                                 </Box>
                             </React.Fragment>
