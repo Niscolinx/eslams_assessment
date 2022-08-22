@@ -70,6 +70,7 @@ export default function GuardianOrParent() {
                     <MuiPhoneNumber
                         id='phone-number'
                         autoFocus={true}
+                        helperText='Enter phone number'
                         // InputLabelProps={{ shrink: true, focused: true }}
                         placeholder='Phone Number'
                         defaultCountry={'us'}
