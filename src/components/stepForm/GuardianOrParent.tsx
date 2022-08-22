@@ -52,7 +52,7 @@ export default function GuardianOrParent() {
                             labelId='demo-simple-select-label'
                             id='demo-simple-select'
                             value={relationship}
-                            label='Age'
+                            label='Relationship'
                             onChange={(e) => setRelationship(e.target.value)}
                         >
                             <MenuItem value={20}>Father</MenuItem>
@@ -68,7 +68,7 @@ export default function GuardianOrParent() {
                         value={phoneNumber}
                         onChange={(e: any) => setPhoneNumber(e)}
                     />
-                    ,
+                    
                 </Grid>
             </Grid>
         </React.Fragment>
