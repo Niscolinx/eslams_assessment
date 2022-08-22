@@ -65,7 +65,7 @@ export default function PersonalDetails() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <div className="flex items-center">
+                    <div className="flex items-center relative">
 
                     <TextField
                     required
@@ -78,7 +78,7 @@ export default function PersonalDetails() {
                     variant='standard'
                     
                     />
-                    {<span className='cursor-pointer'>
+                    {<span className='cursor-pointer absolute grid self-center justify-self-center -left-5'>
                         
                         {eyeIcon ? <AiOutlineEyeInvisible onClick={toggleEyeIcon}/> : <AiOutlineEye onClick={toggleEyeIcon}/>}
                     </span>
