@@ -6,15 +6,15 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 
 import { FormControl, FormLabel, RadioGroup, Radio } from '@mui/material'
 import { useState } from 'react'
+import MuiPhoneNumber from 'material-ui-phone-number'
 
 export default function GuardianOrParent() {
-    const [gender, setGender] = useState('male')
+    const [phoneNumber, setPhoneNumber] = useState<HTMLInputElement | undefined>()
 
-    const [value, setValue] = useState<Date | null>(new Date())
 
-    const handleChange = (newValue: Date | null) => {
-        setValue(newValue)
-    }
+ 
+
+    console.log({phoneNumber})
 
     return (
         <React.Fragment>
@@ -25,11 +25,11 @@ export default function GuardianOrParent() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id='firstName'
-                        name='firstName'
-                        label='First name'
+                        id='email'
+                        name='email'
+                        label='Email Address'
                         fullWidth
-                        autoComplete='given-name'
+                        autoComplete='Email address'
                         variant='outlined'
                     />
                 </Grid>
@@ -56,14 +56,13 @@ export default function GuardianOrParent() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        id='password'
-                        name='password'
-                        label='Password'
-                        fullWidth
-                        autoComplete='password'
+                    <MuiPhoneNumber
+                        defaultCountry={'us'}
                         variant='outlined'
+                        value={phoneNumber}
+                        onChange={(e:any) => setPhoneNumber(e)}
                     />
+                    ,
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -86,35 +85,7 @@ export default function GuardianOrParent() {
                     />
                 </Grid>
 
-                <Grid item xs={12} sm={6}>
-                    <FormControl>
-                        <FormLabel id='demo-controlled-radio-buttons-group'>
-                            Gender
-                        </FormLabel>
-                        <RadioGroup
-                            aria-labelledby='demo-controlled-radio-buttons-group'
-                            name='controlled-radio-buttons-group'
-                            value={gender}
-                            onChange={(e) => setGender(e.target.value)}
-                        >
-                            <FormControlLabel
-                                value='male'
-                                control={<Radio />}
-                                label='Male'
-                            />
-                            <FormControlLabel
-                                value='female'
-                                control={<Radio />}
-                                label='Female'
-                            />
-                            <FormControlLabel
-                                value='prefer not to say'
-                                control={<Radio />}
-                                label='Prefer not to say'
-                            />
-                        </RadioGroup>
-                    </FormControl>
-                </Grid>
+               
             </Grid>
         </React.Fragment>
     )

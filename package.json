@@ -24,6 +24,7 @@
         "bcryptjs": "^2.4.3",
         "date-fns": "^2.29.2",
         "jsonwebtoken": "^8.5.1",
+        "material-ui-phone-number": "^3.0.0",
         "moment": "^2.29.4",
         "mongodb": "^4.7.0",
         "mongoose": "^6.0.11",
