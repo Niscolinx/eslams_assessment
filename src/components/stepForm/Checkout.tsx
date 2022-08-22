@@ -80,7 +80,7 @@ export default function Checkout() {
                     variant='outlined'
                     sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
                 >
-                    <Typography component='h1' variant='h4' align='center' classes='font-semibold'>
+                    <Typography component='h1' variant='h4' align='center' className='font-medium'>
                         Get Started with eslams
                     </Typography>
                     <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
