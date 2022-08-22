@@ -67,7 +67,6 @@ export default function Checkout() {
 
     return (
         <ThemeProvider theme={theme}>
-            <CssBaseline />
             <AppBar
                 position='absolute'
                 color='default'
@@ -79,14 +78,16 @@ export default function Checkout() {
             >
                 {/* <Toolbar>
                     <Typography variant='h6' color='inherit' noWrap>
-                        Company name
+                    Company name
                     </Typography>
                 </Toolbar> */}
             </AppBar>
             <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
+                <CssBaseline />
                 <Paper
                     variant='outlined'
                     sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+                    className='bg-red-500'
                 >
                     <Typography
                         component='h2'
