@@ -78,8 +78,10 @@ export default function PersonalDetails() {
                     variant='standard'
                     
                     />
-                    {
-                        eyeIcon ? <AiOutlineEyeInvisible onClick={toggleEyeIcon}/> : <AiOutlineEye onClick={toggleEyeIcon}/>
+                    {<span>
+                        
+                        {eyeIcon ? <AiOutlineEyeInvisible onClick={toggleEyeIcon}/> : <AiOutlineEye onClick={toggleEyeIcon}/>}
+                    </span>
                     }
                     
                     </div>
