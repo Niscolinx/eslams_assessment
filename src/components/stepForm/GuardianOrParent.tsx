@@ -3,16 +3,23 @@ import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
-
-import { FormControl, FormLabel, RadioGroup, Radio, InputLabel, MenuItem, Select } from '@mui/material'
+import {
+    FormControl,
+    FormLabel,
+    RadioGroup,
+    Radio,
+    InputLabel,
+    MenuItem,
+    Select,
+} from '@mui/material'
 import { useState } from 'react'
 import MuiPhoneNumber from 'material-ui-phone-number'
 
 export default function GuardianOrParent() {
-    const [phoneNumber, setPhoneNumber] = useState<HTMLInputElement | undefined>()
+    const [phoneNumber, setPhoneNumber] = useState<
+        HTMLInputElement | undefined
+    >()
     const [relationship, setRelationship] = useState('')
-
- 
 
     return (
         <React.Fragment>
@@ -45,12 +52,10 @@ export default function GuardianOrParent() {
 
                 <Grid item xs={12} sm={6}>
                     <FormControl fullWidth>
-                        <InputLabel id='demo-simple-select-label'>
-                            Relationship
-                        </InputLabel>
+                        <InputLabel id='select-label'>Relationship</InputLabel>
                         <Select
-                            labelId='demo-simple-select-label'
-                            id='demo-simple-select'
+                            labelId='select-label'
+                            id='select'
                             value={relationship}
                             label='Relationship'
                             onChange={(e) => setRelationship(e.target.value)}
@@ -62,13 +67,15 @@ export default function GuardianOrParent() {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
+                    <InputLabel id='phone-number'>Phone Number </InputLabel>
                     <MuiPhoneNumber
+                    id='phone-number'
+                       // InputLabelProps={{ shrink: true, focused: true }}
+                        placeholder='Phone Number'
                         defaultCountry={'us'}
                         variant='outlined'
-                        value={phoneNumber}
                         onChange={(e: any) => setPhoneNumber(e)}
                     />
-                    
                 </Grid>
             </Grid>
         </React.Fragment>
