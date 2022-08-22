@@ -12,12 +12,11 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
 import PersonalDetails from './PersonalDetails'
 import GuardianOrParent from './GuardianOrParent'
 import Review from './Review'
-
 
 function Copyright() {
     return (
@@ -59,6 +58,12 @@ export default function Checkout() {
     const handleBack = () => {
         setActiveStep(activeStep - 1)
     }
+
+    const nextButton = (
+        <span className='flex items-center gap-3'>
+            Next <HiOutlineArrowNarrowRight />
+        </span>
+    )
 
     return (
         <ThemeProvider theme={theme}>
@@ -136,10 +141,9 @@ export default function Checkout() {
                                         onClick={handleNext}
                                         sx={{ mt: 3, ml: 1 }}
                                     >
-                                        {/* {activeStep === steps.length - 1
+                                        {activeStep === steps.length - 1
                                             ? 'Place order'
-                                            : `Next <HiOutlineArrowNarrowRight/>`} */}
-                                        Next <HiOutlineArrowNarrowRight/>
+                                            : nextButton}
                                     </Button>
                                 </Box>
                             </React.Fragment>
