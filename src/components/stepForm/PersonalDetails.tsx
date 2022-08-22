@@ -12,19 +12,14 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import { FormControl, FormLabel, RadioGroup, Radio } from '@mui/material'
 import { useState } from 'react'
 
-
 export default function PersonalDetails() {
     const [gender, setGender] = useState('male')
 
-     const [value, setValue] = useState<Date | null>(
-        new Date()
-     )
+    const [value, setValue] = useState<Date | null>(null)
 
-     const handleChange = (newValue: Date | null) => {
-         setValue(newValue)
-     }
-
-
+    const handleChange = (newValue: Date | null) => {
+        setValue(newValue)
+    }
 
     return (
         <React.Fragment>
@@ -40,7 +35,7 @@ export default function PersonalDetails() {
                         label='First name'
                         fullWidth
                         autoComplete='given-name'
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -51,7 +46,7 @@ export default function PersonalDetails() {
                         label='Last name'
                         fullWidth
                         autoComplete='family-name'
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -62,7 +57,7 @@ export default function PersonalDetails() {
                         label='Email Address'
                         fullWidth
                         autoComplete='email address'
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -72,7 +67,7 @@ export default function PersonalDetails() {
                         label='Password'
                         fullWidth
                         autoComplete='password'
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -82,7 +77,7 @@ export default function PersonalDetails() {
                         name='mobileNumber'
                         label='mobile Number'
                         fullWidth
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -94,7 +89,9 @@ export default function PersonalDetails() {
                             onChange={(newValue) => {
                                 setValue(newValue)
                             }}
-                            renderInput={(params) => <TextField {...params} />}
+                            renderInput={(params) => (
+                                <TextField {...params} variant='standard' />
+                            )}
                         />
                     </LocalizationProvider>
                 </Grid>
