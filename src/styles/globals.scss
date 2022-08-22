@@ -2,9 +2,20 @@ html,
 body {
     padding: 0;
     margin: 0;
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Rubik+Glitch&display=swap');
+    // @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Rubik+Glitch&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
 
     font-family: 'Montserrat', sans-serif;
+            font-family: 'Rubik Glitch';
+
+}
+
+@font-face {
+    font-family: 'Rubik Glitch';
+    src: url( '../fonts/Rubik-Glitch.ttf' );
+    font-style: normal;
+    font-weight: normal;
 }
 
 a {
@@ -15,6 +26,11 @@ a {
 * {
     box-sizing: border-box;
 }
+
+// .heroText{
+//         font-family: 'Rubik Glitch';
+//         font-weight: 400;
+// }
 
 
 
