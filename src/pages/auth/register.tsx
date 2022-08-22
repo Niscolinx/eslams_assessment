@@ -138,93 +138,97 @@ const Register = ({ providers }: LoginProps) => {
 
     return (
         <div className='register'>
-            <header>
-                <Image src='/hero-player.png' width='100%' height='100%' />
-                <h1 className='heroText'>Shoot for the stars</h1>
-            </header>
+            <header></header>
 
-            <div className='w-full md:(grid) relative'>
-                <form
-                    id='login'
-                    className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2 justify-self-end grid'
-                    onSubmit={handleSubmit}
-                >
-                    <p
-                        className={`${messageDisplay} ${message?.style} text-sm text-center mb-5`}
-                    >
-                        {message?.value}
-                    </p>
-
-                    <div className='mb-4'>
-                        <label
-                            className='block text-gray-700 text-sm font-bold mb-2'
-                            htmlFor='username'
-                        >
-                            Email or Username
-                        </label>
-
-                        <input
-                            className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
-                                error && errorFields.includes('email')
-                                    ? 'border-red-500'
-                                    : ''
-                            }`}
-                            id='emailOrUsername'
-                            type='text'
-                            name='emailOrUsername'
-                            required
-                            value={emailOrUsername}
-                            onChange={changeHandler}
-                        />
-                    </div>
-                    <div className='mb-6'>
-                        <label
-                            className='block text-gray-700 text-sm font-bold mb-2'
-                            htmlFor='password'
-                        >
-                            Password
-                        </label>
-                        <input
-                            className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
-                                error && errorFields.includes('password')
-                                    ? 'border-red-500'
-                                    : ''
-                            }`}
-                            id='password'
-                            name='password'
-                            type='password'
-                            minLength={6}
-                            required
-                            value={password}
-                            onChange={changeHandler}
-                        />
-                    </div>
-
-                    <div className='grid justify-center gap-2  md:gap-0 md:flex items-center'>
-                        <button
-                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline'
-                            type='submit'
-                        >
-                            {loading ? 'Loading...' : 'Sign In'}
-                        </button>
-                    </div>
-                </form>
-
-                <div className='grid mt-10 gap-2 px-8 justify-start'>
-                    <Link href='/auth/register'>
-                        <button className='bg-orange-300 text-[#1a1a2d] rounded px-2 py-1 text-left justify-self-start'>
-                            Register
-                        </button>
-                    </Link>
-
-                    <a
-                        className='inline-block align-baseline text-sm text-blue-500 hover:text-blue-800'
-                        href='#'
-                    >
-                        Forgot Password?
-                    </a>
+            <div className='grid'>
+                <div className='section-1'>
+                    <Image src='/hero-player.png' width='100%' height='100%' />
+                    <h1 className='heroText'>Shoot for the stars</h1>
                 </div>
-                <div className='section-signup'></div>
+
+                <div className='w-full md:(grid) relative'>
+                    <form
+                        id='login'
+                        className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2 justify-self-end grid'
+                        onSubmit={handleSubmit}
+                    >
+                        <p
+                            className={`${messageDisplay} ${message?.style} text-sm text-center mb-5`}
+                        >
+                            {message?.value}
+                        </p>
+
+                        <div className='mb-4'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='username'
+                            >
+                                Email or Username
+                            </label>
+
+                            <input
+                                className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
+                                    error && errorFields.includes('email')
+                                        ? 'border-red-500'
+                                        : ''
+                                }`}
+                                id='emailOrUsername'
+                                type='text'
+                                name='emailOrUsername'
+                                required
+                                value={emailOrUsername}
+                                onChange={changeHandler}
+                            />
+                        </div>
+                        <div className='mb-6'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='password'
+                            >
+                                Password
+                            </label>
+                            <input
+                                className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
+                                    error && errorFields.includes('password')
+                                        ? 'border-red-500'
+                                        : ''
+                                }`}
+                                id='password'
+                                name='password'
+                                type='password'
+                                minLength={6}
+                                required
+                                value={password}
+                                onChange={changeHandler}
+                            />
+                        </div>
+
+                        <div className='grid justify-center gap-2  md:gap-0 md:flex items-center'>
+                            <button
+                                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline'
+                                type='submit'
+                            >
+                                {loading ? 'Loading...' : 'Sign In'}
+                            </button>
+                        </div>
+                    </form>
+
+                    <div className='grid mt-10 gap-2 px-8 justify-start'>
+                        <Link href='/auth/register'>
+                            <button className='bg-orange-300 text-[#1a1a2d] rounded px-2 py-1 text-left justify-self-start'>
+                                Register
+                            </button>
+                        </Link>
+
+                        <a
+                            className='inline-block align-baseline text-sm text-blue-500 hover:text-blue-800'
+                            href='#'
+                        >
+                            Forgot Password?
+                        </a>
+                    </div>
+                    <div className='section-signup'></div>
+                </div>
             </div>
         </div>
     )
