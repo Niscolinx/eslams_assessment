@@ -61,11 +61,10 @@ const Login = ({ providers }: LoginProps) => {
                 .then((res) => {
                     console.log('res', res.data)
                     setLoading(false)
-                    
 
-                        Router.push('/adminDashboard')
-                    
-                }).catch((err) => {
+                    Router.push('/adminDashboard')
+                })
+                .catch((err) => {
                     setLoading(false)
                     console.log('err', err)
                     setError(true)
@@ -139,11 +138,10 @@ const Login = ({ providers }: LoginProps) => {
 
     return (
         <>
-        <header>
-
-            <Image src='/hero-player.png' width='100%' height="100%"/>
-            <h1 className='heroText'>Shoot for the stars</h1>
-        </header>
+            <header>
+                <Image src='/hero-player.png' width='100%' height='100%' />
+                <h1 className='heroText'>Shoot for the stars</h1>
+            </header>
 
             <div className='w-full md:(grid)'>
                 <form
@@ -227,9 +225,10 @@ const Login = ({ providers }: LoginProps) => {
                     </a>
                 </div>
             </div>
-            {/* <p className='text-center text-gray-500 text-xs mt-auto mt-5'>
-                &copy;2022 1960token. All rights reserved.
-            </p> */}
+
+            <div className="grid" style={{background: `linearGradient(270deg, rgba(8, 54, 227, 0.11) 33.33%, rgba(8, 54, 227, 0) 66.39%)`}}>
+
+            </div>
         </>
     )
 }
