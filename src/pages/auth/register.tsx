@@ -147,7 +147,7 @@ const Register = ({ providers }: LoginProps) => {
                         width='533px'
                         height='661px'
                     />
-                    <h1 className='heroText text-[10rem]'>Shoot for the stars</h1>
+                    <h1 className='heroText text-[9rem]'>Shoot for the stars</h1>
                 </div>
 
                 <div className='w-full md:(grid) relative'>
