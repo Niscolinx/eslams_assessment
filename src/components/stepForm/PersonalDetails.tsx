@@ -78,7 +78,7 @@ export default function PersonalDetails() {
                     variant='standard'
                     
                     />
-                    {<span>
+                    {<span className='cursor-pointer'>
                         
                         {eyeIcon ? <AiOutlineEyeInvisible onClick={toggleEyeIcon}/> : <AiOutlineEye onClick={toggleEyeIcon}/>}
                     </span>
