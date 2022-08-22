@@ -19,9 +19,10 @@ export default function PersonalDetails() {
 
     const [value, setValue] = useState<Date | null>(null)
 
-    const handleChange = (newValue: Date | null) => {
-        setValue(newValue)
+    const toggleEyeIcon = () => {
+        setEyeIcon(prev => !prev)
     }
+
 
     return (
         <React.Fragment>
@@ -77,7 +78,10 @@ export default function PersonalDetails() {
                     variant='standard'
                     
                     />
-                    <AiOutlineEyeInvisible onClick={toggleEyeIcon}/>
+                    {
+                        eyeIcon ? <AiOutlineEyeInvisible onClick={toggleEyeIcon}/> : <AiOutlineEye onClick={toggleEyeIcon}/>
+                    }
+                    
                     </div>
                 </Grid>
                 <Grid item xs={12} sm={6}>
