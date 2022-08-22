@@ -140,7 +140,7 @@ const Register = ({ providers }: LoginProps) => {
         <div className='register'>
             <header>
                 <div className="flex">
-                    <h1 className='text-[46px] font-semibold'>eslams</h1>
+                    <h1 className='text-[46px] font-semibold text-white'>eslams</h1>
                 </div>
             </header>
 
