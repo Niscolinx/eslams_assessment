@@ -139,43 +139,43 @@ const Register = ({ providers }: LoginProps) => {
     return (
         <div className='register relative'>
             <header className='absolute top-0 left-0 right-0 z-4 register__header py-3 px-2 flex justify-between'>
-                <div className="flex">
+                <div className='flex'>
                     <p className='text-[46px] font-medium text-white'>eslams</p>
                 </div>
 
-                <div className="header__form">
+                <div className='header__form'>
                     <form className='flex gap-5'>
-                        <div className="grid">
-                            <label htmlFor="email" className="text-white">
-                                Email</label>
+                        <div className='grid'>
+                            <label htmlFor='email' className='text-white'>
+                                Email
+                            </label>
 
-                            <input type="text" name='email' id='email' />
+                            <input type='text' name='email' id='email' />
                         </div>
-                        <div className="grid">
-                            <label htmlFor="email" className="text-white">
-                                Password</label>
+                        <div className='grid'>
+                            <label htmlFor='email' className='text-white'>
+                                Password
+                            </label>
 
-                            <input type="text" name='email' id='email' />
+                            <input type='text' name='email' id='email' />
                         </div>
-
                     </form>
-                    
                 </div>
             </header>
 
             <div className='grid grid-cols-2 register__main'>
                 <div className='section-1 relative'>
-                    <div className='flex section-1__container relative z-2 mt-[1rem]'>
-                        <Image
-                            src='/hero-player.png'
-                            width='533px'
-                            height='661px'
-                        />
-                    </div>
+                        <div className='flex section-1__container relative z-2 mt-[1rem]'>
+                            <Image
+                                src='/hero-player.png'
+                                width='533px'
+                                height='661px'
+                            />
+                        </div>
 
-                    <h1 className='heroText text-[22px] md:text-[96px] absolute top-[1rem] left-0 absolute'>
-                        Shoot for the stars
-                    </h1>
+                        <h1 className='heroText text-[22px] md:text-[96px] absolute top-[1rem] left-0 absolute'>
+                            Shoot for the stars
+                        </h1>
                 </div>
 
                 <div className='w-full md:(grid) relative'>
@@ -245,7 +245,6 @@ const Register = ({ providers }: LoginProps) => {
                         </div>
                     </form>
 
-                   
                     <div className='section-signup'></div>
                 </div>
             </div>
