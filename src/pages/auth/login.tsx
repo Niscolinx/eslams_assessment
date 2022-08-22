@@ -5,6 +5,8 @@ import { getCsrfToken, getProviders, signIn } from 'next-auth/react'
 import Router from 'next/router'
 import Link from 'next/link'
 
+import HeroImg from '../../public/heroImg.svg'
+
 interface LoginProps {
     csrfToken: string
     providers: {
@@ -136,6 +138,7 @@ const Login = ({ providers }: LoginProps) => {
 
     return (
         <>
+            <HeroImg/>
             <div className='w-full md:w-1/3 mx-auto h-[93vh]'>
                 <form
                     id='login'
