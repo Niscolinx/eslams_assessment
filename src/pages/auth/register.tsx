@@ -164,7 +164,7 @@ const Register = ({ providers }: LoginProps) => {
             </header>
 
             <div className='grid grid-cols-2 register__main'>
-                <div className='section-1 relative pb-20'>
+                <div className='section-1 relative'>
                     <div className='flex section-1__container relative z-2 mt-[1rem]'>
                         <Image
                             src='/hero-player.png'
