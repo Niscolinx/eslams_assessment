@@ -142,7 +142,11 @@ const Register = ({ providers }: LoginProps) => {
 
             <div className='grid'>
                 <div className='section-1'>
-                    <Image src='/hero-player.png' width='661px' height='100%' />
+                    <Image
+                        src='/hero-player.png'
+                        width='100%'
+                        height='661px'
+                    />
                     <h1 className='heroText'>Shoot for the stars</h1>
                 </div>
 
