@@ -69,11 +69,11 @@ export default function Checkout() {
                     borderBottom: (t) => `1px solid ${t.palette.divider}`,
                 }}
             >
-                <Toolbar>
+                {/* <Toolbar>
                     <Typography variant='h6' color='inherit' noWrap>
                         Company name
                     </Typography>
-                </Toolbar>
+                </Toolbar> */}
             </AppBar>
             <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
                 <Paper
@@ -81,7 +81,7 @@ export default function Checkout() {
                     sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
                 >
                     <Typography component='h1' variant='h4' align='center'>
-                        Checkout
+                        Get Started with eslams
                     </Typography>
                     <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
                         {steps.map((label) => (
