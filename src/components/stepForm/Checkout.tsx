@@ -91,7 +91,7 @@ export default function Checkout() {
                     >
                         Get Started with eslams
                     </Typography>
-                    <Typography component='p' align="center">
+                    <Typography component='p' align='center'>
                         Create an account and step into greatness
                     </Typography>
                     <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
@@ -138,7 +138,7 @@ export default function Checkout() {
                                     >
                                         {activeStep === steps.length - 1
                                             ? 'Place order'
-                                            : 'Next'}
+                                            : `Next ${<HiOutlineArrowNarrowRight/>}`}
                                     </Button>
                                 </Box>
                             </React.Fragment>
