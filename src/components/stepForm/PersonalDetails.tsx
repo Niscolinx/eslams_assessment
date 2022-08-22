@@ -4,8 +4,19 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { DesktopDatePicker } from '@mui/x-date-pickers'
+
 
 export default function AddressForm() {
+     const [value, setValue] = React.useState<Date | null>(
+         new Date('2014-08-18T21:11:54')
+     )
+
+     const handleChange = (newValue: Date | null) => {
+         setValue(newValue)
+     }
     return (
         <React.Fragment>
             {/* <Typography variant='h6' gutterBottom>
@@ -66,15 +77,9 @@ export default function AddressForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        id='dateOfBirth'
-                        name='dateOfBirth'
-                        label='Date of birth'
-                        fullWidth
-                        variant='outlined'
-                    />
+                       
                 </Grid>
-                
+
                 {/* <Grid item xs={12}>
                     <FormControlLabel
                         control={
