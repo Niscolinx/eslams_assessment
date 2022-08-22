@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import HeroImg2 from '../../../public/hero-player.png'
+import Checkout from '../../components/stepForm/Checkout'
 
 interface LoginProps {
     csrfToken: string
@@ -178,7 +179,7 @@ const Register = ({ providers }: LoginProps) => {
                     </h1>
                 </div>
 
-                <div className='w-full md:(grid) relative mt-20 register__form'>
+                {/* <div className='w-full md:(grid) relative mt-20 register__form'>
                     <form
                         id='login'
                         className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2 justify-self-end grid'
@@ -244,7 +245,9 @@ const Register = ({ providers }: LoginProps) => {
                             </button>
                         </div>
                     </form>
-                </div>
+                </div> */}
+
+                <Checkout/>
                 <div className='section-signup'></div>
             </div>
         </div>
