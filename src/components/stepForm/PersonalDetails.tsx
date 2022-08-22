@@ -13,7 +13,7 @@ import { FormControl, FormLabel, RadioGroup, Radio } from '@mui/material'
 import { useState } from 'react'
 
 
-export default function AddressForm() {
+export default function PersonalDetails() {
     const [gender, setGender] = useState('male')
 
      const [value, setValue] = useState<Date | null>(
