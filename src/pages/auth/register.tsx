@@ -142,15 +142,17 @@ const Register = ({ providers }: LoginProps) => {
 
             <div className='grid grid-cols-2'>
                 <div className='section-1 relative'>
-                    <div className="flex section-1__container relative z-2">
-
-                    <Image
-                        src='/hero-player.png'
-                        width='533px'
-                        height='661px'
+                    <div className='flex section-1__container relative'>
+                        <Image
+                            src='/hero-player.png'
+                            width='533px'
+                            height='661px'
                         />
-                        </div>
-                    <h1 className='heroText text-[22px] md:text-[96px] absolute top-0 left-0 absolute z-1'>Shoot for the stars</h1>
+                    </div>
+
+                    <h1 className='heroText text-[22px] md:text-[96px] absolute top-0 left-0 absolute '>
+                        Shoot for the stars
+                    </h1>
                 </div>
 
                 <div className='w-full md:(grid) relative'>
