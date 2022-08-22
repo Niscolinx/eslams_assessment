@@ -2,12 +2,22 @@ html,
 body {
     padding: 0;
     margin: 0;
-    // @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Rubik+Glitch&display=swap');
-
-    // @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
-
     font-family: 'Montserrat', sans-serif;
-    background-color: #E8E7E7;
+    background-color: #e8e7e7;
+        font-size: 62.5%;
+
+}
+
+body {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
 @font-face {
@@ -22,15 +32,9 @@ a {
     text-decoration: none;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 .heroText {
     font-family: 'Rubik Glitch';
     font-weight: 400;
-    font-size: 96px;
-
 }
 
 .section-signup {
