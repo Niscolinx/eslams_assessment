@@ -67,16 +67,17 @@ export default function GuardianOrParent() {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <InputLabel id='phone-number'>Phone Number </InputLabel>
                     <MuiPhoneNumber
-                    id='phone-number'
-                       // InputLabelProps={{ shrink: true, focused: true }}
+                        id='phone-number'
+                        autoFocus={true}
+                        // InputLabelProps={{ shrink: true, focused: true }}
                         placeholder='Phone Number'
                         defaultCountry={'us'}
                         variant='outlined'
                         onChange={(e: any) => setPhoneNumber(e)}
                     />
                 </Grid>
+                
             </Grid>
         </React.Fragment>
     )
