@@ -76,6 +76,7 @@ export default function PersonalDetails() {
                     fullWidth
                     variant='standard'
                     onChange={(e) => setPassword(e.target.value)}
+                    value={password}
                     
                     />
                     {<span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
