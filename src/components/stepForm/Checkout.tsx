@@ -80,8 +80,16 @@ export default function Checkout() {
                     variant='outlined'
                     sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
                 >
-                    <Typography component='h2' variant='h4' align='center' className='font-semibold'>
+                    <Typography
+                        component='h2'
+                        variant='h4'
+                        align='center'
+                        className='font-semibold'
+                    >
                         Get Started with eslams
+                    </Typography>
+                    <Typography component='p' align="center">
+                        Create an account and step into greatness
                     </Typography>
                     <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
                         {steps.map((label) => (
