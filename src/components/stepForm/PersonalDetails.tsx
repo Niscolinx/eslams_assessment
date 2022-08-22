@@ -67,9 +67,9 @@ export default function AddressForm() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        id='state'
-                        name='state'
-                        label='State/Province/Region'
+                        id='dateOfBirth'
+                        name='dateOfBirth'
+                        label='Date of birth'
                         fullWidth
                         variant='outlined'
                     />
