@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 
-import { FormControl, FormLabel, RadioGroup, Radio } from '@mui/material'
+import { FormControl, FormLabel, RadioGroup, Radio, InputLabel, MenuItem, Select } from '@mui/material'
 import { useState } from 'react'
 import MuiPhoneNumber from 'material-ui-phone-number'
 
@@ -44,15 +44,22 @@ export default function GuardianOrParent() {
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id='email'
-                        name='email'
-                        label='Email Address'
-                        fullWidth
-                        autoComplete='email address'
-                        variant='outlined'
-                    />
+                    <FormControl fullWidth>
+                        <InputLabel id='demo-simple-select-label'>
+                            Relationship
+                        </InputLabel>
+                        <Select
+                            labelId='demo-simple-select-label'
+                            id='demo-simple-select'
+                            value={age}
+                            label='Age'
+                            onChange={handleChange}
+                        >
+                            <MenuItem value={20}>Father</MenuItem>
+                            <MenuItem value={30}>Mother</MenuItem>
+                            <MenuItem value={10}>Guardian</MenuItem>
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <MuiPhoneNumber
@@ -63,7 +70,6 @@ export default function GuardianOrParent() {
                     />
                     ,
                 </Grid>
-                
             </Grid>
         </React.Fragment>
     )
