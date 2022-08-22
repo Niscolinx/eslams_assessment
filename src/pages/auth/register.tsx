@@ -137,8 +137,8 @@ const Register = ({ providers }: LoginProps) => {
     }
 
     return (
-        <div className='register'>
-            <header className='absolute top-0'>
+        <div className='register relative'>
+            <header className='absolute top-0 left-0 right-0 z-4'>
                 <div className="flex">
                     <h1 className='text-[46px] font-semibold text-white'>eslams</h1>
                 </div>
