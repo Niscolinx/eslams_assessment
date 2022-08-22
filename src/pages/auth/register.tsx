@@ -1,39 +1,37 @@
+import React, { useState } from 'react'
 import axios from 'axios'
+import { CtxOrReq } from 'next-auth/client/_utils'
+import { getCsrfToken, getProviders, signIn } from 'next-auth/react'
+import Router from 'next/router'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 
-const Register = () => {
-    const router = useRouter()
+import HeroImg2 from '../../../public/hero-player.png'
+
+interface LoginProps {
+    csrfToken: string
+    providers: {
+        [key: string]: {
+            id: string
+            name: string
+        }
+    }
+}
+
+const Register = ({ providers }: LoginProps) => {
     type message = { value: string; type?: string; style?: string }
 
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState<number>()
+    const [emailOrUsername, setEmailOrUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [referral, setReferral] = useState<string>('')
+    const [loading, setLoading] = useState(false)
     const [errorFields, setErrorFields] = useState<string[]>([])
     const [error, setError] = useState(false)
-    const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState<message>({
         value: 'invalid Entries',
         type: 'error',
         style: 'text-red-500',
     })
     const [messageDisplay, setMessageDisplay] = useState('hidden')
-    const [disabled, setDisabled] = useState(false)
-
-    useEffect(() => {
-        const {reg} = router.query     
-        
-        console.log({reg})
-
-        if(reg){
-            setReferral(reg.toString())
-            setDisabled(true)
-        }
-    }, [router])
 
     const isValidMail = (e: string): Boolean => {
         const emailRegex = new RegExp(
@@ -44,16 +42,46 @@ const Register = () => {
 
         return isValid
     }
-
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setLoading(true)
+
+        if (
+            emailOrUsername.toLowerCase() === 'admin@1960token.com' ||
+            emailOrUsername.toLowerCase() === 'admin'
+        ) {
+            // admin login
+            //send an axios post request to the server
+            return axios
+                .post('/api/auth/login', {
+                    admin: true,
+                    emailOrUsername: emailOrUsername.toLowerCase(),
+                    password,
+                })
+                .then((res) => {
+                    console.log('res', res.data)
+                    setLoading(false)
+
+                    Router.push('/adminDashboard')
+                })
+                .catch((err) => {
+                    setLoading(false)
+                    console.log('err', err)
+                    setError(true)
+                    setMessage({
+                        value: 'Login Failed',
+                        type: 'error',
+                        style: 'text-red-500',
+                    })
+                    setMessageDisplay('block')
+                })
+        }
 
         const formData = new FormData(e.currentTarget)
 
         let isError = false
         for (let [key, value] of formData.entries()) {
-            if (!value && key !== 'referral') {
+            if (!value) {
                 isError = true
                 setMessage({
                     value: "Value can't be empty",
@@ -63,56 +91,30 @@ const Register = () => {
                 setErrorFields((oldArr) => [...oldArr, key])
                 setMessageDisplay('block')
                 setLoading(false)
-            }
-
-            if (key === 'email') {
-                const checkEmail = isValidMail(value.toString())
-
-                if (!checkEmail) {
-                    isError = true
-                    setErrorFields((oldArr) => [...oldArr, key])
-                    setLoading(false)
-                }
-            }
-
-            if (key === 'confirmPassword' && password !== confirmPassword) {
-                isError = true
-                setErrorFields((oldArr) => [...oldArr, key])
-                setMessageDisplay('block')
-                setMessage({ ...message, value: 'Passwords do not match' })
-                setLoading(false)
-            }
-        }
-
-        setError(isError)
-        if (!isError) {
-            axios
-                .post('/api/auth/signup', {
-                    username: username.toLowerCase().trim(),
-                    email: email.toLowerCase().trim(),
-                    phoneNumber,
-                    referral: referral?.toLowerCase().trim(),
-                    password,
-                })
-                .then(({ data }) => {
-                    console.log({ data })
-                    setMessage({
-                        value: data.message,
-                        type: 'success',
-                        style: 'text-green-500 font-semibold uppercase',
-                    })
-                    setMessageDisplay('block')
+            } else if (!isError) {
+                console.log('sign in.....', isError)
+                signIn('credentials', {
+                    redirect: false,
+                    emailOrUsername: emailOrUsername.toLowerCase().trim(),
+                    password: password,
+                }).then((data: any) => {
+                    console.log('data returned', data)
                     setLoading(false)
 
-                    setTimeout(() => {
-                        router.push('/auth/login')
-                    }, 500)
+                    if (data.error) {
+                        setError(true)
+                        setLoading(false)
+                        setMessage({
+                            value: 'Invalid User',
+                            type: 'error',
+                            style: 'text-red-500',
+                        })
+                        setMessageDisplay('block')
+                        return
+                    }
+                    Router.push('/dashboard')
                 })
-                .catch(({ response: { data } }) => {
-                    setMessageDisplay('block')
-                    setLoading(false)
-                    setMessage({ ...message, value: data.message })
-                })
+            }
         }
     }
 
@@ -122,25 +124,11 @@ const Register = () => {
         const { name, value } = e.target
 
         switch (name) {
-            case 'username':
-                setUsername(value)
-                break
-            case 'email':
-                setEmail(value)
-                break
-            case 'phoneNumber':
-                setPhoneNumber(Number(value))
+            case 'emailOrUsername':
+                setEmailOrUsername(value)
                 break
             case 'password':
                 setPassword(value)
-                break
-            case 'confirmPassword':
-                ;(() => {
-                    setConfirmPassword(value)
-                }).call(this)
-                break
-            case 'referral':
-                setReferral(value)
                 break
             default:
                 ''
@@ -149,184 +137,109 @@ const Register = () => {
     }
 
     return (
-        <div className='w-full md:w-1/3 mx-auto'>
-            <form
-                id='register'
-                className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2'
-                onSubmit={handleSubmit}
-            >
-                <div className='grid text-gray-700 mb-10 gap-2'>
-                    <h3 className='text-2xl font-bold capitalize'>
-                        Welcome to 1960Token!
-                    </h3>
-                    <p className=''>
-                        Make sure you use a strong password and keep it away
-                        from others
-                    </p>
-                </div>
-                <div className='mb-4'>
+        <div className='register'>
+            <header>
+                <Image src='/hero-player.png' width='100%' height='100%' />
+                <h1 className='heroText'>Shoot for the stars</h1>
+            </header>
+
+            <div className='w-full md:(grid) relative'>
+                <form
+                    id='login'
+                    className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2 justify-self-end grid'
+                    onSubmit={handleSubmit}
+                >
                     <p
                         className={`${messageDisplay} ${message?.style} text-sm text-center mb-5`}
                     >
                         {message?.value}
                     </p>
-                    <label
-                        className='block text-gray-700 text-sm font-bold mb-2'
-                        htmlFor='username'
-                    >
-                        Username
-                    </label>
-                    <input
-                        className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
-                            error && errorFields.includes('username')
-                                ? 'border-red-500'
-                                : ''
-                        }`}
-                        id='username'
-                        name='username'
-                        required
-                        type='text'
-                        minLength={4}
-                        value={username}
-                        onChange={changeHandler}
-                    />
-                </div>
 
-                <div className='mb-4'>
-                    <label
-                        className='block text-gray-700 text-sm font-bold mb-2'
-                        htmlFor='phoneNumber'
-                    >
-                        Phone No
-                    </label>
-                    <input
-                        className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
-                            error && errorFields.includes('phoneNumber')
-                                ? 'border-red-500'
-                                : ''
-                        }`}
-                        id='phoneNumber'
-                        type='number'
-                        name='phoneNumber'
-                        required
-                        value={phoneNumber}
-                        onChange={changeHandler}
-                    />
-                </div>
-                <div className='mb-4'>
-                    <label
-                        className='block text-gray-700 text-sm font-bold mb-2'
-                        htmlFor='username'
-                    >
-                        Email
-                    </label>
-                    <input
-                        className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
-                            error && errorFields.includes('email')
-                                ? 'border-red-500'
-                                : ''
-                        }`}
-                        id='email'
-                        type='email'
-                        name='email'
-                        required
-                        value={email}
-                        onChange={changeHandler}
-                    />
-                </div>
-                <div className='mb-6'>
-                    <label
-                        className='block text-gray-700 text-sm font-bold mb-2'
-                        htmlFor='password'
-                    >
-                        Password
-                    </label>
-                    <input
-                        className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
-                            error && errorFields.includes('password')
-                                ? 'border-red-500'
-                                : ''
-                        }`}
-                        id='password'
-                        name='password'
-                        type='password'
-                        minLength={6}
-                        required
-                        value={password}
-                        onChange={changeHandler}
-                    />
-                </div>
-                <div className='mb-6'>
-                    <label
-                        className='block text-gray-700 text-sm font-bold mb-2'
-                        htmlFor='confirmPassword'
-                    >
-                        Confirm Password
-                    </label>
-                    <input
-                        className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
-                            error && errorFields.includes('confirmPassword')
-                                ? 'border-red-500'
-                                : ''
-                        }`}
-                        id='confirmPassword'
-                        name='confirmPassword'
-                        type='password'
-                        minLength={6}
-                        required
-                        value={confirmPassword}
-                        onChange={changeHandler}
-                    />
-                </div>
-                <div className='mb-6'>
-                    <label
-                        className='block text-gray-700 text-sm font-bold mb-2'
-                        htmlFor='referral'
-                    >
-                        Referral
-                    </label>
-                    <input
-                        className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${disabled ? 'bg-gray-400': ''}`}
-                        id='referral'
-                        name='referral'
-                        type='text'
-                        placeholder='optional'
-                        disabled={disabled}
-                        minLength={3}
-                        value={referral}
-                        onChange={changeHandler}
-                    />
-                </div>
-                <div className='flex gap-3 justify-center mb-3'>
-                    <input
-                        type='checkbox'
-                        name='checkbox'
-                        id='checkbox'
-                        className='text-white'
-                        required
-                    />
-                    <label htmlFor='checkbox' className='text-gray-700'>
-                        I agree to the{' '}
-                        <Link href='/terms-and-conditions'>
-                            <span className='text-orange-300 cursor-pointer'>
-                                terms and conditions
-                            </span>
-                        </Link>
-                    </label>
-                </div>
+                    <div className='mb-4'>
+                        <label
+                            className='block text-gray-700 text-sm font-bold mb-2'
+                            htmlFor='username'
+                        >
+                            Email or Username
+                        </label>
 
-                <button
-                    className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
-                    type='submit'
-                >
-                    {loading ? 'Loading...' : 'Register'}
-                </button>
-            </form>
-            <p className='text-center text-gray-500 text-xs'>
-                &copy;2022 1960token. All rights reserved.
-            </p>
+                        <input
+                            className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
+                                error && errorFields.includes('email')
+                                    ? 'border-red-500'
+                                    : ''
+                            }`}
+                            id='emailOrUsername'
+                            type='text'
+                            name='emailOrUsername'
+                            required
+                            value={emailOrUsername}
+                            onChange={changeHandler}
+                        />
+                    </div>
+                    <div className='mb-6'>
+                        <label
+                            className='block text-gray-700 text-sm font-bold mb-2'
+                            htmlFor='password'
+                        >
+                            Password
+                        </label>
+                        <input
+                            className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
+                                error && errorFields.includes('password')
+                                    ? 'border-red-500'
+                                    : ''
+                            }`}
+                            id='password'
+                            name='password'
+                            type='password'
+                            minLength={6}
+                            required
+                            value={password}
+                            onChange={changeHandler}
+                        />
+                    </div>
+
+                    <div className='grid justify-center gap-2  md:gap-0 md:flex items-center'>
+                        <button
+                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline'
+                            type='submit'
+                        >
+                            {loading ? 'Loading...' : 'Sign In'}
+                        </button>
+                    </div>
+                </form>
+
+                <div className='grid mt-10 gap-2 px-8 justify-start'>
+                    <Link href='/auth/register'>
+                        <button className='bg-orange-300 text-[#1a1a2d] rounded px-2 py-1 text-left justify-self-start'>
+                            Register
+                        </button>
+                    </Link>
+
+                    <a
+                        className='inline-block align-baseline text-sm text-blue-500 hover:text-blue-800'
+                        href='#'
+                    >
+                        Forgot Password?
+                    </a>
+                </div>
+                <div className='section-signup'></div>
+            </div>
         </div>
     )
 }
 
 export default Register
+
+export async function getServerSideProps(context: CtxOrReq | undefined) {
+    const csrfToken = await getCsrfToken(context)
+    const providers = await getProviders()
+
+    return {
+        props: {
+            csrfToken,
+            providers,
+        },
+    }
+}
