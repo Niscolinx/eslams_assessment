@@ -56,9 +56,6 @@ input[type='number']::-webkit-outer-spin-button {
 //REGISTER
 
 .register {
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-
     &__header {
         grid-column: 1 / -1;
         background: linear-gradient(
@@ -71,16 +68,15 @@ input[type='number']::-webkit-outer-spin-button {
     }
 
     &__main {
-        grid-column: 1 / -1;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(16, 1fr);
     }
 
     &__form {
         max-width: 550px;
     }
     .section-1 {
-       max-width: 734px;
+        max-width: 734px;
 
         //position: absolute;
         // max-width: 533px;
@@ -93,7 +89,5 @@ input[type='number']::-webkit-outer-spin-button {
         );
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         backdrop-filter: blur(40px);
-        
-       
     }
 }
