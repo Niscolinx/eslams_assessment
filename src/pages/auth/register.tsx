@@ -144,7 +144,7 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
 
                 <div className="header__form">
-                    <form>
+                    <form className='flex'>
                         <div className="grid">
                             <label htmlFor="email" className="text-white">
                                 Email</label>
