@@ -38,18 +38,14 @@ const Layout: React.FC<{}> = ({ children }) => {
 
     return (
         <>
-            <div className={visibility}>
-=            </div>
+            <div className={visibility}>= </div>
             <div
-                className={` bg-[#1a1a2d] text-[#ccccd0] mx-auto relative light:(bg-[#ccccd0] text-[#1a1a2d])`}
             >
                 <NavContext.Provider value={navContext}>
                     <Nav session={session} />
 
-                    <main className={` overflow-x-hidden`}>
-                        {children}
-                    </main>
-                    <Footer hideFooter={hideFooter} />
+                    <main className=' max-w-[1440px]'>{children}</main>
+                    {/* <Footer hideFooter={hideFooter} /> */}
                 </NavContext.Provider>
             </div>
         </>

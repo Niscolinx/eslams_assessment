@@ -4,15 +4,15 @@ body {
     margin: 0;
     // @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Rubik+Glitch&display=swap');
 
-   // @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+    // @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
 
     font-family: 'Montserrat', sans-serif;
-
+    background-color: #E8E7E7;
 }
 
 @font-face {
     font-family: 'Rubik Glitch';
-    src: url( '/fonts/RubikGlitch-Regular.ttf' );
+    src: url('/fonts/RubikGlitch-Regular.ttf');
     font-style: normal;
     font-weight: normal;
 }
@@ -26,15 +26,26 @@ a {
     box-sizing: border-box;
 }
 
-.heroText{
-        font-family: 'Rubik Glitch';
-        font-weight: 400;
+.heroText {
+    font-family: 'Rubik Glitch';
+    font-weight: 400;
 }
 
+.section-signup {
+    position: absolute;
+    width: 1440px;
+    height: 487px;
+    left: 0px;
+    top: 446px;
 
+    background: linear-gradient(
+        270deg,
+        rgba(8, 54, 227, 0.11) 33.33%,
+        rgba(8, 54, 227, 0) 66.39%
+    );
+}
 
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
     appearance: none;
 }
-

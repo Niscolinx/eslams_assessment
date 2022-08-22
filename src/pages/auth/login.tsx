@@ -143,7 +143,7 @@ const Login = ({ providers }: LoginProps) => {
                 <h1 className='heroText'>Shoot for the stars</h1>
             </header>
 
-            <div className='w-full md:(grid)'>
+            <div className='w-full md:(grid) relative'>
                 <form
                     id='login'
                     className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2 justify-self-end grid'
@@ -224,10 +224,10 @@ const Login = ({ providers }: LoginProps) => {
                         Forgot Password?
                     </a>
                 </div>
-            </div>
-
-            <div className="grid" style={{background: `linearGradient(270deg, rgba(8, 54, 227, 0.11) 33.33%, rgba(8, 54, 227, 0) 66.39%)`}}>
-
+                <div
+                    className='section-signup'
+                    
+                ></div>
             </div>
         </>
     )

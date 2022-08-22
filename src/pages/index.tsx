@@ -46,7 +46,7 @@ const Index = () => {
 
     return (
         <>
-           
+           Hello world
         </>
     )
 }
