@@ -4,14 +4,16 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
-import { DesktopDateTimePicker } from '@mui/x-date-pickers-pro'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 
 
 export default function AddressForm() {
      const [value, setValue] = React.useState<Date | null>(
-         new Date('2014-08-18T21:11:54')
+        new Date()
      )
 
      const handleChange = (newValue: Date | null) => {
@@ -77,15 +79,16 @@ export default function AddressForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-
-                    <DesktopDateTimePicker
-                        label='Date desktop'
-                        inputFormat='MM/dd/yyyy'
-                        value={value}
-                        onChange={handleChange}
-                        renderInput={(params) => <TextField {...params} />}
-                    />
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DesktopDatePicker
+                            label='Date of Birth'
+                            value={value}
+                            minDate={new Date('2017-01-01')}
+                            onChange={(newValue) => {
+                                setValue(newValue)
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
                     </LocalizationProvider>
                 </Grid>
 
