@@ -5,14 +5,9 @@ import { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from 'next-themes'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-import LogRocket from 'logrocket'
-LogRocket.init('u0nffn/1960token')
+
 import {useRouter} from 'next/router'
 
-import * as gtag from '../lib/gtags'
-import { store, persistedStore } from '../store/app/store'
 import Layout from '../components/Layout'
 import '../styles/globals.scss'
 import Script from 'next/script'
