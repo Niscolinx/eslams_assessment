@@ -179,7 +179,7 @@ const Register = ({ providers }: LoginProps) => {
                     </h1>
 
                     <div className="section-1__overLay">
-                        
+
                     </div>
                 </div>
 
@@ -251,7 +251,7 @@ const Register = ({ providers }: LoginProps) => {
                     </form>
                 </div> */}
 
-                <div className="w-full md:(grid) relative mt-20 register__form">
+                <div className="w-full md:(grid) relative mt-20 register__form z-4">
 
                 <Checkout/>
                 </div>
