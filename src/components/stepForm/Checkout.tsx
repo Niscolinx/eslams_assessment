@@ -138,7 +138,7 @@ export default function Checkout() {
                                     >
                                         {activeStep === steps.length - 1
                                             ? 'Place order'
-                                            : `Next ${<HiOutlineArrowNarrowRight/>}`}
+                                            : `Next <HiOutlineArrowNarrowRight/>`}
                                     </Button>
                                 </Box>
                             </React.Fragment>
