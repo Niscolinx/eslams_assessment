@@ -10,7 +10,7 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 
 export default function GuardianOrParent() {
     const [phoneNumber, setPhoneNumber] = useState<HTMLInputElement | undefined>()
-
+    const [relationship, setRelationship] = useState('')
 
  
 
@@ -51,9 +51,9 @@ export default function GuardianOrParent() {
                         <Select
                             labelId='demo-simple-select-label'
                             id='demo-simple-select'
-                            value={age}
+                            value={relationship}
                             label='Age'
-                            onChange={handleChange}
+                            onChange={(e) => setRelationship(e.target.value)}
                         >
                             <MenuItem value={20}>Father</MenuItem>
                             <MenuItem value={30}>Mother</MenuItem>
