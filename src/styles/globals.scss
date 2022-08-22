@@ -57,7 +57,7 @@ input[type='number']::-webkit-outer-spin-button {
     max-width: 634px;
 
     //position: absolute;
-   // max-width: 533px;
+    // max-width: 533px;
     max-height: 661px;
 
     background: linear-gradient(
@@ -67,10 +67,21 @@ input[type='number']::-webkit-outer-spin-button {
     );
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     backdrop-filter: blur(40px);
-
-
 }
-
 
 //REGISTER
 
+.register {
+    &__header {
+        background: linear-gradient(
+            90.42deg,
+            rgba(0, 0, 0, 0.33) 49.64%,
+            rgba(0, 0, 0, 0.85) 57.29%
+        );
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(40px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        border-radius: 0px;
+    }
+}
