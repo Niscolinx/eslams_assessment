@@ -58,11 +58,10 @@ export default function AddressForm() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id='city'
-                        name='city'
-                        label='City'
+                        id='mobileNumber'
+                        name='mobileNumber'
+                        label='mobile Number'
                         fullWidth
-                        autoComplete='shipping address-level2'
                         variant='outlined'
                     />
                 </Grid>
