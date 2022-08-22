@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import type { AppState } from '../../app/store'
 import { startMining, stopMining } from './MineAPI'
-import { nextAuthSession } from '../../../lib/types'
+import { nextAuthSession } from '../../../../@types/types'
 
 export interface MiningState {
     isMining: boolean

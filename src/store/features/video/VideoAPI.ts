@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { nextAuthSession } from '../../../lib/types'
+import { nextAuthSession } from '../../../../@types/types'
 
 interface IFetchedData {
     videoMined: number

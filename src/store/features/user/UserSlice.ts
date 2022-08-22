@@ -1,7 +1,7 @@
 import { AppState } from '../../app/store'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { nextAuthSession } from '../../../lib/types'
+import { nextAuthSession } from '../../../../@types/types'
 import { IUser } from '../../../models/User'
 import { userData, userPortfolio } from './UserApi'
 
