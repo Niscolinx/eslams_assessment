@@ -74,29 +74,8 @@ export default function AddressForm() {
                         variant='outlined'
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id='zip'
-                        name='zip'
-                        label='Zip / Postal code'
-                        fullWidth
-                        autoComplete='shipping postal-code'
-                        variant='outlined'
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id='country'
-                        name='country'
-                        label='Country'
-                        fullWidth
-                        autoComplete='shipping country'
-                        variant='outlined'
-                    />
-                </Grid>
-                <Grid item xs={12}>
+                
+                {/* <Grid item xs={12}>
                     <FormControlLabel
                         control={
                             <Checkbox
@@ -107,7 +86,7 @@ export default function AddressForm() {
                         }
                         label='Use this address for payment details'
                     />
-                </Grid>
+                </Grid> */}
             </Grid>
         </React.Fragment>
     )
