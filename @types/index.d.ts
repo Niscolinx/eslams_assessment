@@ -12,8 +12,6 @@ declare module NodeJS {
 }
 
 declare global {
-    interface Window {
-        gtag: any
-    }
+
     var _mongoClientPromise: any
 }

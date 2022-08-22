@@ -3,7 +3,6 @@ import Footer from './Footer'
 import Nav from './nav'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import LiveTicker from '../widgets/LiveTicker'
 import { NavContext } from './Context'
 
 const Layout: React.FC<{}> = ({ children }) => {
@@ -56,8 +55,7 @@ const Layout: React.FC<{}> = ({ children }) => {
     return (
         <>
             <div className={visibility}>
-                <LiveTicker />
-            </div>
+=            </div>
             <div
                 className={`${addPadding} bg-[#1a1a2d] text-[#ccccd0] mx-auto relative light:(bg-[#ccccd0] text-[#1a1a2d])`}
             >
