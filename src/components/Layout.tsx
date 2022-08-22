@@ -17,32 +17,16 @@ const Layout: React.FC<{}> = ({ children }) => {
     useEffect(() => {
         router.asPath === '/' ? setVisibility('flex') : setVisibility('hidden')
 
-        if (router.asPath.includes('earn') || router.asPath.includes('adminDashboard')) {
-            setAddMargin('mb-0')
-            setAddPadding('')
-        } else {
-            setAddMargin('mb-25')
-            setAddPadding('py-2')
-        }
+      
 
-        if (router.asPath.includes('adminDashboard')) {
+        if (router.asPath.includes('login')) {
             setHideFooter(true)
         } else {
             setHideFooter(false)
         }
     }, [router])
 
-    useEffect(() => {
-        var ads = document.getElementsByClassName('adsbygoogle').length
-        for (var i = 0; i < ads; i++) {
-            console.log({ ads })
-            try {
-               // (adsbygoogle = window.adsbygoogle || []).push({})
-            } catch (e) {
-                console.log({e})
-            }
-        }
-    }, [])
+    
     
 
     const navContext = useMemo(() => {
@@ -57,12 +41,12 @@ const Layout: React.FC<{}> = ({ children }) => {
             <div className={visibility}>
 =            </div>
             <div
-                className={`${addPadding} bg-[#1a1a2d] text-[#ccccd0] mx-auto relative light:(bg-[#ccccd0] text-[#1a1a2d])`}
+                className={` bg-[#1a1a2d] text-[#ccccd0] mx-auto relative light:(bg-[#ccccd0] text-[#1a1a2d])`}
             >
                 <NavContext.Provider value={navContext}>
                     <Nav session={session} />
 
-                    <main className={`${addMargin} overflow-x-hidden`}>
+                    <main className={` overflow-x-hidden`}>
                         {children}
                     </main>
                     <Footer hideFooter={hideFooter} />

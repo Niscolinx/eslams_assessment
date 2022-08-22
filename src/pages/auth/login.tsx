@@ -141,10 +141,10 @@ const Login = ({ providers }: LoginProps) => {
         <>
 
             <Image src='/hero-player.png' width='100%' height="100%"/>
-            <div className='w-full md:w-1/3 mx-auto h-[93vh]'>
+            <div className='w-full md:(grid)'>
                 <form
                     id='login'
-                    className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2'
+                    className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2 justify-self-end grid'
                     onSubmit={handleSubmit}
                 >
                     <p
