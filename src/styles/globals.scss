@@ -53,7 +53,27 @@ input[type='number']::-webkit-outer-spin-button {
     );
 }
 
-.section-1 {
+
+
+//REGISTER
+
+.register {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    
+
+    &__header{
+        grid-column: 1 / -1;
+         background: linear-gradient(
+            90.42deg,
+            rgba(0, 0, 0, 0.33) 49.64%,
+            rgba(0, 0, 0, 0.85) 57.29%
+        );
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(40px);
+    }
+
+    .section-1 {
     max-width: 634px;
 
     //position: absolute;
@@ -68,20 +88,6 @@ input[type='number']::-webkit-outer-spin-button {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     backdrop-filter: blur(40px);
 }
-
-//REGISTER
-
-.register {
-    &__header {
-        background: linear-gradient(
-            90.42deg,
-            rgba(0, 0, 0, 0.33) 49.64%,
-            rgba(0, 0, 0, 0.85) 57.29%
-        );
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        backdrop-filter: blur(40px);
-        /* Note: backdrop-filter has minimal browser support */
-
-        border-radius: 0px;
-    }
 }
+
+
