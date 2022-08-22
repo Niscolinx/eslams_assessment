@@ -60,7 +60,6 @@ export default function PersonalDetails() {
                         type='email'
                         label='Email Address'
                         fullWidth
-                        autoComplete='email address'
                         variant='standard'
                     />
                 </Grid>
@@ -74,11 +73,10 @@ export default function PersonalDetails() {
                     label='Password'
                     type='password'
                     fullWidth
-                    autoComplete='password'
                     variant='standard'
                     
                     />
-                    {<span className='cursor-pointer absolute grid self-center justify-self-center -left-5'>
+                    {<span className='cursor-pointer absolute grid self-center justify-self-center right-5'>
                         
                         {eyeIcon ? <AiOutlineEyeInvisible onClick={toggleEyeIcon}/> : <AiOutlineEye onClick={toggleEyeIcon}/>}
                     </span>
