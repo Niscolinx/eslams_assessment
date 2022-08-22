@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
-import { DesktopDatePicker } from '@mui/x-date-pickers'
+import { DesktopDateTimePicker } from '@mui/x-date-pickers-pro'
 
 
 export default function AddressForm() {
@@ -77,7 +77,16 @@ export default function AddressForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                       
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+
+                    <DesktopDateTimePicker
+                        label='Date desktop'
+                        inputFormat='MM/dd/yyyy'
+                        value={value}
+                        onChange={handleChange}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                    </LocalizationProvider>
                 </Grid>
 
                 {/* <Grid item xs={12}>
