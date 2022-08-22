@@ -63,6 +63,7 @@ export default function PersonalDetails() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
+                    required
                         id='password'
                         name='password'
                         label='Password'
@@ -85,6 +86,7 @@ export default function PersonalDetails() {
                 <Grid item xs={12} sm={6}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
+                        
                             label='Date of Birth'
                             value={value}
                             minDate={new Date('2017-01-01')}
@@ -92,7 +94,7 @@ export default function PersonalDetails() {
                                 setValue(newValue)
                             }}
                             renderInput={(params) => (
-                                <TextField {...params} variant='standard' />
+                                <TextField {...params} variant='standard' required />
                             )}
                         />
                     </LocalizationProvider>
