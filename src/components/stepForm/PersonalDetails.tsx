@@ -16,6 +16,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 export default function PersonalDetails() {
     const [gender, setGender] = useState('male')
     const [eyeIcon, setEyeIcon] = useState(false)
+    const [password, setPassword] = useState('')
 
     const [value, setValue] = useState<Date | null>(null)
 
@@ -74,7 +75,7 @@ export default function PersonalDetails() {
                     type='password'
                     fullWidth
                     variant='standard'
-                  
+                    onChange={(e) => setPassword(e.target.value)}
                     
                     />
                     {<span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
