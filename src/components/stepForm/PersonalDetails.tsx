@@ -22,6 +22,10 @@ export default function PersonalDetails() {
 
     const toggleEyeIcon = () => {
         setEyeIcon(prev => !prev)
+
+        const password = document.getElementById('password')
+        
+        
     }
 
 
