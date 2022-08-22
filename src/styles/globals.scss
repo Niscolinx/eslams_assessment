@@ -77,8 +77,10 @@ input[type='number']::-webkit-outer-spin-button {
 
         &__overlay {
             position: absolute;
-            max-width: 533px;
-            max-height: 661px;
+            top: 0;
+            left: 0;
+            width: 533px;
+            height: 661px;
             background: linear-gradient(
                 187.03deg,
                 rgba(255, 0, 0, 0.12) 51.88%,
