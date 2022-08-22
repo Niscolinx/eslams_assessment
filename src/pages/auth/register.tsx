@@ -168,8 +168,8 @@ const Register = ({ providers }: LoginProps) => {
                         <div className='flex section-1__container relative z-2 mt-[7rem]'>
                             <Image
                                 src='/hero-player.png'
-                                width='533px'
-                                height='661px'
+                                width='433px'
+                                height='561px'
                             />
                         </div>
 
