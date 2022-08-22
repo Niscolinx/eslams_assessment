@@ -73,7 +73,7 @@ input[type='number']::-webkit-outer-spin-button {
     &__main {
         grid-column: 1 / -1;
         display: grid;
-        grid-template-columns: 1.8fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     &__form {
