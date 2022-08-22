@@ -14,14 +14,23 @@ export default function GuardianOrParent() {
 
  
 
-    console.log({phoneNumber})
-
     return (
         <React.Fragment>
             {/* <Typography variant='h6' gutterBottom>
                 Shipping address
             </Typography> */}
             <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        required
+                        id='name'
+                        name='name'
+                        label='Name'
+                        fullWidth
+                        autoComplete='family-name'
+                        variant='outlined'
+                    />
+                </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
@@ -33,17 +42,7 @@ export default function GuardianOrParent() {
                         variant='outlined'
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id='lastName'
-                        name='lastName'
-                        label='Last name'
-                        fullWidth
-                        autoComplete='family-name'
-                        variant='outlined'
-                    />
-                </Grid>
+
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
@@ -60,7 +59,7 @@ export default function GuardianOrParent() {
                         defaultCountry={'us'}
                         variant='outlined'
                         value={phoneNumber}
-                        onChange={(e:any) => setPhoneNumber(e)}
+                        onChange={(e: any) => setPhoneNumber(e)}
                     />
                     ,
                 </Grid>
@@ -84,8 +83,6 @@ export default function GuardianOrParent() {
                         variant='outlined'
                     />
                 </Grid>
-
-               
             </Grid>
         </React.Fragment>
     )
