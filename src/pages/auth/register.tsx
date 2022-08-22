@@ -165,7 +165,7 @@ const Register = ({ providers }: LoginProps) => {
 
             <div className='grid grid-cols-2 register__main'>
                 <div className='section-1 relative'>
-                        <div className='flex section-1__container relative z-2 mt-[1rem]'>
+                        <div className='flex section-1__container relative z-2 mt-[7rem]'>
                             <Image
                                 src='/hero-player.png'
                                 width='533px'
@@ -173,7 +173,7 @@ const Register = ({ providers }: LoginProps) => {
                             />
                         </div>
 
-                        <h1 className='heroText text-[22px] md:text-[96px] absolute top-[7rem] left-0 absolute'>
+                        <h1 className='heroText text-[22px] md:text-[96px] absolute top-[7rem] left-[2rem] absolute'>
                             Shoot for the stars
                         </h1>
                 </div>
