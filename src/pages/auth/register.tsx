@@ -247,7 +247,10 @@ const Register = ({ providers }: LoginProps) => {
                     </form>
                 </div> */}
 
+                <div className="w-full md:(grid) relative mt-20 register__form">
+
                 <Checkout/>
+                </div>
                 <div className='section-signup'></div>
             </div>
         </div>
