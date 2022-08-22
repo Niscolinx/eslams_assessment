@@ -29,7 +29,7 @@ function Copyright() {
     )
 }
 
-const steps = ['Shipping address', 'Payment details', 'Review your order']
+const steps = ['Personal details', 'Guardian/Parent', 'Education']
 
 function getStepContent(step: number) {
     switch (step) {
