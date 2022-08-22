@@ -1,0 +1,103 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e8e7e7;
+    font-size: 100%; // 16px/16px = 100% 1rem = 16px
+
+    box-sizing: border-box;
+}
+
+
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+@font-face {
+    font-family: 'Rubik Glitch';
+    src: url('/fonts/RubikGlitch-Regular.ttf');
+    font-style: normal;
+    font-weight: normal;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    appearance: none;
+}
+.heroText {
+    font-family: 'Rubik Glitch';
+    font-weight: 400;
+}
+
+.section-signup {
+    position: absolute;
+    // width: 1440px;
+    width: 100%;
+    height: 487px;
+    left: 0px;
+    top: 446px;
+    z-index: 1;
+
+    background: linear-gradient(
+        270deg,
+        rgba(8, 54, 227, 0.11) 33.33%,
+        rgba(8, 54, 227, 0) 66.39%
+    );
+}
+
+//REGISTER
+
+.register {
+    &__header {
+        grid-column: 1 / -1;
+        background: linear-gradient(
+            90.42deg,
+            rgba(0, 0, 0, 0.33) 49.64%,
+            rgba(0, 0, 0, 0.85) 57.29%
+        );
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(40px);
+    }
+
+    &__main {
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+    }
+
+    .section-1 {
+        grid-column: 1 / 9;
+
+        &__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 533px;
+            height: 661px;
+            background: linear-gradient(
+                187.03deg,
+                rgba(255, 0, 0, 0.12) 51.88%,
+                rgba(159, 15, 50, 0) 94.51%
+            );
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            backdrop-filter: blur(40px);
+
+            background: red;
+        }
+    }
+
+    &__form {
+        max-width: 550px;
+        grid-column: 9 / -1;
+    }
+}

@@ -1,0 +1,276 @@
+import React, { useState } from 'react'
+import axios from 'axios'
+import { CtxOrReq } from 'next-auth/client/_utils'
+import { getCsrfToken, getProviders, signIn } from 'next-auth/react'
+import Router from 'next/router'
+import Link from 'next/link'
+import Image from 'next/image'
+
+import HeroImg2 from '../../../public/hero-player.png'
+import Checkout from '../../components/stepForm/Checkout'
+
+interface LoginProps {
+    csrfToken: string
+    providers: {
+        [key: string]: {
+            id: string
+            name: string
+        }
+    }
+}
+
+const Register = ({ providers }: LoginProps) => {
+    type message = { value: string; type?: string; style?: string }
+
+    const [emailOrUsername, setEmailOrUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [errorFields, setErrorFields] = useState<string[]>([])
+    const [error, setError] = useState(false)
+    const [message, setMessage] = useState<message>({
+        value: 'invalid Entries',
+        type: 'error',
+        style: 'text-red-500',
+    })
+    const [messageDisplay, setMessageDisplay] = useState('hidden')
+
+    const isValidMail = (e: string): Boolean => {
+        const emailRegex = new RegExp(
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )
+
+        const isValid = emailRegex.test(e)
+
+        return isValid
+    }
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setLoading(true)
+
+        if (
+            emailOrUsername.toLowerCase() === 'admin@1960token.com' ||
+            emailOrUsername.toLowerCase() === 'admin'
+        ) {
+            // admin login
+            //send an axios post request to the server
+            return axios
+                .post('/api/auth/login', {
+                    admin: true,
+                    emailOrUsername: emailOrUsername.toLowerCase(),
+                    password,
+                })
+                .then((res) => {
+                    console.log('res', res.data)
+                    setLoading(false)
+
+                    Router.push('/adminDashboard')
+                })
+                .catch((err) => {
+                    setLoading(false)
+                    console.log('err', err)
+                    setError(true)
+                    setMessage({
+                        value: 'Login Failed',
+                        type: 'error',
+                        style: 'text-red-500',
+                    })
+                    setMessageDisplay('block')
+                })
+        }
+
+        const formData = new FormData(e.currentTarget)
+
+        let isError = false
+        for (let [key, value] of formData.entries()) {
+            if (!value) {
+                isError = true
+                setMessage({
+                    value: "Value can't be empty",
+                    type: 'error',
+                    style: 'text-red-500',
+                })
+                setErrorFields((oldArr) => [...oldArr, key])
+                setMessageDisplay('block')
+                setLoading(false)
+            } else if (!isError) {
+                console.log('sign in.....', isError)
+                signIn('credentials', {
+                    redirect: false,
+                    emailOrUsername: emailOrUsername.toLowerCase().trim(),
+                    password: password,
+                }).then((data: any) => {
+                    console.log('data returned', data)
+                    setLoading(false)
+
+                    if (data.error) {
+                        setError(true)
+                        setLoading(false)
+                        setMessage({
+                            value: 'Invalid User',
+                            type: 'error',
+                            style: 'text-red-500',
+                        })
+                        setMessageDisplay('block')
+                        return
+                    }
+                    Router.push('/dashboard')
+                })
+            }
+        }
+    }
+
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setErrorFields([])
+        setMessageDisplay('hidden')
+        const { name, value } = e.target
+
+        switch (name) {
+            case 'emailOrUsername':
+                setEmailOrUsername(value)
+                break
+            case 'password':
+                setPassword(value)
+                break
+            default:
+                ''
+                break
+        }
+    }
+
+    return (
+        <div className='register relative'>
+            <header className='absolute top-0 left-0 right-0 z-4 register__header py-3 px-2 flex justify-between'>
+                <div className='flex'>
+                    <p className='text-[46px] font-medium text-white'>eslams</p>
+                </div>
+
+                <div className='header__form'>
+                    <form className='flex gap-5'>
+                        <div className='grid'>
+                            <label htmlFor='email' className='text-white'>
+                                Email
+                            </label>
+
+                            <input type='text' name='email' id='email' />
+                        </div>
+                        <div className='grid'>
+                            <label htmlFor='email' className='text-white'>
+                                Password
+                            </label>
+
+                            <input type='text' name='email' id='email' />
+                        </div>
+                    </form>
+                </div>
+            </header>
+
+            <div className='register__main'>
+                <div className='section-1 relative'>
+                    <div className='flex section-1__container relative z-2 mt-[7rem]'>
+                        <Image
+                            src='/hero-player.png'
+                            width='433px'
+                            height='461px'
+                        />
+                    </div>
+
+                    <h1 className='heroText text-[22px] md:text-[5rem] absolute top-[6rem] left-[2rem] absolute uppercase'>
+                        Shoot for the <span className='ml-10'>stars</span>
+                    </h1>
+
+                    <div className="section-1__overLay">
+
+                    </div>
+                </div>
+
+                {/* <div className='w-full md:(grid) relative mt-20 register__form'>
+                    <form
+                        id='login'
+                        className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2 justify-self-end grid'
+                        onSubmit={handleSubmit}
+                    >
+                        <p
+                            className={`${messageDisplay} ${message?.style} text-sm text-center mb-5`}
+                        >
+                            {message?.value}
+                        </p>
+
+                        <div className='mb-4'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='username'
+                            >
+                                Email or Username
+                            </label>
+
+                            <input
+                                className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
+                                    error && errorFields.includes('email')
+                                        ? 'border-red-500'
+                                        : ''
+                                }`}
+                                id='emailOrUsername'
+                                type='text'
+                                name='emailOrUsername'
+                                required
+                                value={emailOrUsername}
+                                onChange={changeHandler}
+                            />
+                        </div>
+                        <div className='mb-6'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='password'
+                            >
+                                Password
+                            </label>
+                            <input
+                                className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
+                                    error && errorFields.includes('password')
+                                        ? 'border-red-500'
+                                        : ''
+                                }`}
+                                id='password'
+                                name='password'
+                                type='password'
+                                minLength={6}
+                                required
+                                value={password}
+                                onChange={changeHandler}
+                            />
+                        </div>
+
+                        <div className='grid justify-center gap-2  md:gap-0 md:flex items-center'>
+                            <button
+                                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline'
+                                type='submit'
+                            >
+                                {loading ? 'Loading...' : 'Sign In'}
+                            </button>
+                        </div>
+                    </form>
+                </div> */}
+
+                <div className="w-full md:(grid) relative mt-20 register__form z-4">
+
+                <Checkout/>
+                </div>
+                <div className='section-signup'></div>
+            </div>
+        </div>
+    )
+}
+
+export default Register
+
+export async function getServerSideProps(context: CtxOrReq | undefined) {
+    const csrfToken = await getCsrfToken(context)
+    const providers = await getProviders()
+
+    return {
+        props: {
+            csrfToken,
+            providers,
+        },
+    }
+}
