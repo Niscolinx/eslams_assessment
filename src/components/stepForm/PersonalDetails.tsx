@@ -26,6 +26,7 @@ export default function PersonalDetails() {
         const password = document.getElementById('password')
         
         if (password) {
+            console.log({password})
             if (eyeIcon) {
                 password.type = 'text'
             } else {
