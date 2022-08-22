@@ -74,9 +74,10 @@ export default function PersonalDetails() {
                     type='password'
                     fullWidth
                     variant='standard'
+                  
                     
                     />
-                    {<span className='cursor-pointer absolute grid self-center justify-self-center right-5'>
+                    {<span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
                         
                         {eyeIcon ? <AiOutlineEyeInvisible onClick={toggleEyeIcon}/> : <AiOutlineEye onClick={toggleEyeIcon}/>}
                     </span>
