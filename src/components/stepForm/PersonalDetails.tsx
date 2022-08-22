@@ -9,16 +9,23 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
+import { FormControl, FormLabel, RadioGroup, Radio } from '@mui/material'
+import { useState } from 'react'
 
 
 export default function AddressForm() {
-     const [value, setValue] = React.useState<Date | null>(
+    const [gender, setGender] = useState('male')
+
+     const [value, setValue] = useState<Date | null>(
         new Date()
      )
 
      const handleChange = (newValue: Date | null) => {
          setValue(newValue)
      }
+
+
+
     return (
         <React.Fragment>
             {/* <Typography variant='h6' gutterBottom>
@@ -92,18 +99,30 @@ export default function AddressForm() {
                     </LocalizationProvider>
                 </Grid>
 
-                {/* <Grid item xs={12}>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                color='secondary'
-                                name='saveAddress'
-                                value='yes'
+                <Grid item xs={12} sm={6}>
+                    <FormControl>
+                        <FormLabel id='demo-controlled-radio-buttons-group'>
+                            Gender
+                        </FormLabel>
+                        <RadioGroup
+                            aria-labelledby='demo-controlled-radio-buttons-group'
+                            name='controlled-radio-buttons-group'
+                            value={gender}
+                            onChange={(e) => setGender(e.target.value)}
+                        >
+                            <FormControlLabel
+                                value='female'
+                                control={<Radio />}
+                                label='Female'
                             />
-                        }
-                        label='Use this address for payment details'
-                    />
-                </Grid> */}
+                            <FormControlLabel
+                                value='male'
+                                control={<Radio />}
+                                label='Male'
+                            />
+                        </RadioGroup>
+                    </FormControl>
+                </Grid>
             </Grid>
         </React.Fragment>
     )
