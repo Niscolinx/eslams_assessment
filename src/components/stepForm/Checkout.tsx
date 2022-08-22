@@ -12,9 +12,12 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
+
 import PersonalDetails from './PersonalDetails'
 import GuardianOrParent from './GuardianOrParent'
 import Review from './Review'
+
 
 function Copyright() {
     return (
