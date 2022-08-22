@@ -141,13 +141,16 @@ const Register = ({ providers }: LoginProps) => {
             <header></header>
 
             <div className='grid'>
-                <div className='section-1'>
+                <div className='section-1 relative'>
+                    <div className="flex">
+
                     <Image
                         src='/hero-player.png'
                         width='533px'
                         height='661px'
-                    />
-                    <h1 className='heroText text-[8rem]'>Shoot for the stars</h1>
+                        />
+                        </div>
+                    <h1 className='heroText text-[7rem] absolute top-0 left-0'>Shoot for the stars</h1>
                 </div>
 
                 <div className='w-full md:(grid) relative'>
