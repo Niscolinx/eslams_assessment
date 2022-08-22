@@ -142,7 +142,7 @@ const Register = ({ providers }: LoginProps) => {
 
             <div className='grid grid-cols-2'>
                 <div className='section-1 relative'>
-                    <div className="flex section-1__container relative">
+                    <div className="flex section-1__container relative z-2">
 
                     <Image
                         src='/hero-player.png'

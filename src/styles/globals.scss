@@ -57,11 +57,10 @@ input[type='number']::-webkit-outer-spin-button {
     max-width: 634px;
 ;
     &__container {
-        position: absolute;
+        //position: absolute;
         max-width: 533px;
         max-height: 661px;
-        left: -2px;
-        top: 0px;
+      
 
         background: linear-gradient(
             187.03deg,
