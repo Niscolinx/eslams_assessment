@@ -13,7 +13,7 @@ import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import PersonalDetails from './PersonalDetails'
-import PaymentForm from './GuardianOrParent'
+import GuardianOrParent from './GuardianOrParent'
 import Review from './Review'
 
 function Copyright() {
@@ -36,7 +36,7 @@ function getStepContent(step: number) {
         case 0:
             return <PersonalDetails />
         case 1:
-            return <PaymentForm />
+            return <GuardianOrParent />
         case 2:
             return <Review />
         default:
