@@ -11,7 +11,7 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import { FormControl, FormLabel, RadioGroup, Radio } from '@mui/material'
 import { useState } from 'react'
-import {AiOutlineEyeInvisible} from 'react-icons/ai'
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
 export default function PersonalDetails() {
     const [gender, setGender] = useState('male')
@@ -72,7 +72,9 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='password'
                         variant='standard'
+                        
                     />
+                    <AiOutlineEyeInvisible/>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
