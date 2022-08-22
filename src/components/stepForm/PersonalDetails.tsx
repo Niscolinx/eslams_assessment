@@ -111,14 +111,19 @@ export default function AddressForm() {
                             onChange={(e) => setGender(e.target.value)}
                         >
                             <FormControlLabel
+                                value='male'
+                                control={<Radio />}
+                                label='Male'
+                            />
+                            <FormControlLabel
                                 value='female'
                                 control={<Radio />}
                                 label='Female'
                             />
                             <FormControlLabel
-                                value='male'
+                                value='prefer not to say'
                                 control={<Radio />}
-                                label='Male'
+                                label='Prefer not to say'
                             />
                         </RadioGroup>
                     </FormControl>
