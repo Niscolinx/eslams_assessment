@@ -20,7 +20,7 @@ export default function AddressForm() {
                         label='First name'
                         fullWidth
                         autoComplete='given-name'
-                        variant='standard'
+                        variant='outlined'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -31,18 +31,18 @@ export default function AddressForm() {
                         label='Last name'
                         fullWidth
                         autoComplete='family-name'
-                        variant='standard'
+                        variant='outlined'
                     />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={6}>
                     <TextField
                         required
                         id='email'
                         name='email'
-                        label='Address line 1'
+                        label='Email Address'
                         fullWidth
-                        autoComplete='shipping address-line1'
-                        variant='standard'
+                        autoComplete='Your email address'
+                        variant='outlined'
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -52,7 +52,7 @@ export default function AddressForm() {
                         label='Address line 2'
                         fullWidth
                         autoComplete='shipping address-line2'
-                        variant='standard'
+                        variant='outlined'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -63,7 +63,7 @@ export default function AddressForm() {
                         label='City'
                         fullWidth
                         autoComplete='shipping address-level2'
-                        variant='standard'
+                        variant='outlined'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -72,7 +72,7 @@ export default function AddressForm() {
                         name='state'
                         label='State/Province/Region'
                         fullWidth
-                        variant='standard'
+                        variant='outlined'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -83,7 +83,7 @@ export default function AddressForm() {
                         label='Zip / Postal code'
                         fullWidth
                         autoComplete='shipping postal-code'
-                        variant='standard'
+                        variant='outlined'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -94,7 +94,7 @@ export default function AddressForm() {
                         label='Country'
                         fullWidth
                         autoComplete='shipping country'
-                        variant='standard'
+                        variant='outlined'
                     />
                 </Grid>
                 <Grid item xs={12}>
