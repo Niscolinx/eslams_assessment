@@ -139,9 +139,8 @@ const Login = ({ providers }: LoginProps) => {
 
     return (
         <>
-            <img src="/hero-player.png" alt="player"  />
 
-            <Image src='/hero-player.png' layout='fill'/>
+            <Image src='/hero-player.png' width='100%' height="100%"/>
             <div className='w-full md:w-1/3 mx-auto h-[93vh]'>
                 <form
                     id='login'
