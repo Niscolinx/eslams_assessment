@@ -53,17 +53,15 @@ input[type='number']::-webkit-outer-spin-button {
     );
 }
 
-
-
 //REGISTER
 
 .register {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
 
-    &__header{
+    &__header {
         grid-column: 1 / -1;
-         background: linear-gradient(
+        background: linear-gradient(
             90.42deg,
             rgba(0, 0, 0, 0.33) 49.64%,
             rgba(0, 0, 0, 0.85) 57.29%
@@ -72,31 +70,30 @@ input[type='number']::-webkit-outer-spin-button {
         backdrop-filter: blur(40px);
     }
 
-    &__main{
+    &__main {
         grid-column: 1 / -1;
         display: grid;
-        grid-template-columns: 1fr minmax(550px, 1fr);
+        grid-template-columns: 1fr 550px;
     }
 
-
-    &__form{
+    &__form {
         max-width: 550px;
     }
     .section-1 {
-    max-width: 834px;
+        max-width: 834px;
 
-    //position: absolute;
-    // max-width: 533px;
-    max-height: 661px;
+        //position: absolute;
+        // max-width: 533px;
+        max-height: 661px;
 
-    background: linear-gradient(
-        187.03deg,
-        rgba(255, 0, 0, 0.12) 51.88%,
-        rgba(159, 15, 50, 0) 94.51%
-    );
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    backdrop-filter: blur(40px);
+        background: linear-gradient(
+            187.03deg,
+            rgba(255, 0, 0, 0.12) 51.88%,
+            rgba(159, 15, 50, 0) 94.51%
+        );
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        backdrop-filter: blur(40px);
+        
+       
+    }
 }
-}
-
-
