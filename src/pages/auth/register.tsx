@@ -144,7 +144,7 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
 
                 <div className="header__form">
-                    <form className='flex'>
+                    <form className='flex gap-5'>
                         <div className="grid">
                             <label htmlFor="email" className="text-white">
                                 Email</label>
@@ -163,7 +163,7 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
             </header>
 
-            <div className='grid grid-cols-2'>
+            <div className='grid grid-cols-2 pt-20'>
                 <div className='section-1 relative pb-20'>
                     <div className='flex section-1__container relative z-2 mt-[1rem]'>
                         <Image
