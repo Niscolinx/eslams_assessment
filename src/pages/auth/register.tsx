@@ -142,6 +142,14 @@ const Register = ({ providers }: LoginProps) => {
                 <div className="flex">
                     <p className='text-[46px] font-medium text-white'>eslams</p>
                 </div>
+
+                <div className="header__form">
+                    <form>
+
+                        
+                    </form>
+                    
+                </div>
             </header>
 
             <div className='grid grid-cols-2'>
