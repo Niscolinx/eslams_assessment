@@ -4,17 +4,14 @@ body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     background-color: #e8e7e7;
-        font-size: 62.5%;
+    font-size: 100%; // 16px/16px = 100%
 
-}
-
-body {
     box-sizing: border-box;
 }
 
 *,
 *::after,
-*::before{
+*::before {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
