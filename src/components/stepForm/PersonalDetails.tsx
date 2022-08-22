@@ -63,18 +63,21 @@ export default function PersonalDetails() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
+                    <div className="flex items-center">
+
                     <TextField
                     required
-                        id='password'
-                        name='password'
-                        label='Password'
-                        type='password'
-                        fullWidth
-                        autoComplete='password'
-                        variant='standard'
-                        
+                    id='password'
+                    name='password'
+                    label='Password'
+                    type='password'
+                    fullWidth
+                    autoComplete='password'
+                    variant='standard'
+                    
                     />
                     <AiOutlineEyeInvisible/>
+                    </div>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
