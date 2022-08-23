@@ -141,7 +141,12 @@ const Register = ({ providers }: LoginProps) => {
         <div className='register relative'>
             <header className='grid md:(flex justify-between) absolute top-0 left-0 right-0 z-4 register__header py-3 px-2 '>
                 <div className='flex'>
-                    <p className='text-[46px] font-medium text-white'><span>e</span>slams</p>
+                    <p className='text-[46px] font-medium text-white'>
+                        <span className='text-[#1776d1] border border-[#1776d1]'>
+                            e
+                        </span>
+                        slams
+                    </p>
                 </div>
 
                 <div className='header__form'>

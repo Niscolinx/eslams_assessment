@@ -4,7 +4,7 @@ export default function Document() {
     return (
         <Html>
             <Head />
-            <title>Eslams</title>
+            <title>eslams</title>
             <body>
                 <Main />
                 <NextScript />
