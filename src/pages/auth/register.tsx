@@ -174,7 +174,7 @@ const Register = ({ providers }: LoginProps) => {
                             height='461px'
                         />
                     </div>
-                    <div className='grid section-1__points'>
+                    <div className='grid gap-2 section-1__points'>
                         <p className='section-1__points--item'>Learn Through Practice</p>
                         <p className='section-1__points--item'>Compete and Win Rewards</p>
                         <p className='section-1__points--item'>Find and Register for Competitions</p>

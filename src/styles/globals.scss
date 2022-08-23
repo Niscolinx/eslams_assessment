@@ -105,10 +105,14 @@ input[type='number']::-webkit-outer-spin-button {
             position: absolute;
             bottom: 30%;
             z-index: 3;
-            right: 12rem;
-            &--item{
+            right: 4rem;
 
+            &--item{
+                padding:.5rem 1rem;
+                border-radius: 1rem 0rem;
                 background-color: rgba(0, 0, 0, 0.25);
+                backdrop-filter: blur(20px);
+                font-weight: ;
             }
         }
     }
