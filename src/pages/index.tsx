@@ -37,8 +37,8 @@ const Index = () => {
                         <SearchBox />
                         <div className='flex'>
                             <div className='flex items-center'>
-                                <div className='bg-gray-400'>
-                                    <BiNotepad className='' />
+                                <div className='bg-gray-400 rounded-full'>
+                                    <BiNotepad className='text-2xl' />
                                 </div>
                                 <div className='flex header__avatar'>
                                     <Image
