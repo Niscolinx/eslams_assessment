@@ -187,7 +187,7 @@ const Register = ({ providers }: LoginProps) => {
                     <div className='section-1__overLay'></div>
                 </div>
 
-                <div className='w-full md:(grid) relative mt-20 register__form z-4'>
+                <div className='mx-auto w-full md:(grid) relative mt-20 register__form z-4'>
                     <Checkout />
                 </div>
                 <div className='section-signup'></div>
