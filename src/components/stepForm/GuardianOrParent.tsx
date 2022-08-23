@@ -49,6 +49,19 @@ export default function GuardianOrParent() {
                         variant='standard'
                     />
                 </Grid>
+                <Grid item xs={12} sm={6}>
+                    <MuiPhoneNumber
+                        id='phone-number'
+                        autoFocus={true}
+                        // helperText='Enter phone number'
+                        // InputLabelProps={{ shrink: true, focused: true }}
+                        placeholder='Phone Number'
+                        defaultCountry={'us'}
+                        variant='standard'
+                        fullWidth
+                        onChange={(e: any) => setPhoneNumber(e)}
+                    />
+                </Grid>
 
                 <Grid item xs={12} sm={6}>
                     <FormControl fullWidth>
@@ -67,19 +80,6 @@ export default function GuardianOrParent() {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <MuiPhoneNumber
-                        id='phone-number'
-                        autoFocus={true}
-                        helperText='Enter phone number'
-                        // InputLabelProps={{ shrink: true, focused: true }}
-                        placeholder='Phone Number'
-                        defaultCountry={'us'}
-                        variant='standard'
-                        onChange={(e: any) => setPhoneNumber(e)}
-                    />
-                </Grid>
-                
             </Grid>
         </React.Fragment>
     )
