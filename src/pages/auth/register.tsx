@@ -197,7 +197,7 @@ const Register = ({ providers }: LoginProps) => {
 
                 <div className='register__overlay z-3 md:(max-w-[433px])'></div>
                 <div className='section-1 relative'>
-                    <div className='flex section-1__container relative z-5 mt-[10rem]'>
+                    <div className='flex section-1__container relative z-5 mt-[9.5rem]'>
                         <Image
                             src='/hero-player.png'
                             width='433px'
@@ -217,7 +217,7 @@ const Register = ({ providers }: LoginProps) => {
                         </p>
                     </div>
 
-                    <h1 className='heroText absolute top-[8rem] left-[2rem] absolute uppercase z-4'>
+                    <h1 className='heroText absolute top-[8rem] left-[3.5rem] absolute uppercase z-4'>
                         Shoot for the <span className='ml-10'>stars</span>
                     </h1>
 
