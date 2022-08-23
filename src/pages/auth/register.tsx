@@ -225,6 +225,7 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
 
                 <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-4'>
+                
                     <Checkout />
                     <div className='absolute -right-22 '>
                         <Image
