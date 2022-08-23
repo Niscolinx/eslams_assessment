@@ -33,12 +33,14 @@ const Index = () => {
             <div className='marketplace__container'>
                 <div className='grid p-8 relative z-3'>
                     <header className='header'>
+                        <figure className='header__logo'>
+
                         <Image
                             src='/logo.jpeg'
-                            width={'75px'}
-                            height={'75px'}
+                            layout='responsive'
                             objectFit={'contain'}
-                        />
+                            />
+                            </figure>
 
                         <SearchBox />
                         <div className='flex'>
