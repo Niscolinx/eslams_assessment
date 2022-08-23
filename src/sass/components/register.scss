@@ -130,6 +130,10 @@
                 left: 5rem;
             }
 
+            @include respond(phone){
+                display: none;
+            }
+
             &--item {
                 padding: 0.5rem 1rem;
                 border-radius: 1rem 0rem;
@@ -160,6 +164,8 @@
             right: 0;
             z-index: 20;
            // backdrop-filter: blur(10px);
+
+           overflow: hidden;
         }
     }
 }
