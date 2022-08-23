@@ -33,7 +33,7 @@ const Index = () => {
             <div className='marketplace__container'>
                 <div className='grid p-8 relative z-3'>
                     <header className='header'>
-                        <figure className='header__logo w-10 h-10'>
+                        <figure className='header__logo w-12 h-12'>
 
                         <Image
                             src='/logo.jpeg'
