@@ -29,7 +29,7 @@ export default function Education() {
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <FormControl fullWidth>
-                        <InputLabel id='select-label'>Institution</InputLabel>
+                        <InputLabel id='select-label'>Institution Type</InputLabel>
                         <Select
                             labelId='select-label'
                             id='select'
@@ -37,9 +37,8 @@ export default function Education() {
                             label='Institution'
                             onChange={(e) => setInstitution(e.target.value)}
                         >
-                            <MenuItem value={20}>Father</MenuItem>
-                            <MenuItem value={30}>Mother</MenuItem>
-                            <MenuItem value={10}>Guardian</MenuItem>
+                            <MenuItem value={'school'}>School</MenuItem>
+                            <MenuItem value={'college'}>College</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
