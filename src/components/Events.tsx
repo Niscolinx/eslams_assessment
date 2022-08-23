@@ -1,17 +1,19 @@
 import React from 'react'
-
+import Image from 'next/image'
 
 interface EventProps {
-    img: string
+    imgSrc: string
     title: string
     description: string
     amount: number
     date: string
 }
 
-const Event = ({img, title,description,amount, date}: EventProps) => {
+const Event = ({imgSrc, title,description,amount, date}: EventProps) => {
     return <div className='event'>
-        event
+            <figure>
+                <Image src={imgSrc}/>
+            </figure>
     </div>
 }
 
@@ -20,7 +22,7 @@ function Events() {
   return (
     <div className='events'>
         
-        <Event img='/img/basket1.png' title='Discover the best' description='how are you doing' amount={200} date={new Date().toLocaleString()}/>
+        <Event imgSrc='/img/basket1.png' title='Discover the best' description='how are you doing' amount={200} date={new Date().toLocaleString()}/>
        
     </div>
   )
