@@ -207,7 +207,7 @@ const Register = ({ providers }: LoginProps) => {
                         </p>
                     </div>
 
-                    <h1 className='heroText text-[22px] md:text-[5rem] absolute top-[10rem] left-[2rem] absolute uppercase z-4'>
+                    <h1 className='heroText absolute top-[10rem] left-[2rem] absolute uppercase z-4'>
                         Shoot for the <span className='ml-10'>stars</span>
                     </h1>
 
