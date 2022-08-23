@@ -6,7 +6,8 @@
     
 
     .event{
-      
+        display: grid;
+        justify-content: center;
 
         &__img{
             object-position: top;
