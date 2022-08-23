@@ -1,8 +1,24 @@
 import React from 'react'
 
+
+const Event = () => {
+    return <div>
+        event
+    </div>
+}
+
+
 function Events() {
   return (
-    <div>Events</div>
+    <div className='events'>
+        <Event/>
+        <Event/>
+        <Event/>
+        <Event/>
+        <Event/>
+        <Event/>
+        <Event/>
+    </div>
   )
 }
 
