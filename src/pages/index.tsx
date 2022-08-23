@@ -49,10 +49,12 @@ const Index = () => {
         <div className='marketplace'>
 
         <header className='marketplace__header'>
-            
+
         </header>
 
-        <main className='marketplace__main'></main>
+        <main className='marketplace__main'>
+            
+        </main>
 
         <footer className='marketplace__footer'></footer>
         </div>

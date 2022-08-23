@@ -1,22 +1,33 @@
-.marketplace{
+.marketplace {
     background: $linear-gradient-blue;
     width: 100vw;
     height: 100vh;
     display: grid;
     justify-content: center;
 
-    &__header{
-
+    &__header {
     }
 
-    &__main{
-
+    &__main {
         width: 80vw;
         height: 80vh;
-        background-color: $color-gray;
+        // background-color: $color-gray;
+        background: $color-gray;
+        box-shadow: -1px -1px 3px #ffffff,
+            1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
+        border-radius: 12px;
+
+        &::before {
+            content: 'remember';
+            background-color: red;
+            width: 100%;
+            background: $color-gray;
+        box-shadow: -1px -1px 3px #ffffff,
+            1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
+        border-radius: 12px;
+        }
     }
 
-    &__footer{
-
+    &__footer {
     }
 }
