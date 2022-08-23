@@ -139,7 +139,7 @@ const Register = ({ providers }: LoginProps) => {
 
     return (
         <div className='register relative'>
-            <header className='grid absolute top-0 left-0 right-0 z-4 register__header py-3 px-2 flex justify-between'>
+            <header className='grid md:(flex justify-between) absolute top-0 left-0 right-0 z-4 register__header py-3 px-2 '>
                 <div className='flex'>
                     <p className='text-[46px] font-medium text-white'>eslams</p>
                 </div>
@@ -160,6 +160,8 @@ const Register = ({ providers }: LoginProps) => {
 
                             <input type='text' name='email' id='email' />
                         </div>
+
+                        
                     </form>
                 </div>
             </header>
@@ -175,9 +177,15 @@ const Register = ({ providers }: LoginProps) => {
                         />
                     </div>
                     <div className='grid gap-2 section-1__points'>
-                        <p className='section-1__points--item'>Learn Through Practice</p>
-                        <p className='section-1__points--item'>Compete and Win Rewards</p>
-                        <p className='section-1__points--item'>Find and Register for Competitions</p>
+                        <p className='section-1__points--item'>
+                            Learn Through Practice
+                        </p>
+                        <p className='section-1__points--item'>
+                            Compete and Win Rewards
+                        </p>
+                        <p className='section-1__points--item'>
+                            Find and Register for Competitions
+                        </p>
                     </div>
 
                     <h1 className='heroText text-[22px] md:text-[5rem] absolute top-[10rem] left-[2rem] absolute uppercase'>
