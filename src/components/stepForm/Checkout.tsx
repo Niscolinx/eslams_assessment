@@ -16,7 +16,7 @@ import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
 import PersonalDetails from './PersonalDetails'
 import GuardianOrParent from './GuardianOrParent'
-import Review from './Review'
+import Education from './Education'
 
 function Copyright() {
     return (
@@ -40,7 +40,7 @@ function getStepContent(step: number) {
         case 1:
             return <GuardianOrParent />
         case 2:
-            return <Review />
+            return <Education />
         default:
             throw new Error('Unknown step')
     }
