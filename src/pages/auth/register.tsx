@@ -192,7 +192,7 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
             </header>
 
-            <div className='grid md:(grid-cols-16) relative overflow-hidden'>
+            <div className='flex md:(grid-cols-16) relative overflow-hidden'>
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
                 <div className='register__overlay z-3 md:(max-w-[433px])'></div>
@@ -229,7 +229,7 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
                 <div className='section-signup'></div>
                 <div className='section__tag'>
-                    <h3 className=' text-2xl'>
+                    <h3 className='text-2xl'>
                         online competition platform for every student,
                         <span className='section__tag--rubik'>everywhere</span>
                     </h3>
