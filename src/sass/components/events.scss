@@ -24,6 +24,7 @@
         &__details{
             position: absolute;
             min-height: 15rem;
+            min-width: 20rem;
             bottom: -10rem;
             z-index: 2;
             background: $color-red;
