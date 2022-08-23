@@ -1,0 +1,117 @@
+.heroText {
+    font-family: 'Rubik Glitch';
+    font-weight: 400;
+}
+
+.section-signup {
+    position: absolute;
+    // width: 1440px;
+    width: 100%;
+    height: 487px;
+    left: 0px;
+    top: 446px;
+    z-index: 1;
+
+    background: linear-gradient(
+        270deg,
+        rgba(8, 54, 227, 0.11) 33.33%,
+        rgba(8, 54, 227, 0) 66.39%
+    );
+}
+
+.section__tag {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    // position: absolute;
+    // top: 5rem;
+    // left: 0;
+    // right: 0;
+    // z-index: 5;
+    letter-spacing: 2px;
+    //display: none;
+    
+    h3 {
+        background-color: rgba(0, 0, 0, 0.12);
+        padding: .2rem .5rem;
+        border-radius: .5rem;
+        backdrop-filter: blur(5px);
+        text-transform: capitalize;
+    }
+
+    &--rubik {
+        font-family: 'Rubik Glitch';
+    }
+}
+
+//REGISTER
+
+.register {
+    &__header {
+        grid-column: 1 / -1;
+        background: linear-gradient(
+            90.42deg,
+            rgba(0, 0, 0, 0.33) 49.64%,
+            rgba(0, 0, 0, 0.85) 57.29%
+        );
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(40px);
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 433px;
+        border-radius: 1rem 0;
+        height: 661px;
+        background: linear-gradient(
+            187.03deg,
+            rgba(255, 0, 0, 0.12) 51.88%,
+            rgba(159, 15, 50, 0) 94.51%
+        );
+
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(5px);
+    }
+
+    &-form {
+        background: #e8e7e7;
+        border: 1px solid rgba(0, 0, 0, 0.17);
+        box-shadow: -20px -20px 50px #f3f3f3,
+            20px 20px 60px rgba(174, 174, 192, 0.4);
+        border-radius: 10px;
+    }
+    // &__main {
+    //     display: grid;
+    //     background: red;
+    //     grid-template-columns: repeat(16, 1fr);
+    // }
+
+    .section-1 {
+        grid-column: 1 / 9;
+
+        &__points {
+            position: relative;
+            bottom: 50px;
+            z-index: 5;
+            left: 10rem;
+
+            &--item {
+                padding: 0.5rem 1rem;
+                border-radius: 1rem 0rem;
+                background-color: rgba(0, 0, 0, 0.25);
+                backdrop-filter: blur(10px);
+                font-weight: 500;
+                letter-spacing: 1px;
+                width: max-content;
+            }
+        }
+    }
+
+    &__form {
+        max-width: 550px;
+        grid-column: 9 / -1;
+    }
+}
