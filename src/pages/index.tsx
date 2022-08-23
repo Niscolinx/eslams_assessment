@@ -11,12 +11,12 @@ import { VscSettings } from 'react-icons/vsc'
 const SearchBox = () => {
     return (
         <div className='flex items-center'>
-            <div className='flex relative'>
-                <FiSearch className=''/>
+            <div className='flex relative items-center'>
+                <FiSearch className='absolute left-2'/>
                 <input
                     type='text'
                     placeholder='Search'
-                    className='rounded-3xl py-2 px-3'
+                    className='rounded-3xl py-2 px-3 pl-10 w-80 outline-none border-none'
                 />
             </div>
             <div className='flex bg-[#d9d6d6] items-center gap-2 px-3 rounded-lg'>
