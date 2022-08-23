@@ -21,7 +21,7 @@ const SearchBox = () => {
             </div>
             <div className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl'>
                 <VscSettings />
-                Filters
+                <span className=' tracking-wide text-sm'>Filters</span>
             </div>
         </div>
     )
