@@ -232,7 +232,7 @@ const Register = ({ providers }: LoginProps) => {
                             width='170px'
                             height='170px'
                             objectFit='contain'
-                            className='animate-spin time'
+                            className='animate-spin-slow'
                         />
                     </div>
                 </div>

@@ -16,7 +16,7 @@ export default defineConfig({
              -7px -7px 14px #1e1e35`,
             },
             animation: {
-                'spin-slow': 'spin 3s linear infinite',
+                'spin-slow': 'spin 20s linear infinite',
             },
         },
     },
