@@ -55,9 +55,14 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .section__tag{
+    background-color: red;
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 
     &--rubik{
         font-family: 'Rubik Glitch';

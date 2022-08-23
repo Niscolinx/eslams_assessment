@@ -168,13 +168,15 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
             </header>
 
-            <h3 className='section__tag text-2xl'>
-                online competition platform for every student,
-                <span className='section__tag--rubik'>everywhere</span>
-            </h3>
             <div className='grid md:(grid-cols-16) relative overflow-hidden'>
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
+                <div className='section__tag'>
+                    <h3 className=' text-2xl'>
+                        online competition platform for every student,
+                        <span className='section__tag--rubik'>everywhere</span>
+                    </h3>
+                </div>
                 <div className='register__overlay z-3'></div>
                 <div className='section-1 relative'>
                     <div className='flex section-1__container relative z-5 mt-[10rem]'>
