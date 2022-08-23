@@ -6,6 +6,7 @@ interface EventProps {
     title: string
     description: string
     amount: number
+    date: string
 }
 
 const Event = () => {
