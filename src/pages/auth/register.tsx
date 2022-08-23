@@ -162,6 +162,7 @@ const Register = ({ providers }: LoginProps) => {
                         </div>
 
                         
+                        
                     </form>
                 </div>
             </header>
