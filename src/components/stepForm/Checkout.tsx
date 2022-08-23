@@ -72,8 +72,8 @@ export default function Checkout() {
                 color='default'
                 elevation={0}
                 sx={{
-                    position: 'relative',
-                    borderBottom: (t) => `1px solid ${t.palette.divider}`,
+                    position: 'relative'
+                   
                 }}
             >
                 {/* <Toolbar>
