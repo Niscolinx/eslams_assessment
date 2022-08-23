@@ -194,8 +194,8 @@ const Register = ({ providers }: LoginProps) => {
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
                 <div className='register__overlay z-3 md:(max-w-[433px])'></div>
-                <div className='section-1 relative'>
-                    <div className='flex section-1__container relative z-5 mt-[9.5rem]'>
+                <div className='main-1 relative'>
+                    <div className='flex main-1__container relative z-5 mt-[9.5rem]'>
                         <Image
                             src='/hero-player.png'
                             width='433px'
@@ -203,14 +203,14 @@ const Register = ({ providers }: LoginProps) => {
                             objectFit='contain'
                         />
                     </div>
-                    <div className='grid gap-2 section-1__points'>
-                        <p className='section-1__points--item'>
+                    <div className='grid gap-2 main-1__points'>
+                        <p className='main-1__points--item'>
                             Learn Through Practice
                         </p>
-                        <p className='section-1__points--item'>
+                        <p className='main-1__points--item'>
                             Compete and Win Rewards
                         </p>
-                        <p className='section-1__points--item'>
+                        <p className='main-1__points--item'>
                             Find and Register for Competitions
                         </p>
                     </div>
@@ -219,18 +219,18 @@ const Register = ({ providers }: LoginProps) => {
                         Shoot for the <span className='ml-10'>stars</span>
                     </h1>
 
-                    <div className='section-1__overLay'></div>
+                    <div className='main-1__overLay'></div>
                 </div>
 
                 <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-4'>
                     <Checkout />
                 </div>
-                <div className='section-signup'></div>
+                <div className='main-signup'></div>
             </div>
-            <div className='section__tag'>
+            <div className='register__tag'>
                 <h3 className='text-2xl'>
                     online competition platform for every student,
-                    <span className='section__tag--rubik'>everywhere</span>
+                    <span className='register__tag--rubik'>everywhere</span>
                 </h3>
             </div>
         </div>

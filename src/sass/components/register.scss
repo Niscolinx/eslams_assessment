@@ -21,7 +21,7 @@
     );
 }
 
-.section__tag {
+.register__tag {
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
@@ -87,7 +87,7 @@
         display: flex;
         overflow-x: hidden;
         position: relative;
-        grid-template-columns: repeat(16, 1fr);
+        grid-template-columns: 1fr 1fr;
     }
     &__overlay {
         position: absolute;
@@ -115,8 +115,8 @@
         border: none;
     }
 
-    .section-1 {
-        grid-column: 1 / 9;
+    .main-1 {
+       // grid-column: 1 / 9;
 
         &__points {
             position: relative;
@@ -138,6 +138,6 @@
 
     &__form {
         max-width: 550px;
-        grid-column: 9 / -1;
+        //grid-column: 9 / -1;
     }
 }
