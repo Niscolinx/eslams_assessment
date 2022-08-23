@@ -146,12 +146,12 @@ const Register = ({ providers }: LoginProps) => {
 
                 <div className='header__form'>
                     <form className='grid md:(flex) gap-5'>
-                        <div className='grid'>
+                        <div className='flex flex-col'>
                             <label htmlFor='email' className='text-white'>
                                 Email
                             </label>
 
-                            <input type='text' name='email' id='email' className='border-none outline-none rounded-lg' />
+                            <input type='text' name='email' id='email' className='border-none outline-none rounded-lg px-2 py-1' />
                         </div>
                         <div className='grid'>
                             <label htmlFor='email' className='text-white'>
