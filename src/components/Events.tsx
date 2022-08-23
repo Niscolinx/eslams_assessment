@@ -9,7 +9,7 @@ interface EventProps {
     date: string
 }
 
-const Event = () => {
+const Event = ({img, title,description,amount, date}: EventProps) => {
     return <div className='event'>
         event
     </div>
@@ -19,7 +19,7 @@ const Event = () => {
 function Events() {
   return (
     <div className='events'>
-        <Event/>
+        <Event />
        
     </div>
   )
