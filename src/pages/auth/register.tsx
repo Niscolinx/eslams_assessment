@@ -150,7 +150,10 @@ const Register = ({ providers }: LoginProps) => {
         container.addEventListener('mousemove', (e) => {
             console.log('mouse moving', e)
 
-            image.style.transform = `translate(${e.offsetX}px, ${e.offsetY}px)`
+            const X = e.offsetX
+            const Y = e.offsetY
+
+            image.style.transform = `translate(${X}px, ${Y}px)`
         })
 
 
