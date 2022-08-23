@@ -146,50 +146,48 @@ const Register = ({ providers }: LoginProps) => {
                     </p>
                 </div>
 
-                <div className='register__header--form'>
-                    <form className='grid md:(flex) gap-5'>
-                        <div className='flex flex-col gap-1'>
-                            <label
-                                htmlFor='email'
-                                className='text-[#E8E7E7] text-sm'
-                            >
-                                Email
-                            </label>
+                <form className=' register__header--form'>
+                    <div className='flex flex-col gap-1'>
+                        <label
+                            htmlFor='email'
+                            className='text-[#E8E7E7] text-sm'
+                        >
+                            Email
+                        </label>
 
-                            <input
-                                type='text'
-                                name='email'
-                                id='email'
-                                className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
-                            />
-                        </div>
-                        <div className='flex flex-col gap-1'>
-                            <label
-                                htmlFor='email'
-                                className='text-[#E8E7E7] text-sm'
-                            >
-                                Password
-                            </label>
+                        <input
+                            type='text'
+                            name='email'
+                            id='email'
+                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
+                        />
+                    </div>
+                    <div className='flex flex-col gap-1'>
+                        <label
+                            htmlFor='email'
+                            className='text-[#E8E7E7] text-sm'
+                        >
+                            Password
+                        </label>
 
-                            <input
-                                type='text'
-                                name='email'
-                                id='email'
-                                className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
-                            />
+                        <input
+                            type='text'
+                            name='email'
+                            id='email'
+                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
+                        />
 
-                            <Link href='/'>
-                                <a className='text-[#E8E7E7]  text-sm'>
-                                    Forgot Password?
-                                </a>
-                            </Link>
-                        </div>
+                        <Link href='/'>
+                            <a className='text-[#E8E7E7]  text-sm'>
+                                Forgot Password?
+                            </a>
+                        </Link>
+                    </div>
 
-                        <button className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center'>
-                            Login
-                        </button>
-                    </form>
-                </div>
+                    <button className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center'>
+                        Login
+                    </button>
+                </form>
             </header>
 
             <div className='register__main'>
