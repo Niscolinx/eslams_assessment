@@ -103,7 +103,9 @@ input[type='number']::-webkit-outer-spin-button {
 
         &__points {
             position: absolute;
-            bottom: 0;
+            bottom: 30%;
+            z-index: 3;
+            right: 0;
             background-color: red;
             &--item{
 
