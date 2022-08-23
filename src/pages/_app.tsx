@@ -9,7 +9,7 @@ import { ThemeProvider } from 'next-themes'
 import { useRouter } from 'next/router'
 
 import Layout from '../components/Layout'
-import '../styles/globals.scss'
+import '../sass/main.scss'
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     const router = useRouter()
