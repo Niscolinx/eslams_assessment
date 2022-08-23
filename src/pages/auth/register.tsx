@@ -167,7 +167,7 @@ const Register = ({ providers }: LoginProps) => {
             <div className='grid md:(grid-cols-16) relative'>
                 <div className='register__overlay'></div>
                 <div className='section-1 relative'>
-                    <div className='flex section-1__container relative z-2 mt-[7rem]'>
+                    <div className='flex section-1__container relative z-2 mt-[10rem]'>
                         <Image
                             src='/hero-player.png'
                             width='433px'
@@ -180,7 +180,7 @@ const Register = ({ providers }: LoginProps) => {
                         <p className='section-1__points--item'>Find and Register for Competitions</p>
                     </div>
 
-                    <h1 className='heroText text-[22px] md:text-[5rem] absolute top-[6rem] left-[2rem] absolute uppercase'>
+                    <h1 className='heroText text-[22px] md:text-[5rem] absolute top-[10rem] left-[2rem] absolute uppercase'>
                         Shoot for the <span className='ml-10'>stars</span>
                     </h1>
 
