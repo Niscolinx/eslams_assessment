@@ -52,7 +52,8 @@ export default function Education() {
                         name='grade'
                         label='Grade/Year of Study'
                         fullWidth
-                        variant='outlined'
+                        type={'number'}
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -62,7 +63,7 @@ export default function Education() {
                         name='institutionName'
                         label='Name of Institution'
                         fullWidth
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
             </Grid>

@@ -35,7 +35,7 @@ export default function GuardianOrParent() {
                         label='Name'
                         fullWidth
                         autoComplete='family-name'
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -46,7 +46,7 @@ export default function GuardianOrParent() {
                         label='Email Address'
                         fullWidth
                         autoComplete='Email address'
-                        variant='outlined'
+                        variant='standard'
                     />
                 </Grid>
 
@@ -74,7 +74,7 @@ export default function GuardianOrParent() {
                         // InputLabelProps={{ shrink: true, focused: true }}
                         placeholder='Phone Number'
                         defaultCountry={'us'}
-                        variant='outlined'
+                        variant='standard'
                         onChange={(e: any) => setPhoneNumber(e)}
                     />
                 </Grid>
