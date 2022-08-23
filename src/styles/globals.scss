@@ -105,10 +105,10 @@ input[type='number']::-webkit-outer-spin-button {
             position: absolute;
             bottom: 30%;
             z-index: 3;
-            right: 0;
-            background-color: red;
+            right: 12rem;
             &--item{
 
+                background-color: rgba(0, 0, 0, 0.25);
             }
         }
     }
