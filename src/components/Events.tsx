@@ -1,6 +1,13 @@
 import React from 'react'
 
 
+interface EventProps {
+    img: string
+    title: string
+    description: string
+    amount: number
+}
+
 const Event = () => {
     return <div className='event'>
         event
