@@ -143,7 +143,7 @@ const Register = ({ providers }: LoginProps) => {
 
         console.log({image})
 
-        image.style.transform = `translateX(-3rem)`
+        image.style.transform = `translateX(-30rem)`
 
     })
     
