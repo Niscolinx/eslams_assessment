@@ -36,6 +36,7 @@ export default function Education() {
                             labelId='select-label'
                             id='select'
                             value={institution}
+                            variant='standard'
                             label='Institution Type'
                             onChange={(e) => setInstitution(e.target.value)}
                         >

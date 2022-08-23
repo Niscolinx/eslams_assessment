@@ -56,6 +56,7 @@ export default function GuardianOrParent() {
                         <Select
                             labelId='select-label'
                             id='select'
+                            variant='standard'
                             value={relationship}
                             label='Relationship'
                             onChange={(e) => setRelationship(e.target.value)}
