@@ -14,7 +14,7 @@ const Index = () => {
 
             <div className='marketplace__container'>
                 <header className='marketplace__header'>
-                    <Image src='/logo.jpeg' layout='fill'/>
+                    <Image src='/logo.jpeg'  width={'75px'} height={'75px'}/>
 
                 </header>
 
