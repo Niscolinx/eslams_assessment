@@ -62,6 +62,20 @@ function Events() {
                 amount={200}
                 date={new Date().toLocaleString()}
             />
+            <Event
+                imgSrc='/img/basket4.png'
+                title='Discover the best'
+                description='how are you doing'
+                amount={200}
+                date={new Date().toLocaleString()}
+            />
+            <Event
+                imgSrc='/img/basket4.png'
+                title='Discover the best'
+                description='how are you doing'
+                amount={200}
+                date={new Date().toLocaleString()}
+            />
         </div>
     )
 }
