@@ -25,7 +25,8 @@
 
     &__container {
         width: 90vw;
-        height: 90vh;
+        min-height: 90vh;
+        margin-top: 3rem;
         // background-color: $color-gray;
         background: $color-gray;
         box-shadow: -1px -1px 3px #ffffff,
