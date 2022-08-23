@@ -88,7 +88,6 @@ export default function Checkout() {
                 <Paper
                     variant='outlined'
                     sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-                    className='register-form'
                 >
                     <div className='absolute -right-22  top-0'>
                         <img
