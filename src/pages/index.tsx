@@ -8,6 +8,8 @@ import { BiNotepad } from 'react-icons/bi'
 import { FiSearch } from 'react-icons/fi'
 import { VscSettings } from 'react-icons/vsc'
 
+import Events from '../components/Events'
+
 const SearchBox = () => {
     return (
         <div className='flex items-center gap-2'>
@@ -67,7 +69,9 @@ const Index = () => {
                         </div>
                     </header>
 
-                    <main className='main'></main>
+                    <main className='main'>
+                        <Events/>
+                    </main>
 
                     <footer className='footer'></footer>
                 </div>
