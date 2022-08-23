@@ -199,7 +199,6 @@ const Register = ({ providers }: LoginProps) => {
                     <div className='section-1__overLay'></div>
                 </div>
 
-
                 <div className='mx-auto w-full md:(grid) relative mt-20 register__form z-4'>
                     <Checkout />
                     <div className='absolute -right-22'>
@@ -208,10 +207,15 @@ const Register = ({ providers }: LoginProps) => {
                             width='170px'
                             height='170px'
                             objectFit='contain'
-                            />
+                        />
                     </div>
                 </div>
                 <div className='section-signup'></div>
+
+                <h3 className='section__tag text-2xl'>
+                    online competition platform for every student, <span className='section__tag--rubik'>
+                        everywhere</span> 
+                </h3>
             </div>
         </div>
     )

@@ -54,6 +54,16 @@ input[type='number']::-webkit-outer-spin-button {
     );
 }
 
+.section__tag{
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+
+    &--rubik{
+        font-family: 'Rubik Glitch';
+    }
+}
+
 //REGISTER
 
 .register {
@@ -74,6 +84,7 @@ input[type='number']::-webkit-outer-spin-button {
         left: 0;
         width: 100%;
         max-width: 433px;
+        border-radius: 1rem 0;
         height: 661px;
         background: linear-gradient(
             187.03deg,
