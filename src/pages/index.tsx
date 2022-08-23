@@ -38,7 +38,9 @@ const Index = () => {
                         <div className='flex'>
                             <div className='flex items-center gap-3'>
                                 <div className='bg-[#d9d6d6] rounded-full w-[40px] h-[40px] flex items-center justify-center relative'>
-                                    <span className='absolute top-0'>3</span>
+                                    <span className='absolute top-0 right-0 bg-[#CA494E]'>
+                                        3
+                                    </span>
                                     <BiNotepad className='text-2xl' />
                                 </div>
                                 <div className='flex header__avatar'>
