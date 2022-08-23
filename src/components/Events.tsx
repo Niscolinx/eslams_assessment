@@ -14,6 +14,8 @@ const Event = ({imgSrc, title,description,amount, date}: EventProps) => {
             <figure>
                 <Image src={imgSrc}/>
             </figure>
+            <caption>{title}</caption>
+            <p>{description}</p>
     </div>
 }
 
