@@ -58,17 +58,16 @@ input[type='number']::-webkit-outer-spin-button {
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
-    position: absolute;
-    top: 5rem;
-    left: 0;
-    right: 0;
-    z-index: 5;
+    // position: absolute;
+    // top: 5rem;
+    // left: 0;
+    // right: 0;
+    // z-index: 5;
     letter-spacing: 2px;
-
     //display: none;
     
     h3 {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.12);
         padding: .2rem .5rem;
         border-radius: .5rem;
         backdrop-filter: blur(5px);
