@@ -149,8 +149,16 @@ const Register = ({ providers }: LoginProps) => {
 
         container.addEventListener('mousemove', (e) => {
             console.log('mouse moving', e)
+
+            image.style.transform = `translate(${e.offsetX}px, ${e.offsetY}px)`
         })
 
+
+        return () => {
+            container.removeEventListener('mousemove', () => {
+                console.log('removed')
+            })
+        }
 
 
         //image.style.transform = `translateX(-30rem)`
