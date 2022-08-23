@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { CtxOrReq } from 'next-auth/client/_utils'
 import { getCsrfToken, getProviders, signIn } from 'next-auth/react'
@@ -137,6 +137,17 @@ const Register = ({ providers }: LoginProps) => {
         }
     }
 
+    useEffect(() => {
+
+        const image = document.querySelector('.main-1__image') as HTMLElement
+
+        console.log({image})
+
+        image.style.transform = `translateX(-3rem)`
+
+    })
+    
+
     return (
         <div className='register relative'>
             <header className='register__header'>
@@ -201,6 +212,7 @@ const Register = ({ providers }: LoginProps) => {
                             width='433px'
                             height='461px'
                             objectFit='contain'
+                            className='main-1__image'
                         />
                     </div>
                     <div className='grid gap-2 main-1__points'>
