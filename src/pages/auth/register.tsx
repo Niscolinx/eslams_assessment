@@ -177,6 +177,7 @@ const Register = ({ providers }: LoginProps) => {
                             src='/hero-player.png'
                             width='433px'
                             height='461px'
+                            objectFit='contain'
                         />
                     </div>
                     <div className='grid gap-2 section-1__points'>
@@ -200,6 +201,14 @@ const Register = ({ providers }: LoginProps) => {
 
                 <div className='mx-auto w-full md:(grid) relative mt-20 register__form z-4'>
                     <Checkout />
+                    <div className='absolute'>
+                        <Image
+                            src='/ball-icon.png'
+                            width='133px'
+                            height='161px'
+                            objectFit='contain'
+                        />
+                    </div>
                 </div>
                 <div className='section-signup'></div>
             </div>
