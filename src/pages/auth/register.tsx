@@ -161,7 +161,9 @@ const Register = ({ providers }: LoginProps) => {
                             <input type='text' name='email' id='email' />
                         </div>
 
-                        
+                        <button>
+                            Login
+                        </button>
                         
                     </form>
                 </div>
