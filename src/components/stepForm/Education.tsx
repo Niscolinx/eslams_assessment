@@ -29,18 +29,31 @@ export default function Education() {
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <FormControl fullWidth>
-                        <InputLabel id='select-label'>Institution Type</InputLabel>
+                        <InputLabel id='select-label'>
+                            Institution Type
+                        </InputLabel>
                         <Select
                             labelId='select-label'
                             id='select'
                             value={institution}
-                            label='Institution'
+                            label='Institution Type'
                             onChange={(e) => setInstitution(e.target.value)}
                         >
                             <MenuItem value={'school'}>School</MenuItem>
                             <MenuItem value={'college'}>College</MenuItem>
                         </Select>
                     </FormControl>
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        required
+                        id='grade'
+                        name='grade'
+                        label='Grade/Year of Study'
+                        fullWidth
+                        variant='outlined'
+                    />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -52,18 +65,6 @@ export default function Education() {
                         variant='outlined'
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id='grade'
-                        name='grade'
-                        label='Grade/Year of Study'
-                        fullWidth
-                        variant='outlined'
-                    />
-                </Grid>
-
-                
             </Grid>
         </React.Fragment>
     )
