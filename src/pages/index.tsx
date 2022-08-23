@@ -12,7 +12,7 @@ const SearchBox = () => {
     return (
         <div className='flex items-center'>
             <FiSearch />
-            <input type='text' placeholder='Search' />
+            <input type='text' placeholder='Search' className='rounded-3xl py-2 px-3' />
             <div className='flex bg-[#d9d6d6] items-center gap-2 px-3 rounded-lg'>
                   <VscSettings />
                 Filters
