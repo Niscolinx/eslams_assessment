@@ -141,7 +141,7 @@ const Register = ({ providers }: LoginProps) => {
         <div className='register relative'>
             <header className='grid md:(flex justify-between) absolute top-0 left-0 right-0 z-4 register__header py-3 px-2 '>
                 <div className='flex'>
-                    <p className='text-[46px] font-medium text-white'>eslams</p>
+                    <p className='text-[46px] font-medium text-white'><span>e</span>slams</p>
                 </div>
 
                 <div className='header__form'>
@@ -164,17 +164,13 @@ const Register = ({ providers }: LoginProps) => {
                         <button className='bg-black text-white py-3 px-6'>
                             Login
                         </button>
-                        
                     </form>
                 </div>
             </header>
 
             <div className='grid md:(grid-cols-16) relative'>
-                    <div className="grid absolute top-50 left-0 bg-blue-700 z-2 w-[200px] h-[150px]">
-                        
-                    </div>
-                <div className='register__overlay z-3'>
-                </div>
+                <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
+                <div className='register__overlay z-3'></div>
                 <div className='section-1 relative'>
                     <div className='flex section-1__container relative z-5 mt-[10rem]'>
                         <Image
