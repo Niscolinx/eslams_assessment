@@ -75,6 +75,10 @@
         &--form{
             display: flex;
             gap: 1rem;
+
+            .header__form--item{
+                display: block;
+            }
         }
     }
 

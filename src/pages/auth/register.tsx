@@ -147,7 +147,7 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
 
                 <form className=' register__header--form'>
-                    <div className='flex flex-col gap-1'>
+                    <div className='header__form--item'>
                         <label
                             htmlFor='email'
                             className='text-[#E8E7E7] text-sm'
@@ -162,7 +162,7 @@ const Register = ({ providers }: LoginProps) => {
                             className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
                         />
                     </div>
-                    <div className='flex flex-col gap-1'>
+                    <div className='header__form--item'>
                         <label
                             htmlFor='email'
                             className='text-[#E8E7E7] text-sm'
