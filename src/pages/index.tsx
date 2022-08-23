@@ -11,10 +11,16 @@ import { VscSettings } from 'react-icons/vsc'
 const SearchBox = () => {
     return (
         <div className='flex items-center'>
-            <FiSearch />
-            <input type='text' placeholder='Search' className='rounded-3xl py-2 px-3' />
+            <div className='flex relative'>
+                <FiSearch className=''/>
+                <input
+                    type='text'
+                    placeholder='Search'
+                    className='rounded-3xl py-2 px-3'
+                />
+            </div>
             <div className='flex bg-[#d9d6d6] items-center gap-2 px-3 rounded-lg'>
-                  <VscSettings />
+                <VscSettings />
                 Filters
             </div>
         </div>
@@ -39,7 +45,9 @@ const Index = () => {
                             <div className='flex items-center gap-3'>
                                 <div className='bg-[#d9d6d6] rounded-full w-[40px] h-[40px] flex items-center justify-center relative'>
                                     <div className='absolute -top-2 -right-2 bg-[#CA494E] p-[1px] rounded-full w-[20px] h-[20px] grid place-content-center'>
-                                        <span className='text-white text-[12px]'>3</span>
+                                        <span className='text-white text-[12px]'>
+                                            3
+                                        </span>
                                     </div>
                                     <BiNotepad className='text-2xl' />
                                 </div>
