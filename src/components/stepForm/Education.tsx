@@ -29,7 +29,7 @@ export default function Education() {
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <FormControl fullWidth>
-                        <InputLabel id='select-label'>
+                        <InputLabel id='select-label' className='-ml-3.5'>
                             Institution Type
                         </InputLabel>
                         <Select
