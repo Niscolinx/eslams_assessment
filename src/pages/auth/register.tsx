@@ -169,7 +169,7 @@ const Register = ({ providers }: LoginProps) => {
             </header>
 
             <h3 className='section__tag text-2xl'>
-                online competition platform for every student,{' '}
+                online competition platform for every student,
                 <span className='section__tag--rubik'>everywhere</span>
             </h3>
             <div className='grid md:(grid-cols-16) relative overflow-hidden'>
