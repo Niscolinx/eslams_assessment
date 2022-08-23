@@ -5,9 +5,8 @@ import { GetSessionParams, getSession } from 'next-auth/react'
 import Image from 'next/image'
 
 import { BiNotepad } from 'react-icons/bi'
-import {FiSearch} from 'react-icons/fi'
-import {VscSettings} from 'react-icons/vsc'
-
+import { FiSearch } from 'react-icons/fi'
+import { VscSettings } from 'react-icons/vsc'
 
 const SearchBox = () => {
     return (
@@ -26,7 +25,7 @@ const Index = () => {
     return (
         <div className='marketplace'>
             <div className='marketplace__container'>
-                <div className='grid p-8'>
+                <div className='grid p-8 relative z-3'>
                     <header className='header'>
                         <Image
                             src='/logo.jpeg'
@@ -37,17 +36,15 @@ const Index = () => {
 
                         <SearchBox />
                         <div className='flex'>
-                           
-
                             <div className='flex'>
                                 <BiNotepad />
-                                <Image
-                                    src='/img/avatar.jpeg'
-                                    width='60px'
-                                    height='60px'
-                                    objectFit='cover'
-                                    className='header__avatar'
-                                />
+                                <div className='flex header__avatar'>
+                                    <Image
+                                        src='/img/avatar.jpeg'
+                                        width='100%'
+                                        height='100%'
+                                    />
+                                </div>
                             </div>
                         </div>
                     </header>
