@@ -45,30 +45,30 @@ const Index = () => {
     
 
     return (
-        <>
-           Hello world
-        </>
+
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consequuntur repudiandae, consequatur eum numquam molestias, modi ducimus unde quia dolorem illum. Aliquid quod vero expedita animi neque laboriosam impedit. Ipsum.</p>
+    
     )
 }
 
 export default Index
 
-export async function getServerSideProps(
-    context: GetSessionParams | undefined
-) {
-    const session = await getSession(context)
+// export async function getServerSideProps(
+//     context: GetSessionParams | undefined
+// ) {
+//     const session = await getSession(context)
 
-    if (!session) {
-        return {
-            redirect: {
-                destination: '/auth/login',
-                permanent: false,
-            },
-        }
-    }
+//     if (!session) {
+//         return {
+//             redirect: {
+//                 destination: '/auth/login',
+//                 permanent: false,
+//             },
+//         }
+//     }
 
-    return {
-        props: { session },
-    }
-}
+//     return {
+//         props: { session },
+//     }
+// }
 
