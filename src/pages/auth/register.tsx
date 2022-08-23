@@ -168,7 +168,7 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
             </header>
 
-            <div className='grid md:(grid-cols-16) relative'>
+            <div className='grid md:(grid-cols-16) relative overflow-hidden'>
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
                 <div className='register__overlay z-3'></div>
                 <div className='section-1 relative'>
@@ -201,11 +201,11 @@ const Register = ({ providers }: LoginProps) => {
 
                 <div className='mx-auto w-full md:(grid) relative mt-20 register__form z-4'>
                     <Checkout />
-                    <div className='absolute'>
+                    <div className='absolute -right-20'>
                         <Image
                             src='/ball-icon.png'
-                            width='133px'
-                            height='161px'
+                            width='170px'
+                            height='170px'
                             objectFit='contain'
                         />
                     </div>
