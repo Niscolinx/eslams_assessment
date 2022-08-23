@@ -77,7 +77,8 @@
             gap: 1rem;
 
             .header__form--item{
-                display: block;
+                display: grid;
+                align-content: flex-start;
             }
         }
     }
