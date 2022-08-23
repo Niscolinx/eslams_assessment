@@ -195,7 +195,7 @@ const Register = ({ providers }: LoginProps) => {
             <div className='grid md:(grid-cols-16) relative overflow-hidden'>
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
-                <div className='register__overlay z-3'></div>
+                <div className='register__overlay z-3 md:(max-w-[433px])'></div>
                 <div className='section-1 relative'>
                     <div className='flex section-1__container relative z-5 mt-[10rem]'>
                         <Image
@@ -225,9 +225,7 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
 
                 <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-4'>
-                
                     <Checkout />
-                   
                 </div>
                 <div className='section-signup'></div>
                 <div className='section__tag'>
