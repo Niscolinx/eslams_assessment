@@ -51,6 +51,10 @@ const Index = () => {
         <header className='marketplace__header'>
 
         </header>
+
+        <main className='marketplace__main'></main>
+
+        <footer className='marketplace__footer'></footer>
         </div>
     
     )
