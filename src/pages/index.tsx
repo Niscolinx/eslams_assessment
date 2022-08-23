@@ -7,6 +7,13 @@ import Image from 'next/image'
 import { BiNotepad } from 'react-icons/bi'
 import {FiSearch} from 'react-icons/fi'
 
+
+const SearchBox = () => {
+    return <div>
+        
+    </div>
+}
+
 const Index = () => {
     return (
         <div className='marketplace'>
@@ -19,6 +26,8 @@ const Index = () => {
                             height={'75px'}
                             className='header__img'
                         />
+
+                    <SearchBox/>
                     </header>
 
                     <main className='main'></main>
