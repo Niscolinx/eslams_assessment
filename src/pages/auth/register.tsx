@@ -139,7 +139,7 @@ const Register = ({ providers }: LoginProps) => {
 
     return (
         <div className='register relative'>
-            <header className='sm:grid absolute top-0 left-0 right-0 z-4 register__header py-3 px-2 flex justify-between'>
+            <header className='grid absolute top-0 left-0 right-0 z-4 register__header py-3 px-2 flex justify-between'>
                 <div className='flex'>
                     <p className='text-[46px] font-medium text-white'>eslams</p>
                 </div>
