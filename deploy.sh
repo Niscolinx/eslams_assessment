@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git checkout deploy
+git checkout main
 git merge dev
-git push origin deploy
+git push origin main
 git checkout dev

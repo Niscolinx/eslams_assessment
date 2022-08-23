@@ -4,3 +4,5 @@ yarn.lock
 .env
 .env.local
 .eslintrc.json
+
+deploy.sh
