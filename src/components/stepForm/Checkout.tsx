@@ -67,7 +67,7 @@ export default function Checkout() {
 
     return (
         <ThemeProvider theme={theme}>
-            <AppBar
+            {/* <AppBar
                 position='absolute'
                 color='default'
                 elevation={0}
@@ -76,12 +76,12 @@ export default function Checkout() {
                    
                 }}
             >
-                {/* <Toolbar>
+                <Toolbar>
                     <Typography variant='h6' color='inherit' noWrap>
                     Company name
                     </Typography>
-                </Toolbar> */}
-            </AppBar>
+                </Toolbar> 
+            </AppBar> */}
             <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
                 <CssBaseline />
                 <Paper
