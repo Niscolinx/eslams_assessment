@@ -41,14 +41,13 @@ const Index = () => {
         <div className='marketplace'>
 
             <div className='marketplace__container'>
-                <header className='marketplace__header'></header>
+                <header className='marketplace__header'>
+                    header
+                </header>
 
 
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptate iure dignissimos sunt rem inventore odit enim,
-                impedit, similique quasi repudiandae quo consectetur veritatis
-                eum natus a eligendi recusandae suscipit explicabo.
-                
+               
+
                 <footer className='marketplace__footer'></footer>
             </div>
         </div>
