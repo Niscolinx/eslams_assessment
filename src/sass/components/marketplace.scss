@@ -5,6 +5,7 @@
     display: grid;
     justify-content: center;
     align-content: center;
+    max-width: 1500px;
 
     .header {
         //  display: grid;
@@ -26,13 +27,13 @@
     &__container {
         width: 90vw;
         min-height: 90vh;
-        margin-top: 3rem;
         // background-color: $color-gray;
         background: $color-gray;
         box-shadow: -1px -1px 3px #ffffff,
             1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
         border-radius: 12px;
         position: relative;
+        max-width: 1400px;
 
         &::before {
             content: '';

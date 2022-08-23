@@ -55,6 +55,10 @@
 //REGISTER
 
 .register {
+    max-width: 1500px;
+        background: $linear-gradient-blue;
+
+
     &__header {
         grid-column: 1 / -1;
         background: linear-gradient(
