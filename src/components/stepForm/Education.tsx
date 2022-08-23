@@ -19,7 +19,7 @@ export default function Education() {
     const [phoneNumber, setPhoneNumber] = useState<
         HTMLInputElement | undefined
     >()
-    const [relationship, setRelationship] = useState('')
+    const [institution, setInstitution] = useState('')
 
     return (
         <React.Fragment>
@@ -27,6 +27,22 @@ export default function Education() {
                 Shipping address
             </Typography> */}
             <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                    <FormControl fullWidth>
+                        <InputLabel id='select-label'>Institution</InputLabel>
+                        <Select
+                            labelId='select-label'
+                            id='select'
+                            value={institution}
+                            label='Institution'
+                            onChange={(e) => setInstitution(e.target.value)}
+                        >
+                            <MenuItem value={20}>Father</MenuItem>
+                            <MenuItem value={30}>Mother</MenuItem>
+                            <MenuItem value={10}>Guardian</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
@@ -50,22 +66,6 @@ export default function Education() {
                     />
                 </Grid>
 
-                <Grid item xs={12} sm={6}>
-                    <FormControl fullWidth>
-                        <InputLabel id='select-label'>Relationship</InputLabel>
-                        <Select
-                            labelId='select-label'
-                            id='select'
-                            value={relationship}
-                            label='Relationship'
-                            onChange={(e) => setRelationship(e.target.value)}
-                        >
-                            <MenuItem value={20}>Father</MenuItem>
-                            <MenuItem value={30}>Mother</MenuItem>
-                            <MenuItem value={10}>Guardian</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Grid>
                 <Grid item xs={12} sm={6}>
                     <MuiPhoneNumber
                         id='phone-number'
