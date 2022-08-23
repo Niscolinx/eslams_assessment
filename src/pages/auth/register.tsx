@@ -139,11 +139,15 @@ const Register = ({ providers }: LoginProps) => {
 
     useEffect(() => {
 
-        const image = document.querySelector('.main-1__image') as HTMLElement
+        const image = document.querySelector('.main-1__image') as HTMLImageElement
+        const container = document.querySelector('.register__main') as HTMLDivElement
 
-        console.log({image})
 
-        image.style.transform = `translateX(-30rem)`
+    
+
+        console.log({image, container})
+
+        //image.style.transform = `translateX(-30rem)`
 
     })
     
