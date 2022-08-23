@@ -146,7 +146,7 @@ const Register = ({ providers }: LoginProps) => {
                     </p>
                 </div>
 
-                <div className='header__form'>
+                <div className='register__header--form'>
                     <form className='grid md:(flex) gap-5'>
                         <div className='flex flex-col gap-1'>
                             <label
