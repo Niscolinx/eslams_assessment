@@ -141,13 +141,18 @@ const Register = ({ providers }: LoginProps) => {
         <div className='register relative'>
             <header className='grid md:(flex justify-between items-center) absolute top-0 left-0 right-0 z-4 register__header py-3 px-10 '>
                 <div className='flex'>
-                    <p className='text-[46px] font-medium text-[#E8E7E7]'>eslams</p>
+                    <p className='text-[46px] font-medium text-[#E8E7E7]'>
+                        eslams
+                    </p>
                 </div>
 
                 <div className='header__form'>
                     <form className='grid md:(flex) gap-5'>
                         <div className='flex flex-col gap-1'>
-                            <label htmlFor='email' className='text-[#E8E7E7] text-sm'>
+                            <label
+                                htmlFor='email'
+                                className='text-[#E8E7E7] text-sm'
+                            >
                                 Email
                             </label>
 
@@ -159,7 +164,10 @@ const Register = ({ providers }: LoginProps) => {
                             />
                         </div>
                         <div className='flex flex-col gap-1'>
-                            <label htmlFor='email' className='text-[#E8E7E7] text-sm'>
+                            <label
+                                htmlFor='email'
+                                className='text-[#E8E7E7] text-sm'
+                            >
                                 Password
                             </label>
 
@@ -171,7 +179,9 @@ const Register = ({ providers }: LoginProps) => {
                             />
 
                             <Link href='/'>
-                                <a className='text-[#E8E7E7]  text-sm'>Forgot Password?</a>
+                                <a className='text-[#E8E7E7]  text-sm'>
+                                    Forgot Password?
+                                </a>
                             </Link>
                         </div>
 
@@ -216,12 +226,13 @@ const Register = ({ providers }: LoginProps) => {
 
                 <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-4'>
                     <Checkout />
-                    <div className='absolute -right-22'>
+                    <div className='absolute -right-22 '>
                         <Image
                             src='/ball-icon.png'
                             width='170px'
                             height='170px'
                             objectFit='contain'
+                            className='animate-spin time'
                         />
                     </div>
                 </div>

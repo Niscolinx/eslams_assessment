@@ -14,10 +14,11 @@ export default defineConfig({
             boxShadow: {
                 boxShadowNeu: `7px 7px 14px #161625,
              -7px -7px 14px #1e1e35`,
-            }
-           
-            
+            },
+            animation: {
+                'spin-slow': 'spin 3s linear infinite',
+            },
         },
     },
-    attributify: true,
+    attributify: true
 })
