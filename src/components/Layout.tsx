@@ -38,7 +38,7 @@ const Layout: React.FC<{}> = ({ children }) => {
 
     return (
         <>
-            <div className={visibility}>= </div>
+           
             <div
             >
                 <NavContext.Provider value={navContext}>
