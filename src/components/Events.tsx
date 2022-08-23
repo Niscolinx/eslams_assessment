@@ -12,12 +12,7 @@ function Events() {
   return (
     <div className='events'>
         <Event/>
-        <Event/>
-        <Event/>
-        <Event/>
-        <Event/>
-        <Event/>
-        <Event/>
+       
     </div>
   )
 }
