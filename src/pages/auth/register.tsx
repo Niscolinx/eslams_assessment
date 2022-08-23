@@ -227,15 +227,7 @@ const Register = ({ providers }: LoginProps) => {
                 <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-4'>
                 
                     <Checkout />
-                    <div className='absolute -right-22 '>
-                        <Image
-                            src='/ball-icon.png'
-                            width='170px'
-                            height='170px'
-                            objectFit='contain'
-                            className='animate-spin-slow'
-                        />
-                    </div>
+                   
                 </div>
                 <div className='section-signup'></div>
                 <div className='section__tag'>

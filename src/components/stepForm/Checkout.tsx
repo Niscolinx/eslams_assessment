@@ -82,6 +82,7 @@ export default function Checkout() {
                     </Typography>
                 </Toolbar> 
             </AppBar> */}
+
             <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
                 <CssBaseline />
                 <Paper
@@ -89,15 +90,21 @@ export default function Checkout() {
                     sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
                     className='register-form'
                 >
+                    <div className='absolute -right-22 '>
+                        <img
+                            src='/ball-icon.png'
+                            width='170px'
+                            height='170px'
+                            className='animate-spin-slow'
+                        />
+                    </div>
                     <Typography
                         component='h2'
                         variant='h4'
                         align='center'
                         className='font-semibold'
                     >
-                        Get Started with{' '}
-                       
-                        eslams
+                        Get Started with eslams
                     </Typography>
                     <Typography component='p' align='center'>
                         Create an account and step into greatness
