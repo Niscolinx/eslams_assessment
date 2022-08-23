@@ -58,6 +58,7 @@ export default function GuardianOrParent() {
                         placeholder='Phone Number'
                         defaultCountry={'us'}
                         variant='standard'
+                        label='Phone Number'
                         fullWidth
                         onChange={(e: any) => setPhoneNumber(e)}
                     />

@@ -113,6 +113,8 @@ export default function PersonalDetails() {
                         placeholder='Phone Number'
                         defaultCountry={'us'}
                         variant='standard'
+                        value={phoneNumber}
+                        label='Phone Number'
                         fullWidth
                         onChange={(e: any) => setPhoneNumber(e)}
                     />
