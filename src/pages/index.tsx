@@ -6,11 +6,14 @@ import Image from 'next/image'
 
 import { BiNotepad } from 'react-icons/bi'
 import {FiSearch} from 'react-icons/fi'
+import {VscSettings} from 'react-icons/vsc'
 
 
 const SearchBox = () => {
     return <div>
-        
+        <FiSearch/>
+        <input type="text" placeholder="Search"/>
+
     </div>
 }
 
