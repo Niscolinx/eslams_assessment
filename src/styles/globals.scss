@@ -111,8 +111,9 @@ input[type='number']::-webkit-outer-spin-button {
                 padding:.5rem 1rem;
                 border-radius: 1rem 0rem;
                 background-color: rgba(0, 0, 0, 0.25);
-                backdrop-filter: blur(20px);
-                font-weight: ;
+                backdrop-filter: blur(10px);
+                font-weight: 500;
+                letter-spacing: 1px;
             }
         }
     }
