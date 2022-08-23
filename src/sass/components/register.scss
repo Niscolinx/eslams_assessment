@@ -135,21 +135,23 @@
     }
 
     &__form {
-        background: #e8e7e7;
+       // background: #e8e7e7;
         // border: 1px solid rgba(0, 0, 0, 0.17);
-        box-shadow: -20px -20px 50px #f3f3f3,
-            20px 20px 60px rgba(174, 174, 192, 0.4);
+      // box-shadow: -20px -20px 50px #f3f3f3,
+           // 20px 20px 60px rgba(174, 174, 192, 0.4);
         border-radius: 10px 10px 0 0;
         border: none;
         max-width: 550px;
+        
 
         @include respond(phone) {
            // margin: 0 auto;
-            background-color: red;
             position: absolute;
-            top: 0;
+            top: 10rem;
             left: 0;
             right: 0;
+            z-index: 20;
+           // backdrop-filter: blur(10px);
         }
     }
 }
