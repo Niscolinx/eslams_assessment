@@ -22,7 +22,7 @@
 }
 
 .register__tag {
-   // grid-column: 1 / -1;
+    // grid-column: 1 / -1;
     display: flex;
     justify-content: center;
     position: relative;
@@ -71,12 +71,11 @@
         padding: 0.75rem 2.5rem;
         z-index: 10;
 
-
-        &--form{
+        &--form {
             display: flex;
             gap: 1rem;
 
-            .header__form--item{
+            .header__form--item {
                 display: grid;
                 align-content: flex-start;
             }
@@ -88,10 +87,9 @@
         overflow: hidden;
         position: relative;
 
-
-        @include respond(phone){
-            
+        @include respond(phone) {
             display: grid;
+            overflow: scroll;
         }
     }
     &__overlay {
@@ -111,10 +109,8 @@
         backdrop-filter: blur(5px);
     }
 
-    
-
     .main-1 {
-       // grid-column: 1 / 9;
+        // grid-column: 1 / 9;
 
         &__points {
             position: relative;
@@ -145,8 +141,15 @@
             20px 20px 60px rgba(174, 174, 192, 0.4);
         border-radius: 10px 10px 0 0;
         border: none;
-                max-width: 550px;
+        max-width: 550px;
 
+        @include respond(phone) {
+           // margin: 0 auto;
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
     }
-    
 }
