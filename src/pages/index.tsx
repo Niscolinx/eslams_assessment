@@ -14,6 +14,15 @@ const SearchBox = () => {
         <FiSearch/>
         <input type="text" placeholder="Search"/>
 
+        <div className="flex">
+            <VscSettings/>
+            Filters
+        </div>
+
+        <div className="flex">
+            <BiNotepad/>
+            <Image src='/img/avatar.jpeg' width='100px' height='100' objectFit='cover'/>
+        </div>
     </div>
 }
 
