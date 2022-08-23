@@ -10,12 +10,16 @@ import {VscSettings} from 'react-icons/vsc'
 
 
 const SearchBox = () => {
-    return <div>
-        <FiSearch/>
-        <input type="text" placeholder="Search"/>
-
-        
-    </div>
+    return (
+        <div className='flex'>
+            <FiSearch />
+            <input type='text' placeholder='Search' />
+            <div className='flex'>
+                <VscSettings />
+                Filters
+            </div>
+        </div>
+    )
 }
 
 const Index = () => {
@@ -33,10 +37,7 @@ const Index = () => {
 
                         <SearchBox />
                         <div className='flex'>
-                            <div className='flex'>
-                                <VscSettings />
-                                Filters
-                            </div>
+                           
 
                             <div className='flex'>
                                 <BiNotepad />
