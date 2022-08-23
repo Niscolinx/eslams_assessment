@@ -151,7 +151,7 @@ const Register = ({ providers }: LoginProps) => {
                                 Email
                             </label>
 
-                            <input type='text' name='email' id='email'  />
+                            <input type='text' name='email' id='email' className='border-none outline-none rounded-lg' />
                         </div>
                         <div className='grid'>
                             <label htmlFor='email' className='text-white'>
@@ -165,7 +165,7 @@ const Register = ({ providers }: LoginProps) => {
                             </Link>
                         </div>
 
-                        <button className='bg-black text-white py-1 px-6 justify-self-center'>
+                        <button className='bg-black text-white py-1 px-6 justify-self-center self-center'>
                             Login
                         </button>
                     </form>
