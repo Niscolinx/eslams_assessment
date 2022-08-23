@@ -9,7 +9,7 @@ interface EventProps {
     date: string
 }
 
-const Event = ({imgSrc, title,description,amount, date}: EventProps) => {
+const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
     return (
         <div className='event'>
             <figure>
@@ -21,29 +21,49 @@ const Event = ({imgSrc, title,description,amount, date}: EventProps) => {
                     className='event__img'
                 />
             </figure>
-            <div className="event__details">
-
-            <caption>{title}</caption>
-            <p>{description}</p>
-            <p>{amount}</p>
-            <p>{date}</p>
+            <div className='event__details'>
+                <caption>{title}</caption>
+                <p>{description}</p>
+                <p>{amount}</p>
+                <p>{date}</p>
             </div>
         </div>
     )
 }
 
-
 function Events() {
-  return (
-    <div className='events'>
-        
-        <Event imgSrc='/img/basket1.png' title='Discover the best' description='how are you doing' amount={200} date={new Date().toLocaleString()}/>
-        <Event imgSrc='/img/basket1.png' title='Discover the best' description='how are you doing' amount={200} date={new Date().toLocaleString()}/>
-        <Event imgSrc='/img/basket1.png' title='Discover the best' description='how are you doing' amount={200} date={new Date().toLocaleString()}/>
-        <Event imgSrc='/img/basket1.png' title='Discover the best' description='how are you doing' amount={200} date={new Date().toLocaleString()}/>
-       
-    </div>
-  )
+    return (
+        <div className='events'>
+            <Event
+                imgSrc='/img/basket1.png'
+                title='Discover the best'
+                description='how are you doing'
+                amount={200}
+                date={new Date().toLocaleString()}
+            />
+            <Event
+                imgSrc='/img/basket1.png'
+                title='Discover the best'
+                description='how are you doing'
+                amount={200}
+                date={new Date().toLocaleString()}
+            />
+            <Event
+                imgSrc='/img/basket1.png'
+                title='Discover the best'
+                description='how are you doing'
+                amount={200}
+                date={new Date().toLocaleString()}
+            />
+            <Event
+                imgSrc='/img/basket1.png'
+                title='Discover the best'
+                description='how are you doing'
+                amount={200}
+                date={new Date().toLocaleString()}
+            />
+        </div>
+    )
 }
 
 export default Events

@@ -29,6 +29,8 @@
             background: $color-red;
             padding: 2rem 3rem;
             border-radius: 2rem;
+            display: grid;
+            align-content: end;
         }
     }
 }
