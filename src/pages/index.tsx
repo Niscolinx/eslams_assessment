@@ -32,7 +32,7 @@ const Index = () => {
                             src='/logo.jpeg'
                             width={'75px'}
                             height={'75px'}
-                            className='header__img'
+                            objectFit={'contain'}
                         />
 
                         <SearchBox />
