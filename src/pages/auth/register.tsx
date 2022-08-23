@@ -174,10 +174,10 @@ const Register = ({ providers }: LoginProps) => {
                             height='461px'
                         />
                     </div>
-                    <div className='grid'>
-                        <p>Learn Through Practice</p>
-                        <p>Compete and Win Rewards</p>
-                        <p>Find and Register for Competitions</p>
+                    <div className='grid section-1__points'>
+                        <p className='section-1__points--item'>Learn Through Practice</p>
+                        <p className='section-1__points--item'>Compete and Win Rewards</p>
+                        <p className='section-1__points--item'>Find and Register for Competitions</p>
                     </div>
 
                     <h1 className='heroText text-[22px] md:text-[5rem] absolute top-[6rem] left-[2rem] absolute uppercase'>
