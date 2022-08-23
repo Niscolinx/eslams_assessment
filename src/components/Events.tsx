@@ -10,15 +10,23 @@ interface EventProps {
 }
 
 const Event = ({imgSrc, title,description,amount, date}: EventProps) => {
-    return <div className='event'>
+    return (
+        <div className='event'>
             <figure>
-                <Image src={imgSrc} width='100%' height='100%' objectFit='cover' className='event__img'/>
+                <Image
+                    src={imgSrc}
+                    width='300px'
+                    height='300px'
+                    objectFit='cover'
+                    className='event__img'
+                />
             </figure>
             <caption>{title}</caption>
             <p>{description}</p>
             <p>{amount}</p>
             <p>{date}</p>
-    </div>
+        </div>
+    )
 }
 
 
