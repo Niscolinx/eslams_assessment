@@ -11,7 +11,7 @@ import {VscSettings} from 'react-icons/vsc'
 
 const SearchBox = () => {
     return (
-        <div className='flex'>
+        <div className='flex items-center'>
             <FiSearch />
             <input type='text' placeholder='Search' />
             <div className='flex'>
@@ -43,8 +43,8 @@ const Index = () => {
                                 <BiNotepad />
                                 <Image
                                     src='/img/avatar.jpeg'
-                                    width='100px'
-                                    height='100'
+                                    width='60px'
+                                    height='60px'
                                     objectFit='cover'
                                 />
                             </div>
