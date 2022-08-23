@@ -21,10 +21,13 @@ const Event = ({imgSrc, title,description,amount, date}: EventProps) => {
                     className='event__img'
                 />
             </figure>
+            <div className="event__details">
+
             <caption>{title}</caption>
             <p>{description}</p>
             <p>{amount}</p>
             <p>{date}</p>
+            </div>
         </div>
     )
 }
