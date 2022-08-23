@@ -46,7 +46,7 @@ const Index = () => {
 
     return (
 
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consequuntur repudiandae, consequatur eum numquam molestias, modi ducimus unde quia dolorem illum. Aliquid quod vero expedita animi neque laboriosam impedit. Ipsum.</p>
+        
     
     )
 }
