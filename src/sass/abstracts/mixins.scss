@@ -37,7 +37,7 @@
 
     @if $breakpoint==phone {
         @media only screen and (max-width: 37.5em) {
-            // 600px/16px
+            // 700px/16px
             @content;
         }
     }
