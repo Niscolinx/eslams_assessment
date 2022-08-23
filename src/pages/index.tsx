@@ -36,13 +36,14 @@ const Index = () => {
 
                         <SearchBox />
                         <div className='flex'>
-                            <div className='flex'>
-                                <BiNotepad />
+                            <div className='flex items-center'>
+                                <BiNotepad className='bg-gray-400'/>
                                 <div className='flex header__avatar'>
                                     <Image
                                         src='/img/avatar.jpeg'
                                         width='100%'
                                         height='100%'
+                                        objectFit='cover'
                                     />
                                 </div>
                             </div>
