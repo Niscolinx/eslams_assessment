@@ -19,7 +19,8 @@ const Event = ({img, title,description,amount, date}: EventProps) => {
 function Events() {
   return (
     <div className='events'>
-        <Event />
+        
+        <Event img='/img/basket1.png' title='Discover the best' description='how are you doing' amount={200} date={new Date().toLocaleString()}/>
        
     </div>
   )
