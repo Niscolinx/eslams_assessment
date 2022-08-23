@@ -15,8 +15,8 @@ const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
             <figure>
                 <Image
                     src={imgSrc}
-                    width='300px'
-                    height='300px'
+                    width='100px'
+                    height='100px'
                     objectFit='cover'
                     className='event__img'
                 />
@@ -42,21 +42,21 @@ function Events() {
                 date={new Date().toLocaleString()}
             />
             <Event
-                imgSrc='/img/basket1.png'
+                imgSrc='/img/basket2.png'
                 title='Discover the best'
                 description='how are you doing'
                 amount={200}
                 date={new Date().toLocaleString()}
             />
             <Event
-                imgSrc='/img/basket1.png'
+                imgSrc='/img/basket3.png'
                 title='Discover the best'
                 description='how are you doing'
                 amount={200}
                 date={new Date().toLocaleString()}
             />
             <Event
-                imgSrc='/img/basket1.png'
+                imgSrc='/img/basket4.png'
                 title='Discover the best'
                 description='how are you doing'
                 amount={200}
