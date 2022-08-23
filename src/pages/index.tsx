@@ -5,11 +5,8 @@ import { GetSessionParams, getSession } from 'next-auth/react'
 
 const Index = () => {
     const { theme } = useTheme()
-   // const [neuToUse, setNeuToUse] = useState<{}>()
+    // const [neuToUse, setNeuToUse] = useState<{}>()
     //const [stepsNeu, setStepsNeu] = useState<{}>()
-  
-
-    
 
     // useEffect(() => {
     //     if (theme === 'dark') {
@@ -40,29 +37,23 @@ const Index = () => {
     //     }
     // }, [theme])
 
-    
-
-    
-
     return (
-
         <div className='marketplace'>
 
-        <header className='marketplace__header'>
+            <div className='marketplace__container'>
+                <header className='marketplace__header'></header>
 
-        </header>
 
-        <main className='marketplace__main'>
-            
-        </main>
-
-        <footer className='marketplace__footer'></footer>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptate iure dignissimos sunt rem inventore odit enim,
+                impedit, similique quasi repudiandae quo consectetur veritatis
+                eum natus a eligendi recusandae suscipit explicabo.
+                
+                <footer className='marketplace__footer'></footer>
+            </div>
         </div>
-    
     )
 }
-
-
 
 export default Index
 
@@ -84,4 +75,3 @@ export default Index
 //         props: { session },
 //     }
 // }
-
