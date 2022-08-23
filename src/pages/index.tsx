@@ -11,7 +11,7 @@ import { VscSettings } from 'react-icons/vsc'
 const SearchBox = () => {
     return (
         <div className='flex items-center gap-2'>
-            <div className='flex relative items-center sm:hidden'>
+            <div className='hidden md:flex relative items-center '>
                 <FiSearch className='absolute left-2'/>
                 <input
                     type='text'
