@@ -1,6 +1,7 @@
 .events{
     margin: 3rem 0;
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
 
     .event{
       
