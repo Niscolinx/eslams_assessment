@@ -12,11 +12,13 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import { FormControl, FormLabel, RadioGroup, Radio } from '@mui/material'
 import { useState } from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
+import MuiPhoneNumber from 'material-ui-phone-number'
 
 export default function PersonalDetails() {
     const [gender, setGender] = useState('male')
     const [eyeIcon, setEyeIcon] = useState(false)
     const [password, setPassword] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState()
 
     const [value, setValue] = useState<Date | null>(null)
 
@@ -77,42 +79,47 @@ export default function PersonalDetails() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <div className="flex items-center relative">
-
-                    <TextField
-                    required
-                    id='password'
-                    name='password'
-                    label='Password'
-                    type='password'
-                    fullWidth
-                    variant='standard'
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                    
-                    />
-                    {<span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
-                        
-                        {eyeIcon ? <AiOutlineEyeInvisible onClick={toggleEyeIcon}/> : <AiOutlineEye onClick={toggleEyeIcon}/>}
-                    </span>
-                    }
-                    
+                    <div className='flex items-center relative'>
+                        <TextField
+                            required
+                            id='password'
+                            name='password'
+                            label='Password'
+                            type='password'
+                            fullWidth
+                            variant='standard'
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                        />
+                        {
+                            <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
+                                {eyeIcon ? (
+                                    <AiOutlineEyeInvisible
+                                        onClick={toggleEyeIcon}
+                                    />
+                                ) : (
+                                    <AiOutlineEye onClick={toggleEyeIcon} />
+                                )}
+                            </span>
+                        }
                     </div>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id='mobileNumber'
-                        name='mobileNumber'
-                        label='mobile Number'
-                        fullWidth
+                    <MuiPhoneNumber
+                        id='phone-number'
+                        autoFocus={true}
+                        // helperText='Enter phone number'
+                        // InputLabelProps={{ shrink: true, focused: true }}
+                        placeholder='Phone Number'
+                        defaultCountry={'us'}
                         variant='standard'
+                        fullWidth
+                        onChange={(e: any) => setPhoneNumber(e)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
-                        
                             label='Date of Birth'
                             value={value}
                             minDate={new Date('2017-01-01')}
@@ -120,7 +127,11 @@ export default function PersonalDetails() {
                                 setValue(newValue)
                             }}
                             renderInput={(params) => (
-                                <TextField {...params} variant='standard' required />
+                                <TextField
+                                    {...params}
+                                    variant='standard'
+                                    required
+                                />
                             )}
                         />
                     </LocalizationProvider>
