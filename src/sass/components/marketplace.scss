@@ -5,7 +5,15 @@
     display: grid;
     justify-content: center;
     align-content: center;
-    &__header {
+
+    .header {
+        overflow: hidden;
+        backface-visibility: hidden;
+
+        &__img{
+          overflow: hidden;
+            object-fit: contain;
+        }
     }
 
     &__container {
@@ -33,6 +41,6 @@
         }
     }
 
-    &__footer {
+    .footer {
     }
 }

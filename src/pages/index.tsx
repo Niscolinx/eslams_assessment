@@ -4,24 +4,26 @@ import { GetSessionParams, getSession } from 'next-auth/react'
 
 import Image from 'next/image'
 
-import {BiNotepad} from 'react-icons/bi'
+import { BiNotepad } from 'react-icons/bi'
 
 const Index = () => {
-   
-
     return (
         <div className='marketplace'>
-
             <div className='marketplace__container'>
-                <header className='marketplace__header'>
-                    <Image src='/logo.jpeg'  width={'75px'} height={'75px'}/>
+                <div className='grid p-8'>
+                    <header className='header'>
+                        <Image
+                            src='/logo.jpeg'
+                            width={'75px'}
+                            height={'75px'}
+                            className='header__img'
+                        />
+                    </header>
 
-                </header>
+                    <main className='main'></main>
 
-
-               
-
-                <footer className='marketplace__footer'></footer>
+                    <footer className='footer'></footer>
+                </div>
             </div>
         </div>
     )
