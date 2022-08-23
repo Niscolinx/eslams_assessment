@@ -84,12 +84,12 @@
 
     &__main {
         display: flex;
-        overflow: hidden;
+        //overflow: hidden;
         position: relative;
 
         @include respond(phone) {
             display: grid;
-            overflow: scroll;
+         //   overflow: scroll;
         }
     }
     &__overlay {
