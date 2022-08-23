@@ -170,13 +170,13 @@ const Register = ({ providers }: LoginProps) => {
             </header>
 
             <div className='grid md:(grid-cols-16) relative'>
-                    <div className="grid absolute top-0 left-0 bg-blue-700">
-                        hello world Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum quia sapiente placeat maiores ea, sunt nulla, doloremque ad explicabo accusantium exercitationem laboriosam facere possimus nam asperiores aliquam blanditiis ipsum recusandae?
+                    <div className="grid absolute top-50 left-0 bg-blue-700 z-2 w-[200px] h-[150px]">
+                        
                     </div>
-                <div className='register__overlay'>
+                <div className='register__overlay z-3'>
                 </div>
                 <div className='section-1 relative'>
-                    <div className='flex section-1__container relative z-2 mt-[10rem]'>
+                    <div className='flex section-1__container relative z-5 mt-[10rem]'>
                         <Image
                             src='/hero-player.png'
                             width='433px'
@@ -195,7 +195,7 @@ const Register = ({ providers }: LoginProps) => {
                         </p>
                     </div>
 
-                    <h1 className='heroText text-[22px] md:text-[5rem] absolute top-[10rem] left-[2rem] absolute uppercase'>
+                    <h1 className='heroText text-[22px] md:text-[5rem] absolute top-[10rem] left-[2rem] absolute uppercase z-4'>
                         Shoot for the <span className='ml-10'>stars</span>
                     </h1>
 
