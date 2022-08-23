@@ -51,15 +51,9 @@ const Index = () => {
     )
 }
 
-function Home(){
-    return (
-        <div>
-Hellor
-        </div>
-    )
-}
 
-export default Home
+
+export default Index
 
 // export async function getServerSideProps(
 //     context: GetSessionParams | undefined
