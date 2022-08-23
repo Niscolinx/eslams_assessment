@@ -14,15 +14,7 @@ const SearchBox = () => {
         <FiSearch/>
         <input type="text" placeholder="Search"/>
 
-        <div className="flex">
-            <VscSettings/>
-            Filters
-        </div>
-
-        <div className="flex">
-            <BiNotepad/>
-            <Image src='/img/avatar.jpeg' width='100px' height='100' objectFit='cover'/>
-        </div>
+        
     </div>
 }
 
@@ -39,7 +31,23 @@ const Index = () => {
                             className='header__img'
                         />
 
-                    <SearchBox/>
+                        <SearchBox />
+                        <div className='flex'>
+                            <div className='flex'>
+                                <VscSettings />
+                                Filters
+                            </div>
+
+                            <div className='flex'>
+                                <BiNotepad />
+                                <Image
+                                    src='/img/avatar.jpeg'
+                                    width='100px'
+                                    height='100'
+                                    objectFit='cover'
+                                />
+                            </div>
+                        </div>
                     </header>
 
                     <main className='main'></main>

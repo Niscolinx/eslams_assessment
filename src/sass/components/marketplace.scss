@@ -7,13 +7,9 @@
     align-content: center;
 
     .header {
-        overflow: hidden;
-        backface-visibility: hidden;
+      
 
-        &__img{
-          overflow: hidden;
-            object-fit: contain;
-        }
+       
     }
 
     &__container {
