@@ -23,10 +23,11 @@
 
         &__details{
             position: absolute;
-            bottom: 0;
+            bottom: 10rem;
             z-index: 2;
             background: $color-red;
             padding: 2rem 3rem;
+            border-radius: 2rem;
         }
     }
 }
