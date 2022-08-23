@@ -1,25 +1,10 @@
 // COLOR VARIABLES
-$color-background: #102c2bda;
-$color-primary: #805422;
-$color-primary-dark: #faa033;
-
-$color-secondary-light: #244163;
-$color-secondary: #101d2c;
-
-$color-grey-light-1: #f9f7f6;
-$color-grey-light-2: #aaa;
-
-$color-grey-dark-1: #54483A;
-$color-grey-dark-2: #6D5D4B;
-
-$color-error: #582424;
-
-$box-shadow: 3px 3px 10px 8px $color-primary-dark;
+$color-cream: #D0E069;
+$color-blue: #112EA3;
+$color-red: #CA494E;
+$color-gray: #E8E7E7;
 
 // FONT VARIABLES
-$font-primary: 'Poppins',
-sans-serif;
-$font-display: 'Poppins',
-sans-serif;
+
 $font-clamp: clamp(1.2rem, 1.5vw, 1.5vw);
 $hero-clamp: clamp(1.3rem, 7vw, 5rem)
