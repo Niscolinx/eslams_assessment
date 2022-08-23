@@ -95,7 +95,9 @@ export default function Checkout() {
                         align='center'
                         className='font-semibold'
                     >
-                        Get Started with eslams
+                        Get Started with{' '}
+                       
+                        eslams
                     </Typography>
                     <Typography component='p' align='center'>
                         Create an account and step into greatness
