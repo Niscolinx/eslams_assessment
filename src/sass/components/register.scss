@@ -111,14 +111,7 @@
         backdrop-filter: blur(5px);
     }
 
-    &-form {
-        background: #e8e7e7;
-        // border: 1px solid rgba(0, 0, 0, 0.17);
-        box-shadow: -20px -20px 50px #f3f3f3,
-            20px 20px 60px rgba(174, 174, 192, 0.4);
-        border-radius: 10px;
-        border: none;
-    }
+    
 
     .main-1 {
        // grid-column: 1 / 9;
@@ -146,7 +139,14 @@
     }
 
     &__form {
-        max-width: 550px;
-        //grid-column: 9 / -1;
+        background: #e8e7e7;
+        // border: 1px solid rgba(0, 0, 0, 0.17);
+        box-shadow: -20px -20px 50px #f3f3f3,
+            20px 20px 60px rgba(174, 174, 192, 0.4);
+        border-radius: 10px;
+        border: none;
+                max-width: 550px;
+
     }
+    
 }
