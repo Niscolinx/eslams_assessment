@@ -139,7 +139,7 @@ const Register = ({ providers }: LoginProps) => {
 
     return (
         <div className='register relative'>
-            <header className='grid hidden md:(flex justify-between items-center) absolute top-0 left-0 right-0 z-4 register__header py-3 px-10 '>
+            <header className='register__header'>
                 <div className='flex'>
                     <p className='text-[46px] font-medium text-[#E8E7E7]'>
                         eslams
@@ -229,12 +229,12 @@ const Register = ({ providers }: LoginProps) => {
                 </div>
                 <div className='section-signup'></div>
             </div>
-                <div className='section__tag'>
-                    <h3 className='text-2xl'>
-                        online competition platform for every student,
-                        <span className='section__tag--rubik'>everywhere</span>
-                    </h3>
-                </div>
+            <div className='section__tag'>
+                <h3 className='text-2xl'>
+                    online competition platform for every student,
+                    <span className='section__tag--rubik'>everywhere</span>
+                </h3>
+            </div>
         </div>
     )
 }
