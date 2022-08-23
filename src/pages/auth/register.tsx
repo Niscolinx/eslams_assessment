@@ -165,7 +165,7 @@ const Register = ({ providers }: LoginProps) => {
             </header>
 
             <div className='grid md:(grid-cols-16) relative'>
-                <div className="register__overlay"></div>
+                <div className='register__overlay'></div>
                 <div className='section-1 relative'>
                     <div className='flex section-1__container relative z-2 mt-[7rem]'>
                         <Image
@@ -174,19 +174,21 @@ const Register = ({ providers }: LoginProps) => {
                             height='461px'
                         />
                     </div>
+                    <div className='grid'>
+                        <p>Learn Through Practice</p>
+                        <p>Compete and Win Rewards</p>
+                        <p>Find and Register for Competitions</p>
+                    </div>
 
                     <h1 className='heroText text-[22px] md:text-[5rem] absolute top-[6rem] left-[2rem] absolute uppercase'>
                         Shoot for the <span className='ml-10'>stars</span>
                     </h1>
 
-                    <div className="section-1__overLay">
-
-                    </div>
+                    <div className='section-1__overLay'></div>
                 </div>
 
-                              <div className="w-full md:(grid) relative mt-20 register__form z-4">
-
-                <Checkout/>
+                <div className='w-full md:(grid) relative mt-20 register__form z-4'>
+                    <Checkout />
                 </div>
                 <div className='section-signup'></div>
             </div>
