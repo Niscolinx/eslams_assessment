@@ -139,7 +139,7 @@ const Register = ({ providers }: LoginProps) => {
 
     return (
         <div className='register relative'>
-            <header className='grid md:(flex justify-between) absolute top-0 left-0 right-0 z-4 register__header py-3 px-2 '>
+            <header className='grid md:(flex justify-between) absolute top-0 left-0 right-0 z-4 register__header py-3 px-10 '>
                 <div className='flex'>
                     <p className='text-[46px] font-medium text-white'>eslams</p>
                 </div>
@@ -151,7 +151,7 @@ const Register = ({ providers }: LoginProps) => {
                                 Email
                             </label>
 
-                            <input type='text' name='email' id='email' />
+                            <input type='text' name='email' id='email'  />
                         </div>
                         <div className='grid'>
                             <label htmlFor='email' className='text-white'>
@@ -159,9 +159,13 @@ const Register = ({ providers }: LoginProps) => {
                             </label>
 
                             <input type='text' name='email' id='email' />
+
+                            <Link href='/'>
+                                Forgot Password?
+                            </Link>
                         </div>
 
-                        <button className='bg-black text-white py-3 px-6'>
+                        <button className='bg-black text-white py-1 px-6 justify-self-center'>
                             Login
                         </button>
                     </form>

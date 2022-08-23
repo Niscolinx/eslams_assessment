@@ -64,6 +64,8 @@ input[type='number']::-webkit-outer-spin-button {
     right: 0;
     z-index: 5;
     letter-spacing: 2px;
+
+    display: none;
     
     h3 {
         background-color: rgba(0, 0, 0, 0.5);
