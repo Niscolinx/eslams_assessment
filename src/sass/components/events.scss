@@ -3,7 +3,7 @@
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    
+    row-gap: 10rem;
 
     .event{
         display: grid;
