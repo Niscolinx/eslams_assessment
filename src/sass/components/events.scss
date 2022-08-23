@@ -11,11 +11,9 @@
         justify-items: center;
         position: relative;
 
-        // figure{
-        //     background-color: red;
-        //     width: 300px;
-        //     height: 300px;
-        // }
+        figure{
+            position: relative;
+        }
 
         &__img{
             object-position: top;
