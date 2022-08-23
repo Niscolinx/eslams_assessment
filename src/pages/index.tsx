@@ -46,7 +46,9 @@ const Index = () => {
 
     return (
 
-        
+        <div className='marketplace'>
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti distinctio maxime a nobis sapiente dolorem placeat, impedit, iusto amet rem voluptates nulla eius architecto voluptatem aut reprehenderit itaque, rerum ducimus?
+        </div>
     
     )
 }
