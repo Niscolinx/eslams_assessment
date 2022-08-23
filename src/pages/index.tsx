@@ -48,6 +48,9 @@ const Index = () => {
 
         <div className='marketplace'>
 
+        <header className='marketplace__header'>
+
+        </header>
         </div>
     
     )
