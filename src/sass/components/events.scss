@@ -1,7 +1,9 @@
 .events{
-    margin: 3rem 0;
+    margin: 3rem auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    
 
     .event{
       
