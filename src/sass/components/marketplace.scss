@@ -13,6 +13,11 @@
 
       display: flex;
       justify-content: space-between;
+
+
+      &__avatar{
+        border-radius: 100rem;
+      }
        
     }
 

@@ -46,6 +46,7 @@ const Index = () => {
                                     width='60px'
                                     height='60px'
                                     objectFit='cover'
+                                    className='header__avatar'
                                 />
                             </div>
                         </div>
