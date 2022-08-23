@@ -46,38 +46,25 @@ export default function Education() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id='name'
-                        name='name'
-                        label='Name'
+                        id='institutionName'
+                        name='institutionName'
+                        label='Name of Institution'
                         fullWidth
-                        autoComplete='family-name'
                         variant='outlined'
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id='email'
-                        name='email'
-                        label='Email Address'
+                        id='grade'
+                        name='grade'
+                        label='Grade/Year of Study'
                         fullWidth
-                        autoComplete='Email address'
                         variant='outlined'
                     />
                 </Grid>
 
-                <Grid item xs={12} sm={6}>
-                    <MuiPhoneNumber
-                        id='phone-number'
-                        autoFocus={true}
-                        helperText='Enter phone number'
-                        // InputLabelProps={{ shrink: true, focused: true }}
-                        placeholder='Phone Number'
-                        defaultCountry={'us'}
-                        variant='outlined'
-                        onChange={(e: any) => setPhoneNumber(e)}
-                    />
-                </Grid>
+                
             </Grid>
         </React.Fragment>
     )
