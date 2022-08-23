@@ -13,8 +13,8 @@ const SearchBox = () => {
         <div className='flex items-center'>
             <FiSearch />
             <input type='text' placeholder='Search' />
-            <div className='flex'>
-                <VscSettings />
+            <div className='flex bg-[#d9d6d6] items-c'>
+                  <VscSettings />
                 Filters
             </div>
         </div>
