@@ -5,6 +5,7 @@ import { GetSessionParams, getSession } from 'next-auth/react'
 import Image from 'next/image'
 
 import { BiNotepad } from 'react-icons/bi'
+import {FiSearch} from 'react-icons/fi'
 
 const Index = () => {
     return (
