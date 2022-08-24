@@ -9,4 +9,33 @@ $linear-gradient-blue: linear-gradient(to right, rgba(17, 46, 163, .2), rgba(202
 // FONT VARIABLES
 
 $font-clamp: clamp(1.2rem, 1.5vw, 1.5vw);
-$hero-clamp: clamp(1.3rem, 7vw, 5rem)
+$hero-clamp: clamp(1.3rem, 7vw, 5rem);
+
+//COLORS
+$color-primary: #55c57a;
+$color-primary-light:#7ed56f;
+$color-primary-dark:#28b485;
+
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+$color-secondary-lighter: #cec19c;
+$color-secondary-lightdark: #5a5866;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
+
+$color-grey-light-1: #f7f7f7;
+$color-white: #fff;
+$color-black: #110f0cbb;
+
+//GRID
+$grid-width: 76rem;
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;
+
+//FONT-SIZE
+$default-font-size: 1.6rem;
+
+//ABSTRACT
+$box-shadow: 0 1.5rem 4rem rgba(black, .15);
