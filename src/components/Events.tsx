@@ -49,7 +49,7 @@ function Events() {
     return (
         <div className='events'>
             <Event
-                heading='Unprecented Event'
+                heading='March Madness'
                 price={340}
                 details={[
                     'Sleep in cozy hotels',
