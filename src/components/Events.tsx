@@ -53,8 +53,8 @@ function Events() {
                 price={1200}
                 details={[
                     'Basketball, Water and Training Supplies',
-                    '3 day tours',
-                    'Difficulty: easy',
+                    'Certfied Atletic trainers',
+                    'Availability of Shuttles',
                     'Up to 30 people',
                     '2 tour guides',
                 ]}
