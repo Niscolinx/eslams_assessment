@@ -75,7 +75,7 @@ function Events() {
                 ]}
                 date={{
                     from: '5th Oct',
-                    to: '9th Oct'
+                    to: '9th Oct',
                 }}
             />
             <Event
@@ -118,7 +118,7 @@ function Events() {
                 date={{ from: '10th Sep' }}
             />
             <Event
-                heading='Lakers Event'
+                heading='2022 USA Basketball Gold Camp (girls)'
                 price={1500}
                 details={[
                     'Basketball, Water and Training Supplies',
@@ -127,6 +127,7 @@ function Events() {
                     'NCAA Certified Checklist',
                     'Waivers of Liability',
                 ]}
+                date={{ from: '3rd Sep', to: '4th Sep' }}
             />
         </div>
     )
