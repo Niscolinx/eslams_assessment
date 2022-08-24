@@ -39,8 +39,9 @@ const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
 
 function Events() {
     return (
-        <div className='events'>
-            <>
+        <>
+            {/* <>
+        //<div className='events'>
                 <Event
                     imgSrc='/img/event1.jpg'
                     title='Discover the best'
@@ -69,7 +70,7 @@ function Events() {
                     amount={200}
                     date={new Date().toLocaleString()}
                 />
-            </>
+            </> */}
             <section className='section-tours' id='section-tours'>
                 <div className='u-center-text u-margin-bottom-big'>
                     <h2 className='heading-secondary'>Most popular tours</h2>
@@ -188,7 +189,8 @@ function Events() {
                     </a>
                 </div>
             </section>
-        </div>
+    {/* </div> */}
+    </>
     )
 }
 
