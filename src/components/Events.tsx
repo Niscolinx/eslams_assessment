@@ -17,7 +17,7 @@ const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
                     <Image
                         src={imgSrc}
                         width='300px'
-                        height='180px'
+                        height='250px'
                         objectFit='cover'
                         className='event__img'
                     />
@@ -43,7 +43,7 @@ function Events() {
 
             
             <Event
-                imgSrc='/img/basket1.png'
+                imgSrc='/img/basket1.jpg'
                 title='Discover the best'
                 description='how are you doing'
                 amount={200}
