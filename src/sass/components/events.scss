@@ -4,6 +4,7 @@
     grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
     font-size: 1rem;
     gap: 3rem;
+    margin-top: 3rem;
 }
 
 .event {
@@ -232,6 +233,8 @@
             transform: translate(0);
             width: 100%;
             padding: 4rem 2rem 2rem 2rem;
+
+            //padding: 7rem 4rem 4rem 4rem;
         }
 
         &__price-box {
