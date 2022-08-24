@@ -59,19 +59,18 @@
         }
 
         &__details {
-            // position: absolute;
-            // min-height: 15rem;
-            // min-width: 20rem;
-            // bottom: -8rem;
-            // z-index: 2;
-            // // background: $color-red;
-            // background: #ca494e5c;
-            // padding: 2rem 2rem;
-            // border-radius: 2rem;
-            // display: grid;
-            // align-content: end;
+          
             background-color: white;
             text-align: center;
+
+            &--title{
+                text-transform: uppercase;
+                font-family: 'Rubik Glitch';
+            }
+
+            &--description{
+                color: rgb(81, 80, 80);
+            }
         }
     }
 }

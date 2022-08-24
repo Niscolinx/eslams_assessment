@@ -31,9 +31,10 @@ const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
                     facere possimus dolores voluptatum hic illum nobis magnam
                     quisquam eos fuga ad nesciunt nostrum veniam accusamus.
                 </p>
-                <p className='event__details--description'>{amount}</p>
+                <p className='event__details--amount'>{amount}</p>
                 <p className='event__details--date'>{date}</p>
             </div>
+            <button className='event__button'>Register</button>
         </div>
     )
 }
