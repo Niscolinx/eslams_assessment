@@ -43,28 +43,35 @@ function Events() {
 
             
             <Event
-                imgSrc='/img/basket1.jpg'
+                imgSrc='/img/event1.jpg'
                 title='Discover the best'
                 description='how are you doing'
                 amount={200}
                 date={new Date().toLocaleString()}
             />
             <Event
-                imgSrc='/img/basket2.png'
+                imgSrc='/img/event2.jpg'
                 title='Discover the best'
                 description='how are you doing'
                 amount={200}
                 date={new Date().toLocaleString()}
             />
             <Event
-                imgSrc='/img/basket3.png'
+                imgSrc='/img/event3.jpg'
                 title='Discover the best'
                 description='how are you doing'
                 amount={200}
                 date={new Date().toLocaleString()}
             />
             <Event
-                imgSrc='/img/basket4.png'
+                imgSrc='/img/event1.jpg'
+                title='Discover the best'
+                description='how are you doing'
+                amount={200}
+                date={new Date().toLocaleString()}
+            />
+            <Event
+                imgSrc='/img/event2.jpg'
                 title='Discover the best'
                 description='how are you doing'
                 amount={200}
