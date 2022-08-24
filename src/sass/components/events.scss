@@ -38,6 +38,7 @@
         //background-color: rgb(170, 164, 164);
         background: $linear-gradient-blue;
         position: relative;
+        display: grid;
 
         &__imgBox{
             min-height: 10rem;
@@ -80,6 +81,8 @@
             outline: none;
             padding: 1rem 3rem;
             border-radius: 1rem;
+            justify-self: center;
+            margin: 1rem 0;
         }
     }
 }
