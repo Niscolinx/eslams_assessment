@@ -55,8 +55,8 @@ function Events() {
                     'Basketball, Water and Training Supplies',
                     'Certfied Atletic trainers',
                     'Availability of Shuttles',
-                    'Up to 30 people',
-                    '2 tour guides',
+                    'NCAA Certified Checklist',
+                    'Waivers of Liability',
                 ]}
             />
             <Event
