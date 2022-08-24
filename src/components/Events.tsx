@@ -3,12 +3,12 @@ import Image from 'next/image'
 
 interface EventProps {
     heading: string
-    description: string
+    details: string[]
     amount: number
     date: string
 }
 
-const Event = ({ heading, description, amount, date }: EventProps) => {
+const Event = ({ heading, details, amount, date }: EventProps) => {
     return (
         <div className='event'>
             <div className='event__side event__side--front'>
