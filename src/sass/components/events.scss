@@ -108,7 +108,7 @@
         }
 
         &--back {
-            transform: rotateY(180deg);
+            transform: rotateX(180deg);
 
             &-1 {
                 background-image: linear-gradient(
@@ -283,13 +283,13 @@
             box-shadow: none;
 
             &--back {
-                transform: rotateY(0);
+                transform: rotateX(0);
                 clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
             }
         }
 
         &:hover &__side--front {
-            transform: rotateY(0);
+            transform: rotateX(0);
         }
 
         &__details {
