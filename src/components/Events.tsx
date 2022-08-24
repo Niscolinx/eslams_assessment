@@ -2,14 +2,13 @@ import React from 'react'
 import Image from 'next/image'
 
 interface EventProps {
-    imgSrc: string
-    title: string
+    heading: string
     description: string
     amount: number
     date: string
 }
 
-const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
+const Event = ({ heading, description, amount, date }: EventProps) => {
     return (
         <div className='event'>
             <div className='event__side event__side--front'>
@@ -46,9 +45,9 @@ const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
 
 function Events() {
     return (
-    <div className='events'>
-           <Event/>
-            </div>
+        <div className='events'>
+            <Event />
+        </div>
     )
 }
 
