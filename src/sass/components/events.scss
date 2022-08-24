@@ -8,6 +8,11 @@
    // background-color: blue;
     height: 70vh;
 
+    &::-webkit-scrollbar{
+        background: red;
+        color: red;
+    }
+
     .event{
         display: grid;
        // justify-content: center;
