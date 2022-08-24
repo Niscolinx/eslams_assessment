@@ -46,7 +46,15 @@ function getStepContent(step: number) {
     }
 }
 
-const theme = createTheme()
+const theme = createTheme({
+    typography: {
+        fontFamily: [
+            'Lato',
+            'Montserrat',
+            'sans-serif',
+        ].join(','),
+    },
+})
 
 export default function Checkout() {
     const [activeStep, setActiveStep] = React.useState(0)
