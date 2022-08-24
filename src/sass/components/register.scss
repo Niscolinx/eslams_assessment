@@ -35,7 +35,7 @@
     letter-spacing: 2px;
     //display: none;
 
-    @include respond(phone){
+    @include respond(phone) {
         display: none;
     }
 
@@ -55,9 +55,8 @@
 //REGISTER
 
 .register {
-    max-width: 1500px;
-        background: $linear-gradient-blue;
-
+    // max-width: 1500px;
+    // margin: 0 auto;
 
     &__header {
         grid-column: 1 / -1;
@@ -79,7 +78,7 @@
         padding: 0.75rem 2.5rem;
         z-index: 10;
 
-        @include respond(phone){
+        @include respond(phone) {
             background: rgba(0, 0, 0, 0.85);
         }
 
@@ -101,7 +100,7 @@
 
         @include respond(phone) {
             display: grid;
-         //   overflow: scroll;
+            //   overflow: scroll;
         }
     }
     &__overlay {
@@ -134,7 +133,7 @@
                 left: 5rem;
             }
 
-            @include respond(phone){
+            @include respond(phone) {
                 display: none;
             }
 
@@ -151,25 +150,24 @@
     }
 
     &__form {
-       // background: #e8e7e7;
+        // background: #e8e7e7;
         // border: 1px solid rgba(0, 0, 0, 0.17);
-      // box-shadow: -20px -20px 50px #f3f3f3,
-           // 20px 20px 60px rgba(174, 174, 192, 0.4);
+        // box-shadow: -20px -20px 50px #f3f3f3,
+        // 20px 20px 60px rgba(174, 174, 192, 0.4);
         border-radius: 10px 10px 0 0;
         border: none;
         max-width: 550px;
-        
 
         @include respond(phone) {
-           // margin: 0 auto;
+            // margin: 0 auto;
             position: absolute;
             top: 10rem;
             left: 0;
             right: 0;
             z-index: 20;
-           // backdrop-filter: blur(10px);
+            // backdrop-filter: blur(10px);
 
-           overflow: hidden;
+            overflow: hidden;
         }
     }
 }
