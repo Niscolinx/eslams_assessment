@@ -40,8 +40,8 @@ const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
 function Events() {
     return (
         <>
+    <div className='events'>
             {/* <>
-        //<div className='events'>
                 <Event
                     imgSrc='/img/event1.jpg'
                     title='Discover the best'
@@ -291,6 +291,7 @@ function Events() {
                     </a>
                 </div>
             </section>
+            </div>
     {/* </div> */}
     </>
     )
