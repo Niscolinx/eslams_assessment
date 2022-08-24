@@ -27,9 +27,7 @@ const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
                 <h3 className='event__details--title'>{title}</h3>
                 <p className='event__details--description'>
                     {description} Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Expedita nihil neque, quos mollitia quasi
-                    facere possimus dolores voluptatum hic illum nobis magnam
-                    quisquam eos fuga ad nesciunt nostrum veniam accusamus.
+                    adipisicing elit..
                 </p>
                 <p className='event__details--amount'>{amount}</p>
                 <p className='event__details--date'>{date}</p>

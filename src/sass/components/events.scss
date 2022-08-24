@@ -61,8 +61,10 @@
 
         &__details {
           
-            background-color: white;
             text-align: center;
+            padding: 3rem 0;
+            background: $color-cream;
+            backdrop-filter: blur(10px);
 
             &--title{
                 text-transform: uppercase;
@@ -71,6 +73,7 @@
 
             &--description{
                 color: rgb(81, 80, 80);
+                font-weight: 300;
             }
         }
 
