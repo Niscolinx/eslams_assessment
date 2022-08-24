@@ -5,7 +5,10 @@ interface EventProps {
     heading: string
     details: string[]
     price: number
-    date?: string
+    date: {
+        from: string
+        to?: string
+    }
 }
 
 const Event = ({ heading, details, price, date }: EventProps) => {
@@ -49,7 +52,7 @@ function Events() {
     return (
         <div className='events'>
             <Event
-                heading='March Madness'
+                heading='USA BASKETBALL SHOWCASE PRESENTED BY COINBASE'
                 price={1200}
                 details={[
                     'Basketball, Water and Training Supplies',
@@ -63,55 +66,59 @@ function Events() {
                 heading='NBA All Stars'
                 price={1500}
                 details={[
-                    'Sleep in cozy hotels',
-                    '3 day tours',
-                    'Difficulty: easy',
-                    'Up to 30 people',
-                    '2 tour guides',
+                    'Basketball, Water and Training Supplies',
+                    'Certfied Atletic trainers',
+                    'Availability of Shuttles',
+                    'NCAA Certified Checklist',
+                    'Waivers of Liability',
                 ]}
             />
             <Event
-                heading='Nike Events'
+                heading='2022 FIBA AmeriCup for Men'
                 price={750}
                 details={[
-                    'Sleep in cozy hotels',
-                    '3 day tours',
-                    'Difficulty: easy',
-                    'Up to 30 people',
-                    '2 tour guides',
+                    'Basketball, Water and Training Supplies',
+                    'Certfied Atletic trainers',
+                    'Availability of Shuttles',
+                    'NCAA Certified Checklist',
+                    'Waivers of Liability',
                 ]}
+                
             />
             <Event
                 heading='NBA All Stars'
                 price={1500}
                 details={[
-                    'Sleep in cozy hotels',
-                    '3 day tours',
-                    'Difficulty: easy',
-                    'Up to 30 people',
-                    '2 tour guides',
+                    'Basketball, Water and Training Supplies',
+                    'Certfied Atletic trainers',
+                    'Availability of Shuttles',
+                    'NCAA Certified Checklist',
+                    'Waivers of Liability',
                 ]}
             />
             <Event
-                heading='NBA All Stars'
+                heading='2022 USA Basketball Coach Academy'
                 price={1500}
                 details={[
-                    'Sleep in cozy hotels',
-                    '3 day tours',
-                    'Difficulty: easy',
-                    'Up to 30 people',
-                    '2 tour guides',
+                    'Basketball, Water and Training Supplies',
+                    'Certfied Atletic trainers',
+                    'Availability of Shuttles',
+                    'NCAA Certified Checklist',
+                    'Waivers of Liability',
                 ]}
+                date={
+                    {from}
+                }
             />
             <Event
-                heading='NBA All Stars'
+                heading='Lakers Event'
                 price={1500}
                 details={[
-                    'Sleep in cozy hotels',
-                    '3 day tours',
-                    'Difficulty: easy',
-                    'Up to 30 people',
-                    '2 tour guides',
+                    'Basketball, Water and Training Supplies',
+                    'Certfied Atletic trainers',
+                    'Availability of Shuttles',
+                    'NCAA Certified Checklist',
+                    'Waivers of Liability',
                 ]}
             />
         </div>
