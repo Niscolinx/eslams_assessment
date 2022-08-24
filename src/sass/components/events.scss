@@ -90,7 +90,8 @@
             padding: 3rem 0;
             background: $color-gray;
             backdrop-filter: blur(50px);
-            
+            display: grid;
+            gap: 1rem;
 
             &--title{
                 text-transform: uppercase;
@@ -99,6 +100,10 @@
 
             &--description{
                 color: rgb(81, 80, 80);
+                font-weight: 300;
+            }
+
+            &--date{
                 font-weight: 300;
             }
             
