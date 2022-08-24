@@ -50,7 +50,62 @@ function Events() {
         <div className='events'>
             <Event
                 heading='March Madness'
-                price={340}
+                price={1200}
+                details={[
+                    'Sleep in cozy hotels',
+                    '3 day tours',
+                    'Difficulty: easy',
+                    'Up to 30 people',
+                    '2 tour guides',
+                ]}
+            />
+            <Event
+                heading='NBA All Stars'
+                price={1500}
+                details={[
+                    'Sleep in cozy hotels',
+                    '3 day tours',
+                    'Difficulty: easy',
+                    'Up to 30 people',
+                    '2 tour guides',
+                ]}
+            />
+            <Event
+                heading='Nike Events'
+                price={1500}
+                details={[
+                    'Sleep in cozy hotels',
+                    '3 day tours',
+                    'Difficulty: easy',
+                    'Up to 30 people',
+                    '2 tour guides',
+                ]}
+            />
+            <Event
+                heading='NBA All Stars'
+                price={1500}
+                details={[
+                    'Sleep in cozy hotels',
+                    '3 day tours',
+                    'Difficulty: easy',
+                    'Up to 30 people',
+                    '2 tour guides',
+                ]}
+            />
+            <Event
+                heading='NBA All Stars'
+                price={1500}
+                details={[
+                    'Sleep in cozy hotels',
+                    '3 day tours',
+                    'Difficulty: easy',
+                    'Up to 30 people',
+                    '2 tour guides',
+                ]}
+            />
+            <Event
+                heading='NBA All Stars'
+                price={1500}
                 details={[
                     'Sleep in cozy hotels',
                     '3 day tours',
