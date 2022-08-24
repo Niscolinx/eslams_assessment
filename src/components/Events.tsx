@@ -52,7 +52,7 @@ function Events() {
                 heading='March Madness'
                 price={1200}
                 details={[
-                    'Sleep in cozy hotels',
+                    'Basketball, Water and Training Supplies',
                     '3 day tours',
                     'Difficulty: easy',
                     'Up to 30 people',
@@ -72,7 +72,7 @@ function Events() {
             />
             <Event
                 heading='Nike Events'
-                price={1500}
+                price={750}
                 details={[
                     'Sleep in cozy hotels',
                     '3 day tours',
