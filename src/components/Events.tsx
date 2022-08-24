@@ -16,9 +16,13 @@ const Event = ({ heading, details, price, date, which }: EventProps) => {
     return (
         <div className='event'>
             <div className='event__side event__side--front'>
-                <div className={`event__picture event__picture--${which}`}>&nbsp;</div>
+                <div className={`event__picture event__picture--${which}`}>
+                    &nbsp;
+                </div>
                 <h4 className='event__heading'>
-                    <span className={`event__heading-span event__heading-span--${which}`}>
+                    <span
+                        className={`event__heading-span event__heading-span--${which}`}
+                    >
                         {heading}
                     </span>
                 </h4>
@@ -32,7 +36,9 @@ const Event = ({ heading, details, price, date, which }: EventProps) => {
                     <ul></ul>
                 </div>
             </div>
-            <div className={`event__side event__side--back event__side--back-${which}`}>
+            <div
+                className={`event__side event__side--back event__side--back-${which}`}
+            >
                 <div className='event__cta'>
                     <div className='event__price-box'>
                         <p className='event__price-only'>Only</p>
@@ -66,7 +72,7 @@ function Events() {
                 which={1}
             />
             <Event
-                heading='FIBA 3x3 U23 World Cup (women)'
+                heading='2022 FIBA AmeriCup for Men'
                 price={1500}
                 details={[
                     'Basketball, Water and Training Supplies',
@@ -82,7 +88,7 @@ function Events() {
                 which={2}
             />
             <Event
-                heading='2022 FIBA AmeriCup for Men'
+                heading='FIBA 3x3 U23 World Cup (women)'
                 price={750}
                 details={[
                     'Basketball, Water and Training Supplies',
@@ -134,9 +140,8 @@ function Events() {
                     'Waivers of Liability',
                 ]}
                 date={{ from: '3rd Sep', to: '4th Sep' }}
-                                which={3}/>
-                                
-
+                which={3}
+            />
         </div>
     )
 }
