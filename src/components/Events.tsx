@@ -78,17 +78,17 @@ function Events() {
 
                 <div className='row'>
                    
-                        <div className='card'>
-                            <div className='card__side card__side--front'>
-                                <div className='card__picture card__picture--1'>
+                        <div className='event'>
+                            <div className='event__side event__side--front'>
+                                <div className='event__picture event__picture--1'>
                                     &nbsp;
                                 </div>
-                                <h4 className='card__heading'>
-                                    <span className='card__heading-span card__heading-span--1'>
+                                <h4 className='event__heading'>
+                                    <span className='event__heading-span event__heading-span--1'>
                                         The Sea Explorer
                                     </span>
                                 </h4>
-                                <div className='card__details'>
+                                <div className='event__details'>
                                     <ul>
                                         <li>3 day tours</li>
                                         <li>Up to 30 people</li>
@@ -98,11 +98,11 @@ function Events() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className='card__side card__side--back card__side--back-1'>
-                                <div className='card__cta'>
-                                    <div className='card__price-box'>
-                                        <p className='card__price-only'>Only</p>
-                                        <p className='card__price-value'>$297</p>
+                            <div className='event__side event__side--back event__side--back-1'>
+                                <div className='event__cta'>
+                                    <div className='event__price-box'>
+                                        <p className='event__price-only'>Only</p>
+                                        <p className='event__price-value'>$297</p>
                                     </div>
                                     <a href='#popup' className='btn btn--white'>
                                         Book now!
@@ -113,17 +113,17 @@ function Events() {
                   
 
                 
-                        <div className='card'>
-                            <div className='card__side card__side--front'>
-                                <div className='card__picture card__picture--2'>
+                        <div className='event'>
+                            <div className='event__side event__side--front'>
+                                <div className='event__picture event__picture--2'>
                                     &nbsp;
                                 </div>
-                                <h4 className='card__heading'>
-                                    <span className='card__heading-span card__heading-span--2'>
+                                <h4 className='event__heading'>
+                                    <span className='event__heading-span event__heading-span--2'>
                                         The Forest Hiker
                                     </span>
                                 </h4>
-                                <div className='card__details'>
+                                <div className='event__details'>
                                     <ul>
                                         <li>7 day tours</li>
                                         <li>Up to 40 people</li>
@@ -133,11 +133,11 @@ function Events() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className='card__side card__side--back card__side--back-2'>
-                                <div className='card__cta'>
-                                    <div className='card__price-box'>
-                                        <p className='card__price-only'>Only</p>
-                                        <p className='card__price-value'>$497</p>
+                            <div className='event__side event__side--back event__side--back-2'>
+                                <div className='event__cta'>
+                                    <div className='event__price-box'>
+                                        <p className='event__price-only'>Only</p>
+                                        <p className='event__price-value'>$497</p>
                                     </div>
                                     <a href='#popup' className='btn btn--white'>
                                         Book now!
@@ -146,17 +146,17 @@ function Events() {
                             </div>
                         </div>
                     
-                        <div className='card'>
-                            <div className='card__side card__side--front'>
-                                <div className='card__picture card__picture--3'>
+                        <div className='event'>
+                            <div className='event__side event__side--front'>
+                                <div className='event__picture event__picture--3'>
                                     &nbsp;
                                 </div>
-                                <h4 className='card__heading'>
-                                    <span className='card__heading-span card__heading-span--3'>
+                                <h4 className='event__heading'>
+                                    <span className='event__heading-span event__heading-span--3'>
                                         The Snow Adventurer
                                     </span>
                                 </h4>
-                                <div className='card__details'>
+                                <div className='event__details'>
                                     <ul>
                                         <li>5 day tours</li>
                                         <li>Up to 15 people</li>
@@ -166,11 +166,11 @@ function Events() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className='card__side card__side--back card__side--back-3'>
-                                <div className='card__cta'>
-                                    <div className='card__price-box'>
-                                        <p className='card__price-only'>Only</p>
-                                        <p className='card__price-value'>$897</p>
+                            <div className='event__side event__side--back event__side--back-3'>
+                                <div className='event__cta'>
+                                    <div className='event__price-box'>
+                                        <p className='event__price-only'>Only</p>
+                                        <p className='event__price-value'>$897</p>
                                     </div>
                                     <a href='#popup' className='btn btn--white'>
                                         Book now!
@@ -180,17 +180,17 @@ function Events() {
                         </div>
           
                    
-                        <div className='card'>
-                            <div className='card__side card__side--front'>
-                                <div className='card__picture card__picture--3'>
+                        <div className='event'>
+                            <div className='event__side event__side--front'>
+                                <div className='event__picture event__picture--3'>
                                     &nbsp;
                                 </div>
-                                <h4 className='card__heading'>
-                                    <span className='card__heading-span card__heading-span--3'>
+                                <h4 className='event__heading'>
+                                    <span className='event__heading-span event__heading-span--3'>
                                         The Snow Adventurer
                                     </span>
                                 </h4>
-                                <div className='card__details'>
+                                <div className='event__details'>
                                     <ul>
                                         <li>5 day tours</li>
                                         <li>Up to 15 people</li>
@@ -200,11 +200,11 @@ function Events() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className='card__side card__side--back card__side--back-3'>
-                                <div className='card__cta'>
-                                    <div className='card__price-box'>
-                                        <p className='card__price-only'>Only</p>
-                                        <p className='card__price-value'>$897</p>
+                            <div className='event__side event__side--back event__side--back-3'>
+                                <div className='event__cta'>
+                                    <div className='event__price-box'>
+                                        <p className='event__price-only'>Only</p>
+                                        <p className='event__price-value'>$897</p>
                                     </div>
                                     <a href='#popup' className='btn btn--white'>
                                         Book now!
@@ -214,17 +214,17 @@ function Events() {
                         </div>
                    
                 
-                        <div className='card'>
-                            <div className='card__side card__side--front'>
-                                <div className='card__picture card__picture--3'>
+                        <div className='event'>
+                            <div className='event__side event__side--front'>
+                                <div className='event__picture event__picture--3'>
                                     &nbsp;
                                 </div>
-                                <h4 className='card__heading'>
-                                    <span className='card__heading-span card__heading-span--3'>
+                                <h4 className='event__heading'>
+                                    <span className='event__heading-span event__heading-span--3'>
                                         The Snow Adventurer
                                     </span>
                                 </h4>
-                                <div className='card__details'>
+                                <div className='event__details'>
                                     <ul>
                                         <li>5 day tours</li>
                                         <li>Up to 15 people</li>
@@ -234,11 +234,11 @@ function Events() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className='card__side card__side--back card__side--back-3'>
-                                <div className='card__cta'>
-                                    <div className='card__price-box'>
-                                        <p className='card__price-only'>Only</p>
-                                        <p className='card__price-value'>$897</p>
+                            <div className='event__side event__side--back event__side--back-3'>
+                                <div className='event__cta'>
+                                    <div className='event__price-box'>
+                                        <p className='event__price-only'>Only</p>
+                                        <p className='event__price-value'>$897</p>
                                     </div>
                                     <a href='#popup' className='btn btn--white'>
                                         Book now!
@@ -247,17 +247,17 @@ function Events() {
                             </div>
                         </div>
                   
-                        <div className='card'>
-                            <div className='card__side card__side--front'>
-                                <div className='card__picture card__picture--3'>
+                        <div className='event'>
+                            <div className='event__side event__side--front'>
+                                <div className='event__picture event__picture--3'>
                                     &nbsp;
                                 </div>
-                                <h4 className='card__heading'>
-                                    <span className='card__heading-span card__heading-span--3'>
+                                <h4 className='event__heading'>
+                                    <span className='event__heading-span event__heading-span--3'>
                                         The Snow Adventurer
                                     </span>
                                 </h4>
-                                <div className='card__details'>
+                                <div className='event__details'>
                                     <ul>
                                         <li>5 day tours</li>
                                         <li>Up to 15 people</li>
@@ -267,11 +267,11 @@ function Events() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className='card__side card__side--back card__side--back-3'>
-                                <div className='card__cta'>
-                                    <div className='card__price-box'>
-                                        <p className='card__price-only'>Only</p>
-                                        <p className='card__price-value'>$897</p>
+                            <div className='event__side event__side--back event__side--back-3'>
+                                <div className='event__cta'>
+                                    <div className='event__price-box'>
+                                        <p className='event__price-only'>Only</p>
+                                        <p className='event__price-value'>$897</p>
                                     </div>
                                     <a href='#popup' className='btn btn--white'>
                                         Book now!
