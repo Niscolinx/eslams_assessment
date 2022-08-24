@@ -19,17 +19,14 @@ const Event = ({ heading, details, amount, date }: EventProps) => {
                     </span>
                 </h4>
                 <div className='event__details'>
-                    {details.length > 0 && details.map(item => (
-                        <ul>
-                            <li>{item}</li>
-                        </ul>
-                    ))}
+                    {details.length > 0 &&
+                        details.map((item) => (
+                            <ul>
+                                <li>{item}</li>
+                            </ul>
+                        ))}
                     <ul>
-                        <li>3 day tours</li>
-                        <li>Up to 30 people</li>
-                        <li>2 tour guides</li>
-                        <li>Sleep in cozy hotels</li>
-                        <li>Difficulty: easy</li>
+                      
                     </ul>
                 </div>
             </div>
@@ -51,7 +48,15 @@ const Event = ({ heading, details, amount, date }: EventProps) => {
 function Events() {
     return (
         <div className='events'>
-            <Event />
+            <Event
+                details={[
+                    'Sleep in cozy hotels',
+                    '3 day tours',
+                    'Difficulty: easy',
+                    'Up to 30 people',
+                    '2 tour guides',
+                ]}
+            />
         </div>
     )
 }
