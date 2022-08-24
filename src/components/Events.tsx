@@ -12,12 +12,14 @@ interface EventProps {
     }
 }
 
-const Event = ({ heading, details, price, date, which }: EventProps) => {
+const Event = ({ heading, details, price, date:{from, to}, which }: EventProps) => {
     return (
         <div className='event'>
             <div className='event__side event__side--front'>
                 <div className={`event__picture event__picture--${which}`}>
                     &nbsp;
+                    <span>{from}</span>
+                    <span>{to}</span>
                 </div>
                 <h4 className='event__heading'>
                     <span
