@@ -178,7 +178,7 @@ function Events() {
                                 </div>
                             </div>
                         </div>
-          ]
+          
                    
                         <div className='card'>
                             <div className='card__side card__side--front'>
