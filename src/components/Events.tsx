@@ -21,6 +21,7 @@ const Event = ({ heading, details, price, date:{from, to}, which }: EventProps) 
                     <span>
                         {from.split(' ')[0]} <sup>{from.split(' ')[1]}</sup>
                     </span>
+                    {to ? <span>&rarr;</span> : ''}
                     <span>
                         {to?.split(' ')[0]} <sup>{to?.split(' ')[1]}</sup>
                     </span>
