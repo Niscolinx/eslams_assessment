@@ -31,8 +31,8 @@ const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
                 </p>
                 <p className='event__details--amount'>${amount}</p>
                 <p className='event__details--date'>{date}</p>
-                <button className='event__button'>Register</button>
             </div>
+            <button className='event__button'>Register</button>
         </div>
     )
 }
@@ -64,21 +64,7 @@ function Events() {
                 date={new Date().toLocaleString()}
             />
             <Event
-                imgSrc='/img/event1.jpg'
-                title='Discover the best'
-                description='how are you doing'
-                amount={200}
-                date={new Date().toLocaleString()}
-            />
-            <Event
-                imgSrc='/img/event2.jpg'
-                title='Discover the best'
-                description='how are you doing'
-                amount={200}
-                date={new Date().toLocaleString()}
-            />
-            <Event
-                imgSrc='/img/event3.jpg'
+                imgSrc='/img/event4.png'
                 title='Discover the best'
                 description='how are you doing'
                 amount={200}

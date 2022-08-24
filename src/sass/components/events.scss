@@ -40,7 +40,7 @@
         position: relative;
         display: grid;
         border-radius: 1rem;
-        border: 1px solid black;
+      //  border: 1px solid black;
 
         //justify-items: center;
 
@@ -88,7 +88,7 @@
           
             text-align: center;
             padding: 3rem 0;
-            background: $color-gray;
+           // background: $color-gray;
             backdrop-filter: blur(50px);
             display: grid;
             gap: 1rem;
