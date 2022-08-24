@@ -28,9 +28,7 @@ const Event = ({ heading, details, price, date }: EventProps) => {
                                 <li>{item}</li>
                             </ul>
                         ))}
-                    <ul>
-                      
-                    </ul>
+                    <ul></ul>
                 </div>
             </div>
             <div className='event__side event__side--back event__side--back-1'>
@@ -83,7 +81,6 @@ function Events() {
                     'NCAA Certified Checklist',
                     'Waivers of Liability',
                 ]}
-                
             />
             <Event
                 heading='NBA All Stars'
@@ -106,9 +103,7 @@ function Events() {
                     'NCAA Certified Checklist',
                     'Waivers of Liability',
                 ]}
-                date={
-                    {from}
-                }
+                date={{ from: '10th Sep' }}
             />
             <Event
                 heading='Lakers Event'
