@@ -39,6 +39,7 @@
 
         &--front {
             background-color: $color-white;
+            position: relative;
         }
 
         &--back {
@@ -87,6 +88,13 @@
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
+
+        &--date{
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+        }
 
         &--1 {
             background-image: linear-gradient(

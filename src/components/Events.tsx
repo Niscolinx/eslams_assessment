@@ -23,8 +23,7 @@ const Event = ({
         <div className='event'>
             <div className='event__side event__side--front'>
                 <div className={`event__picture event__picture--${which}`}>
-                    <div className='flex'>
-                        &nbsp;
+                    <div className='event__picture--date'>
                         <span>
                             {from.split(' ')[0]} <sup>{from.split(' ')[1]}</sup>
                         </span>
