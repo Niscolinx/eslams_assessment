@@ -1,4 +1,4 @@
-.events{
+.events {
     margin: 3rem 0;
     display: grid;
     justify-content: center;
@@ -6,42 +6,54 @@
     row-gap: 10rem;
     overflow-y: scroll;
     overflow-x: hidden;
-   // background-color: blue;
+    // background-color: blue;
     height: 70vh;
 
-    // &::-webkit-scrollbar{
- 
-    // }
-
-    &::-webkit-scrollbar-thumb{
-        background-color: red;
-        color: red;
+    //* width */
+    &::-webkit-scrollbar {
+        width: 1px;
     }
 
-    .event{
+    /* Track */
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: $color-red;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #b30000;
+    }
+
+    .event {
         display: grid;
-       // justify-content: center;
+        // justify-content: center;
         justify-items: center;
         position: relative;
 
-        figure{
+        figure {
             position: relative;
             z-index: 10;
         }
 
-        &__img{
+        &__img {
             object-position: top;
-          
         }
 
-        &__details{
-           // position: absolute;
+        &__details {
+            // position: absolute;
             min-height: 15rem;
             min-width: 20rem;
             bottom: -8rem;
             z-index: 2;
-           // background: $color-red;
-           background: #ca494e5c;
+            // background: $color-red;
+            background: #ca494e5c;
             padding: 2rem 2rem;
             border-radius: 2rem;
             display: grid;
