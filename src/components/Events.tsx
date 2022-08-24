@@ -4,11 +4,11 @@ import Image from 'next/image'
 interface EventProps {
     heading: string
     details: string[]
-    amount: number
+    price: number
     date: string
 }
 
-const Event = ({ heading, details, amount, date }: EventProps) => {
+const Event = ({ heading, details, price, date }: EventProps) => {
     return (
         <div className='event'>
             <div className='event__side event__side--front'>
@@ -34,10 +34,10 @@ const Event = ({ heading, details, amount, date }: EventProps) => {
                 <div className='event__cta'>
                     <div className='event__price-box'>
                         <p className='event__price-only'>Only</p>
-                        <p className='event__price-value'>$297</p>
+                        <p className='event__price-value'>${price}</p>
                     </div>
                     <a href='#popup' className='btn btn--white'>
-                        Book now!
+                        Register now!
                     </a>
                 </div>
             </div>
