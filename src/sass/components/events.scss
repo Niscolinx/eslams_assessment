@@ -4,13 +4,13 @@
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     row-gap: 10rem;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
    // background-color: blue;
     height: 70vh;
 
     &::-webkit-scrollbar{
-        background: red;
-        color: red;
+        background-color: ;
     }
 
     .event{
