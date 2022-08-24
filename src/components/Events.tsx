@@ -59,6 +59,9 @@ function Events() {
                     'NCAA Certified Checklist',
                     'Waivers of Liability',
                 ]}
+                date={{
+                    from: '10th Sep',
+                }}
             />
             <Event
                 heading='NBA All Stars'
@@ -81,9 +84,10 @@ function Events() {
                     'NCAA Certified Checklist',
                     'Waivers of Liability',
                 ]}
+                date={{ from: '2nd Sep', to: '11th Sep' }}
             />
             <Event
-                heading='NBA All Stars'
+                heading='2022 USA Basketball Gold Camp (boys)'
                 price={1500}
                 details={[
                     'Basketball, Water and Training Supplies',
