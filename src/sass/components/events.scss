@@ -41,12 +41,17 @@
         display: grid;
         border-radius: 1rem;
         border: 1px solid black;
+
         //justify-items: center;
 
         &::before{
             content: '';
             position: absolute;
-            background-color: red;
+            background-color: rgba(60, 0, 255, 0.09);
+            height: 100%;
+            width: 100%;
+            backdrop-filter: blur(50px);
+            border-radius: 1rem;
         }
         
 

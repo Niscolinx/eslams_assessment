@@ -29,10 +29,10 @@ const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
                     {description} Lorem ipsum dolor sit amet consectetur
                     adipisicing elit..
                 </p>
-                <p className='event__details--amount'>{amount}</p>
+                <p className='event__details--amount'>${amount}</p>
                 <p className='event__details--date'>{date}</p>
+                <button className='event__button'>Register</button>
             </div>
-            <button className='event__button'>Register</button>
         </div>
     )
 }
