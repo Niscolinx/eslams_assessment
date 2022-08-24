@@ -92,6 +92,7 @@ function Events() {
                     'Waivers of Liability',
                 ]}
                 date={{ from: '2nd Sep', to: '11th Sep' }}
+                which={3}
             />
             <Event
                 heading='2022 USA Basketball Gold Camp (boys)'
@@ -107,6 +108,7 @@ function Events() {
                     from: '4th Sep',
                     to: '5th Sep',
                 }}
+                which={1}
             />
             <Event
                 heading='2022 USA Basketball Coach Academy'
@@ -119,6 +121,7 @@ function Events() {
                     'Waivers of Liability',
                 ]}
                 date={{ from: '10th Sep' }}
+                which={2}
             />
             <Event
                 heading='2022 USA Basketball Gold Camp (girls)'
@@ -131,7 +134,9 @@ function Events() {
                     'Waivers of Liability',
                 ]}
                 date={{ from: '3rd Sep', to: '4th Sep' }}
-            />
+                                which={3}/>
+                                
+
         </div>
     )
 }
