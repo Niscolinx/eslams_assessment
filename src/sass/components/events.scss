@@ -41,7 +41,9 @@
             // z-index: 10;
             // background-color: blue;
 
-            background: $linear-gradient-blue
+            background: $linear-gradient-blue;
+                   overflow: hidden;
+
         }
 
         &__img {
