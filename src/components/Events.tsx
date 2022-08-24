@@ -15,10 +15,15 @@ const Event = ({ heading, description, amount, date }: EventProps) => {
                 <div className='event__picture event__picture--1'>&nbsp;</div>
                 <h4 className='event__heading'>
                     <span className='event__heading-span event__heading-span--1'>
-                        The Sea Explorer
+                        {heading}
                     </span>
                 </h4>
                 <div className='event__details'>
+                    {details.length > 0 && details.map(item => (
+                        <ul>
+                            <li>{item}</li>
+                        </ul>
+                    ))}
                     <ul>
                         <li>3 day tours</li>
                         <li>Up to 30 people</li>
