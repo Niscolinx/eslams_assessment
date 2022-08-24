@@ -18,8 +18,12 @@ const Event = ({ heading, details, price, date:{from, to}, which }: EventProps) 
             <div className='event__side event__side--front'>
                 <div className={`event__picture event__picture--${which}`}>
                     &nbsp;
-                    <span><sub></sub>{</span>
-                    <span>{to}</span>
+                    <span>
+                        {from.split(' ')[0]} <sup>{from.split(' ')[1]}</sup>
+                    </span>
+                    <span>
+                        {to?.split(' ')[0]} <sup>{to?.split(' ')[1]}</sup>
+                    </span>
                 </div>
                 <h4 className='event__heading'>
                     <span
