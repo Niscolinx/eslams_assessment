@@ -12,285 +12,43 @@ interface EventProps {
 const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
     return (
         <div className='event'>
-            <div className='event__imgBox'>
-                <figure>
-                    <Image
-                        src={imgSrc}
-                        width='300px'
-                        height='250px'
-                        objectFit='cover'
-                        className='event__img'
-                    />
-                </figure>
+            <div className='event__side event__side--front'>
+                <div className='event__picture event__picture--1'>&nbsp;</div>
+                <h4 className='event__heading'>
+                    <span className='event__heading-span event__heading-span--1'>
+                        The Sea Explorer
+                    </span>
+                </h4>
+                <div className='event__details'>
+                    <ul>
+                        <li>3 day tours</li>
+                        <li>Up to 30 people</li>
+                        <li>2 tour guides</li>
+                        <li>Sleep in cozy hotels</li>
+                        <li>Difficulty: easy</li>
+                    </ul>
+                </div>
             </div>
-            <div className='event__details'>
-                <h3 className='event__details--title'>{title}</h3>
-                <p className='event__details--description'>
-                    {description} Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit..
-                </p>
-                <p className='event__details--amount'>${amount}</p>
-                <p className='event__details--date'>{date}</p>
+            <div className='event__side event__side--back event__side--back-1'>
+                <div className='event__cta'>
+                    <div className='event__price-box'>
+                        <p className='event__price-only'>Only</p>
+                        <p className='event__price-value'>$297</p>
+                    </div>
+                    <a href='#popup' className='btn btn--white'>
+                        Book now!
+                    </a>
+                </div>
             </div>
-            <button className='event__button'>Register</button>
         </div>
     )
 }
 
 function Events() {
     return (
-        <>
     <div className='events'>
-            {/* <>
-                <Event
-                    imgSrc='/img/event1.jpg'
-                    title='Discover the best'
-                    description='how are you doing'
-                    amount={200}
-                    date={new Date().toLocaleString()}
-                />
-                <Event
-                    imgSrc='/img/event2.jpg'
-                    title='Discover the best'
-                    description='how are you doing'
-                    amount={200}
-                    date={new Date().toLocaleString()}
-                />
-                <Event
-                    imgSrc='/img/event3.jpg'
-                    title='Discover the best'
-                    description='how are you doing'
-                    amount={200}
-                    date={new Date().toLocaleString()}
-                />
-                <Event
-                    imgSrc='/img/event4.png'
-                    title='Discover the best'
-                    description='how are you doing'
-                    amount={200}
-                    date={new Date().toLocaleString()}
-                />
-            </> */}
-            <section className='section-tours' id='section-tours'>
-                <div className='u-center-text u-margin-bottom-big'>
-                    <h2 className='heading-secondary'>Most popular tours</h2>
-                </div>
-
-                <div className='row'>
-                   
-                        <div className='event'>
-                            <div className='event__side event__side--front'>
-                                <div className='event__picture event__picture--1'>
-                                    &nbsp;
-                                </div>
-                                <h4 className='event__heading'>
-                                    <span className='event__heading-span event__heading-span--1'>
-                                        The Sea Explorer
-                                    </span>
-                                </h4>
-                                <div className='event__details'>
-                                    <ul>
-                                        <li>3 day tours</li>
-                                        <li>Up to 30 people</li>
-                                        <li>2 tour guides</li>
-                                        <li>Sleep in cozy hotels</li>
-                                        <li>Difficulty: easy</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className='event__side event__side--back event__side--back-1'>
-                                <div className='event__cta'>
-                                    <div className='event__price-box'>
-                                        <p className='event__price-only'>Only</p>
-                                        <p className='event__price-value'>$297</p>
-                                    </div>
-                                    <a href='#popup' className='btn btn--white'>
-                                        Book now!
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                  
-
-                
-                        <div className='event'>
-                            <div className='event__side event__side--front'>
-                                <div className='event__picture event__picture--2'>
-                                    &nbsp;
-                                </div>
-                                <h4 className='event__heading'>
-                                    <span className='event__heading-span event__heading-span--2'>
-                                        The Forest Hiker
-                                    </span>
-                                </h4>
-                                <div className='event__details'>
-                                    <ul>
-                                        <li>7 day tours</li>
-                                        <li>Up to 40 people</li>
-                                        <li>6 tour guides</li>
-                                        <li>Sleep in provided tents</li>
-                                        <li>Difficulty: medium</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className='event__side event__side--back event__side--back-2'>
-                                <div className='event__cta'>
-                                    <div className='event__price-box'>
-                                        <p className='event__price-only'>Only</p>
-                                        <p className='event__price-value'>$497</p>
-                                    </div>
-                                    <a href='#popup' className='btn btn--white'>
-                                        Book now!
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div className='event'>
-                            <div className='event__side event__side--front'>
-                                <div className='event__picture event__picture--3'>
-                                    &nbsp;
-                                </div>
-                                <h4 className='event__heading'>
-                                    <span className='event__heading-span event__heading-span--3'>
-                                        The Snow Adventurer
-                                    </span>
-                                </h4>
-                                <div className='event__details'>
-                                    <ul>
-                                        <li>5 day tours</li>
-                                        <li>Up to 15 people</li>
-                                        <li>3 tour guides</li>
-                                        <li>Sleep in provided tents</li>
-                                        <li>Difficulty: hard</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className='event__side event__side--back event__side--back-3'>
-                                <div className='event__cta'>
-                                    <div className='event__price-box'>
-                                        <p className='event__price-only'>Only</p>
-                                        <p className='event__price-value'>$897</p>
-                                    </div>
-                                    <a href='#popup' className='btn btn--white'>
-                                        Book now!
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-          
-                   
-                        <div className='event'>
-                            <div className='event__side event__side--front'>
-                                <div className='event__picture event__picture--3'>
-                                    &nbsp;
-                                </div>
-                                <h4 className='event__heading'>
-                                    <span className='event__heading-span event__heading-span--3'>
-                                        The Snow Adventurer
-                                    </span>
-                                </h4>
-                                <div className='event__details'>
-                                    <ul>
-                                        <li>5 day tours</li>
-                                        <li>Up to 15 people</li>
-                                        <li>3 tour guides</li>
-                                        <li>Sleep in provided tents</li>
-                                        <li>Difficulty: hard</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className='event__side event__side--back event__side--back-3'>
-                                <div className='event__cta'>
-                                    <div className='event__price-box'>
-                                        <p className='event__price-only'>Only</p>
-                                        <p className='event__price-value'>$897</p>
-                                    </div>
-                                    <a href='#popup' className='btn btn--white'>
-                                        Book now!
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                   
-                
-                        <div className='event'>
-                            <div className='event__side event__side--front'>
-                                <div className='event__picture event__picture--3'>
-                                    &nbsp;
-                                </div>
-                                <h4 className='event__heading'>
-                                    <span className='event__heading-span event__heading-span--3'>
-                                        The Snow Adventurer
-                                    </span>
-                                </h4>
-                                <div className='event__details'>
-                                    <ul>
-                                        <li>5 day tours</li>
-                                        <li>Up to 15 people</li>
-                                        <li>3 tour guides</li>
-                                        <li>Sleep in provided tents</li>
-                                        <li>Difficulty: hard</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className='event__side event__side--back event__side--back-3'>
-                                <div className='event__cta'>
-                                    <div className='event__price-box'>
-                                        <p className='event__price-only'>Only</p>
-                                        <p className='event__price-value'>$897</p>
-                                    </div>
-                                    <a href='#popup' className='btn btn--white'>
-                                        Book now!
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                  
-                        <div className='event'>
-                            <div className='event__side event__side--front'>
-                                <div className='event__picture event__picture--3'>
-                                    &nbsp;
-                                </div>
-                                <h4 className='event__heading'>
-                                    <span className='event__heading-span event__heading-span--3'>
-                                        The Snow Adventurer
-                                    </span>
-                                </h4>
-                                <div className='event__details'>
-                                    <ul>
-                                        <li>5 day tours</li>
-                                        <li>Up to 15 people</li>
-                                        <li>3 tour guides</li>
-                                        <li>Sleep in provided tents</li>
-                                        <li>Difficulty: hard</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className='event__side event__side--back event__side--back-3'>
-                                <div className='event__cta'>
-                                    <div className='event__price-box'>
-                                        <p className='event__price-only'>Only</p>
-                                        <p className='event__price-value'>$897</p>
-                                    </div>
-                                    <a href='#popup' className='btn btn--white'>
-                                        Book now!
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                <div className='u-center-text u-margin-top-huge'>
-                    <a href='#' className='btn btn--green'>
-                        Discover all tours
-                    </a>
-                </div>
-            </section>
+           <Event/>
             </div>
-    {/* </div> */}
-    </>
     )
 }
 
