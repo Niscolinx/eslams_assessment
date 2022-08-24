@@ -12,7 +12,7 @@ interface EventProps {
 const Event = ({ imgSrc, title, description, amount, date }: EventProps) => {
     return (
         <div className='event'>
-            <div className="flex">
+            <div className="event__imgBox">
 
             <figure>
                 <Image
