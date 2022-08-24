@@ -75,7 +75,7 @@
         }
 
         &__button{
-            background-color: $color-cream;
+            background-color: $color-gray;
             text-align: center;
             border: none;
             outline: none;
@@ -83,6 +83,10 @@
             border-radius: 1rem;
             justify-self: center;
             margin: 1rem 0;
+            border-radius: 61px;
+background: #e0e0e0;
+box-shadow: 10px 10px 60px #a6a6a65c,
+             -10px -10px 60px #ffffff39;
         }
     }
 }
