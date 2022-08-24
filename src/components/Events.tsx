@@ -5,7 +5,7 @@ interface EventProps {
     heading: string
     details: string[]
     price: number
-    date: string
+    date?: string
 }
 
 const Event = ({ heading, details, price, date }: EventProps) => {
@@ -49,6 +49,8 @@ function Events() {
     return (
         <div className='events'>
             <Event
+                heading='Unprecented Event'
+                price={340}
                 details={[
                     'Sleep in cozy hotels',
                     '3 day tours',
