@@ -5,19 +5,20 @@ interface EventProps {
     heading: string
     details: string[]
     price: number
+    which: number
     date: {
         from: string
         to?: string
     }
 }
 
-const Event = ({ heading, details, price, date }: EventProps) => {
+const Event = ({ heading, details, price, date, which }: EventProps) => {
     return (
         <div className='event'>
             <div className='event__side event__side--front'>
-                <div className='event__picture event__picture--1'>&nbsp;</div>
+                <div className={`event__picture event__picture--${which}`}>&nbsp;</div>
                 <h4 className='event__heading'>
-                    <span className='event__heading-span event__heading-span--1'>
+                    <span className={`event__heading-span event__heading-span--${which}`}>
                         {heading}
                     </span>
                 </h4>
@@ -31,7 +32,7 @@ const Event = ({ heading, details, price, date }: EventProps) => {
                     <ul></ul>
                 </div>
             </div>
-            <div className='event__side event__side--back event__side--back-1'>
+            <div className={`event__side event__side--back event__side--back-${which}`}>
                 <div className='event__cta'>
                     <div className='event__price-box'>
                         <p className='event__price-only'>Only</p>
@@ -62,6 +63,7 @@ function Events() {
                 date={{
                     from: '10th Sep',
                 }}
+                which={1}
             />
             <Event
                 heading='FIBA 3x3 U23 World Cup (women)'
@@ -77,6 +79,7 @@ function Events() {
                     from: '5th Oct',
                     to: '9th Oct',
                 }}
+                which={2}
             />
             <Event
                 heading='2022 FIBA AmeriCup for Men'
