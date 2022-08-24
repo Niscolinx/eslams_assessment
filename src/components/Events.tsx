@@ -64,7 +64,7 @@ function Events() {
                 }}
             />
             <Event
-                heading='NBA All Stars'
+                heading='FIBA 3x3 U23 World Cup (women)'
                 price={1500}
                 details={[
                     'Basketball, Water and Training Supplies',
@@ -73,6 +73,10 @@ function Events() {
                     'NCAA Certified Checklist',
                     'Waivers of Liability',
                 ]}
+                date={{
+                    from: '5th Oct',
+                    to: '9th Oct'
+                }}
             />
             <Event
                 heading='2022 FIBA AmeriCup for Men'
@@ -96,6 +100,10 @@ function Events() {
                     'NCAA Certified Checklist',
                     'Waivers of Liability',
                 ]}
+                date={{
+                    from: '4th Sep',
+                    to: '5th Sep',
+                }}
             />
             <Event
                 heading='2022 USA Basketball Coach Academy'
