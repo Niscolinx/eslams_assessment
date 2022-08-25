@@ -177,6 +177,10 @@
                     visibility: hidden;
                 }
 
+                &:active{
+                    background-color: red;
+                }
+
                 &--active {
                     background: $color-gray;
                     border-radius: 1rem 0 0 1rem;
