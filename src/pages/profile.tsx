@@ -13,7 +13,7 @@ function profile() {
                                 width='100%'
                                 height='100%'
                                 className='picture__cover--img'
-                              //  layout=''
+                               // layout='intrinsic'
                             />
                         </div>
                         <div className='picture__avatar'>personal picture</div>
