@@ -9,6 +9,7 @@ import { FiSearch } from 'react-icons/fi'
 import { VscSettings } from 'react-icons/vsc'
 
 import Events from '../components/Events'
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
 const SearchBox = () => {
     return (
@@ -70,11 +71,25 @@ const Index = () => {
 
                     <main className='main'>
                         <div className='banner'>
-                            <div className="banner__text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, modi deserunt. Accusantium doloremque corrupti saepe fuga, exercitationem natus labore possimus alias iusto laudantium deserunt ducimus veritatis sint incidunt a maiores.
+                            <div className='banner__text'>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Natus, modi deserunt.
+                                Accusantium doloremque corrupti saepe fuga,
+                                exercitationem natus labore possimus alias iusto
+                                laudantium deserunt ducimus veritatis sint
+                                incidunt a maiores.
+                                <button className='banner__text--btn'>
+                                    Access Our Community
+                                    <span>
+                                        <HiOutlineArrowNarrowRight />
+                                    </span>
+                                </button>
                             </div>
-                            <Image src='/banner.png' width='300px' height='300px'/> 
-                            
+                            <Image
+                                src='/banner.png'
+                                width='300px'
+                                height='300px'
+                            />
                         </div>
                         <Events />
                     </main>
