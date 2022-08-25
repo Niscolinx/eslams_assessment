@@ -9,10 +9,10 @@ function profile() {
     //     Element | undefined
     // >()
 
-    const renderToDisplay = function(route:any){
+    const renderToDisplay = (route:any){
 
         return <div>General</div>
-    }()
+    }
 
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
