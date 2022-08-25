@@ -52,6 +52,7 @@ function profile() {
                             <li className='list__item'>&nbsp;</li>
                             <li className='list__item'>General</li>
                             <li className='list__item'>Events</li>
+                            <li className='list__item'>&nbsp;</li>
                         </ul>
 
                         <div className='profile__secondary--details'>
