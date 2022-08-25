@@ -8,16 +8,14 @@ const toRender = () => {
     let fg = 'list__item--active'
 }
 
-const handleNav = (route: React.MouseEvent<HTMLLabelElement>) => {
-    route.currentTarget.classList.toggle('list__item--active')
-    const el = route.currentTarget.textContent
-
-    console.log(route.currentTarget)
+const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
+  
+    const el = route.currentTarget.value
 
 }
 
 function profile() {
-    const [renderToDisplay, setRenderToDisplay] = useState()
+    const [renderToDisplay, setRenderToDisplay] = useState<HTMLElement | null>()
 
     return (
         <div className='profile'>
