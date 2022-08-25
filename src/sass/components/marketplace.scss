@@ -81,12 +81,13 @@
                     display: flex;
                     align-items: center;
                     gap: 4px;
-                    background: $color-gray;
+                    background: rgba($color-gray, .5);
                     color: black;
                     padding: .5rem 2rem;
                     padding-right: 1rem;
                     border-radius: 10px;
                     transition: all .5s ease;
+                    background: blur(10px);
 
                     &:hover {
                         background: $color-red;
