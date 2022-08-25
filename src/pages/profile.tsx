@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { BsFillPencilFill } from 'react-icons/bs'
+import { BsFillPencilFill, BsFillFilePersonFill } from 'react-icons/bs'
 import {IoMdSchool} from 'react-icons/io'
+import {MdFamilyRestroom} from 'react-icons/md'
 
 const routes = ['General', 'Events']
 
@@ -10,7 +11,10 @@ const GeneralDetails = () => {
         <div className='generalDetails'>
             <div className='generalDetails__content'>
                 <div className='content-1'>
-                    <h3 className='content-1__heading'>Personal Details</h3>
+                    <h3 className='content-1__heading'>
+                        <BsFillFilePersonFill className='content-1__heading--icon' />
+                        Personal Details
+                    </h3>
                     <div className='content-1__box'>
                         <p className='content-1__name'>
                             <span>Name:</span> Igboanugwo Collins
@@ -28,6 +32,7 @@ const GeneralDetails = () => {
                 </div>
                 <div className='content-1'>
                     <h3 className='content-1__heading'>
+                        <MdFamilyRestroom className='content-1__heading--icon' />
                         Guardian/Parent Details
                     </h3>
                     <div className='content-1__box'>
@@ -47,8 +52,9 @@ const GeneralDetails = () => {
                 </div>
                 <div className='content-1'>
                     <h3 className='content-1__heading'>
-                        <IoMdSchool className='text-3xl'/>
-                        Education </h3>
+                        <IoMdSchool className='content-1__heading--icon' />
+                        Education{' '}
+                    </h3>
                     <div className='content-1__box'>
                         <p className='content-1__name'>
                             <span>Name:</span> Igboanugwo Collins
@@ -59,7 +65,6 @@ const GeneralDetails = () => {
                         <p className='content-1__name'>
                             <span>Name:</span> Igboanugwo Collins
                         </p>
-                        
                     </div>
                 </div>
             </div>

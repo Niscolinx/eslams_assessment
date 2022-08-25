@@ -216,6 +216,14 @@
                     align-items: center;
                     justify-content: center;
                     gap: 1rem;
+
+                    &--icon{
+                        font-size: 2rem;
+                        background: linear-gradient(to right, $color-blue, $color-red);
+                        color: white;
+                        border-radius: 50%;
+                        padding: 0.3rem;
+                    }
                 }
 
                 &__box{
