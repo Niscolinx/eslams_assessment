@@ -89,7 +89,8 @@
                         object-position: center;
                         object-fit: cover;
                         border-radius: 50%;
-                      
+                      outline: 2px solid white;
+                      outline-offset: 4px;
                     }
 
 
@@ -100,6 +101,8 @@
         }
 
         &--details {
+
+            padding: 1rem 2rem;
         }
     }
 }
