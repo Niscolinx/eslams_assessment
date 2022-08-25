@@ -61,6 +61,14 @@
                     width: 6rem;
                     height: 6rem;
                     margin: 1rem;
+
+                     @include respond(smaller-phone){
+                        background-color: red;
+                        margin: 0;
+                        width: 12rem;
+                        height: 12rem;
+                     
+                    }
                 
 
                     &--img {
@@ -72,12 +80,7 @@
                     }
 
 
-                    @include respond(smaller-phone){
-
-                        margin: 0;
-                        width: 12rem;
-                        height: 12rem;
-                    }
+                   
                 }
             }
             margin-bottom: 4rem;
