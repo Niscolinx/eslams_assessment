@@ -4,18 +4,25 @@ import { BsFillPencilFill } from 'react-icons/bs'
 
 const LIST = ['General', 'Events']
 
-const toRender = () => {
-    let fg = 'list__item--active'
-}
-
-const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
-  
-    const el = route.currentTarget.value
-
-}
-
 function profile() {
-    const [renderToDisplay, setRenderToDisplay] = useState<HTMLElement | null>()
+    const [renderToDisplay, setRenderToDisplay] = useState<
+        Element | undefined
+    >()
+
+    const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
+        const el = route.currentTarget.value
+
+        switch (el) {
+            case 'General':
+                ;<div>General</div>
+
+            case 'Events':
+                ;<div>Hello world</div>
+
+            default:
+                ;<div>General</div>
+        }
+    }
 
     return (
         <div className='profile'>
@@ -75,7 +82,7 @@ function profile() {
                                         value={item}
                                         name='list'
                                         id={item}
-                                        onChange={(item) => handleNav(item)}
+                                        onChange={handleNav}
                                     />
                                     <label
                                         htmlFor={item}
