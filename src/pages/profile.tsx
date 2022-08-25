@@ -2,6 +2,16 @@ import React from 'react'
 import Image from 'next/image'
 import { BsFillPencilFill } from 'react-icons/bs'
 
+
+const LIST = ['General', 'Events']
+
+const toRender = () => {
+
+
+
+}
+
+
 function profile() {
     return (
         <div className='profile'>
@@ -50,8 +60,16 @@ function profile() {
                     <div className='profile__secondary'>
                         <ul className='profile__secondary--list'>
                             <li className='list__item'>&nbsp;</li>
-                            <li className='list__item list__item--active'>General</li>
-                            <li className='list__item'>Events</li>
+
+                            {LIST.map((item) => (
+                                <li
+                                    key={item}
+                                    className='list__item list__item--active'
+                                >
+                                    {item}
+                                </li>
+                            ))}
+                      
                             <li className='list__item'>&nbsp;</li>
                         </ul>
 
