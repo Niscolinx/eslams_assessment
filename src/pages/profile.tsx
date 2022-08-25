@@ -15,6 +15,10 @@ const GeneralDetails = () => {
                 <h3 className="content-1__heading">
                     Personal Details
                 </h3>
+                <p>Igboanugwo Collins</p>
+                <p></p>
+                <p></p>
+                <p></p>
             </div>
 
         </div>
