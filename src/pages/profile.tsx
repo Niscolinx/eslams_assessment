@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 function profile() {
     return (
@@ -6,7 +7,9 @@ function profile() {
             <div className='profile__box'>
                 <div className='profile__primary'>
                     <div className='profile__primary--picture'>
-                        <div className='picture__cover'>cover picture</div>
+                        <div className='picture__cover'>
+                          <Image/>
+                        </div>
                         <div className='picture__avatar'>personal picture</div>
                     </div>
 
