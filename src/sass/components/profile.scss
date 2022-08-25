@@ -137,15 +137,12 @@
                     font-weight: bold;
                 }
 
-                &__email {
+                &__email, &__joined {
                     font-size: 0.8rem;
                     font-weight: 300;
                 }
 
-                &__joined {
-                    font-size: 0.8rem;
-                    font-weight: 300;
-                }
+               
             }
         }
     }
