@@ -21,8 +21,8 @@ function profile() {
                             <img
                                 src='/img/avatar.jpeg
                                 '
-                                width='100%'
-                                height='100%'
+                                width='100px'
+                                height='100px'
                                 className='picture__avatar--img'
                                 alt='cover'
                             />
