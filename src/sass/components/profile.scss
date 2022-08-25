@@ -112,14 +112,18 @@
             .edit__btn {
                 display: flex;
                 justify-self: flex-end;
-
-               
             }
 
-            &:hover{
-            background: $linear-gradient-red;
-            cursor: pointer;
+            &:hover {
+                background: $linear-gradient-red;
+                cursor: pointer;
+            }
         }
+
+        &--edit:hover {
+            background-color: red;
         }
     }
 }
+
+
