@@ -109,18 +109,18 @@
             }
 
             &--edit {
-              //  display: flex;
-               // align-items: center;
+               display: flex;
+               align-items: center;
                 width: max-content;
                 justify-content: flex-end;
                 background: $linear-gradient-blue;
                 margin-left: auto;
-                margin-top: 0.5rem;
-                padding: 0 1rem;
+                padding: .5rem 1rem;
+                gap: .5rem;
                 border-radius: 0.5rem 0;
                 justify-self: center;
                 align-self: center;
-                //align-content: center;
+                align-content: center;
 
                 // .edit__btn {
                 //     display: flex;
