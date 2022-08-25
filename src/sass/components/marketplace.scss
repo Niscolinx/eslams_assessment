@@ -60,7 +60,7 @@
                 width: 200px;
                 height: 80%;
                 display: grid;
-               
+               transform: translateY(10%);
                 z-index: 3;
                 margin: auto 0;
             }
@@ -134,6 +134,14 @@
                         animation: moveInRight 3s infinite;
                         margin-left: 1rem;
                     }
+                }
+            }
+
+            &__svg{
+                display: flex;
+
+                @include respond(smaller-phone){
+                    display: none !important;
                 }
             }
         }

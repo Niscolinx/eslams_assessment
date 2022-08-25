@@ -87,11 +87,17 @@ const Index = () => {
                                         <HiOutlineArrowNarrowRight className='banner__details--btn-icon' />
                                     </button>
                                 </div>
+                                <div className="banner__svg">
+
                                 <Image
-                                    src='/banner.png'
-                                    width='200px'
+                                    src='/banner.svg'
+                                    width='500px'
                                     height='200px'
-                                />
+                                    objectFit='cover'
+                                    objectPosition='top'
+                                
+                                    />
+                                    </div>
                             </div>
                         </div>
                         <Events />
