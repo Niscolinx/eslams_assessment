@@ -9,10 +9,7 @@
         // outline: 1px solid black;
         // outline-offset: 1rem;
 
-        &:hover {
-            transform: scale(1.1);
-            box-shadow: 10px 10px 20px #bdbdbd, -10px -10px 20px #ffffff;
-        }
+       
 
         &--text {
             display: flex;
@@ -27,6 +24,12 @@
                 border-radius: 3px;
                 transition: all 0.5s ease-in;
                 font-weight: 700;
+                border: 1px solid black;
+
+                 &:hover {
+            transform: scale(1.1);
+            box-shadow: 10px 10px 20px #bdbdbd, -10px -10px 20px #ffffff;
+        }
             }
             //grid-template-columns: 3rem 1fr 3rem;
 
