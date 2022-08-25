@@ -14,13 +14,19 @@ function profile() {
                                 height='100%'
                                 className='picture__cover--img'
                                 alt='cover'
-                               // layout='intrinsic'
+                                // layout='intrinsic'
                             />
                         </div>
                         <div className='picture__avatar'>
-                                <img src="/img/avatar.jpeg
-                                " alt="" />
-                             </div>
+                            <img
+                                src='/img/avatar.jpeg
+                                '
+                                width='100%'
+                                height='100%'
+                                className='picture__avatar--img'
+                                alt='cover'
+                            />
+                        </div>
                     </div>
 
                     <div className='profile__primary--details'>Form</div>
