@@ -55,9 +55,8 @@ function profile() {
                                 General
                             </li>
                             <li className='list__item'>
-                                General
+                                Events
                             </li>
-                            
                         </ul>
 
                         <div className="profile__secondary--details">
