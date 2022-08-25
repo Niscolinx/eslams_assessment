@@ -100,15 +100,17 @@
 
        &--edit{
         display: flex;
+        align-items: center;
         width: max-content;
         justify-content: end;
         background-color: red;
         margin-left: auto;
+        gap: .5rem;
+        margin-top: .5rem;
        
         .edit__btn{
             display: flex;
             justify-self: end;
-            background-color: blue;
         }
        }
     }
