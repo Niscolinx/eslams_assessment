@@ -152,10 +152,11 @@
     .profile__secondary{
         width: 80%;
         justify-self: center;
-        background: white;
+        background: blue;
+        
 
         &--list{
-            background: $color-gray;
+            //background: $color-gray;
             .list__item{
 
             }

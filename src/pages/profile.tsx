@@ -55,6 +55,10 @@ function profile() {
                                 Events
                             </li>
                         </ul>
+
+                        <div className="profile__secondary--details">
+                            
+                        </div>
                     </div>
 
                     
