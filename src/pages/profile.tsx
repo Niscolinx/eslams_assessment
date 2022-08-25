@@ -13,7 +13,7 @@ let fg = 'list__item--active'
 
 const handleNav = (route: React.MouseEvent<HTMLLIElement>) => {
 
-    const el = route.currentTarget.value
+    const el = route.currentTarget
 
     console.log({el})
 
