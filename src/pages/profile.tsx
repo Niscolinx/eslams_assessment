@@ -45,7 +45,17 @@ function profile() {
                         </div>
                     </div>
 
-                    <div className='profile__secondary '>Form</div>
+                    <div className='profile__secondary '>Form
+
+                        <ul className='profile__secondary--list'>
+                            <li className='list__item'>
+                                General
+                            </li>
+                            <li className='list__Item'>
+                                Events
+                            </li>
+                        </ul>
+                    </div>
 
                     <div className='profile__tertiary'>The Events</div>
                 </div>
