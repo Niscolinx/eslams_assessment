@@ -164,10 +164,11 @@
 
             .list__item{
                 padding: .5rem 2rem;
-
-                &:not(:last-child){
-                    background: $color-gray;
-                }
+                background-color: red;
+                
+                // &:not(:last-child){
+                //     background: $color-gray;
+                // }
             }
         }
 
