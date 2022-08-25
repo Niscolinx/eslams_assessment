@@ -44,9 +44,12 @@
                     width: 42rem;
                     height: 10rem;
                     background-color: red;
+                    position: relative;
 
                     &--img{
-                        
+                        position: absolute;
+                        top: 0;
+                        left: 0;
                     }
                 }
 
