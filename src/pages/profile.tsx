@@ -28,6 +28,9 @@ function profile() {
                             />
                         </div>
                     </div>
+                    <div className="profile__settings">
+                        Edit Profile
+                    </div>
                 </div>
 
                 <div className='profile__secondary'>Form</div>
