@@ -38,36 +38,32 @@ function profile() {
                             <h3 className='details__name'>
                                 Igboanugwo Collins
                             </h3>
-                            <p className='details__email'>Munisco12@gmail.com</p>
-                            <p className="details__joined">
+                            <p className='details__email'>
+                                Munisco12@gmail.com
+                            </p>
+                            <p className='details__joined'>
                                 Joined February 2022
                             </p>
                         </div>
                     </div>
 
                     <div className='profile__secondary'>
-
                         <ul className='profile__secondary--list'>
-                            <li className='list__item'>
-                                General
-                            </li>
-                            <li className='list__item'>
-                                General
-                            </li>
-                            <li className='list__item'>
-                                Events
-                            </li>
+                            <li className='list__item'>&nbsp;</li>
+                            <li className='list__item'>General</li>
+                            <li className='list__item'>Events</li>
                         </ul>
 
-                        <div className="profile__secondary--details">
-                            <div className="details__box">
-
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia tempora architecto aut, odit facere minus dolores ullam error ipsa, unde magnam quo libero nam laudantium totam voluptatem velit! Saepe, hic?
+                        <div className='profile__secondary--details'>
+                            <div className='details__box'>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Officia tempora architecto
+                                aut, odit facere minus dolores ullam error ipsa,
+                                unde magnam quo libero nam laudantium totam
+                                voluptatem velit! Saepe, hic?
                             </div>
                         </div>
                     </div>
-
-                    
                 </div>
             </div>
         </div>
