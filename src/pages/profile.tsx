@@ -19,16 +19,17 @@ function profile() {
     }
 
     function getDisplay(el:string) {
-        switch (el) {
-            case 'General':
-                return <div>General</div>
+        // switch (el) {
+        //     case 'General':
+        //         return <div>General</div>
 
-            case 'Events':
-                return <div>Events</div>
+        //     case 'Events':
+        //         return <div>Events</div>
 
-            default:
-                return <div>General</div>
-        }
+        //     default:
+        //         return <div>General</div>
+        // }
+        return <div>hello</div>
     }
 
 
@@ -106,7 +107,9 @@ function profile() {
                         </ul>
 
                         <div className='profile__secondary--details'>
-                            <div className='details__box'></div>
+                            <div className='details__box'>
+                                {getDisplay}
+                            </div>
                         </div>
                     </div>
                 </div>
