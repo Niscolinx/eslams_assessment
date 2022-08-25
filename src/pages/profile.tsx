@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { BsFillPencilFill } from 'react-icons/bs'
 
-const routes = ['General', 'RegisteredEvents']
+const routes = ['General', 'Events']
 
 
 const GeneralDetails = () => {
@@ -14,8 +14,7 @@ const GeneralDetails = () => {
 
 const RegisteredEvents = () => {
     return <div className='profile__RegisteredEvents'>
-        Events
-
+        Registered Events
     </div>
 }
 
@@ -36,7 +35,7 @@ function profile() {
              case 'General':
                  return routeToDisplay(<GeneralDetails/>)
 
-             case 'RegisteredEvents':
+             case 'Events':
                  return routeToDisplay(<RegisteredEvents/>)
 
              default:
