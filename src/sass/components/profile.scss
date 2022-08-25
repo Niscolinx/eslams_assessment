@@ -36,8 +36,8 @@
         width: 80%;
         height: 100%;
         margin-top: 3rem;
-        
-        @include respond(smaller-phone){
+
+        @include respond(smaller-phone) {
             width: 100%;
             margin: 0;
         }
@@ -52,8 +52,8 @@
                     width: 100%;
                     height: 15rem;
 
-                    @include respond(phone){
-                       // background-color: blue;
+                    @include respond(phone) {
+                        // background-color: blue;
                     }
 
                     &--img {
@@ -75,13 +75,12 @@
                     height: 7rem;
                     margin: 1rem;
 
-                     @include respond(smaller-phone){
+                    @include respond(smaller-phone) {
                         margin: 0;
                         width: 12rem;
                         height: 12rem;
                         justify-self: center;
                     }
-                
 
                     &--img {
                         width: 100%;
@@ -89,19 +88,15 @@
                         object-position: center;
                         object-fit: cover;
                         border-radius: 50%;
-                      outline: 2px solid $color-gray;
-                     outline-offset: 2px;
+                        outline: 2px solid $color-gray;
+                        outline-offset: 2px;
                     }
-
-
-                   
                 }
             }
             margin-bottom: 4rem;
         }
 
         &--details {
-
             padding: 1rem 2rem;
         }
     }
