@@ -117,7 +117,7 @@ function Footer() {
             </div>
             <div className='footer__copyright'>
                 <p>
-                    Copyright 2021 @ Peddle Technologies. All Rights Reserved.
+                    Copyright 2022 @ eSlams. All Rights Reserved.
                 </p>
             </div>
         </footer>
