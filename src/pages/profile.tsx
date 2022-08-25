@@ -5,7 +5,7 @@ import { BsFillPencilFill } from 'react-icons/bs'
 const LIST = ['General', 'Events']
 
 function profile() {
-    //const [render, renderToDisplay] = useState()
+    const [route, routeToDisplay] = useState(<div>How are you</div>)
 
     // const renderToDisplay = (route: any) => {
     //     console.log({route})
@@ -15,21 +15,21 @@ function profile() {
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
 
-        getDisplay(el)
+        console.log(el)
+
+         switch (el) {
+             case 'General':
+                 routeToDisplay(<div>General</div>)
+
+             case 'Events':
+                 routeToDisplay(<div>Events</div>)
+
+             default:
+                 routeToDisplay(<div>General</div>)
+         }
     }
 
-    const getDisplay = (el: string) => {
-        switch (el) {
-            case 'General':
-                return <div>General</div>
-
-            case 'Events':
-                return <div>Events</div>
-
-            default:
-                return <div>General</div>
-        }
-    }
+    
 
     return (
         <div className='profile'>
@@ -105,7 +105,7 @@ function profile() {
 
                         <div className='profile__secondary--details'>
                             <div className='details__box'>
-                                {getDisplay('General')}
+                                {route}
                             </div>
                         </div>
                     </div>
