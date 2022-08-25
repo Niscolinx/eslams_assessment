@@ -61,9 +61,11 @@
 
 
             &__details {
+                display: grid;
+                gap: 1rem;
 
                 &--heading{
-                    
+
                 }
                 
                 &--text{
@@ -71,7 +73,8 @@
                 }
 
                 &--btn {
-
+                    display: flex;
+                    justify-self: center;
                     font-size: 1rem;
                     cursor: pointer;
                     transition: all 0.2s ease;
