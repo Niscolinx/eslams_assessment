@@ -71,12 +71,12 @@ const Index = () => {
 
                     <main className='main'>
                         <div className='banner'>
-                            <div className='banner__text'>
-                                <h3>You are invited to our Community!</h3>
-                                <p>
+                            <div className='banner__details'>
+                                <h3 className='banner__details--heading'>You are invited to our Community!</h3>
+                                <p className='banner__details--text'>
                                     Please follow guildlines about interactions and events
                                 </p>
-                                <button className='banner__text--btn'>
+                                <button className='banner__details--btn'>
                                     Access Community
                                     <HiOutlineArrowNarrowRight className='' />
                                 </button>
