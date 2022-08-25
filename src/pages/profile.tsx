@@ -103,6 +103,9 @@ const Event = ({
                             {to?.split(' ')[0]} <sup>{to?.split(' ')[1]}</sup>
                         </span>
                     </div>
+                    <div className="registeredEvent__paidTag">
+                        <p>Paid</p>
+                    </div>
                 </div>
                 <h4 className='registeredEvent__heading'>
                     <span
