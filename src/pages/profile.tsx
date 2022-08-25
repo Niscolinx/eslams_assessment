@@ -45,7 +45,7 @@ function profile() {
                         </div>
                     </div>
 
-                    <div className='profile__secondary '>Form
+                    <div className='profile__secondary'>
 
                         <ul className='profile__secondary--list'>
                             <li className='list__item'>
@@ -57,7 +57,7 @@ function profile() {
                         </ul>
                     </div>
 
-                    <div className='profile__tertiary'>The Events</div>
+                    
                 </div>
             </div>
         </div>
