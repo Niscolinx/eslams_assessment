@@ -163,26 +163,24 @@
                 padding: 0.5rem 2rem;
                 //background-color: red;
 
-                &:first-child {
-                    background-color: blue;
+                &:first-child,
+                &:last-child {
                     visibility: hidden;
                 }
-
-                &:not(:last-child) {
-                    background: $color-gray;
-                    border-radius: 1rem 0 0 1rem;
-                }
+                background: $color-gray;
+                border-radius: 1rem 0 0 1rem;
             }
         }
 
         &--details {
             padding: 1rem 0;
             background: white;
-            
+
             .details__box {
                 border-radius: 1rem;
                 background: $color-gray;
                 padding: 1rem;
+                height: 30rem;
             }
         }
     }
