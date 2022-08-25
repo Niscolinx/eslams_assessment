@@ -160,18 +160,18 @@
 
         &--list{
             background: white;
-            padding: 1rem;
+            padding: 1rem 0;
 
             .list__item{
 
-                li:not(:last-child){
+                &:not(:last-child){
                     background: $color-gray;
                 }
             }
         }
 
         &--details{
-            padding: 1rem 3rem;
+           // padding: 1rem 3rem;
             background: white;
         }
     }
