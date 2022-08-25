@@ -167,9 +167,7 @@
 
             padding: 1rem 0;
 
-            .list__render{
-
-            }
+          
 
           
 
@@ -177,17 +175,19 @@
                 padding: 0.5rem 2rem;
                 font-weight: 300;
 
+                background-color: red;
+
                
 
                 &:active{
                     background-color: red;
                 }
 
-                // &:checked{
-                //     background: $color-gray;
-                //     border-radius: 1rem 0 0 1rem;
-                //     font-weight: 500;
-                // }
+                &:checked{
+                    background: $color-gray;
+                    border-radius: 1rem 0 0 1rem;
+                    font-weight: 500;
+                }
             }
         }
 

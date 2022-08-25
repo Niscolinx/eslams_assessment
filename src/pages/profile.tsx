@@ -66,16 +66,22 @@ function profile() {
                             <li className='invisible'>&nbsp;</li>
 
                             {LIST.map((item) => (
-                                <div key={item} className='list__render'>
-                                    <label htmlFor={item}  onClick={(item) => handleNav(item)}>{item}</label>
+                                <div key={item}>
+                                    <label
+                                        htmlFor={item}
+                                        className='list__item'
+                                    >
+                                        {item}
+                                    </label>
                                     <input
                                         type='radio'
-                                        className='list__item'
-                                        defaultChecked
-                                        checked
+                                        defaultChecked={
+                                            item === 'General' ? true : false
+                                        }
                                         value={item}
                                         name='list'
                                         id={item}
+                                        onChange={(item) => handleNav(item)}
                                     />
                                 </div>
                             ))}
