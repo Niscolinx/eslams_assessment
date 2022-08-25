@@ -28,11 +28,11 @@ function profile() {
                             />
                         </div>
                     </div>
-
-                    <div className='profile__primary--details'>Form</div>
                 </div>
 
-                <div className='profile__secondary'>The Events</div>
+                <div className='profile__secondary'>Form</div>
+
+                <div className='profile__tertiary'>The Events</div>
             </div>
         </div>
     )
