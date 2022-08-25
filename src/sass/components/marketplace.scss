@@ -95,11 +95,17 @@
                 position: relative;
                 z-index: 5;
                 backdrop-filter: blur(5px);
+
+                @include respond(smaller-phone){
+                    justify-content: center;
+                }
             }
 
             &__details {
                 display: grid;
                 gap: 0.5rem;
+
+                
 
                 &--heading {
                 }

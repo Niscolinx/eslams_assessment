@@ -97,11 +97,7 @@ function Footer() {
                         <AiFillFacebook />
                     </Link>
                 </li>
-                <li className='footer__links--item'>
-                    <Link href='/'>
-                        <AiFillLinkedin />
-                    </Link>
-                </li>
+               
                 <li className='footer__links--item'>
                     <Link href='/'>
                         <AiFillInstagram />

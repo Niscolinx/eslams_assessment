@@ -33,12 +33,12 @@
     &__links {
         display: flex;
         list-style: none;
-        justify-content: space-between;
-        width: 20rem;
+        justify-content: space-evenly;
+        gap: .5rem;
         
         &--item {
             cursor: pointer;
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: black;
             opacity: 0.5;
             transition: all .5s ease-in;
@@ -49,16 +49,15 @@
             }
         }
 
-        &--item-active {
-            color: black;
-            opacity: 1;
-        }
+        
     }
 
     &__contracts {
         display: flex;
         justify-content: space-around;
         width: 100%;
+        margin-bottom: .5rem;
+        font-weight: 300;
 
         a:link,
         a:visited,
@@ -74,6 +73,8 @@
         color: black;
         opacity: 0.6;
         font-size: 1rem;
+                font-weight: 300;
+
     }
 }
 
