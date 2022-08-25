@@ -83,6 +83,7 @@ function Footer() {
             className='footer'
            
         >
+            <div className="footer__blob"></div>
             <ul className='footer__links'>
                 <li className='footer__links--item footer__links--item-active'>
                     <Link href='/'>
