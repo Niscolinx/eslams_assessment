@@ -71,7 +71,7 @@ function profile() {
                                     <input
                                         type='radio'
                                         className='list__item'
-                                       
+                                        defaultChecked={item === 'General' ? true : false}
                                         value={item}
                                         name='list'
                                         id={item}
