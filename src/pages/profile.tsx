@@ -6,8 +6,16 @@ import { BsFillPencilFill } from 'react-icons/bs'
 const LIST = ['General', 'Events']
 
 const toRender = () => {
+let fg = 'list__item--active'
 
 
+}
+
+const handleNav = (route: React.MouseEvent<HTMLLIElement>) => {
+
+    const el = route.currentTarget.value
+
+    console.log({el})
 
 }
 
@@ -64,7 +72,8 @@ function profile() {
                             {LIST.map((item) => (
                                 <li
                                     key={item}
-                                    className='list__item list__item--active'
+                                    className='list__item'
+                                    onClick={(item) => handleNav(item)}
                                 >
                                     {item}
                                 </li>
