@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { BsFillPencilFill } from 'react-icons/bs'
+import {IoSchoolSharp} from 'react-icons/io'
 
 const routes = ['General', 'Events']
 
