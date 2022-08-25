@@ -9,6 +9,12 @@
         box-shadow: 20px 20px 60px #bdbdbd, -20px -20px 60px #ffffff;
         font-size: 1.3rem;
         text-transform: uppercase;
+        padding: .5rem 1rem;
+        border-radius: 3px;
+
+        &:hover{
+            
+        }
     }
 
     &__container {
