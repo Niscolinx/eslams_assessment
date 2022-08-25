@@ -91,10 +91,10 @@ const Event = ({
     which,
 }: EventProps) => {
     return (
-        <div className='event'>
-            <div className='event__side event__side--front'>
-                <div className={`event__picture event__picture--${which}`}>
-                    <div className='event__picture--date'>
+        <div className='registeredEvent'>
+            <div className='registeredEvent__side registeredEvent__side--front'>
+                <div className={`registeredEvent__picture registeredEvent__picture--${which}`}>
+                    <div className='registeredEvent__picture--date'>
                         <span>
                             {from.split(' ')[0]} <sup>{from.split(' ')[1]}</sup>
                         </span>
@@ -104,14 +104,14 @@ const Event = ({
                         </span>
                     </div>
                 </div>
-                <h4 className='event__heading'>
+                <h4 className='registeredEvent__heading'>
                     <span
-                        className={`event__heading-span event__heading-span--${which}`}
+                        className={`registeredEvent__heading-span registeredEvent__heading-span--${which}`}
                     >
                         {heading}
                     </span>
                 </h4>
-                <div className='event__details'>
+                <div className='registeredEvent__details'>
                     {details.length > 0 &&
                         details.map((item) => (
                             <ul>
@@ -121,19 +121,7 @@ const Event = ({
                     <ul></ul>
                 </div>
             </div>
-            <div
-                className={`event__side event__side--back event__side--back-${which}`}
-            >
-                <div className='event__cta'>
-                    <div className='event__price-box'>
-                        <p className='event__price-only'>Only</p>
-                        <p className='event__price-value'>${price}</p>
-                    </div>
-                    <a href='#popup' className='btn btn--white'>
-                        Register now!
-                    </a>
-                </div>
-            </div>
+            
         </div>
     )
 }
@@ -142,13 +130,12 @@ const Event = ({
 
 const RegisteredEvents = () => {
      return (
-         <div className='p-8 events'>
-             <div className='events__heading'>
-                 <span></span>{' '}
-                 <h1 className='events__heading--text'>Upcoming Events</h1>{' '}
+         <div className=' registeredEvents -mt-10'>
+             <div className='registeredEvents__heading'>
+                 <h1 className='registeredEvents__heading--text'>Registred Events</h1>{' '}
                  <span></span>
              </div>
-             <div className='events__container'>
+             <div className='registeredEvents__container'>
                  <Event
                      heading='USA BASKETBALL SHOWCASE PRESENTED BY COINBASE'
                      price={1200}
