@@ -33,13 +33,14 @@
     }
 
     &__primary {
+        width: 80%;
         &--picture {
             .picture {
                 &__cover {
                     position: relative;
 
-                    width: 42rem;
-                    height: 20rem;
+                    width: 100%;
+                    height: 15rem;
 
                     &--img {
                         position: absolute;
@@ -47,6 +48,7 @@
                         left: 0;
                         width: 100%;
                         height: 100%;
+                        object-position: top;
                         object-fit: cover;
                         border-radius: 1rem 1rem 0 0;
                     }
