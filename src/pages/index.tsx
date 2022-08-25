@@ -30,45 +30,48 @@ const SearchBox = () => {
     )
 }
 
+const Header = () => (
+    <header className='p-8 header'>
+        <figure className='header__logo w-12 h-12'>
+            <Image
+                src='/logo.jpeg'
+                layout='responsive'
+                objectFit={'contain'}
+                width='100%'
+                height='100%'
+            />
+        </figure>
+
+        <SearchBox />
+        <div className='flex'>
+            <div className='flex items-center gap-3'>
+                <div className='bg-[#d9d6d6] rounded-full w-[40px] h-[40px] flex items-center justify-center relative'>
+                    <div className='absolute -top-2 -right-2 bg-[#CA494E] p-[1px] rounded-full w-[20px] h-[20px] grid place-content-center'>
+                        <span className='text-white text-[12px]'>3</span>
+                    </div>
+                    <BiNotepad className='text-2xl' />
+                </div>
+                <div className='flex header__avatar'>
+                    <Image
+                        src='/img/avatar.jpeg'
+                        width='100%'
+                        height='100%'
+                        objectFit='cover'
+                    />
+                </div>
+            </div>
+        </div>
+    </header>
+)
+
+const Footer = () => <footer>footer</footer>
+
 const Index = () => {
     return (
         <div className='marketplace'>
             <div className='marketplace__container'>
                 <div className='grid relative z-3'>
-                    <header className='p-8 header'>
-                        <figure className='header__logo w-12 h-12'>
-                            <Image
-                                src='/logo.jpeg'
-                                layout='responsive'
-                                objectFit={'contain'}
-                                width='100%'
-                                height='100%'
-                            />
-                        </figure>
-
-                        <SearchBox />
-                        <div className='flex'>
-                            <div className='flex items-center gap-3'>
-                                <div className='bg-[#d9d6d6] rounded-full w-[40px] h-[40px] flex items-center justify-center relative'>
-                                    <div className='absolute -top-2 -right-2 bg-[#CA494E] p-[1px] rounded-full w-[20px] h-[20px] grid place-content-center'>
-                                        <span className='text-white text-[12px]'>
-                                            3
-                                        </span>
-                                    </div>
-                                    <BiNotepad className='text-2xl' />
-                                </div>
-                                <div className='flex header__avatar'>
-                                    <Image
-                                        src='/img/avatar.jpeg'
-                                        width='100%'
-                                        height='100%'
-                                        objectFit='cover'
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </header>
-
+                    <Header />
                     <main className='main'>
                         <div className='banner'>
                             <div className='banner__blob'></div>
@@ -87,23 +90,20 @@ const Index = () => {
                                         <HiOutlineArrowNarrowRight className='banner__details--btn-icon' />
                                     </button>
                                 </div>
-                                <div className="banner__svg">
-
-                                <Image
-                                    src='/banner.svg'
-                                    width='500px'
-                                    height='200px'
-                                    objectFit='cover'
-                                    objectPosition='top'
-                                
+                                <div className='banner__svg'>
+                                    <Image
+                                        src='/banner.svg'
+                                        width='500px'
+                                        height='200px'
+                                        objectFit='cover'
+                                        objectPosition='top'
                                     />
-                                    </div>
+                                </div>
                             </div>
                         </div>
                         <Events />
                     </main>
-
-                    <footer className='footer'></footer>
+                    <Footer />{' '}
                 </div>
             </div>
         </div>
