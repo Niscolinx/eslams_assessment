@@ -18,7 +18,7 @@ function profile() {
       getDisplay(el)
     }
 
-    function getDisplay(el:string) {
+    const getDisplay = (el:string) => {
         // switch (el) {
         //     case 'General':
         //         return <div>General</div>
