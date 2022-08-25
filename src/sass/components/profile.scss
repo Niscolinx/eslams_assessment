@@ -35,6 +35,19 @@
 
     &__primary{
 
-        &--p
+        &--picture{
+
+
+            .picture{
+
+                &__cover{
+
+                }
+
+                &__avatar{
+
+                }
+            }
+        }
     }
 }
