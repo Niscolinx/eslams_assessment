@@ -35,11 +35,17 @@
         list-style: none;
         justify-content: space-between;
         width: 20rem;
-
+        
         &--item {
+            cursor: pointer;
             font-size: 2.5rem;
             color: black;
             opacity: 0.5;
+            transition: all .5s ease-in;
+
+            &:hover {
+                opacity: 1;
+            }
         }
 
         &--item-active {
