@@ -15,7 +15,7 @@ const SearchBox = () => {
     return (
         <div className='flex items-center gap-2'>
             <div className='hidden md:flex relative items-center '>
-                <FiSearch className='absolute left-2'/>
+                <FiSearch className='absolute left-2' />
                 <input
                     type='text'
                     placeholder='Search'
@@ -75,9 +75,7 @@ const Index = () => {
                                 <h3>You are invited to our Community!</h3>
                                 <button className='banner__text--btn'>
                                     Access Community
-                                    <span>
-                                        <HiOutlineArrowNarrowRight />
-                                    </span>
+                                    <HiOutlineArrowNarrowRight />
                                 </button>
                             </div>
                             <Image
