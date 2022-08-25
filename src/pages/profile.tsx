@@ -26,10 +26,10 @@ function profile() {
                                 className='picture__avatar--img'
                                 alt='cover'
                             />
+                            
                         </div>
                     </div>
-                    <div className="profile__primary--edit">
-                        
+                    <div className='profile__primary--edit'>
                         <p className='edit__btn'>Edit profile</p>
                     </div>
                 </div>
