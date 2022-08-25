@@ -46,7 +46,9 @@ const GeneralDetails = () => {
                     </div>
                 </div>
                 <div className='content-1'>
-                    <h3 className='content-1__heading'>Education </h3>
+                    <h3 className='content-1__heading'>
+                        <IoSchoolSharp/>
+                        Education </h3>
                     <div className='content-1__box'>
                         <p className='content-1__name'>
                             <span>Name:</span> Igboanugwo Collins
