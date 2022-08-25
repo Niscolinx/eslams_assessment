@@ -153,22 +153,26 @@
         width: 80%;
         justify-self: center;
         background: white;
-        padding: 2rem 3rem;
+        //padding: 2rem 3rem;
         display: grid;
         grid-template-columns: max-content 1fr;
         border-radius: 0 0 12px 12px;
 
         &--list{
-            background: $color-gray;
+            background: white;
             padding: 1rem;
+
             .list__item{
 
+                li:not(:last-child){
+                    background: $color-gray;
+                }
             }
         }
 
         &--details{
             padding: 1rem 3rem;
-            background: $color-gray;
+            background: white;
         }
     }
 }
