@@ -38,6 +38,10 @@ function profile() {
                             <h3 className='details__name'>
                                 Igboanugwo Collins
                             </h3>
+                            <p className='details__email'>Munisco12@gmail.com</p>
+                            <p className="details__joined">
+                                Joined February 2022
+                            </p>
                         </div>
                     </div>
 
