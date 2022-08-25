@@ -1,6 +1,7 @@
 .events {
     display: grid;
-    
+    justify-content: center;
+
     &__container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
