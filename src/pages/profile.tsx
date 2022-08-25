@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { BsFillPencilFill } from 'react-icons/bs'
-import {IoSchoolSharp} from 'react-icons/io'
+import {IoMdSchool} from 'react-icons/io'
 
 const routes = ['General', 'Events']
 
@@ -47,7 +47,7 @@ const GeneralDetails = () => {
                 </div>
                 <div className='content-1'>
                     <h3 className='content-1__heading'>
-                        <IoSchoolSharp/>
+                        <IoMdSchool className='text-3xl'/>
                         Education </h3>
                     <div className='content-1__box'>
                         <p className='content-1__name'>
