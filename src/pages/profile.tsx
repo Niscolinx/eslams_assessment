@@ -4,35 +4,43 @@ import { BsFillPencilFill } from 'react-icons/bs'
 
 const routes = ['General', 'Events']
 
-
 const GeneralDetails = () => {
-
-    return <div className='generalDetails'>
-        General Details
-
-        <div className="generalDetails__content">
-            <div className="content-1">
-                <h3 className="content-1__heading">
-                    Personal Details
-                </h3>
-                <p>Igboanugwo Collins</p>
-                <p>Munisco12@gmail.com</p>
-                <p>+2347068695282</p>
-                <p>1997/10/27</p>
+    return (
+        <div className='generalDetails'>
+            <div className='generalDetails__content'>
+                <div className='content-1'>
+                    <h3 className='content-1__heading'>Personal Details</h3>
+                    <p>Igboanugwo Collins</p>
+                    <p>Munisco12@gmail.com</p>
+                    <p>+2347068695282</p>
+                    <p>1997/10/27</p>
+                </div>
+                <div className='content-1'>
+                    <h3 className='content-1__heading'>
+                        Guardian/Parent Details
+                    </h3>
+                    <p>Igboanugwo Collins</p>
+                    <p>Munisco12@gmail.com</p>
+                    <p>+2347068695282</p>
+                    <p>Father</p>
+                </div>
+                <div className='content-1'>
+                    <h3 className='content-1__heading'>Education </h3>
+                    <p>School</p>
+                    <p>2021</p>
+                    <p>Abia State University</p>
+                </div>
             </div>
-
         </div>
-    </div>
+    )
 }
 
 const RegisteredEvents = () => {
-    return <div className='profile__RegisteredEvents'>
-        Registered Events
-    </div>
+    return <div className='profile__RegisteredEvents'>Registered Events</div>
 }
 
 function profile() {
-    const [route, routeToDisplay] = useState(<GeneralDetails/>)
+    const [route, routeToDisplay] = useState(<GeneralDetails />)
 
     // const renderToDisplay = (route: any) => {
     //     console.log({route})
@@ -44,19 +52,17 @@ function profile() {
 
         console.log(el)
 
-         switch (el) {
-             case 'General':
-                 return routeToDisplay(<GeneralDetails/>)
+        switch (el) {
+            case 'General':
+                return routeToDisplay(<GeneralDetails />)
 
-             case 'Events':
-                 return routeToDisplay(<RegisteredEvents/>)
+            case 'Events':
+                return routeToDisplay(<RegisteredEvents />)
 
-             default:
-                 return route
-         }
+            default:
+                return route
+        }
     }
-
-    
 
     return (
         <div className='profile'>
@@ -131,9 +137,7 @@ function profile() {
                         </ul>
 
                         <div className='profile__secondary--details'>
-                            <div className='details__box'>
-                                {route}
-                            </div>
+                            <div className='details__box'>{route}</div>
                         </div>
                     </div>
                 </div>
