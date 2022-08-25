@@ -2,10 +2,24 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { BsFillPencilFill } from 'react-icons/bs'
 
-const LIST = ['General', 'Events']
+const routes = ['General', 'Events']
+
+
+const GeneralDetails = () => {
+
+    return <div>
+        General Details
+    </div>
+}
+
+const Events = () => {
+    return <div>
+        Events
+    </div>
+}
 
 function profile() {
-    const [route, routeToDisplay] = useState(<div>How are you</div>)
+    const [route, routeToDisplay] = useState(<GeneralDetails/>)
 
     // const renderToDisplay = (route: any) => {
     //     console.log({route})
@@ -19,13 +33,13 @@ function profile() {
 
          switch (el) {
              case 'General':
-                 routeToDisplay(<div>General</div>)
+                 return routeToDisplay(<GeneralDetails/>)
 
              case 'Events':
-                 routeToDisplay(<div>Events</div>)
+                 return routeToDisplay(<Events/>)
 
              default:
-                 routeToDisplay(<div>General</div>)
+                 return route
          }
     }
 
@@ -76,10 +90,10 @@ function profile() {
                     </div>
 
                     <div className='profile__secondary'>
-                        <ul className='profile__secondary--list'>
+                        <ul className='profile__secondary--route'>
                             <li className='invisible'>&nbsp;</li>
 
-                            {LIST.map((item) => (
+                            {routes.map((item) => (
                                 <div key={item} className='grid gap-1'>
                                     <input
                                         type='radio'
@@ -87,13 +101,13 @@ function profile() {
                                             item === 'General' ? true : false
                                         }
                                         value={item}
-                                        name='list'
+                                        name='route'
                                         id={item}
                                         onChange={handleNav}
                                     />
                                     <label
                                         htmlFor={item}
-                                        className='list__item'
+                                        className='route__item'
                                     >
                                         {item}
                                     </label>
