@@ -2,23 +2,19 @@ import React from 'react'
 import Image from 'next/image'
 import { BsFillPencilFill } from 'react-icons/bs'
 
-
 const LIST = ['General', 'Events']
 
 const toRender = () => {
-let fg = 'list__item--active'
-
-
+    let fg = 'list__item--active'
 }
 
-const handleNav = (route: React.MouseEvent<HTMLLIElement>) => {
-  //  route.currentTarget.classList.toggle('list__item--active')
+const handleNav = (route: React.MouseEvent<HTMLLabelElement>) => {
+    route.currentTarget.classList.toggle('list__item--active')
     const el = route.currentTarget.textContent
 
-
+    console.log(route.currentTarget)
 
 }
-
 
 function profile() {
     return (
@@ -70,15 +66,19 @@ function profile() {
                             <li className='list__item'>&nbsp;</li>
 
                             {LIST.map((item) => (
-                                <input type='radio'
-                                    key={item}
-                                    className='list__item'
-                                    // onClick={(item) => handleNav(item)}
-                                    value={item}
-                                />
-                              
+                                <div key={item}>
+                                    <label htmlFor={item}  onClick={(item) => handleNav(item)}>{item}</label>
+                                    <input
+                                        type='radio'
+                                        className='list__item'
+                                       
+                                        value={item}
+                                        name='list'
+                                        id={item}
+                                    />
+                                </div>
                             ))}
-                      
+
                             <li className='list__item'>&nbsp;</li>
                         </ul>
 
