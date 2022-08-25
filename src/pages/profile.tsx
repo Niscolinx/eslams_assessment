@@ -8,7 +8,9 @@ function profile() {
                 <div className='profile__primary'>
                     <div className='profile__primary--picture'>
                         <div className='picture__cover'>
-                          <Image/>
+                          <Image src='/img/event.png' 
+                          width='100%'
+                          height='100%'/>
                         </div>
                         <div className='picture__avatar'>personal picture</div>
                     </div>
