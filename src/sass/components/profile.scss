@@ -204,8 +204,9 @@
 
             .content-1{
                 display: grid;
-                &__heading{
 
+                &__heading{
+                    text-align: center;
                 }
             }
         }
