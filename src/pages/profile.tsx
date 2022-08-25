@@ -15,24 +15,21 @@ function profile() {
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
 
-      getDisplay(el)
+        getDisplay(el)
     }
 
-    const getDisplay = (el:string) => {
-        // switch (el) {
-        //     case 'General':
-        //         return <div>General</div>
+    const getDisplay = (el: string) => {
+        switch (el) {
+            case 'General':
+                return <div>General</div>
 
-        //     case 'Events':
-        //         return <div>Events</div>
+            case 'Events':
+                return <div>Events</div>
 
-        //     default:
-        //         return <div>General</div>
-        // }
-        return <div>hello</div>
+            default:
+                return <div>General</div>
+        }
     }
-
-
 
     return (
         <div className='profile'>
@@ -108,7 +105,7 @@ function profile() {
 
                         <div className='profile__secondary--details'>
                             <div className='details__box'>
-                                {getDisplay}
+                                {getDisplay('General')}
                             </div>
                         </div>
                     </div>
