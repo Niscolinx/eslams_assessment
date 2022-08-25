@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Image from 'next/image'
 import { BsFillPencilFill } from 'react-icons/bs'
 
@@ -63,15 +63,16 @@ function profile() {
 
                     <div className='profile__secondary'>
                         <ul className='profile__secondary--list'>
-                            <li className='list__item'>&nbsp;</li>
+                            <li className='invisible'>&nbsp;</li>
 
                             {LIST.map((item) => (
-                                <div key={item}>
+                                <div key={item} className='list__render'>
                                     <label htmlFor={item}  onClick={(item) => handleNav(item)}>{item}</label>
                                     <input
                                         type='radio'
                                         className='list__item'
-                                        defaultChecked={item === 'General' ? true : false}
+                                        defaultChecked
+                                        checked
                                         value={item}
                                         name='list'
                                         id={item}
@@ -79,7 +80,7 @@ function profile() {
                                 </div>
                             ))}
 
-                            <li className='list__item'>&nbsp;</li>
+                            <li className='invisible'>&nbsp;</li>
                         </ul>
 
                         <div className='profile__secondary--details'>
