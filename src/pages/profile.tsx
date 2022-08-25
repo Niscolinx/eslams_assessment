@@ -8,7 +8,7 @@ function profile() {
                 <div className='profile__primary'>
                     <div className='profile__primary--picture'>
                         <div className='picture__cover'>
-                          <Image src='/img/basket1.png' 
+                          <Image src='/img/event1.jpg' 
                           width='100%'
                           height='100%'/>
                         </div>
