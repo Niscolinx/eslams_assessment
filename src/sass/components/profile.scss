@@ -154,6 +154,12 @@
         justify-self: center;
         background: white;
 
-        
+        &--list{
+            background: $color-gray;
+            .list__item{
+
+            }
+        }
+
     }
 }
