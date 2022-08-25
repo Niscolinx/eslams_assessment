@@ -97,6 +97,16 @@
             //margin-bottom: 4rem;
         }
 
-       
+       &--edit{
+        background-color: red;
+        display: grid;
+        justify-self: end;
+        justify-content: end;
+
+        .edit__btn{
+            display: flex;
+            justify-self: end;
+        }
+       }
     }
 }
