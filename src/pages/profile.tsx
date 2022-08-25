@@ -36,7 +36,7 @@ function profile() {
                         </div>
                     </div>
 
-                    <div className='profile__secondary'>Form</div>
+                    <div className='profile__secondary mt-20'>Form</div>
 
                     <div className='profile__tertiary'>The Events</div>
                 </div>

@@ -19,6 +19,8 @@
         border-radius: 12px;
         // justify-items: center;
         // align-items: center;
+        z-index: 1;
+
         &::after {
             content: '';
             top: 0;
@@ -29,6 +31,7 @@
                 inset 2.5px 2.5px 3px rgba(174, 174, 192, 0.2);
             border-radius: 12px;
             z-index: 1;
+           // background-color: red;
         }
     }
 
@@ -114,23 +117,24 @@
                 margin-left: auto;
                 gap: 0.5rem;
                 margin-top: 0.5rem;
-                padding: 0.5rem 1rem;
+                padding: 0 1rem;
                 border-radius: 0.5rem 0;
+                align-content: center;
 
                 .edit__btn {
                     display: flex;
                     justify-self: flex-end;
+
+                   
                 }
 
-                &:hover {
+                 &:hover {
                     background: $linear-gradient-red;
                     cursor: pointer;
                 }
             }
 
-            &--edit:hover {
-                background-color: red;
-            }
+           
         }
     }
 }
