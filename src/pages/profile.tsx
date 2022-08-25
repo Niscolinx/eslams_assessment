@@ -31,7 +31,6 @@ function profile() {
         }
     }
 
-    console.log(getDisplay())
 
 
     return (
