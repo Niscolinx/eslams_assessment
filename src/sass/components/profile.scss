@@ -36,6 +36,7 @@
         width: 80%;
         &--picture {
             position: relative;
+            display: grid;
             .picture {
                 &__cover {
                     position: relative;
@@ -63,11 +64,10 @@
                     margin: 1rem;
 
                      @include respond(smaller-phone){
-                        background-color: red;
                         margin: 0;
                         width: 12rem;
                         height: 12rem;
-                     
+                        justify-self: center;
                     }
                 
 
@@ -77,6 +77,7 @@
                         object-position: center;
                         object-fit: cover;
                         border-radius: 50%;
+                      
                     }
 
 
