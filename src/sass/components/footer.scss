@@ -9,7 +9,7 @@
     height: 5rem;
     width: 100%;
 
-     &::after{
+     &::before{
         content: '';
         position: absolute;
         height: 100vw;
