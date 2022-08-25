@@ -67,7 +67,7 @@
                 }
                 
                 &--text{
-                    
+
                 }
 
                 &--btn {
@@ -87,6 +87,13 @@
                     &:hover {
                         background: $color-red;
                         color: white;
+                    }
+
+                    &-icon{
+                        animation: moveInRight 3s;
+
+                      
+                        ;
                     }
                 }
             }

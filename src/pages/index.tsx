@@ -78,7 +78,7 @@ const Index = () => {
                                 </p>
                                 <button className='banner__details--btn'>
                                     Access Community
-                                    <HiOutlineArrowNarrowRight className='' />
+                                    <HiOutlineArrowNarrowRight className='banner__details--btn-icon' />
                                 </button>
                             </div>
                             <Image
