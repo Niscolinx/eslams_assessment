@@ -7,7 +7,7 @@ const routes = ['General', 'Events']
 
 const GeneralDetails = () => {
 
-    return <div className=''>
+    return <div className='generalDetails'>
         General Details
     </div>
 }
