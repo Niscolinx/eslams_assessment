@@ -167,8 +167,11 @@
                 &:last-child {
                     visibility: hidden;
                 }
-                background: $color-gray;
-                border-radius: 1rem 0 0 1rem;
+
+                &--active {
+                    background: $color-gray;
+                    border-radius: 1rem 0 0 1rem;
+                }
             }
         }
 

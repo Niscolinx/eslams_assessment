@@ -50,7 +50,7 @@ function profile() {
                     <div className='profile__secondary'>
                         <ul className='profile__secondary--list'>
                             <li className='list__item'>&nbsp;</li>
-                            <li className='list__item'>General</li>
+                            <li className='list__item list__item--active'>General</li>
                             <li className='list__item'>Events</li>
                             <li className='list__item'>&nbsp;</li>
                         </ul>
