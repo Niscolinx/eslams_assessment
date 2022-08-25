@@ -6,7 +6,8 @@ function profile() {
             <div className='profile__primary'>
 
               <div className="profile__primary--picture">
-                
+                <div className="picture__cover"></div>
+                <div className="picture__avatar"></div>
               </div>
             </div>
 
