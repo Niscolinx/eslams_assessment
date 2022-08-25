@@ -62,14 +62,14 @@
 
             &__details {
                 display: grid;
-                gap: 1rem;
+                gap: .5rem;
 
                 &--heading{
 
                 }
                 
                 &--text{
-
+                    font-weight: 300;
                 }
 
                 &--btn {
