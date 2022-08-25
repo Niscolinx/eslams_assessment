@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { BsFillPencilFill } from 'react-icons/bs'
 
@@ -17,6 +17,8 @@ const handleNav = (route: React.MouseEvent<HTMLLabelElement>) => {
 }
 
 function profile() {
+    const [renderToDisplay, setRenderToDisplay] = useState()
+
     return (
         <div className='profile'>
             <div className='profile__box'>
@@ -91,11 +93,7 @@ function profile() {
 
                         <div className='profile__secondary--details'>
                             <div className='details__box'>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Officia tempora architecto
-                                aut, odit facere minus dolores ullam error ipsa,
-                                unde magnam quo libero nam laudantium totam
-                                voluptatem velit! Saepe, hic?
+                                {renderToDisplay}
                             </div>
                         </div>
                     </div>
