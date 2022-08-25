@@ -124,32 +124,28 @@
             align-self: center;
             align-content: center;
 
-           
-
             &:hover {
                 background: $linear-gradient-red;
                 cursor: pointer;
             }
         }
 
-        &--details{
-
-            .details{
-
-                &__name{
-
+        &--details {
+            .details {
+                &__name {
+                    font-size: 1.2rem;
                 }
 
-                &__email{
-
+                &__email {
+                    font-size: 0.8rem;
+                    font-weight: 300;
                 }
 
-                &__joined{
-                    
+                &__joined {
+                    font-size: 0.8rem;
+                    font-weight: 300;
                 }
             }
         }
-
-
     }
 }
