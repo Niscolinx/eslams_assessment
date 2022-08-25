@@ -28,7 +28,7 @@ function profile() {
                             />
                         </div>
                     </div>
-                    <div className="profile__settings">
+                    <div className="profile__primary--edit">
                         Edit Profile
                     </div>
                 </div>
