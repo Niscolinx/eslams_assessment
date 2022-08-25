@@ -58,9 +58,10 @@
             background: $color-blue;
             padding: 2rem 4rem;
             color: #ffffff;
+            position: relative;
 
             &__blob{
-                display: absolute;
+                position: absolute;
                 left: 0;
                 top: 0;
             }
