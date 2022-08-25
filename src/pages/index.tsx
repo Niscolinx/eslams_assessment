@@ -71,8 +71,8 @@ const Index = () => {
 
                     <main className='main'>
                         <div className='banner'>
-                            <div className="grd">
-                                
+                            <div className="banner__blob">
+
                             </div>
                             <div className='banner__details'>
                                 <h3 className='banner__details--heading'>You are invited to our Community!</h3>

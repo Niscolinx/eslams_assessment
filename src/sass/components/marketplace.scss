@@ -59,6 +59,11 @@
             padding: 2rem 4rem;
             color: #ffffff;
 
+            &__blob{
+                display: absolute;
+                
+            }
+
 
             &__details {
                 display: grid;
