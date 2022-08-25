@@ -84,6 +84,8 @@ function Footer() {
            
         >
             <div className="footer__blob"></div>
+            <div className="footer__content">
+
             <ul className='footer__links'>
                 <li className='footer__links--item footer__links--item-active'>
                     <Link href='/'>
@@ -120,6 +122,7 @@ function Footer() {
                 <p>
                     Copyright 2022 @ eSlams. All Rights Reserved.
                 </p>
+            </div>
             </div>
         </footer>
     )
