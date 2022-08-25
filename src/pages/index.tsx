@@ -11,6 +11,12 @@ import { VscSettings } from 'react-icons/vsc'
 import Events from '../components/Events'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
+//Footer
+import Link from 'next/link'
+import { BsYoutube } from 'react-icons/bs'
+import { AiFillFacebook, AiFillLinkedin, AiFillInstagram } from 'react-icons/ai'
+import { FaTwitterSquare } from 'react-icons/fa'
+
 const SearchBox = () => {
     return (
         <div className='flex items-center gap-2'>
@@ -64,7 +70,59 @@ const Header = () => (
     </header>
 )
 
-const Footer = () => <footer>footer</footer>
+type HeaderProps = {
+    isComingSoon: boolean
+    isBlog: boolean
+}
+
+function Footer() {
+    
+
+    return (
+        <footer
+            className='footer'
+           
+        >
+            <ul className='footer__links'>
+                <li className='footer__links--item footer__links--item-active'>
+                    <Link href='/'>
+                        <BsYoutube />
+                    </Link>
+                </li>
+                <li className='footer__links--item'>
+                    <Link href='/'>
+                        <AiFillFacebook />
+                    </Link>
+                </li>
+                <li className='footer__links--item'>
+                    <Link href='/'>
+                        <AiFillLinkedin />
+                    </Link>
+                </li>
+                <li className='footer__links--item'>
+                    <Link href='/'>
+                        <AiFillInstagram />
+                    </Link>
+                </li>
+                <li className='footer__links--item'>
+                    <Link href='/'>
+                        <FaTwitterSquare />
+                    </Link>
+                </li>
+            </ul>
+
+            <div className='footer__contracts'>
+                <Link href='/'>Terms of services</Link>
+                <Link href='/'>Privacy Policy</Link>
+            </div>
+            <div className='footer__copyright'>
+                <p>
+                    Copyright 2021 @ Peddle Technologies. All Rights Reserved.
+                </p>
+            </div>
+        </footer>
+    )
+}
 
 const Index = () => {
     return (

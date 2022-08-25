@@ -1,0 +1,75 @@
+.footer {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-content: flex-end;
+    grid-column: center-start / center-end;
+    padding: 2rem 0;
+
+    &__links {
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+        width: 20rem;
+
+        &--item {
+            font-size: 2.5rem;
+            color: white;
+            opacity: 0.5;
+        }
+
+        &--item-active {
+            color: white;
+            opacity: 1;
+        }
+    }
+
+    &__contracts {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+
+        a:link,
+        a:visited,
+        a:hover {
+            text-decoration: none;
+            color: white;
+            opacity: 0.6;
+            font-size: 1.2rem;
+        }
+    }
+
+    &__copyright {
+        color: white;
+        opacity: 0.6;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+    }
+}
+
+.footer__glassmorphism {
+    position: relative;
+    background: #eddbf021;
+    backdrop-filter: blur(12px);
+    z-index: 20;
+    padding-top: 10rem;
+    margin: 0 10rem;
+    clip-path: circle(100vh at 50% 128vh);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.footer__isBlog {
+    & > * {
+        color: black !important;
+    }
+
+    background-color: white;
+
+    svg {
+        color: black;
+    }
+
+    a {
+        color: black !important;
+    }
+}
