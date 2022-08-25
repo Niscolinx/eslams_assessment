@@ -1,11 +1,14 @@
 .events {
     display: grid;
-           margin-top: 3rem;
+    margin-top: 3rem;
 
-
-    &__heading{
+    &__heading {
         justify-self: center;
         margin: 1rem 0;
+        background: $color-gray;
+        box-shadow: 20px 20px 60px #bdbdbd, -20px -20px 60px #ffffff;
+        font-size: 1.3rem;
+        text-transform: uppercase;
     }
 
     &__container {
@@ -27,7 +30,7 @@
 .event {
     //CUSTOM
 
-    background: $color-gray;
+    // background: $color-gray;
     //border-radius: 61px;
     background: #ffffff;
     box-shadow: 20px 20px 60px #bdbdbd, -20px -20px 60px #ffffff;
