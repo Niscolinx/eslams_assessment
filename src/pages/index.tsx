@@ -87,7 +87,7 @@ function Footer() {
             <div className="footer__content">
 
             <ul className='footer__links'>
-                <li className='footer__links--item footer__links--item-active'>
+                <li className='footer__links--item '>
                     <Link href='/'>
                         <BsYoutube />
                     </Link>
