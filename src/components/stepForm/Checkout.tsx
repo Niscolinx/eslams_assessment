@@ -49,8 +49,8 @@ function getStepContent(step: number) {
 const theme = createTheme({
     typography: {
         fontFamily: [
-            'Lato',
             'Montserrat',
+            'Lato',
             'sans-serif',
         ].join(','),
     },

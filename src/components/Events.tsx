@@ -69,12 +69,15 @@ const Event = ({
 
 function Events() {
     return (
+        <>
+        
         <div className='events'>
+            
             <div className='events__heading'>
                 <span></span>{' '}
                 <h1 className='events__heading--text'>
                     Upcoming Events</h1> <span></span>
-                <
+                
             </div>
             <div className='events__container'>
                 <Event
@@ -84,8 +87,7 @@ function Events() {
                         'Basketball, Water and Training Supplies',
                         'Certfied Atletic trainers',
                         'Availability of Shuttles',
-                        'NCAA Certified Checklist',
-                        'Waivers of Liability',
+                        'NCAA Certified Checklist'
                     ]}
                     date={{
                         from: '10th Sep',
@@ -99,8 +101,7 @@ function Events() {
                         'Basketball, Water and Training Supplies',
                         'Certfied Atletic trainers',
                         'Availability of Shuttles',
-                        'NCAA Certified Checklist',
-                        'Waivers of Liability',
+                        'NCAA Certified Checklist'
                     ]}
                     date={{
                         from: '5th Oct',
@@ -115,8 +116,7 @@ function Events() {
                         'Basketball, Water and Training Supplies',
                         'Certfied Atletic trainers',
                         'Availability of Shuttles',
-                        'NCAA Certified Checklist',
-                        'Waivers of Liability',
+                        'NCAA Certified Checklist'
                     ]}
                     date={{ from: '2nd Sep', to: '11th Sep' }}
                     which={3}
@@ -128,8 +128,7 @@ function Events() {
                         'Basketball, Water and Training Supplies',
                         'Certfied Atletic trainers',
                         'Availability of Shuttles',
-                        'NCAA Certified Checklist',
-                        'Waivers of Liability',
+                        'NCAA Certified Checklist'
                     ]}
                     date={{
                         from: '4th Sep',
@@ -144,8 +143,7 @@ function Events() {
                         'Basketball, Water and Training Supplies',
                         'Certfied Atletic trainers',
                         'Availability of Shuttles',
-                        'NCAA Certified Checklist',
-                        'Waivers of Liability',
+                        'NCAA Certified Checklist'
                     ]}
                     date={{ from: '10th Sep' }}
                     which={2}
@@ -157,14 +155,14 @@ function Events() {
                         'Basketball, Water and Training Supplies',
                         'Certfied Atletic trainers',
                         'Availability of Shuttles',
-                        'NCAA Certified Checklist',
-                        'Waivers of Liability',
+                        'NCAA Certified Checklist'
                     ]}
                     date={{ from: '3rd Sep', to: '4th Sep' }}
                     which={3}
                 />
             </div>
         </div>
+        </>
     )
 }
 
