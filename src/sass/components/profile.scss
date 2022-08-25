@@ -13,13 +13,13 @@
         margin: 3rem 0;
         width: 90vw;
         min-height: 90vh;
- 
+
         background: $color-gray;
         box-shadow: -1px -1px 3px #ffffff,
             1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
-     
+
         border-radius: 12px;
-       
+
         z-index: 1;
 
         &::after {
@@ -150,7 +150,7 @@
     .profile__secondary {
         width: 90%;
         justify-self: center;
-   
+
         background: linear-gradient(
             to right,
             rgba(17, 46, 163, 0.1),
@@ -164,42 +164,32 @@
         border-radius: 1rem;
 
         &--list {
-
             padding: 1rem 0;
 
-          
+            input[type='radio'] {
+                display: none;
+            }
 
-          
+            input[type='radio']:checked + label {
+                background: $color-gray;
+                border-radius: 1rem 0 0 1rem;
+                font-weight: 500;
+            }
 
             .list__item {
                 padding: 0.5rem 2rem;
                 font-weight: 300;
-
-                background-color: red;
-
-               
-
-                &:active{
-                    background-color: red;
-                }
-
-                &:checked{
-                    background: $color-gray;
-                    border-radius: 1rem 0 0 1rem;
-                    font-weight: 500;
-                }
             }
         }
 
         &--details {
             padding: 1rem 0;
-      
 
             .details__box {
                 border-radius: 1rem;
-              
+
                 box-shadow: 1px 1px 1px #cccccc, -1px -1px 2px #f4f4f4;
-                  background: $color-gray;
+                background: $color-gray;
                 padding: 1rem;
                 height: 30rem;
             }

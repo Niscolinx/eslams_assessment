@@ -66,13 +66,7 @@ function profile() {
                             <li className='invisible'>&nbsp;</li>
 
                             {LIST.map((item) => (
-                                <div key={item}>
-                                    <label
-                                        htmlFor={item}
-                                        className='list__item'
-                                    >
-                                        {item}
-                                    </label>
+                                <div key={item} className='grid gap-1'>
                                     <input
                                         type='radio'
                                         defaultChecked={
@@ -83,6 +77,12 @@ function profile() {
                                         id={item}
                                         onChange={(item) => handleNav(item)}
                                     />
+                                    <label
+                                        htmlFor={item}
+                                        className='list__item'
+                                    >
+                                        {item}
+                                    </label>
                                 </div>
                             ))}
 
