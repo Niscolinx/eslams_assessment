@@ -81,6 +81,7 @@
                     background: $color-gray;
                     color: black;
                     padding: .5rem 2rem;
+                    padding-right: 1rem;
                     border-radius: 10px;
                     transition: all .5s ease;
 
@@ -91,7 +92,7 @@
 
                     &-icon{
                         animation: moveInRight 3s infinite;
-
+                        margin-left: 1rem;
                     }
                 }
             }
