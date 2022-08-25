@@ -45,10 +45,11 @@
         width: 100%;
         display: grid;
         z-index: 5;
+        
     }
 
     .profile__primary {
-        width: 80%;
+        width: 90%;
         margin: 3rem 0;
         display: grid;
         justify-self: center;
@@ -152,7 +153,7 @@
     }
 
     .profile__secondary {
-        width: 80%;
+        width: 90%;
         justify-self: center;
        // background: rgba($color-cream, 0.2);
        //background: $linear-gradient-blue;
