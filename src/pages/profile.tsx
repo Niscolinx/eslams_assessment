@@ -70,13 +70,13 @@ function profile() {
                             <li className='list__item'>&nbsp;</li>
 
                             {LIST.map((item) => (
-                                <li
+                                <input type='radio'
                                     key={item}
                                     className='list__item'
-                                    onClick={(item) => handleNav(item)}
-                                >
-                                    {item}
-                                </li>
+                                    // onClick={(item) => handleNav(item)}
+                                    value={item}
+                                />
+                              
                             ))}
                       
                             <li className='list__item'>&nbsp;</li>
