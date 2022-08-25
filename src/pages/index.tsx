@@ -33,18 +33,17 @@ const Index = () => {
     return (
         <div className='marketplace'>
             <div className='marketplace__container'>
-                <div className='grid p-8 relative z-3'>
-                    <header className='header'>
+                <div className='grid relative z-3'>
+                    <header className='p-8 header'>
                         <figure className='header__logo w-12 h-12'>
-
-                        <Image
-                            src='/logo.jpeg'
-                            layout='responsive'
-                            objectFit={'contain'}
-                            width='100%'
-                            height='100%'
+                            <Image
+                                src='/logo.jpeg'
+                                layout='responsive'
+                                objectFit={'contain'}
+                                width='100%'
+                                height='100%'
                             />
-                            </figure>
+                        </figure>
 
                         <SearchBox />
                         <div className='flex'>
@@ -70,11 +69,11 @@ const Index = () => {
                     </header>
 
                     <main className='main'>
-                        <div className="main__banner">
-
-                      
+                        <div className='main__banner'>
+                            <Image src='/banner.png' width='100px' height='100px'/> 
+                            
                         </div>
-                        <Events/>
+                        <Events />
                     </main>
 
                     <footer className='footer'></footer>
