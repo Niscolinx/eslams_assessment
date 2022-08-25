@@ -109,24 +109,25 @@
             }
 
             &--edit {
-                display: flex;
-                align-items: center;
+              //  display: flex;
+               // align-items: center;
                 width: max-content;
                 justify-content: flex-end;
                 background: $linear-gradient-blue;
                 margin-left: auto;
-                gap: 0.5rem;
                 margin-top: 0.5rem;
                 padding: 0 1rem;
                 border-radius: 0.5rem 0;
-                align-content: center;
+                justify-self: center;
+                align-self: center;
+                //align-content: center;
 
-                .edit__btn {
-                    display: flex;
-                    justify-self: flex-end;
+                // .edit__btn {
+                //     display: flex;
+                //     justify-self: flex-end;
 
                    
-                }
+                // }
 
                  &:hover {
                     background: $linear-gradient-red;

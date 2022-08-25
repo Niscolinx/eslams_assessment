@@ -31,8 +31,8 @@ function profile() {
                             </div>
                         </div>
                         <div className='profile__primary--edit'>
-                            <BsFillPencilFill />
-                            <p className='edit__btn'>Edit profile</p>
+                            <BsFillPencilFill className='bg-red-500'/>
+                            <p className='edit__btn bg-blue-500'>Edit profile</p>
                         </div>
                     </div>
 
