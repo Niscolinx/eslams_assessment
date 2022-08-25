@@ -71,6 +71,9 @@ const Index = () => {
 
                     <main className='main'>
                         <div className='banner'>
+                            <div className="grd">
+                                
+                            </div>
                             <div className='banner__details'>
                                 <h3 className='banner__details--heading'>You are invited to our Community!</h3>
                                 <p className='banner__details--text'>
