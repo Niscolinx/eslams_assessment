@@ -101,7 +101,7 @@
             display: flex;
             align-items: center;
             width: max-content;
-            justify-content: end;
+            justify-content: flex-end;
             background: $linear-gradient-blue;
             margin-left: auto;
             gap: 0.5rem;
@@ -111,17 +111,13 @@
 
             .edit__btn {
                 display: flex;
-                justify-self: end;
+                justify-self: flex-end;
 
-                &:hover {
-                    background: $linear-gradient-red;
-                    background: red;
-                }
+               
             }
 
             &:hover{
             background: $linear-gradient-red;
-            background: red;
             cursor: pointer;
         }
         }
