@@ -71,7 +71,7 @@ function Events() {
     return (
         <div className='events'>
             <div className="events__heading">
-                <h1>Upcoming Events</h1>
+                <h1 className='events__heading--text'> <span></span> Upcoming Events <span></span></h1>
             </div>
             <div className="events__container">
 
