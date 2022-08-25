@@ -69,8 +69,11 @@ const Index = () => {
                     </header>
 
                     <main className='main'>
-                        <div className='main__banner'>
-                            <Image src='/banner.png' width='100px' height='100px'/> 
+                        <div className='banner'>
+                            <div className="banner__text">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, modi deserunt. Accusantium doloremque corrupti saepe fuga, exercitationem natus labore possimus alias iusto laudantium deserunt ducimus veritatis sint incidunt a maiores.
+                            </div>
+                            <Image src='/banner.png' width='300px' height='300px'/> 
                             
                         </div>
                         <Events />
