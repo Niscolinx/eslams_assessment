@@ -34,7 +34,7 @@ function profile() {
                             <BsFillPencilFill className='' />
                             <p className='edit__btn'>Edit profile</p>
                         </div>
-                        <div className="gr">
+                        <div className="profile__primary--details">
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit soluta id molestiae maiores accusamus neque ducimus. Debitis dolores eaque odit et perferendis illo ab repellat amet, iste reiciendis delectus provident.
                         </div>
                     </div>
