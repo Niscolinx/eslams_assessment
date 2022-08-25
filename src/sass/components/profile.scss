@@ -39,6 +39,7 @@
         
         @include respond(smaller-phone){
             width: 100%;
+            margin: 0;
         }
 
         &--picture {
@@ -52,7 +53,7 @@
                     height: 15rem;
 
                     @include respond(phone){
-                        background-color: blue;
+                       // background-color: blue;
                     }
 
                     &--img {
@@ -70,8 +71,8 @@
                 &__avatar {
                     position: absolute;
                     bottom: -4rem;
-                    width: 6rem;
-                    height: 6rem;
+                    width: 7rem;
+                    height: 7rem;
                     margin: 1rem;
 
                      @include respond(smaller-phone){
