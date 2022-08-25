@@ -163,6 +163,7 @@
             padding: 1rem 0;
 
             .list__item{
+                padding: .5rem 2rem;
 
                 &:not(:last-child){
                     background: $color-gray;

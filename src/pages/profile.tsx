@@ -51,6 +51,9 @@ function profile() {
                             <li className='list__item'>
                                 General
                             </li>
+                            <li className='list__item'>
+                                General
+                            </li>
                             <li className='list__Item'>
                                 Events
                             </li>
