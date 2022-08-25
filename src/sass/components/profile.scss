@@ -45,7 +45,6 @@
         width: 100%;
         display: grid;
         z-index: 5;
-        
     }
 
     .profile__primary {
@@ -155,9 +154,13 @@
     .profile__secondary {
         width: 90%;
         justify-self: center;
-       // background: rgba($color-cream, 0.2);
-       //background: $linear-gradient-blue;
-       background: linear-gradient(to right, rgba(17, 46, 163, .1), rgba(202, 73, 78, .1));;
+        // background: rgba($color-cream, 0.2);
+        //background: $linear-gradient-blue;
+        background: linear-gradient(
+            to right,
+            rgba(17, 46, 163, 0.1),
+            rgba(202, 73, 78, 0.1)
+        );
         backdrop-filter: blur(5px);
         padding: 1rem;
         display: grid;
@@ -173,6 +176,7 @@
 
             .list__item {
                 padding: 0.5rem 2rem;
+                font-weight: 300;
                 //background-color: red;
 
                 &:first-child,
@@ -183,18 +187,23 @@
                 &--active {
                     background: $color-gray;
                     border-radius: 1rem 0 0 1rem;
+                    font-weight: 500;
+               
                 }
             }
         }
 
         &--details {
             padding: 1rem 0;
-        // background: white;
-           // background: rgba($color-cream, 0.1);
+            // background: white;
+            // background: rgba($color-cream, 0.1);
 
             .details__box {
                 border-radius: 1rem;
-                background: $color-gray;
+              background: linear-gradient(145deg, #cacaca, #f0f0f0);
+box-shadow:  1px 1px 1px #cccccc,
+             -1px -1px 2px #f4f4f4;
+             //   background: $color-gray;
                 padding: 1rem;
                 height: 30rem;
             }
