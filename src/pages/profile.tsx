@@ -12,10 +12,10 @@ let fg = 'list__item--active'
 }
 
 const handleNav = (route: React.MouseEvent<HTMLLIElement>) => {
-
+    route.currentTarget.classList.toggle('list__item--active')
     const el = route.currentTarget.textContent
 
-    console.log({el})
+
 
 }
 
