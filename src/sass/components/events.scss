@@ -1,28 +1,47 @@
-
 .events {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-    font-size: 1rem;
-    gap: 3rem;
-    margin-top: 3rem;
+    
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+        font-size: 1rem;
+        gap: 3rem;
+        margin-top: 3rem;
+        padding: 2rem 1rem;
+        background: white;
+        border-radius: 0.5rem;
 
-    @include respond(phone){
-        justify-content: center;
-        justify-items: center;
+        @include respond(phone) {
+            //justify-content: center;
+            //justify-items: center;
+        }
     }
 }
 
 .event {
     //CUSTOM
-    //border-radius: 61px;
+
     background: $color-gray;
-    box-shadow: 20px 20px 60px $color-gray, -20px -20px 60px #ffffff;
+    //border-radius: 61px;
+    background: #ffffff;
+    box-shadow: 20px 20px 60px #bdbdbd, -20px -20px 60px #ffffff;
 
     // FUNCTIONALITY
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
     height: 30rem;
+
+    @include respond(phone) {
+        display: grid;
+        justify-self: center;
+        //min-width: 350px;
+    }
+
+    @include respond(smaller-phone) {
+        // min-width: 20px;
+        justify-self: center;
+    }
 
     &__side {
         height: 30rem;
@@ -35,7 +54,10 @@
         backface-visibility: hidden;
         border-radius: 3px;
         overflow: hidden;
-        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+        // box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+        //border-radius: 61px;
+        background: #ffffff;
+        box-shadow: 20px 20px 60px #bdbdbd, -20px -20px 60px #ffffff;
 
         &--front {
             background-color: $color-white;
@@ -89,11 +111,19 @@
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
 
-        &--date{
-            background-color: black;
+        &--date {
+            background-color: rgba(0, 0, 0, 0.484);
             display: flex;
             justify-content: center;
             justify-items: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: white;
+            backdrop-filter: blur(10px);
+            padding: 0.7rem 1.4rem;
+            font-weight: 700;
+            border-radius: 0 0 2rem;
         }
 
         &--1 {
@@ -163,6 +193,7 @@
                 rgba($color-tertiary-light, 0.85),
                 rgba($color-tertiary-dark, 0.85)
             );
+            color: black;
         }
     }
 
@@ -218,7 +249,10 @@
         height: auto;
         border-radius: 3px;
         background-color: $color-white;
-        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+        //  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+        //   border-radius: 61px;
+        background: #ffffff;
+        box-shadow: 20px 20px 60px #bdbdbd, -20px -20px 60px #ffffff;
 
         &__side {
             height: auto;
@@ -246,7 +280,7 @@
             left: 0;
             transform: translate(0);
             width: 100%;
-            padding: 4rem 2rem 2rem 2rem;
+            padding: 2.5rem 2rem 2rem 2rem;
 
             //padding: 7rem 4rem 4rem 4rem;
         }

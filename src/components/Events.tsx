@@ -70,6 +70,11 @@ const Event = ({
 function Events() {
     return (
         <div className='events'>
+            <div className="events__heading">
+                <h2>Upcoming Events</h2>
+            </div>
+            <div className="events__container">
+
             <Event
                 heading='USA BASKETBALL SHOWCASE PRESENTED BY COINBASE'
                 price={1200}
@@ -156,6 +161,7 @@ function Events() {
                 date={{ from: '3rd Sep', to: '4th Sep' }}
                 which={3}
             />
+        </div>
         </div>
     )
 }
