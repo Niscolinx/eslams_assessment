@@ -72,12 +72,7 @@ const Index = () => {
                     <main className='main'>
                         <div className='banner'>
                             <div className='banner__text'>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Natus, modi deserunt.
-                                Accusantium doloremque corrupti saepe fuga,
-                                exercitationem natus labore possimus alias iusto
-                                laudantium deserunt ducimus veritatis sint
-                                incidunt a maiores.
+                                <h3>You are invited to our Community!</h3>
                                 <button className='banner__text--btn'>
                                     Access Our Community
                                     <span>
