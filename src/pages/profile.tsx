@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { BsFillPencilFill } from 'react-icons/bs'
 
 function profile() {
     return (
