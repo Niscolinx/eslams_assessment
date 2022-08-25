@@ -73,6 +73,9 @@ const Index = () => {
                         <div className='banner'>
                             <div className='banner__text'>
                                 <h3>You are invited to our Community!</h3>
+                                <p>
+                                    Please follow guildlines about interactions and events
+                                </p>
                                 <button className='banner__text--btn'>
                                     Access Community
                                     <HiOutlineArrowNarrowRight className='' />
