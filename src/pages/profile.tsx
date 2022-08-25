@@ -14,25 +14,50 @@ const GeneralDetails = () => {
                         <p className='content-1__name'>
                             <span>Name:</span> Igboanugwo Collins
                         </p>
-                        <p>Munisco12@gmail.com</p>
-                        <p>+2347068695282</p>
-                        <p>1997/10/27</p>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
                     </div>
                 </div>
                 <div className='content-1'>
                     <h3 className='content-1__heading'>
                         Guardian/Parent Details
                     </h3>
-                    <p>Igboanugwo Collins</p>
-                    <p>Munisco12@gmail.com</p>
-                    <p>+2347068695282</p>
-                    <p>Father</p>
+                    <div className='content-1__box'>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
+                    </div>
                 </div>
                 <div className='content-1'>
                     <h3 className='content-1__heading'>Education </h3>
-                    <p>School</p>
-                    <p>2021</p>
-                    <p>Abia State University</p>
+                    <div className='content-1__box'>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
+                        
+                    </div>
                 </div>
             </div>
         </div>
