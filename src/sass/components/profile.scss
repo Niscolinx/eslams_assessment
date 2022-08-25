@@ -103,10 +103,12 @@
         align-items: center;
         width: max-content;
         justify-content: end;
-        background-color: red;
+        background: $linear-gradient-blue;
         margin-left: auto;
         gap: .5rem;
         margin-top: .5rem;
+        padding: .5rem 1rem;
+        border-radius: .5rem 0;
        
         .edit__btn{
             display: flex;
