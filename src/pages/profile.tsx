@@ -5,27 +5,25 @@ import { BsFillPencilFill } from 'react-icons/bs'
 const LIST = ['General', 'Events']
 
 function profile() {
-    // const [renderToDisplay, setRenderToDisplay] = useState<
-    //     Element | undefined
-    // >()
+   
 
-    const renderToDisplay = (route:any){
+    const renderToDisplay = (route: JSX.Element) => {
 
-        return <div>General</div>
+        return route
     }
 
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
 
         switch (el) {
-            case 'General':
-                ;<div>General</div>
+            case 'General': renderToDisplay(<div>
+                General
+            </div>)
 
-            case 'Events':
-                ;<div>Hello world</div>
+            case 'Events':renderToDisplay(<div>Events</div>)
 
             default:
-                ;<div>General</div>
+               renderToDisplay(<div>General</div>)
         }
     }
 
