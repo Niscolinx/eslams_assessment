@@ -72,6 +72,7 @@ const Index = () => {
                     <main className='main'>
                         <div className='banner'>
                             <div className='banner__blob'></div>
+                            <div className='banner__backgroundImage'></div>
                             <div className='banner__content'>
                                 <div className='banner__details'>
                                     <h3 className='banner__details--heading'>
