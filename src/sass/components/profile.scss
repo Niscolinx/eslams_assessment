@@ -99,13 +99,14 @@
 
        &--edit{
         background-color: red;
-        display: grid;
-        justify-self: st;
+        display: flex;
+        width: 100%;
         justify-content: end;
 
         .edit__btn{
             display: flex;
             justify-self: end;
+            background-color: blue;
         }
        }
     }
