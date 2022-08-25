@@ -41,7 +41,13 @@
             .picture{
 
                 &__cover{
+                    width: 42rem;
+                    height: 10rem;
+                    background-color: red;
 
+                    &--img{
+                        
+                    }
                 }
 
                 &__avatar{
