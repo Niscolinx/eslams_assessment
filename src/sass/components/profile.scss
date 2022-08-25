@@ -210,6 +210,20 @@
                     font-size: 1.3rem;
                     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
                 }
+
+                &__box{
+                    display: grid;
+                    gap: .5rem;
+                }
+
+                &__name{
+                    font-size: 1rem;
+
+                    span{
+                        font-weight: 300;
+                    }
+
+                }
             }
         }
     }

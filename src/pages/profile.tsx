@@ -10,10 +10,14 @@ const GeneralDetails = () => {
             <div className='generalDetails__content'>
                 <div className='content-1'>
                     <h3 className='content-1__heading'>Personal Details</h3>
-                    <p><span>Name:</span> Igboanugwo Collins</p>
-                    <p>Munisco12@gmail.com</p>
-                    <p>+2347068695282</p>
-                    <p>1997/10/27</p>
+                    <div className='content-1__box'>
+                        <p className='content-1__name'>
+                            <span>Name:</span> Igboanugwo Collins
+                        </p>
+                        <p>Munisco12@gmail.com</p>
+                        <p>+2347068695282</p>
+                        <p>1997/10/27</p>
+                    </div>
                 </div>
                 <div className='content-1'>
                     <h3 className='content-1__heading'>
