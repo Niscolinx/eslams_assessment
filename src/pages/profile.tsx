@@ -9,6 +9,15 @@ const GeneralDetails = () => {
 
     return <div className='generalDetails'>
         General Details
+
+        <div className="generalDetails__content">
+            <div className="content-1">
+                <h3 className="content-1__heading">
+                    Personal Details
+                </h3>
+            </div>
+
+        </div>
     </div>
 }
 
