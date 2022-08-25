@@ -5,27 +5,34 @@ import { BsFillPencilFill } from 'react-icons/bs'
 const LIST = ['General', 'Events']
 
 function profile() {
-   
+    //const [render, renderToDisplay] = useState()
 
-    const renderToDisplay = (route: JSX.Element) => {
-        console.log({route})
-        return route
-    }
+    // const renderToDisplay = (route: any) => {
+    //     console.log({route})
+    //     return <route/>
+    // }
 
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
 
-        switch (el) {
-            case 'General': renderToDisplay(<div>
-                General
-            </div>)
+      getDisplay(el)
+    }
 
-            case 'Events':renderToDisplay(<div>Events</div>)
+    function getDisplay(el:string) {
+        switch (el) {
+            case 'General':
+                return <div>General</div>
+
+            case 'Events':
+                return <div>Events</div>
 
             default:
-               renderToDisplay(<div>General</div>)
+                return <div>General</div>
         }
     }
+
+    console.log(getDisplay())
+
 
     return (
         <div className='profile'>
@@ -100,9 +107,7 @@ function profile() {
                         </ul>
 
                         <div className='profile__secondary--details'>
-                            <div className='details__box'>
-                                {renderToDisplay}
-                            </div>
+                            <div className='details__box'></div>
                         </div>
                     </div>
                 </div>
