@@ -1,13 +1,18 @@
 .events {
     display: grid;
-    justify-content: center;
+           margin-top: 3rem;
+
+
+    &__heading{
+        justify-self: center;
+        margin: 1rem 0;
+    }
 
     &__container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
         font-size: 1rem;
         gap: 3rem;
-        margin-top: 3rem;
         padding: 2rem 1rem;
         background: white;
         border-radius: 0.5rem;
