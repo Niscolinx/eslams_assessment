@@ -132,6 +132,7 @@ const RegisteredEvents = () => {
      return (
          <div className=' registeredEvents -mt-10'>
              <div className='registeredEvents__heading'>
+                <span></span>
                  <h1 className='registeredEvents__heading--text'>Registred Events</h1>{' '}
                  <span></span>
              </div>
