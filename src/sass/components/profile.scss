@@ -152,15 +152,23 @@
     .profile__secondary{
         width: 80%;
         justify-self: center;
-        background: blue;
-        
+        background: white;
+        padding: 2rem 3rem;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        border-radius: 0 0 12px 12px;
 
         &--list{
-            //background: $color-gray;
+            background: $color-gray;
+            padding: 1rem;
             .list__item{
 
             }
         }
 
+        &--details{
+            padding: 1rem 3rem;
+            background: $color-gray;
+        }
     }
 }

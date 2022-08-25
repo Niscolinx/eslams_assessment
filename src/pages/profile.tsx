@@ -57,7 +57,7 @@ function profile() {
                         </ul>
 
                         <div className="profile__secondary--details">
-                            
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia tempora architecto aut, odit facere minus dolores ullam error ipsa, unde magnam quo libero nam laudantium totam voluptatem velit! Saepe, hic?
                         </div>
                     </div>
 
