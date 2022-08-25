@@ -13,8 +13,9 @@ const GeneralDetails = () => {
 }
 
 const Events = () => {
-    return <div>
-        Events
+    return <div className='profile__events'>
+        
+
     </div>
 }
 
