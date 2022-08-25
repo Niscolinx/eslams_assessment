@@ -35,6 +35,12 @@
     &__primary {
         width: 80%;
         height: 100%;
+        margin-top: 3rem;
+        
+        @include respond(smaller-phone){
+            width: 100%;
+        }
+
         &--picture {
             position: relative;
             display: grid;
