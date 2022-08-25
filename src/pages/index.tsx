@@ -71,24 +71,27 @@ const Index = () => {
 
                     <main className='main'>
                         <div className='banner'>
-                            <div className="banner__blob">
-
-                            </div>
-                            <div className='banner__details'>
-                                <h3 className='banner__details--heading'>You are invited to our Community!</h3>
-                                <p className='banner__details--text'>
-                                    Please follow guildlines about interactions and events
-                                </p>
-                                <button className='banner__details--btn'>
-                                    Access Community
-                                    <HiOutlineArrowNarrowRight className='banner__details--btn-icon' />
-                                </button>
-                            </div>
-                            <Image
-                                src='/banner.png'
-                                width='100%'
-                                height='100%'
-                            />
+                            <div className='banner__blob'></div>
+                            <>
+                                <div className='banner__details'>
+                                    <h3 className='banner__details--heading'>
+                                        You are invited to our Community!
+                                    </h3>
+                                    <p className='banner__details--text'>
+                                        Please follow guildlines about
+                                        interactions and events
+                                    </p>
+                                    <button className='banner__details--btn'>
+                                        Access Community
+                                        <HiOutlineArrowNarrowRight className='banner__details--btn-icon' />
+                                    </button>
+                                </div>
+                                <Image
+                                    src='/banner.png'
+                                    width='100%'
+                                    height='100%'
+                                />
+                            </>
                         </div>
                         <Events />
                     </main>
