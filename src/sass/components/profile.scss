@@ -37,7 +37,6 @@
         height: 100%;
         margin-top: 3rem;
 
-
         @include respond(smaller-phone) {
             width: 100%;
             margin: 0;
@@ -98,28 +97,33 @@
             //margin-bottom: 4rem;
         }
 
-       &--edit{
-        display: flex;
-        align-items: center;
-        width: max-content;
-        justify-content: end;
-        background: $linear-gradient-blue;
-        margin-left: auto;
-        gap: .5rem;
-        margin-top: .5rem;
-        padding: .5rem 1rem;
-        border-radius: .5rem 0;
+        &--edit {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            justify-content: end;
+            background: $linear-gradient-blue;
+            margin-left: auto;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem 0;
 
-        &:hover{
+            .edit__btn {
+                display: flex;
+                justify-self: end;
+
+                &:hover {
+                    background: $linear-gradient-red;
+                    background: red;
+                }
+            }
+
+            &:hover{
             background: $linear-gradient-red;
             background: red;
+            cursor: pointer;
         }
-       
-        .edit__btn{
-            display: flex;
-            justify-self: end;
-
         }
-       }
     }
 }
