@@ -5,9 +5,14 @@ import { BsFillPencilFill } from 'react-icons/bs'
 const LIST = ['General', 'Events']
 
 function profile() {
-    const [renderToDisplay, setRenderToDisplay] = useState<
-        Element | undefined
-    >()
+    // const [renderToDisplay, setRenderToDisplay] = useState<
+    //     Element | undefined
+    // >()
+
+    const renderToDisplay = function(route:any){
+
+        return <div>General</div>
+    }()
 
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
