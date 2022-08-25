@@ -15,8 +15,10 @@
         }
 
         &--text {
+            display: flex;
             h1 {
-                display: flex;
+                display: grid;
+                justify-self: center;
                 background: $color-gray;
                 box-shadow: 20px 20px 40px #bdbdbd, -20px -20px 40px #ffffff;
                 font-size: 1.3rem;
