@@ -8,7 +8,7 @@ function profile() {
    
 
     const renderToDisplay = (route: JSX.Element) => {
-
+        console.log({route})
         return route
     }
 
