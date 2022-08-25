@@ -38,8 +38,8 @@
     &__content {
         position: relative;
         width: 100%;
-        display: grid;
-        z-index: 5;
+       // display: grid;
+        z-index: 5;}
 
         .profile__primary {
             width: 80%;
@@ -136,6 +136,6 @@
             }
 
            
-        }
+        
     }
 }
