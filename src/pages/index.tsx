@@ -70,6 +70,7 @@ const Index = () => {
                     </header>
 
                     <main className='main'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum rerum, veritatis at fugiat ad porro ut suscipit deserunt, assumenda voluptatem quam? Neque blanditiis laborum non harum excepturi ut, in id.
                         <Events/>
                     </main>
 
