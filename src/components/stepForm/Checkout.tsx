@@ -99,15 +99,17 @@ export default function Checkout() {
 
      const setInput = (e:any) => {
 
-        console.log({e})
-         const {name, value} = e.target
+        e
 
-         console.log({name, value})
+        // console.log({e})
+        //  const {name, value} = e.target
 
-         setHandleInput((prev:any) => ({
-            ...prev,
-            [name]: value
-         }))
+        //  console.log({name, value})
+
+        //  setHandleInput((prev:any) => ({
+        //     ...prev,
+        //     [name]: value
+        //  }))
         
 
      }

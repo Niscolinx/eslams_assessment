@@ -123,6 +123,7 @@ export default function PersonalDetails() {
                     <MuiPhoneNumber
                         id='phone-number'
                         autoFocus={true}
+                        name='phoneNumber'
                         // helperText='Enter phone number'
                         // InputLabelProps={{ shrink: true, focused: true }}
                         placeholder='Phone Number'
