@@ -52,7 +52,7 @@ export default function Checkout() {
 
     const [gender, setGender] = useState('male')
     const [password, setPassword] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState()
+    const [phoneNumber, setPhoneNumber] = useState('')
     const [birthDate, setBirthDate] = useState<Date | null>(null)
 
     const handleNext = () => {

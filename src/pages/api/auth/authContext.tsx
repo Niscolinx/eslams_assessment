@@ -8,8 +8,8 @@ type ContextType = {
     setPassword: (password: string) => void
     phoneNumber: string,
     setPhoneNumber: (phoneNumber: string) => void
-    birthDate: Date,
-    setBirthDate: (birthDate: Date) => void
+    birthDate: Date | null,
+    setBirthDate: (birthDate: Date | null) => void
  
 }
 
