@@ -160,6 +160,8 @@ export default function Checkout() {
 
     const navContext = useMemo(() => {
         return {
+            setHandleInput,
+
             gender,
             setGender,
             firstName,
