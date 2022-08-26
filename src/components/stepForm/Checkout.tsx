@@ -45,6 +45,23 @@ const theme = createTheme({
     },
 })
 
+    type ValidationError = { key: string[]; message: { [key: string]: string } }
+
+    type handleInputProps = {
+        firstName: string
+        lastName: string
+        personalEmail: string
+        password: string
+        phoneNumber: string
+        gender: string
+        guardianEmail: string
+        guardianPhoneNumber:string
+        guardianName:string
+        guardianRelationship:string
+        institutionName:string
+        institutionType:string
+        institutionYearOfStudy:string
+    }
 export default function Checkout() {
     const [value, setValue] = React.useState<Date | null>(null)
     const [otp, setOtp] = useState<string>('')
@@ -52,7 +69,7 @@ export default function Checkout() {
     const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
 
-    const [handleInput, setHandleInput] = useState<any>({
+    const [handleInput, setHandleInput] = useState<handleInputProps>({
         firstName: '',
         lastName: '',
         personalEmail: '',
@@ -79,7 +96,6 @@ export default function Checkout() {
         },
     })
 
-    type ValidationError = { key: string[]; message: { [key: string]: string } }
 
     const formValidate = () => {
 
@@ -95,9 +111,12 @@ export default function Checkout() {
         }
 
 
-    
+        console.log({handleInput})
 
+        let count = 0
         for(const key in handleInput){
+            if(activeStep === 0)
+            count++
             console.log({key})
             if(handleInput[key] === ''){
 
@@ -109,6 +128,8 @@ export default function Checkout() {
                 })
             }
         }
+
+        console.log({count})
     }
 
     const setInput = (e: any) => {
