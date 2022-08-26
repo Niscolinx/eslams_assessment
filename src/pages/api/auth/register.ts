@@ -43,7 +43,16 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             firstName,
             lastName,
             phoneNumber,
-          ,
+            dateOfBirth,
+            Gender,
+            GuardianName,
+            GuardianPhoneNumber,
+            GuardianEmail,
+            GuardianRelationship,
+            institutionName,
+            institutionType,
+            institutionYearOfStudy 
+          
         })
 
         const verifyStored = await storeUser.save()
