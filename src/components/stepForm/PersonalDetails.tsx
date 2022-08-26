@@ -87,7 +87,7 @@ export default function PersonalDetails() {
                     <TextField
                         required
                         id='email'
-                        name='email'
+                        name='personalEmail'
                         type='email'
                         label='Email Address'
                         fullWidth
@@ -166,7 +166,7 @@ export default function PersonalDetails() {
                         </FormLabel>
                         <RadioGroup
                             aria-labelledby='demo-controlled-radio-buttons-group'
-                            name='controlled-radio-buttons-group'
+                            name='gender'
                             onChange={setInput}
                         >
                             <FormControlLabel

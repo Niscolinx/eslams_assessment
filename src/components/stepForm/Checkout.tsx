@@ -45,11 +45,7 @@ const theme = createTheme({
     },
 })
 
-export type ValidationError = [
-    {
-        [key:string]: string
-    }
-]
+export type ValidationError = { [key: string]: string }
 
 export type handleInputProps = {
     firstName: string
@@ -95,9 +91,9 @@ export default function Checkout() {
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
 
-
-
     const formValidate = () => {
+
+
         const isValidMail = (e: string): Boolean => {
             const emailRegex = new RegExp(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -122,9 +118,13 @@ export default function Checkout() {
                         handleInput[key as keyof handleInputProps]
                     )
 
-                    setValidationError([
-                        {key: 'emptyfield'}
-                    ])
+                    setValidationError(prev => {
+                        console.log({prev})
+                        return {
+                            ...prev,
+                            [key]: 'This field is required',
+                        }
+                    })
                    
                 }
             } else {
@@ -139,6 +139,8 @@ export default function Checkout() {
         }
     }
 
+    console.log({validationError})
+
     const setInput = (e: any) => {
         const { name, value } = e.target
 
@@ -149,6 +151,7 @@ export default function Checkout() {
     }
 
     const handleNext = () => {
+        console.log({ handleInput })
         formValidate()
 
         //if(){}
