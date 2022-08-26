@@ -3,15 +3,21 @@ import { model, models, Schema } from 'mongoose'
 export interface IUser {
     [x: string]: any
     _id: Object
-    username: string
+    firstName: string
+    last: string
     email: string
     phoneNumber: string
+    
    
 }
 
 const userSchema = new Schema<IUser>(
     {
-        username: {
+        firstName: {
+            type: String,
+            required: true,
+        },
+        lastName: {
             type: String,
             required: true,
         },
