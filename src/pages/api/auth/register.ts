@@ -1,4 +1,4 @@
-import { IUser } from './../../../models/User'
+import { IUser } from '../../../models/User'
 import { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcryptjs'
 import dbConnect from '../../../lib/dbConnect'
@@ -9,7 +9,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         await dbConnect()
 
         console.log('req body', req.body)
-        const { email, password, username, phoneNumber, referral } = req.body
+        const {firstName, lastName,  } = req.body
         //Validate
         if (!email || !email.includes('@') || !password || !phoneNumber) {
             console.log('failed')

@@ -16,7 +16,7 @@ export interface IUser {
     institutionType: string
     institutionName: string
     institutionYearOfStudy: string
-   
+    joinedCommunity: boolean
 }
 
 const userSchema = new Schema<IUser>(
@@ -42,69 +42,69 @@ const userSchema = new Schema<IUser>(
             type: String,
             required: true,
         },
-        watchedVideo: {
-            type: Boolean,
-            default: false,
-        },
-        upliner: {
-            type: String,
-        },
-        referralBonus: {
-            type: Number,
-            default: 0,
-        },
-        tokensMined: {
-            type: Number,
-            default: 0,
-        },
-        videoMined: {
-            type: Number,
-            default: 0,
-        },
 
-        portfolio: {
-            type: Number,
-            default: 0,
-        },
         role: {
             type: String,
             default: 'Customer',
             required: true,
         },
-        isMining: {
+
+        DateOfBirth: {
+            type: String,
+            required: true,
+        },
+
+        Gender: {
+            type: String,
+            required: true,
+        },
+
+        GuardianName: {
+            type: String,
+            required: true,
+        },
+
+        GuardianPhoneNumber: {
+            type: String,
+            required: true,
+        },
+
+        GuardianEmail: {
+            type: String,
+            required: true,
+        },
+
+        GuardianRelationship: {
+            type: String,
+            required: true,
+        },
+
+        institutionType: {
+            type: String,
+            required: true,
+        },
+
+        institutionName: {
+            type: String,
+            required: true,
+        },
+
+        institutionYearOfStudy: {
+            type: String,
+            required: true,
+        },
+
+        joinedCommunity: {
             type: Boolean,
             default: false,
         },
-        mineTokenEndingTime: {
-            type: String,
-        },
-        watchVideoAgainIn: {
-            type: String,
-        },
-        status: {
-            type: String,
-            required: true,
-            default: 'Active',
-        },
-        isVerified: {
-            type: Boolean,
-            required: true,
-            default: false,
-        },
-        referralLink: {
-            type: String,
-        },
-        usdtAddress: {
-            type: String,
-        },
-       
-        Events: [
+
+        RegisteredEvent: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'event',
             },
-        ]
-        
+        ],
     },
     { timestamps: true }
 )
