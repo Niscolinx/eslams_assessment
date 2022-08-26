@@ -51,6 +51,7 @@ export default function Checkout() {
     const [loading, setLoading] = useState(false)
 
     const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [gender, setGender] = useState('male')
     const [password, setPassword] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
