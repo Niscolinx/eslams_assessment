@@ -69,6 +69,9 @@ export default function Checkout() {
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(true)
+    const [validationError, setValidationError] =
+        useState<ValidationError | null>(null)
 
     const [handleInput, setHandleInput] = useState<handleInputProps>({
         firstName: '',
@@ -87,9 +90,6 @@ export default function Checkout() {
         institutionYearOfStudy: '',
     })
 
-    const [error, setError] = useState(true)
-    const [validationError, setValidationError] =
-        useState<ValidationError | null>(null)
 
     const formValidate = () => {
 
