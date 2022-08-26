@@ -33,7 +33,6 @@ export default function PersonalDetails() {
         let password = document.querySelector('#password') as HTMLInputElement
 
         if (password) {
-            console.log({ password })
             if (eyeIcon) {
                 password.type = 'text'
             } else {
