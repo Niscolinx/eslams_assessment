@@ -26,6 +26,7 @@ export default function PersonalDetails() {
     const [dateValue, setDateValue] = useState<Date | null>(null)
 
     console.log({ validationError })
+    console.log({handleInput})
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -51,6 +52,8 @@ export default function PersonalDetails() {
         })
     }
 
+
+
     return (
         <React.Fragment>
             {/* <Typography variant='h6' gutterBottom>
@@ -63,6 +66,7 @@ export default function PersonalDetails() {
                         id='firstName'
                         name='firstName'
                         label='First name'
+                        value={handleInput['firstName']}
                         fullWidth
                         error={
                             validationError && validationError['firstName']
