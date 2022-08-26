@@ -123,10 +123,10 @@ export default function PersonalDetails() {
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
                             label='Date of Birth'
-                            value={value}
+                            value={date}
                             minDate={new Date('2017-01-01')}
-                            onChange={(newValue) => {
-                                setValue(newValue)
+                            onChange={(newDate) => {
+                                setDate(newDate)
                             }}
                             renderInput={(params) => (
                                 <TextField
