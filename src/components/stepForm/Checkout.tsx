@@ -47,7 +47,7 @@ const theme = createTheme({
 
 type ValidationError = { key: string[]; message: { [key: string]: string } }
 
-type handleInputProps = {
+export type handleInputProps = {
     firstName: string
     lastName: string
     personalEmail: string

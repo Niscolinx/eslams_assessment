@@ -1,10 +1,9 @@
 import { createContext } from 'react'
+import { handleInputProps } from '../../../components/stepForm/Checkout'
 
 type ContextType = {
     setHandleInput: (handleInput: any) => void
-    handleInput: {
-        [key: string]: string
-    }
+    handleInput: handleInputProps
     setInput: (event: any) => void
 
     validationError: {
