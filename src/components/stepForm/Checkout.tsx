@@ -50,7 +50,7 @@ function getStepContent(step: number) {
 
 const theme = createTheme({
     typography: {
-        fontFamily: ['Montserrat', 'Lato', 'sans-serif'].join(','),
+        fontFamily: [ 'Lato','Montserrat', 'sans-serif'].join(','),
     },
 })
 
@@ -146,14 +146,11 @@ export default function Checkout() {
                                         className='grid w-full place-content-stretch md:w-3/4 md:mx-auto'
                                         onSubmit={handleSubmit}
                                     >
-                                        <h2 className='font-black text-justify text-black mb-2 text-xl'>
+                                        <h2 className='font-black text-center text-black mb-2 text-xl'>
                                             Type in the 6-digit code you
                                             received in your Email{' '}
                                         </h2>
-                                        <p className='text-justify text-gray-500'>
-                                            Please type in your Bundle PIN
-                                        </p>
-
+                                        
                                         <OtpInput
                                             value={otp}
                                             onChange={inputHandler}
@@ -164,7 +161,7 @@ export default function Checkout() {
                                             isInputNum
                                         />
 
-                                        <button className=' rounded-3xl outline-none  bg-[#6f42c1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'>
+                                        <button className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'>
                                             {loading ? 'loading..' : 'Confirm'}
                                         </button>
                                     </form>
@@ -193,7 +190,7 @@ export default function Checkout() {
                                         sx={{ mt: 3, ml: 1 }}
                                     >
                                         {activeStep === steps.length - 1
-                                            ? 'Submit'
+                                            ? 'Next'
                                             : nextButton}
                                     </Button>
                                 </Box>
