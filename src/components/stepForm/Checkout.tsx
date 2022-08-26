@@ -45,7 +45,7 @@ const theme = createTheme({
     },
 })
 
-type ValidationError = { key?: string[]; message?: { [key: string]: string } }
+type ValidationError = { message?: { [key: string]: string } }
 
 export type handleInputProps = {
     firstName: string
@@ -87,10 +87,9 @@ export default function Checkout() {
         institutionYearOfStudy: '',
     })
 
-
     const [error, setError] = useState(true)
-    const [validationError, setValidationError] = useState<ValidationError | null>(null)
-
+    const [validationError, setValidationError] =
+        useState<ValidationError | null>(null)
 
     const formValidate = () => {
         const isValidMail = (e: string): Boolean => {
@@ -103,31 +102,36 @@ export default function Checkout() {
             return isValid
         }
 
-
         let count = 0
         for (const key in handleInput) {
             count++
             if (activeStep === 0 && count < 8) {
-                if (handleInput[key as keyof handleInputProps] === '' || handleInput[key as keyof handleInputProps] === null) {
+                if (
+                    handleInput[key as keyof handleInputProps] === '' ||
+                    handleInput[key as keyof handleInputProps] === null
+                ) {
+                    console.log({ key })
+                    console.log(
+                        'empty',
+                        handleInput[key as keyof handleInputProps]
+                    )
 
-                    console.log({key})
-                    console.log('empty', handleInput[key as keyof handleInputProps])
+                    setValidationError((prev) => {
+                        console.log('prev', prev)
+                        return {
+                            ...prev?.message,
+                           
+                            
 
-                    
-                //    setValidationError((prev) => {
-                //        console.log('prev', prev)
-                //        return {
-                //            ...prev,
-                //            message: {
-                //                ...prev?.message,
-                //                [key]: 'This field is required',
-                //            },
-                //        }
-                //    })
+                            message: {
+                                ...prev?.message,
+                                [key]: 'This field is required',
+                            },
+                        }
+                    })
                 }
-            }
-            else{
-               // console.log('outside key',{key})
+            } else {
+                // console.log('outside key',{key})
             }
             // if (activeStep === 1 && count < 5) {
 
@@ -136,7 +140,6 @@ export default function Checkout() {
             //     return
             // }
         }
-
     }
 
     const setInput = (e: any) => {
