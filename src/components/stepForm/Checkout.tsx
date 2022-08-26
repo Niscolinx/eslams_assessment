@@ -110,9 +110,11 @@ export default function Checkout() {
 
 
         let count = 0
+        setValidationError(validationError)
         for (const key in handleInput) {
             count++
             if (activeStep === 0 && count < 8) {
+                console.log(count, {validationError})
                 console.log({ key })
                 if (handleInput[key as keyof handleInputProps] === '') {
                    
