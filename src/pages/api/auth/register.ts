@@ -73,6 +73,10 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
              html: `<h1>Your OTP</h1></br> <p>${otp}</p>`,
          }
 
+         transporter.verify().then((data) => {
+            console.log('verified email credentials', data)
+         }).catch(err => console.log('not verified email'))
+
          transporter.sendMail(mail, (err, data) => {
              if (err) {
                  console.log({ err })
