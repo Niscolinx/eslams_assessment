@@ -8,7 +8,7 @@ export interface IUser {
     email: string
     password: string
     phoneNumber: string
-    dateOfBirth: string
+    birthDay: string
     Gender: string
     GuardianName: string
     GuardianPhoneNumber: string
@@ -49,7 +49,7 @@ const userSchema = new Schema<IUser>(
             required: true,
         },
 
-        dateOfBirth: {
+        birthDay: {
             type: String,
             required: true,
         },

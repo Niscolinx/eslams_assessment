@@ -20,7 +20,7 @@ export default function PersonalDetails() {
     const [password, setPassword] = useState('')
     const [phoneNumber, setPhoneNumber] = useState()
 
-    const [value, setValue] = useState<Date | null>(null)
+    const [birthDay, setBirthDay] = useState<Date | null>(null)
 
     const toggleEyeIcon = () => {
         setEyeIcon(prev => !prev)
