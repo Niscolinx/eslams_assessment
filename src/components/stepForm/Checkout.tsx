@@ -115,6 +115,7 @@ export default function Checkout() {
             if (activeStep === 0 && count < 8) {
                 console.log({ key })
                 if (handleInput[key as keyof handleInputProps] === '') {
+                    console.log('inside key',{key})
                     setValidationError({
                         key: [key],
                         message: {
