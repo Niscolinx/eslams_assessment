@@ -45,7 +45,11 @@ const theme = createTheme({
     },
 })
 
-type ValidationError = { message?: { [key: string]: string } }
+export type ValidationError = [
+    {
+        [key:string]: string
+    }
+]
 
 export type handleInputProps = {
     firstName: string
@@ -91,6 +95,8 @@ export default function Checkout() {
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
 
+
+
     const formValidate = () => {
         const isValidMail = (e: string): Boolean => {
             const emailRegex = new RegExp(
@@ -116,19 +122,7 @@ export default function Checkout() {
                         handleInput[key as keyof handleInputProps]
                     )
 
-                    setValidationError((prev) => {
-                        console.log('prev', prev)
-                        return {
-                            ...prev?.message,
-                           
-                            
-
-                            message: {
-                                ...prev?.message,
-                                [key]: 'This field is required',
-                            },
-                        }
-                    })
+                   
                 }
             } else {
                 // console.log('outside key',{key})

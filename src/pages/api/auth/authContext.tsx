@@ -1,16 +1,13 @@
 import { createContext } from 'react'
-import { handleInputProps } from '../../../components/stepForm/Checkout'
+import { handleInputProps, ValidationError } from '../../../components/stepForm/Checkout'
 
 type ContextType = {
     setHandleInput: (handleInput: any) => void
     handleInput: handleInputProps
     setInput: (event: any) => void
 
-    validationError: {
-        message?: {
-            [key: string]: string
-        }
-    } | null
+    validationError: ValidationError | null
+        
 }
 
 export const AuthContext = createContext<ContextType>(null as any)
