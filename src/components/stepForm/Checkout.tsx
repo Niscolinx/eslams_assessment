@@ -68,6 +68,8 @@ export default function Checkout() {
     const [institutionType, setInstitutionType] = useState('')
     const [institutionYearOfStudy, setInstitutionYearOfStudy] = useState('')
 
+    const [error, setError] = useState(true)
+
     const handleNext = () => {
         setActiveStep(activeStep + 1)
     }
