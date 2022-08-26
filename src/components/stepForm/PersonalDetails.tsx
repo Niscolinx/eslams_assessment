@@ -38,6 +38,8 @@ export default function PersonalDetails() {
         }
     }
 
+    console.log({password, gender, phoneNumber, birthDate})
+
 
     return (
         <React.Fragment>
@@ -126,7 +128,7 @@ export default function PersonalDetails() {
                             value={birthDate}
                             minDate={new Date('2017-01-01')}
                             onChange={(newDate) => {
-                                setDate(newDate)
+                                setBirthDate(newDate)
                             }}
                             renderInput={(params) => (
                                 <TextField
