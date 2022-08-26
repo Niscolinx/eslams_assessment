@@ -4,8 +4,9 @@ export interface IUser {
     [x: string]: any
     _id: Object
     firstName: string
-    last: string
+    lastName: string
     email: string
+    password: string
     phoneNumber: string
     DateOfBirth: string
     Gender: string
