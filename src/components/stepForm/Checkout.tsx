@@ -73,6 +73,7 @@ export default function Checkout() {
         key: ['hewll', 'ads'],
         message: {
             'hewll': 'asdasd',
+            'ads': 'asdasd',
         },
     })
 
