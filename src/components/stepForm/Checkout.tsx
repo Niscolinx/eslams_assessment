@@ -70,8 +70,6 @@ export default function Checkout() {
 
     const [birthDate, setBirthDate] = useState<Date | null>(null)
 
-    console.log(birthDate?.toLocaleString())
-
     const [error, setError] = useState(true)
     const [validationError, setValidationError] = useState<ValidationError>({
         key: ['hewll', 'ads'],
@@ -97,7 +95,7 @@ export default function Checkout() {
         }
 
 
-        
+        console.log(handleInput)
     }
 
     const setInput = (e: any) => {
@@ -109,7 +107,6 @@ export default function Checkout() {
         }))
     }
 
-    console.log({ handleInput })
 
     const handleNext = () => {
         formValidate()
