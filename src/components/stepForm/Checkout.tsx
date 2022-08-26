@@ -50,7 +50,7 @@ export default function Checkout() {
     const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
 
-    const [firstName, setFirstName] = useState('')
+    const [firstName, setFirstName] = useState('igboanugwo')
     const [lastName, setLastName] = useState('')
     const [personalEmail, setPersonalEmail] = useState('')
     const [gender, setGender] = useState('male')

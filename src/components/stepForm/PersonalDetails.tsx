@@ -66,8 +66,8 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='family-name'
                         variant='standard'
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
