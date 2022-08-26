@@ -102,8 +102,12 @@ export default function Checkout() {
 
         let count = 0
         const errors = {} as ValidationError
+
+
         for (const key in handleInput) {
             count++
+
+            //Validation for the first step
             if (activeStep === 0 && count < 8) {
                 if (
                     handleInput[key as keyof handleInputProps] === '' ||
@@ -114,9 +118,10 @@ export default function Checkout() {
 
                     setValidationError(errors)
                 }
-            } else {
-                // console.log('outside key',{key})
-            }
+
+
+
+            } 
             // if (activeStep === 1 && count < 5) {
 
             // }
@@ -133,6 +138,7 @@ export default function Checkout() {
     const setInput = (e: any) => {
         const { name, value } = e.target
         setValidationError(null)
+        setError(false)
 
         setHandleInput((prev: any) => ({
             ...prev,
