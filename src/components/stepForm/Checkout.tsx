@@ -98,7 +98,7 @@ export default function Checkout() {
     type ValidationError = { key: string[]; message: { [key: string]: string } }
 
     const handleNext = () => {
-        if(){}
+        //if(){}
 
 
 
@@ -160,6 +160,7 @@ export default function Checkout() {
 
     const navContext = useMemo(() => {
         return {
+            handleInput,
             setHandleInput,
 
             gender,
