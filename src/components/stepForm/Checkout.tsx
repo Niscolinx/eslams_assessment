@@ -128,6 +128,15 @@ export default function Checkout() {
                 }
             }
 
+            if(key === 'password'){
+                 if (handleInput[key].length < 7) {
+                     errors[key as keyof handleInputProps] =
+                         'Password must be at least 6 characters long'
+
+                     setValidationError(errors)
+                 }
+            }
+
 
 
               if (activeStep === 0 && count < 8) {
