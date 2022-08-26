@@ -11,7 +11,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         await dbConnect()
 
         console.log('req body', req.body)
-        const {firstName, lastName, email, password,phoneNumber, birthDate, Gender, GuardianName, GuardianPhoneNumber, GuardianEmail, GuardianRelationship, institutionName, institutionType, institutionYearOfStudy, otp } = req.body
+        const {firstName, lastName, email, password,phoneNumber, birthDate, Gender, GuardianName, GuardianPhoneNumber, GuardianEmail, GuardianRelationship, institutionName, institutionType, institutionYearOfStudy } = req.body
         //Validate
         if (!email || !email.includes('@') || !password || !phoneNumber) {
             console.log('failed')
@@ -62,6 +62,8 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         if (!verifyStored) {
             return res.status(500).json({ message: 'Server Error' })
         }
+
+        const otp = ''
        
          const mail = {
              from: 'admin@1960token.com',
