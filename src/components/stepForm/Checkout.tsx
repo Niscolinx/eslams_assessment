@@ -51,6 +51,24 @@ export default function Checkout() {
     const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
 
+    const [handleInput, setHandleInput] = useState<any>({
+        firstName: '',
+        lastName: '',
+        personalEmail: '',
+        phoneNumber: '',
+        password: '',
+        gender: '',
+        birthDate: null,
+        guardianEmail: '',
+        guardianPhoneNumber: '',
+        guardianName: '',
+        guardianRelationship: '',
+        institutionName: '',
+        institutionType: '',
+        institutionYearOfStudy: ''
+
+    })
+
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [personalEmail, setPersonalEmail] = useState('')
@@ -80,9 +98,7 @@ export default function Checkout() {
     type ValidationError = { key: string[]; message: { [key: string]: string } }
 
     const handleNext = () => {
-        if(
-            
-        ){}
+        if(){}
 
 
 
