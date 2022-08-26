@@ -16,6 +16,22 @@ type ContextType = {
     setPhoneNumber: (phoneNumber: string) => void
     birthDate: Date | null,
     setBirthDate: (birthDate: Date | null) => void
+
+    guardianName: string,
+    setGuardianName: (guardianName: string) => void
+    guardianPhoneNumber: string,
+    setGuardianPhoneNumber: (guardianPhoneNumber: string) => void
+    guardianEmail: string,
+    setGuardianEmail: (guardianEmail: string) => void
+    guardianRelationship: string,
+    setGuardianRelationship: (guardianRelationship: string) => void
+
+    institutionName: string,
+    setInstitutionName: (institutionName: string) => void
+    institutionType: string,
+    setInstitutionType: (institutionType: string) => void
+    institutionYearOfStudy: string,
+    setInstitutionYearOfStudy: (institutionYearOfStudy: string) => void
  
 }
 

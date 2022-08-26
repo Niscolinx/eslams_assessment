@@ -58,10 +58,14 @@ export default function Checkout() {
     const [phoneNumber, setPhoneNumber] = useState('')
     const [birthDate, setBirthDate] = useState<Date | null>(null)
 
-    const [GuardianEmail, setGuardianEmail] = useState('')
-    const [GuardianName, setGuardianName] = useState('')
-    const [GuardianPhoneNumber, setGuardianPhoneNumber] = useState('')
-    const [GuardianRelationship, setGuardianRelationship] = useState('')
+    const [guardianEmail, setGuardianEmail] = useState('')
+    const [guardianName, setGuardianName] = useState('')
+    const [guardianPhoneNumber, setGuardianPhoneNumber] = useState('')
+    const [guardianRelationship, setGuardianRelationship] = useState('')
+
+    const [institutionName, setInstitutionName] = useState('')
+    const [institutionType, setInstitutionType] = useState('')
+    const [institutionYearOfStudy, setInstitutionYearOfStudy] = useState('')
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
@@ -103,14 +107,22 @@ export default function Checkout() {
             setPhoneNumber,
             birthDate,
             setBirthDate,
-            GuardianEmail,
+
+            guardianEmail,
             setGuardianEmail,
-            GuardianName,
+            guardianName,
             setGuardianName,
-            GuardianPhoneNumber,
+            guardianPhoneNumber,
             setGuardianPhoneNumber,
-            GuardianRelationship,
+            guardianRelationship,
             setGuardianRelationship,
+
+            institutionName,
+            setInstitutionName,
+            institutionType,
+            setInstitutionType,
+            institutionYearOfStudy,
+            setInstitutionYearOfStudy
 
         }
     }, [
@@ -121,11 +133,14 @@ export default function Checkout() {
         password,
         phoneNumber,
         birthDate,
-        GuardianEmail,
-        GuardianName,
-        GuardianPhoneNumber,
-        GuardianRelationship,
-        
+        guardianEmail,
+        guardianName,
+        guardianPhoneNumber,
+        guardianRelationship,
+        institutionName,
+        institutionType,
+        institutionYearOfStudy
+
     ])
 
     console.log({ navContext })
