@@ -45,7 +45,7 @@ const Register = () => {
             const Y = e.clientY - e.screenY
 
 
-            console.log({X, Y})
+            //console.log({X, Y})
 
            // image.style.transform = `translate(${X}px, ${Y}px)`
         })
