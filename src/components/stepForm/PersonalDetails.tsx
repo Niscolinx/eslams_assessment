@@ -20,7 +20,7 @@ export default function PersonalDetails() {
     const [eyeIcon, setEyeIcon] = useState(false)
 
 
-    const {personalEmail, setPersonalEmail, lastName, setLastName, phoneNumber, setPhoneNumber, gender, setGender, birthDate, setBirthDate, password, setPassword, setInput, handleInput} = useContext(AuthContext)
+    const { setInput } = useContext(AuthContext)
 
 
     const toggleEyeIcon = () => {
