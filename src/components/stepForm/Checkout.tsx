@@ -52,7 +52,7 @@ export default function Checkout() {
     const [otp, setOtp] = useState<string>('')
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
@@ -157,7 +157,7 @@ export default function Checkout() {
 
                                         <button className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'>
                                             {loading ? (
-                                                <CircularProgress className='text-white text-sm' size={20}/>
+                                                <CircularProgress className='text-white flex justify-self-center' size={20}/>
                                             ) : (
                                                 'Confirm'
                                             )}
