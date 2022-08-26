@@ -109,7 +109,7 @@ export default function Checkout() {
 
         console.log('submit')
 
-        axios.post('/api/register', data).then((res) => {
+        axios.post('/api/auth/register', data).then((res) => {
             console.log(res)
         }).catch(err => {
             console.log({err})
