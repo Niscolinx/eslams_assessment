@@ -160,8 +160,8 @@ export default function Checkout() {
             // }
         }
 
-        if (errors) {
-            console.log({ errors })
+        if (Object.keys(errors).length > 0) {
+          
             return false
         }
 
@@ -177,6 +177,8 @@ export default function Checkout() {
             [name]: value,
         }))
     }
+
+    console.log({ handleInput })
 
     const handleNext = () => {
         const isValid = formValidate()
