@@ -64,7 +64,7 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='given-name'
                         variant='standard'
-                        value={handleInput['firstName']}
+                        value={handleInput.firstName}
                         error
                         helperText='Please enter your first name'
                         onChange={setInput}
@@ -79,8 +79,8 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='family-name'
                         variant='standard'
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
+                        value={handleInput.lastName}
+                       // onChange={setInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>

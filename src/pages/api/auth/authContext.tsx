@@ -4,8 +4,7 @@ import {createContext} from 'react';
 type ContextType = {
     personalEmail: string,
     setPersonalEmail: (personalEmail: string) => void
-    firstName: string,
-    setFirstName: (firstName: string) => void
+ 
     lastName: string,
     setLastName: (lastName: string) => void
     gender: string,

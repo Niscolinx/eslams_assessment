@@ -69,7 +69,6 @@ export default function Checkout() {
 
     })
 
-    const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [personalEmail, setPersonalEmail] = useState('')
     const [gender, setGender] = useState('')
@@ -113,17 +112,16 @@ export default function Checkout() {
 
 
      const setInput = (e:any) => {
-         console.log(e.target.value)
 
          const {name, value} = e.target
 
+         console.log({name, value})
 
          setHandleInput((prev:any) => ({
             ...prev,
             [name]: value
          }))
 
-         
      }
 
      console.log({handleInput})
@@ -163,7 +161,6 @@ export default function Checkout() {
 
         const data = {
             gender,
-            firstName,
             lastName,
             personalEmail,
             password,
@@ -202,8 +199,7 @@ export default function Checkout() {
 
             gender,
             setGender,
-            firstName,
-            setFirstName,
+      
             lastName,
             setLastName,
             personalEmail,
