@@ -128,9 +128,11 @@ export default function Checkout() {
         }
 
         
-        if
+        if(errors){
+            return false
+        }
 
-
+        return true
     }
 
 
