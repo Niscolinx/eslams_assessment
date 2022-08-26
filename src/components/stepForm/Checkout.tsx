@@ -105,7 +105,7 @@ export default function Checkout() {
         }
 
         let count = 0
-        const errors = {}
+        const errors = {} as ValidationError
         for (const key in handleInput) {
             count++
             if (activeStep === 0 && count < 8) {
@@ -119,15 +119,9 @@ export default function Checkout() {
                         handleInput[key as keyof handleInputProps]
                     )
 
-                      errors[key] = 'This field is required'  
+                      errors[key as keyof handleInputProps] = 'This field is required'  
 
-                    setValidationError(prev => {
-                        console.log({prev})
-                        return {
-                            ...prev,
-                            [key]: 'This field is required',
-                        }
-                    })
+                    setValidationError(errors)
                    
                 }
             } else {

@@ -66,7 +66,7 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='given-name'
                         variant='standard'
-                        error
+                        error={validationError && validationError['firstName'] ? true : false}
                         helperText='Please enter your first name'
                         onChange={setInput}
                     />
