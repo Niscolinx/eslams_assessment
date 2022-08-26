@@ -101,6 +101,8 @@ export default function Checkout() {
         }
     }, [])
 
+    console.log({ navContext })
+
     return (
         <AuthContext.Provider value={navContext}>
             <ThemeProvider theme={theme}>
