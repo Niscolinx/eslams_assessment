@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -15,11 +15,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 import OtpInput from 'react-otp-input'
+import { CircularProgress } from '@mui/material'
 
 import PersonalDetails from './PersonalDetails'
 import GuardianOrParent from './GuardianOrParent'
 import Education from './Education'
-import { CircularProgress } from '@mui/material'
+
+import { AuthContext } from '../../pages/api/auth/authContext'
 
 
 
@@ -53,6 +55,8 @@ export default function Checkout() {
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
+        const [isVerified, setIsVerified] = useState(false)
+
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
@@ -78,7 +82,15 @@ export default function Checkout() {
         console.log('submit')
     }
 
+     const navContext = useMemo(() => {
+        return {
+            isVerified,
+            setIsVerified,
+        }
+    }, [isVerified, setIsVerified])
+
     return (
+        <AuthContext.Provider value={navContext}>
         <ThemeProvider theme={theme}>
             {/* <AppBar
                 position='absolute'
@@ -199,5 +211,6 @@ export default function Checkout() {
                 {/* <Copyright /> */}
             </Container>
         </ThemeProvider>
+        </AuthContext.Provider>
     )
 }
