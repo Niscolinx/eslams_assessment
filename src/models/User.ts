@@ -89,7 +89,7 @@ const userSchema = new Schema<IUser>(
                 level: Number,
             },
         ],
-        transfers: [
+        Events: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'transfer',
