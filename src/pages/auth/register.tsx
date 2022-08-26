@@ -130,7 +130,7 @@ const Register = () => {
                             className='main-1__image'
                         />
                     </div>
-                    <div className='grid gap-2 main-1__points'>
+                    <div className='grid gap-2 main-1__points w-max'>
                         <p className='main-1__points--item'>
                             Learn Through Practice
                         </p>

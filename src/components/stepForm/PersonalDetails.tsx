@@ -126,7 +126,7 @@ export default function PersonalDetails() {
                         <DesktopDatePicker
                             label='Date of Birth'
                             value={birthDate}
-                            minDate={new Date('2017-01-01')}
+                            //minDate={new Date('2017-01-01')}
                             onChange={(newDate) => {
                                 setBirthDate(newDate)
                             }}
