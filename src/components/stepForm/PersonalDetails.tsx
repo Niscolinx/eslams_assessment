@@ -20,7 +20,7 @@ export default function PersonalDetails() {
 
     
 
-    const { isVerified, setIsVerified } = useContext(AuthContext)
+    const {  } = useContext(AuthContext)
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
