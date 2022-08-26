@@ -74,7 +74,6 @@ const GeneralDetails = () => {
 
 interface EventProps {
     heading: string
-    details: string[]
     price: number
     which: number
     date: {
@@ -85,7 +84,6 @@ interface EventProps {
 
 const Event = ({
     heading,
-    details,
     price,
     date: { from, to },
     which,
@@ -114,15 +112,7 @@ const Event = ({
                         {heading}
                     </span>
                 </h4>
-                <div className='registeredEvent__details'>
-                    {details.length > 0 &&
-                        details.map((item) => (
-                            <ul>
-                                <li>{item}</li>
-                            </ul>
-                        ))}
-                    <ul></ul>
-                </div>
+                
             </div>
             
         </div>
@@ -141,12 +131,7 @@ const RegisteredEvents = () => {
                  <Event
                      heading='USA BASKETBALL SHOWCASE PRESENTED BY COINBASE'
                      price={1200}
-                     details={[
-                         'Basketball, Water and Training Supplies',
-                         'Certfied Atletic trainers',
-                         'Availability of Shuttles',
-                         'NCAA Certified Checklist',
-                     ]}
+                     
                      date={{
                          from: '10th Sep',
                      }}
@@ -155,12 +140,7 @@ const RegisteredEvents = () => {
                  <Event
                      heading='2022 FIBA AmeriCup for Men'
                      price={1500}
-                     details={[
-                         'Basketball, Water and Training Supplies',
-                         'Certfied Atletic trainers',
-                         'Availability of Shuttles',
-                         'NCAA Certified Checklist',
-                     ]}
+                     
                      date={{
                          from: '5th Oct',
                          to: '9th Oct',
@@ -170,24 +150,14 @@ const RegisteredEvents = () => {
                  <Event
                      heading='FIBA 3x3 U23 World Cup (women)'
                      price={750}
-                     details={[
-                         'Basketball, Water and Training Supplies',
-                         'Certfied Atletic trainers',
-                         'Availability of Shuttles',
-                         'NCAA Certified Checklist',
-                     ]}
+                     
                      date={{ from: '2nd Sep', to: '11th Sep' }}
                      which={3}
                  />
                  <Event
                      heading='2022 USA Basketball Gold Camp (boys)'
                      price={1500}
-                     details={[
-                         'Basketball, Water and Training Supplies',
-                         'Certfied Atletic trainers',
-                         'Availability of Shuttles',
-                         'NCAA Certified Checklist',
-                     ]}
+                     
                      date={{
                          from: '4th Sep',
                          to: '5th Sep',
@@ -197,24 +167,14 @@ const RegisteredEvents = () => {
                  <Event
                      heading='2022 USA Basketball Coach Academy'
                      price={1500}
-                     details={[
-                         'Basketball, Water and Training Supplies',
-                         'Certfied Atletic trainers',
-                         'Availability of Shuttles',
-                         'NCAA Certified Checklist',
-                     ]}
+                     
                      date={{ from: '10th Sep' }}
                      which={2}
                  />
                  <Event
                      heading='2022 USA Basketball Gold Camp (girls)'
                      price={1500}
-                     details={[
-                         'Basketball, Water and Training Supplies',
-                         'Certfied Atletic trainers',
-                         'Availability of Shuttles',
-                         'NCAA Certified Checklist',
-                     ]}
+                     
                      date={{ from: '3rd Sep', to: '4th Sep' }}
                      which={3}
                  />

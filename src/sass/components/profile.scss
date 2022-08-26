@@ -322,16 +322,16 @@
         position: relative;
        // height: 25rem;
 
-        @include respond(phone) {
-            display: grid;
-            justify-self: center;
-            //min-width: 350px;
-        }
+        // @include respond(phone) {
+        //     display: grid;
+        //     justify-self: center;
+        //     //min-width: 350px;
+        // }
 
-        @include respond(smaller-phone) {
-            // min-width: 20px;
-            justify-self: center;
-        }
+        // @include respond(smaller-phone) {
+        //     // min-width: 20px;
+        //     justify-self: center;
+        // }
 
         &__side {
             transition: all 0.8s ease;
@@ -395,6 +395,7 @@
         &__picture {
             background-size: cover;
             height: 15rem;
+            width: 100%;
             background-blend-mode: screen;
             -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
@@ -501,26 +502,8 @@
             }
         }
 
-        &__details {
-            // padding: 1rem 0;
-
-            ul {
-                list-style: none;
-                width: 80%;
-                margin: 0 auto;
-
-                li {
-                    text-align: center;
-                    font-size: 1rem;
-                    padding: 1rem;
-                    font-weight: 300;
-
-                    &:not(:last-child) {
-                        border-bottom: 1px solid $color-grey-light-2;
-                    }
-                }
-            }
-        }
+        
+        
 
         // FRONT SIDE STYLING
         &__cta {
