@@ -97,9 +97,17 @@ export default function Checkout() {
             phoneNumber,
             setPhoneNumber,
             birthDate,
-            setBirthDate
+            setBirthDate,
         }
-    }, [])
+    }, [
+        setGender,
+        setFirstName,
+        setLastName,
+        setPersonalEmail,
+        setPassword,
+        setPhoneNumber,
+        setBirthDate,
+    ])
 
     console.log({ navContext })
 
