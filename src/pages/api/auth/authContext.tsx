@@ -5,4 +5,4 @@ type ContextType = {
     setIsVerified: (isVerified: boolean) => void
 }
 
-export const NavContext = createContext<ContextType>(null as any);
+export const AuthContext = createContext<ContextType>(null as any);
