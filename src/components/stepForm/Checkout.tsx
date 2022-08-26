@@ -101,15 +101,15 @@ export default function Checkout() {
 
         console.log(e)
 
-        // console.log({e})
-        //  const {name, value} = e.target
+        console.log({e})
+         const {name, value} = e.target
 
-        //  console.log({name, value})
+         console.log({name, value})
 
-        //  setHandleInput((prev:any) => ({
-        //     ...prev,
-        //     [name]: value
-        //  }))
+         setHandleInput((prev:any) => ({
+            ...prev,
+            [name]: value
+         }))
         
 
      }

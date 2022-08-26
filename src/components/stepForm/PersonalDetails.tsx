@@ -129,9 +129,8 @@ export default function PersonalDetails() {
                             setInput({
                                 target: {
                                     name: 'phoneNumber',
-                                    value
-                                }
-                                
+                                    value,
+                                },
                             })
                         }
                     />
@@ -140,9 +139,15 @@ export default function PersonalDetails() {
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
                             label='Date of Birth'
-                            //minDate={new Date('2017-01-01')}
-                            onChange={setInput}
-                            //value={}
+                            onChange={(value) =>
+                                setInput({
+                                    target: {
+                                        name: 'birthDate',
+                                        value,
+                                    },
+                                })
+                            }
+                            //value={new Date('2017-01-01')}
                             renderInput={(params) => (
                                 <TextField
                                     {...params}

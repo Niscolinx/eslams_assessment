@@ -19,12 +19,7 @@ import { AuthContext } from '../../pages/api/auth/authContext'
 export default function Education() {
     
     const {
-        institutionName,
-        setInstitutionName,
-        institutionType,
-        setInstitutionType,
-        institutionYearOfStudy,
-        setInstitutionYearOfStudy
+        setInput
     } = useContext(AuthContext)
 
 
@@ -42,10 +37,9 @@ export default function Education() {
                         <Select
                             labelId='select-label'
                             id='select'
-                            value={institutionType}
                             variant='standard'
                             label='Institution Type'
-                            onChange={(e) => setInstitutionType(e.target.value)}
+                            onChange={setInput}
                         >
                             <MenuItem value={'school'}>School</MenuItem>
                             <MenuItem value={'college'}>College</MenuItem>
@@ -62,8 +56,7 @@ export default function Education() {
                         fullWidth
                         type={'number'}
                         variant='standard'
-                        value={institutionYearOfStudy}
-                        onChange={(e) => setInstitutionYearOfStudy(e.target.value)}
+                        onChange={setInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={12}>
@@ -74,8 +67,7 @@ export default function Education() {
                         label='Name of Institution'
                         fullWidth
                         variant='standard'
-                        value={institutionName}
-                        onChange={(e) => setInstitutionName(e.target.value)}
+                        onChange={setInput}
                     />
                 </Grid>
             </Grid>
