@@ -8,7 +8,7 @@ export interface IUser {
     email: string
     password: string
     phoneNumber: string
-    DateOfBirth: string
+    dateOfBirth: string
     Gender: string
     GuardianName: string
     GuardianPhoneNumber: string
@@ -17,7 +17,6 @@ export interface IUser {
     institutionType: string
     institutionName: string
     institutionYearOfStudy: string
-    joinedCommunity: boolean
 }
 
 const userSchema = new Schema<IUser>(
@@ -50,7 +49,7 @@ const userSchema = new Schema<IUser>(
             required: true,
         },
 
-        DateOfBirth: {
+        dateOfBirth: {
             type: String,
             required: true,
         },
