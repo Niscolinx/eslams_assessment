@@ -66,7 +66,10 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             return res.status(500).json({ message: 'Server Error' })
         }
 
-        const otp = ''
+        //generate random 6 digit code
+        const otp = Math.floor(Math.random() * 1000000)
+        
+         console.log({otp})
        
          const mail = {
              from: 'admin@eslams.com',
