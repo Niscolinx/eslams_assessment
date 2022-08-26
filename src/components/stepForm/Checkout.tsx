@@ -23,8 +23,6 @@ import Education from './Education'
 
 import { AuthContext } from '../../pages/api/auth/authContext'
 
-
-
 const steps = ['Personal details', 'Guardian/Parent', 'Education']
 
 function getStepContent(step: number) {
@@ -42,21 +40,16 @@ function getStepContent(step: number) {
 
 const theme = createTheme({
     typography: {
-        fontFamily: [ 'Lato','Montserrat', 'sans-serif'].join(','),
+        fontFamily: ['Lato', 'Montserrat', 'sans-serif'].join(','),
     },
 })
-
-
-
-
 
 export default function Checkout() {
     const [otp, setOtp] = useState<string>('')
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
-        const [isVerified, setIsVerified] = useState(false)
-
+    const [isVerified, setIsVerified] = useState(false)
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
@@ -72,7 +65,7 @@ export default function Checkout() {
         </span>
     )
 
-    const inputHandler = (input:string) => {
+    const inputHandler = (input: string) => {
         setOtp(input)
         setKeepOtp((singleOtp) => [input])
     }
@@ -82,7 +75,7 @@ export default function Checkout() {
         console.log('submit')
     }
 
-     const navContext = useMemo(() => {
+    const navContext = useMemo(() => {
         return {
             isVerified,
             setIsVerified,
@@ -91,8 +84,8 @@ export default function Checkout() {
 
     return (
         <AuthContext.Provider value={navContext}>
-        <ThemeProvider theme={theme}>
-            {/* <AppBar
+            <ThemeProvider theme={theme}>
+                {/* <AppBar
                 position='absolute'
                 color='default'
                 elevation={0}
@@ -108,109 +101,112 @@ export default function Checkout() {
                 </Toolbar> 
             </AppBar> */}
 
-            <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
-                <CssBaseline />
-                <Paper
-                    variant='outlined'
-                    sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-                >
-                    <div className='absolute -right-22  top-0'>
-                        <img
-                            src='/ball-icon.png'
-                            width='170px'
-                            height='170px'
-                            className='animate-spin-slow'
-                        />
-                    </div>
-                    <Typography
-                        component='h2'
-                        variant='h4'
-                        align='center'
-                        className='font-semibold'
+                <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
+                    <CssBaseline />
+                    <Paper
+                        variant='outlined'
+                        sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
                     >
-                        Get Started with eslams
-                    </Typography>
-                    <Typography component='p' align='center'>
-                        Create an account and step into greatness
-                    </Typography>
-                    <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-                        {steps.map((label) => (
-                            <Step key={label}>
-                                <StepLabel>{label}</StepLabel>
-                            </Step>
-                        ))}
-                    </Stepper>
-                    <React.Fragment>
-                        {activeStep === steps.length ? (
-                            <React.Fragment>
-                                {/* <Typography variant='h5' gutterBottom>
+                        <div className='absolute -right-22  top-0'>
+                            <img
+                                src='/ball-icon.png'
+                                width='170px'
+                                height='170px'
+                                className='animate-spin-slow'
+                            />
+                        </div>
+                        <Typography
+                            component='h2'
+                            variant='h4'
+                            align='center'
+                            className='font-semibold'
+                        >
+                            Get Started with eslams
+                        </Typography>
+                        <Typography component='p' align='center'>
+                            Create an account and step into greatness
+                        </Typography>
+                        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+                            {steps.map((label) => (
+                                <Step key={label}>
+                                    <StepLabel>{label}</StepLabel>
+                                </Step>
+                            ))}
+                        </Stepper>
+                        <React.Fragment>
+                            {activeStep === steps.length ? (
+                                <React.Fragment>
+                                    {/* <Typography variant='h5' gutterBottom>
                                     Type in the 6-digit code you received in
                                     your Email
                                 </Typography> */}
-                                <Typography variant='subtitle1'>
-                                    <form
-                                        className='grid w-full place-content-stretch md:w-3/4 md:mx-auto'
-                                        onSubmit={handleSubmit}
+                                    <Typography variant='subtitle1'>
+                                        <form
+                                            className='grid w-full place-content-stretch md:w-3/4 md:mx-auto'
+                                            onSubmit={handleSubmit}
+                                        >
+                                            <h2 className='font-black text-center text-black mb-2 text-xl'>
+                                                Type in the 6-digit code you
+                                                received in your Email{' '}
+                                            </h2>
+
+                                            <OtpInput
+                                                value={otp}
+                                                onChange={inputHandler}
+                                                numInputs={6}
+                                                inputStyle='pinlogin-field'
+                                                containerStyle='pinlogin'
+                                                shouldAutoFocus
+                                                isInputNum
+                                            />
+
+                                            <button className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'>
+                                                {loading ? (
+                                                    <CircularProgress
+                                                        className='text-white flex justify-self-center'
+                                                        size={20}
+                                                    />
+                                                ) : (
+                                                    'Confirm'
+                                                )}
+                                            </button>
+                                        </form>
+                                    </Typography>
+                                </React.Fragment>
+                            ) : (
+                                <React.Fragment>
+                                    {getStepContent(activeStep)}
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            justifyContent: 'flex-end',
+                                        }}
                                     >
-                                        <h2 className='font-black text-center text-black mb-2 text-xl'>
-                                            Type in the 6-digit code you
-                                            received in your Email{' '}
-                                        </h2>
-
-                                        <OtpInput
-                                            value={otp}
-                                            onChange={inputHandler}
-                                            numInputs={6}
-                                            inputStyle='pinlogin-field'
-                                            containerStyle='pinlogin'
-                                            shouldAutoFocus
-                                            isInputNum
-                                        />
-
-                                        <button className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'>
-                                            {loading ? (
-                                                <CircularProgress className='text-white flex justify-self-center' size={20}/>
-                                            ) : (
-                                                'Confirm'
-                                            )}
-                                        </button>
-                                    </form>
-                                </Typography>
-                            </React.Fragment>
-                        ) : (
-                            <React.Fragment>
-                                {getStepContent(activeStep)}
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'flex-end',
-                                    }}
-                                >
-                                    {activeStep !== 0 && (
+                                        {activeStep !== 0 && (
+                                            <Button
+                                                onClick={handleBack}
+                                                sx={{ mt: 3, ml: 1 }}
+                                            >
+                                                Back
+                                            </Button>
+                                        )}
                                         <Button
-                                            onClick={handleBack}
+                                            variant='contained'
+                                            onClick={handleNext}
                                             sx={{ mt: 3, ml: 1 }}
                                         >
-                                            Back
+                                            {activeStep === steps.length - 1
+                                                ? 'Next'
+                                                : nextButton}
                                         </Button>
-                                    )}
-                                    <Button
-                                        variant='contained'
-                                        onClick={handleNext}
-                                        sx={{ mt: 3, ml: 1 }}
-                                    >
-                                        {activeStep === steps.length - 1
-                                            ? 'Next'
-                                            : nextButton}
-                                    </Button>
-                                </Box>
-                            </React.Fragment>
-                        )}
-                    </React.Fragment>
-                </Paper>
-                {/* <Copyright /> */}
-            </Container>
-        </ThemeProvider>
+                                    </Box>
+                                </React.Fragment>
+                            )}
+                        </React.Fragment>
+                    </Paper>
+                    {/* <Copyright /> */}
+                </Container>
+            </ThemeProvider>
         </AuthContext.Provider>
     )
 }
