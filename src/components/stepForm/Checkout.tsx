@@ -173,7 +173,6 @@ export default function Checkout() {
             handleInput,
             setHandleInput,
             setInput,
-            birthDate,
             setBirthDate,
             value,
             setValue,

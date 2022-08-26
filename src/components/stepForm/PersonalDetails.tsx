@@ -20,7 +20,7 @@ import { AuthContext } from '../../pages/api/auth/authContext'
 export default function PersonalDetails() {
     const [eyeIcon, setEyeIcon] = useState(false)
 
-    const { setInput, handleInput, birthDate, setBirthDate } = useContext(AuthContext)
+    const { setInput, handleInput, setBirthDate } = useContext(AuthContext)
 
     const [dateValue, setDateValue] = useState<Date | null>(null)
 
@@ -39,13 +39,10 @@ export default function PersonalDetails() {
         }
     }
 
-    // if (key === 'email') {
-    //     const checkEmail = isValidMail(value.toString())
-
-    //     if (!checkEmail) {
-
-    //     }
-    // }
+    const handleDateChange = (e:Date | null) => {
+        setDateValue(e)
+        setBirthDate(e)
+    }
 
     return (
         <React.Fragment>
@@ -144,7 +141,7 @@ export default function PersonalDetails() {
                         <DatePicker
                             label='Date of Birth'
                             value={dateValue}
-                            onChange={(value) => setDateValue(value)}
+                            onChange={handleDateChange}
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
