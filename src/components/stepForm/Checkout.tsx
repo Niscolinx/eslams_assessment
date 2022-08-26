@@ -103,7 +103,6 @@ export default function Checkout() {
         let count = 0
         const errors = {} as ValidationError
 
-
         for (const key in handleInput) {
             count++
 
@@ -118,10 +117,10 @@ export default function Checkout() {
 
                     setValidationError(errors)
                 }
+            }
 
 
 
-            } 
             // if (activeStep === 1 && count < 5) {
 
             // }
@@ -130,7 +129,6 @@ export default function Checkout() {
             // }
         }
 
-        console.log({ errors })
     }
 
     console.log({ validationError })
@@ -147,12 +145,18 @@ export default function Checkout() {
     }
 
     const handleNext = () => {
-        console.log({ handleInput })
         formValidate()
 
-        //if(){}
+        if(!error){
+            console.log('no error', {error})
+        }
+        else{
+            console.log('omor error dey o', {error})
+        }
 
-        //setActiveStep(activeStep + 1)
+        // if (!error) {
+        //     setActiveStep(activeStep + 1)
+        // }
     }
 
     const handleBack = () => {
