@@ -20,7 +20,7 @@ export default function PersonalDetails() {
 
     
 
-    const {  } = useContext(AuthContext)
+    const { email } = useContext(AuthContext)
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
