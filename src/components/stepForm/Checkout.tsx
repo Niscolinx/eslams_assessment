@@ -106,17 +106,7 @@ export default function Checkout() {
             count++
 
             //Validation for the first step
-            if (activeStep === 0 && count < 8) {
-                if (
-                    handleInput[key as keyof handleInputProps] === '' ||
-                    handleInput[key as keyof handleInputProps] === null
-                ) {
-                    errors[key as keyof handleInputProps] =
-                        'This field is required'
-
-                    return setValidationError(errors)
-                }
-            }
+           
 
             if (key === 'personalEmail') {
                 isValidMail(handleInput[key], (cb) => {
@@ -124,7 +114,7 @@ export default function Checkout() {
                     if (!cb) {
                         errors[key] = 'Invalid email'
 
-                        return setValidationError(errors)
+                        setValidationError(errors)
                     }
                 })
             }
@@ -137,6 +127,20 @@ export default function Checkout() {
                     setValidationError(errors)
                 }
             }
+
+
+
+              if (activeStep === 0 && count < 8) {
+                  if (
+                      handleInput[key as keyof handleInputProps] === '' ||
+                      handleInput[key as keyof handleInputProps] === null
+                  ) {
+                      errors[key as keyof handleInputProps] =
+                          'This field is required'
+
+                      setValidationError(errors)
+                  }
+              }
 
             // if (activeStep === 1 && count < 5) {
 
