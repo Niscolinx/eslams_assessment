@@ -118,12 +118,10 @@ export default function Checkout() {
          const {name, value} = e.target
 
 
-         setHandleInput((prev:any) => {
-            const oldPrev =  {...prev}
-
-            console.log({oldPrev})
-            oldPrev.firstName = 'hello'
-         })
+         setHandleInput((prev:any) => ({
+            ...prev,
+            [name]: value
+         }))
 
          
      }
