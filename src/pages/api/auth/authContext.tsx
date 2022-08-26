@@ -33,7 +33,7 @@ type ContextType = {
     institutionYearOfStudy: string,
     setInstitutionYearOfStudy: (institutionYearOfStudy: string) => void
 
-    ValidationError: {
+    validationError: {
         key: string[],
         message: {
             [key: string]: string
