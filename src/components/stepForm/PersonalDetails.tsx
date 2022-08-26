@@ -62,12 +62,15 @@ export default function PersonalDetails() {
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <TextField
+                    children={
+                        <input type='text' required value={'hello'}/>
+                    }
                         required
                         id='firstName'
+                        
                         name='firstName'
                         type='text'
                         label='First name'
-                        value={handleInput['firstName']}
                         fullWidth
                         error={
                             validationError && validationError['firstName']
