@@ -100,13 +100,13 @@ export default function Checkout() {
             setBirthDate,
         }
     }, [
-        setGender,
-        setFirstName,
-        setLastName,
-        setPersonalEmail,
-        setPassword,
-        setPhoneNumber,
-        setBirthDate,
+        gender,
+        firstName,
+        lastName,
+        personalEmail,
+        password,
+        phoneNumber,
+        birthDate,
     ])
 
     console.log({ navContext })
