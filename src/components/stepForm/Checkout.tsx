@@ -116,6 +116,7 @@ export default function Checkout() {
                         'This field is required'
 
                     setValidationError(errors)
+                    setError(true)
                 }
             }
 
@@ -128,6 +129,12 @@ export default function Checkout() {
             //     return
             // }
         }
+
+         if (error) {
+             console.log('omor error choke o', { error })
+         } else {
+             console.log('no error', { error })
+         }
 
     }
 
@@ -147,12 +154,7 @@ export default function Checkout() {
     const handleNext = () => {
         formValidate()
 
-        if(error){
-            console.log('omor error choke o', {error})
-        }
-        else{
-            console.log('no error', {error})
-        }
+       
 
         // if (!error) {
         //     setActiveStep(activeStep + 1)
