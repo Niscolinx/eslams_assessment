@@ -151,6 +151,7 @@ export default function Checkout() {
                   }
               }
 
+
             // if (activeStep === 1 && count < 5) {
 
             // }
@@ -160,6 +161,7 @@ export default function Checkout() {
         }
 
         if (errors) {
+            console.log({ errors })
             return false
         }
 
@@ -178,6 +180,8 @@ export default function Checkout() {
 
     const handleNext = () => {
         const isValid = formValidate()
+
+        console.log({isValid})
 
         if (!isValid) {
             return
