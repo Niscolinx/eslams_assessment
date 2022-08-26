@@ -69,7 +69,6 @@ export default function Checkout() {
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(true)
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
     const [handleInput, setHandleInput] = useState<handleInputProps>({
@@ -116,7 +115,6 @@ export default function Checkout() {
                         'This field is required'
 
                     setValidationError(errors)
-                    setError(true)
                 }
             }
 
@@ -130,10 +128,10 @@ export default function Checkout() {
             // }
         }
 
-         if (error) {
-             console.log('omor error choke o', { error })
+         if (validationError) {
+             console.log('omor error choke o', {validationError})
          } else {
-             console.log('no error', { error })
+             console.log('no error', {validationError})
          }
 
     }
@@ -143,7 +141,6 @@ export default function Checkout() {
     const setInput = (e: any) => {
         const { name, value } = e.target
         setValidationError(null)
-        setError(false)
 
         setHandleInput((prev: any) => ({
             ...prev,
