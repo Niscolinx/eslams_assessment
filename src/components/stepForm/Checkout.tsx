@@ -87,6 +87,7 @@ export default function Checkout() {
         institutionType: '',
         institutionYearOfStudy: '',
     })
+    
 
     const formValidate = () => {
         const errors =  {} as ValidationError
