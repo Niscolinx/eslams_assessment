@@ -91,6 +91,8 @@ export default function Checkout() {
     const [error, setError] = useState(true)
     const [validationError, setValidationError] = useState<ValidationError | null>(null)
 
+
+    console.log({handleInput})
     const formValidate = () => {
         const isValidMail = (e: string): Boolean => {
             const emailRegex = new RegExp(
@@ -107,7 +109,7 @@ export default function Checkout() {
         for (const key in handleInput) {
             count++
             if (activeStep === 0 && count < 8) {
-                
+                console.log({handleInput})
                 if (handleInput[key as keyof handleInputProps] === '' || handleInput[key as keyof handleInputProps] === null) {
 
                     
