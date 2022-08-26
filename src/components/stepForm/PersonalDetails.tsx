@@ -20,7 +20,7 @@ export default function PersonalDetails() {
     const [eyeIcon, setEyeIcon] = useState(false)
 
 
-    const { setInput } = useContext(AuthContext)
+    const { setInput,  } = useContext(AuthContext)
 
 
     const toggleEyeIcon = () => {
@@ -64,7 +64,7 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='given-name'
                         variant='standard'
-                       // value={handleInput['firstName']}
+                        // value={handleInput['firstName']}
                         // error
                         // helperText='Please enter your first name'
                         onChange={setInput}
@@ -79,7 +79,7 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='family-name'
                         variant='standard'
-                       onChange={setInput}
+                        onChange={setInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -91,8 +91,7 @@ export default function PersonalDetails() {
                         label='Email Address'
                         fullWidth
                         variant='standard'
-                        value={personalEmail}
-                        onChange={(e) => setPersonalEmail(e.target.value)}
+                        onChange={setInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -105,8 +104,7 @@ export default function PersonalDetails() {
                             type='password'
                             fullWidth
                             variant='standard'
-                            onChange={(e) => setPassword(e.target.value)}
-                            value={password}
+                            onChange={setInput}
                         />
                         {
                             <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
@@ -130,21 +128,18 @@ export default function PersonalDetails() {
                         placeholder='Phone Number'
                         defaultCountry={'us'}
                         variant='standard'
-                        value={phoneNumber}
                         label='Phone Number'
                         fullWidth
-                        onChange={(e: any) => setPhoneNumber(e)}
+                        onChange={setInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
                             label='Date of Birth'
-                            value={birthDate}
                             //minDate={new Date('2017-01-01')}
-                            onChange={(newDate) => {
-                                setBirthDate(newDate)
-                            }}
+                            onChange={setInput}
+                            value={}
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
@@ -164,8 +159,7 @@ export default function PersonalDetails() {
                         <RadioGroup
                             aria-labelledby='demo-controlled-radio-buttons-group'
                             name='controlled-radio-buttons-group'
-                            value={gender}
-                            onChange={(e) => setGender(e.target.value)}
+                            onChange={setInput}
                         >
                             <FormControlLabel
                                 value='male'
