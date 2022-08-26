@@ -88,17 +88,19 @@ export default function Checkout() {
         institutionYearOfStudy: '',
     })
 
-
     const formValidate = () => {
-        const errors =  {} as ValidationError
-        const isValidMail = (e: string): Boolean => {
+        const errors = {} as ValidationError
+        const isValidMail = (
+            e: string,
+            cb: (checkValid: boolean) => boolean
+        ) => {
             const emailRegex = new RegExp(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             )
 
             const isValid = emailRegex.test(e)
 
-            return isValid
+            return cb(isValid)
         }
 
         let count = 0
@@ -119,11 +121,15 @@ export default function Checkout() {
                 }
             }
 
-            if(key === 'personalEmail'){
-               
-                isValidMail(handleInput['personalEmail']) 
+            if (key === 'personalEmail') {
+                isValidMail(handleInput['personalEmail'], (cb) => {
+                    if (!cb) {
+                        return false
+                    } else {
+                        return true
+                    }
+                })
             }
-
 
             // if (activeStep === 1 && count < 5) {
 
@@ -133,14 +139,12 @@ export default function Checkout() {
             // }
         }
 
-        
-        if(errors){
+        if (errors) {
             return false
         }
 
         return true
     }
-
 
     const setInput = (e: any) => {
         const { name, value } = e.target
@@ -159,8 +163,6 @@ export default function Checkout() {
             return
         }
         setActiveStep(activeStep + 1)
-
-       
 
         // if (!error) {
         //     setActiveStep(activeStep + 1)
