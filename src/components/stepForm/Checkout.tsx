@@ -19,6 +19,7 @@ import OtpInput from 'react-otp-input'
 import PersonalDetails from './PersonalDetails'
 import GuardianOrParent from './GuardianOrParent'
 import Education from './Education'
+import { CircularProgress } from '@mui/material'
 
 
 
@@ -51,7 +52,7 @@ export default function Checkout() {
     const [otp, setOtp] = useState<string>('')
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
@@ -143,7 +144,7 @@ export default function Checkout() {
                                             Type in the 6-digit code you
                                             received in your Email{' '}
                                         </h2>
-                                        
+
                                         <OtpInput
                                             value={otp}
                                             onChange={inputHandler}
@@ -155,7 +156,11 @@ export default function Checkout() {
                                         />
 
                                         <button className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'>
-                                            {loading ? 'loading..' : 'Confirm'}
+                                            {loading ? (
+                                                <CircularProgress className='text-white'/>
+                                            ) : (
+                                                'Confirm'
+                                            )}
                                         </button>
                                     </form>
                                 </Typography>
