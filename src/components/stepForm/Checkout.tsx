@@ -119,6 +119,8 @@ export default function Checkout() {
                 }
             }
 
+            console.log({key})
+
 
             // if (activeStep === 1 && count < 5) {
 
