@@ -70,7 +70,7 @@ export default function Checkout() {
 
     const [birthDate, setBirthDate] = useState<Date | null>(null)
 
-    console.log({ birthDate })
+    console.log(birthDate?.toLocaleString())
 
     const [error, setError] = useState(true)
     const [validationError, setValidationError] = useState<ValidationError>({
