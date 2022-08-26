@@ -45,23 +45,23 @@ const theme = createTheme({
     },
 })
 
-    type ValidationError = { key: string[]; message: { [key: string]: string } }
+type ValidationError = { key: string[]; message: { [key: string]: string } }
 
-    type handleInputProps = {
-        firstName: string
-        lastName: string
-        personalEmail: string
-        password: string
-        phoneNumber: string
-        gender: string
-        guardianEmail: string
-        guardianPhoneNumber:string
-        guardianName:string
-        guardianRelationship:string
-        institutionName:string
-        institutionType:string
-        institutionYearOfStudy:string
-    }
+type handleInputProps = {
+    firstName: string
+    lastName: string
+    personalEmail: string
+    password: string
+    phoneNumber: string
+    gender: string
+    guardianEmail: string
+    guardianPhoneNumber: string
+    guardianName: string
+    guardianRelationship: string
+    institutionName: string
+    institutionType: string
+    institutionYearOfStudy: string
+}
 export default function Checkout() {
     const [value, setValue] = React.useState<Date | null>(null)
     const [otp, setOtp] = useState<string>('')
@@ -96,10 +96,7 @@ export default function Checkout() {
         },
     })
 
-
     const formValidate = () => {
-
-
         const isValidMail = (e: string): Boolean => {
             const emailRegex = new RegExp(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -110,26 +107,26 @@ export default function Checkout() {
             return isValid
         }
 
-
-        console.log({handleInput})
+        console.log({ handleInput })
 
         let count = 0
-        for(const key in handleInput){
-            if(activeStep === 0)
+        for (const key in handleInput) {
             count++
-            console.log({key})
-            if(handleInput[key as keyof handleInputProps]  === ''){
-
-                setValidationError({
-                    key: [key],
-                    message: {
-                        [key]: 'This field is required'
-                    }
-                })
-            }
+            console.log('inside loop', {count})
+            // if (activeStep === 0 && count < 8) {
+            //     console.log({ key })
+            //     if (handleInput[key as keyof handleInputProps] === '') {
+            //         setValidationError({
+            //             key: [key],
+            //             message: {
+            //                 [key]: 'This field is required',
+            //             },
+            //         })
+            //     }
+            // }
         }
 
-        console.log({count})
+        console.log({ count })
     }
 
     const setInput = (e: any) => {
@@ -140,7 +137,6 @@ export default function Checkout() {
             [name]: value,
         }))
     }
-
 
     const handleNext = () => {
         formValidate()
