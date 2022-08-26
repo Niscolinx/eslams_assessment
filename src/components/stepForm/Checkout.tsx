@@ -123,7 +123,9 @@ export default function Checkout() {
 
             if (key === 'personalEmail') {
                 isValidMail(handleInput['personalEmail'], (cb) => {
+                    console.log({cb})
                     if (!cb) {
+
                         return false
                     } else {
                         return true
