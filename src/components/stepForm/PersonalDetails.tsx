@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, {useContext} from 'react'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
@@ -13,6 +13,8 @@ import { FormControl, FormLabel, RadioGroup, Radio } from '@mui/material'
 import { useState } from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import MuiPhoneNumber from 'material-ui-phone-number'
+import { AuthContext } from '../../pages/api/auth/authContext'
+
 
 export default function PersonalDetails() {
     const [gender, setGender] = useState('male')
@@ -21,6 +23,8 @@ export default function PersonalDetails() {
     const [phoneNumber, setPhoneNumber] = useState()
 
     const [birthDate, setBirthDate] = useState<Date | null>(null)
+        const { isVerified, setIsVerified } = useContext(AuthContext)
+
 
     const toggleEyeIcon = () => {
         setEyeIcon(prev => !prev)
