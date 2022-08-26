@@ -89,6 +89,7 @@ export default function Checkout() {
     })
 
     const formValidate = () => {
+        const errors =  {} as ValidationError
         const isValidMail = (e: string): Boolean => {
             const emailRegex = new RegExp(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -100,7 +101,6 @@ export default function Checkout() {
         }
 
         let count = 0
-        const errors = {} as ValidationError
 
         for (const key in handleInput) {
             count++
@@ -119,7 +119,6 @@ export default function Checkout() {
             }
 
 
-
             // if (activeStep === 1 && count < 5) {
 
             // }
@@ -128,15 +127,12 @@ export default function Checkout() {
             // }
         }
 
-         if (validationError === null) {
-             console.log('no error', {validationError})
-            } else {
-             console.log('omor error choke o', {validationError})
-         }
+        
+        if
+
 
     }
 
-    console.log({ validationError })
 
     const setInput = (e: any) => {
         const { name, value } = e.target
