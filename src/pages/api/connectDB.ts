@@ -1,8 +1,6 @@
-import { IUser } from '../../models/User'
 import { NextApiRequest, NextApiResponse } from 'next'
-import User from '../../models/User'
 import dbConnect from '../../lib/dbConnect'
-import { json } from 'stream/consumers'
+
 
 export default async function user(req: NextApiRequest, res: NextApiResponse) {
     const connect = await dbConnect()
