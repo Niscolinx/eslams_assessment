@@ -113,11 +113,7 @@ export default function Checkout() {
                     handleInput[key as keyof handleInputProps] === '' ||
                     handleInput[key as keyof handleInputProps] === null
                 ) {
-                    console.log({ key })
-                    console.log(
-                        'empty',
-                        handleInput[key as keyof handleInputProps]
-                    )
+                   
 
                       errors[key as keyof handleInputProps] = 'This field is required'  
 

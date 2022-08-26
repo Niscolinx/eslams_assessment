@@ -64,11 +64,18 @@ export default function PersonalDetails() {
                         name='firstName'
                         label='First name'
                         fullWidth
-                          error={validationError && validationError['firstName'] ? true : false}
+                        error={
+                            validationError && validationError['firstName']
+                                ? true
+                                : false
+                        }
                         autoComplete='given-name'
                         variant='standard'
-                        
                         helperText='Please enter your first name'
+                        onError= {(e) => {
+                            console.log(e)
+                        }
+                        }
                         onChange={setInput}
                     />
                 </Grid>
@@ -80,7 +87,7 @@ export default function PersonalDetails() {
                         label='Last name'
                         fullWidth
                         error={
-                            validationError && validationError['firstName']
+                            validationError && validationError['lastName']
                                 ? true
                                 : false
                         }
@@ -98,7 +105,7 @@ export default function PersonalDetails() {
                         label='Email Address'
                         fullWidth
                         error={
-                            validationError && validationError['firstName']
+                            validationError && validationError['personalEmail']
                                 ? true
                                 : false
                         }
@@ -115,7 +122,12 @@ export default function PersonalDetails() {
                             label='Password'
                             type='password'
                             fullWidth
-                              error={validationError && validationError['firstName'] ? true : false}
+                            error={
+                                validationError && validationError['password']
+                                    ? true
+                                    : false
+                            }
+                            
                             variant='standard'
                             onChange={setInput}
                         />
@@ -144,7 +156,11 @@ export default function PersonalDetails() {
                         variant='standard'
                         label='Phone Number'
                         fullWidth
-                          error={validationError && validationError['firstName'] ? true : false}
+                        error={
+                            validationError && validationError['phoneNumber']
+                                ? true
+                                : false
+                        }
                         onChange={(value) =>
                             setInput({
                                 target: {
@@ -164,7 +180,15 @@ export default function PersonalDetails() {
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
+                                    name='birthDate'
+                                    fullWidth
                                     variant='standard'
+                                    error={
+                                        validationError &&
+                                        validationError['birthDate']
+                                            ? true
+                                            : false
+                                    }
                                     required
                                 />
                             )}
@@ -181,6 +205,7 @@ export default function PersonalDetails() {
                             aria-labelledby='demo-controlled-radio-buttons-group'
                             name='gender'
                             onChange={setInput}
+                            defaultChecked
                         >
                             <FormControlLabel
                                 value='male'
