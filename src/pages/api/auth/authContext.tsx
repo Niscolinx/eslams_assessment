@@ -39,7 +39,8 @@ type ContextType = {
             [key: string]: string
         }
     }
- 
+
+
 }
 
 export const AuthContext = createContext<ContextType>(null as any);
