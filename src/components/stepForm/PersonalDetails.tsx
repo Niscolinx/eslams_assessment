@@ -232,7 +232,7 @@ export default function PersonalDetails() {
                             aria-labelledby='demo-controlled-radio-buttons-group'
                             name='gender'
                             onChange={setInput}
-                            defaultChecked
+                            defaultChecked={true}
                         >
                             <FormControlLabel
                                 value='male'
