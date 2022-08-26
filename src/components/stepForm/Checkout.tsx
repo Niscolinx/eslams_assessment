@@ -76,15 +76,15 @@ export default function Checkout() {
         personalEmail: '',
         phoneNumber: '',
         password: '',
-        gender: '',
         guardianEmail: '',
+        birthDate: null,
+        gender: '',
         guardianPhoneNumber: '',
         guardianName: '',
         guardianRelationship: '',
         institutionName: '',
         institutionType: '',
         institutionYearOfStudy: '',
-        birthDate: null,
     })
 
 
@@ -123,6 +123,12 @@ export default function Checkout() {
                         },
                     })
                 }
+            }
+            if (activeStep === 1 && count < 5) {
+
+            }
+            else{
+                return
             }
         }
 
