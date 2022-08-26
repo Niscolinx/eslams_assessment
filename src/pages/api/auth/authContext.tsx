@@ -2,6 +2,8 @@ import { createContext } from 'react'
 
 type ContextType = {
     setHandleInput: (handleInput: any) => void
+    birthDate: string
+    setBirthDate: (birthdate: string) => void
     handleInput: {
         [key: string]: string
     }

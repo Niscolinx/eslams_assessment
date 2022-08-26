@@ -18,7 +18,7 @@ import { AuthContext } from '../../pages/api/auth/authContext'
 export default function PersonalDetails() {
     const [eyeIcon, setEyeIcon] = useState(false)
 
-    const { setInput, handleInput } = useContext(AuthContext)
+    const { setInput, handleInput, birthdate, setBirthDate } = useContext(AuthContext)
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -139,14 +139,9 @@ export default function PersonalDetails() {
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
                             label='Date of Birth'
-                            value={handleInput['birthDate']}
+                            value={birthdate}
                             onChange={(value) =>
-                                setInput({
-                                    target: {
-                                        name: 'birthDate',
-                                        value,
-                                    },
-                                })
+                                setBirthDate(value)
                             }
                             //value={new Date('2017-01-01')}
                             renderInput={(params) => (

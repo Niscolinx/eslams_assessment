@@ -58,7 +58,6 @@ export default function Checkout() {
         phoneNumber: '',
         password: '',
         gender: '',
-        birthDate: null,
         guardianEmail: '',
         guardianPhoneNumber: '',
         guardianName: '',
@@ -68,6 +67,8 @@ export default function Checkout() {
         institutionYearOfStudy: ''
 
     })
+
+    const [birthDate, setBirthDate] = useState<string>('')
 
   
 
@@ -186,7 +187,8 @@ export default function Checkout() {
             handleInput,
             setHandleInput,
             setInput,
-
+            birthDate,
+            setBirthDate,
            
 
             validationError,
