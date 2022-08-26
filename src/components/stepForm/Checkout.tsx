@@ -72,7 +72,7 @@ export default function Checkout() {
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
     const [handleInput, setHandleInput] = useState<handleInputProps>({
-        firstName: '',
+       // firstName: '',
         lastName: '',
         personalEmail: '',
         phoneNumber: '',

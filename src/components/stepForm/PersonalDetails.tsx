@@ -65,6 +65,7 @@ export default function PersonalDetails() {
                         required
                         id='firstName'
                         name='firstName'
+                        type='text'
                         label='First name'
                         value={handleInput['firstName']}
                         fullWidth
@@ -83,7 +84,7 @@ export default function PersonalDetails() {
                         onError={(e) => {
                             console.log(e)
                         }}
-                        onChange={setInput}
+                       // onChange={setInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
