@@ -16,12 +16,9 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AuthContext } from '../../pages/api/auth/authContext'
 
 export default function PersonalDetails() {
-
     const [eyeIcon, setEyeIcon] = useState(false)
 
-
     const { setInput } = useContext(AuthContext)
-
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -38,16 +35,13 @@ export default function PersonalDetails() {
         }
     }
 
-    
-
     // if (key === 'email') {
     //     const checkEmail = isValidMail(value.toString())
 
     //     if (!checkEmail) {
-           
+
     //     }
     // }
-
 
     return (
         <React.Fragment>
@@ -131,7 +125,15 @@ export default function PersonalDetails() {
                         variant='standard'
                         label='Phone Number'
                         fullWidth
-                        onChange={setInput}
+                        onChange={(value) =>
+                            setInput({
+                                target: {
+                                    name: 'phoneNumber',
+                                    value
+                                }
+                                
+                            })
+                        }
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>

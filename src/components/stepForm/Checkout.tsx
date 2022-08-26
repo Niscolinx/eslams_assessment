@@ -99,7 +99,7 @@ export default function Checkout() {
 
      const setInput = (e:any) => {
 
-        e
+        console.log(e)
 
         // console.log({e})
         //  const {name, value} = e.target
