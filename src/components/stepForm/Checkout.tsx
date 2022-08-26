@@ -87,7 +87,7 @@ export default function Checkout() {
         institutionType: '',
         institutionYearOfStudy: '',
     })
-    
+
 
     const formValidate = () => {
         const errors =  {} as ValidationError
@@ -148,7 +148,12 @@ export default function Checkout() {
     }
 
     const handleNext = () => {
-        formValidate()
+        const isValid = formValidate()
+
+        if (!isValid) {
+            return
+        }
+        setActiveStep(activeStep + 1)
 
        
 
