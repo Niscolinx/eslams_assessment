@@ -89,9 +89,9 @@ export default function GuardianOrParent() {
                             label='Relationship'
                             onChange={(e) => setGuardianRelationship(e.target.value)}
                         >
-                            <MenuItem value={20}>Father</MenuItem>
-                            <MenuItem value={30}>Mother</MenuItem>
-                            <MenuItem value={10}>Guardian</MenuItem>
+                            <MenuItem value='father'>Father</MenuItem>
+                            <MenuItem value='mother'>Mother</MenuItem>
+                            <MenuItem value='guardian'>Guardian</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
