@@ -107,7 +107,6 @@ export default function Checkout() {
             return isValid
         }
 
-        console.log({ handleInput })
 
         let count = 0
         for (const key in handleInput) {
