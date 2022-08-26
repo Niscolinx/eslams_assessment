@@ -119,7 +119,10 @@ export default function Checkout() {
                 }
             }
 
-            console.log({key})
+            if(key === 'personalEmail'){
+               
+                isValidMail(handleInput['personalEmail']) 
+            }
 
 
             // if (activeStep === 1 && count < 5) {
