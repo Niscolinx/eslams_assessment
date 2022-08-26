@@ -20,7 +20,14 @@ export default function GuardianOrParent() {
   
 
       const {
-        
+        guardianEmail,
+        setGuardianEmail,
+        guardianName,
+        setGuardianName,
+        guardianPhoneNumber,
+        setGuardianPhoneNumber,
+        guardianRelationship,
+        setGuardianRelationship        
       } = useContext(AuthContext)
 
     return (
