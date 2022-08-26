@@ -45,7 +45,7 @@ const theme = createTheme({
     },
 })
 
-type ValidationError = { key: string[]; message: { [key: string]: string } }
+type ValidationError = { key?: string[]; message?: { [key: string]: string } } | null
 
 export type handleInputProps = {
     firstName: string
@@ -87,15 +87,9 @@ export default function Checkout() {
         institutionYearOfStudy: '',
     })
 
-
     const [error, setError] = useState(true)
-    const [validationError, setValidationError] = useState<ValidationError>({
-        key: ['hewll', 'ads'],
-        message: {
-            hewll: 'asdasd',
-            ads: 'asdasd',
-        },
-    })
+    const [validationError, setValidationError] =
+        useState<ValidationError | null>(null)
 
     const formValidate = () => {
         const isValidMail = (e: string): Boolean => {
@@ -108,29 +102,35 @@ export default function Checkout() {
             return isValid
         }
 
-
         let count = 0
-        setValidationError(validationError)
         for (const key in handleInput) {
             count++
             if (activeStep === 0 && count < 8) {
-                console.log(count, {validationError})
-                console.log({ key })
                 if (handleInput[key as keyof handleInputProps] === '') {
-                   
-                    setValidationError((prev) => ({
-                        ...prev,
-                       
-                        key:  [...prev.key, key] ,
-                        message: {
-                            ...prev.message,
-                            [key]: 'This field is required',
-                        },
-                    }))
+                    console.log('object keys')
+
+                    setValidationError((prev) => {
+                        console.log('prev', prev)
+                        return {
+                            ...prev,
+                            message: {
+                                ...prev?.message,
+                                [key]: 'This field is required',
+                            },
+                        }
+                    })
+                    // setValidationError((prev) => ({
+                    //     ...prev,
+
+                    //     key:  [...prev.key, key] ,
+                    //     message: {
+                    //         ...prev.message,
+                    //         [key]: 'This field is required',
+                    //     },
+                    // }))
                 }
-            }
-            else{
-                console.log('outside key',{key})
+            } else {
+                // console.log('outside key',{key})
             }
             // if (activeStep === 1 && count < 5) {
 
