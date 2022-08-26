@@ -80,7 +80,7 @@ export default function Checkout() {
     type ValidationError = { key: string[]; message: { [key: string]: string } }
 
     const handleNext = () => {
-        setActiveStep(activeStep + 1)
+        //setActiveStep(activeStep + 1)
     }
 
     const handleBack = () => {
