@@ -71,11 +71,14 @@ export default function PersonalDetails() {
                         }
                         autoComplete='given-name'
                         variant='standard'
-                        helperText='Please enter your first name'
-                        onError= {(e) => {
+                        helperText={
+                            validationError && validationError['firstName']
+                                ? validationError['firstName']
+                                : false
+                        }
+                        onError={(e) => {
                             console.log(e)
-                        }
-                        }
+                        }}
                         onChange={setInput}
                     />
                 </Grid>
@@ -91,7 +94,11 @@ export default function PersonalDetails() {
                                 ? true
                                 : false
                         }
-                        autoComplete='family-name'
+                        helperText={
+                            validationError && validationError['lastName']
+                                ? validationError['lastName']
+                                : false
+                        }
                         variant='standard'
                         onChange={setInput}
                     />
@@ -107,6 +114,11 @@ export default function PersonalDetails() {
                         error={
                             validationError && validationError['personalEmail']
                                 ? true
+                                : false
+                        }
+                        helperText={
+                            validationError && validationError['personalEmail']
+                                ? validationError['personalEmail']
                                 : false
                         }
                         variant='standard'
@@ -127,7 +139,11 @@ export default function PersonalDetails() {
                                     ? true
                                     : false
                             }
-                            
+                            helperText={
+                                validationError && validationError['password']
+                                    ? validationError['password']
+                                    : false
+                            }
                             variant='standard'
                             onChange={setInput}
                         />
@@ -161,6 +177,11 @@ export default function PersonalDetails() {
                                 ? true
                                 : false
                         }
+                        helperText={
+                            validationError && validationError['phonNumber']
+                                ? validationError['phonNumber']
+                                : false
+                        }
                         onChange={(value) =>
                             setInput({
                                 target: {
@@ -187,6 +208,12 @@ export default function PersonalDetails() {
                                         validationError &&
                                         validationError['birthDate']
                                             ? true
+                                            : false
+                                    }
+                                    helperText={
+                                        validationError &&
+                                        validationError['birthDate']
+                                            ? validationError['birthDate']
                                             : false
                                     }
                                     required
