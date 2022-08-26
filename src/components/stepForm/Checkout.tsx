@@ -76,9 +76,9 @@ export default function Checkout() {
         personalEmail: '',
         phoneNumber: '',
         password: '',
-        guardianEmail: '',
         birthDate: null,
         gender: '',
+        guardianEmail: '',
         guardianPhoneNumber: '',
         guardianName: '',
         guardianRelationship: '',
@@ -116,13 +116,18 @@ export default function Checkout() {
                 console.log({ key })
                 if (handleInput[key as keyof handleInputProps] === '') {
                     console.log('inside key',{key})
-                    setValidationError({
-                        key: [key],
+                    setValidationError((prev) => ({
+                        ...prev,
+                        key: [...prev.key, key],
                         message: {
+                            ...prev.message,
                             [key]: 'This field is required',
                         },
-                    })
+                    }))
                 }
+            }
+            else{
+                console.log('outside key',{key})
             }
             // if (activeStep === 1 && count < 5) {
 
