@@ -7,7 +7,15 @@ export interface IUser {
     last: string
     email: string
     phoneNumber: string
-    
+    DateOfBirth: string
+    Gender: string
+    GuardianName: string
+    GuardianPhoneNumber: string
+    GuardianEmail: string
+    GuardianRelationship: string
+    institutionType: string
+    institutionName: string
+    institutionYearOfStudy: string
    
 }
 
