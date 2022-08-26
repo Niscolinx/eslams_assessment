@@ -109,6 +109,8 @@ export default function Checkout() {
         }
     }
 
+    console.log({setHandleInput})
+
     const handleNext = () => {
 
         formValidate()
@@ -173,10 +175,15 @@ export default function Checkout() {
             })
     }
 
+    const setInput = (e) => {
+        console.log({e})
+    }
+
     const navContext = useMemo(() => {
         return {
             handleInput,
             setHandleInput,
+            setInput,
 
             gender,
             setGender,

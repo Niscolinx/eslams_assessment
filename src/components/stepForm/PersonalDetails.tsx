@@ -20,9 +20,8 @@ export default function PersonalDetails() {
     const [eyeIcon, setEyeIcon] = useState(false)
 
 
-    const {personalEmail, setPersonalEmail, firstName, setFirstName, lastName, setLastName, phoneNumber, setPhoneNumber, gender, setGender, birthDate, setBirthDate, password, setPassword, validationError} = useContext(AuthContext)
+    const {personalEmail, setPersonalEmail, firstName, setFirstName, lastName, setLastName, phoneNumber, setPhoneNumber, gender, setGender, birthDate, setBirthDate, password, setPassword, setInput, handleInput} = useContext(AuthContext)
 
-    console.log({validationError})
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -65,10 +64,10 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='given-name'
                         variant='standard'
-                        value={firstName}
+                        value={handleInput['firstName']}
                         error
                         helperText='Please enter your first name'
-                        onChange={(e) => setFirstName(e.target.value)}
+                        onChange={setInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
