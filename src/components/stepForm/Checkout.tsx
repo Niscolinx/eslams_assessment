@@ -118,7 +118,7 @@ export default function Checkout() {
                     setValidationError((prev) => ({
                         ...prev,
                        
-                        key: [...prev.key, key],
+                        key:  [...prev.key, key] ,
                         message: {
                             ...prev.message,
                             [key]: 'This field is required',
