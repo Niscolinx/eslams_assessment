@@ -20,7 +20,7 @@ export default function PersonalDetails() {
     const [eyeIcon, setEyeIcon] = useState(false)
 
 
-    const { setInput,  } = useContext(AuthContext)
+    const { setInput } = useContext(AuthContext)
 
 
     const toggleEyeIcon = () => {
@@ -139,7 +139,7 @@ export default function PersonalDetails() {
                             label='Date of Birth'
                             //minDate={new Date('2017-01-01')}
                             onChange={setInput}
-                            value={}
+                            //value={}
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
