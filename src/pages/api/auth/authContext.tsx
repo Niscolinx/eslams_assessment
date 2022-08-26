@@ -32,6 +32,13 @@ type ContextType = {
     setInstitutionType: (institutionType: string) => void
     institutionYearOfStudy: string,
     setInstitutionYearOfStudy: (institutionYearOfStudy: string) => void
+
+    error: {
+        key: string[],
+        message: {
+            [key: string]: string
+        }
+    }
  
 }
 
