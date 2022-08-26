@@ -103,6 +103,15 @@ export default function Checkout() {
             setPhoneNumber,
             birthDate,
             setBirthDate,
+            GuardianEmail,
+            setGuardianEmail,
+            GuardianName,
+            setGuardianName,
+            GuardianPhoneNumber,
+            setGuardianPhoneNumber,
+            GuardianRelationship,
+            setGuardianRelationship,
+
         }
     }, [
         gender,
@@ -112,6 +121,11 @@ export default function Checkout() {
         password,
         phoneNumber,
         birthDate,
+        GuardianEmail,
+        GuardianName,
+        GuardianPhoneNumber,
+        GuardianRelationship,
+        
     ])
 
     console.log({ navContext })
