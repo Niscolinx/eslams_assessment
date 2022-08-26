@@ -59,6 +59,9 @@ export default function Checkout() {
     const [birthDate, setBirthDate] = useState<Date | null>(null)
 
     const [GuardianEmail, setGuardianEmail] = useState('')
+    const [GuardianName, setGuardianName] = useState('')
+    const [GuardianPhoneNumber, setGuardianPhoneNumber] = useState('')
+    const [GuardianRelationship, setGuardianRelationship] = useState('')
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
