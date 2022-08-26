@@ -24,6 +24,9 @@ export default function PersonalDetails() {
 
     const [dateValue, setDateValue] = useState<Date | null>(null)
 
+
+    console.log(validationError)
+
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
 

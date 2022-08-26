@@ -95,7 +95,19 @@ export default function Checkout() {
         }
 
 
-        console.log(handleInput)
+
+        for(const key in handleInput){
+            console.log({key})
+            if(handleInput[key] === ''){
+
+                setValidationError({
+                    key: [key],
+                    message: {
+                        [key]: 'This field is required'
+                    }
+                })
+            }
+        }
     }
 
     const setInput = (e: any) => {
