@@ -122,6 +122,13 @@ export default function Checkout() {
                         handleInput[key as keyof handleInputProps]
                     )
 
+                    setValidationError(prev => {
+                        return [
+                            ...prev,
+                            
+                        ]
+
+                    })
                    
                 }
             } else {
