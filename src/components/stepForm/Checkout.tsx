@@ -112,17 +112,17 @@ export default function Checkout() {
         for (const key in handleInput) {
             count++
             console.log('inside loop', {count})
-            // if (activeStep === 0 && count < 8) {
-            //     console.log({ key })
-            //     if (handleInput[key as keyof handleInputProps] === '') {
-            //         setValidationError({
-            //             key: [key],
-            //             message: {
-            //                 [key]: 'This field is required',
-            //             },
-            //         })
-            //     }
-            // }
+            if (activeStep === 0 && count < 8) {
+                console.log({ key })
+                if (handleInput[key as keyof handleInputProps] === '') {
+                    setValidationError({
+                        key: [key],
+                        message: {
+                            [key]: 'This field is required',
+                        },
+                    })
+                }
+            }
         }
 
         console.log({ count })
