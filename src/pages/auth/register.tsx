@@ -11,7 +11,7 @@ import Checkout from '../../components/stepForm/Checkout'
 
 
 
-const Register = ({ providers }) => {
+const Register = () => {
     type message = { value: string; type?: string; style?: string }
 
     const [emailOrUsername, setEmailOrUsername] = useState('')
@@ -26,108 +26,7 @@ const Register = ({ providers }) => {
     })
     const [messageDisplay, setMessageDisplay] = useState('hidden')
 
-    const isValidMail = (e: string): Boolean => {
-        const emailRegex = new RegExp(
-            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        )
-
-        const isValid = emailRegex.test(e)
-
-        return isValid
-    }
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        setLoading(true)
-
-        if (
-            emailOrUsername.toLowerCase() === 'admin@1960token.com' ||
-            emailOrUsername.toLowerCase() === 'admin'
-        ) {
-            // admin login
-            //send an axios post request to the server
-            return axios
-                .post('/api/auth/login', {
-                    admin: true,
-                    emailOrUsername: emailOrUsername.toLowerCase(),
-                    password,
-                })
-                .then((res) => {
-                    console.log('res', res.data)
-                    setLoading(false)
-
-                    Router.push('/adminDashboard')
-                })
-                .catch((err) => {
-                    setLoading(false)
-                    console.log('err', err)
-                    setError(true)
-                    setMessage({
-                        value: 'Login Failed',
-                        type: 'error',
-                        style: 'text-red-500',
-                    })
-                    setMessageDisplay('block')
-                })
-        }
-
-        const formData = new FormData(e.currentTarget)
-
-        let isError = false
-        for (let [key, value] of formData.entries()) {
-            if (!value) {
-                isError = true
-                setMessage({
-                    value: "Value can't be empty",
-                    type: 'error',
-                    style: 'text-red-500',
-                })
-                setErrorFields((oldArr) => [...oldArr, key])
-                setMessageDisplay('block')
-                setLoading(false)
-            } else if (!isError) {
-                console.log('sign in.....', isError)
-                signIn('credentials', {
-                    redirect: false,
-                    emailOrUsername: emailOrUsername.toLowerCase().trim(),
-                    password: password,
-                }).then((data: any) => {
-                    console.log('data returned', data)
-                    setLoading(false)
-
-                    if (data.error) {
-                        setError(true)
-                        setLoading(false)
-                        setMessage({
-                            value: 'Invalid User',
-                            type: 'error',
-                            style: 'text-red-500',
-                        })
-                        setMessageDisplay('block')
-                        return
-                    }
-                    Router.push('/dashboard')
-                })
-            }
-        }
-    }
-
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setErrorFields([])
-        setMessageDisplay('hidden')
-        const { name, value } = e.target
-
-        switch (name) {
-            case 'emailOrUsername':
-                setEmailOrUsername(value)
-                break
-            case 'password':
-                setPassword(value)
-                break
-            default:
-                ''
-                break
-        }
-    }
+    
 
     useEffect(() => {
 
@@ -267,14 +166,3 @@ const Register = ({ providers }) => {
 
 export default Register
 
-export async function getServerSideProps(context: CtxOrReq | undefined) {
-    const csrfToken = await getCsrfToken(context)
-    const providers = await getProviders()
-
-    return {
-        props: {
-            csrfToken,
-            providers,
-        },
-    }
-}
