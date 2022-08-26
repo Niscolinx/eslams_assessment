@@ -3,13 +3,15 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcryptjs'
 import dbConnect from '../../../lib/dbConnect'
 import User from '../../../models/User'
+import { transporter } from '../../../utils/emailTransport'
+
 
 async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
     try {
         await dbConnect()
 
         console.log('req body', req.body)
-        const {firstName, lastName, email, password,phoneNumber, dateOfBirth, Gender, GuardianName, GuardianPhoneNumber, GuardianEmail, GuardianRelationship, institutionName, institutionType, institutionYearOfStudy } = req.body
+        const {firstName, lastName, email, password,phoneNumber, dateOfBirth, Gender, GuardianName, GuardianPhoneNumber, GuardianEmail, GuardianRelationship, institutionName, institutionType, institutionYearOfStudy, otp } = req.body
         //Validate
         if (!email || !email.includes('@') || !password || !phoneNumber) {
             console.log('failed')
@@ -57,15 +59,33 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         const verifyStored = await storeUser.save()
 
-        if (verifyStored) {
-            res.status(201).json({
-                message: 'successful',
-            })
-        } else {
-            res.status(404).json({
-                message: 'failed',
-            })
+        if (!verifyStored) {
+            return res.status(500).json({ message: 'Server Error' })
         }
+       
+         const mail = {
+             from: 'admin@eslams.com',
+             to: email,
+             subject: `Account Verification`,
+             html: `<h1>Your OTP</h1></br> <p>${otp}</p>`,
+         }
+
+         transporter.sendMail(mail, (err, data) => {
+             if (err) {
+                 console.log({ err })
+                 res.json({
+                     status: 'fail',
+                 })
+             } else {
+                 console.log('email sent', data)
+                 res.json({
+                     status: 'success',
+                 })
+             }
+         })
+
+
+       
     } catch (err) {
         console.log({ err })
     }
