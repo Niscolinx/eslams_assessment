@@ -67,7 +67,7 @@ export default function PersonalDetails() {
                         value={handleInput['firstName']}
                         error
                         helperText='Please enter your first name'
-                        onChange={(e) => setInput(e.target.value)}
+                        onChange={setInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>

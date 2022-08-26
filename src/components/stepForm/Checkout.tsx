@@ -117,6 +117,8 @@ export default function Checkout() {
 
          setHandleInput((prev:any) => {
             const oldPrev =  {...prev}
+
+            console.log({oldPrev})
             oldPrev.firstName = e
          })
      }
