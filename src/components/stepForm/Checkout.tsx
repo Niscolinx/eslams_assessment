@@ -112,7 +112,6 @@ export default function Checkout() {
         let count = 0
         for (const key in handleInput) {
             count++
-            console.log('inside loop', {count})
             if (activeStep === 0 && count < 8) {
                 console.log({ key })
                 if (handleInput[key as keyof handleInputProps] === '') {
