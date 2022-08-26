@@ -20,7 +20,7 @@ export default function PersonalDetails() {
     const [password, setPassword] = useState('')
     const [phoneNumber, setPhoneNumber] = useState()
 
-    const [birthDay, setBirthDay] = useState<Date | null>(null)
+    const [birthDate, setBirthDate] = useState<Date | null>(null)
 
     const toggleEyeIcon = () => {
         setEyeIcon(prev => !prev)
@@ -123,7 +123,7 @@ export default function PersonalDetails() {
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DesktopDatePicker
                             label='Date of Birth'
-                            value={date}
+                            value={birthDate}
                             minDate={new Date('2017-01-01')}
                             onChange={(newDate) => {
                                 setDate(newDate)
