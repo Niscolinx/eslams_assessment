@@ -12,21 +12,14 @@ import Checkout from '../../components/stepForm/Checkout'
 
 
 const Register = () => {
-    type message = { value: string; type?: string; style?: string }
 
-    const [emailOrUsername, setEmailOrUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [loading, setLoading] = useState(false)
-    const [errorFields, setErrorFields] = useState<string[]>([])
-    const [error, setError] = useState(false)
-    const [message, setMessage] = useState<message>({
-        value: 'invalid Entries',
-        type: 'error',
-        style: 'text-red-500',
-    })
-    const [messageDisplay, setMessageDisplay] = useState('hidden')
-
-    
+    useEffect(() => {
+        axios.get('/api/connectDB').then((res) => {
+            console.log('connected')
+        }).catch(err => {
+            console.log('not connected')
+        })
+    }, [])
 
     useEffect(() => {
 
