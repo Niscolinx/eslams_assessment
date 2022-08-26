@@ -69,6 +69,7 @@ export default function Checkout() {
     const [institutionYearOfStudy, setInstitutionYearOfStudy] = useState('')
 
     const [error, setError] = useState(true)
+    const [validationError, setValidationError] = useState<{ key: string[], message: { [key: string]: string } }>({ key: [], message: {} })
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
@@ -152,9 +153,9 @@ export default function Checkout() {
             institutionType,
             setInstitutionType,
             institutionYearOfStudy,
-            setInstitutionYearOfStudy
+            setInstitutionYearOfStudy,
 
-            
+            validationError
         }
     }, [
         gender,
@@ -170,8 +171,8 @@ export default function Checkout() {
         guardianRelationship,
         institutionName,
         institutionType,
-        institutionYearOfStudy
-
+        institutionYearOfStudy,
+        validationError
     ])
 
 
