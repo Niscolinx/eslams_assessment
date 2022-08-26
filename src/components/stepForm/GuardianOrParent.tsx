@@ -45,6 +45,8 @@ export default function GuardianOrParent() {
                         fullWidth
                         autoComplete='family-name'
                         variant='standard'
+                        value={guardianName}
+                        onChange={(e) => setGuardianName(e.target.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -56,6 +58,8 @@ export default function GuardianOrParent() {
                         fullWidth
                         autoComplete='Email address'
                         variant='standard'
+                        value={guardianEmail}
+                        onChange={(e) => setGuardianEmail(e.target.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -69,7 +73,8 @@ export default function GuardianOrParent() {
                         variant='standard'
                         label='Phone Number'
                         fullWidth
-                        onChange={(e: any) => setPhoneNumber(e)}
+                        value={guardianPhoneNumber}
+                        onChange={(e: any) => setGuardianPhoneNumber(e)}
                     />
                 </Grid>
 
@@ -80,9 +85,9 @@ export default function GuardianOrParent() {
                             labelId='select-label'
                             id='select'
                             variant='standard'
-                            value={relationship}
+                            value={guardianRelationship}
                             label='Relationship'
-                            onChange={(e) => setRelationship(e.target.value)}
+                            onChange={(e) => setGuardianRelationship(e.target.value)}
                         >
                             <MenuItem value={20}>Father</MenuItem>
                             <MenuItem value={30}>Mother</MenuItem>
