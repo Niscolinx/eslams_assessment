@@ -53,6 +53,8 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='given-name'
                         variant='standard'
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -64,6 +66,8 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='family-name'
                         variant='standard'
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -75,6 +79,8 @@ export default function PersonalDetails() {
                         label='Email Address'
                         fullWidth
                         variant='standard'
+                        value={personalEmail}
+                        onChange={(e) => setPersonalEmail(e.target.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
