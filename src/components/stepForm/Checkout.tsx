@@ -72,7 +72,6 @@ export default function Checkout() {
     const [error, setError] = useState(true)
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
-
     const [handleInput, setHandleInput] = useState<handleInputProps>({
         firstName: '',
         lastName: '',
@@ -90,10 +89,7 @@ export default function Checkout() {
         institutionYearOfStudy: '',
     })
 
-
     const formValidate = () => {
-
-
         const isValidMail = (e: string): Boolean => {
             const emailRegex = new RegExp(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -113,12 +109,10 @@ export default function Checkout() {
                     handleInput[key as keyof handleInputProps] === '' ||
                     handleInput[key as keyof handleInputProps] === null
                 ) {
-                   
-
-                      errors[key as keyof handleInputProps] = 'This field is required'  
+                    errors[key as keyof handleInputProps] =
+                        'This field is required'
 
                     setValidationError(errors)
-                   
                 }
             } else {
                 // console.log('outside key',{key})
@@ -131,10 +125,10 @@ export default function Checkout() {
             // }
         }
 
-        console.log({errors})
+        console.log({ errors })
     }
 
-    console.log({validationError})
+    console.log({ validationError })
 
     const setInput = (e: any) => {
         const { name, value } = e.target
