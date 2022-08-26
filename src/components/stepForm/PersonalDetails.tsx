@@ -20,7 +20,7 @@ import { AuthContext } from '../../pages/api/auth/authContext'
 export default function PersonalDetails() {
     const [eyeIcon, setEyeIcon] = useState(false)
 
-    const { setInput, handleInput, setBirthDate } = useContext(AuthContext)
+    const { setInput, handleInput, setBirthDate, validationError } = useContext(AuthContext)
 
     const [dateValue, setDateValue] = useState<Date | null>(null)
 
@@ -59,9 +59,8 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='given-name'
                         variant='standard'
-                        // value={handleInput['firstName']}
-                        // error
-                        // helperText='Please enter your first name'
+                        error
+                         helperText='Please enter your first name'
                         onChange={setInput}
                     />
                 </Grid>
