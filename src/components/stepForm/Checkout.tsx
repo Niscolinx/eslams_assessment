@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -12,7 +12,9 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
+import OtpInput from 'react-otp-input'
 
 import PersonalDetails from './PersonalDetails'
 import GuardianOrParent from './GuardianOrParent'
@@ -48,16 +50,15 @@ function getStepContent(step: number) {
 
 const theme = createTheme({
     typography: {
-        fontFamily: [
-            'Montserrat',
-            'Lato',
-            'sans-serif',
-        ].join(','),
+        fontFamily: ['Montserrat', 'Lato', 'sans-serif'].join(','),
     },
 })
 
 export default function Checkout() {
+    const [otp, setOtp] = useState('')
+    const [keepOtp, setKeepOtp] = useState([])
     const [activeStep, setActiveStep] = React.useState(0)
+    const [loading, setLoading] = useState(false)
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
@@ -72,6 +73,16 @@ export default function Checkout() {
             Next <HiOutlineArrowNarrowRight />
         </span>
     )
+
+    const inputHandler = (input) => {
+        setOtp(input)
+        setKeepOtp((singleOtp) => [input])
+    }
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+        console.log('submit')
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -126,14 +137,37 @@ export default function Checkout() {
                     <React.Fragment>
                         {activeStep === steps.length ? (
                             <React.Fragment>
-                                <Typography variant='h5' gutterBottom>
-                                    Thank you for your order.
-                                </Typography>
+                                {/* <Typography variant='h5' gutterBottom>
+                                    Type in the 6-digit code you received in
+                                    your Email
+                                </Typography> */}
                                 <Typography variant='subtitle1'>
-                                    Your order number is #2001539. We have
-                                    emailed your order confirmation, and will
-                                    send you an update when your order has
-                                    shipped.
+                                    <form
+                                        className='grid w-full place-content-stretch md:w-3/4 md:mx-auto'
+                                        onSubmit={handleSubmit}
+                                    >
+                                        <h2 className='font-black text-justify text-black mb-2 text-xl'>
+                                            Type in the 6-digit code you
+                                            received in your Email{' '}
+                                        </h2>
+                                        <p className='text-justify text-gray-500'>
+                                            Please type in your Bundle PIN
+                                        </p>
+
+                                        <OtpInput
+                                            value={otp}
+                                            onChange={inputHandler}
+                                            numInputs={6}
+                                            inputStyle='pinlogin-field'
+                                            containerStyle='pinlogin'
+                                            shouldAutoFocus
+                                            isInputNum
+                                        />
+
+                                        <button className=' rounded-3xl outline-none  bg-[#6f42c1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'>
+                                            {loading ? 'loading..' : 'Confirm'}
+                                        </button>
+                                    </form>
                                 </Typography>
                             </React.Fragment>
                         ) : (
@@ -159,7 +193,7 @@ export default function Checkout() {
                                         sx={{ mt: 3, ml: 1 }}
                                     >
                                         {activeStep === steps.length - 1
-                                            ? 'Place order'
+                                            ? 'Submit'
                                             : nextButton}
                                     </Button>
                                 </Box>
