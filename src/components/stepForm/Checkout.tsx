@@ -81,8 +81,14 @@ export default function Checkout() {
 
     const navContext = useMemo(() => {
         return {
-            isVerified,
-            setIsVerified,
+            gender,
+            setGender,
+            password,
+            setPassword,
+            phoneNumber,
+            setPhoneNumber,
+            birthDate,
+            setBirthDate
         }
     }, [])
 
