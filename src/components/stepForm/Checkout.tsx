@@ -20,18 +20,7 @@ import PersonalDetails from './PersonalDetails'
 import GuardianOrParent from './GuardianOrParent'
 import Education from './Education'
 
-function Copyright() {
-    return (
-        <Typography variant='body2' color='text.secondary' align='center'>
-            {'Copyright © '}
-            <Link color='inherit' href='/'>
-                Eslams
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    )
-}
+
 
 const steps = ['Personal details', 'Guardian/Parent', 'Education']
 
@@ -54,10 +43,14 @@ const theme = createTheme({
     },
 })
 
+
+
+
+
 export default function Checkout() {
-    const [otp, setOtp] = useState('')
-    const [keepOtp, setKeepOtp] = useState([])
-    const [activeStep, setActiveStep] = React.useState(0)
+    const [otp, setOtp] = useState<string>('')
+    const [keepOtp, setKeepOtp] = useState<string[]>([])
+    const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
 
     const handleNext = () => {
@@ -74,7 +67,7 @@ export default function Checkout() {
         </span>
     )
 
-    const inputHandler = (input) => {
+    const inputHandler = (input:string) => {
         setOtp(input)
         setKeepOtp((singleOtp) => [input])
     }
