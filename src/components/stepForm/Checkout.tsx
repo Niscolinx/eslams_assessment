@@ -122,13 +122,9 @@ export default function Checkout() {
                         handleInput[key as keyof handleInputProps]
                     )
 
-                    setValidationError(prev => {
-                        return [
-                            ...prev,
-                            
-                        ]
-
-                    })
+                    setValidationError([
+                        {key: 'emptyfield'}
+                    ])
                    
                 }
             } else {
