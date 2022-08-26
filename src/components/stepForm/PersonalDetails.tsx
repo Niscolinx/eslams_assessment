@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
@@ -18,7 +20,9 @@ import { AuthContext } from '../../pages/api/auth/authContext'
 export default function PersonalDetails() {
     const [eyeIcon, setEyeIcon] = useState(false)
 
-    const { setInput, handleInput, birthdate, setBirthDate } = useContext(AuthContext)
+    const { setInput, handleInput, birthDate, setBirthDate } = useContext(AuthContext)
+
+    const [dateValue, setDateValue] = useState<Date | null>(null)
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -136,14 +140,11 @@ export default function PersonalDetails() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DesktopDatePicker
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
                             label='Date of Birth'
-                            value={birthdate}
-                            onChange={(value) =>
-                                setBirthDate(value)
-                            }
-                            //value={new Date('2017-01-01')}
+                            value={dateValue}
+                            onChange={(value) => setDateValue(value)}
                             renderInput={(params) => (
                                 <TextField
                                     {...params}

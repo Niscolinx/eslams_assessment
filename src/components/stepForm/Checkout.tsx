@@ -46,6 +46,7 @@ const theme = createTheme({
 })
 
 export default function Checkout() {
+    const [value, setValue] = React.useState<Date | null>(null)
     const [otp, setOtp] = useState<string>('')
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
@@ -64,20 +65,19 @@ export default function Checkout() {
         guardianRelationship: '',
         institutionName: '',
         institutionType: '',
-        institutionYearOfStudy: ''
-
+        institutionYearOfStudy: '',
     })
 
-    const [birthDate, setBirthDate] = useState<string>('')
+    const [birthDate, setBirthDate] = useState<Date | null>(null)
 
-  
+    console.log({ birthDate })
 
     const [error, setError] = useState(true)
     const [validationError, setValidationError] = useState<ValidationError>({
         key: ['hewll', 'ads'],
         message: {
-            'hewll': 'asdasd',
-            'ads': 'asdasd',
+            hewll: 'asdasd',
+            ads: 'asdasd',
         },
     })
 
@@ -95,39 +95,26 @@ export default function Checkout() {
         }
     }
 
-
-
-
-     const setInput = (e:any) => {
-
+    const setInput = (e: any) => {
         console.log(e)
 
-        console.log({e})
-         const {name, value} = e.target
+        console.log({ e })
+        const { name, value } = e.target
 
-         console.log({name, value})
+        console.log({ name, value })
 
-         setHandleInput((prev:any) => ({
+        setHandleInput((prev: any) => ({
             ...prev,
-            [name]: value
-         }))
-        
+            [name]: value,
+        }))
+    }
 
-     }
-
-     console.log({handleInput})
-
+    console.log({ handleInput })
 
     const handleNext = () => {
-
         formValidate()
 
         //if(){}
-
-
-
-
-
 
         //setActiveStep(activeStep + 1)
     }
@@ -181,7 +168,6 @@ export default function Checkout() {
             })
     }
 
-   
     const navContext = useMemo(() => {
         return {
             handleInput,
@@ -189,14 +175,11 @@ export default function Checkout() {
             setInput,
             birthDate,
             setBirthDate,
-           
-
+            value,
+            setValue,
             validationError,
         }
-    }, [
-       
-        validationError,
-    ])
+    }, [validationError])
 
     return (
         <AuthContext.Provider value={navContext}>

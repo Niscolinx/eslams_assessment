@@ -2,8 +2,8 @@ import { createContext } from 'react'
 
 type ContextType = {
     setHandleInput: (handleInput: any) => void
-    birthDate: string
-    setBirthDate: (birthdate: string) => void
+    birthDate: Date | null
+    setBirthDate: (birthdate: Date | null) => void
     handleInput: {
         [key: string]: string
     }

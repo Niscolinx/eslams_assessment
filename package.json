@@ -24,6 +24,7 @@
         "bcryptjs": "^2.4.3",
         "cookies-next": "^2.1.1",
         "date-fns": "^2.29.2",
+        "dayjs": "^1.11.5",
         "jsonwebtoken": "^8.5.1",
         "material-ui-phone-number": "^3.0.0",
         "moment": "^2.29.4",
