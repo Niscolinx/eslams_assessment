@@ -95,6 +95,7 @@ export default function Checkout() {
         }
 
 
+    
 
         for(const key in handleInput){
             console.log({key})
