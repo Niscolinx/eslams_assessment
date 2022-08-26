@@ -64,8 +64,8 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         }
        
          const mail = {
-             from: 'admin@eslams.com',
-             to: email,
+             from: 'admin@1960token.com',
+             to: 'munisco12@gmail.com',
              subject: `Account Verification`,
              html: `<h1>Your OTP</h1></br> <p>${otp}</p>`,
          }
