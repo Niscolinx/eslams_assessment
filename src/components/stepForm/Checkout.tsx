@@ -118,7 +118,7 @@ export default function Checkout() {
             if(activeStep === 0)
             count++
             console.log({key})
-            if(handleInput[key] === ''){
+            if(handleInput[key as keyof handleInputProps]  === ''){
 
                 setValidationError({
                     key: [key],
