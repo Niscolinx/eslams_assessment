@@ -130,7 +130,7 @@ export default function Checkout() {
 
         
         if(errors){
-            return true
+            return false
         }
 
         return true
