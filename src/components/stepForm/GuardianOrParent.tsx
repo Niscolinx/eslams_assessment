@@ -1,4 +1,4 @@
-import * as React from 'react'
+ import * as React from 'react'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -12,14 +12,16 @@ import {
     MenuItem,
     Select,
 } from '@mui/material'
-import { useState } from 'react'
+import { useContext } from 'react'
 import MuiPhoneNumber from 'material-ui-phone-number'
+import { AuthContext } from '../../pages/api/auth/authContext'
 
 export default function GuardianOrParent() {
-    const [phoneNumber, setPhoneNumber] = useState<
-        HTMLInputElement | undefined
-    >()
-    const [relationship, setRelationship] = useState('')
+  
+
+      const {
+        
+      } = useContext(AuthContext)
 
     return (
         <React.Fragment>
