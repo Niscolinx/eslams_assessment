@@ -61,6 +61,7 @@ type handleInputProps = {
     institutionName: string
     institutionType: string
     institutionYearOfStudy: string
+    birthDate: Date | null
 }
 export default function Checkout() {
     const [value, setValue] = React.useState<Date | null>(null)
@@ -83,9 +84,9 @@ export default function Checkout() {
         institutionName: '',
         institutionType: '',
         institutionYearOfStudy: '',
+        birthDate: null,
     })
 
-    const [birthDate, setBirthDate] = useState<Date | null>(null)
 
     const [error, setError] = useState(true)
     const [validationError, setValidationError] = useState<ValidationError>({
@@ -199,7 +200,6 @@ export default function Checkout() {
             handleInput,
             setHandleInput,
             setInput,
-            setBirthDate,
             value,
             setValue,
             validationError,

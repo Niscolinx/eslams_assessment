@@ -20,12 +20,12 @@ import { AuthContext } from '../../pages/api/auth/authContext'
 export default function PersonalDetails() {
     const [eyeIcon, setEyeIcon] = useState(false)
 
-    const { setInput, handleInput, setBirthDate, validationError } = useContext(AuthContext)
+    const { setInput, handleInput, validationError } =
+        useContext(AuthContext)
 
     const [dateValue, setDateValue] = useState<Date | null>(null)
 
-
-    console.log({validationError})
+    console.log({ validationError })
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -41,9 +41,14 @@ export default function PersonalDetails() {
         }
     }
 
-    const handleDateChange = (e:Date | null) => {
+    const handleDateChange = (e: Date | null) => {
         setDateValue(e)
-        setBirthDate(e)
+        setInput({
+            target: {
+                name: 'birthDate',
+                e,
+            },
+        })
     }
 
     return (
@@ -62,7 +67,7 @@ export default function PersonalDetails() {
                         autoComplete='given-name'
                         variant='standard'
                         error
-                         helperText='Please enter your first name'
+                        helperText='Please enter your first name'
                         onChange={setInput}
                     />
                 </Grid>
