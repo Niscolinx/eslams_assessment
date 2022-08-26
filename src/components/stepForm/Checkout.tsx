@@ -114,17 +114,17 @@ export default function Checkout() {
                     errors[key as keyof handleInputProps] =
                         'This field is required'
 
-                    setValidationError(errors)
+                    return setValidationError(errors)
                 }
             }
 
-            if (key === 'personalEmail' && handleInput['personalEmail']) {
-                isValidMail(handleInput['personalEmail'], (cb) => {
+            if (key === 'personalEmail') {
+                isValidMail(handleInput[key], (cb) => {
                     console.log({ cb })
                     if (!cb) {
-                        errors['personalEmail'] = 'Invalid email'
+                        errors[key] = 'Invalid email'
 
-                        setValidationError(errors)
+                        return setValidationError(errors)
                     }
                 })
             }
