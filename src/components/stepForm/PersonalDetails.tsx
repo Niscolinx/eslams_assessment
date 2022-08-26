@@ -16,12 +16,10 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AuthContext } from '../../pages/api/auth/authContext'
 
 export default function PersonalDetails() {
-    const [gender, setGender] = useState('male')
     const [eyeIcon, setEyeIcon] = useState(false)
-    const [password, setPassword] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState()
 
-    const [birthDate, setBirthDate] = useState<Date | null>(null)
+    
+
     const { isVerified, setIsVerified } = useContext(AuthContext)
 
     const toggleEyeIcon = () => {

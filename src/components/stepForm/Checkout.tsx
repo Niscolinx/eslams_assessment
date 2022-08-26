@@ -49,7 +49,11 @@ export default function Checkout() {
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
-    const [isVerified, setIsVerified] = useState(false)
+
+    const [gender, setGender] = useState('male')
+    const [password, setPassword] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState()
+    const [birthDate, setBirthDate] = useState<Date | null>(null)
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
@@ -80,7 +84,7 @@ export default function Checkout() {
             isVerified,
             setIsVerified,
         }
-    }, [isVerified, setIsVerified])
+    }, [])
 
     return (
         <AuthContext.Provider value={navContext}>
