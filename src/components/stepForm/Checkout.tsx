@@ -124,12 +124,12 @@ export default function Checkout() {
                     })
                 }
             }
-            if (activeStep === 1 && count < 5) {
+            // if (activeStep === 1 && count < 5) {
 
-            }
-            else{
-                return
-            }
+            // }
+            // else{
+            //     return
+            // }
         }
 
         console.log({ count })
