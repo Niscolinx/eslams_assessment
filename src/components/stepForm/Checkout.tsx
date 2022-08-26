@@ -106,10 +106,9 @@ export default function Checkout() {
         let count = 0
         for (const key in handleInput) {
             count++
-            console.log('keys', handleInput[key])
             if (activeStep === 0 && count < 8) {
                 
-                if (handleInput[key as keyof handleInputProps] === '') {
+                if (handleInput[key as keyof handleInputProps] === '' || handleInput[key as keyof handleInputProps] === null) {
 
                     
                    setValidationError((prev) => {
