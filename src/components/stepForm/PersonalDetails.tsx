@@ -54,6 +54,8 @@ export default function PersonalDetails() {
                         autoComplete='given-name'
                         variant='standard'
                         value={firstName}
+                        error
+                        helperText='Please enter your first name'
                         onChange={(e) => setFirstName(e.target.value)}
                     />
                 </Grid>

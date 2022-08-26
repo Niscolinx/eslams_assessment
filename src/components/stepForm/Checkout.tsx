@@ -271,6 +271,7 @@ export default function Checkout() {
                                             display: 'flex',
                                             justifyContent: 'flex-end',
                                         }}
+                                        
                                     >
                                         {activeStep !== 0 && (
                                             <Button
