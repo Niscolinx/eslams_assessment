@@ -69,21 +69,7 @@ export default function Checkout() {
 
     })
 
-    const [lastName, setLastName] = useState('')
-    const [personalEmail, setPersonalEmail] = useState('')
-    const [gender, setGender] = useState('')
-    const [password, setPassword] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
-    const [birthDate, setBirthDate] = useState<Date | null>(null)
-
-    const [guardianEmail, setGuardianEmail] = useState('')
-    const [guardianName, setGuardianName] = useState('')
-    const [guardianPhoneNumber, setGuardianPhoneNumber] = useState('')
-    const [guardianRelationship, setGuardianRelationship] = useState('')
-
-    const [institutionName, setInstitutionName] = useState('')
-    const [institutionType, setInstitutionType] = useState('')
-    const [institutionYearOfStudy, setInstitutionYearOfStudy] = useState('')
+  
 
     const [error, setError] = useState(true)
     const [validationError, setValidationError] = useState<ValidationError>({
@@ -160,27 +146,27 @@ export default function Checkout() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
-        const data = {
-            gender,
-            lastName,
-            personalEmail,
-            password,
-            phoneNumber,
-            birthDate,
-            guardianEmail,
-            guardianName,
-            guardianPhoneNumber,
-            guardianRelationship,
-            institutionName,
-            institutionType,
-            institutionYearOfStudy,
-        }
+        // const data = {
+        //     gender,
+        //     lastName,
+        //     personalEmail,
+        //     password,
+        //     phoneNumber,
+        //     birthDate,
+        //     guardianEmail,
+        //     guardianName,
+        //     guardianPhoneNumber,
+        //     guardianRelationship,
+        //     institutionName,
+        //     institutionType,
+        //     institutionYearOfStudy,
+        // }
 
         console.log('submit')
 
         setLoading(true)
         axios
-            .post('/api/auth/register', data)
+            .post('/api/auth/register', {})
             .then((res) => {
                 console.log(res)
                 setLoading(false)
@@ -198,52 +184,12 @@ export default function Checkout() {
             setHandleInput,
             setInput,
 
-            gender,
-            setGender,
-      
-            lastName,
-            setLastName,
-            personalEmail,
-            setPersonalEmail,
-            password,
-            setPassword,
-            phoneNumber,
-            setPhoneNumber,
-            birthDate,
-            setBirthDate,
-
-            guardianEmail,
-            setGuardianEmail,
-            guardianName,
-            setGuardianName,
-            guardianPhoneNumber,
-            setGuardianPhoneNumber,
-            guardianRelationship,
-            setGuardianRelationship,
-
-            institutionName,
-            setInstitutionName,
-            institutionType,
-            setInstitutionType,
-            institutionYearOfStudy,
-            setInstitutionYearOfStudy,
+           
 
             validationError,
         }
     }, [
-        gender,
-        lastName,
-        personalEmail,
-        password,
-        phoneNumber,
-        birthDate,
-        guardianEmail,
-        guardianName,
-        guardianPhoneNumber,
-        guardianRelationship,
-        institutionName,
-        institutionType,
-        institutionYearOfStudy,
+       
         validationError,
     ])
 
