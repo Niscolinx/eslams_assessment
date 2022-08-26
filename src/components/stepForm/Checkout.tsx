@@ -128,10 +128,10 @@ export default function Checkout() {
             // }
         }
 
-         if (validationError) {
-             console.log('omor error choke o', {validationError})
-         } else {
+         if (validationError === null) {
              console.log('no error', {validationError})
+            } else {
+             console.log('omor error choke o', {validationError})
          }
 
     }
