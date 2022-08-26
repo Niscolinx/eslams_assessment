@@ -53,10 +53,12 @@ export default function Checkout() {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [personalEmail, setPersonalEmail] = useState('')
-    const [gender, setGender] = useState('male')
+    const [gender, setGender] = useState('')
     const [password, setPassword] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
     const [birthDate, setBirthDate] = useState<Date | null>(null)
+
+    const [GuardianEmail, setGuardianEmail] = useState('')
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
