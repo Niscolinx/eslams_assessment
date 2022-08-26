@@ -64,7 +64,7 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='given-name'
                         variant='standard'
-                        value={handleInput}
+                        value={handleInput['firstName']}
                         error
                         helperText='Please enter your first name'
                         onChange={setInput}
