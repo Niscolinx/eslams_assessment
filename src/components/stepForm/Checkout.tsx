@@ -157,7 +157,7 @@ export default function Checkout() {
 
                                         <button className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'>
                                             {loading ? (
-                                                <CircularProgress className='text-white'/>
+                                                <CircularProgress className='text-white text-sm' size={20}/>
                                             ) : (
                                                 'Confirm'
                                             )}
