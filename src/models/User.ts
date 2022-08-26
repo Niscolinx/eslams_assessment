@@ -83,30 +83,14 @@ const userSchema = new Schema<IUser>(
         usdtAddress: {
             type: String,
         },
-        referrals: [
-            {
-                username: String,
-                level: Number,
-            },
-        ],
+       
         Events: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'transfer',
+                ref: 'event',
             },
-        ],
-        approvedWithdrawals: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'approvedWithdrawal',
-            },
-        ],
-        pendingWithdrawals: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'pendingWithdrawal',
-            },
-        ],
+        ]
+        
     },
     { timestamps: true }
 )
