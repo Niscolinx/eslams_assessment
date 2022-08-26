@@ -92,7 +92,6 @@ export default function Checkout() {
     const [validationError, setValidationError] = useState<ValidationError | null>(null)
 
 
-    console.log({handleInput})
     const formValidate = () => {
         const isValidMail = (e: string): Boolean => {
             const emailRegex = new RegExp(
@@ -112,17 +111,20 @@ export default function Checkout() {
                 console.log({handleInput})
                 if (handleInput[key as keyof handleInputProps] === '' || handleInput[key as keyof handleInputProps] === null) {
 
+                    console.log({key})
+                    console.log('empty', handleInput[key as keyof handleInputProps])
+
                     
-                   setValidationError((prev) => {
-                       console.log('prev', prev)
-                       return {
-                           ...prev,
-                           message: {
-                               ...prev?.message,
-                               [key]: 'This field is required',
-                           },
-                       }
-                   })
+                //    setValidationError((prev) => {
+                //        console.log('prev', prev)
+                //        return {
+                //            ...prev,
+                //            message: {
+                //                ...prev?.message,
+                //                [key]: 'This field is required',
+                //            },
+                //        }
+                //    })
                 }
             }
             else{
@@ -136,7 +138,6 @@ export default function Checkout() {
             // }
         }
 
-        console.log({ count })
     }
 
     const setInput = (e: any) => {
