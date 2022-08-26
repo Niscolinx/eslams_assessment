@@ -119,8 +119,9 @@ export default function Checkout() {
 
          setHandleInput((prev:any) => ({
             ...prev,
-            ['firstName']: value
+            [name]: value
          }))
+        
 
      }
 
