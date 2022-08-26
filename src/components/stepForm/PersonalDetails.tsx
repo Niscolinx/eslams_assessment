@@ -47,13 +47,13 @@ export default function PersonalDetails() {
         return isValid
     }
 
-    if (key === 'email') {
-        const checkEmail = isValidMail(value.toString())
+    // if (key === 'email') {
+    //     const checkEmail = isValidMail(value.toString())
 
-        if (!checkEmail) {
+    //     if (!checkEmail) {
            
-        }
-    }
+    //     }
+    // }
 
 
     return (
