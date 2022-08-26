@@ -7,7 +7,6 @@ type ContextType = {
     setInput: (event: any) => void
 
     validationError: {
-        key?: string[]
         message?: {
             [key: string]: string
         }

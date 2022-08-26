@@ -45,7 +45,7 @@ const theme = createTheme({
     },
 })
 
-type ValidationError = { key?: string[]; message?: { [key: string]: string } } | null
+type ValidationError = { key?: string[]; message?: { [key: string]: string } }
 
 export type handleInputProps = {
     firstName: string
@@ -87,9 +87,9 @@ export default function Checkout() {
         institutionYearOfStudy: '',
     })
 
+
     const [error, setError] = useState(true)
-    const [validationError, setValidationError] =
-        useState<ValidationError | null>(null)
+    const [validationError, setValidationError] = useState<ValidationError | null>(null)
 
     const formValidate = () => {
         const isValidMail = (e: string): Boolean => {
@@ -102,35 +102,30 @@ export default function Checkout() {
             return isValid
         }
 
+
         let count = 0
         for (const key in handleInput) {
             count++
+            console.log('keys', handleInput[key])
             if (activeStep === 0 && count < 8) {
+                
                 if (handleInput[key as keyof handleInputProps] === '') {
-                    console.log('object keys')
 
-                    setValidationError((prev) => {
-                        console.log('prev', prev)
-                        return {
-                            ...prev,
-                            message: {
-                                ...prev?.message,
-                                [key]: 'This field is required',
-                            },
-                        }
-                    })
-                    // setValidationError((prev) => ({
-                    //     ...prev,
-
-                    //     key:  [...prev.key, key] ,
-                    //     message: {
-                    //         ...prev.message,
-                    //         [key]: 'This field is required',
-                    //     },
-                    // }))
+                    
+                   setValidationError((prev) => {
+                       console.log('prev', prev)
+                       return {
+                           ...prev,
+                           message: {
+                               ...prev?.message,
+                               [key]: 'This field is required',
+                           },
+                       }
+                   })
                 }
-            } else {
-                // console.log('outside key',{key})
+            }
+            else{
+               // console.log('outside key',{key})
             }
             // if (activeStep === 1 && count < 5) {
 
