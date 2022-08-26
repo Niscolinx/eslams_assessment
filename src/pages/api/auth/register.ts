@@ -57,7 +57,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
           
         })
 
-        const verifyStored = await storeUser.save()
+        const verifyStored = await storeUser
 
         if (!verifyStored) {
             return res.status(500).json({ message: 'Server Error' })

@@ -9,17 +9,9 @@ import Image from 'next/image'
 import HeroImg2 from '../../../public/hero-player.png'
 import Checkout from '../../components/stepForm/Checkout'
 
-interface LoginProps {
-    csrfToken: string
-    providers: {
-        [key: string]: {
-            id: string
-            name: string
-        }
-    }
-}
 
-const Register = ({ providers }: LoginProps) => {
+
+const Register = ({ providers }) => {
     type message = { value: string; type?: string; style?: string }
 
     const [emailOrUsername, setEmailOrUsername] = useState('')
