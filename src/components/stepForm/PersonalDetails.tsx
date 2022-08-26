@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
@@ -15,7 +15,6 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import MuiPhoneNumber from 'material-ui-phone-number'
 import { AuthContext } from '../../pages/api/auth/authContext'
 
-
 export default function PersonalDetails() {
     const [gender, setGender] = useState('male')
     const [eyeIcon, setEyeIcon] = useState(false)
@@ -23,27 +22,24 @@ export default function PersonalDetails() {
     const [phoneNumber, setPhoneNumber] = useState()
 
     const [birthDate, setBirthDate] = useState<Date | null>(null)
-        const { isVerified, setIsVerified } = useContext(AuthContext)
-
+    const { isVerified, setIsVerified } = useContext(AuthContext)
 
     const toggleEyeIcon = () => {
-        setEyeIcon(prev => !prev)
+        setEyeIcon((prev) => !prev)
 
         let password = document.querySelector('#password') as HTMLInputElement
-        
+
         if (password) {
-            console.log({password})
+            console.log({ password })
             if (eyeIcon) {
                 password.type = 'text'
             } else {
                 password.type = 'password'
             }
-
         }
     }
 
-    console.log({password, gender, phoneNumber, birthDate})
-
+    console.log({isVerified})
 
     return (
         <React.Fragment>
