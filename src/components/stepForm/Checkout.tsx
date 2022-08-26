@@ -147,11 +147,11 @@ export default function Checkout() {
     const handleNext = () => {
         formValidate()
 
-        if(!error){
-            console.log('no error', {error})
+        if(error){
+            console.log('omor error choke o', {error})
         }
         else{
-            console.log('omor error dey o', {error})
+            console.log('no error', {error})
         }
 
         // if (!error) {
