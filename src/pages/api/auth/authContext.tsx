@@ -2,14 +2,14 @@ import {createContext} from 'react';
 
 
 type ContextType = {
-    gender: boolean,
-    setGender: (gender: boolean) => void
-    password: boolean,
-    setPassword: (password: boolean) => void
-    phoneNumber: boolean,
-    setPhoneNumber: (phoneNumber: boolean) => void
-    birthDate: boolean,
-    setBirthDate: (birthDate: boolean) => void
+    gender: string,
+    setGender: (gender: string) => void
+    password: string,
+    setPassword: (password: string) => void
+    phoneNumber: string,
+    setPhoneNumber: (phoneNumber: string) => void
+    birthDate: Date,
+    setBirthDate: (birthDate: Date) => void
  
 }
 
