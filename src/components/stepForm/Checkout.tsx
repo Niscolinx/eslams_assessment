@@ -231,7 +231,6 @@ export default function Checkout() {
         }
     }, [
         gender,
-        firstName,
         lastName,
         personalEmail,
         password,

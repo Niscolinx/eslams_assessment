@@ -20,7 +20,7 @@ export default function PersonalDetails() {
     const [eyeIcon, setEyeIcon] = useState(false)
 
 
-    const {personalEmail, setPersonalEmail, firstName, setFirstName, lastName, setLastName, phoneNumber, setPhoneNumber, gender, setGender, birthDate, setBirthDate, password, setPassword, setInput, handleInput} = useContext(AuthContext)
+    const {personalEmail, setPersonalEmail, lastName, setLastName, phoneNumber, setPhoneNumber, gender, setGender, birthDate, setBirthDate, password, setPassword, setInput, handleInput} = useContext(AuthContext)
 
 
     const toggleEyeIcon = () => {
@@ -64,7 +64,7 @@ export default function PersonalDetails() {
                         fullWidth
                         autoComplete='given-name'
                         variant='standard'
-                        value={handleInput.firstName}
+                        value={handleInput}
                         error
                         helperText='Please enter your first name'
                         onChange={setInput}
