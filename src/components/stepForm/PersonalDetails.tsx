@@ -178,8 +178,8 @@ export default function PersonalDetails() {
                                 : false
                         }
                         helperText={
-                            validationError && validationError['phonNumber']
-                                ? validationError['phonNumber']
+                            validationError && validationError['phoneNumber']
+                                ? validationError['phoneNumber']
                                 : false
                         }
                         onChange={(value) =>

@@ -90,10 +90,7 @@ export default function Checkout() {
 
     const formValidate = () => {
         const errors = {} as ValidationError
-        const isValidMail = (
-            e: string,
-            cb: (checkValid: boolean) => void
-        ) => {
+        const isValidMail = (e: string, cb: (checkValid: boolean) => void) => {
             const emailRegex = new RegExp(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             )
@@ -121,7 +118,7 @@ export default function Checkout() {
                 }
             }
 
-            if (key === 'personalEmail') {
+            if (key === 'personalEmail' && handleInput['personalEmail']) {
                 isValidMail(handleInput['personalEmail'], (cb) => {
                     console.log({ cb })
                     if (!cb) {
@@ -130,6 +127,15 @@ export default function Checkout() {
                         setValidationError(errors)
                     }
                 })
+            }
+
+            if (key === 'lastName' || key === 'firstName') {
+                if (handleInput[key].length < 3) {
+                    errors[key as keyof handleInputProps] =
+                        'This field must be at least 3 characters long'
+
+                    setValidationError(errors)
+                }
             }
 
             // if (activeStep === 1 && count < 5) {
