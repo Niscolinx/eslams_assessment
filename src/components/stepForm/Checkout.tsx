@@ -109,7 +109,13 @@ export default function Checkout() {
         }
     }
 
-    console.log({setHandleInput})
+
+
+
+     const setInput = (e:any) => {
+         console.log({ e })
+     }
+
 
     const handleNext = () => {
 
@@ -175,10 +181,7 @@ export default function Checkout() {
             })
     }
 
-    const setInput = (e) => {
-        console.log({e})
-    }
-
+   
     const navContext = useMemo(() => {
         return {
             handleInput,

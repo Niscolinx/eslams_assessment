@@ -35,6 +35,7 @@ type ContextType = {
 
     setHandleInput: any
     handleInput: any
+    setInput: any
 
     validationError: {
         key: string[],
