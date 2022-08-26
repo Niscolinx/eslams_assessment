@@ -16,11 +16,11 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AuthContext } from '../../pages/api/auth/authContext'
 
 export default function PersonalDetails() {
+
     const [eyeIcon, setEyeIcon] = useState(false)
 
-    
 
-    const { email } = useContext(AuthContext)
+    const {personalEmail, setPersonalEmail, firstName, setFirstName, lastName, setLastName, phoneNumber, setPhoneNumber, gender, setGender, birthDate, setBirthDate, password, setPassword } = useContext(AuthContext)
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -37,7 +37,6 @@ export default function PersonalDetails() {
         }
     }
 
-    console.log({isVerified})
 
     return (
         <React.Fragment>

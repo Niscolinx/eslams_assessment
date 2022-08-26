@@ -86,6 +86,12 @@ export default function Checkout() {
         return {
             gender,
             setGender,
+            firstName,
+            setFirstName,
+            lastName,
+            setLastName,
+            personalEmail,
+            setPersonalEmail,
             password,
             setPassword,
             phoneNumber,
