@@ -1,4 +1,4 @@
-import * as React from 'react'
+import  React, {useContext} from 'react'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -14,12 +14,19 @@ import {
 } from '@mui/material'
 import { useState } from 'react'
 import MuiPhoneNumber from 'material-ui-phone-number'
+import { AuthContext } from '../../pages/api/auth/authContext'
 
 export default function Education() {
-    const [phoneNumber, setPhoneNumber] = useState<
-        HTMLInputElement | undefined
-    >()
-    const [institution, setInstitution] = useState('')
+    
+    const {
+        institutionName,
+        setInstitutionName,
+        institutionType,
+        setInstitutionType,
+        institutionYearOfStudy,
+        setInstitutionYearOfStudy
+    } = useContext(AuthContext)
+
 
     return (
         <React.Fragment>
@@ -35,10 +42,10 @@ export default function Education() {
                         <Select
                             labelId='select-label'
                             id='select'
-                            value={institution}
+                            value={institutionType}
                             variant='standard'
                             label='Institution Type'
-                            onChange={(e) => setInstitution(e.target.value)}
+                            onChange={(e) => setInstitutionType(e.target.value)}
                         >
                             <MenuItem value={'school'}>School</MenuItem>
                             <MenuItem value={'college'}>College</MenuItem>
@@ -55,6 +62,8 @@ export default function Education() {
                         fullWidth
                         type={'number'}
                         variant='standard'
+                        value={institutionYearOfStudy}
+                        onChange={(e) => setInstitutionYearOfStudy(e.target.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={12}>
@@ -65,6 +74,8 @@ export default function Education() {
                         label='Name of Institution'
                         fullWidth
                         variant='standard'
+                        value={institutionName}
+                        onChange={(e) => setInstitutionName(e.target.value)}
                     />
                 </Grid>
             </Grid>
