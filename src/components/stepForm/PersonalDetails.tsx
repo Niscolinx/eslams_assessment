@@ -64,9 +64,10 @@ export default function PersonalDetails() {
                         name='firstName'
                         label='First name'
                         fullWidth
+                          error={validationError && validationError['firstName'] ? true : false}
                         autoComplete='given-name'
                         variant='standard'
-                        error={validationError && validationError['firstName'] ? true : false}
+                        
                         helperText='Please enter your first name'
                         onChange={setInput}
                     />
@@ -78,6 +79,11 @@ export default function PersonalDetails() {
                         name='lastName'
                         label='Last name'
                         fullWidth
+                        error={
+                            validationError && validationError['firstName']
+                                ? true
+                                : false
+                        }
                         autoComplete='family-name'
                         variant='standard'
                         onChange={setInput}
@@ -91,6 +97,11 @@ export default function PersonalDetails() {
                         type='email'
                         label='Email Address'
                         fullWidth
+                        error={
+                            validationError && validationError['firstName']
+                                ? true
+                                : false
+                        }
                         variant='standard'
                         onChange={setInput}
                     />
@@ -104,6 +115,7 @@ export default function PersonalDetails() {
                             label='Password'
                             type='password'
                             fullWidth
+                              error={validationError && validationError['firstName'] ? true : false}
                             variant='standard'
                             onChange={setInput}
                         />
@@ -132,6 +144,7 @@ export default function PersonalDetails() {
                         variant='standard'
                         label='Phone Number'
                         fullWidth
+                          error={validationError && validationError['firstName'] ? true : false}
                         onChange={(value) =>
                             setInput({
                                 target: {
