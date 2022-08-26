@@ -22,6 +22,7 @@ import GuardianOrParent from './GuardianOrParent'
 import Education from './Education'
 
 import { AuthContext } from '../../pages/api/auth/authContext'
+import axios from 'axios'
 
 const steps = ['Personal details', 'Guardian/Parent', 'Education']
 
@@ -88,7 +89,31 @@ export default function Checkout() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
+
+        const data = {
+            gender,
+            firstName,
+            lastName,
+            personalEmail,
+            password,
+            phoneNumber,
+            birthDate,
+            guardianEmail,
+            guardianName,
+            guardianPhoneNumber,
+            guardianRelationship,
+            institutionName,
+            institutionType,
+            institutionYearOfStudy,
+        }
+
         console.log('submit')
+
+        axios.post('/api/register', data).then((res) => {
+            console.log(res)
+        }).catch(err => {
+            console.log({err})
+        })
     }
 
     const navContext = useMemo(() => {
@@ -143,7 +168,6 @@ export default function Checkout() {
 
     ])
 
-    console.log({ navContext })
 
     return (
         <AuthContext.Provider value={navContext}>
@@ -223,7 +247,7 @@ export default function Checkout() {
                                                 isInputNum
                                             />
 
-                                            <button className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'>
+                                            <button className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5' type='submit'>
                                                 {loading ? (
                                                     <CircularProgress
                                                         className='text-white flex justify-self-center'
