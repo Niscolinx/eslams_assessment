@@ -12,20 +12,20 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         //console.log('req body', req.body)
         console.log('register')
-        const {firstName, lastName, email, password,phoneNumber, birthDate, Gender, GuardianName, GuardianPhoneNumber, GuardianEmail, GuardianRelationship, institutionName, institutionType, institutionYearOfStudy } = req.body
+        const {firstName, lastName, personalEmail, password,phoneNumber, birthDate, Gender, GuardianName, GuardianPhoneNumber, GuardianEmail, GuardianRelationship, institutionName, institutionType, institutionYearOfStudy } = req.body
         //Validate
-        if (!email || !email.includes('@') || !password || !phoneNumber) {
+        if (!personalEmail || !personalEmail.includes('@') || !password || !phoneNumber) {
             console.log('failed')
             res.status(422).json({ message: 'Invalid Data' })
             return
         }
 
-        const existingUserEmail = await User.findOne({ email })
+        const existingEmail = await User.findOne({ personalEmail })
         
         const existingPhoneNumber = await User.findOne({ phoneNumber })
 
 
-        if (existingUserEmail) {
+        if (existingEmail) {
             return res.status(401).json({
                 message: 'Email already exists',
             })
