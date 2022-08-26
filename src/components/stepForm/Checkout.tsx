@@ -69,7 +69,14 @@ export default function Checkout() {
     const [institutionYearOfStudy, setInstitutionYearOfStudy] = useState('')
 
     const [error, setError] = useState(true)
-    const [validationError, setValidationError] = useState<{ key: string[], message: { [key: string]: string } }>({ key: [], message: {} })
+    const [validationError, setValidationError] = useState<ValidationError>({
+        key: ['hewll', 'ads'],
+        message: {
+            'hewll': 'asdasd',
+        },
+    })
+
+    type ValidationError = { key: string[]; message: { [key: string]: string } }
 
     const handleNext = () => {
         setActiveStep(activeStep + 1)
@@ -113,13 +120,16 @@ export default function Checkout() {
         console.log('submit')
 
         setLoading(true)
-        axios.post('/api/auth/register', data).then((res) => {
-            console.log(res)
-            setLoading(false)
-        }).catch(err => {
-            console.log({err})
-            setLoading(false)
-        })
+        axios
+            .post('/api/auth/register', data)
+            .then((res) => {
+                console.log(res)
+                setLoading(false)
+            })
+            .catch((err) => {
+                console.log({ err })
+                setLoading(false)
+            })
     }
 
     const navContext = useMemo(() => {
@@ -155,7 +165,7 @@ export default function Checkout() {
             institutionYearOfStudy,
             setInstitutionYearOfStudy,
 
-            validationError
+            validationError,
         }
     }, [
         gender,
@@ -172,9 +182,8 @@ export default function Checkout() {
         institutionName,
         institutionType,
         institutionYearOfStudy,
-        validationError
+        validationError,
     ])
-
 
     return (
         <AuthContext.Provider value={navContext}>
@@ -254,7 +263,10 @@ export default function Checkout() {
                                                 isInputNum
                                             />
 
-                                            <button className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5' type='submit'>
+                                            <button
+                                                className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'
+                                                type='submit'
+                                            >
                                                 {loading ? (
                                                     <CircularProgress
                                                         className='text-white flex justify-self-center'
@@ -275,7 +287,6 @@ export default function Checkout() {
                                             display: 'flex',
                                             justifyContent: 'flex-end',
                                         }}
-                                        
                                     >
                                         {activeStep !== 0 && (
                                             <Button
