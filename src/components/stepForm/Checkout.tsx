@@ -136,6 +136,11 @@ export default function Checkout() {
                  }
             }
 
+            if(key === 'phoneNumber'){
+                if(handleInput[key].length < 5){
+
+                }
+
 
 
               if (activeStep === 0 && count < 8) {
