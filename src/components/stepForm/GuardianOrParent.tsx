@@ -19,16 +19,8 @@ import { AuthContext } from '../../pages/api/auth/authContext'
 export default function GuardianOrParent() {
   
 
-      const {
-        guardianEmail,
-        setGuardianEmail,
-        guardianName,
-        setGuardianName,
-        guardianPhoneNumber,
-        setGuardianPhoneNumber,
-        guardianRelationship,
-        setGuardianRelationship        
-      } = useContext(AuthContext)
+        const { setInput, handleInput, validationError } =
+            useContext(AuthContext)
 
     return (
         <React.Fragment>
@@ -40,59 +32,103 @@ export default function GuardianOrParent() {
                     <TextField
                         required
                         id='name'
-                        name='name'
+                        name='guardianName'
                         label='Name'
                         fullWidth
-                        autoComplete='family-name'
                         variant='standard'
-                        value={guardianName}
-                        onChange={(e) => setGuardianName(e.target.value)}
+                        value={handleInput.guardianName}
+                        error={
+                            validationError && validationError['guardianName']
+                                ? true
+                                : false
+                        }
+                        helperText={
+                            validationError && validationError['guardianName']
+                                ? validationError['guardianName']
+                                : false
+                        }
+                        onChange={setInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
                         id='email'
-                        name='email'
+                        name='guardianEmail'
                         label='Email Address'
                         fullWidth
                         autoComplete='Email address'
                         variant='standard'
-                        value={guardianEmail}
-                        onChange={(e) => setGuardianEmail(e.target.value)}
+                        value={handleInput.guardianEmail}
+                        error={
+                            validationError && validationError['guardianEmail']
+                                ? true
+                                : false
+                        }
+                        helperText={
+                            validationError && validationError['guardianEmail']
+                                ? validationError['guardianEmail']
+                                : false
+                        }
+                        onChange={setInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <MuiPhoneNumber
                         id='phone-number'
                         autoFocus={true}
-                        // helperText='Enter phone number'
-                        // InputLabelProps={{ shrink: true, focused: true }}
+                        name='guardianPhoneNumber'
                         placeholder='Phone Number'
                         defaultCountry={'us'}
                         variant='standard'
                         label='Phone Number'
                         fullWidth
-                        value={guardianPhoneNumber}
-                        onChange={(e: any) => setGuardianPhoneNumber(e)}
+                        value={handleInput.guardianPhoneNumber}
+                        error={
+                            validationError &&
+                            validationError['guardianPhoneNumber']
+                                ? true
+                                : false
+                        }
+                        helperText={
+                            validationError &&
+                            validationError['guardianPhoneNumber']
+                                ? validationError['guardianPhoneNumber']
+                                : false
+                        }
+                        onChange={setInput}
                     />
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
                     <FormControl fullWidth>
-                        <InputLabel id='select-label' className='-ml-3.5'>Relationship</InputLabel>
+                        <InputLabel id='select-label' className='-ml-3.5'>
+                            Relationship
+                        </InputLabel>
                         <Select
                             labelId='select-label'
                             id='select'
                             variant='standard'
-                            value={guardianRelationship}
                             label='Relationship'
-                            onChange={(e) => setGuardianRelationship(e.target.value)}
+                            name='guardianRelationship'
+                            value={handleInput.guardianRelationship}
+                            error={
+                                validationError &&
+                                validationError['guardianRelationship']
+                                    ? true
+                                    : false
+                            }
+                            onChange={setInput}
                         >
                             <MenuItem value='father'>Father</MenuItem>
                             <MenuItem value='mother'>Mother</MenuItem>
                             <MenuItem value='guardian'>Guardian</MenuItem>
                         </Select>
+                        {validationError && validationError['guardianRelationship'] ? (
+                            <span className='text-xs text-red-600'>
+                                {validationError['guardianRelationship']}
+                            </span>
+                        ) : null}
                     </FormControl>
                 </Grid>
             </Grid>

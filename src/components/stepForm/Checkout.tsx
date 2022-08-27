@@ -136,7 +136,6 @@ export default function Checkout() {
             }
 
             if(key === 'phoneNumber'){
-                console.log('phone number',handleInput[key].length)
                 if(handleInput[key].length < 10){
                     errors[key as keyof handleInputProps] =
                         'Phone number not valid'

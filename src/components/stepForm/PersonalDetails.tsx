@@ -62,23 +62,20 @@ export default function PersonalDetails() {
                         name='firstName'
                         type='text'
                         label='First name'
-                        value={handleInput.firstName}
                         fullWidth
+                        variant='standard'
+                        value={handleInput.firstName}
                         error={
                             validationError && validationError['firstName']
                                 ? true
                                 : false
                         }
-                        autoComplete='given-name'
-                        variant='standard'
                         helperText={
                             validationError && validationError['firstName']
                                 ? validationError['firstName']
                                 : false
                         }
-                        onError={(e) => {
-                            console.log(e)
-                        }}
+                       
                         onChange={setInput}
                     />
                 </Grid>
