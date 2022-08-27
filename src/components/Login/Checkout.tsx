@@ -17,9 +17,7 @@ import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 import OtpInput from 'react-otp-input'
 import { CircularProgress } from '@mui/material'
 
-import PersonalDetails from './PersonalDetails'
-import GuardianOrParent from './GuardianOrParent'
-import Education from './Education'
+
 
 import { AuthContext } from '../../pages/api/auth/authContext'
 import axios from 'axios'
@@ -30,13 +28,7 @@ import { useRouter } from 'next/router'
 const steps = ['Personal details', 'Guardian/Parent', 'Education']
 
 function getStepContent(step: number) {
-    switch (step) {
-        case 0:
-            return <PersonalDetails />
-      
-        default:
-            throw new Error('Unknown step')
-    }
+    
 }
 
 const theme = createTheme({
@@ -380,13 +372,13 @@ export default function Checkout() {
 
                         </Typography>
                         
-                        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+                        {/* <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
                             {steps.map((label) => (
                                 <Step key={label}>
                                     <StepLabel>{label}</StepLabel>
                                 </Step>
                             ))}
-                        </Stepper>
+                        </Stepper> */}
                         <React.Fragment>
                             {activeStep === steps.length ? (
                                 <React.Fragment>
@@ -395,45 +387,7 @@ export default function Checkout() {
                                     your Email
                                 </Typography> */}
                                     <Typography variant='subtitle1'>
-                                        <form
-                                            className='grid w-full place-content-stretch md:w-3/4 md:mx-auto'
-                                            onSubmit={handleSubmit}
-                                        >
-                                            {' '}
-                                            {message &&
-                                                message.type === 'error' && (
-                                                    <p className='text-red-500 text-sm font-semibold text-center py-4'>
-                                                        {message.message}
-                                                    </p>
-                                                )}
-                                            <h2 className='font-black text-center text-black mb-2 text-xl'>
-                                                Type in the 6-digit code you
-                                                received in your Email{' '}
-                                            </h2>
-                                            <OtpInput
-                                                value={otp}
-                                                onChange={otpHandler}
-                                                numInputs={6}
-                                                inputStyle='pinlogin-field'
-                                                containerStyle='pinlogin'
-                                                shouldAutoFocus
-                                                isInputNum
-                                            />
-                                            <button
-                                                className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5 disabled:(bg-gray-500 opacity-40)'
-                                                type='submit'
-                                                disabled={isOtpLengthInValid}
-                                            >
-                                                {loading ? (
-                                                    <CircularProgress
-                                                        className='text-white flex justify-self-center'
-                                                        size={20}
-                                                    />
-                                                ) : (
-                                                    'Confirm'
-                                                )}
-                                            </button>
-                                        </form>
+                                       
                                     </Typography>
                                 </React.Fragment>
                             ) : (

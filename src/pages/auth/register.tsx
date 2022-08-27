@@ -95,21 +95,17 @@ const Register = () => {
                 </form>
             </header>
 
-            <div className='register__main overflow-x-hidden'>
+            <div className='register__main'>
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
                 <div className=''>
                     <div className='register__overlay z-3 md:(max-w-[433px])'></div>
                     <div className='main-1 relative'>
                         <Tilt
-                            onEnter={() => console.log('entered')}
-                           gyroscope
-                           className=' z-20 w-[40vw] absolute'
-                           trackOnWindow
-                           transitionSpeed={1000}
-                           transitionEasing={'cubic-bezier(.03,.98,.52,.99)'}
+                            gyroscope
+                            className=' z-20 w-[70vw] absolute'
                             tiltReverse
-                            // glareEnable={true}
+                            trackOnWindow
                         >
                             <div className='flex main-1__container z-5 mt-[9.5rem] relative'>
                                 <Image
@@ -132,7 +128,6 @@ const Register = () => {
                                 </p>
                             </div>
 
-                            
                             <h1 className='heroText absolute top-[8rem] left-[3.5rem] absolute uppercase z-4'>
                                 Shoot for the{' '}
                                 <span className='ml-10'>stars</span>

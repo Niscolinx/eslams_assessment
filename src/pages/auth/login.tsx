@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { CtxOrReq } from 'next-auth/client/_utils'
 import { getCsrfToken, getProviders, signIn } from 'next-auth/react'
@@ -7,213 +7,149 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import HeroImg2 from '../../../public/hero-player.png'
+import Tilt from 'react-parallax-tilt'
+import Checkout from '../../components/Login/Checkout'
 
-interface LoginProps {
-    csrfToken: string
-    providers: {
-        [key: string]: {
-            id: string
-            name: string
-        }
-    }
-}
+const Login = () => {
+    useEffect(() => {
+        axios
+            .get('/api/connectDB')
+            .then((res) => {
+                console.log('connected')
+            })
+            .catch((err) => {
+                console.log('not connected')
+            })
+    }, [])
 
-const Login = ({ providers }: LoginProps) => {
-    type message = { value: string; type?: string; style?: string }
+    // useEffect(() => {
+    //     const image = document.querySelector(
+    //         '.main-1__image'
+    //     ) as HTMLImageElement
+    //     const container = document.querySelector(
+    //         '.register__main'
+    //     ) as HTMLDivElement
 
-    const [emailOrUsername, setEmailOrUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [loading, setLoading] = useState(false)
-    const [errorFields, setErrorFields] = useState<string[]>([])
-    const [error, setError] = useState(false)
-    const [message, setMessage] = useState<message>({
-        value: 'invalid Entries',
-        type: 'error',
-        style: 'text-red-500',
-    })
-    const [messageDisplay, setMessageDisplay] = useState('hidden')
+    //     console.log({ image, container })
 
-    const isValidMail = (e: string): Boolean => {
-        const emailRegex = new RegExp(
-            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        )
+    //     container.addEventListener('mousemove', (e) => {
+    //         const X = e.clientX - e.screenX
+    //         const Y = e.clientY - e.screenY
 
-        const isValid = emailRegex.test(e)
+    //         console.log({ X, Y })
 
-        return isValid
-    }
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        setLoading(true)
-
-      
-
-        const formData = new FormData(e.currentTarget)
-
-        let isError = false
-        for (let [key, value] of formData.entries()) {
-            if (!value) {
-                isError = true
-                setMessage({
-                    value: "Value can't be empty",
-                    type: 'error',
-                    style: 'text-red-500',
-                })
-                setErrorFields((oldArr) => [...oldArr, key])
-                setMessageDisplay('block')
-                setLoading(false)
-            } else if (!isError) {
-                console.log('sign in.....', isError)
-                signIn('credentials', {
-                    redirect: false,
-                    emailOrUsername: emailOrUsername.toLowerCase().trim(),
-                    password: password,
-                }).then((data: any) => {
-                    console.log('data returned', data)
-                    setLoading(false)
-
-                    if (data.error) {
-                        setError(true)
-                        setLoading(false)
-                        setMessage({
-                            value: 'Invalid User',
-                            type: 'error',
-                            style: 'text-red-500',
-                        })
-                        setMessageDisplay('block')
-                        return
-                    }
-                    Router.push('/dashboard')
-                })
-            }
-        }
-    }
-
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setErrorFields([])
-        setMessageDisplay('hidden')
-        const { name, value } = e.target
-
-        switch (name) {
-            case 'emailOrUsername':
-                setEmailOrUsername(value)
-                break
-            case 'password':
-                setPassword(value)
-                break
-            default:
-                ''
-                break
-        }
-    }
+    //         //image.style.transform = `translate(${X}px, ${Y}px)`
+    //     })
+    // }, [])
 
     return (
-        <div className=''>
-            <header>
-                <Image src='/hero-player.png' width='100%' height='100%' />
-                <h1 className='heroText'>Shoot for the stars</h1>
-            </header>
-
-            <div className='w-full md:(grid) relative'>
-                <form
-                    id='login'
-                    className='bg-white rounded px-8 pt-6 pb-8 mb-4 mt-10 m-2 justify-self-end grid'
-                    onSubmit={handleSubmit}
-                >
-                    <p
-                        className={`${messageDisplay} ${message?.style} text-sm text-center mb-5`}
-                    >
-                        {message?.value}
+        <div className='register relative'>
+            <header className='register__header'>
+                <div className='flex'>
+                    <p className=' text-3xl md:text-[46px] font-medium text-[#E8E7E7] register__header--logo'>
+                        eslams
                     </p>
+                </div>
 
-                    <div className='mb-4'>
+                <form className=' register__header--form'>
+                    <div className='header__form--item'>
                         <label
-                            className='block text-gray-700 text-sm font-bold mb-2'
-                            htmlFor='username'
+                            htmlFor='email'
+                            className='text-[#E8E7E7] text-sm'
                         >
-                            Email or Username
+                            Email
                         </label>
 
                         <input
-                            className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
-                                error && errorFields.includes('email')
-                                    ? 'border-red-500'
-                                    : ''
-                            }`}
-                            id='emailOrUsername'
                             type='text'
-                            name='emailOrUsername'
-                            required
-                            value={emailOrUsername}
-                            onChange={changeHandler}
+                            name='email'
+                            id='email'
+                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
                         />
                     </div>
-                    <div className='mb-6'>
+                    <div className='header__form--item'>
                         <label
-                            className='block text-gray-700 text-sm font-bold mb-2'
-                            htmlFor='password'
+                            htmlFor='email'
+                            className='text-[#E8E7E7] text-sm'
                         >
                             Password
                         </label>
+
                         <input
-                            className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white ${
-                                error && errorFields.includes('password')
-                                    ? 'border-red-500'
-                                    : ''
-                            }`}
-                            id='password'
-                            name='password'
-                            type='password'
-                            minLength={6}
-                            required
-                            value={password}
-                            onChange={changeHandler}
+                            type='text'
+                            name='email'
+                            id='email'
+                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
                         />
+
+                        <Link href='/'>
+                            <a className='text-[#E8E7E7]  text-sm'>
+                                Forgot Password?
+                            </a>
+                        </Link>
                     </div>
 
-                    <div className='grid justify-center gap-2  md:gap-0 md:flex items-center'>
-                        <button
-                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline'
-                            type='submit'
-                        >
-                            {loading ? 'Loading...' : 'Sign In'}
-                        </button>
-                    </div>
+                    <button className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center'>
+                        Login
+                    </button>
                 </form>
+            </header>
 
-                <div className='grid mt-10 gap-2 px-8 justify-start'>
-                    <Link href='/auth/register'>
-                        <button className='bg-orange-300 text-[#1a1a2d] rounded px-2 py-1 text-left justify-self-start'>
-                            Register
-                        </button>
-                    </Link>
+            <div className='register__main'>
+                <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
-                    <a
-                        className='inline-block align-baseline text-sm text-blue-500 hover:text-blue-800'
-                        href='#'
-                    >
-                        Forgot Password?
-                    </a>
+                <div className=''>
+                    <div className='register__overlay z-3 md:(max-w-[433px])'></div>
+                    <div className='main-1 relative'>
+                        <Tilt
+                            gyroscope
+                            className=' z-20 w-[70vw] absolute'
+                            tiltReverse
+                            trackOnWindow
+                        >
+                            <div className='flex main-1__container z-5 mt-[9.5rem] relative'>
+                                <Image
+                                    src='/hero-player.png'
+                                    width='433px'
+                                    height='461px'
+                                    objectFit='contain'
+                                    className='main-1__image'
+                                />
+                            </div>
+                            <div className='grid gap-2 main-1__points w-max content-center'>
+                                <p className='main-1__points--item'>
+                                    Learn Through Practice
+                                </p>
+                                <p className='main-1__points--item'>
+                                    Compete and Win Rewards
+                                </p>
+                                <p className='main-1__points--item'>
+                                    Find and Register for Competitions
+                                </p>
+                            </div>
+
+                            <h1 className='heroText absolute top-[8rem] left-[3.5rem] absolute uppercase z-4'>
+                                Shoot for the{' '}
+                                <span className='ml-10'>stars</span>
+                            </h1>
+
+                            <div className='main-1__overLay'></div>
+                        </Tilt>
+                    </div>
                 </div>
-                <div
-                    className='section-signup'
-                    
-                ></div>
+                <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-30 md: mx-0 ml-auto'>
+                    <Checkout />
+                </div>
+                <div className='main-signup'></div>
+            </div>
+            <div className='register__tag'>
+                <h3 className='text-2xl'>
+                    online competition platform for every student,
+                    <span className='register__tag--rubik'>everywhere</span>
+                </h3>
             </div>
         </div>
     )
 }
 
 export default Login
-
-export async function getServerSideProps(context: CtxOrReq | undefined) {
-    const csrfToken = await getCsrfToken(context)
-    const providers = await getProviders()
-
-    return {
-        props: {
-            csrfToken,
-            providers,
-        },
-    }
-}
