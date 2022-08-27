@@ -316,11 +316,7 @@ export default function Checkout() {
             .then(({ data }) => {
                 console.log({ data })
                 setLoading(false)
-
-               signIn().then((res) => {
-                     console.log({ res })
-                     router.push('/')
-                 }).catch(err => console.log({err}))
+                router.push('/')
             })
             .catch(({ response: { data } }) => {
                 console.log({ data })
@@ -331,14 +327,7 @@ export default function Checkout() {
                 })
                 setLoading(false)
 
-                signIn()
-                    .then((res) => {
-                        console.log({ res })
-                        //router.push('/')
-                    })
-                    .catch((err) => console.log({ err }))
-
-
+                
                  
             })
     }
@@ -393,10 +382,7 @@ export default function Checkout() {
                             Create an account and step into greatness
 
                         </Typography>
-                        <Typography component='p' align='center'>
-
-                            <button onClick={handleSignIn} className='bg-blue-300'>Sign in</button>
-                        </Typography>
+                        
                         <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
                             {steps.map((label) => (
                                 <Step key={label}>
