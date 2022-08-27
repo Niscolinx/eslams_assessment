@@ -105,7 +105,8 @@ export default function Checkout() {
             count++
 
             //Validation for the first step
-            if (activeStep === 0) {
+        
+            if (activeStep === 0 && count < 8) {
                 if (key === 'personalEmail') {
                     isValidMail(handleInput[key], (cb) => {
                         if (!cb) {
