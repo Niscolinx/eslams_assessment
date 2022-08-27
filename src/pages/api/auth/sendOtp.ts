@@ -94,11 +94,11 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
                     status: 'fail',
                 })
             } else {
-                const pendindUser = new User({
-                    otp,
+                const pendingUser = new User({
+                    verificationOtp: otp,
                 })
 
-                await pendindUser.save()
+                await pendingUser.save()
 
                 res.json({
                     status: 'success',
