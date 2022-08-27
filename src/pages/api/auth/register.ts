@@ -5,6 +5,7 @@ import dbConnect from '../../../lib/dbConnect'
 import User from '../../../models/User'
 import { transporter } from '../../../utils/emailTransport'
 import mjml2html from 'mjml'
+import Otp from '../../../models/Otp'
 
 async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
     try {
@@ -52,7 +53,17 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             })
         }
 
-        //generate random 6 digit code
+        const checkForOtp = await Otp.find({
+            creatorEmail: personalEmail
+        })
+
+        if(!checkForOtp){
+            return res.status(401).json({
+                message: 'Otp not found',
+            })
+        }
+
+        
 
        
         const storeUser = new User({
