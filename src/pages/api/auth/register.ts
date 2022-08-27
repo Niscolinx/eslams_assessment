@@ -54,10 +54,37 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         //generate random 6 digit code
 
-        const fullName = `${firstName} ${lastName}`
+       
+        const storeUser = new User({
+            email: personalEmail,
+            password: await bcrypt.hash(password, 12),
+            firstName,
+            lastName,
+            phoneNumber,
+            birthDate,
+            Gender,
+            GuardianName,
+            GuardianPhoneNumber,
+            GuardianEmail,
+            GuardianRelationship,
+            institutionName,
+            institutionType,
+            institutionYearOfStudy,
+        })
 
-        const htmlOutput = mjml2html(
-            `
+        const verifyStored = await storeUser
+
+        if (!verifyStored) {
+            return res.status(500).json({ message: 'Server Error' })
+        }
+
+
+
+
+         const fullName = `${firstName} ${lastName}`
+
+         const htmlOutput = mjml2html(
+             `
   <mjml>
   <mj-body>
     <mj-section background-color='#E8E7E7' border-radius='1rem' font-family='Lato'>
@@ -84,59 +111,37 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
   </mj-body>
 </mjml>
 `,
-            {}
-        )
+             {}
+         )
 
-        const mail = {
-            from: 'admin@eslams.com',
-            to: 'munisco12@gmail.com',
-            subject: `Welcome to Eslams`,
-            html: `${htmlOutput.html}`,
-        }
+         const mail = {
+             from: 'admin@eslams.com',
+             to: 'munisco12@gmail.com',
+             subject: `Welcome to Eslams`,
+             html: `${htmlOutput.html}`,
+         }
 
-        transporter
-            .verify()
-            .then((data) => {
-                console.log('verified email credentials', data)
-            })
-            .catch((err) => console.log('not verified email'))
+         transporter
+             .verify()
+             .then((data) => {
+                 console.log('verified email credentials', data)
+             })
+             .catch((err) => console.log('not verified email'))
 
-        transporter.sendMail(mail, (err, data) => {
-            if (err) {
-                console.log({ err })
-                res.json({
-                    status: 'fail',
-                })
-            } else {
-                console.log('email sent', data)
-                res.json({
-                    status: 'success',
-                })
-            }
-        })
+         transporter.sendMail(mail, (err, data) => {
+             if (err) {
+                 console.log({ err })
+                 res.json({
+                     status: 'fail',
+                 })
+             } else {
+                 console.log('email sent', data)
+                 res.json({
+                     status: 'success',
+                 })
+             }
+         })
 
-        const storeUser = new User({
-            email: personalEmail,
-            password: await bcrypt.hash(password, 12),
-            firstName,
-            lastName,
-            phoneNumber,
-            birthDate,
-            Gender,
-            GuardianName,
-            GuardianPhoneNumber,
-            GuardianEmail,
-            GuardianRelationship,
-            institutionName,
-            institutionType,
-            institutionYearOfStudy,
-        })
-
-        const verifyStored = await storeUser
-
-        if (!verifyStored) {
-            return res.status(500).json({ message: 'Server Error' })
-        }
     } catch (err) {
         console.log({ err })
     }
