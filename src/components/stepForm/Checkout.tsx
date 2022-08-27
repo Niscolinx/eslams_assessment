@@ -105,7 +105,7 @@ export default function Checkout() {
             count++
 
             //Validation for the first step
-            if (activeStep === 0 && count < 8) {
+            if (activeStep === 0) {
                 if (key === 'personalEmail') {
                     isValidMail(handleInput[key], (cb) => {
                         if (!cb) {
@@ -152,6 +152,8 @@ export default function Checkout() {
 
                     setValidationError(errors)
                 }
+
+                console.log({errors})
             }
 
             if (activeStep === 1) {
@@ -162,6 +164,7 @@ export default function Checkout() {
             // }
         }
 
+        console.log('errors', errors)
         if (Object.keys(errors).length > 0) {
             return false
         }
