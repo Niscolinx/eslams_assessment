@@ -19,7 +19,7 @@ import { AuthContext } from '../../pages/api/auth/authContext'
 export default function GuardianOrParent() {
     const { setInput, handleInput, validationError } = useContext(AuthContext)
 
-    const [adjustMargin, setAdjustMargin] = useState(false)
+    const [adjustLabel, setAdjustLabel] = useState(false)
     const [relationshipInput, setRelationshipInput] =
         useState('')
 
@@ -27,6 +27,7 @@ export default function GuardianOrParent() {
     const handleSelect = (e: SelectChangeEvent<string>) => {
         setInput(e)
 
+        console.log({e})
     }
     return (
         <React.Fragment>
@@ -117,14 +118,14 @@ export default function GuardianOrParent() {
                     <FormControl fullWidth>
                         <InputLabel
                             id='select-label'
-                            className={`${adjustMargin ? 'mt-4 ' : 'mt-1.5'} -ml-5.5 lg:-ml-3.5`}
+                            className={`${adjustLabel}`} 
                         >
                             Relationship
                         </InputLabel>
                         <Select
                             labelId='select-label'
                             id='select'
-                            onFocus={(prev) => setAdjustMargin(prev => !prev)}
+                            onFocus={(prev) => setAdjustLabel(prev => !prev)}
                             variant='standard'
                             label='Relationship'
                             name='guardianRelationship'

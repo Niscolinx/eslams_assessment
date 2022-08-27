@@ -158,7 +158,6 @@ export default function Checkout() {
 
             else if (activeStep === 1 && (count > 7 && count < 12)) {
 
-                console.log({key})
                 if (key === 'guardianEmail') {
                     isValidMail(handleInput[key], (cb) => {
                         if (!cb) {
