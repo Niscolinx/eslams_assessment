@@ -133,6 +133,7 @@ export default function GuardianOrParent() {
                             labelId='select-label'
                             id='select'
                             onFocus={() => setIsFocused(true)}
+                            onInputCapture={() => console.log('dfa')}
                             variant='standard'
                             label='Relationship'
                             name='guardianRelationship'
