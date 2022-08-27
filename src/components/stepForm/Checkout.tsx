@@ -236,7 +236,7 @@ export default function Checkout() {
 
         if (!isValid) {
             return
-        }else if(activeStep === 2){
+        }else if(isValid && activeStep === 2){
             console.log({activeStep})
 
         }
