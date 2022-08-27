@@ -278,6 +278,7 @@ export default function Checkout() {
     )
 
     const otpHandler = (input: string) => {
+        console.log({input})
         setOtp(input)
         setKeepOtp((singleOtp) => [input])
     }
@@ -289,6 +290,8 @@ export default function Checkout() {
         if(otp.length < 6){
             console.log('Invalid otp')
             setIsOtpLengthInValid(true)
+        }
+        if(otp.length < 6){
             return
         }
 
