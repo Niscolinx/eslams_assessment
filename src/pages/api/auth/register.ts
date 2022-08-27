@@ -109,7 +109,6 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             {}
         )
 
-        console.log({ htmlOutput })
         const mail = {
             from: 'admin@eslams.com',
             to: 'munisco12@gmail.com',
