@@ -4,6 +4,8 @@ import bcrypt from 'bcryptjs'
 import dbConnect from '../../../lib/dbConnect'
 import User from '../../../models/User'
 import { transporter } from '../../../utils/emailTransport'
+import msdf from 'mjml'
+import mjml2html from 'mjml'
 
 
 async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
@@ -11,7 +13,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         await dbConnect()
 
         //console.log('req body', req.body)
-        console.log('register')
+        console.log('register', req.body)
         const {firstName, lastName, personalEmail, password,phoneNumber, birthDate, Gender, GuardianName, GuardianPhoneNumber, GuardianEmail, GuardianRelationship, institutionName, institutionType, institutionYearOfStudy } = req.body
 
     
@@ -70,6 +72,23 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         const otp = Math.floor(Math.random() * 1000000)
         
          console.log({otp})
+
+         const htmlOutput = mjml2html(
+             `
+  <mjml>
+    <mj-body>
+      <mj-section>
+        <mj-column>
+          <mj-text>
+            Hello World!
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-body>
+  </mjml>
+`,
+             options
+         )
        
          const mail = {
              from: 'admin@eslams.com',
