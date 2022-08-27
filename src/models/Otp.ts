@@ -4,8 +4,9 @@ export interface IOtp {
     [x: string]: any
     _id: Object
     code: string
+
     status: string
-    creator: Object
+    creatorEmail: string
 }
 
 const otpSchema = new Schema<IOtp>(
@@ -20,9 +21,8 @@ const otpSchema = new Schema<IOtp>(
             default: 'pending',
         },
 
-        creator: {
-            type: Schema.Types.ObjectId,
-            ref: 'user',
+        creatorEmail: {
+            type: String,
             required: true,
         },
     },

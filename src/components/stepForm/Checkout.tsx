@@ -253,7 +253,6 @@ export default function Checkout() {
                             firstName,
                             lastName,
                             personalEmail,
-                            phoneNumber,
                         })
                         console.log(data)
                     } catch (err) {

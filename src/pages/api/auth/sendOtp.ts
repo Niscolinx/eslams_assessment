@@ -10,30 +10,14 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
 
         //console.log('req body', req.body)
         console.log('otp', req.body)
-        const { firstName, lastName, personalEmail, phoneNumber } = req.body
+        const {  personalEmail, firstName, lastName } = req.body
 
         //Validate
         // if (!personalEmail || !personalEmail.includes('@') || !password || !phoneNumber) {
         //     console.log('failed')
         //     res.status(422).json({ message: 'Invalid Data' })
         //     return
-        // }
-
-        const existingEmail = await User.findOne({ personalEmail })
-
-        const existingPhoneNumber = await User.findOne({ phoneNumber })
-
-        if (existingEmail) {
-            return res.status(401).json({
-                message: 'Email already exists',
-            })
-        }
-
-        if (existingPhoneNumber) {
-            return res.status(401).json({
-                message: 'Number already in use',
-            })
-        }
+       
 
         //generate random 6 digit code
         const otp = Math.floor(Math.random() * 1000000)
