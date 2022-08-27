@@ -232,12 +232,19 @@ export default function Checkout() {
     const handleNext = () => {
         const isValid = formValidate()
 
+                    setActiveStep(activeStep + 1)
+                    console.log('next')
+
         if (!isValid) {
+            console.log('not valid')
             return
         } else if (isValid) {
+            console.log('second step')
             setActiveStep(activeStep + 1)
         } else if (isValid && activeStep === 2) {
+            console.log('last step')
             setActiveStep(activeStep + 1)
+            console.log('send otp')
 
             const { firstName, lastName, personalEmail, phoneNumber } =
                 handleInput
