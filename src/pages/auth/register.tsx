@@ -95,7 +95,7 @@ const Register = () => {
                 </form>
             </header>
 
-            <div className='register__main'>
+            <div className='register__main overflow-x-hidden'>
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
                     <div className=''>
@@ -104,9 +104,9 @@ const Register = () => {
                 <Tilt
                     onEnter={() => console.log('entered')}
                     gyroscope
-                   className=' z-20 w-[40vw] absolute'
+                   className=' z-20 w-[40vw] absolute overflow'
             trackOnWindow
-                    transitionSpeed={500}
+                    transitionSpeed={5000}
                 >
                             <div className='flex main-1__container z-5 mt-[9.5rem] relative'>
                                 <Image
