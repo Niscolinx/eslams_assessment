@@ -67,11 +67,13 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         console.log({ checkForOtp })
 
-        if (checkForOtp.code !== otp) {
+        if (checkForOtp.code !== Number(otp)) {
             return res.status(401).json({
                 message: 'Invalid Otp',
             })
         }
+
+        await Otp.findByIdAndDelete(checkForOtp._id)
 
         const storeUser = new User({
             email: personalEmail,
@@ -90,7 +92,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             institutionYearOfStudy,
         })
 
-        const verifyStored = await storeUser
+        const verifyStored = await storeUser.save()
 
         if (!verifyStored) {
             return res.status(500).json({ message: 'Server Error' })
@@ -155,6 +157,11 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
                     status: 'success',
                 })
             }
+        })
+
+
+        return res.status(200).json({
+            message: 'Successfully registered',
         })
     } catch (err) {
         console.log({ err })

@@ -391,7 +391,7 @@ export default function Checkout() {
                                             onSubmit={handleSubmit}
                                         > {
                                             message && message.type === 'error' && (
-                                                <p className='bg-red-500 text-xs text-center '>{message.message}</p>
+                                                <p className='text-red-500 text-sm font-semibold text-center py-4'>{message.message}</p>
                                             )
                                         }
                                             <h2 className='font-black text-center text-black mb-2 text-xl'>
