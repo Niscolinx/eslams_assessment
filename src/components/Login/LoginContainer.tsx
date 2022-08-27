@@ -24,9 +24,7 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
-const steps = ['Personal details', 'Guardian/Parent', 'Education']
 
-function getStepContent(step: number) {}
 
 const theme = createTheme({
     typography: {
@@ -74,12 +72,9 @@ export default function Checkout() {
         let count = 0
 
         for (const key in handleInput) {
-            count++
+          
 
-            //Validation for the first step
-
-            if (activeStep === 0 && count < 8) {
-                if (key === 'personalEmail') {
+                if (key === 'email') {
                     isValidMail(handleInput[key], (cb) => {
                         if (!cb) {
                             errors[key] = 'Invalid email'
