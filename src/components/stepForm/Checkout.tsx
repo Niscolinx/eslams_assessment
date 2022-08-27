@@ -168,6 +168,16 @@ export default function Checkout() {
                         }
                     })
                 }
+
+                if (key === 'guardianPhoneNumber') {
+                    if (handleInput[key].length < 10) {
+                        errors[key as keyof handleInputProps] =
+                            'Phone number not valid'
+
+                        setValidationError(errors)
+                    }
+                }
+
                 
                  if (
                      handleInput[key as keyof handleInputProps] === '' ||
