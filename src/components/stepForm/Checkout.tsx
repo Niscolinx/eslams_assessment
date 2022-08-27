@@ -105,7 +105,7 @@ export default function Checkout() {
             count++
 
             //Validation for the first step
-        
+
             if (activeStep === 0 && count < 8) {
                 if (key === 'personalEmail') {
                     isValidMail(handleInput[key], (cb) => {
@@ -153,11 +153,7 @@ export default function Checkout() {
 
                     setValidationError(errors)
                 }
-
-            }
-
-            else if (activeStep === 1 && (count > 7 && count < 12)) {
-
+            } else if (activeStep === 1 && count > 7 && count < 12) {
                 if (key === 'guardianEmail') {
                     isValidMail(handleInput[key], (cb) => {
                         if (!cb) {
@@ -168,14 +164,14 @@ export default function Checkout() {
                     })
                 }
 
-                 if (key === 'guardianName') {
-                     if (handleInput[key].length < 3) {
-                         errors[key as keyof handleInputProps] =
-                             'This field must be at least 3 characters long'
+                if (key === 'guardianName') {
+                    if (handleInput[key].length < 3) {
+                        errors[key as keyof handleInputProps] =
+                            'This field must be at least 3 characters long'
 
-                         setValidationError(errors)
-                     }
-                 }
+                        setValidationError(errors)
+                    }
+                }
 
                 if (key === 'guardianPhoneNumber') {
                     if (handleInput[key].length < 10) {
@@ -186,31 +182,26 @@ export default function Checkout() {
                     }
                 }
 
-                
-                 if (
-                     handleInput[key as keyof handleInputProps] === '' ||
-                     handleInput[key as keyof handleInputProps] === null
-                 ) {
-                     errors[key as keyof handleInputProps] =
-                         'This field is required'
+                if (
+                    handleInput[key as keyof handleInputProps] === '' ||
+                    handleInput[key as keyof handleInputProps] === null
+                ) {
+                    errors[key as keyof handleInputProps] =
+                        'This field is required'
 
-                     setValidationError(errors)
-                 }
+                    setValidationError(errors)
+                }
+            } else if (activeStep === 2 && count > 11) {
+                if (
+                    handleInput[key as keyof handleInputProps] === '' ||
+                    handleInput[key as keyof handleInputProps] === null
+                ) {
+                    errors[key as keyof handleInputProps] =
+                        'This field is required'
+
+                    setValidationError(errors)
+                }
             }
-            else if (activeStep === 2 && count > 11) {
-
-
-                 if (
-                     handleInput[key as keyof handleInputProps] === '' ||
-                     handleInput[key as keyof handleInputProps] === null
-                 ) {
-                     errors[key as keyof handleInputProps] =
-                         'This field is required'
-
-                     setValidationError(errors)
-                 }
-            }
-           
         }
 
         if (Object.keys(errors).length > 0) {
@@ -230,7 +221,6 @@ export default function Checkout() {
         }))
     }
 
-
     const handleNext = () => {
         const isValid = formValidate()
 
@@ -238,7 +228,6 @@ export default function Checkout() {
             return
         }
         setActiveStep(activeStep + 1)
-
     }
 
     const handleBack = () => {
@@ -259,35 +248,18 @@ export default function Checkout() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
-        console.log({handleInput})
+        const data = handleInput
 
-        // const data = {
-        //     gender,
-        //     lastName,
-        //     personalEmail,
-        //     password,
-        //     phoneNumber,
-        //     birthDate,
-        //     guardianEmail,
-        //     guardianName,
-        //     guardianPhoneNumber,
-        //     guardianRelationship,
-        //     institutionName,
-        //     institutionType,
-        //     institutionYearOfStudy,
-        // } = handleInput
-
-       const data = handleInput
-
-       const updatedData = {...data, birthDate: data.birthDate!.toISOString()}
-
-       console.log(updatedData)
+        const updatedData = {
+            ...data,
+            birthDate: data.birthDate!.toISOString(),
+        }
 
         console.log('submit')
 
         setLoading(true)
         axios
-            .post('/api/auth/register', {})
+            .post('/api/auth/register', updatedData)
             .then((res) => {
                 console.log(res)
                 setLoading(false)
