@@ -232,7 +232,7 @@ export default function Checkout() {
     const handleNext = () => {
         const isValid = formValidate()
 
-                    setActiveStep(activeStep + 1)
+                    //setActiveStep(activeStep + 1)
                     console.log('next')
 
         if (!isValid) {

@@ -5,9 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 
 import {
     FormControl,
-    FormLabel,
-    RadioGroup,
-    Radio,
+ 
     InputLabel,
     MenuItem,
     Select,
@@ -24,7 +22,6 @@ export default function Education() {
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
 
     useEffect(() => {
-        console.log('isFocused', isFocused, labelClasses)
         if (isFocused) {
             setLabelClasses('-ml-5.5 mt-3 lg:-ml-4')
         } else {
