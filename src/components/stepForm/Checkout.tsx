@@ -317,10 +317,12 @@ export default function Checkout() {
                 console.log({ data })
                 setLoading(false)
 
-                signIn().then((res) => {
-                    console.log({ res })
-                    router.push('/adminDashboard')
-                })
+                signIn()
+                    .then((res) => {
+                        console.log({ res })
+                        router.push('/')
+                    })
+                    .catch((err) => console.log({ err }))
             })
             .catch(({ response: { data } }) => {
                 console.log({ data })
@@ -330,11 +332,6 @@ export default function Checkout() {
                     type: 'error',
                 })
                 setLoading(false)
-
-                 signIn().then((res) => {
-                     console.log({ res })
-                     router.push('/adminDashboard')
-                 }).catch(err => console.log({err}))
             })
     }
 
