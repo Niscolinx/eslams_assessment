@@ -33,7 +33,10 @@ function getStepContent(step: number) {
     switch (step) {
         case 0:
             return <PersonalDetails />
-      
+        case 1:
+            return <GuardianOrParent />
+        case 2:
+            return <Education />
         default:
             throw new Error('Unknown step')
     }
@@ -240,32 +243,32 @@ export default function Checkout() {
 
         // //setActiveStep(activeStep + 1)
 
-        // if (!isValid) {
-        //     return
-        // } else if (isValid) {
-        //     setActiveStep(activeStep + 1)
+        if (!isValid) {
+            return
+        } else if (isValid) {
+            setActiveStep(activeStep + 1)
 
-        //     if (activeStep === 2) {
-        //         setActiveStep(activeStep + 1)
+            if (activeStep === 2) {
+                setActiveStep(activeStep + 1)
 
-        //         const { firstName, lastName, personalEmail } = handleInput
+                const { firstName, lastName, personalEmail } = handleInput
 
-        //         const sendOtp = async () => {
-        //             try {
-        //                 console.log('sending otp...')
-        //                 const { data } = await axios.post('/api/auth/sendOtp', {
-        //                     firstName,
-        //                     lastName,
-        //                     personalEmail,
-        //                 })
-        //                 console.log(data)
-        //             } catch (err) {
-        //                 return console.log({ err })
-        //             }
-        //         }
-        //         sendOtp()
-        //     }
-       // }
+                const sendOtp = async () => {
+                    try {
+                        console.log('sending otp...')
+                        const { data } = await axios.post('/api/auth/sendOtp', {
+                            firstName,
+                            lastName,
+                            personalEmail,
+                        })
+                        console.log(data)
+                    } catch (err) {
+                        return console.log({ err })
+                    }
+                }
+                sendOtp()
+            }
+       }
     }
 
     const handleBack = () => {

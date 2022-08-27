@@ -204,6 +204,11 @@ export default function Checkout() {
                                 </Step>
                             ))}
                         </Stepper> */}
+                    {message && message.type === 'error' && (
+                        <p className='text-red-500 text-sm font-semibold text-center py-4'>
+                            {message.message}
+                        </p>
+                    )}
                     <div className='grid gap-4 mt-10'>
                         <Grid item xs={12} sm={6}>
                             <TextField

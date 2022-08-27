@@ -48,6 +48,9 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         const existingPhoneNumber = await User.findOne({ phoneNumber })
 
+                return res.status(500).json({ message: 'Server Error' })
+
+
         if (existingEmail) {
             return res.status(401).json({
                 message: 'Email already exists',
@@ -116,7 +119,6 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             return res.status(500).json({ message: 'Server Error' })
         }
 
-        return res.status(500).json({ message: 'Server Error' })
 
         const fullName = `${firstName} ${lastName}`
 
