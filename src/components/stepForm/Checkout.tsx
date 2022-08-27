@@ -145,10 +145,8 @@ export default function Checkout() {
                     }
                 }
                 if (key === 'birthDate') {
-                    
-                    if(!dayjs(handleInput[key]).isValid()){
-                        errors[key as keyof handleInputProps] =
-                            'Invalid Date'
+                    if (!dayjs(handleInput[key]).isValid()) {
+                        errors[key as keyof handleInputProps] = 'Invalid Date'
 
                         setValidationError(errors)
                     }
@@ -250,14 +248,15 @@ export default function Checkout() {
         </span>
     )
 
-    const inputHandler = (input: string) => {
+    const otpHandler = (input: string) => {
         setOtp(input)
         setKeepOtp((singleOtp) => [input])
     }
 
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-
+        console.log({otp})
         const data = handleInput
 
         const updatedData = {
@@ -293,22 +292,6 @@ export default function Checkout() {
     return (
         <AuthContext.Provider value={authContext}>
             <ThemeProvider theme={theme}>
-                {/* <AppBar
-                position='absolute'
-                color='default'
-                elevation={0}
-                sx={{
-                    position: 'relative'
-                   
-                }}
-            >
-                <Toolbar>
-                    <Typography variant='h6' color='inherit' noWrap>
-                    Company name
-                    </Typography>
-                </Toolbar> 
-            </AppBar> */}
-
                 <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
                     <CssBaseline />
                     <Paper
@@ -360,7 +343,7 @@ export default function Checkout() {
 
                                             <OtpInput
                                                 value={otp}
-                                                onChange={inputHandler}
+                                                onChange={otpHandler}
                                                 numInputs={6}
                                                 inputStyle='pinlogin-field'
                                                 containerStyle='pinlogin'

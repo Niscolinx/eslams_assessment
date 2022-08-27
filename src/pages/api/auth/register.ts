@@ -52,36 +52,10 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             })
         }
 
-        const storeUser = new User({
-            email: personalEmail,
-            password: await bcrypt.hash(password, 12),
-            firstName,
-            lastName,
-            phoneNumber,
-            birthDate,
-            Gender,
-            GuardianName,
-            GuardianPhoneNumber,
-            GuardianEmail,
-            GuardianRelationship,
-            institutionName,
-            institutionType,
-            institutionYearOfStudy,
-        })
-
-        const verifyStored = await storeUser
-
-        if (!verifyStored) {
-            return res.status(500).json({ message: 'Server Error' })
-        }
-
         //generate random 6 digit code
         const otp = Math.floor(Math.random() * 1000000)
 
-
         const fullName = `${firstName} ${lastName}`
-
-        console.log('fullName', fullName)
 
         const htmlOutput = mjml2html(
             `
@@ -126,19 +100,42 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             })
             .catch((err) => console.log('not verified email'))
 
-        // transporter.sendMail(mail, (err, data) => {
-        //     if (err) {
-        //         console.log({ err })
-        //         res.json({
-        //             status: 'fail',
-        //         })
-        //     } else {
-        //         console.log('email sent', data)
-        //         res.json({
-        //             status: 'success',
-        //         })
-        //     }
-        // })
+        transporter.sendMail(mail, (err, data) => {
+            if (err) {
+                console.log({ err })
+                res.json({
+                    status: 'fail',
+                })
+            } else {
+                console.log('email sent', data)
+                res.json({
+                    status: 'success',
+                })
+            }
+        })
+
+        const storeUser = new User({
+            email: personalEmail,
+            password: await bcrypt.hash(password, 12),
+            firstName,
+            lastName,
+            phoneNumber,
+            birthDate,
+            Gender,
+            GuardianName,
+            GuardianPhoneNumber,
+            GuardianEmail,
+            GuardianRelationship,
+            institutionName,
+            institutionType,
+            institutionYearOfStudy,
+        })
+
+        const verifyStored = await storeUser
+
+        if (!verifyStored) {
+            return res.status(500).json({ message: 'Server Error' })
+        }
     } catch (err) {
         console.log({ err })
     }
