@@ -9,7 +9,7 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
         await dbConnect()
 
         //console.log('req body', req.body)
-        console.log('register', req.body)
+        console.log('otp', req.body)
         const { firstName, lastName, personalEmail, phoneNumber } = req.body
 
         //Validate
