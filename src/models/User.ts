@@ -17,6 +17,7 @@ export interface IUser {
     institutionType: string
     institutionName: string
     institutionYearOfStudy: string
+    verificationOtp: string
 }
 
 const userSchema = new Schema<IUser>(
@@ -47,6 +48,9 @@ const userSchema = new Schema<IUser>(
             type: String,
             default: 'Customer',
             required: true,
+        },
+        verificationOtp: {
+            type: String,
         },
 
         birthDay: {
