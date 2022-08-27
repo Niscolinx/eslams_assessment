@@ -48,16 +48,16 @@ export default function Education() {
                             Institution Type
                         </InputLabel>
                         <Select
-                            onFocus={(prev) => setIsFocused((prev) => !prev)}
+                            onFocus={() => setIsFocused((prev) => !prev)}
                             onBlur={() => setLabelClasses(labelClasses)}
                             labelId='select-label'
                             id='select'
                             variant='standard'
                             label='Institution Type'
-                            value={handleInput.guardianRelationship}
+                            value={handleInput.institutionType}
                             error={
                                 validationError &&
-                                validationError['guardianRelationship']
+                                validationError['institutionType']
                                     ? true
                                     : false
                             }
@@ -78,6 +78,19 @@ export default function Education() {
                         fullWidth
                         type={'number'}
                         variant='standard'
+                        value={handleInput.institutionYearOfStudy}
+                        error={
+                            validationError &&
+                            validationError['institutionYearOfStudy']
+                                ? true
+                                : false
+                        }
+                        helperText={
+                            validationError &&
+                            validationError['institutionYearOfStudy']
+                                ? validationError['institutionYearOfStudy']
+                                : false
+                        }
                         onChange={setInput}
                     />
                 </Grid>
@@ -89,6 +102,17 @@ export default function Education() {
                         label='Name of Institution'
                         fullWidth
                         variant='standard'
+                        value={handleInput.institutionName}
+                        error={
+                            validationError && validationError['institutionName']
+                                ? true
+                                : false
+                        }
+                        helperText={
+                            validationError && validationError['institutionName']
+                                ? validationError['institutionName']
+                                : false
+                        }
                         onChange={setInput}
                     />
                 </Grid>

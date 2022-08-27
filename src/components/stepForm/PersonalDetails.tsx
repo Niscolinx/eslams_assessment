@@ -132,8 +132,9 @@ export default function PersonalDetails() {
                             name='password'
                             label='Password'
                             type='password'
-                            value={handleInput.password}
+                            variant='standard'
                             fullWidth
+                            value={handleInput.password}
                             error={
                                 validationError && validationError['password']
                                     ? true
@@ -144,7 +145,6 @@ export default function PersonalDetails() {
                                     ? validationError['password']
                                     : false
                             }
-                            variant='standard'
                             onChange={setInput}
                         />
                         {
