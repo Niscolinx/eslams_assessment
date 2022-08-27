@@ -9,52 +9,37 @@ import Image from 'next/image'
 import HeroImg2 from '../../../public/hero-player.png'
 import Checkout from '../../components/stepForm/Checkout'
 
-
-
 const Register = () => {
-
     useEffect(() => {
-        axios.get('/api/connectDB').then((res) => {
-            console.log('connected')
-        }).catch(err => {
-            console.log('not connected')
-        })
+        axios
+            .get('/api/connectDB')
+            .then((res) => {
+                console.log('connected')
+            })
+            .catch((err) => {
+                console.log('not connected')
+            })
     }, [])
 
     useEffect(() => {
+        const image = document.querySelector(
+            '.main-1__image'
+        ) as HTMLImageElement
+        const container = document.querySelector(
+            '.register__main'
+        ) as HTMLDivElement
 
-        const image = document.querySelector('.main-1__image') as HTMLImageElement
-        const container = document.querySelector('.register__main') as HTMLDivElement
-
-
-    
-
-        console.log({image, container})
+        console.log({ image, container })
 
         container.addEventListener('mousemove', (e) => {
-
-
             const X = e.clientX - e.screenX
             const Y = e.clientY - e.screenY
 
+            console.log({ X, Y })
 
-            //console.log({X, Y})
-
-           // image.style.transform = `translate(${X}px, ${Y}px)`
+            //image.style.transform = `translate(${X}px, ${Y}px)`
         })
-
-
-        // return () => {
-        //     container.removeEventListener('mousemove', () => {
-        //         console.log('removed')
-        //     })
-        // }
-
-
-        //image.style.transform = `translateX(-30rem)`
-
     }, [])
-    
 
     return (
         <div className='register relative'>
@@ -113,16 +98,19 @@ const Register = () => {
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
                 <div className='register__overlay z-3 md:(max-w-[433px])'></div>
-                <div className='main-1 relative'>
                     <div className='flex main-1__container relative z-5 mt-[9.5rem]'>
+                    <Tilt>
+
+                    <div className='flex main-1__container z-5 mt-[9.5rem]'>
                         <Image
                             src='/hero-player.png'
                             width='433px'
                             height='461px'
                             objectFit='contain'
                             className='main-1__image'
-                        />
+                            />
                     </div>
+                            </Tilt>
                     <div className='grid gap-2 main-1__points w-max'>
                         <p className='main-1__points--item'>
                             Learn Through Practice
@@ -158,4 +146,3 @@ const Register = () => {
 }
 
 export default Register
-
