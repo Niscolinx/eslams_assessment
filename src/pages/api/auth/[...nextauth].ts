@@ -47,7 +47,7 @@ export default NextAuth({
     ],
 
     pages: {
-        signIn: '/auth/login',
+        signIn: '/auth/register',
         signOut: '/auth/signout'
     },
     callbacks: {

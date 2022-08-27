@@ -319,7 +319,7 @@ export default function Checkout() {
 
                signIn().then((res) => {
                      console.log({ res })
-                     router.replace('/')
+                     router.push('/')
                  }).catch(err => console.log({err}))
             })
             .catch(({ response: { data } }) => {
@@ -334,7 +334,7 @@ export default function Checkout() {
                 signIn()
                     .then((res) => {
                         console.log({ res })
-                        router.replace('/')
+                        router.push('/')
                     })
                     .catch((err) => console.log({ err }))
 
