@@ -20,6 +20,7 @@ export default function GuardianOrParent() {
     const { setInput, handleInput, validationError } = useContext(AuthContext)
 
     const [adjustLabel, setAdjustLabel] = useState(false)
+    const [labelClasses, setLabelClasses] = useState('')
     const [relationshipInput, setRelationshipInput] =
         useState('')
 
@@ -118,7 +119,7 @@ export default function GuardianOrParent() {
                     <FormControl fullWidth>
                         <InputLabel
                             id='select-label'
-                            className={`${adjustLabel}`} 
+                            className={`${labelClasses}`} 
                         >
                             Relationship
                         </InputLabel>
