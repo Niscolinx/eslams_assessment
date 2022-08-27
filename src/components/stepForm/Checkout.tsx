@@ -172,6 +172,8 @@ export default function Checkout() {
         const { name, value } = e.target
         setValidationError(null)
 
+        console.log({name, value})
+
         setHandleInput((prev: any) => ({
             ...prev,
             [name]: value,
@@ -183,7 +185,6 @@ export default function Checkout() {
     const handleNext = () => {
         const isValid = formValidate()
 
-        console.log({isValid})
 
         if (!isValid) {
             return

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useMemo } from 'react'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
@@ -25,8 +25,6 @@ export default function PersonalDetails() {
 
     const [dateValue, setDateValue] = useState<Date | null>(null)
 
-    console.log({ validationError })
-    console.log({handleInput})
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -47,9 +45,11 @@ export default function PersonalDetails() {
         setInput({
             target: {
                 name: 'birthDate',
-                e,
+                value:e,
             },
         })
+
+        console.log({e})
     }
 
 
@@ -172,7 +172,6 @@ export default function PersonalDetails() {
                         id='phone-number'
                         autoFocus={true}
                         name='phoneNumber'
-                        defaultValue={handleInput.phoneNumber}
                         value={handleInput.phoneNumber}
                         placeholder='Phone Number'
                         defaultCountry={'us'}
@@ -211,8 +210,6 @@ export default function PersonalDetails() {
                                     name='birthDate'
                                     fullWidth
                                     variant='standard'
-                                    defaultValue={handleInput.birthDate}
-                                    value={handleInput.birthDate}
                                     error={
                                         validationError &&
                                         validationError['birthDate']
