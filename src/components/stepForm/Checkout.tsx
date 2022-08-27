@@ -339,17 +339,6 @@ export default function Checkout() {
         }
     }, [validationError, handleInput, setInput])
 
-
-    const handleSignIn = () => {
-        //router.push('/')
-
-        signIn().then((res) => {
-            console.log({ res })
-            //router.push('/')
-        }).catch(err => {
-            console.log({err})
-        })
-    }
     return (
         <AuthContext.Provider value={authContext}>
             <ThemeProvider theme={theme}>

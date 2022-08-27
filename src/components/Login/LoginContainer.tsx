@@ -24,15 +24,13 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
-
-
 const theme = createTheme({
     typography: {
         fontFamily: ['Lato', 'Montserrat', 'sans-serif'].join(','),
     },
 })
 
-export type ValidationError = { 
+export type ValidationError = {
     email: string
     password: string
 }
@@ -69,33 +67,34 @@ export default function Checkout() {
             return cb(isValid)
         }
 
-        let count = 0
-
         for (const key in handleInput) {
-          
-
-                if (key === 'email') {
-                    isValidMail(handleInput[key], (cb) => {
-                        if (!cb) {
-                            errors[key] = 'Invalid email'
-
-                            setValidationError(errors)
-                        }
-                    })
-                }
-
-               
-
-                if (key === 'password') {
-                    if (handleInput[key].length < 6) {
-                        errors[key as keyof handleInputProps] =
-                            'Password must be at least 6 characters long'
+            if (key === 'email') {
+                isValidMail(handleInput[key], (cb) => {
+                    if (!cb) {
+                        errors[key] = 'Invalid email'
 
                         setValidationError(errors)
                     }
-                }
+                })
+            }
 
-               
+            if (key === 'password') {
+                if (handleInput[key].length < 6) {
+                    errors[key as keyof handleInputProps] =
+                        'Password must be at least 6 characters long'
+
+                    setValidationError(errors)
+                }
+            }
+
+            if (
+                handleInput[key as keyof handleInputProps] === '' ||
+                handleInput[key as keyof handleInputProps] === null
+            ) {
+                errors[key as keyof handleInputProps] = 'This field is required'
+
+                setValidationError(errors)
+            }
         }
 
         if (Object.keys(errors).length > 0) {
@@ -118,28 +117,21 @@ export default function Checkout() {
     const handleLogin = () => {
         const isValid = formValidate()
 
-
         if (!isValid) {
             return
-        }      
-        else   {
-            
-        } 
-        
+        } else {
+        }
     }
-
-
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         setMessage(null)
-
+        setLoading(true)
 
         const data = handleInput
 
         const updatedData = {
             ...data,
-          
         }
 
         console.log('submit')
@@ -163,8 +155,6 @@ export default function Checkout() {
             })
     }
 
-   
-
     //From  here
 
     const [eyeIcon, setEyeIcon] = useState(false)
@@ -183,109 +173,118 @@ export default function Checkout() {
         }
     }
     return (
-            <ThemeProvider theme={theme}>
-                <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
-                    <CssBaseline />
-                    <Paper
-                        variant='outlined'
-                        sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+        <ThemeProvider theme={theme}>
+            <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
+                <CssBaseline />
+                <Paper
+                    variant='outlined'
+                    sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+                >
+                    <div className='absolute -right-22  top-0'>
+                        <img
+                            src='/ball-icon.png'
+                            width='170px'
+                            height='170px'
+                            className='animate-spin-slow'
+                        />
+                    </div>
+                    <Typography
+                        component='h2'
+                        variant='h4'
+                        align='center'
+                        className='font-semibold'
                     >
-                        <div className='absolute -right-22  top-0'>
-                            <img
-                                src='/ball-icon.png'
-                                width='170px'
-                                height='170px'
-                                className='animate-spin-slow'
-                            />
-                        </div>
-                        <Typography
-                            component='h2'
-                            variant='h4'
-                            align='center'
-                            className='font-semibold'
-                        >
-                            Welcome Back
-                        </Typography>
-                       
+                        Welcome Back
+                    </Typography>
 
-                        {/* <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+                    {/* <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
                             {steps.map((label) => (
                                 <Step key={label}>
                                     <StepLabel>{label}</StepLabel>
                                 </Step>
                             ))}
                         </Stepper> */}
-                        <div className='grid gap-4 mt-10'>
-                            <Grid item xs={12} sm={6}>
+                    <div className='grid gap-4 mt-10'>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                required
+                                id='email'
+                                name='email'
+                                type='email'
+                                fullWidth
+                                label='Email Address'
+                                value={handleInput.email}
+                                error={
+                                    validationError && validationError['email']
+                                        ? true
+                                        : false
+                                }
+                                helperText={
+                                    validationError && validationError['email']
+                                        ? validationError['email']
+                                        : false
+                                }
+                                variant='standard'
+                                onChange={setInput}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <div className='flex items-center relative'>
                                 <TextField
                                     required
-                                    id='email'
-                                    name='email'
-                                    type='email'
+                                    id='password'
+                                    name='password'
+                                    label='Password'
+                                    type='password'
+                                    variant='standard'
                                     fullWidth
-                                    label='Email Address'
-                                    value={handleInput.email}
+                                    value={handleInput.password}
                                     error={
                                         validationError &&
-                                        validationError['email']
+                                        validationError['password']
                                             ? true
                                             : false
                                     }
                                     helperText={
                                         validationError &&
-                                        validationError['email']
-                                            ? validationError['email']
+                                        validationError['password']
+                                            ? validationError['password']
                                             : false
                                     }
-                                    variant='standard'
                                     onChange={setInput}
                                 />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <div className='flex items-center relative'>
-                                    <TextField
-                                        required
-                                        id='password'
-                                        name='password'
-                                        label='Password'
-                                        type='password'
-                                        variant='standard'
-                                        fullWidth
-                                        value={handleInput.password}
-                                        error={
-                                            validationError &&
-                                            validationError['password']
-                                                ? true
-                                                : false
-                                        }
-                                        helperText={
-                                            validationError &&
-                                            validationError['password']
-                                                ? validationError['password']
-                                                : false
-                                        }
-                                        onChange={setInput}
-                                    />
-                                    {
-                                        <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
-                                            {eyeIcon ? (
-                                                <AiOutlineEyeInvisible
-                                                    onClick={toggleEyeIcon}
-                                                />
-                                            ) : (
-                                                <AiOutlineEye
-                                                    onClick={toggleEyeIcon}
-                                                />
-                                            )}
-                                        </span>
-                                    }
-                                </div>
-                            </Grid>
-                            <Button className='flex justify-self-center bg-[#1976d2] text-white my-3' onClick={handleLogin}>Login</Button>
-                        </div>
-                    </Paper>
-                    {/* <Copyright /> */}
-                </Container>
-            </ThemeProvider>
+                                {
+                                    <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
+                                        {eyeIcon ? (
+                                            <AiOutlineEyeInvisible
+                                                onClick={toggleEyeIcon}
+                                            />
+                                        ) : (
+                                            <AiOutlineEye
+                                                onClick={toggleEyeIcon}
+                                            />
+                                        )}
+                                    </span>
+                                }
+                            </div>
+                        </Grid>
+                        <Button
+                            className='flex justify-self-center bg-[#1976d2] text-white my-3'
+                            onClick={handleLogin}
+                        >
+                            {loading ? (
+                                <CircularProgress
+                                    className='text-white flex justify-self-center'
+                                    size={20}
+                                />
+                            ) : (
+                                'Login'
+                            )}
+                        </Button>
+                    </div>
+                </Paper>
+                {/* <Copyright /> */}
+            </Container>
+        </ThemeProvider>
     )
 }
