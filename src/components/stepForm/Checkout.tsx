@@ -156,8 +156,8 @@ export default function Checkout() {
 
             }
 
-            console.log({count})
-            if (activeStep === 1 && count > 7) {
+            console.log({count}, key)
+            if (activeStep === 1 && (count > 7 && count < 12)) {
                 console.log('second step', { count })
             }
             // else{
@@ -165,7 +165,6 @@ export default function Checkout() {
             // }
         }
 
-        console.log('errors', errors)
         if (Object.keys(errors).length > 0) {
             return false
         }
