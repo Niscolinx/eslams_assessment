@@ -232,41 +232,44 @@ export default function Checkout() {
     const handleNext = () => {
         const isValid = formValidate()
 
-                    //setActiveStep(activeStep + 1)
-                    console.log('next')
+        //setActiveStep(activeStep + 1)
+        console.log('next')
 
         if (!isValid) {
             console.log('not valid')
             return
         } else if (isValid) {
-            console.log('second step')
             setActiveStep(activeStep + 1)
-        } else if (isValid && activeStep === 2) {
-            console.log('last step')
-            setActiveStep(activeStep + 1)
-            console.log('send otp')
+            console.log('second step', activeStep)
 
-            const { firstName, lastName, personalEmail, phoneNumber } =
-                handleInput
-
-            const sendOtp = async () => {
+            if (activeStep === 2) {
+                console.log('last step', activeStep)
+                setActiveStep(activeStep + 1)
                 console.log('send otp')
-                try {
-                    console.log('trying to send otp')
-                    const { data } = await axios
-                        .post('/api/auth/sendOtp', {
+
+                const { firstName, lastName, personalEmail, phoneNumber } =
+                    handleInput
+
+                const sendOtp = async () => {
+                    console.log('send otp')
+                    try {
+                        console.log('trying to send otp')
+                        const { data } = await axios.post('/api/auth/sendOtp', {
                             firstName,
                             lastName,
                             personalEmail,
                             phoneNumber,
                         })
-                    console.log(data)
-                } catch (err) {
-                    return console.log({ err })
+                        console.log(data)
+                    } catch (err) {
+                        return console.log({ err })
+                    }
                 }
+                sendOtp()
+                    
             }
 
-            sendOtp().then(res => console.log(res)).catch(err => console.log({err}))
+            
         }
     }
 

@@ -81,7 +81,9 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
             .then((data) => {
                 console.log('verified email credentials', data)
             })
-            .catch((err) => console.log('not verified email'))
+            .catch((err) => res.json({
+                    status: 'fail',
+                }))
 
         transporter.sendMail(mail, (err, data) => {
             if (err) {
@@ -90,7 +92,7 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
                     status: 'fail',
                 })
             } else {
-                console.log('email sent', data)
+                
                 res.json({
                     status: 'success',
                 })
@@ -98,6 +100,9 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
         })
     } catch (err) {
         console.log({ err })
+        res.json({
+            status: 'fail',
+        })
     }
 }
 
