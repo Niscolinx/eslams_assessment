@@ -20,7 +20,7 @@ export default function GuardianOrParent() {
     const { setInput, handleInput, validationError } = useContext(AuthContext)
 
     const [adjustLabel, setAdjustLabel] = useState(false)
-    const [labelClasses, setLabelClasses] = useState('')
+    const [labelClasses, setLabelClasses] = useState('-ml-5.5 lg:-ml-4')
     const [relationshipInput, setRelationshipInput] =
         useState('')
 
