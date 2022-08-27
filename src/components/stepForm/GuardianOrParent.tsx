@@ -31,7 +31,7 @@ export default function GuardianOrParent() {
                         required
                         id='name'
                         name='guardianName'
-                        label='Name'
+                        label='Guardian Name'
                         fullWidth
                         variant='standard'
                         value={handleInput.guardianName}
@@ -53,7 +53,7 @@ export default function GuardianOrParent() {
                         required
                         id='email'
                         name='guardianEmail'
-                        label='Email Address'
+                        label='Guardian Email'
                         fullWidth
                         autoComplete='Email address'
                         variant='standard'
@@ -79,7 +79,7 @@ export default function GuardianOrParent() {
                         placeholder='Phone Number'
                         defaultCountry={'us'}
                         variant='standard'
-                        label='Phone Number'
+                        label='Guardian Number'
                         fullWidth
                         value={handleInput.guardianPhoneNumber}
                         error={
