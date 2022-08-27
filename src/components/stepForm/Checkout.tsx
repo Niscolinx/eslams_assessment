@@ -157,7 +157,16 @@ export default function Checkout() {
             }
 
             else if (activeStep === 1 && (count > 7 && count < 12)) {
-                console.log('second step', { count }, key)
+                
+                 if (
+                     handleInput[key as keyof handleInputProps] === '' ||
+                     handleInput[key as keyof handleInputProps] === null
+                 ) {
+                     errors[key as keyof handleInputProps] =
+                         'This field is required'
+
+                     setValidationError(errors)
+                 }
             }
             else if (activeStep === 2 && count > 11) {
                 console.log('last step', { key })
