@@ -277,6 +277,8 @@ export default function Checkout() {
         //     institutionYearOfStudy,
         // } = handleInput
 
+        const {lastName} = handleInput
+
         console.log('submit')
 
         setLoading(true)
