@@ -278,24 +278,27 @@ export default function Checkout() {
     )
 
     const otpHandler = (input: string) => {
-        console.log({input})
+        
         setOtp(input)
         setKeepOtp((singleOtp) => [input])
+
+        console.log({input})
+        if(input.length < 6){
+            setIsOtpLengthInValid(true)
+        }
+        else{
+            setIsOtpLengthInValid(false)
+        }
     }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('otp length', otp.length)
 
-        if(otp.length < 6){
-            console.log('Invalid otp')
-            setIsOtpLengthInValid(true)
-        }
+       
         if(otp.length < 6){
             return
         }
 
-        setIsOtpLengthInValid(false)
 
         console.log("otp is valid", isOtpLengthInValid)
        
