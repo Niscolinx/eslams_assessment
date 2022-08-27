@@ -1,3 +1,4 @@
+import { IOtp } from './../../../models/Otp';
 import { IUser } from '../../../models/User'
 import { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcryptjs'
@@ -53,7 +54,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             })
         }
 
-        const checkForOtp = await Otp.find({
+        const checkForOtp = await Otp.findOne({
             creatorEmail: personalEmail
         })
 
@@ -63,7 +64,10 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             })
         }
 
-        
+        const {code} = checkForOtp
+
+
+
 
        
         const storeUser = new User({
