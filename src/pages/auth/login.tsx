@@ -43,7 +43,7 @@ const Login = () => {
     // }, [])
 
     return (
-        <div className='register relative'>
+        <div className='register relative grid min-h-[80vh]'>
             <header className='register__header'>
                 <div className='flex'>
                     <p className=' text-3xl md:text-[46px] font-medium text-[#E8E7E7] register__header--logo'>
@@ -101,7 +101,7 @@ const Login = () => {
                 </div>
                 <div className='main-signup'></div>
             </div>
-            <div className='register__tag'>
+            <div className='register__tag self-end'>
                 <h3 className='text-2xl'>
                     online competition platform for every student,
                     <span className='register__tag--rubik'>everywhere</span>

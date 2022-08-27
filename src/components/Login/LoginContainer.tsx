@@ -233,9 +233,7 @@ export default function Checkout() {
                         >
                             Welcome Back
                         </Typography>
-                        <Typography component='p' align='center'>
-                            Create an account and step into greatness
-                        </Typography>
+                       
 
                         {/* <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
                             {steps.map((label) => (
@@ -244,7 +242,7 @@ export default function Checkout() {
                                 </Step>
                             ))}
                         </Stepper> */}
-                        <React.Fragment>
+                        <div className='grid gap-4 mt-10'>
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     required
@@ -311,7 +309,7 @@ export default function Checkout() {
                                 </div>
                             </Grid>
                             <button>submit</button>
-                        </React.Fragment>
+                        </div>
                     </Paper>
                     {/* <Copyright /> */}
                 </Container>
