@@ -81,18 +81,25 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
             .then((data) => {
                 console.log('verified email credentials', data)
             })
-            .catch((err) => res.json({
+            .catch((err) =>
+                res.json({
                     status: 'fail',
-                }))
+                })
+            )
 
-        transporter.sendMail(mail, (err, data) => {
+        transporter.sendMail(mail, async(err, _) => {
             if (err) {
                 console.log({ err })
                 res.json({
                     status: 'fail',
                 })
             } else {
-                
+                const pendindUser = new User({
+                    otp,
+                })
+
+                await pendindUser.save()
+
                 res.json({
                     status: 'success',
                 })
