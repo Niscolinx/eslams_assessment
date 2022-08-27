@@ -1,23 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../../lib/dbConnect'
-import User from '../../../models/User'
 import { transporter } from '../../../utils/emailTransport'
 import mjml2html from 'mjml'
+import Otp from '../../../models/Otp'
 
 async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
     try {
         await dbConnect()
 
-        //console.log('req body', req.body)
         console.log('otp', req.body)
         const {  personalEmail, firstName, lastName } = req.body
-
-        //Validate
-        // if (!personalEmail || !personalEmail.includes('@') || !password || !phoneNumber) {
-        //     console.log('failed')
-        //     res.status(422).json({ message: 'Invalid Data' })
-        //     return
-       
 
         //generate random 6 digit code
         const otp = Math.floor(Math.random() * 1000000)
@@ -78,11 +70,11 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
                     status: 'fail',
                 })
             } else {
-                const pendingUser = new User({
+                const pendingOtp = new Otp({
                     verificationOtp: otp,
                 })
 
-                const theUser = await pendingUser.save()
+                const theUser = await pendingOtp.save()
 
                 console.log('the user', theUser)
                 res.json({
