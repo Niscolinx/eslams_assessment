@@ -23,6 +23,7 @@ import Education from './Education'
 
 import { AuthContext } from '../../pages/api/auth/authContext'
 import axios from 'axios'
+import dayjs from 'dayjs'
 
 const steps = ['Personal details', 'Guardian/Parent', 'Education']
 
@@ -144,8 +145,13 @@ export default function Checkout() {
                     }
                 }
                 if (key === 'birthDate') {
-                    console.log({key})
-                    console.log(handleInput[key])
+                    
+                    if(!dayjs(handleInput[key]).isValid()){
+                        errors[key as keyof handleInputProps] =
+                            'Invalid Date'
+
+                        setValidationError(errors)
+                    }
                 }
 
                 if (
