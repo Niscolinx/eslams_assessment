@@ -158,9 +158,9 @@ export default function Checkout() {
               }
 
 
-            // if (activeStep === 1 && count < 5) {
-
-            // }
+            if (activeStep === 1 ) {
+                console.log('second step')
+            }
             // else{
             //     return
             // }
