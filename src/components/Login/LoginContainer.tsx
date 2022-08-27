@@ -128,7 +128,7 @@ export default function Checkout() {
         //     if (activeStep === 2) {
         //         setActiveStep(activeStep + 1)
 
-        //         const { firstName, lastName, personalEmail } = handleInput
+        //         const { firstName, lastName, email } = handleInput
 
         //         const sendOtp = async () => {
         //             try {
@@ -136,7 +136,7 @@ export default function Checkout() {
         //                 const { data } = await axios.post('/api/auth/sendOtp', {
         //                     firstName,
         //                     lastName,
-        //                     personalEmail,
+        //                     email,
         //                 })
         //                 console.log(data)
         //             } catch (err) {
@@ -249,21 +249,21 @@ export default function Checkout() {
                                 <TextField
                                     required
                                     id='email'
-                                    name='personalEmail'
+                                    name='email'
                                     type='email'
                                     label='Email Address'
-                                    value={handleInput.personalEmail}
+                                    value={handleInput.email}
                                     fullWidth
                                     error={
                                         validationError &&
-                                        validationError['personalEmail']
+                                        validationError['email']
                                             ? true
                                             : false
                                     }
                                     helperText={
                                         validationError &&
-                                        validationError['personalEmail']
-                                            ? validationError['personalEmail']
+                                        validationError['email']
+                                            ? validationError['email']
                                             : false
                                     }
                                     variant='standard'
