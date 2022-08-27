@@ -19,7 +19,7 @@ import { AuthContext } from '../../pages/api/auth/authContext'
 export default function GuardianOrParent() {
     const { setInput, handleInput, validationError } = useContext(AuthContext)
 
-    const [adjustLabel, setAdjustLabel] = useState(false)
+    const [isFocused, setIsFocused] = useState(false)
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 lg:-ml-4')
     const [relationshipInput, setRelationshipInput] =
         useState('')
@@ -32,8 +32,8 @@ export default function GuardianOrParent() {
     }
 
     useEffect(() => {
-
-    }, [adjustLabel])
+        console.log('isFocused', isFocused)
+    }, [isFocused])
 
 
     return (
@@ -132,7 +132,7 @@ export default function GuardianOrParent() {
                         <Select
                             labelId='select-label'
                             id='select'
-                            onFocus={(prev) => setAdjustLabel(prev => !prev)}
+                            onFocus={(prev) => setIsFocused(prev => !prev)}
                             variant='standard'
                             label='Relationship'
                             name='guardianRelationship'
