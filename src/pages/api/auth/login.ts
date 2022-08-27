@@ -35,7 +35,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         //set cookie in nodejs
         res.setHeader(
             'Set-Cookie',
-            `adminToken=${token}; Path=/; HttpOnly; Secure; Max-Age=${
+            `tokenSession=${token}; Path=/; HttpOnly; Secure; Max-Age=${
                 60 * 60 * 24 * 7
             }`
         )
