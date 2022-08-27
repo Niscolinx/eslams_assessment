@@ -233,28 +233,21 @@ export default function Checkout() {
     const handleNext = () => {
         const isValid = formValidate()
 
-        setActiveStep(activeStep + 1)
-        console.log('next')
+        //setActiveStep(activeStep + 1)
 
         if (!isValid) {
-            console.log('not valid')
             return
         } else if (isValid) {
             setActiveStep(activeStep + 1)
-            console.log('second step', activeStep)
 
             if (activeStep === 2) {
-                console.log('last step', activeStep)
                 setActiveStep(activeStep + 1)
-                console.log('send otp')
 
                 const { firstName, lastName, personalEmail, phoneNumber } =
                     handleInput
 
                 const sendOtp = async () => {
-                    console.log('send otp')
                     try {
-                        console.log('trying to send otp')
                         const { data } = await axios.post('/api/auth/sendOtp', {
                             firstName,
                             lastName,
