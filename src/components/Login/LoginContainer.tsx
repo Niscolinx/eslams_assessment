@@ -268,11 +268,11 @@ export default function Checkout() {
                                 }
                             </div>
                         </Grid>
-                        <Button
-                            className='flex justify-self-center bg-[#1976d2] text-white my-3'
+                        <button
+                            className='flex justify-self-center bg-[#1976d2] text-white my-3 rounded-lg py-1 px-3 text-lg border-none outline-none'
                             onClick={handleLogin}
                         >
-                            {loading ? (
+                            {!loading ? (
                                 <CircularProgress
                                     className='text-white flex justify-self-center'
                                     size={20}
@@ -280,7 +280,7 @@ export default function Checkout() {
                             ) : (
                                 'Login'
                             )}
-                        </Button>
+                        </button>
                     </div>
                 </Paper>
                 {/* <Copyright /> */}

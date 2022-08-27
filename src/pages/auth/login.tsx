@@ -43,7 +43,7 @@ const Login = () => {
     // }, [])
 
     return (
-        <div className='register relative grid min-h-[80vh]'>
+        <div className='register relative grid min-h-[80vh] overflow-hidden'>
             <header className='register__header'>
                 <div className='flex'>
                     <p className=' text-3xl md:text-[46px] font-medium text-[#E8E7E7] register__header--logo'>
