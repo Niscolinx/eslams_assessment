@@ -103,11 +103,13 @@ const Register = () => {
                     <div className='main-1 relative'>
                         <Tilt
                             onEnter={() => console.log('entered')}
-                            gyroscope
-                            className=' z-20 w-[40vw] absolute overflow'
-                            trackOnWindow
-                            transitionSpeed={2000}
-                            
+                           gyroscope
+                           className=' z-20 w-[40vw] absolute'
+                           trackOnWindow
+                           transitionSpeed={1000}
+                           transitionEasing={'cubic-bezier(.03,.98,.52,.99)'}
+                            tiltReverse
+                            // glareEnable={true}
                         >
                             <div className='flex main-1__container z-5 mt-[9.5rem] relative'>
                                 <Image
