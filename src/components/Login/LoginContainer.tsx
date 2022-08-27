@@ -122,6 +122,7 @@ export default function Checkout() {
          const isValid = formValidate()
 
          if (!isValid) {
+            console.log('not valid')
              return
          } 
         
