@@ -33,7 +33,7 @@ export default function GuardianOrParent() {
 
     useEffect(() => {
         console.log('isFocused', isFocused)
-    }, [setIsFocused])
+    }, [isFocused])
 
 
     return (
@@ -132,8 +132,7 @@ export default function GuardianOrParent() {
                         <Select
                             labelId='select-label'
                             id='select'
-                            onFocus={() => setIsFocused(true)}
-                            onInputCapture={() => console.log('dfa')}
+                            onFocus={(prev) => setIsFocused(prev => true)}
                             variant='standard'
                             label='Relationship'
                             name='guardianRelationship'
