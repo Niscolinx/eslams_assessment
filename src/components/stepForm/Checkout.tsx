@@ -105,7 +105,6 @@ export default function Checkout() {
             count++
 
             //Validation for the first step
-           
 
             if (key === 'personalEmail') {
                 isValidMail(handleInput[key], (cb) => {
@@ -137,10 +136,14 @@ export default function Checkout() {
             }
 
             if(key === 'phoneNumber'){
-                if(handleInput[key].length < 5){
+                if(handleInput[key].length < 6){
+                    console.log(handleInput[key])
+                    errors[key as keyof handleInputProps] =
+                        'Phone number must be at least 6 characters long'
 
+                    setValidationError(errors)
                 }
-
+            }
 
 
               if (activeStep === 0 && count < 8) {
