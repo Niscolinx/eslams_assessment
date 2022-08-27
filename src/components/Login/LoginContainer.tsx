@@ -231,7 +231,7 @@ export default function Checkout() {
                             align='center'
                             className='font-semibold'
                         >
-                            Get Started with eslams
+                            Welcome Back
                         </Typography>
                         <Typography component='p' align='center'>
                             Create an account and step into greatness
@@ -251,9 +251,9 @@ export default function Checkout() {
                                     id='email'
                                     name='email'
                                     type='email'
+                                    fullWidth
                                     label='Email Address'
                                     value={handleInput.email}
-                                    fullWidth
                                     error={
                                         validationError &&
                                         validationError['email']
