@@ -242,19 +242,21 @@ export default function Checkout() {
             const { firstName, lastName, personalEmail, phoneNumber } =
                 handleInput
 
-            const sendOtp = () => {
+            const sendOtp = async () => {
                 console.log('send otp')
-                return axios
-                    .post('/api/auth/sendOtp', {
-                        firstName,
-                        lastName,
-                        personalEmail,
-                        phoneNumber,
-                    })
-                    .then(({ data }) => {
-                        console.log(data)
-                    })
-                    .catch((err) => console.log({ err }))
+                try {
+                    console.log('trying to send otp')
+                    const { data } = await axios
+                        .post('/api/auth/sendOtp', {
+                            firstName,
+                            lastName,
+                            personalEmail,
+                            phoneNumber,
+                        })
+                    console.log(data)
+                } catch (err) {
+                    return console.log({ err })
+                }
             }
 
             sendOtp().then(res => console.log(res)).catch(err => console.log({err}))
