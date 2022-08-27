@@ -169,6 +169,15 @@ export default function Checkout() {
                     })
                 }
 
+                 if (key === 'guardianName') {
+                     if (handleInput[key].length < 3) {
+                         errors[key as keyof handleInputProps] =
+                             'This field must be at least 3 characters long'
+
+                         setValidationError(errors)
+                     }
+                 }
+
                 if (key === 'guardianPhoneNumber') {
                     if (handleInput[key].length < 10) {
                         errors[key as keyof handleInputProps] =

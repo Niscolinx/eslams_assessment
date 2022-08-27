@@ -11,6 +11,7 @@ import {
     InputLabel,
     MenuItem,
     Select,
+    SelectChangeEvent,
 } from '@mui/material'
 import MuiPhoneNumber from 'material-ui-phone-number'
 import { AuthContext } from '../../pages/api/auth/authContext'
@@ -19,7 +20,14 @@ export default function GuardianOrParent() {
     const { setInput, handleInput, validationError } = useContext(AuthContext)
 
     const [adjustMargin, setAdjustMargin] = useState(false)
+    const [relationshipInput, setRelationshipInput] =
+        useState('')
 
+
+    const handleSelect = (e: SelectChangeEvent<string>) => {
+
+
+    }
     return (
         <React.Fragment>
             {/* <Typography variant='h6' gutterBottom>
@@ -127,7 +135,7 @@ export default function GuardianOrParent() {
                                     ? true
                                     : false
                             }
-                            onChange={setInput}
+                            onChange={(e) => handleSelect(e)}
                         >
                             <MenuItem value='father'>Father</MenuItem>
                             <MenuItem value='mother'>Mother</MenuItem>
