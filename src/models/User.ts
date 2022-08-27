@@ -24,30 +24,24 @@ const userSchema = new Schema<IUser>(
     {
         firstName: {
             type: String,
-            required: true,
         },
         lastName: {
             type: String,
-            required: true,
         },
 
         email: {
             type: String,
-            required: true,
         },
         password: {
             type: String,
-            required: true,
         },
         phoneNumber: {
             type: String,
-            required: true,
         },
 
         role: {
             type: String,
             default: 'Customer',
-            required: true,
         },
         verificationOtp: {
             type: String,
@@ -55,47 +49,38 @@ const userSchema = new Schema<IUser>(
 
         birthDay: {
             type: String,
-            required: true,
         },
 
         Gender: {
             type: String,
-            required: true,
         },
 
         GuardianName: {
             type: String,
-            required: true,
         },
 
         GuardianPhoneNumber: {
             type: String,
-            required: true,
         },
 
         GuardianEmail: {
             type: String,
-            required: true,
         },
 
         GuardianRelationship: {
             type: String,
-            required: true,
         },
 
         institutionType: {
             type: String,
-            required: true,
         },
 
         institutionName: {
             type: String,
-            required: true,
         },
 
         institutionYearOfStudy: {
             type: String,
-            required: true,
         },
 
         joinedCommunity: {
