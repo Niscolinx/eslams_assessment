@@ -148,9 +148,7 @@ export default function Checkout() {
         // }
     }
 
-    const handleBack = () => {
-        setActiveStep(activeStep - 1)
-    }
+   
 
     const nextButton = (
         <span className='flex items-center gap-3'>
@@ -158,31 +156,17 @@ export default function Checkout() {
         </span>
     )
 
-    const otpHandler = (input: string) => {
-        setOtp(input)
-        setKeepOtp((singleOtp) => [input])
-        setMessage(null)
-        if (input.length < 6) {
-            setIsOtpLengthInValid(true)
-        } else {
-            setIsOtpLengthInValid(false)
-        }
-    }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         setMessage(null)
 
-        if (otp.length < 6) {
-            return
-        }
 
         const data = handleInput
 
         const updatedData = {
             ...data,
-            birthDate: data.birthDate!.toISOString(),
-            otp,
+          
         }
 
         console.log('submit')
