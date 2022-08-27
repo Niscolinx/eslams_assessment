@@ -132,7 +132,7 @@ export default function GuardianOrParent() {
                         <Select
                             labelId='select-label'
                             id='select'
-                            onFocus={(prev) => setIsFocused(prev => !prev)}
+                            onFocus={() => setIsFocused(true)}
                             variant='standard'
                             label='Relationship'
                             name='guardianRelationship'
