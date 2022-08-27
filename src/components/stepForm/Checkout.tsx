@@ -87,7 +87,7 @@ export default function Checkout() {
         institutionType: '',
         institutionYearOfStudy: '',
     })
-    const [isOtpLengthInValid, setIsOtpLengthInValid] = useState(false)
+    const [isOtpLengthInValid, setIsOtpLengthInValid] = useState(true)
 
     const formValidate = () => {
         const errors = {} as ValidationError
@@ -335,7 +335,6 @@ export default function Checkout() {
         }
     }, [validationError, handleInput, setInput])
 
-    console.log({isOtpLengthInValid})
 
     return (
         <AuthContext.Provider value={authContext}>
