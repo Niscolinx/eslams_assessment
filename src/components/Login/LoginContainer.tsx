@@ -34,7 +34,10 @@ const theme = createTheme({
     },
 })
 
-export type ValidationError = { [key: string]: string }
+export type ValidationError = { 
+    email: string
+    password: string
+}
 
 export type handleInputProps = {
     email: string
@@ -42,9 +45,6 @@ export type handleInputProps = {
     password: string
 }
 export default function Checkout() {
-    const [otp, setOtp] = useState<string>('')
-    const [keepOtp, setKeepOtp] = useState<string[]>([])
-    const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
