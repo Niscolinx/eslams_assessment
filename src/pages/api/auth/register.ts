@@ -78,8 +78,6 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         //generate random 6 digit code
         const otp = Math.floor(Math.random() * 1000000)
 
-        console.log({ otp })
-
         console.log({firstName, lastName})
 
         const htmlOutput = mjml2html(
