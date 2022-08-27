@@ -53,7 +53,6 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         }
 
         //generate random 6 digit code
-        const otp = Math.floor(Math.random() * 1000000)
 
         const fullName = `${firstName} ${lastName}`
 
@@ -75,7 +74,9 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         <mj-text font-size='15px' align='center'>Your account has been activated!</mj-text>
 
-        <mj-button font-size='20px' color='black' background-color='white' padding-top='30px'>${otp}</mj-button>
+        <mj-button font-size='20px' color='black' background-color='white' padding-top='30px'>
+            <a href='https://eslams-sdf.com/'>Go to Dashboard</a>
+        </mj-button>
 
 
       </mj-column>
@@ -89,7 +90,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         const mail = {
             from: 'admin@eslams.com',
             to: 'munisco12@gmail.com',
-            subject: `Account Verification`,
+            subject: `Welcome to Eslams`,
             html: `${htmlOutput.html}`,
         }
 
