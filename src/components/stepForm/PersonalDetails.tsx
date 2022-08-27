@@ -66,6 +66,7 @@ export default function PersonalDetails() {
                         name='firstName'
                         type='text'
                         label='First name'
+                        defaultValue={handleInput.firstName}
                         fullWidth
                         error={
                             validationError && validationError['firstName']
@@ -91,6 +92,7 @@ export default function PersonalDetails() {
                         id='lastName'
                         name='lastName'
                         label='Last name'
+                        defaultValue={handleInput.lastName}
                         fullWidth
                         error={
                             validationError && validationError['lastName']
@@ -113,6 +115,7 @@ export default function PersonalDetails() {
                         name='personalEmail'
                         type='email'
                         label='Email Address'
+                        defaultValue={handleInput.personalEmail}
                         fullWidth
                         error={
                             validationError && validationError['personalEmail']
@@ -136,6 +139,7 @@ export default function PersonalDetails() {
                             name='password'
                             label='Password'
                             type='password'
+                            defaultValue={handleInput.password}
                             fullWidth
                             error={
                                 validationError && validationError['password']
@@ -168,8 +172,8 @@ export default function PersonalDetails() {
                         id='phone-number'
                         autoFocus={true}
                         name='phoneNumber'
-                        // helperText='Enter phone number'
-                        // InputLabelProps={{ shrink: true, focused: true }}
+                        defaultValue={handleInput.phoneNumber}
+                        value={handleInput.phoneNumber}
                         placeholder='Phone Number'
                         defaultCountry={'us'}
                         variant='standard'
@@ -207,6 +211,8 @@ export default function PersonalDetails() {
                                     name='birthDate'
                                     fullWidth
                                     variant='standard'
+                                    defaultValue={handleInput.birthDate}
+                                    value={handleInput.birthDate}
                                     error={
                                         validationError &&
                                         validationError['birthDate']
@@ -236,6 +242,7 @@ export default function PersonalDetails() {
                             name='gender'
                             onChange={setInput}
                             defaultChecked={true}
+                            defaultValue={handleInput.gender}
                         >
                             <FormControlLabel
                                 value='male'
