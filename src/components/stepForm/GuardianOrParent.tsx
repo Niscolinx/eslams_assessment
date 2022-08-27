@@ -1,18 +1,9 @@
-import  React, {useContext, useState, useEffect} from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
-import {
-    FormControl,
-    FormLabel,
-    RadioGroup,
-    Radio,
-    InputLabel,
-    MenuItem,
-    Select,
-    SelectChangeEvent,
-} from '@mui/material'
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import MuiPhoneNumber from 'material-ui-phone-number'
 import { AuthContext } from '../../pages/api/auth/authContext'
 
@@ -23,21 +14,15 @@ export default function GuardianOrParent() {
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
 
     useEffect(() => {
-        console.log('isFocused', isFocused, labelClasses)
-        if(isFocused){
+        if (isFocused) {
             setLabelClasses('-ml-5.5 mt-3 lg:-ml-4')
-        }
-        else{
+        } else {
             setLabelClasses(labelClasses)
         }
     }, [isFocused, labelClasses])
 
-
     return (
         <React.Fragment>
-            {/* <Typography variant='h6' gutterBottom>
-                Shipping address
-            </Typography> */}
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <TextField
