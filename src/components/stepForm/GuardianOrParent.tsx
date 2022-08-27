@@ -20,7 +20,7 @@ export default function GuardianOrParent() {
     const { setInput, handleInput, validationError } = useContext(AuthContext)
 
     const [isFocused, setIsFocused] = useState(false)
-    const [labelClasses, setLabelClasses] = useState('-ml-5.5 lg:-ml-4')
+    const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-3 lg:-ml-4')
 
 
     const handleSelect = (e: SelectChangeEvent<string>) => {
