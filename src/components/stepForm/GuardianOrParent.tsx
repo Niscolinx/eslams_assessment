@@ -33,7 +33,7 @@ export default function GuardianOrParent() {
 
     useEffect(() => {
         console.log('isFocused', isFocused)
-    }, [isFocused])
+    }, [setIsFocused])
 
 
     return (
