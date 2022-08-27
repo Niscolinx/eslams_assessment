@@ -114,17 +114,17 @@ export default function Checkout() {
         }))
     }
 
-    const handleLogin = () => {
-        const isValid = formValidate()
+   
 
-        if (!isValid) {
-            return
-        } else {
-        }
-    }
-
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleLogin = (e: React.FormEvent) => {
         e.preventDefault()
+
+         const isValid = formValidate()
+
+         if (!isValid) {
+             return
+         } 
+        
         setMessage(null)
         setLoading(true)
 
