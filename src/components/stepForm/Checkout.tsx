@@ -232,15 +232,19 @@ export default function Checkout() {
     const handleNext = () => {
         const isValid = formValidate()
 
-        setActiveStep(activeStep + 1)
-
         if (!isValid) {
             return
-        }else if(isValid && activeStep === 2){
-            console.log({activeStep})
+        } else if (isValid) {
+            setActiveStep(activeStep + 1)
+        } else if (isValid && activeStep === 2) {
+            setActiveStep(activeStep + 1)
 
+            const {firstName, lastName, personalEmail, phoneNumber} = handleInput
+
+            axios.post('/api/auth/sendOtp', {firstName, lastName, personalEmail, phoneNumber}).then(({data}) => {
+                console.log(data)
+            }).catch(err => console.log({err}))
         }
-
     }
 
     const handleBack = () => {
@@ -258,10 +262,9 @@ export default function Checkout() {
         setKeepOtp((singleOtp) => [input])
     }
 
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log({otp})
+        console.log({ otp })
         const data = handleInput
 
         const updatedData = {
