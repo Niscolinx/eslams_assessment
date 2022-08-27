@@ -1,4 +1,4 @@
-import { IOtp } from './../../../models/Otp';
+import { IOtp } from './../../../models/Otp'
 import { IUser } from '../../../models/User'
 import { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcryptjs'
@@ -29,6 +29,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             institutionName,
             institutionType,
             institutionYearOfStudy,
+            otp,
         } = req.body
 
         //Validate
@@ -55,21 +56,23 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         }
 
         const checkForOtp = await Otp.findOne({
-            creatorEmail: personalEmail
+            creatorEmail: personalEmail,
         })
 
-        if(!checkForOtp){
+        if (!checkForOtp) {
             return res.status(401).json({
                 message: 'Otp not found',
             })
         }
 
-        const {code} = checkForOtp
+        console.log({ checkForOtp })
 
+        if (checkForOtp.code !== otp) {
+            return res.status(401).json({
+                message: 'Invalid Otp',
+            })
+        }
 
-
-
-       
         const storeUser = new User({
             email: personalEmail,
             password: await bcrypt.hash(password, 12),
@@ -93,13 +96,10 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             return res.status(500).json({ message: 'Server Error' })
         }
 
+        const fullName = `${firstName} ${lastName}`
 
-
-
-         const fullName = `${firstName} ${lastName}`
-
-         const htmlOutput = mjml2html(
-             `
+        const htmlOutput = mjml2html(
+            `
   <mjml>
   <mj-body>
     <mj-section background-color='#E8E7E7' border-radius='1rem' font-family='Lato'>
@@ -126,37 +126,36 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
   </mj-body>
 </mjml>
 `,
-             {}
-         )
+            {}
+        )
 
-         const mail = {
-             from: 'admin@eslams.com',
-             to: 'munisco12@gmail.com',
-             subject: `Welcome to Eslams`,
-             html: `${htmlOutput.html}`,
-         }
+        const mail = {
+            from: 'admin@eslams.com',
+            to: 'munisco12@gmail.com',
+            subject: `Welcome to Eslams`,
+            html: `${htmlOutput.html}`,
+        }
 
-         transporter
-             .verify()
-             .then((data) => {
-                 console.log('verified email credentials', data)
-             })
-             .catch((err) => console.log('not verified email'))
+        transporter
+            .verify()
+            .then((data) => {
+                console.log('verified email credentials', data)
+            })
+            .catch((err) => console.log('not verified email'))
 
-         transporter.sendMail(mail, (err, data) => {
-             if (err) {
-                 console.log({ err })
-                 res.json({
-                     status: 'fail',
-                 })
-             } else {
-                 console.log('email sent', data)
-                 res.json({
-                     status: 'success',
-                 })
-             }
-         })
-
+        transporter.sendMail(mail, (err, data) => {
+            if (err) {
+                console.log({ err })
+                res.json({
+                    status: 'fail',
+                })
+            } else {
+                console.log('email sent', data)
+                res.json({
+                    status: 'success',
+                })
+            }
+        })
     } catch (err) {
         console.log({ err })
     }

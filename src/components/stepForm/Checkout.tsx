@@ -298,9 +298,6 @@ export default function Checkout() {
         if(otp.length < 6){
             return
         }
-
-
-        console.log("otp is valid", isOtpLengthInValid)
        
 
         const data = handleInput
@@ -308,6 +305,7 @@ export default function Checkout() {
         const updatedData = {
             ...data,
             birthDate: data.birthDate!.toISOString(),
+            otp
         }
 
         console.log('submit')
