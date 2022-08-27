@@ -16,6 +16,7 @@ import Link from 'next/link'
 import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillLinkedin, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
+import { useRouter } from 'next/router'
 
 const SearchBox = () => {
     return (
@@ -125,6 +126,12 @@ function Footer() {
 }
 
 const Index = () => {
+    const router = useRouter()
+
+    useEffect(() => {
+        router.push('/auth/register')
+    }, [])
+
     return (
         <div className='marketplace'>
             <div className='marketplace__container'>
