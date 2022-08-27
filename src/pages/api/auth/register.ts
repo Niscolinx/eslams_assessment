@@ -109,11 +109,12 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             {}
         )
 
+        console.log({ htmlOutput })
         const mail = {
             from: 'admin@eslams.com',
             to: 'munisco12@gmail.com',
             subject: `Account Verification`,
-            html: `<h1>Your OTP</h1></br> <p>${otp}</p>`,
+            html: `${htmlOutput.html}`,
         }
 
         transporter
