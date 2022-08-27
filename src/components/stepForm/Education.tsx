@@ -21,7 +21,7 @@ export default function Education() {
             useContext(AuthContext)
 
     const [isFocused, setIsFocused] = useState(false)
-    const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-3 lg:-ml-4')
+    const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
 
     useEffect(() => {
         console.log('isFocused', isFocused, labelClasses)
@@ -54,6 +54,7 @@ export default function Education() {
                             id='select'
                             variant='standard'
                             label='Institution Type'
+                            name='institutionType'
                             value={handleInput.institutionType}
                             error={
                                 validationError &&
@@ -66,6 +67,12 @@ export default function Education() {
                             <MenuItem value={'school'}>School</MenuItem>
                             <MenuItem value={'college'}>College</MenuItem>
                         </Select>
+                        {validationError &&
+                        validationError['institutionType'] ? (
+                            <span className='text-xs text-red-600'>
+                                {validationError['institutionType']}
+                            </span>
+                        ) : null}
                     </FormControl>
                 </Grid>
 
@@ -104,12 +111,14 @@ export default function Education() {
                         variant='standard'
                         value={handleInput.institutionName}
                         error={
-                            validationError && validationError['institutionName']
+                            validationError &&
+                            validationError['institutionName']
                                 ? true
                                 : false
                         }
                         helperText={
-                            validationError && validationError['institutionName']
+                            validationError &&
+                            validationError['institutionName']
                                 ? validationError['institutionName']
                                 : false
                         }
