@@ -51,7 +51,7 @@ const Register = () => {
                     </p>
                 </div>
 
-                <form className=' register__header--form'>
+                <form className=' register__header--form hidden'>
                     <div className='header__form--item'>
                         <label
                             htmlFor='email'

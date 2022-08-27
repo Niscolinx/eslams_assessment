@@ -90,9 +90,14 @@
             display: flex;
             gap: 1rem;
 
+            @include respond(phone) {
+               display: none;
+            }
+
             .header__form--item {
                 display: grid;
                 align-content: flex-start;
+
             }
         }
     }

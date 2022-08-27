@@ -456,7 +456,7 @@ export default function Checkout() {
                         </React.Fragment>
                     </Paper>
                     {/* <Copyright /> */}
-                    <div className='grid justify-start'>
+                    <div className='grid justify-start flex sm:hidden'>
                         <a
                             href='/auth/login'
                             className='bg-white rounded-lg py-2 px-4 text-[#1976d2]'
