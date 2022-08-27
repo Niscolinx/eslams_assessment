@@ -178,8 +178,10 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
        setCookie('userSession', 'value', { req, res, maxAge: 60 * 60 * 24 })
 
        return res.status(200).json(
-           user
-           token,
+           {
+            user,
+            token
+           }
        )
     } catch (err) {
         console.log({ err })
