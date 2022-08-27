@@ -203,6 +203,7 @@ export default function PersonalDetails() {
                         <DatePicker
                             label='Date of Birth'
                             value={dateValue}
+                            
                             onChange={handleDateChange}
                             renderInput={(params) => (
                                 <TextField
