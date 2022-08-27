@@ -7,6 +7,10 @@ import User from '../../../models/User'
 import { transporter } from '../../../utils/emailTransport'
 import mjml2html from 'mjml'
 import Otp from '../../../models/Otp'
+import { setCookie } from 'cookies-next'
+import email from 'next-auth/providers/email'
+import user from '../connectDB'
+import jwt from 'jsonwebtoken'
 
 async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
     try {
@@ -76,7 +80,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         // await Otp.findByIdAndDelete(checkForOtp._id)
 
-        const storeUser = new User({
+        const newUser = new User({
             email: personalEmail,
             password: await bcrypt.hash(password, 12),
             firstName,
@@ -93,9 +97,9 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             institutionYearOfStudy,
         })
 
-        const verifyStored = await storeUser.save()
+        const user = await newUser.save()
 
-        if (!verifyStored) {
+        if (!user) {
             return res.status(500).json({ message: 'Server Error' })
         }
 
@@ -161,9 +165,22 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         })
 
 
-        return res.status(200).json({
-            message: 'Successfully registered',
-        })
+       const token = jwt.sign(
+           {
+               email:personalEmail,
+               userId: user!._id.toString(),
+           },
+           process.env.JWT_SECRET!,
+           {
+               expiresIn: '1hr',
+           }
+       )
+       setCookie('userSession', 'value', { req, res, maxAge: 60 * 60 * 24 })
+
+       return res.status(200).json(
+           user
+           token,
+       )
     } catch (err) {
         console.log({ err })
     }

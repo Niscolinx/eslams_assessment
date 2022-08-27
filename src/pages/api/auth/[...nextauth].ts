@@ -52,6 +52,7 @@ export default NextAuth({
     },
     callbacks: {
         jwt: async ({ token, user }) => {
+            console.log('user', user)
             user && (token.user = user)
             return token
         },
@@ -60,6 +61,7 @@ export default NextAuth({
             return session
         },
         signIn: async ({ user }) => {
+            console.log('signIn', user)
             if (user) {
                 return true
             } else {
@@ -68,7 +70,7 @@ export default NextAuth({
         },
         async redirect({ baseUrl }) {
             // Allows relative callback URLs
-            return `${baseUrl}/dashboard`
+            return `${baseUrl}/`
         },
     },
     // events: {

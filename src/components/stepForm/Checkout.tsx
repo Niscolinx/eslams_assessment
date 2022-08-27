@@ -334,7 +334,7 @@ export default function Checkout() {
                 signIn()
                     .then((res) => {
                         console.log({ res })
-                        router.push('/')
+                        //router.push('/')
                     })
                     .catch((err) => console.log({ err }))
 
