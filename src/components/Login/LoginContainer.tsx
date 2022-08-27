@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 import OtpInput from 'react-otp-input'
-import { CircularProgress } from '@mui/material'
+import { CircularProgress, Grid, TextField } from '@mui/material'
 
 
 
@@ -24,6 +24,7 @@ import axios from 'axios'
 import dayjs from 'dayjs'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
 const steps = ['Personal details', 'Guardian/Parent', 'Education']
 
@@ -342,6 +343,25 @@ export default function Checkout() {
             console.log({err})
         })
     }
+
+    //From  here
+
+     const [eyeIcon, setEyeIcon] = useState(false)
+
+
+     const toggleEyeIcon = () => {
+         setEyeIcon((prev) => !prev)
+
+         let password = document.querySelector('#password') as HTMLInputElement
+
+         if (password) {
+             if (eyeIcon) {
+                 password.type = 'text'
+             } else {
+                 password.type = 'password'
+             }
+         }
+     }
     return (
         <AuthContext.Provider value={authContext}>
             <ThemeProvider theme={theme}>
@@ -369,9 +389,8 @@ export default function Checkout() {
                         </Typography>
                         <Typography component='p' align='center'>
                             Create an account and step into greatness
-
                         </Typography>
-                        
+
                         {/* <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
                             {steps.map((label) => (
                                 <Step key={label}>
@@ -380,45 +399,71 @@ export default function Checkout() {
                             ))}
                         </Stepper> */}
                         <React.Fragment>
-                            {activeStep === steps.length ? (
-                                <React.Fragment>
-                                    {/* <Typography variant='h5' gutterBottom>
-                                    Type in the 6-digit code you received in
-                                    your Email
-                                </Typography> */}
-                                    <Typography variant='subtitle1'>
-                                       
-                                    </Typography>
-                                </React.Fragment>
-                            ) : (
-                                <React.Fragment>
-                                    {getStepContent(activeStep)}
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'flex-end',
-                                        }}
-                                    >
-                                        {activeStep !== 0 && (
-                                            <Button
-                                                onClick={handleBack}
-                                                sx={{ mt: 3, ml: 1 }}
-                                            >
-                                                Back
-                                            </Button>
-                                        )}
-                                        <Button
-                                            variant='contained'
-                                            onClick={handleNext}
-                                            sx={{ mt: 3, ml: 1 }}
-                                        >
-                                            {activeStep === steps.length - 1
-                                                ? 'Next'
-                                                : nextButton}
-                                        </Button>
-                                    </Box>
-                                </React.Fragment>
-                            )}
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    id='email'
+                                    name='personalEmail'
+                                    type='email'
+                                    label='Email Address'
+                                    value={handleInput.personalEmail}
+                                    fullWidth
+                                    error={
+                                        validationError &&
+                                        validationError['personalEmail']
+                                            ? true
+                                            : false
+                                    }
+                                    helperText={
+                                        validationError &&
+                                        validationError['personalEmail']
+                                            ? validationError['personalEmail']
+                                            : false
+                                    }
+                                    variant='standard'
+                                    onChange={setInput}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <div className='flex items-center relative'>
+                                    <TextField
+                                        required
+                                        id='password'
+                                        name='password'
+                                        label='Password'
+                                        type='password'
+                                        variant='standard'
+                                        fullWidth
+                                        value={handleInput.password}
+                                        error={
+                                            validationError &&
+                                            validationError['password']
+                                                ? true
+                                                : false
+                                        }
+                                        helperText={
+                                            validationError &&
+                                            validationError['password']
+                                                ? validationError['password']
+                                                : false
+                                        }
+                                        onChange={setInput}
+                                    />
+                                    {
+                                        <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
+                                            {eyeIcon ? (
+                                                <AiOutlineEyeInvisible
+                                                    onClick={toggleEyeIcon}
+                                                />
+                                            ) : (
+                                                <AiOutlineEye
+                                                    onClick={toggleEyeIcon}
+                                                />
+                                            )}
+                                        </span>
+                                    }
+                                </div>
+                            </Grid>
                         </React.Fragment>
                     </Paper>
                     {/* <Copyright /> */}

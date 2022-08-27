@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 import HeroImg2 from '../../../public/hero-player.png'
 import Tilt from 'react-parallax-tilt'
-import Checkout from '../../components/Login/Checkout'
+import LoginContainer from '../../components/Login/LoginContainer'
 
 const Login = () => {
     useEffect(() => {
@@ -51,48 +51,7 @@ const Login = () => {
                     </p>
                 </div>
 
-                <form className=' register__header--form'>
-                    <div className='header__form--item'>
-                        <label
-                            htmlFor='email'
-                            className='text-[#E8E7E7] text-sm'
-                        >
-                            Email
-                        </label>
-
-                        <input
-                            type='text'
-                            name='email'
-                            id='email'
-                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
-                        />
-                    </div>
-                    <div className='header__form--item'>
-                        <label
-                            htmlFor='email'
-                            className='text-[#E8E7E7] text-sm'
-                        >
-                            Password
-                        </label>
-
-                        <input
-                            type='text'
-                            name='email'
-                            id='email'
-                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
-                        />
-
-                        <Link href='/'>
-                            <a className='text-[#E8E7E7]  text-sm'>
-                                Forgot Password?
-                            </a>
-                        </Link>
-                    </div>
-
-                    <button className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center'>
-                        Login
-                    </button>
-                </form>
+               
             </header>
 
             <div className='register__main'>
@@ -138,7 +97,7 @@ const Login = () => {
                     </div>
                 </div>
                 <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-30 md: mx-0 ml-auto'>
-                    <Checkout />
+                    <LoginContainer />
                 </div>
                 <div className='main-signup'></div>
             </div>
