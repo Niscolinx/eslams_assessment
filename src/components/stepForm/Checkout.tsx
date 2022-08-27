@@ -136,10 +136,10 @@ export default function Checkout() {
             }
 
             if(key === 'phoneNumber'){
-                if(handleInput[key].length < 6){
-                    console.log(handleInput[key])
+                console.log('phone number',handleInput[key].length)
+                if(handleInput[key].length < 10){
                     errors[key as keyof handleInputProps] =
-                        'Phone number must be at least 6 characters long'
+                        'Phone number not valid'
 
                     setValidationError(errors)
                 }
