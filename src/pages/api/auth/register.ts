@@ -124,19 +124,19 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             })
             .catch((err) => console.log('not verified email'))
 
-        transporter.sendMail(mail, (err, data) => {
-            if (err) {
-                console.log({ err })
-                res.json({
-                    status: 'fail',
-                })
-            } else {
-                console.log('email sent', data)
-                res.json({
-                    status: 'success',
-                })
-            }
-        })
+        // transporter.sendMail(mail, (err, data) => {
+        //     if (err) {
+        //         console.log({ err })
+        //         res.json({
+        //             status: 'fail',
+        //         })
+        //     } else {
+        //         console.log('email sent', data)
+        //         res.json({
+        //             status: 'success',
+        //         })
+        //     }
+        // })
     } catch (err) {
         console.log({ err })
     }
