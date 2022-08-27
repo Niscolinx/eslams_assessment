@@ -69,11 +69,11 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         <mj-divider border-color="#112ea3" border-width='1px'></mj-divider>
 
-        <mj-text font-size='20px' align='center'>${fullName}</mj-text>
+        <mj-text font-size='20px' align='center'>Welcome ${fullName} to Eslams</mj-text>
 
 
 
-        <mj-text font-size='15px' align='center'>Below is your Verification Code</mj-text>
+        <mj-text font-size='15px' align='center'>Your account has been activated!</mj-text>
 
         <mj-button font-size='20px' color='black' background-color='white' padding-top='30px'>${otp}</mj-button>
 
