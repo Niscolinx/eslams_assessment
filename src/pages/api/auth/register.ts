@@ -95,7 +95,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         <mj-divider border-color="#112ea3" border-width='1px'></mj-divider>
 
-        <mj-text font-size='20px' align='center'>Hello Igboanugwo Collins</mj-text>
+        <mj-text font-size='20px' align='center'>${fullName}</mj-text>
 
 
 
