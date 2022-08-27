@@ -98,16 +98,17 @@ const Register = () => {
             <div className='register__main overflow-x-hidden'>
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
-                    <div className=''>
-                        <div className='register__overlay z-3 md:(max-w-[433px])'></div>
-                        <div className='main-1 relative'>
-                <Tilt
-                    onEnter={() => console.log('entered')}
-                    gyroscope
-                   className=' z-20 w-[40vw] absolute overflow'
-            trackOnWindow
-                    transitionSpeed={5000}
-                >
+                <div className=''>
+                    <div className='register__overlay z-3 md:(max-w-[433px])'></div>
+                    <div className='main-1 relative'>
+                        <Tilt
+                            onEnter={() => console.log('entered')}
+                            gyroscope
+                            className=' z-20 w-[40vw] absolute overflow'
+                            trackOnWindow
+                            transitionSpeed={2000}
+                            
+                        >
                             <div className='flex main-1__container z-5 mt-[9.5rem] relative'>
                                 <Image
                                     src='/hero-player.png'
@@ -129,16 +130,16 @@ const Register = () => {
                                 </p>
                             </div>
 
-
+                            
                             <h1 className='heroText absolute top-[8rem] left-[3.5rem] absolute uppercase z-4'>
                                 Shoot for the{' '}
                                 <span className='ml-10'>stars</span>
                             </h1>
 
                             <div className='main-1__overLay'></div>
-                </Tilt>
-                        </div>
+                        </Tilt>
                     </div>
+                </div>
                 <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-30 md: mx-0 ml-auto'>
                     <Checkout />
                 </div>
