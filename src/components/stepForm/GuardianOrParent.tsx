@@ -25,8 +25,6 @@ export default function GuardianOrParent() {
 
     const handleSelect = (e: SelectChangeEvent<string>) => {
         setInput(e)
-
-        console.log({e})
     }
 
     useEffect(() => {
