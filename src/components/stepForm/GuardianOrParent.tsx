@@ -107,15 +107,16 @@ export default function GuardianOrParent() {
 
                 <Grid item xs={12} sm={6}>
                     <FormControl fullWidth>
-                        <InputLabel id='select-label' className='-ml-3.5'>
+                        <InputLabel
+                            id='select-label'
+                            className={`${adjustMargin ? '' : ''} -ml-3.5`}
+                        >
                             Relationship
                         </InputLabel>
                         <Select
                             labelId='select-label'
                             id='select'
-                            onFocus={() =>
-                                setAdjustMargin(true)
-                            }
+                            onFocus={() => setAdjustMargin(true)}
                             variant='standard'
                             label='Relationship'
                             name='guardianRelationship'
