@@ -217,8 +217,6 @@ export default function Checkout() {
         const { name, value } = e.target
         setValidationError(null)
 
-        console.log({name, value})
-
         setHandleInput((prev: any) => ({
             ...prev,
             [name]: value,
