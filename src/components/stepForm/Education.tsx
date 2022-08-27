@@ -54,6 +54,13 @@ export default function Education() {
                             id='select'
                             variant='standard'
                             label='Institution Type'
+                            value={handleInput.guardianRelationship}
+                            error={
+                                validationError &&
+                                validationError['guardianRelationship']
+                                    ? true
+                                    : false
+                            }
                             onChange={setInput}
                         >
                             <MenuItem value={'school'}>School</MenuItem>
@@ -66,7 +73,7 @@ export default function Education() {
                     <TextField
                         required
                         id='grade'
-                        name='grade'
+                        name='institutionYearOfStudy'
                         label='Grade/Year of Study'
                         fullWidth
                         type={'number'}

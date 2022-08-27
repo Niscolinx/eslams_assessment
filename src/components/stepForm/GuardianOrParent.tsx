@@ -22,11 +22,6 @@ export default function GuardianOrParent() {
     const [isFocused, setIsFocused] = useState(false)
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-3 lg:-ml-4')
 
-
-    const handleSelect = (e: SelectChangeEvent<string>) => {
-        setInput(e)
-    }
-
     useEffect(() => {
         console.log('isFocused', isFocused, labelClasses)
         if(isFocused){
@@ -146,7 +141,7 @@ export default function GuardianOrParent() {
                                     ? true
                                     : false
                             }
-                            onChange={(e) => handleSelect(e)}
+                            onChange={setInput}
                         >
                             <MenuItem value='father'>Father</MenuItem>
                             <MenuItem value='mother'>Mother</MenuItem>
