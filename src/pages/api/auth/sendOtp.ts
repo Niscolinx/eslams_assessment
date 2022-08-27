@@ -1,3 +1,4 @@
+import { IOtp } from './../../../models/Otp';
 import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../../lib/dbConnect'
 import { transporter } from '../../../utils/emailTransport'
@@ -70,8 +71,10 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
                     status: 'fail',
                 })
             } else {
-                const pendingOtp = new Otp({
-                    verificationOtp: otp,
+                const pendingOtp = new Otp<IOtp>({
+                    code: otp,
+                    status: 'pending',
+                    creatorEmail: personalEmail
                 })
 
                 const theUser = await pendingOtp.save()

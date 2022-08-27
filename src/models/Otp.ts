@@ -2,8 +2,8 @@ import { model, models, Schema } from 'mongoose'
 
 export interface IOtp {
     [x: string]: any
-    _id: Object
-    code: string
+    _id?: Object
+    code: number
 
     status: string
     creatorEmail: string
@@ -12,7 +12,7 @@ export interface IOtp {
 const otpSchema = new Schema<IOtp>(
     {
         code: {
-            type: String,
+            type: Number,
             required: true,
         },
 
