@@ -248,6 +248,7 @@ export default function Checkout() {
 
                 const sendOtp = async () => {
                     try {
+                        console.log('sending otp...')
                         const { data } = await axios.post('/api/auth/sendOtp', {
                             firstName,
                             lastName,
@@ -288,10 +289,12 @@ export default function Checkout() {
 
         if(otp.length < 6){
             console.log('Invalid otp')
+            setIsOtpLengthValid(false)
+            return
         }
-        else{
-            console.log('valid otp length')
-        }
+
+        setIsOtpLengthValid(true)
+       
 
         const data = handleInput
 
