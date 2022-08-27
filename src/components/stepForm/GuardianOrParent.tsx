@@ -96,7 +96,14 @@ export default function GuardianOrParent() {
                                 ? validationError['guardianPhoneNumber']
                                 : false
                         }
-                        onChange={setInput}
+                        onChange={(value) =>
+                            setInput({
+                                target: {
+                                    name: 'guardianPhoneNumber',
+                                    value,
+                                },
+                            })
+                        }
                     />
                 </Grid>
 
@@ -124,7 +131,8 @@ export default function GuardianOrParent() {
                             <MenuItem value='mother'>Mother</MenuItem>
                             <MenuItem value='guardian'>Guardian</MenuItem>
                         </Select>
-                        {validationError && validationError['guardianRelationship'] ? (
+                        {validationError &&
+                        validationError['guardianRelationship'] ? (
                             <span className='text-xs text-red-600'>
                                 {validationError['guardianRelationship']}
                             </span>
