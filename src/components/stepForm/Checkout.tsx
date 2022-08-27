@@ -154,10 +154,10 @@ export default function Checkout() {
                     setValidationError(errors)
                 }
 
-                console.log({errors})
             }
 
-            if (activeStep === 1) {
+            console.log({count})
+            if (activeStep === 1 && count > 7) {
                 console.log('second step', { count })
             }
             // else{
