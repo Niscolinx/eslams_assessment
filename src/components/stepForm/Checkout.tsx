@@ -105,60 +105,57 @@ export default function Checkout() {
             count++
 
             //Validation for the first step
+            if (activeStep === 0 && count < 8) {
+                if (key === 'personalEmail') {
+                    isValidMail(handleInput[key], (cb) => {
+                        if (!cb) {
+                            errors[key] = 'Invalid email'
 
-            if (key === 'personalEmail') {
-                isValidMail(handleInput[key], (cb) => {
-                    if (!cb) {
-                        errors[key] = 'Invalid email'
+                            setValidationError(errors)
+                        }
+                    })
+                }
+
+                if (key === 'lastName' || key === 'firstName') {
+                    if (handleInput[key].length < 3) {
+                        errors[key as keyof handleInputProps] =
+                            'This field must be at least 3 characters long'
 
                         setValidationError(errors)
                     }
-                })
-            }
+                }
 
-            if (key === 'lastName' || key === 'firstName') {
-                if (handleInput[key].length < 3) {
+                if (key === 'password') {
+                    if (handleInput[key].length < 6) {
+                        errors[key as keyof handleInputProps] =
+                            'Password must be at least 6 characters long'
+
+                        setValidationError(errors)
+                    }
+                }
+
+                if (key === 'phoneNumber') {
+                    if (handleInput[key].length < 10) {
+                        errors[key as keyof handleInputProps] =
+                            'Phone number not valid'
+
+                        setValidationError(errors)
+                    }
+                }
+
+                if (
+                    handleInput[key as keyof handleInputProps] === '' ||
+                    handleInput[key as keyof handleInputProps] === null
+                ) {
                     errors[key as keyof handleInputProps] =
-                        'This field must be at least 3 characters long'
+                        'This field is required'
 
                     setValidationError(errors)
                 }
             }
 
-            if(key === 'password'){
-                 if (handleInput[key].length < 6) {
-                     errors[key as keyof handleInputProps] =
-                         'Password must be at least 6 characters long'
-
-                     setValidationError(errors)
-                 }
-            }
-
-            if(key === 'phoneNumber'){
-                if(handleInput[key].length < 10){
-                    errors[key as keyof handleInputProps] =
-                        'Phone number not valid'
-
-                    setValidationError(errors)
-                }
-            }
-
-
-              if (activeStep === 0 && count < 8) {
-                  if (
-                      handleInput[key as keyof handleInputProps] === '' ||
-                      handleInput[key as keyof handleInputProps] === null
-                  ) {
-                      errors[key as keyof handleInputProps] =
-                          'This field is required'
-
-                      setValidationError(errors)
-                  }
-              }
-
-              console.log({count})
-            if (activeStep === 1 ) {
-                console.log('second step', {count})
+            if (activeStep === 1) {
+                console.log('second step', { count })
             }
             // else{
             //     return
@@ -166,7 +163,6 @@ export default function Checkout() {
         }
 
         if (Object.keys(errors).length > 0) {
-          
             return false
         }
 
@@ -187,7 +183,6 @@ export default function Checkout() {
 
     const handleNext = () => {
         const isValid = formValidate()
-
 
         if (!isValid) {
             return
@@ -253,7 +248,7 @@ export default function Checkout() {
             handleInput,
             setHandleInput,
             setInput,
-         
+
             validationError,
         }
     }, [validationError, handleInput, setInput])
