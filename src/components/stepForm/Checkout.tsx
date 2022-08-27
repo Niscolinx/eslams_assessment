@@ -198,11 +198,19 @@ export default function Checkout() {
                  }
             }
             else if (activeStep === 2 && count > 11) {
-                console.log('last step', { key })
+
+
+                 if (
+                     handleInput[key as keyof handleInputProps] === '' ||
+                     handleInput[key as keyof handleInputProps] === null
+                 ) {
+                     errors[key as keyof handleInputProps] =
+                         'This field is required'
+
+                     setValidationError(errors)
+                 }
             }
-            // else{
-            //     return
-            // }
+           
         }
 
         if (Object.keys(errors).length > 0) {
@@ -222,7 +230,6 @@ export default function Checkout() {
         }))
     }
 
-    console.log({ handleInput })
 
     const handleNext = () => {
         const isValid = formValidate()
@@ -232,9 +239,6 @@ export default function Checkout() {
         }
         setActiveStep(activeStep + 1)
 
-        // if (!error) {
-        //     setActiveStep(activeStep + 1)
-        // }
     }
 
     const handleBack = () => {
@@ -255,6 +259,8 @@ export default function Checkout() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
+        console.log({handleInput})
+
         // const data = {
         //     gender,
         //     lastName,
@@ -269,7 +275,7 @@ export default function Checkout() {
         //     institutionName,
         //     institutionType,
         //     institutionYearOfStudy,
-        // }
+        // } = handleInput
 
         console.log('submit')
 
