@@ -62,7 +62,6 @@ export default function PersonalDetails() {
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                   
                         id='firstName'
                         name='firstName'
                         type='text'
@@ -253,6 +252,9 @@ export default function PersonalDetails() {
                                 control={<Radio />}
                                 label='Prefer not to say'
                             />
+                            {validationError && validationError['gender']
+                                ? <span className='text-xs text-red-600'>{validationError['gender']}</span>
+                                : null}
                         </RadioGroup>
                     </FormControl>
                 </Grid>

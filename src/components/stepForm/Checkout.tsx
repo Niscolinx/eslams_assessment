@@ -129,7 +129,7 @@ export default function Checkout() {
             }
 
             if(key === 'password'){
-                 if (handleInput[key].length < 7) {
+                 if (handleInput[key].length < 6) {
                      errors[key as keyof handleInputProps] =
                          'Password must be at least 6 characters long'
 
