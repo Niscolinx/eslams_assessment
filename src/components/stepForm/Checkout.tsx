@@ -244,7 +244,7 @@ export default function Checkout() {
 
             const sendOtp = () => {
                 console.log('send otp')
-                axios
+                return axios
                     .post('/api/auth/sendOtp', {
                         firstName,
                         lastName,
@@ -257,7 +257,7 @@ export default function Checkout() {
                     .catch((err) => console.log({ err }))
             }
 
-            sendOtp()
+            sendOtp().then(res => console.log(res)).catch(err => console.log({err}))
         }
     }
 
