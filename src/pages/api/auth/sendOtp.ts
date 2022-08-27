@@ -1,4 +1,3 @@
-import { IUser } from '../../../models/User'
 import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../../lib/dbConnect'
 import User from '../../../models/User'
