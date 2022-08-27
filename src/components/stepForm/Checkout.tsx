@@ -87,7 +87,7 @@ export default function Checkout() {
         institutionType: '',
         institutionYearOfStudy: '',
     })
-    const [isOtpLengthValid, setIsOtpLengthValid] = useState(false)
+    const [isOtpLengthInValid, setIsOtpLengthInValid] = useState(false)
 
     const formValidate = () => {
         const errors = {} as ValidationError
@@ -243,7 +243,7 @@ export default function Checkout() {
             if (activeStep === 2) {
                 setActiveStep(activeStep + 1)
 
-                const { firstName, lastName, personalEmail, phoneNumber } =
+                const { firstName, lastName, personalEmail } =
                     handleInput
 
                 const sendOtp = async () => {
@@ -288,11 +288,11 @@ export default function Checkout() {
 
         if(otp.length < 6){
             console.log('Invalid otp')
-            setIsOtpLengthValid(false)
+            setIsOtpLengthInValid(true)
             return
         }
 
-        setIsOtpLengthValid(true)
+        setIsOtpLengthInValid(false)
        
 
         const data = handleInput
@@ -392,7 +392,7 @@ export default function Checkout() {
                                             <button
                                                 className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5 disabled:(bg-gray-500 opacity-40)'
                                                 type='submit'
-                                                disabled={isOtpLengthValid}
+                                                disabled={isOtpLengthInValid}
                                             >
                                                 {loading ? (
                                                     <CircularProgress
