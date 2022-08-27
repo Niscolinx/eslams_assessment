@@ -18,20 +18,20 @@ export default NextAuth({
             // e.g. domain, username, password, 2FA token, etc.
             // You can pass any HTML attribute to the <input> tag through the object.
             credentials: {
-                emailOrUsername: {
-                    label: 'EmailOrUsername',
+                email: {
+                    label: 'email',
                     type: 'text',
                 },
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials, req) {
-                const emailOrUsername = credentials?.emailOrUsername
+                const email = credentials?.email
                 const password = credentials?.password
 
 
                 return axios
                     .post(`${serverUrl}/api/auth/login`, {
-                        emailOrUsername,
+                        email,
                         password,
                     })
                     .then(({ data }) => {

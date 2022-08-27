@@ -24,6 +24,8 @@ import Education from './Education'
 import { AuthContext } from '../../pages/api/auth/authContext'
 import axios from 'axios'
 import dayjs from 'dayjs'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const steps = ['Personal details', 'Guardian/Parent', 'Education']
 
@@ -92,6 +94,8 @@ export default function Checkout() {
         message: string
         type: string
     } | null>(null)
+
+    const router = useRouter()
 
     const formValidate = () => {
         const errors = {} as ValidationError
@@ -247,8 +251,7 @@ export default function Checkout() {
             if (activeStep === 2) {
                 setActiveStep(activeStep + 1)
 
-                const { firstName, lastName, personalEmail } =
-                    handleInput
+                const { firstName, lastName, personalEmail } = handleInput
 
                 const sendOtp = async () => {
                     try {
@@ -264,10 +267,7 @@ export default function Checkout() {
                     }
                 }
                 sendOtp()
-                    
             }
-
-            
         }
     }
 
@@ -282,14 +282,12 @@ export default function Checkout() {
     )
 
     const otpHandler = (input: string) => {
-        
         setOtp(input)
         setKeepOtp((singleOtp) => [input])
         setMessage(null)
-        if(input.length < 6){
+        if (input.length < 6) {
             setIsOtpLengthInValid(true)
-        }
-        else{
+        } else {
             setIsOtpLengthInValid(false)
         }
     }
@@ -298,18 +296,16 @@ export default function Checkout() {
         e.preventDefault()
         setMessage(null)
 
-       
-        if(otp.length < 6){
+        if (otp.length < 6) {
             return
         }
-       
 
         const data = handleInput
 
         const updatedData = {
             ...data,
             birthDate: data.birthDate!.toISOString(),
-            otp
+            otp,
         }
 
         console.log('submit')
@@ -317,18 +313,28 @@ export default function Checkout() {
         setLoading(true)
         axios
             .post('/api/auth/register', updatedData)
-            .then((res) => {
-                console.log(res)
-                setLoading(false)
-            })
-            .catch(({response: {data}}) => {
+            .then(({ data }) => {
                 console.log({ data })
-                const {message} = data
+                setLoading(false)
+
+                signIn().then((res) => {
+                    console.log({ res })
+                    router.push('/adminDashboard')
+                })
+            })
+            .catch(({ response: { data } }) => {
+                console.log({ data })
+                const { message } = data
                 setMessage({
                     message,
-                    type: 'error'
+                    type: 'error',
                 })
                 setLoading(false)
+
+                 signIn().then((res) => {
+                     console.log({ res })
+                     router.push('/adminDashboard')
+                 }).catch(err => console.log({err}))
             })
     }
 
@@ -341,7 +347,6 @@ export default function Checkout() {
             validationError,
         }
     }, [validationError, handleInput, setInput])
-
 
     return (
         <AuthContext.Provider value={authContext}>
@@ -389,16 +394,18 @@ export default function Checkout() {
                                         <form
                                             className='grid w-full place-content-stretch md:w-3/4 md:mx-auto'
                                             onSubmit={handleSubmit}
-                                        > {
-                                            message && message.type === 'error' && (
-                                                <p className='text-red-500 text-sm font-semibold text-center py-4'>{message.message}</p>
-                                            )
-                                        }
+                                        >
+                                            {' '}
+                                            {message &&
+                                                message.type === 'error' && (
+                                                    <p className='text-red-500 text-sm font-semibold text-center py-4'>
+                                                        {message.message}
+                                                    </p>
+                                                )}
                                             <h2 className='font-black text-center text-black mb-2 text-xl'>
                                                 Type in the 6-digit code you
                                                 received in your Email{' '}
                                             </h2>
-
                                             <OtpInput
                                                 value={otp}
                                                 onChange={otpHandler}
@@ -408,7 +415,6 @@ export default function Checkout() {
                                                 shouldAutoFocus
                                                 isInputNum
                                             />
-
                                             <button
                                                 className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5 disabled:(bg-gray-500 opacity-40)'
                                                 type='submit'
