@@ -55,7 +55,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             })
         }
 
-        const checkForOtp = await Otp.findOne({
+        const checkForOtp = await Otp.find({
             creatorEmail: personalEmail,
         })
 
@@ -67,13 +67,14 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         console.log({ checkForOtp })
 
-        if (checkForOtp.code !== Number(otp)) {
+        if (checkForOtp[checkForOtp.length - 1].code !== Number(otp)) {
+            console.log(checkForOtp[checkForOtp.length - 1].code, Number(otp))
             return res.status(401).json({
                 message: 'Invalid Otp',
             })
         }
 
-        await Otp.findByIdAndDelete(checkForOtp._id)
+        // await Otp.findByIdAndDelete(checkForOtp._id)
 
         const storeUser = new User({
             email: personalEmail,

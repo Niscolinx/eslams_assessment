@@ -13,7 +13,8 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
         const {  personalEmail, firstName, lastName } = req.body
 
         //generate random 6 digit code
-        const otp = Math.floor(Math.random() * 1000000)
+
+        const otp = Math.floor(100000 + Math.random() * 900000)
 
         const fullName = `${firstName} ${lastName}`
 
