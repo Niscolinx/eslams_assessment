@@ -366,9 +366,8 @@ export default function Checkout() {
                         </Typography>
                         <Typography component='p' align='center'>
                             Create an account and step into greatness
-
                         </Typography>
-                        
+
                         <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
                             {steps.map((label) => (
                                 <Step key={label}>
@@ -457,6 +456,15 @@ export default function Checkout() {
                         </React.Fragment>
                     </Paper>
                     {/* <Copyright /> */}
+                    <div className='grid justify-start'>
+                        <a
+                            href='/auth/login'
+                            className='bg-white rounded-lg py-2 px-4 text-[#1976d2]'
+                        >
+                            Already have an account? <br/>
+                            Login
+                        </a>
+                    </div>
                 </Container>
             </ThemeProvider>
         </AuthContext.Provider>
