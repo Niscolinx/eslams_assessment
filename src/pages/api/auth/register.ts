@@ -11,6 +11,7 @@ import { setCookie } from 'cookies-next'
 import email from 'next-auth/providers/email'
 import user from '../connectDB'
 import jwt from 'jsonwebtoken'
+import { json } from 'stream/consumers'
 
 async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
     try {
@@ -114,6 +115,8 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         if (!user) {
             return res.status(500).json({ message: 'Server Error' })
         }
+
+        return res.status(500).json({ message: 'Server Error' })
 
         const fullName = `${firstName} ${lastName}`
 
