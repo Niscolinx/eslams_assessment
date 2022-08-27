@@ -17,6 +17,9 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AuthContext } from '../../pages/api/auth/authContext'
 
 export default function Education() {
+        const { setInput, handleInput, validationError } =
+            useContext(AuthContext)
+
     const [isFocused, setIsFocused] = useState(false)
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-3 lg:-ml-4')
 
@@ -29,7 +32,6 @@ export default function Education() {
         }
     }, [isFocused, labelClasses])
 
-    const { setInput } = useContext(AuthContext)
 
     return (
         <React.Fragment>
