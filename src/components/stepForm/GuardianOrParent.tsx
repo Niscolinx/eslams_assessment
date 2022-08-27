@@ -33,6 +33,9 @@ export default function GuardianOrParent() {
 
     useEffect(() => {
         console.log('isFocused', isFocused)
+        if(isFocused){
+            setLabelClasses('-ml-5.5 lg:-ml-4')
+        }
     }, [isFocused])
 
 
