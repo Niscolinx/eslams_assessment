@@ -104,10 +104,9 @@ const Register = () => {
                 <Tilt
                     onEnter={() => console.log('entered')}
                     gyroscope
-                   // className=' z-20 w-[70vw] absolute'
-                   className='z-20'
+                   className=' z-20 w-[40vw] absolute'
             trackOnWindow
-                    
+                    transitionSpeed={500}
                 >
                             <div className='flex main-1__container z-5 mt-[9.5rem] relative'>
                                 <Image
