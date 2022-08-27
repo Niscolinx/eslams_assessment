@@ -143,6 +143,10 @@ export default function Checkout() {
                         setValidationError(errors)
                     }
                 }
+                if (key === 'birthDate') {
+                    console.log({key})
+                    console.log(handleInput[key])
+                }
 
                 if (
                     handleInput[key as keyof handleInputProps] === '' ||
