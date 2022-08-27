@@ -64,7 +64,6 @@ export type handleInputProps = {
     birthDate: Date | null
 }
 export default function Checkout() {
-    const [value, setValue] = React.useState<Date | null>(null)
     const [otp, setOtp] = useState<string>('')
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
@@ -172,8 +171,6 @@ export default function Checkout() {
         const { name, value } = e.target
         setValidationError(null)
 
-        console.log({name, value})
-
         setHandleInput((prev: any) => ({
             ...prev,
             [name]: value,
@@ -245,19 +242,18 @@ export default function Checkout() {
             })
     }
 
-    const navContext = useMemo(() => {
+    const authContext = useMemo(() => {
         return {
             handleInput,
             setHandleInput,
             setInput,
-            value,
-            setValue,
+         
             validationError,
         }
-    }, [validationError])
+    }, [validationError, handleInput, setInput])
 
     return (
-        <AuthContext.Provider value={navContext}>
+        <AuthContext.Provider value={authContext}>
             <ThemeProvider theme={theme}>
                 {/* <AppBar
                 position='absolute'

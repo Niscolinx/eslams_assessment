@@ -23,8 +23,6 @@ export default function PersonalDetails() {
     const { setInput, handleInput, validationError } =
         useContext(AuthContext)
 
-    const [dateValue, setDateValue] = useState<Date | null>(null)
-
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -41,7 +39,6 @@ export default function PersonalDetails() {
     }
 
     const handleDateChange = (e: Date | null) => {
-        setDateValue(e)
         setInput({
             target: {
                 name: 'birthDate',
@@ -49,7 +46,6 @@ export default function PersonalDetails() {
             },
         })
 
-        console.log({e})
     }
 
 
@@ -66,7 +62,7 @@ export default function PersonalDetails() {
                         name='firstName'
                         type='text'
                         label='First name'
-                        defaultValue={handleInput.firstName}
+                        value={handleInput.firstName}
                         fullWidth
                         error={
                             validationError && validationError['firstName']
@@ -92,7 +88,7 @@ export default function PersonalDetails() {
                         id='lastName'
                         name='lastName'
                         label='Last name'
-                        defaultValue={handleInput.lastName}
+                        value={handleInput.lastName}
                         fullWidth
                         error={
                             validationError && validationError['lastName']
@@ -115,7 +111,7 @@ export default function PersonalDetails() {
                         name='personalEmail'
                         type='email'
                         label='Email Address'
-                        defaultValue={handleInput.personalEmail}
+                        value={handleInput.personalEmail}
                         fullWidth
                         error={
                             validationError && validationError['personalEmail']
@@ -139,7 +135,7 @@ export default function PersonalDetails() {
                             name='password'
                             label='Password'
                             type='password'
-                            defaultValue={handleInput.password}
+                            value={handleInput.password}
                             fullWidth
                             error={
                                 validationError && validationError['password']
@@ -202,7 +198,7 @@ export default function PersonalDetails() {
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DatePicker
                             label='Date of Birth'
-                            value={dateValue}
+                            value={handleInput.birthDate}
                             
                             onChange={handleDateChange}
                             renderInput={(params) => (
@@ -240,7 +236,7 @@ export default function PersonalDetails() {
                             name='gender'
                             onChange={setInput}
                             defaultChecked={true}
-                            defaultValue={handleInput.gender}
+                            value={handleInput.gender}
                         >
                             <FormControlLabel
                                 value='male'
