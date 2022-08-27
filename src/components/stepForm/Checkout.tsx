@@ -87,6 +87,7 @@ export default function Checkout() {
         institutionType: '',
         institutionYearOfStudy: '',
     })
+    const [isOtpLengthValid, setIsOtpLengthValid] = useState(false)
 
     const formValidate = () => {
         const errors = {} as ValidationError
@@ -232,7 +233,7 @@ export default function Checkout() {
     const handleNext = () => {
         const isValid = formValidate()
 
-        //setActiveStep(activeStep + 1)
+        setActiveStep(activeStep + 1)
         console.log('next')
 
         if (!isValid) {
@@ -290,7 +291,15 @@ export default function Checkout() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log({ otp })
+        console.log('otp length', otp.length)
+
+        if(otp.length < 6){
+            console.log('Invalid otp')
+        }
+        else{
+            console.log('valid otp length')
+        }
+
         const data = handleInput
 
         const updatedData = {
@@ -386,8 +395,9 @@ export default function Checkout() {
                                             />
 
                                             <button
-                                                className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5'
+                                                className=' rounded-3xl outline-none  bg-[#1776d1] text-white text-lg py-2 mt-10 grid justify-self-center w-2/5 disabled:(bg-gray-500 opacity-40)'
                                                 type='submit'
+                                                disabled={isOtpLengthValid}
                                             >
                                                 {loading ? (
                                                     <CircularProgress
