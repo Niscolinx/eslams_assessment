@@ -239,11 +239,25 @@ export default function Checkout() {
         } else if (isValid && activeStep === 2) {
             setActiveStep(activeStep + 1)
 
-            const {firstName, lastName, personalEmail, phoneNumber} = handleInput
+            const { firstName, lastName, personalEmail, phoneNumber } =
+                handleInput
 
-            axios.post('/api/auth/sendOtp', {firstName, lastName, personalEmail, phoneNumber}).then(({data}) => {
-                console.log(data)
-            }).catch(err => console.log({err}))
+            const sendOtp = () => {
+                console.log('send otp')
+                axios
+                    .post('/api/auth/sendOtp', {
+                        firstName,
+                        lastName,
+                        personalEmail,
+                        phoneNumber,
+                    })
+                    .then(({ data }) => {
+                        console.log(data)
+                    })
+                    .catch((err) => console.log({ err }))
+            }
+
+            sendOtp()
         }
     }
 
