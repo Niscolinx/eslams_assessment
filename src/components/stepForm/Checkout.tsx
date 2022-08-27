@@ -277,7 +277,11 @@ export default function Checkout() {
         //     institutionYearOfStudy,
         // } = handleInput
 
-        const {lastName} = handleInput
+       const data = handleInput
+
+       const updatedData = {...data, birthDate: data.birthDate!.toISOString()}
+
+       console.log(updatedData)
 
         console.log('submit')
 
