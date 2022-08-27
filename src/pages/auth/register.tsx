@@ -8,6 +8,7 @@ import Image from 'next/image'
 
 import HeroImg2 from '../../../public/hero-player.png'
 import Checkout from '../../components/stepForm/Checkout'
+import Tilt from 'react-parallax-tilt'
 
 const Register = () => {
     useEffect(() => {
@@ -97,39 +98,37 @@ const Register = () => {
             <div className='register__main'>
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
-                <div className='register__overlay z-3 md:(max-w-[433px])'></div>
-                    <div className='flex main-1__container relative z-5 mt-[9.5rem]'>
-                    <Tilt>
-
-                    <div className='flex main-1__container z-5 mt-[9.5rem]'>
-                        <Image
-                            src='/hero-player.png'
-                            width='433px'
-                            height='461px'
-                            objectFit='contain'
-                            className='main-1__image'
+                <Tilt>
+                    <div className='register__overlay z-3 md:(max-w-[433px])'></div>
+                    <div className='main-1 relative'>
+                        <div className='flex main-1__container z-5 mt-[9.5rem] relative'>
+                            <Image
+                                src='/hero-player.png'
+                                width='433px'
+                                height='461px'
+                                objectFit='contain'
+                                className='main-1__image'
                             />
+                        </div>
+                        <div className='grid gap-2 main-1__points w-max content-center'>
+                            <p className='main-1__points--item'>
+                                Learn Through Practice
+                            </p>
+                            <p className='main-1__points--item'>
+                                Compete and Win Rewards
+                            </p>
+                            <p className='main-1__points--item'>
+                                Find and Register for Competitions
+                            </p>
+                        </div>
+
+                        <h1 className='heroText absolute top-[8rem] left-[3.5rem] absolute uppercase z-4'>
+                            Shoot for the <span className='ml-10'>stars</span>
+                        </h1>
+
+                        <div className='main-1__overLay'></div>
                     </div>
-                            </Tilt>
-                    <div className='grid gap-2 main-1__points w-max'>
-                        <p className='main-1__points--item'>
-                            Learn Through Practice
-                        </p>
-                        <p className='main-1__points--item'>
-                            Compete and Win Rewards
-                        </p>
-                        <p className='main-1__points--item'>
-                            Find and Register for Competitions
-                        </p>
-                    </div>
-
-                    <h1 className='heroText absolute top-[8rem] left-[3.5rem] absolute uppercase z-4'>
-                        Shoot for the <span className='ml-10'>stars</span>
-                    </h1>
-
-                    <div className='main-1__overLay'></div>
-                </div>
-
+                </Tilt>
                 <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-4'>
                     <Checkout />
                 </div>
