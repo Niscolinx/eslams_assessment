@@ -1,4 +1,4 @@
-import  React, {useContext, useState} from 'react'
+import  React, {useContext, useState, useEffect} from 'react'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -30,6 +30,12 @@ export default function GuardianOrParent() {
 
         console.log({e})
     }
+
+    useEffect(() => {
+
+    }, [adjustLabel])
+
+
     return (
         <React.Fragment>
             {/* <Typography variant='h6' gutterBottom>
