@@ -108,7 +108,6 @@ export default function Checkout() {
 
             if (key === 'personalEmail') {
                 isValidMail(handleInput[key], (cb) => {
-                    console.log({ cb })
                     if (!cb) {
                         errors[key] = 'Invalid email'
 
@@ -157,9 +156,9 @@ export default function Checkout() {
                   }
               }
 
-
+              console.log({count})
             if (activeStep === 1 ) {
-                console.log('second step')
+                console.log('second step', {count})
             }
             // else{
             //     return
