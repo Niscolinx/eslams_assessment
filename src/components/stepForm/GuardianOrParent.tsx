@@ -1,4 +1,4 @@
- import * as React from 'react'
+import  React, {useContext, useState} from 'react'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -12,15 +12,13 @@ import {
     MenuItem,
     Select,
 } from '@mui/material'
-import { useContext } from 'react'
 import MuiPhoneNumber from 'material-ui-phone-number'
 import { AuthContext } from '../../pages/api/auth/authContext'
 
 export default function GuardianOrParent() {
-  
+    const { setInput, handleInput, validationError } = useContext(AuthContext)
 
-        const { setInput, handleInput, validationError } =
-            useContext(AuthContext)
+    const [adjustMargin, setAdjustMargin] = useState(false)
 
     return (
         <React.Fragment>
@@ -115,6 +113,9 @@ export default function GuardianOrParent() {
                         <Select
                             labelId='select-label'
                             id='select'
+                            onFocus={() =>
+                                setAdjustMargin(true)
+                            }
                             variant='standard'
                             label='Relationship'
                             name='guardianRelationship'
