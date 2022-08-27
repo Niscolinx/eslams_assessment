@@ -173,7 +173,7 @@ export default function Checkout() {
 
         setLoading(true)
         axios
-            .post('/api/auth/register', updatedData)
+            .post('/api/auth/login', updatedData)
             .then(({ data }) => {
                 console.log({ data })
                 setLoading(false)
@@ -190,28 +190,7 @@ export default function Checkout() {
             })
     }
 
-    const authContext = useMemo(() => {
-        return {
-            handleInput,
-            setHandleInput,
-            setInput,
-
-            validationError,
-        }
-    }, [validationError, handleInput, setInput])
-
-    const handleSignIn = () => {
-        //router.push('/')
-
-        signIn()
-            .then((res) => {
-                console.log({ res })
-                //router.push('/')
-            })
-            .catch((err) => {
-                console.log({ err })
-            })
-    }
+   
 
     //From  here
 
@@ -231,7 +210,6 @@ export default function Checkout() {
         }
     }
     return (
-        <AuthContext.Provider value={authContext}>
             <ThemeProvider theme={theme}>
                 <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
                     <CssBaseline />
@@ -338,6 +316,5 @@ export default function Checkout() {
                     {/* <Copyright /> */}
                 </Container>
             </ThemeProvider>
-        </AuthContext.Provider>
     )
 }
