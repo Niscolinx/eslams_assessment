@@ -88,6 +88,10 @@ export default function Checkout() {
         institutionYearOfStudy: '',
     })
     const [isOtpLengthInValid, setIsOtpLengthInValid] = useState(true)
+    const [message, setMessage] = useState<{
+        message: string
+        type: string
+    } | null>(null)
 
     const formValidate = () => {
         const errors = {} as ValidationError
@@ -281,8 +285,7 @@ export default function Checkout() {
         
         setOtp(input)
         setKeepOtp((singleOtp) => [input])
-
-        console.log({input})
+        setMessage(null)
         if(input.length < 6){
             setIsOtpLengthInValid(true)
         }
@@ -293,6 +296,7 @@ export default function Checkout() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
+        setMessage(null)
 
        
         if(otp.length < 6){
@@ -317,8 +321,13 @@ export default function Checkout() {
                 console.log(res)
                 setLoading(false)
             })
-            .catch((err) => {
-                console.log({ err })
+            .catch(({response: {data}}) => {
+                console.log({ data })
+                const {message} = data
+                setMessage({
+                    message,
+                    type: 'error'
+                })
                 setLoading(false)
             })
     }
@@ -380,7 +389,11 @@ export default function Checkout() {
                                         <form
                                             className='grid w-full place-content-stretch md:w-3/4 md:mx-auto'
                                             onSubmit={handleSubmit}
-                                        >
+                                        > {
+                                            message && message.type === 'error' && (
+                                                <p className='bg-red-500 text-xs text-center '>{message.message}</p>
+                                            )
+                                        }
                                             <h2 className='font-black text-center text-black mb-2 text-xl'>
                                                 Type in the 6-digit code you
                                                 received in your Email{' '}

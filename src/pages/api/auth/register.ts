@@ -131,7 +131,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         const mail = {
             from: 'admin@eslams.com',
-            to: 'munisco12@gmail.com',
+            to: personalEmail,
             subject: `Welcome to Eslams`,
             html: `${htmlOutput.html}`,
         }

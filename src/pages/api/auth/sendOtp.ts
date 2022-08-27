@@ -48,7 +48,7 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
 
         const mail = {
             from: 'admin@eslams.com',
-            to: 'munisco12@gmail.com',
+            to: personalEmail,
             subject: `Eslams - Account Verification`,
             html: `${htmlOutput.html}`,
         }
