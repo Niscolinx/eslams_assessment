@@ -22,25 +22,25 @@ const Register = () => {
             })
     }, [])
 
-    useEffect(() => {
-        const image = document.querySelector(
-            '.main-1__image'
-        ) as HTMLImageElement
-        const container = document.querySelector(
-            '.register__main'
-        ) as HTMLDivElement
+    // useEffect(() => {
+    //     const image = document.querySelector(
+    //         '.main-1__image'
+    //     ) as HTMLImageElement
+    //     const container = document.querySelector(
+    //         '.register__main'
+    //     ) as HTMLDivElement
 
-        console.log({ image, container })
+    //     console.log({ image, container })
 
-        container.addEventListener('mousemove', (e) => {
-            const X = e.clientX - e.screenX
-            const Y = e.clientY - e.screenY
+    //     container.addEventListener('mousemove', (e) => {
+    //         const X = e.clientX - e.screenX
+    //         const Y = e.clientY - e.screenY
 
-            console.log({ X, Y })
+    //         console.log({ X, Y })
 
-            //image.style.transform = `translate(${X}px, ${Y}px)`
-        })
-    }, [])
+    //         //image.style.transform = `translate(${X}px, ${Y}px)`
+    //     })
+    // }, [])
 
     return (
         <div className='register relative'>
@@ -98,35 +98,56 @@ const Register = () => {
             <div className='register__main'>
                 <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
-                <Tilt>
-                    <div className='register__overlay z-3 md:(max-w-[433px])'></div>
-                    <div className='main-1 relative'>
-                        <div className='flex main-1__container z-5 mt-[9.5rem] relative'>
-                            <Image
-                                src='/hero-player.png'
-                                width='433px'
-                                height='461px'
-                                objectFit='contain'
-                                className='main-1__image'
-                            />
-                        </div>
-                        <div className='grid gap-2 main-1__points w-max content-center'>
-                            <p className='main-1__points--item'>
-                                Learn Through Practice
-                            </p>
-                            <p className='main-1__points--item'>
-                                Compete and Win Rewards
-                            </p>
-                            <p className='main-1__points--item'>
-                                Find and Register for Competitions
-                            </p>
-                        </div>
+<div className="tilt-box-wrap">
+		<span className="t_over"></span>
+		<span className="t_over"></span>
+		<span className="t_over"></span>
+		<span className="t_over"></span>
+		<span className="t_over"></span>
+		<span className="t_over"></span>
+		<span className="t_over"></span>
+		<span className="t_over"></span>
+		<span className="t_over"></span>
+		<div className="tilt-box">
+			<strong>Tilt <br/> Effect</strong>
+		</div>
+	</div>
+                <Tilt
+                    onEnter={() => console.log('entered')}
+                    gyroscope
+                    
+                >
+                    <div className='bg-green-400'>
+                        <div className='register__overlay z-3 md:(max-w-[433px])'></div>
+                        <div className='main-1 relative'>
+                            <div className='flex main-1__container z-5 mt-[9.5rem] relative'>
+                                <Image
+                                    src='/hero-player.png'
+                                    width='433px'
+                                    height='461px'
+                                    objectFit='contain'
+                                    className='main-1__image'
+                                />
+                            </div>
+                            <div className='grid gap-2 main-1__points w-max content-center'>
+                                <p className='main-1__points--item'>
+                                    Learn Through Practice
+                                </p>
+                                <p className='main-1__points--item'>
+                                    Compete and Win Rewards
+                                </p>
+                                <p className='main-1__points--item'>
+                                    Find and Register for Competitions
+                                </p>
+                            </div>
 
-                        <h1 className='heroText absolute top-[8rem] left-[3.5rem] absolute uppercase z-4'>
-                            Shoot for the <span className='ml-10'>stars</span>
-                        </h1>
+                            <h1 className='heroText absolute top-[8rem] left-[3.5rem] absolute uppercase z-4'>
+                                Shoot for the{' '}
+                                <span className='ml-10'>stars</span>
+                            </h1>
 
-                        <div className='main-1__overLay'></div>
+                            <div className='main-1__overLay'></div>
+                        </div>
                     </div>
                 </Tilt>
                 <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-4'>
