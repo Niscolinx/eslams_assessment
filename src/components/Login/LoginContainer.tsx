@@ -134,7 +134,6 @@ export default function Checkout() {
             ...data,
         }
 
-        console.log('submit')
 
         setLoading(true)
         axios
