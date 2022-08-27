@@ -42,6 +42,46 @@ const Register = () => {
     //     })
     // }, [])
 
+    const handleLogin = (e: React.FormEvent) => {
+        e.preventDefault()
+
+        // const isValid = formValidate()
+
+        // if (!isValid) {
+        //     console.log('not valid')
+        //     return
+        // }
+
+        // setMessage(null)
+        // setLoading(true)
+
+        // const data = handleInput
+
+        // const updatedData = {
+        //     ...data,
+        // }
+
+        // setLoading(true)
+        // axios
+        //     .post('/api/auth/login', updatedData)
+        //     .then(({ data }) => {
+        //         console.log({ data })
+        //         setLoading(false)
+        //         router.push('/')
+        //     })
+        //     .catch(({ response: { data } }) => {
+        //         console.log({ data })
+        //         const { message } = data
+        //         setMessage({
+        //             message,
+        //             type: 'error',
+        //         })
+        //         setLoading(false)
+        //     })
+    }
+
+
+
     return (
         <div className='register relative'>
             <header className='register__header'>
@@ -51,7 +91,7 @@ const Register = () => {
                     </p>
                 </div>
 
-                <form className=' register__header--form hidden'>
+                <form className=' register__header--form hidden' onSubmit={handleLogin}>
                     <div className='header__form--item'>
                         <label
                             htmlFor='email'
@@ -89,7 +129,7 @@ const Register = () => {
                         </Link>
                     </div>
 
-                    <button className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center'>
+                    <button className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center' type='submit'>
                         Login
                     </button>
                 </form>
