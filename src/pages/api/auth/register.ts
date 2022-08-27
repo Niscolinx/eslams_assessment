@@ -80,6 +80,8 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         console.log({ otp })
 
+        console.log({firstName, lastName})
+
         const htmlOutput = mjml2html(
             `
   <mjml>
@@ -96,9 +98,9 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
 
 
-        <mj-text font-size='15px' align='center'>Below is your Vefirication Code</mj-text>
+        <mj-text font-size='15px' align='center'>Below is your Verification Code</mj-text>
 
-        <mj-button font-size='20px' color='black' background-color='white' padding-top='30px'>582328</mj-button>
+        <mj-button font-size='20px' color='black' background-color='white' padding-top='30px'>${otp}</mj-button>
 
 
       </mj-column>
