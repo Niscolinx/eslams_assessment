@@ -17,8 +17,6 @@ import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 import OtpInput from 'react-otp-input'
 import { CircularProgress, Grid, TextField } from '@mui/material'
 
-
-
 import { AuthContext } from '../../pages/api/auth/authContext'
 import axios from 'axios'
 import dayjs from 'dayjs'
@@ -28,9 +26,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
 const steps = ['Personal details', 'Guardian/Parent', 'Education']
 
-function getStepContent(step: number) {
-    
-}
+function getStepContent(step: number) {}
 
 const theme = createTheme({
     typography: {
@@ -41,20 +37,9 @@ const theme = createTheme({
 export type ValidationError = { [key: string]: string }
 
 export type handleInputProps = {
-    firstName: string
-    lastName: string
-    personalEmail: string
+    email: string
+
     password: string
-    phoneNumber: string
-    gender: string
-    guardianEmail: string
-    guardianPhoneNumber: string
-    guardianName: string
-    guardianRelationship: string
-    institutionName: string
-    institutionType: string
-    institutionYearOfStudy: string
-    birthDate: Date | null
 }
 export default function Checkout() {
     const [otp, setOtp] = useState<string>('')
@@ -64,22 +49,9 @@ export default function Checkout() {
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
     const [handleInput, setHandleInput] = useState<handleInputProps>({
-        firstName: '',
-        lastName: '',
-        personalEmail: '',
-        phoneNumber: '',
+        email: '',
         password: '',
-        birthDate: null,
-        gender: '',
-        guardianEmail: '',
-        guardianPhoneNumber: '',
-        guardianName: '',
-        guardianRelationship: '',
-        institutionName: '',
-        institutionType: '',
-        institutionYearOfStudy: '',
     })
-    const [isOtpLengthInValid, setIsOtpLengthInValid] = useState(true)
     const [message, setMessage] = useState<{
         message: string
         type: string
@@ -258,7 +230,7 @@ export default function Checkout() {
         //         }
         //         sendOtp()
         //     }
-       // }
+        // }
     }
 
     const handleBack = () => {
@@ -316,9 +288,6 @@ export default function Checkout() {
                     type: 'error',
                 })
                 setLoading(false)
-
-                
-                 
             })
     }
 
@@ -332,36 +301,36 @@ export default function Checkout() {
         }
     }, [validationError, handleInput, setInput])
 
-
     const handleSignIn = () => {
         //router.push('/')
 
-        signIn().then((res) => {
-            console.log({ res })
-            //router.push('/')
-        }).catch(err => {
-            console.log({err})
-        })
+        signIn()
+            .then((res) => {
+                console.log({ res })
+                //router.push('/')
+            })
+            .catch((err) => {
+                console.log({ err })
+            })
     }
 
     //From  here
 
-     const [eyeIcon, setEyeIcon] = useState(false)
+    const [eyeIcon, setEyeIcon] = useState(false)
 
+    const toggleEyeIcon = () => {
+        setEyeIcon((prev) => !prev)
 
-     const toggleEyeIcon = () => {
-         setEyeIcon((prev) => !prev)
+        let password = document.querySelector('#password') as HTMLInputElement
 
-         let password = document.querySelector('#password') as HTMLInputElement
-
-         if (password) {
-             if (eyeIcon) {
-                 password.type = 'text'
-             } else {
-                 password.type = 'password'
-             }
-         }
-     }
+        if (password) {
+            if (eyeIcon) {
+                password.type = 'text'
+            } else {
+                password.type = 'password'
+            }
+        }
+    }
     return (
         <AuthContext.Provider value={authContext}>
             <ThemeProvider theme={theme}>
@@ -464,6 +433,7 @@ export default function Checkout() {
                                     }
                                 </div>
                             </Grid>
+                            <button>submit</button>
                         </React.Fragment>
                     </Paper>
                     {/* <Copyright /> */}
