@@ -293,6 +293,8 @@ export default function Checkout() {
         }
 
         setIsOtpLengthInValid(false)
+
+        console.log("otp is valid", isOtpLengthInValid)
        
 
         const data = handleInput
@@ -326,6 +328,8 @@ export default function Checkout() {
             validationError,
         }
     }, [validationError, handleInput, setInput])
+
+    console.log({isOtpLengthInValid})
 
     return (
         <AuthContext.Provider value={authContext}>
