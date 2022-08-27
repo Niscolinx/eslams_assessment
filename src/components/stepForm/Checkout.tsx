@@ -353,6 +353,17 @@ export default function Checkout() {
         }
     }, [validationError, handleInput, setInput])
 
+
+    const handleSignIn = () => {
+        //router.push('/')
+
+        signIn().then((res) => {
+            console.log({ res })
+            //router.push('/')
+        }).catch(err => {
+            console.log({err})
+        })
+    }
     return (
         <AuthContext.Provider value={authContext}>
             <ThemeProvider theme={theme}>
@@ -380,6 +391,11 @@ export default function Checkout() {
                         </Typography>
                         <Typography component='p' align='center'>
                             Create an account and step into greatness
+
+                        </Typography>
+                        <Typography component='p' align='center'>
+
+                            <button onClick={handleSignIn} className='bg-blue-300'>Sign in</button>
                         </Typography>
                         <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
                             {steps.map((label) => (

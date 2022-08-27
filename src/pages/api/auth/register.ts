@@ -164,25 +164,28 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             }
         })
 
+        const token = jwt.sign(
+            {
+                email: user.email,
+                userId: user!._id.toString(),
+            },
+            process.env.JWT_SECRET!,
+            {
+                expiresIn: '1hr',
+            }
+        )
 
-       const token = jwt.sign(
-           {
-               email:personalEmail,
-               userId: user!._id.toString(),
-           },
-           process.env.JWT_SECRET!,
-           {
-               expiresIn: '1hr',
-           }
-       )
-       setCookie('userSession', 'value', { req, res, maxAge: 60 * 60 * 24 })
+        //set cookie in nodejs
+        res.setHeader(
+            'Set-Cookie',
+            `tokenSession=${token}; Path=/; HttpOnly; Secure; Max-Age=${
+                60 * 60 * 24 * 7
+            }`
+        )
+        return res.status(200).json({ user })
+        //setCookie('userSession', token, { req, res, maxAge: 60 * 60 * 24 })
 
-       return res.status(200).json(
-           {
-            user,
-            token
-           }
-       )
+        
     } catch (err) {
         console.log({ err })
     }
