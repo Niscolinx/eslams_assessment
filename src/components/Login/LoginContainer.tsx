@@ -115,46 +115,19 @@ export default function Checkout() {
         }))
     }
 
-    const handleNext = () => {
+    const handleLogin = () => {
         const isValid = formValidate()
 
-        // //setActiveStep(activeStep + 1)
 
-        // if (!isValid) {
-        //     return
-        // } else if (isValid) {
-        //     setActiveStep(activeStep + 1)
-
-        //     if (activeStep === 2) {
-        //         setActiveStep(activeStep + 1)
-
-        //         const { firstName, lastName, email } = handleInput
-
-        //         const sendOtp = async () => {
-        //             try {
-        //                 console.log('sending otp...')
-        //                 const { data } = await axios.post('/api/auth/sendOtp', {
-        //                     firstName,
-        //                     lastName,
-        //                     email,
-        //                 })
-        //                 console.log(data)
-        //             } catch (err) {
-        //                 return console.log({ err })
-        //             }
-        //         }
-        //         sendOtp()
-        //     }
-        // }
+        if (!isValid) {
+            return
+        }      
+        else   {
+            
+        } 
+        
     }
 
-   
-
-    const nextButton = (
-        <span className='flex items-center gap-3'>
-            Next <HiOutlineArrowNarrowRight />
-        </span>
-    )
 
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -308,7 +281,7 @@ export default function Checkout() {
                                     }
                                 </div>
                             </Grid>
-                            <button>submit</button>
+                            <Button className='flex justify-self-center bg-[#1976d2] text-white my-3' onClick={handleLogin}>Login</Button>
                         </div>
                     </Paper>
                     {/* <Copyright /> */}
