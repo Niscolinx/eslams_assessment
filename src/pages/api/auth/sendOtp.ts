@@ -98,8 +98,9 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
                     verificationOtp: otp,
                 })
 
-                await pendingUser.save()
+                const theUser = await pendingUser.save()
 
+                console.log('the user', theUser)
                 res.json({
                     status: 'success',
                 })
