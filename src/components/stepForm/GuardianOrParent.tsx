@@ -21,8 +21,6 @@ export default function GuardianOrParent() {
 
     const [isFocused, setIsFocused] = useState(false)
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 lg:-ml-4')
-    const [relationshipInput, setRelationshipInput] =
-        useState('')
 
 
     const handleSelect = (e: SelectChangeEvent<string>) => {
@@ -34,7 +32,10 @@ export default function GuardianOrParent() {
     useEffect(() => {
         console.log('isFocused', isFocused)
         if(isFocused){
-            setLabelClasses('-ml-5.5 lg:-ml-4')
+            setLabelClasses('-ml-5.5 mt-3 lg:-ml-4')
+        }
+        else{
+            setLabelClasses(labelClasses)
         }
     }, [isFocused])
 
@@ -128,15 +129,15 @@ export default function GuardianOrParent() {
                     <FormControl fullWidth>
                         <InputLabel
                             id='select-label'
-                            className={`${labelClasses}`} 
+                            className={`${labelClasses}`}
                         >
                             Relationship
                         </InputLabel>
                         <Select
                             labelId='select-label'
                             id='select'
-                            onFocus={(prev) => setIsFocused(prev => !prev)}
-                            onBlur={() => console.log('blur')}
+                            onFocus={(prev) => setIsFocused((prev) => !prev)}
+                            onBlur={() => setLabelClasses(labelClasses)}
                             variant='standard'
                             label='Relationship'
                             name='guardianRelationship'
