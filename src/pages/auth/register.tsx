@@ -30,7 +30,12 @@ const Register = () => {
 
 
 const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    
+    const { name, value } = e.target
+
+    setLoginInput(prev => ({
+        ...prev,
+        [name]: value
+    }))
 }
 
     return (
