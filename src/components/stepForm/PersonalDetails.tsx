@@ -26,16 +26,7 @@ export default function PersonalDetails() {
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
-
-        let password = document.querySelector('#password') as HTMLInputElement
-        console.log('password', password.type)
-        if (password) {
-            if (eyeIcon) {
-                password.type = 'text'
-            } else {
-                password.type = 'password'
-            }
-        }
+        
     }
 
     const handleDateChange = (e: Date | null) => {
@@ -131,7 +122,7 @@ export default function PersonalDetails() {
                             id='password'
                             name='password'
                             label='Password'
-                            type='password'
+                            type={eyeIcon ? 'text' : 'password'}
                             variant='standard'
                             fullWidth
                             value={handleInput.password}

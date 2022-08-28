@@ -44,7 +44,7 @@ const Layout: React.FC<{}> = ({ children }) => {
                 <NavContext.Provider value={navContext}>
                     <Nav session={session} />
 
-                    <main className=' mx-auto'>{children}</main>
+                    <main className='mx-auto max-w-[1500px] overflow-hidden'>{children}</main>
                     {/* <Footer hideFooter={hideFooter} /> */}
                 </NavContext.Provider>
             </div>
