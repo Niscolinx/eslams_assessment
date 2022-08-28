@@ -2,7 +2,6 @@ import { NextResponse, NextRequest } from 'next/server'
 import { serverUrl } from './config'
 import * as jose from 'jose'
 
-
 export default async function middleware(req: NextRequest, res: NextResponse) {
     const tokenCookie = req.cookies.get('tokenCookie')
     const { url } = req
@@ -10,20 +9,39 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
     if (url.includes('/dashboard')) {
         if (!tokenCookie) {
             console.log('not verified')
-            NextResponse.redirect(`${serverUrl}/auth/login`)
+            return NextResponse.redirect(`${serverUrl}/auth/login`)
         } else {
-            console.log('verified')
             try {
-                 const { payload: jwtData } = await jose.jwtVerify(
-                     tokenCookie,
-                     new TextEncoder().encode(process.env.JWT_SECRET!)
-                 )
+                const { payload: jwtData } = await jose.jwtVerify(
+                    tokenCookie,
+                    new TextEncoder().encode(process.env.JWT_SECRET!)
+                )
 
+                console.log(jwtData)
                 NextResponse.next()
             } catch (err) {
                 console.log({ err })
-                NextResponse.redirect(`${serverUrl}/auth/login`)
+                return NextResponse.redirect(`${serverUrl}/auth/login`)
             }
         }
     }
+
+    if (url.includes('/auth')) {
+        if (tokenCookie) {
+            try {
+                
+                const { payload: jwtData } = await jose.jwtVerify(
+                    tokenCookie,
+                    new TextEncoder().encode(process.env.JWT_SECRET!)
+                )
+                console.log("verified", jwtData)
+                return NextResponse.redirect(`${serverUrl}/auth/login`)
+            } catch (err) {
+                console.log({ err })
+                return NextResponse.next()
+            }
+        }
+    }
+
+    return NextResponse.next()
 }
