@@ -1,8 +1,7 @@
 node_modules
-yarn.lock
 .next
-.env
 .env.local
 .eslintrc.json
 
 deploy.sh
+yarn.lock
