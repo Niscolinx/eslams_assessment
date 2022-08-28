@@ -34,6 +34,7 @@ const Register = () => {
 
     const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
+        setValidationErrors(null)
 
         setLoginInput((prev) => ({
             ...prev,
@@ -93,11 +94,12 @@ const Register = () => {
         return true
     }
 
-    // //setActiveStep(activeStep + 1)
+    console.log({validationErrors})
 
     const loginSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const isValid = formValidate()
+
 
         if (!isValid) {
             return
