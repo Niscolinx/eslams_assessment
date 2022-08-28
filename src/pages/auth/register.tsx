@@ -13,7 +13,7 @@ const Register = () => {
         email: string
         password:string
     }>({
-        email: ''
+        email: '',
         password: ''
     })
 
@@ -27,6 +27,9 @@ const Register = () => {
                 console.log('not connected')
             })
     }, [])
+
+
+    
 
 
     return (
