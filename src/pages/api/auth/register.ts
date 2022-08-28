@@ -189,7 +189,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         //set cookie in nodejs
         res.setHeader(
             'Set-Cookie',
-            `tokenSession=${token}; Path=/; HttpOnly; Secure; Max-Age=${
+            `tokenCookie=${token}; Path=/; HttpOnly; Secure; Max-Age=${
                 60 * 60 * 24 * 7
             }`
         )
