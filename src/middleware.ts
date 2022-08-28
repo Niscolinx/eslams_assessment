@@ -26,6 +26,7 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
     if (url.includes('/auth')) {
         if (tokenCookie) {
             try {
+                //TODO: check if token is valid
                 
                 const { payload: jwtData } = await jose.jwtVerify(
                     tokenCookie,
