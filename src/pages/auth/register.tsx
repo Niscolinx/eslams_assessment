@@ -17,6 +17,7 @@ const Register = () => {
         email: '',
         password: '',
     })
+    const [loading, setLoading] = useState(false)
 
     const [validationErrors, setValidationErrors] =
         useState<ValidationError | null>()
@@ -98,8 +99,10 @@ const Register = () => {
 
     const loginSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        console.log('submit')
         const isValid = formValidate()
 
+        setLoading(true)
 
         if (!isValid) {
             return
@@ -133,7 +136,7 @@ const Register = () => {
                             id='email'
                             value={loginInput['email']}
                             onChange={inputHandler}
-                            className={`border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7] ${validationErrors && validationErrors['email'] ? 'border-red-500' : ''}`}
+                            className={`border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7] ${validationErrors && validationErrors['email'] ? 'border border-red-500' : ''}`}
                         />
                     </div>
                     <div className='header__form--item'>
@@ -164,7 +167,7 @@ const Register = () => {
                         className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center'
                         type='submit'
                     >
-                        Login
+                        {loading ? 'Loading...' : 'Login'}
                     </button>
                 </form>
             </header>
