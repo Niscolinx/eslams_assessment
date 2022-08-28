@@ -11,10 +11,10 @@ import Tilt from 'react-parallax-tilt'
 const Register = () => {
     const [loginInput, setLoginInput] = useState<{
         email: string
-        password:string
+        password: string
     }>({
         email: '',
-        password: ''
+        password: '',
     })
 
     useEffect(() => {
@@ -28,15 +28,18 @@ const Register = () => {
             })
     }, [])
 
+    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target
 
-const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+        setLoginInput((prev) => ({
+            ...prev,
+            [name]: value,
+        }))
+    }
 
-    setLoginInput(prev => ({
-        ...prev,
-        [name]: value
-    }))
-}
+    const loginInputHandler = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+    }
 
     return (
         <div className='register relative'>
@@ -47,7 +50,10 @@ const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
                     </p>
                 </div>
 
-                <form className=' register__header--form hidden'>
+                <form
+                    className='register__header--form hidden'
+                    onSubmit={loginSubmitHandler}
+                >
                     <div className='header__form--item'>
                         <label
                             htmlFor='email'
@@ -89,7 +95,10 @@ const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
                         </Link>
                     </div>
 
-                    <button className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center'>
+                    <button
+                        className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center'
+                        type='submit'
+                    >
                         Login
                     </button>
                 </form>
