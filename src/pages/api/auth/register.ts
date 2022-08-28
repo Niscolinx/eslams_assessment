@@ -37,18 +37,12 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             otp,
         } = req.body
 
-        //Validate
-        // if (!personalEmail || !personalEmail.includes('@') || !password || !phoneNumber) {
-        //     console.log('failed')
-        //     res.status(422).json({ message: 'Invalid Data' })
-        //     return
-        // }
+       
 
         const existingEmail = await User.findOne({ personalEmail })
 
         const existingPhoneNumber = await User.findOne({ phoneNumber })
 
-                return res.status(500).json({ message: 'Server Error' })
 
 
         if (existingEmail) {
