@@ -1,5 +1,4 @@
 import { NextResponse, NextRequest } from 'next/server'
-//import jwt from 'jsonwebtoken'
 
 export default function middleware(req: NextRequest, res: NextResponse) {
     console.log('the middleware ***************************************************')

@@ -1,5 +1,4 @@
-import { IOtp } from './../../../models/Otp'
-import { IUser } from '../../../models/User'
+
 import { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcryptjs'
 import dbConnect from '../../../lib/dbConnect'
@@ -7,11 +6,8 @@ import User from '../../../models/User'
 import { transporter } from '../../../utils/emailTransport'
 import mjml2html from 'mjml'
 import Otp from '../../../models/Otp'
-import { setCookie } from 'cookies-next'
-import email from 'next-auth/providers/email'
-import user from '../connectDB'
-import jwt from 'jsonwebtoken'
-import { json } from 'stream/consumers'
+import * as jose from 'jose'
+
 
 async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
     try {
@@ -175,16 +171,16 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             }
         })
 
-        const token = jwt.sign(
-            {
-                email: user.email,
-                userId: user!._id.toString(),
-            },
-            process.env.JWT_SECRET!,
-            {
-                expiresIn: '1hr',
-            }
-        )
+       const token = await new jose.SignJWT({
+           email: user.email,
+           userId: user!._id.toString(),
+       })
+           .setProtectedHeader({ alg: 'HS256' })
+           .setIssuedAt()
+           .setExpirationTime('30d')
+           .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
+
+      
 
         //set cookie in nodejs
         res.setHeader(
