@@ -96,7 +96,6 @@ const Register = () => {
         return true
     }
 
-    console.log({validationErrors})
 
     const loginSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()

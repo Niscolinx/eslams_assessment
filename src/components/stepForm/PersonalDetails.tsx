@@ -28,7 +28,7 @@ export default function PersonalDetails() {
         setEyeIcon((prev) => !prev)
 
         let password = document.querySelector('#password') as HTMLInputElement
-
+        console.log('password', password.type)
         if (password) {
             if (eyeIcon) {
                 password.type = 'text'
