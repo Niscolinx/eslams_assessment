@@ -20,7 +20,7 @@ type contextTypes = {
     setSearchValue: (searchValue: string) => void
 }
 
-const EventContext = createContext<contextTypes>({
+export const EventContext = createContext<contextTypes>({
     searchValue: '',
     setSearchValue: (searchValue: string) => { }
 })
@@ -28,7 +28,6 @@ const EventContext = createContext<contextTypes>({
 const SearchBox = () => {
     const { searchValue, setSearchValue } = useContext(EventContext)
 
-    console.log({searchValue})
 
 
     return (
@@ -85,10 +84,6 @@ const Header = () => (
     </header>
 )
 
-type HeaderProps = {
-    isComingSoon: boolean
-    isBlog: boolean
-}
 
 function Footer() {
     return (
@@ -142,8 +137,6 @@ function Footer() {
 const Index = () => {
     const [searchValue, setSearchValue] = useState('')
 
-    
-
     return (
         <EventContext.Provider
             value={{
@@ -184,7 +177,7 @@ const Index = () => {
                                     </div>
                                 </div>
                             </div>
-                            <Events heading={['']} />
+                            <Events />
                         </main>
                         <Footer />{' '}
                     </div>

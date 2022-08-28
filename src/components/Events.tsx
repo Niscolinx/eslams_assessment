@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Image from 'next/image'
+import { EventContext } from '../pages/dashboard'
 
 interface EventProps {
     heading: string
@@ -157,7 +158,10 @@ const Event = ({
     )
 }
 
-function Events({heading}: {heading: string[]}) {
+function Events() {
+    const {searchValue} = useContext(EventContext)
+
+    console.log({searchValue})
     return (
         <div className='p-8 events'>
             <div className='events__heading'>
