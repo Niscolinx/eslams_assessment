@@ -8,6 +8,7 @@ import HeroImg2 from '../../../public/hero-player.png'
 import Checkout, { ValidationError } from '../../components/stepForm/RegisterForm'
 import Tilt from 'react-parallax-tilt'
 import dayjs from 'dayjs'
+import router from 'next/router'
 
 const Register = () => {
     const [loginInput, setLoginInput] = useState<{
@@ -109,7 +110,21 @@ const Register = () => {
             return
         }
 
-        setLoading(false)
+
+        setLoading(true)
+        axios
+            .post('/api/auth/login', loginInput)
+            .then(({ data }) => {
+                console.log({ data })
+                setLoading(false)
+                router.push('/')
+            })
+            .catch(({ response: { data } }) => {
+                console.log({ data })
+             
+               
+                setLoading(false)
+            })
         
     }
 

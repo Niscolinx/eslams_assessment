@@ -129,10 +129,9 @@ export default function Checkout() {
         setMessage(null)
         setLoading(true)
 
-        const data = handleInput
 
         const updatedData = {
-            ...data,
+            ...handleInput,
         }
 
 

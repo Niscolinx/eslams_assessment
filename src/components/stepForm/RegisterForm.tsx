@@ -308,7 +308,6 @@ export default function RegisterForm() {
             otp,
         }
 
-        console.log('submit')
 
         setLoading(true)
         axios
