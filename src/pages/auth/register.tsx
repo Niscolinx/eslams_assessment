@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { CtxOrReq } from 'next-auth/client/_utils'
-import { getCsrfToken, getProviders, signIn } from 'next-auth/react'
 import Router from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -22,25 +20,6 @@ const Register = () => {
             })
     }, [])
 
-    // useEffect(() => {
-    //     const image = document.querySelector(
-    //         '.main-1__image'
-    //     ) as HTMLImageElement
-    //     const container = document.querySelector(
-    //         '.register__main'
-    //     ) as HTMLDivElement
-
-    //     console.log({ image, container })
-
-    //     container.addEventListener('mousemove', (e) => {
-    //         const X = e.clientX - e.screenX
-    //         const Y = e.clientY - e.screenY
-
-    //         console.log({ X, Y })
-
-    //         //image.style.transform = `translate(${X}px, ${Y}px)`
-    //     })
-    // }, [])
 
     return (
         <div className='register relative'>
@@ -64,6 +43,8 @@ const Register = () => {
                             type='email'
                             name='email'
                             id='email'
+                            value={loginInput['email']}
+                            onChange={setLoginInput['email']}
                             className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7] '
                         />
                     </div>
@@ -79,6 +60,8 @@ const Register = () => {
                             type='password'
                             name='password'
                             id='password'
+                            value={loginInput['password']}
+                            onChange={setLoginInput['password']}
                             className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
                         />
 
