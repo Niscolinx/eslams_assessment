@@ -16,13 +16,13 @@ import { createContext, useState, useContext } from 'react'
 
 
 type contextTypes = {
-    searchValue: string[]
-    setSearchValue: (searchValue: string[]) => void
+    searchValue: string
+    setSearchValue: (searchValue: string) => void
 }
 
 const EventContext = createContext<contextTypes>({
-    searchValue: [''],
-    setSearchValue: (searchValue: string[]) => { }
+    searchValue: '',
+    setSearchValue: (searchValue: string) => { }
 })
 
 const SearchBox = () => {
@@ -39,7 +39,7 @@ const SearchBox = () => {
                     type='text'
                     placeholder='Search'
                     value={searchValue}
-                    onChange={(e) => setSearchValue(['sfd'])}
+                    onChange={(e) => setSearchValue(e.target.value)}
                     className='rounded-3xl py-2 px-3 pl-10 w-80 outline-none border-none'
                 />
             </div>
@@ -140,7 +140,7 @@ function Footer() {
 }
 
 const Index = () => {
-    const [searchValue, setSearchValue] = useState(['hello'])
+    const [searchValue, setSearchValue] = useState('')
 
     
 
