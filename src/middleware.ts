@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server'
+import { serverUrl } from './config'
 
 export default function middleware(req: NextRequest, res: NextResponse) {
     console.log('the middleware ***************************************************')
@@ -8,7 +9,7 @@ export default function middleware(req: NextRequest, res: NextResponse) {
     if (url.includes('/dashboard')) {
         if (!tokenCookie) {
             console.log('not verified')
-            NextResponse.redirect('/auth/login')
+            NextResponse.redirect(`${serverUrl}/auth/login`)
         } else {
             console.log('verified')
             try {
@@ -19,7 +20,7 @@ export default function middleware(req: NextRequest, res: NextResponse) {
                 NextResponse.next()
             } catch (err) {
                 console.log({ err })
-                NextResponse.redirect('/auth/login')
+                NextResponse.redirect(`${serverUrl}/auth/login`)
             }
         }
     }
