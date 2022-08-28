@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server'
-//import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 
 export default function middleware(req: NextRequest, res: NextResponse) {
     const tokenCookie = req.cookies.get('tokenCookie')
@@ -12,9 +12,9 @@ export default function middleware(req: NextRequest, res: NextResponse) {
         } else {
             console.log('verified')
             try {
-                // jwt.verify(tokenCookie, 'sfd', {
-                //     maxAge: '1d',
-                // })
+                jwt.verify(tokenCookie, 'sfd', {
+                    maxAge: '1d',
+                })
 
                 NextResponse.next()
             } catch (err) {

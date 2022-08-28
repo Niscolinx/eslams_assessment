@@ -40,20 +40,18 @@ module.exports = {
 
     webpack(config, { nextRuntime }) {
         console.log({ nextRuntime })
-        if (!nextRuntime) {
-            console.log('running 0', nextRuntime)
-            config.module.rules.push({
-                test: /\.svg$/,
-                use: [{ loader: '@svgr/webpack', options: { icons: true } }],
-            })
 
-            config.plugins.push(new WindiCSSWebpackPlugin())
-            return config
-        }
         if (nextRuntime === 'edge') {
-            console.log('this is edge functon')
             console.log('running 1', nextRuntime)
-            return config
+            return {
+                ...config,
+                entry() {
+                    return config.entry().then((entry) => ({
+                        ...entry,
+                        cli: path.resolve(process.cwd(), 'lib/cli.ts'),
+                    }))
+                },
+            }
         } else {
             console.log('running 2', nextRuntime)
             config.module.rules.push({
