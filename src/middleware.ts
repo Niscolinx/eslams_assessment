@@ -8,7 +8,6 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
 
     if (url.includes('/dashboard')) {
         if (!tokenCookie) {
-            console.log('not verified')
             return NextResponse.redirect(`${serverUrl}/auth/login`)
         } else {
             try {
@@ -17,10 +16,8 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
                     new TextEncoder().encode(process.env.JWT_SECRET!)
                 )
 
-                console.log(jwtData)
                 NextResponse.next()
             } catch (err) {
-                console.log({ err })
                 return NextResponse.redirect(`${serverUrl}/auth/login`)
             }
         }
@@ -34,10 +31,8 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
                     tokenCookie,
                     new TextEncoder().encode(process.env.JWT_SECRET!)
                 )
-                console.log("verified", jwtData)
-                return NextResponse.redirect(`${serverUrl}/auth/login`)
+                return NextResponse.redirect(`${serverUrl}/dashboard`)
             } catch (err) {
-                console.log({ err })
                 return NextResponse.next()
             }
         }
