@@ -9,6 +9,14 @@ import Checkout from '../../components/stepForm/Checkout'
 import Tilt from 'react-parallax-tilt'
 
 const Register = () => {
+    const [loginInput, setLoginInput] = useState<{
+        email: string
+        password:string
+    }>({
+        email: ''
+        password: ''
+    })
+
     useEffect(() => {
         axios
             .get('/api/connectDB')
