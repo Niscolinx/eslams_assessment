@@ -1,11 +1,26 @@
-
-import {NextResponse, NextRequest} from 'next/server'
-
+import { NextResponse, NextRequest } from 'next/server'
+import jwt from 'jsonwebtoken'
 
 export default function middleware(req: NextRequest, res: NextResponse) {
+    const tokenCookie = req.cookies.get('tokenCookie')
+    const { url } = req
 
-    console.log('middle ***************************************************', req.cookies)
+    if (url.includes('/dashboard')) {
+        if (!tokenCookie) {
+            console.log('not verified')
+            NextResponse.redirect('/auth/login')
+        } else {
+            console.log('verified')
+            try {
+                jwt.verify(tokenCookie, 'sfd', {
+                    maxAge: '1d',
+                })
 
-   // const {tokenS}
-
+                NextResponse.next()
+            } catch (err) {
+                console.log({ err })
+                NextResponse.redirect('/auth/login')
+            }
+        }
+    }
 }
