@@ -133,7 +133,7 @@ const Register = () => {
                             id='email'
                             value={loginInput['email']}
                             onChange={inputHandler}
-                            className={`border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]`}
+                            className={`border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7] ${validationErrors && validationErrors['email'] ? 'border-red-500' : ''}`}
                         />
                     </div>
                     <div className='header__form--item'>
