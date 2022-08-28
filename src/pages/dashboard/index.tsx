@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
-import { GetSessionParams, getSession } from 'next-auth/react'
 
 import Image from 'next/image'
 
@@ -16,8 +14,6 @@ import Link from 'next/link'
 import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillLinkedin, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
-import { useRouter } from 'next/router'
-import axios from 'axios'
 
 const SearchBox = () => {
     return (
