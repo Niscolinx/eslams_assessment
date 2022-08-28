@@ -167,7 +167,7 @@ const Index = () => {
                                 </div>
                             </div>
                         </div>
-                        <Events heading='sd' />
+                        <Events heading={['']} />
                     </main>
                     <Footer />{' '}
                 </div>
