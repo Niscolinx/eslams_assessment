@@ -53,6 +53,7 @@ module.exports = {
         if (nextRuntime === 'edge') {
             console.log('this is edge functon')
             console.log('running 1', nextRuntime)
+            return config
         } else {
             console.log('running 2', nextRuntime)
             config.module.rules.push({
