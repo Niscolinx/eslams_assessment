@@ -48,7 +48,7 @@ module.exports = {
                 entry() {
                     return config.entry().then((entry) => ({
                         ...entry,
-                        cli: path.resolve(process.cwd(), 'lib/cli.ts'),
+                        cli: path.resolve(process.cwd(), './src/pages/middleware.ts'),
                     }))
                 },
             }
