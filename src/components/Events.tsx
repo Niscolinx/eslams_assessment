@@ -157,7 +157,7 @@ const Event = ({
     )
 }
 
-function Events() {
+function Events({heading}: {heading: string}) {
     return (
         <div className='p-8 events'>
             <div className='events__heading'>
