@@ -41,6 +41,8 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
                 60 * 60 * 24 * 7
             }`
         )
+
+       // req.Auth = ''
         return res.status(200).json({ user })
     } catch (err) {
         console.log({ err })

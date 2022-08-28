@@ -8,7 +8,7 @@ import { BiNotepad } from 'react-icons/bi'
 import { FiSearch } from 'react-icons/fi'
 import { VscSettings } from 'react-icons/vsc'
 
-import Events from '../components/Events'
+import Events from '../../components/Events'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
 //Footer
@@ -78,49 +78,41 @@ type HeaderProps = {
 }
 
 function Footer() {
-    
-
     return (
-        <footer
-            className='footer'
-           
-        >
-            <div className="footer__blob"></div>
-            <div className="footer__content">
+        <footer className='footer'>
+            <div className='footer__blob'></div>
+            <div className='footer__content'>
+                <ul className='footer__links'>
+                    <li className='footer__links--item '>
+                        <Link href='/'>
+                            <BsYoutube />
+                        </Link>
+                    </li>
+                    <li className='footer__links--item'>
+                        <Link href='/'>
+                            <AiFillFacebook />
+                        </Link>
+                    </li>
 
-            <ul className='footer__links'>
-                <li className='footer__links--item '>
-                    <Link href='/'>
-                        <BsYoutube />
-                    </Link>
-                </li>
-                <li className='footer__links--item'>
-                    <Link href='/'>
-                        <AiFillFacebook />
-                    </Link>
-                </li>
-               
-                <li className='footer__links--item'>
-                    <Link href='/'>
-                        <AiFillInstagram />
-                    </Link>
-                </li>
-                <li className='footer__links--item'>
-                    <Link href='/'>
-                        <FaTwitterSquare />
-                    </Link>
-                </li>
-            </ul>
+                    <li className='footer__links--item'>
+                        <Link href='/'>
+                            <AiFillInstagram />
+                        </Link>
+                    </li>
+                    <li className='footer__links--item'>
+                        <Link href='/'>
+                            <FaTwitterSquare />
+                        </Link>
+                    </li>
+                </ul>
 
-            <div className='footer__contracts'>
-                <Link href='/'>Terms of services</Link>
-                <Link href='/'>Privacy Policy</Link>
-            </div>
-            <div className='footer__copyright'>
-                <p>
-                    Copyright 2022 @ eSlams. All Rights Reserved.
-                </p>
-            </div>
+                <div className='footer__contracts'>
+                    <Link href='/'>Terms of services</Link>
+                    <Link href='/'>Privacy Policy</Link>
+                </div>
+                <div className='footer__copyright'>
+                    <p>Copyright 2022 @ eSlams. All Rights Reserved.</p>
+                </div>
             </div>
         </footer>
     )
