@@ -43,7 +43,7 @@ const Event = ({
                 <div className='event__details'>
                     {details.length > 0 &&
                         details.map((item) => (
-                            <ul>
+                            <ul key={item}>
                                 <li>{item}</li>
                             </ul>
                         ))}

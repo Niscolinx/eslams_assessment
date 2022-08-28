@@ -85,23 +85,31 @@ function Footer() {
                 <ul className='footer__links'>
                     <li className='footer__links--item '>
                         <Link href='/'>
-                            <BsYoutube />
+                            <a>
+                                <BsYoutube />
+                            </a>
                         </Link>
                     </li>
                     <li className='footer__links--item'>
                         <Link href='/'>
-                            <AiFillFacebook />
+                            <a>
+                                <AiFillFacebook />
+                            </a>
                         </Link>
                     </li>
 
                     <li className='footer__links--item'>
                         <Link href='/'>
-                            <AiFillInstagram />
+                            <a>
+                                <AiFillInstagram />
+                            </a>
                         </Link>
                     </li>
                     <li className='footer__links--item'>
                         <Link href='/'>
-                            <FaTwitterSquare />
+                            <a>
+                                <FaTwitterSquare />
+                            </a>
                         </Link>
                     </li>
                 </ul>
