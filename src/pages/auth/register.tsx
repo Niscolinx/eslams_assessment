@@ -139,9 +139,9 @@ const Register = () => {
                             id='email'
                             value={loginInput['email']}
                             onChange={inputHandler}
-                            className={` rounded-lg px-2 py-1 bg-[#E8E7E7] ${
+                            className={` rounded-lg px-2 py-1 bg-[#E8E7E7] border outline-none ${
                                 validationErrors && validationErrors['email']
-                                    ? 'border border-red-500 animate-shakeX transition-all animate-ease-[cubic-bezier(0.25,0.1,0.25,1)] animate-duration-[1s]'
+                                    ? 'border-width-[2px] border-red-500  animate-shakeX transition-all animate-ease-[cubic-bezier(0.25,0.1,0.25,1)] animate-duration-[1s]'
                                     : ''
                             }`}
                         />
@@ -160,7 +160,11 @@ const Register = () => {
                             id='password'
                             value={loginInput['password']}
                             onChange={inputHandler}
-                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7] '
+                            className={` rounded-lg px-2 py-1 bg-[#E8E7E7] border outline-none ${
+                                validationErrors && validationErrors['password']
+                                    ? 'border-width-[2px] border-red-500  animate-shakeX transition-all animate-ease-[cubic-bezier(0.25,0.1,0.25,1)] animate-duration-[1s]'
+                                    : ''
+                            }`}
                         />
 
                         <Link href='/'>
