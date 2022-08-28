@@ -12,6 +12,23 @@ interface EventProps {
     }
 }
 
+const EVENTDATA = [
+    {
+        heading: 'USA BASKETBALL SHOWCASE PRESENTED BY COINBASE',
+        price: 1200,
+        details: [
+            'Basketball, Water and Training Supplies',
+            'Certfied Atletic trainers',
+            'Availability of Shuttles',
+            'NCAA Certified Checklist',
+        ],
+        date: {
+            from: '10th Sep',
+        },
+        which: 1,
+    },
+]
+
 const Event = ({
     heading,
     details,
