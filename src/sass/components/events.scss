@@ -59,12 +59,14 @@
 
     &__container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
         font-size: 1rem;
         gap: 3rem;
         padding: 2rem 1rem;
         background: white;
         border-radius: 0.5rem;
+        justify-items: center;
 
         @include respond(phone) {
             //justify-content: center;
@@ -346,7 +348,7 @@
         }
 
         &__price-value {
-            font-size: 4rem;
+            font-size: 2rem;
         }
     }
 }
@@ -357,7 +359,7 @@
     &:visited {
         text-transform: uppercase;
         text-decoration: none;
-        padding: 1.5rem 4rem;
+        padding: 1rem 3rem;
         display: inline-block;
         border-radius: 10rem;
         transition: all 0.2s;
