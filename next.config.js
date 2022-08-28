@@ -9,41 +9,58 @@ module.exports = {
         includePaths: [path.join(__dirname, 'styles')],
     },
 
-    webpack: (config, { nextRuntime }) => {
-        // undocumented property of next 12.
-        if (nextRuntime !== 'nodejs') return config
+    // webpack: (config, { nextRuntime }) => {
+    // undocumented property of next 12.
+    //  if (nextRuntime !== 'nodejs') return config
 
-        return {
-            ...config,
-            entry() {
-                return config.entry().then((entry) => ({
-                    ...entry,
-                    cli: path.resolve(process.cwd(), 'lib/cli.ts'),
-                }))
-            },
-            module: {
-                rules: [
-                    {
-                        test: /\.svg$/,
-                        use: [
-                            {
-                                loader: '@svgr/webpack',
-                                options: { icons: true },
-                            },
-                        ],
-                    },
-                ],
-            },
+    // return {
+    //     ...config,
+    //     entry() {
+    //         return config.entry().then((entry) => ({
+    //             ...entry,
+    //             cli: path.resolve(process.cwd(), 'lib/cli.ts'),
+    //         }))
+    //     },
+    //     module: {
+    //         rules: [
+    //             {
+    //                 test: /\.svg$/,
+    //                 use: [
+    //                     {
+    //                         loader: '@svgr/webpack',
+    //                         options: { icons: true },
+    //                     },
+    //                 ],
+    //             },
+    //         ],
+    //     },
 
-            plugins: [new WindiCSSWebpackPlugin()],
+    //     plugins: [new WindiCSSWebpackPlugin()]
+    //}
 
-            // config.module.rules.push({
-            //         test: /\.svg$/,
-            //         use: [{ loader: '@svgr/webpack', options: { icons: true } }],
-            //     })
+    webpack(config, { nextRuntime }) {
+        console.log({ nextRuntime })
+        if(nextRuntime === 'edge'){
+            console.log('this is edge functon')
+        }
+        if (!nextRuntime) {
+           
+            config.module.rules.push({
+                test: /\.svg$/,
+                use: [{ loader: '@svgr/webpack', options: { icons: true } }],
+            })
 
-            //     config.plugins.push(new WindiCSSWebpackPlugin())
-            //      return config
+            config.plugins.push(new WindiCSSWebpackPlugin())
+            return config
+        }else{
+            console.log('nextRuntime is not nodejs', nextRuntime)
+             config.module.rules.push({
+                 test: /\.svg$/,
+                 use: [{ loader: '@svgr/webpack', options: { icons: true } }],
+             })
+
+             config.plugins.push(new WindiCSSWebpackPlugin())
+             return config
         }
     },
     eslint: {
