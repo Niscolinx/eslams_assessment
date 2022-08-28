@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import Image from 'next/image'
 import { EventContext } from '../pages/dashboard'
 
@@ -97,7 +97,8 @@ const EVENTDATA: EventProps[] = [
             'NCAA Certified Checklist',
         ],
         date: {
-             from: '3rd Sep', to: '4th Sep' 
+            from: '3rd Sep',
+            to: '4th Sep',
         },
         which: 3,
     },
@@ -159,9 +160,9 @@ const Event = ({
 }
 
 function Events() {
-    const {searchValue} = useContext(EventContext)
+    const { searchValue } = useContext(EventContext)
 
-    console.log({searchValue})
+    console.log({ searchValue })
     return (
         <div className='p-8 events'>
             <div className='events__heading'>
@@ -170,11 +171,11 @@ function Events() {
                 <span></span>
             </div>
             <div className='events__container'>
-               
-                {EVENTDATA.map((item) => (
-                    <Event key={item.heading} {...item} />)
-                )}
-                
+                {EVENTDATA.map((item) => {
+                    return item.heading.toLowerCase().includes(searchValue) ? (
+                        <Event key={item.heading} {...item} />
+                    ) : null
+                })}
             </div>
         </div>
     )
