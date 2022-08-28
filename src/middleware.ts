@@ -2,9 +2,10 @@ import { NextResponse, NextRequest } from 'next/server'
 import { serverUrl } from './config'
 
 export default function middleware(req: NextRequest, res: NextResponse) {
-    console.log('the middleware ***************************************************')
     const tokenCookie = req.cookies.get('tokenCookie')
     const { url } = req
+
+    console.log({tokenCookie})
 
     if (url.includes('/dashboard')) {
         if (!tokenCookie) {
