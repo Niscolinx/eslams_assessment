@@ -27,6 +27,79 @@ const EVENTDATA = [
         },
         which: 1,
     },
+    {
+        heading: '2022 FIBA AmeriCup for Men',
+        price: 1500,
+        details: [
+            'Basketball, Water and Training Supplies',
+            'Certfied Atletic trainers',
+            'Availability of Shuttles',
+            'NCAA Certified Checklist',
+        ],
+        date: {
+            from: '5th Oct',
+            to: '9th Oct',
+        },
+        which: 2,
+    },
+    {
+        heading: 'FIBA 3x3 U23 World Cup (women)',
+        price: 1600,
+        details: [
+            'Basketball, Water and Training Supplies',
+            'Certfied Atletic trainers',
+            'Availability of Shuttles',
+            'NCAA Certified Checklist',
+        ],
+        date: {
+            from: '2nd Sep',
+            to: '11th Sep',
+        },
+        which: 3,
+    },
+    {
+        heading: '2022 USA Basketball Gold Camp (boys)',
+        price: 999,
+        details: [
+            'Basketball, Water and Training Supplies',
+            'Certfied Atletic trainers',
+            'Availability of Shuttles',
+            'NCAA Certified Checklist',
+        ],
+        date: {
+            from: '4th Sep',
+            to: '5th Sep',
+        },
+        which: 1,
+    },
+    {
+        heading: '2022 USA Basketball Coach Academy',
+        price: 1090,
+        details: [
+            'Basketball, Water and Training Supplies',
+            'Certfied Atletic trainers',
+            'Availability of Shuttles',
+            'NCAA Certified Checklist',
+        ],
+        date: {
+            from: '9th Sep',
+        },
+        which: 2,
+    },
+    {
+        heading: '2022 USA Basketball Gold Camp (girls)',
+        price: 1100,
+        details: [
+            'Basketball, Water and Training Supplies',
+            'Certfied Atletic trainers',
+            'Availability of Shuttles',
+            'NCAA Certified Checklist',
+        ],
+        date: {
+             from: '3rd Sep', to: '4th Sep' 
+        },
+        which: 3,
+    },
 ]
 
 const Event = ({
