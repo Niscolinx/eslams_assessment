@@ -12,7 +12,7 @@ interface EventProps {
     }
 }
 
-const EVENTDATA = [
+const EVENTDATA: EventProps[] = [
     {
         heading: 'USA BASKETBALL SHOWCASE PRESENTED BY COINBASE',
         price: 1200,
@@ -167,18 +167,10 @@ function Events() {
             </div>
             <div className='events__container'>
                
-                <Event
-                    heading='2022 USA Basketball Gold Camp (girls)'
-                    price={1500}
-                    details={[
-                        'Basketball, Water and Training Supplies',
-                        'Certfied Atletic trainers',
-                        'Availability of Shuttles',
-                        'NCAA Certified Checklist',
-                    ]}
-                    date={{ from: '3rd Sep', to: '4th Sep' }}
-                    which={3}
-                />
+                {EVENTDATA.map((item) => (
+                    <Event key={item.heading} {...item} />)
+                )}
+                
             </div>
         </div>
     )
