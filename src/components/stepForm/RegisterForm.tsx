@@ -66,7 +66,7 @@ export type handleInputProps = {
     institutionYearOfStudy: string
     birthDate: Date | null
 }
-export default function Checkout() {
+export default function RegisterForm() {
     const [otp, setOtp] = useState<string>('')
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)

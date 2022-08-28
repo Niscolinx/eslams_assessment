@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import HeroImg2 from '../../../public/hero-player.png'
-import Checkout, { ValidationError } from '../../components/stepForm/Checkout'
+import Checkout, { ValidationError } from '../../components/stepForm/RegisterForm'
 import Tilt from 'react-parallax-tilt'
 import dayjs from 'dayjs'
 
@@ -110,6 +110,7 @@ const Register = () => {
         }
 
         setLoading(false)
+        
     }
 
     return (
@@ -175,7 +176,7 @@ const Register = () => {
                     </div>
 
                     <button
-                        className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center'
+                        className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center rounded-lg'
                         type='submit'
                     >
                         {loading ? 'Loading...' : 'Login'}
