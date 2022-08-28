@@ -129,8 +129,9 @@ const Index = () => {
         setSearchValue: (searchValue:string[]) => void
     }
 
-    const context = createContext({
-
+    const context = createContext<contextTypes>({
+    searchValue: '',
+    setSearchValue: (searchValue:string[]) => {}
     })
 
 
