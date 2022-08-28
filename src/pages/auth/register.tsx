@@ -5,8 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import HeroImg2 from '../../../public/hero-player.png'
-import Checkout from '../../components/stepForm/Checkout'
+import Checkout, { ValidationError } from '../../components/stepForm/Checkout'
 import Tilt from 'react-parallax-tilt'
+import dayjs from 'dayjs'
 
 const Register = () => {
     const [loginInput, setLoginInput] = useState<{
@@ -16,6 +17,9 @@ const Register = () => {
         email: '',
         password: '',
     })
+
+    const [validationErrors, setValidationErrors] =
+        useState<ValidationError | null>()
 
     useEffect(() => {
         axios
@@ -37,8 +41,67 @@ const Register = () => {
         }))
     }
 
-    const loginInputHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    const formValidate = () => {
+        const errors = {} as ValidationError
+        const isValidMail = (e: string, cb: (checkValid: boolean) => void) => {
+            const emailRegex = new RegExp(
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            )
+
+            const isValid = emailRegex.test(e)
+
+            return cb(isValid)
+        }
+
+        for (const key in loginInput) {
+            //Validation for the first step
+
+            if (key === 'email') {
+                isValidMail(loginInput[key], (cb) => {
+                    if (!cb) {
+                        errors[key] = 'Invalid email'
+
+                        setValidationErrors(errors)
+                    }
+                })
+            }
+
+            if (key === 'password') {
+                if (loginInput[key].length < 6) {
+                    errors[key as keyof typeof loginInput] =
+                        'Password must be at least 6 characters long'
+
+                    setValidationErrors(errors)
+                }
+            }
+
+            if (
+                loginInput[key as keyof typeof loginInput] === '' ||
+                loginInput[key as keyof typeof loginInput] === null
+            ) {
+                errors[key as keyof typeof loginInput] =
+                    'This field is required'
+
+                setValidationErrors(errors)
+            }
+        }
+
+        if (Object.keys(errors).length > 0) {
+            return false
+        }
+
+        return true
+    }
+
+    // //setActiveStep(activeStep + 1)
+
+    const loginSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        const isValid = formValidate()
+
+        if (!isValid) {
+            return
+        }
     }
 
     return (
