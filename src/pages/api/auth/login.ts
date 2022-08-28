@@ -12,7 +12,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
 
     try {
         await dbConnect()
-        return res.status(500).json({ message: 'Server Error' })
+       // return res.status(500).json({ message: 'Server Error' })
         
         const user = await User.findOne({
             email,
@@ -24,9 +24,9 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         if (!user) {
             return res.status(401).json('User not found')
         }
-       // if (!bcrypt.compareSync(password, user.password)) {
-         //   return res.status(401).json('Incorrect password')
-        //}
+       if (!bcrypt.compareSync(password, user.password)) {
+           return res.status(401).json('Incorrect password')
+        }
         const token = jwt.sign(
             { userId: user._id.toString(), email: user.email },
             process.env.JWT_SECRET!
