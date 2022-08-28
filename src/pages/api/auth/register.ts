@@ -135,7 +135,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         <mj-text font-size='15px' align='center'>Your account has been activated!</mj-text>
 
         <mj-button font-size='20px' color='black' background-color='white' padding-top='30px'>
-            <a href='https://eslams-sdf.com/'>Go to Dashboard</a>
+            <a href='https://eslams-assessment.vercel.app'>Go to Dashboard</a>
         </mj-button>
 
 
