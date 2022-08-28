@@ -17,6 +17,7 @@ import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillLinkedin, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
 import { useRouter } from 'next/router'
+import axios from 'axios'
 
 const SearchBox = () => {
     return (
@@ -182,14 +183,21 @@ export default Index
 // ) {
 //     const session = await getSession(context)
 
-//     if (!session) {
-//         return {
-//             redirect: {
-//                 destination: '/auth/register',
-//                 permanent: false,
-//             },
-//         }
-//     }
+//     axios.get('/api/auth/checkAuth', {
+//         headers: {
+//             'Content-Type': 'application/json',
+//            // Authorization: 'Bearer ' + token,
+//         },
+//     })
+
+//     // if (!session) {
+//     //     return {
+//     //         redirect: {
+//     //             destination: '/auth/register',
+//     //             permanent: false,
+//     //         },
+//     //     }
+//     // }
 
 //     return {
 //         props: { session },
