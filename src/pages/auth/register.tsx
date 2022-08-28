@@ -61,10 +61,10 @@ const Register = () => {
                         </label>
 
                         <input
-                            type='text'
+                            type='email'
                             name='email'
                             id='email'
-                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
+                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7] '
                         />
                     </div>
                     <div className='header__form--item'>
@@ -76,9 +76,9 @@ const Register = () => {
                         </label>
 
                         <input
-                            type='text'
-                            name='email'
-                            id='email'
+                            type='password'
+                            name='password'
+                            id='password'
                             className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
                         />
 
