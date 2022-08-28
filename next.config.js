@@ -38,30 +38,16 @@ module.exports = {
     //     plugins: [new WindiCSSWebpackPlugin()]
     //}
 
-    webpack(config, { nextRuntime }) {
-        console.log({ nextRuntime })
+    webpack(config, {nextRuntime}) {
+        console.log({nextRuntime})
+        
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: [{ loader: '@svgr/webpack', options: { icons: true } }],
+        })
 
-        if (nextRuntime === 'edge') {
-            console.log('running 1', nextRuntime)
-            return {
-                ...config,
-                entry() {
-                    return config.entry().then((entry) => ({
-                        ...entry,
-                        cli: path.resolve(process.cwd(), './src/pages/middleware.ts'),
-                    }))
-                },
-            }
-        } else {
-            console.log('running 2', nextRuntime)
-            config.module.rules.push({
-                test: /\.svg$/,
-                use: [{ loader: '@svgr/webpack', options: { icons: true } }],
-            })
-
-            config.plugins.push(new WindiCSSWebpackPlugin())
-            return config
-        }
+        config.plugins.push(new WindiCSSWebpackPlugin())
+        return config
     },
     eslint: {
         ignoreDuringBuilds: true,
