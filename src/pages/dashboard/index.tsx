@@ -12,9 +12,25 @@ import Link from 'next/link'
 import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
-import { createContext } from 'react'
+import { createContext, useState, useContext } from 'react'
+
+
+type contextTypes = {
+    searchValue: string[]
+    setSearchValue: (searchValue: string[]) => void
+}
+
+const EventContext = createContext<contextTypes>({
+    searchValue: [''],
+    setSearchValue: (searchValue: string[]) => { }
+})
 
 const SearchBox = () => {
+    const { searchValue, setSearchValue } = useContext(EventContext)
+
+    console.log({searchValue})
+
+
     return (
         <div className='flex items-center gap-2'>
             <div className='hidden md:flex relative items-center '>
@@ -22,6 +38,8 @@ const SearchBox = () => {
                 <input
                     type='text'
                     placeholder='Search'
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(['sfd'])}
                     className='rounded-3xl py-2 px-3 pl-10 w-80 outline-none border-none'
                 />
             </div>
@@ -122,21 +140,15 @@ function Footer() {
 }
 
 const Index = () => {
-    type contextTypes = {
-        searchValue: string
-        setSearchValue: (searchValue: string[]) => void
-    }
+    const [searchValue, setSearchValue] = useState(['hello'])
 
-    const EventContext = createContext<contextTypes>({
-        searchValue: '',
-        setSearchValue: (searchValue: string[]) => {},
-    })
+    
 
     return (
         <EventContext.Provider
             value={{
-                searchValue: '',
-                setSearchValue: (searchValue: string[]) => {},
+                searchValue,
+                setSearchValue,
             }}
         >
             <div className='marketplace'>
