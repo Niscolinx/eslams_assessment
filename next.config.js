@@ -39,7 +39,6 @@ module.exports = {
     //}
 
     webpack(config, {nextRuntime}) {
-        console.log({nextRuntime})
         
         config.module.rules.push({
             test: /\.svg$/,
