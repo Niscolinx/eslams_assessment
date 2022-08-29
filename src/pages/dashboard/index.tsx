@@ -321,7 +321,6 @@ const Index = () => {
     }
 
     const handleFilter = (e: any) => {
-        console.log('trigger')
         const filtered = {
             age,
             location,
@@ -333,6 +332,8 @@ const Index = () => {
 
         handleClose(e)
     }
+
+    console.log('price range', priceRange)
     return (
         <EventContext.Provider
             value={{
@@ -576,7 +577,7 @@ const Index = () => {
                                 aria-label='price range'
                                 name='price-range'
                                 //value={priceRange}
-                                onChange={(e) => console.log({e})}
+                                onChange={(e) => setPriceRange(e.target.value)}
                                 defaultValue={10}
                                 min={10}
                                 max={100000}
