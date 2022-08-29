@@ -26,7 +26,6 @@ const EVENTDATA: EventProps[] = [
             {
                 'Registration Requirements': [
                     '18 and Above',
-                    'Individual Registration',
                 ],
             },
         ],
@@ -41,7 +40,7 @@ const EVENTDATA: EventProps[] = [
         details: [
             { Age: '21' },
             { 'Competition Type': 'single elimination' },
-            { location: 'USA' },
+            { location: 'Canada' },
             {
                 'Registration Requirements': [
                     '18 and Above',
@@ -82,11 +81,10 @@ const EVENTDATA: EventProps[] = [
         details: [
             { Age: '23' },
             { 'Competition Type': 'multilevel' },
-            { location: 'USA' },
+            { location: 'Mexico' },
             {
                 'Registration Requirements': [
-                    '18 and Above',
-                    'Individual Registration',
+                    'Group Registration',
                 ],
             },
         ],
@@ -102,10 +100,9 @@ const EVENTDATA: EventProps[] = [
         details: [
             { Age: '32' },
             { 'Competition Type': 'multilevel' },
-            { location: 'USA' },
+            { location: 'Canada' },
             {
                 'Registration Requirements': [
-                    '18 and Above',
                     'Individual Registration',
                 ],
             },
@@ -121,11 +118,11 @@ const EVENTDATA: EventProps[] = [
         details: [
             { Age: '18' },
             { 'Competition Type': 'single elimination' },
-            { location: 'USA' },
+            { location: 'Mexico' },
             {
                 'Registration Requirements': [
                     '18 and Above',
-                    'Individual Registration',
+                    'Group Registration',
                 ],
             },
         ],
