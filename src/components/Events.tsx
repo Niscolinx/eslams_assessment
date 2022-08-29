@@ -170,7 +170,6 @@ const Event = ({
                         details.map((item, i) => {
                             const [key, value] = Object.entries(item)[0]
 
-                            console.log(Array.isArray(value))
                             return (
                                 <ul key={i} className='event__details--list '>
                                     <div
@@ -187,7 +186,7 @@ const Event = ({
                                             Array.isArray(value) ? (
                                                 <span className='font-medium'>
                                                     {value.map((item) => (
-                                                        <li key={item} className='border'>
+                                                        <li key={item} className={`event__details--list-${which}`}>
                                                             {item}
                                                         </li>
                                                     ))}
