@@ -177,7 +177,10 @@ const Index = () => {
             }}
         >
             <div className='marketplace'>
-                <dialog className={`filterDialog ${toggleModal ? 'grid' : '!hidden'}`} id='filterDialog'>
+                <dialog
+                    className={` ${toggleModal ? 'filterDialog' : '!hidden'}`}
+                    id='filterDialog'
+                >
                     <form
                         id='register'
                         className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2 gap-6 md:(w-2/5 mx-auto)'
@@ -200,7 +203,7 @@ const Index = () => {
                                         className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
                                         id='username'
                                         name='username'
-                                        disabled
+                                        
                                         type='text'
                                         minLength={4}
                                         value={user}
