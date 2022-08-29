@@ -145,7 +145,7 @@ const Event = ({
     which,
 }: EventProps) => {
     return (
-        <div className='event sm:w-[auto] md:w-[250px] lg:w-[350px]'>
+        <div className='event md:w-[250px] lg:w-[350px]'>
             <div className='event__side event__side--front'>
                 <div className={`event__picture event__picture--${which}`}>
                     <div className='event__picture--date'>
@@ -234,8 +234,6 @@ const Event = ({
 
 function Events() {
     const { searchValue } = useContext(EventContext)
-
-    console.log({ searchValue })
     return (
         <div className='p-8 events'>
             <div className='events__heading'>
