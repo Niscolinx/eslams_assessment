@@ -73,7 +73,6 @@ const competitionType = [
     'round robin tripple split',
 
 ]
-const names = ['']
 
 const RegistrationRequirements = [
     'Individual Registration',
@@ -358,7 +357,7 @@ const Index = () => {
                                     )}
                                     MenuProps={MenuProps}
                                 >
-                                    {names.map((name) => (
+                                    {locations.map((name) => (
                                         <MenuItem
                                             key={name}
                                             value={name}
@@ -379,14 +378,14 @@ const Index = () => {
                                 </InputLabel>
                                 <Select
                                     labelId='age-label'
-                                    id='demo-multiple-location'
+                                    id='multiple-age'
                                     multiple
                                     value={age}
                                     onChange={handleChange}
                                     input={
                                         <OutlinedInput
-                                            id='select-multiple-age'
-                                            label='location'
+                                            id='select-age'
+                                            label='Age'
                                         />
                                     }
                                     renderValue={(selected) => (
@@ -407,7 +406,7 @@ const Index = () => {
                                     )}
                                     MenuProps={MenuProps}
                                 >
-                                    {names.map((name) => (
+                                    {ageRange.map((name) => (
                                         <MenuItem
                                             key={name}
                                             value={name}
@@ -452,7 +451,7 @@ const Index = () => {
                                     )}
                                     MenuProps={MenuProps}
                                 >
-                                    {names.map((name) => (
+                                    {competitionType.map((name) => (
                                         <MenuItem
                                             key={name}
                                             value={name}
@@ -503,7 +502,7 @@ const Index = () => {
                                     )}
                                     MenuProps={MenuProps}
                                 >
-                                    {names.map((name) => (
+                                    {registrationRequirement.map((name) => (
                                         <MenuItem
                                             key={name}
                                             value={name}
