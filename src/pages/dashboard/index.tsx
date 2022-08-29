@@ -13,7 +13,7 @@ import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
 import { GrFormClose } from 'react-icons/gr'
-import React, { createContext, useState, useContext, useEffect } from 'react'
+import React, { createContext, useState, useContext, useEffect, useRef } from 'react'
 
 import { Theme, useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
@@ -256,6 +256,9 @@ const Index = () => {
         },
     })
 
+            const ref = useRef<number | number[]>()
+
+
     const handleClickOpen = () => {
         setOpen(true)
     }
@@ -304,15 +307,19 @@ const Index = () => {
         }
     }
 
-    let committedValue: number | number[] = 0 
-
-    const priceValue = (value: number | number[]) => {
+        let committedValue:any = []
+    function priceValue(this: any, value: number | number[]){
         console.log({value})
-        committedValue = value
-       return value
+        committedValue.push(value)
+
+        ref.current = value
+      
+        localStorage.setItem('priceRange', JSON.stringify(committedValue))
+    
+       return committedValue
     }
 
-    console.log({committedValue})
+    console.log({committedValue, ref})
 
     useEffect(() => {
         console.log('price range function', committedValue)
