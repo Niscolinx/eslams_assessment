@@ -24,9 +24,7 @@ const EVENTDATA: EventProps[] = [
             { 'Competition Type': 'round robin triple split' },
             { location: 'USA' },
             {
-                'Registration Requirements': [
-                    '18 and Above',
-                ],
+                'Registration Requirements': ['18 and Above'],
             },
         ],
         date: {
@@ -83,9 +81,7 @@ const EVENTDATA: EventProps[] = [
             { 'Competition Type': 'multilevel' },
             { location: 'Mexico' },
             {
-                'Registration Requirements': [
-                    'Group Registration',
-                ],
+                'Registration Requirements': ['Group Registration'],
             },
         ],
         date: {
@@ -102,9 +98,7 @@ const EVENTDATA: EventProps[] = [
             { 'Competition Type': 'multilevel' },
             { location: 'Canada' },
             {
-                'Registration Requirements': [
-                    'Individual Registration',
-                ],
+                'Registration Requirements': ['Individual Registration'],
             },
         ],
         date: {
@@ -230,47 +224,48 @@ const Event = ({
 }
 
 function Events() {
-
-    const {
-        searchValue,
-        showFilteredData
-    } = useContext(EventContext)
+    const { searchValue, showFilteredData } = useContext(EventContext)
 
     useEffect(() => {
-       
-        //console.log(showFilteredData)
+        console.log(showFilteredData)
 
-        if(showFilteredData.Age){
+        if (showFilteredData.Age) {
             Object.values(showFilteredData.Age).map((eachGroup) => {
-                if(eachGroup.includes('-')){
-                    const [min, max] = eachGroup.split('-')
-                    const minAge = parseInt(min)
-                    const maxAge = parseInt(max)
-                    console.log('minmax', minAge, maxAge)
+                const [min, max] = eachGroup.split('-')
+                const minAge = parseInt(min)
+                const maxAge = parseInt(max)
+                console.log('minmax', minAge, maxAge)
 
-                    EVENTDATA.map((eachEvent) => {
-                        let eventAge = Number(eachEvent.details[0].Age)
-                            if(eventAge >= minAge && eventAge <= maxAge){
-                                console.log({eachEvent})
-                            }
-                        
-                    })
-                }
-                
+                EVENTDATA.map((eachEvent) => {
+                    let eventAge = Number(eachEvent.details[0].Age)
+                    if (eventAge >= minAge && eventAge <= maxAge) {
+                        console.log({ eachEvent })
+                    }
+                })
             })
-          
-            
+        }
 
+        if(showFilteredData['Competition Type']){
+            Object.values(showFilteredData['Competition Type']).map((eachGroup) => {    
+                console.log({eachGroup})
+
+                EVENTDATA.map((eachEvent) => {
+                    let eventCompetitionType = eachEvent.details[1]['Competition Type']
+                    if (eventCompetitionType === eachGroup) {
+                        console.log('competition type', { eachEvent })
+                    }
+                })
+
+            })
         }
 
         EVENTDATA.filter((val) => {
             const filteredArr = Object.entries(showFilteredData)
 
             //console.log({filteredArr})
-            if(val.price ){}
+            if (val.price) {
+            }
         })
-
-
     }, [showFilteredData])
 
     return (
