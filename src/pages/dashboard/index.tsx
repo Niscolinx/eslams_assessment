@@ -311,8 +311,8 @@ const Index = () => {
         }
     }
 
-    const priceValue =(value: number | number[]) => {
-       return ref.current = value
+    const priceValue = (value: number | number[]) => {
+        return (ref.current = value)
     }
 
     console.log(ref.current)
@@ -326,11 +326,11 @@ const Index = () => {
 
     const handleFilter = (e: any) => {
         const filtered = {
-            age,
             location,
-            competitionType,
-            registrationRequirement,
             priceRange: ref.current,
+            Age: age,
+            'Competition Type': competitionType,
+            'Registration Requirements': registrationRequirement,
         }
 
         setShowFilteredData({ filtered })
@@ -579,7 +579,7 @@ const Index = () => {
                             <PriceSlider
                                 valueLabelDisplay='auto'
                                 //onChange={(_,value) => setPriceRange( value)}
-                                onChangeCommitted={(e, value) =>
+                                onChangeCommitted={(_, value) =>
                                     priceValue(value)
                                 }
                                 defaultValue={10}
