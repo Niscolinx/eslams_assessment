@@ -204,7 +204,7 @@ const Index = () => {
 
     const [open, setOpen] = useState(false)
 
-    const PrettoSlider = styled(Slider)({
+    const PriceSlider = styled(Slider)({
         color: '#D0E069',
         height: 5,
         '& .MuiSlider-track': {
@@ -267,6 +267,7 @@ const Index = () => {
     >([])
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
+        console.log(event.target)
         const {
             target: { value },
         } = event
@@ -325,6 +326,7 @@ const Index = () => {
                                     id='location'
                                     multiple
                                     value={location}
+                                    name='location'
                                     onChange={handleChange}
                                     input={
                                         <OutlinedInput
@@ -374,6 +376,7 @@ const Index = () => {
                                     id='multiple-age'
                                     multiple
                                     value={age}
+                                    name='age'
                                     onChange={handleChange}
                                     input={
                                         <OutlinedInput
@@ -417,6 +420,7 @@ const Index = () => {
                                 <Select
                                     labelId='competition-type-label'
                                     id='competition-type'
+                                    name='competition-type'
                                     multiple
                                     value={competitionType}
                                     onChange={handleChange}
@@ -471,6 +475,7 @@ const Index = () => {
                                     multiple
                                     value={registrationRequirement}
                                     onChange={handleChange}
+                                    name='registration-requirements'
                                     input={
                                         <OutlinedInput
                                             id='select-registration-requirements'
@@ -514,7 +519,7 @@ const Index = () => {
                             <Typography gutterBottom className='mt-5'>
                                 Price Range
                             </Typography>
-                            <PrettoSlider
+                            <PriceSlider
                                 valueLabelDisplay='auto'
                                 aria-label='pretto slider'
                                 name='pretto'
