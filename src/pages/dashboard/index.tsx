@@ -47,7 +47,7 @@ type contextTypes = {
     location: string | string[]
     competitionType: string | string[]
     registrationRequirement: string | string[]
-  
+
     showFilteredData: {
         [key: string]: string | string[]
     }
@@ -288,7 +288,6 @@ const Index = () => {
     // })
     const [showFilteredData, setShowFilteredData] = useState<any>()
 
-
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const {
             target: { value, name },
@@ -310,7 +309,6 @@ const Index = () => {
                 typeof value === 'string' ? value.split(',') : value
             )
         }
-       
     }
 
     const handleReset = () => {
@@ -325,19 +323,17 @@ const Index = () => {
             age,
             location,
             competitionType,
-            registrationRequirement
+            registrationRequirement,
+            priceRange,
         }
-    
-        setShowFilteredData({filtered})
+
+        setShowFilteredData({ filtered })
 
         handleClose(e)
     }
 
     console.log('price range', priceRange)
 
-    const handlePriceFilter = (event: Event, value: number | number[]) => {
-        console.log({value })
-    }
     return (
         <EventContext.Provider
             value={{
@@ -580,9 +576,7 @@ const Index = () => {
                                 valueLabelDisplay='auto'
                                 aria-label='price range'
                                 name='price-range'
-                                //value={priceRange}
-                                onChange={handlePriceFilter}
-                                defaultValue={10}
+                               onChangeCommitted={(e,value) => setPriceRange( value)}
                                 min={10}
                                 max={100000}
                             />
