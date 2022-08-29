@@ -238,10 +238,18 @@ function Events() {
 
     useEffect(() => {
        
-        console.log(showFilteredData)
+        //console.log(showFilteredData)
 
         if(showFilteredData.Age){
-            console.log(Object.keys(showFilteredData.Age))
+            console.log(Object.values(showFilteredData.Age).forEach((eachGroup) => {
+                if(eachGroup.includes('-')){
+                    const [min, max] = eachGroup.split('-')
+                    console.log(min, max)
+                }
+                else{
+                    console.log(eachGroup)
+                }
+            }))
           
             
 
@@ -250,7 +258,7 @@ function Events() {
         EVENTDATA.filter((val) => {
             const filteredArr = Object.entries(showFilteredData)
 
-            console.log({filteredArr})
+            //console.log({filteredArr})
             if(val.price ){}
         })
 
@@ -266,7 +274,7 @@ function Events() {
             </div>
             <div className='events__container'>
                 {EVENTDATA.map((item) => {
-                    console.log(item.details)
+                    //console.log(item.details)
                     return item.heading.toLowerCase().includes(searchValue) ? (
                         <Event key={item.heading} {...item} />
                     ) : null
