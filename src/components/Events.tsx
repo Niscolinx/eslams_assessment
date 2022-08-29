@@ -286,10 +286,16 @@ function Events() {
         }
 
         if (showFilteredData.priceRange) {
-            Object.values(showFilteredData.priceRange).map((eachGroup) => {
-                console.log({eachGroup})
-               
-        })}
+            const values = showFilteredData.priceRange
+            const left = values[0]
+            const right = values[1]
+            EVENTDATA.map((eachEvent) => {
+                let eventPrice = eachEvent.price
+                if (eventPrice >= Number(left) && eventPrice <= Number(right)) {
+                     console.log('price range', { eachEvent })
+                }
+            })
+        }
 
         EVENTDATA.filter((val) => {
             const filteredArr = Object.entries(showFilteredData)
