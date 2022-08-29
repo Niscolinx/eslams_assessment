@@ -292,7 +292,7 @@ function Events() {
             EVENTDATA.map((eachEvent) => {
                 let eventPrice = eachEvent.price
                 if (eventPrice >= Number(left) && eventPrice <= Number(right)) {
-                     console.log('price range', { eachEvent })
+                    // console.log('price range', { eachEvent })
                 }
             })
         }
