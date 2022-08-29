@@ -71,7 +71,6 @@ const COMPETITIONTYPE = [
     'single Elemination',
     'semi-round robins',
     'round robin tripple split',
-
 ]
 
 const REGISTRATIONREQUIREMENTS = [
@@ -269,18 +268,27 @@ const Index = () => {
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         console.log(event.target)
         const {
-            target: { value },
+            target: { value, name },
         } = event
-        setAge(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value
-        )
-    }
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-    }
 
-
+        if (name === 'age') {
+            setAge(typeof value === 'string' ? value.split(',') : value)
+        }
+        if (name === 'location') {
+            setLocation(typeof value === 'string' ? value.split(',') : value)
+        }
+        if (name === 'competition-type') {
+            setCompetitionType(
+                typeof value === 'string' ? value.split(',') : value
+            )
+        }
+        if (name === 'registration-requirements') {
+            setRegistrationRequirement(
+                typeof value === 'string' ? value.split(',') : value
+            )
+        }
+    }
+   
 
     return (
         <EventContext.Provider
@@ -593,4 +601,3 @@ const Index = () => {
 }
 
 export default Index
-
