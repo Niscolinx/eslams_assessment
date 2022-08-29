@@ -569,7 +569,7 @@ const Index = () => {
                                 onChangeCommitted={(_, value) =>
                                     priceValue(value)
                                 }
-                                defaultValue={10}
+                                defaultValue={[10, 100000]}
                                 min={10}
                                 max={100000}
                             />

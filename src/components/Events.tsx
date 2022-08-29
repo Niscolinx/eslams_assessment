@@ -230,7 +230,7 @@ const Event = ({
 }
 
 function Events() {
-    
+
     const {
         searchValue,
         showFilteredData
@@ -239,6 +239,8 @@ function Events() {
     useEffect(() => {
        
         console.log({showFilteredData})
+
+        
 
 
     }, [showFilteredData])
