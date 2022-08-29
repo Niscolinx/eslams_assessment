@@ -230,6 +230,7 @@ const Event = ({
 }
 
 function Events() {
+    
     const {
         searchValue,
         showFilteredData
@@ -239,9 +240,6 @@ function Events() {
        
         console.log({showFilteredData})
 
-        const filteredData = ''
-
-        console.log('filteres', filteredData)
 
     }, [showFilteredData])
 
