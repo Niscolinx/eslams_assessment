@@ -74,7 +74,7 @@ const MenuProps = {
     },
 }
 
-const AGERANGE = ['10', '11-20', '21-30', '31-40']
+const AGERANGE = ['0-10', '11-20', '21-30', '31-40']
 
 const LOCATIONS = ['USA', 'Canada', 'Mexico']
 
@@ -225,7 +225,7 @@ const Index = () => {
     const [showFilteredData, setShowFilteredData] = useState<any>({
         location: ['USA'],
         priceRange: [20, 5323],
-        Age: ['10', '11-20', '21-30', '31-40'],
+        Age: ['0-10', '11-20', '21-30', '31-40'],
         'Competition Type': ['multilevel', 'single Elemination'],
         'Registration Requirements': ['Individual Registration'],
     })

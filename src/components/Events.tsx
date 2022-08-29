@@ -241,11 +241,12 @@ function Events() {
         //console.log(showFilteredData)
 
         if(showFilteredData.Age){
-            Object.values(showFilteredData.Age).forEach((eachGroup) => {
+            Object.values(showFilteredData.Age).map((eachGroup) => {
                 if(eachGroup.includes('-')){
                     const [min, max] = eachGroup.split('-')
                     const minAge = parseInt(min)
                     const maxAge = parseInt(max)
+                    console.log(minAge, maxAge)
                 }
                 else{
                     const age = parseInt(eachGroup)
