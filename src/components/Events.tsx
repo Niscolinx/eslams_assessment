@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { EventContext } from '../pages/dashboard'
 
-
 interface EventProps {
     heading: string
     details: {
@@ -225,10 +224,19 @@ const Event = ({
 
 function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
-    const [filteredData, setFilteredData] = useState<any>()
+    const [filteredData, setFilteredData] = useState<any>(<div>hello</div>)
 
     useEffect(() => {
-        console.log(showFilteredData)
+        //<Event key={item.heading} {...item} />
+
+        if (searchValue) {
+            EVENTDATA.map((item) => {
+                //console.log(item.details)
+                if (item.heading.toLowerCase().includes(searchValue)) {
+                    //setFilteredData(item)
+                }
+            })
+        }
 
         if (showFilteredData.Age) {
             Object.values(showFilteredData.Age).map((eachGroup) => {
@@ -240,6 +248,9 @@ function Events() {
                     let eventAge = Number(eachEvent.details[0].Age)
                     if (eventAge >= minAge && eventAge <= maxAge) {
                         //console.log({ eachEvent })
+                        setFilteredData((prevState: any) => {
+                            // return [...prevState, eachEvent]
+                        })
                     }
                 })
             })
@@ -297,15 +308,9 @@ function Events() {
                 }
             })
         }
-
-        EVENTDATA.filter((val) => {
-            const filteredArr = Object.entries(showFilteredData)
-
-            //console.log({filteredArr})
-            if (val.price) {
-            }
-        })
     }, [showFilteredData])
+
+    console.log('filteredData', filteredData)
 
     return (
         <div className='p-8 events'>
@@ -316,10 +321,7 @@ function Events() {
             </div>
             <div className='events__container'>
                 {EVENTDATA.map((item) => {
-                    //console.log(item.details)
-                    return item.heading.toLowerCase().includes(searchValue) ? (
-                        <Event key={item.heading} {...item} />
-                    ) : null
+                    return <Event key={item.heading} {...item} />
                 })}
             </div>
         </div>
