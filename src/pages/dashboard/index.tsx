@@ -420,7 +420,7 @@ const Index = () => {
                             </FormControl>
                             <FormControl sx={{ m: 1, width: 300 }}>
                                 <InputLabel id='competition-type-label'>
-                                    <div className='flex'>Location</div>
+                                    <div className='flex'>Competition Type</div>
                                 </InputLabel>
                                 <Select
                                     labelId='competition-type-label'
