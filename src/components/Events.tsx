@@ -19,12 +19,17 @@ const EVENTDATA: EventProps[] = [
     {
         heading: 'USA BASKETBALL SHOWCASE',
         price: 1200,
-        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
-            'Registration Requirements':[
-                '18 and Above',
-                'Individual Registration',
-            ]
-        }],
+        details: [
+            { Age: '21' },
+            { 'Competition Type': 'single elimination' },
+            { location: 'USA' },
+            {
+                'Registration Requirements': [
+                    '18 and Above',
+                    'Individual Registration',
+                ],
+            },
+        ],
         date: {
             from: '10th Sep',
         },
@@ -33,12 +38,17 @@ const EVENTDATA: EventProps[] = [
     {
         heading: '2022 FIBA AmeriCup for Men',
         price: 1500,
-        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
-            'Registration Requirements':[
-                '18 and Above',
-                'Individual Registration',
-            ]
-        }],
+        details: [
+            { Age: '21' },
+            { 'Competition Type': 'single elimination' },
+            { location: 'USA' },
+            {
+                'Registration Requirements': [
+                    '18 and Above',
+                    'Individual Registration',
+                ],
+            },
+        ],
         date: {
             from: '5th Oct',
             to: '9th Oct',
@@ -48,12 +58,17 @@ const EVENTDATA: EventProps[] = [
     {
         heading: 'FIBA 3x3 U23 World Cup (women)',
         price: 1600,
-        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
-            'Registration Requirements':[
-                '18 and Above',
-                'Individual Registration',
-            ]
-        }],
+        details: [
+            { Age: '21' },
+            { 'Competition Type': 'single elimination' },
+            { location: 'USA' },
+            {
+                'Registration Requirements': [
+                    '18 and Above',
+                    'Individual Registration',
+                ],
+            },
+        ],
         date: {
             from: '2nd Sep',
             to: '11th Sep',
@@ -63,12 +78,17 @@ const EVENTDATA: EventProps[] = [
     {
         heading: '2022 USA Basketball Gold Camp (boys)',
         price: 999,
-        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
-            'Registration Requirements':[
-                '18 and Above',
-                'Individual Registration',
-            ]
-        }],
+        details: [
+            { Age: '21' },
+            { 'Competition Type': 'single elimination' },
+            { location: 'USA' },
+            {
+                'Registration Requirements': [
+                    '18 and Above',
+                    'Individual Registration',
+                ],
+            },
+        ],
         date: {
             from: '4th Sep',
             to: '5th Sep',
@@ -78,12 +98,17 @@ const EVENTDATA: EventProps[] = [
     {
         heading: '2022 USA Basketball Coach Academy',
         price: 1090,
-        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
-            'Registration Requirements':[
-                '18 and Above',
-                'Individual Registration',
-            ]
-        }],
+        details: [
+            { Age: '21' },
+            { 'Competition Type': 'single elimination' },
+            { location: 'USA' },
+            {
+                'Registration Requirements': [
+                    '18 and Above',
+                    'Individual Registration',
+                ],
+            },
+        ],
         date: {
             from: '9th Sep',
         },
@@ -92,12 +117,17 @@ const EVENTDATA: EventProps[] = [
     {
         heading: '2022 USA Basketball Gold Camp (girls)',
         price: 1100,
-        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
-            'Registration Requirements':[
-                '18 and Above',
-                'Individual Registration',
-            ]
-        }],
+        details: [
+            { Age: '21' },
+            { 'Competition Type': 'single elimination' },
+            { location: 'USA' },
+            {
+                'Registration Requirements': [
+                    '18 and Above',
+                    'Individual Registration',
+                ],
+            },
+        ],
         date: {
             from: '3rd Sep',
             to: '4th Sep',
@@ -139,12 +169,30 @@ const Event = ({
                         details.map((item, i) => {
                             const [key, value] = Object.entries(item)[0]
 
-                            console.log(value)
+                            console.log(Array.isArray(value))
                             return (
                                 <ul key={i}>
-                                    <li><span>{key}</span>: <span>{ key === 'Registration Requirements'? '' : value}</span></li>
+                                    <li>
+                                        <span>{key}</span>:{' '}
+                                        <span>
+                                            {key ===
+                                                'Registration Requirements' &&
+                                            Array.isArray(value) ? (
+                                                <span>
+                                                    {value.map((item) => (
+                                                        <li key={item}>
+                                                            {item}
+                                                        </li>
+                                                    ))}
+                                                </span>
+                                            ) : (
+                                                value
+                                            )}
+                                        </span>
+                                    </li>
                                 </ul>
-                            )})}
+                            )
+                        })}
                     <ul></ul>
                 </div>
             </div>
