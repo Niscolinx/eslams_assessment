@@ -230,8 +230,8 @@
         &--1 {
             background-image: linear-gradient(
                 to right bottom,
-                rgba($color-secondary-light, 0.85),
-                rgba($color-secondary-dark, 0.85)
+                $color-secondary-light,
+                $color-secondary-dark
             );
         }
 
@@ -272,6 +272,8 @@
             }
 
             &-1 {
+                color: white;
+                border-radius: 1rem;
                 background: linear-gradient(
                     to right bottom,
                     $color-secondary-light,
@@ -279,17 +281,21 @@
                 );
             }
             &-2 {
+                color: white;
+                border-radius: 1rem;
                 background: linear-gradient(
                     to right bottom,
-                    $color-secondary-light,
-                    $color-secondary-dark
+                    $color-primary-light,
+                    $color-primary-dark
                 );
             }
             &-3 {
+                color: black;
+                border-radius: 1rem;
                 background: linear-gradient(
                     to right bottom,
-                    $color-secondary-light,
-                    $color-secondary-dark
+                    $color-tertiary-light,
+                    $color-tertiary-dark
                 );
             }
         }
