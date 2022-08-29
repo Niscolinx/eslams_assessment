@@ -232,11 +232,12 @@ const Event = ({
 function Events() {
     const {
         searchValue,
-        filteredData
+        filteredData,
+        showFilteredData
     } = useContext(EventContext)
 
 
-    console.log({ filteredData})
+    console.log({ filteredData, showFilteredData})
     return (
         <div className='p-8 events'>
             <div className='events__heading'>

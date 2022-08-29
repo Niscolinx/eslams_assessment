@@ -50,6 +50,7 @@ type contextTypes = {
     filteredData: {
         [key: string]: string | string[]
     }
+    showFilteredData: boolean
 }
 
 export const EventContext = createContext<contextTypes>({
@@ -60,6 +61,7 @@ export const EventContext = createContext<contextTypes>({
     registrationRequirement: '',
     handleClickOpen: () => {},
     filteredData: {},
+    showFilteredData: false,
     setSearchValue: (searchValue: string) => {},
 })
 
@@ -284,6 +286,7 @@ const Index = () => {
         competitionType: [''],
         registrationRequirement: [''],
     })
+    const [showFilteredData, setShowFilteredData] = useState(false)
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const {
@@ -316,13 +319,8 @@ const Index = () => {
     }
 
     const handleFilter = (e: any) => {
-        setFilteredData({
-            age,
-            location,
-            competitionType,
-            registrationRequirement,
-        })
-
+    
+        setShowFilteredData(true)
         handleClose(e)
     }
     return (
@@ -332,6 +330,7 @@ const Index = () => {
                 setSearchValue,
                 handleClickOpen,
                 age,
+                showFilteredData,
                 location,
                 competitionType,
                 filteredData,
