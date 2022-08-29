@@ -312,6 +312,155 @@ const Index = () => {
                                     ))}
                                 </Select>
                             </FormControl>
+                            <FormControl sx={{ m: 1, width: 300 }}>
+                                <InputLabel id='demo-multiple-location-label'>
+                                    <div className='flex'>Location</div>
+                                </InputLabel>
+                                <Select
+                                    labelId='demo-multiple-location-label'
+                                    id='demo-multiple-location'
+                                    multiple
+                                    value={personName}
+                                    onChange={handleChange}
+                                    input={
+                                        <OutlinedInput
+                                            id='select-multiple-location'
+                                            label='location'
+                                        />
+                                    }
+                                    renderValue={(selected) => (
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                gap: 0.5,
+                                            }}
+                                        >
+                                            {selected.map((value) => (
+                                                <Chip
+                                                    key={value}
+                                                    label={value}
+                                                />
+                                            ))}
+                                        </Box>
+                                    )}
+                                    MenuProps={MenuProps}
+                                >
+                                    {names.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(
+                                                name,
+                                                personName,
+                                                theme
+                                            )}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                            <FormControl sx={{ m: 1, width: 300 }}>
+                                <InputLabel id='demo-multiple-location-label'>
+                                    <div className='flex'>Location</div>
+                                </InputLabel>
+                                <Select
+                                    labelId='demo-multiple-location-label'
+                                    id='demo-multiple-location'
+                                    multiple
+                                    value={personName}
+                                    onChange={handleChange}
+                                    input={
+                                        <OutlinedInput
+                                            id='select-multiple-location'
+                                            label='location'
+                                        />
+                                    }
+                                    renderValue={(selected) => (
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                gap: 0.5,
+                                            }}
+                                        >
+                                            {selected.map((value) => (
+                                                <Chip
+                                                    key={value}
+                                                    label={value}
+                                                />
+                                            ))}
+                                        </Box>
+                                    )}
+                                    MenuProps={MenuProps}
+                                >
+                                    {names.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(
+                                                name,
+                                                personName,
+                                                theme
+                                            )}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                            <FormControl sx={{ m: 1, width: 300 }}>
+                                <InputLabel id='registration-requirements-label'>
+                                    <div className='flex'>
+                                        Registration Requirements
+                                    </div>
+                                </InputLabel>
+                                <Select
+                                    labelId='registration-requirements-label'
+                                    id='registration-requirements'
+                                    multiple
+                                    value={personName}
+                                    onChange={handleChange}
+                                    input={
+                                        <OutlinedInput
+                                            id='select-registration-requirements'
+                                            label='Registration Requirements'
+                                        />
+                                    }
+                                    renderValue={(selected) => (
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                gap: 0.5,
+                                            }}
+                                        >
+                                            {selected.map((value) => (
+                                                <Chip
+                                                    key={value}
+                                                    label={value}
+                                                />
+                                            ))}
+                                        </Box>
+                                    )}
+                                    MenuProps={MenuProps}
+                                >
+                                    {names.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(
+                                                name,
+                                                personName,
+                                                theme
+                                            )}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
                         </Box>
                     </DialogContent>
                     <DialogActions>
