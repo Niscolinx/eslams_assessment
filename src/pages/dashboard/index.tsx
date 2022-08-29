@@ -208,7 +208,7 @@ const Index = () => {
         '& .MuiSlider-thumb': {
             height: 20,
             width: 20,
-            backgroundColor: 'black',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
             border: '2px solid currentColor',
             '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
                 boxShadow: 'inherit',
@@ -239,7 +239,6 @@ const Index = () => {
         },
     })
 
-
     const handleClickOpen = () => {
         setOpen(true)
     }
@@ -254,6 +253,8 @@ const Index = () => {
     }
 
     const theme = useTheme()
+    const [age, setAge] = useState<string[]>([])
+    const [location, setLocation] = useState<string[]>([])
     const [personName, setPersonName] = useState<string[]>([])
 
     const handleChange = (event: SelectChangeEvent<typeof personName>) => {
@@ -511,15 +512,16 @@ const Index = () => {
                                     ))}
                                 </Select>
                             </FormControl>
-                            <Box sx={{ m: 3 }} />
-                            <Typography gutterBottom>pretto.fr</Typography>
-                            <PrettoSlider
-                                valueLabelDisplay='auto'
-                                aria-label='pretto slider'
-                                defaultValue={20}
-                                min={10}
-                                max={100000}
-                            />
+
+                                <Typography gutterBottom className='mt-5'>Price Range</Typography>
+                                <PrettoSlider
+                                    valueLabelDisplay='auto'
+                                    aria-label='pretto slider'
+                                    name='pretto'
+                                    defaultValue={10}
+                                    min={10}
+                                    max={100000}
+                                />
                         </Box>
                     </DialogContent>
                     <DialogActions>
