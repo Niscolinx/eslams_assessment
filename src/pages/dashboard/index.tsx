@@ -14,7 +14,6 @@ import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
 import { createContext, useState, useContext } from 'react'
 
-
 type contextTypes = {
     searchValue: string
     setSearchValue: (searchValue: string) => void
@@ -22,13 +21,11 @@ type contextTypes = {
 
 export const EventContext = createContext<contextTypes>({
     searchValue: '',
-    setSearchValue: (searchValue: string) => { }
+    setSearchValue: (searchValue: string) => {},
 })
 
 const SearchBox = () => {
     const { searchValue, setSearchValue } = useContext(EventContext)
-
-
 
     return (
         <div className='flex items-center gap-2'>
@@ -84,7 +81,6 @@ const Header = () => (
     </header>
 )
 
-
 function Footer() {
     return (
         <footer className='footer'>
@@ -136,6 +132,27 @@ function Footer() {
 
 const Index = () => {
     const [searchValue, setSearchValue] = useState('')
+    const [selectedAction, setSelectedAction] =
+        useState<HTMLSelectElement | null>(null)
+
+    const user = ''
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+    }
+
+    const showModel = () => {
+        const dialog = document.querySelector('#withdrawalDialog') as any
+        dialog.showModal()
+    }
+
+    const closeModal = () => {
+        const dialog = document.querySelector('#withdrawalDialog') as any
+
+        selectedAction!.selectedIndex = 0
+
+        dialog.close()
+    }
 
     return (
         <EventContext.Provider
@@ -145,6 +162,124 @@ const Index = () => {
             }}
         >
             <div className='marketplace'>
+                <dialog className='withdrawalDialog' id='withdrawalDialog'>
+                    <form
+                        id='register'
+                        className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2 gap-6 md:(w-2/5 mx-auto)'
+                        onSubmit={handleSubmit}
+                    >
+                        <div className='mb-2'>
+                            <div className='grid'>
+                                <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
+                                    Personal
+                                </h3>
+
+                                <div>
+                                    <label
+                                        className='block text-gray-700 text-sm mb-1'
+                                        htmlFor='username'
+                                    >
+                                        Username
+                                    </label>
+                                    <input
+                                        className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
+                                        id='username'
+                                        name='username'
+                                        disabled
+                                        type='text'
+                                        minLength={4}
+                                        value={user}
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label
+                                    className='block text-gray-700 text-sm mb-1'
+                                    htmlFor='phoneNumber'
+                                >
+                                    Phone No
+                                </label>
+                                <input
+                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
+                                    id='phoneNumber'
+                                    type='number'
+                                    name='phoneNumber'
+                                    disabled
+                                    value={user}
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    className='block text-gray-700 text-sm mb-1'
+                                    htmlFor='username'
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
+                                    id='email'
+                                    type='email'
+                                    name='email'
+                                    disabled
+                                    value={user}
+                                />
+                            </div>
+                        </div>
+
+                        <div className='grid'>
+                            <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
+                                Wallet Address
+                            </h3>
+
+                            <div>
+                                <label
+                                    className='block text-gray-700 text-sm mb-1'
+                                    htmlFor='usdtAddress'
+                                >
+                                    USDT TRC20
+                                </label>
+                                <input
+                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
+                                    id='usdtAddress'
+                                    disabled
+                                    name='usdtAddress'
+                                    type='text'
+                                    minLength={15}
+                                    value={user}
+                                />
+                            </div>
+                        </div>
+                        <div className='grid'>
+                            <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
+                                Details
+                            </h3>
+
+                            <div className='grid text-black'>
+                                <div className='flex justify-between'>
+                                    <p>Verified</p>
+                                    <p>{user.toString()}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='flex justify-around'>
+                            <button
+                                className='bg-orange-300 text-[#1a1a2d] font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
+                                type='button'
+                                onClick={closeModal}
+                            >
+                                Close
+                            </button>
+                            {/* <button
+                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
+                            type='submit'
+                        >
+                            {loading ? 'Loading...' : 'Submit'}
+                        </button> */}
+                        </div>
+                    </form>
+                </dialog>
                 <div className='marketplace__container'>
                     <div className='grid relative z-3'>
                         <Header />
