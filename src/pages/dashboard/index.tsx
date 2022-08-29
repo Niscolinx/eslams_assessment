@@ -259,7 +259,7 @@ const Index = () => {
     const [competitionType, setCompetitionType] = useState<string[]>([])
     const [registrationRequirement, setRegistrationRequirement] = useState<string[]>([])
 
-    const handleChange = (event: SelectChangeEvent<>) => {
+    const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const {
             target: { value },
         } = event
@@ -324,7 +324,7 @@ const Index = () => {
                                     labelId='location-label'
                                     id='location'
                                     multiple
-                                    value={personName}
+                                    value={location}
                                     onChange={handleChange}
                                     input={
                                         <OutlinedInput
@@ -356,7 +356,7 @@ const Index = () => {
                                             value={name}
                                             style={getStyles(
                                                 name,
-                                                personName,
+                                                location,
                                                 theme
                                             )}
                                         >
@@ -366,18 +366,18 @@ const Index = () => {
                                 </Select>
                             </FormControl>
                             <FormControl sx={{ m: 1, width: 300 }}>
-                                <InputLabel id='demo-multiple-location-label'>
-                                    <div className='flex'>Location</div>
+                                <InputLabel id='age-label'>
+                                    <div className='flex'>Age</div>
                                 </InputLabel>
                                 <Select
-                                    labelId='demo-multiple-location-label'
+                                    labelId='age-label'
                                     id='demo-multiple-location'
                                     multiple
-                                    value={personName}
+                                    value={age}
                                     onChange={handleChange}
                                     input={
                                         <OutlinedInput
-                                            id='select-multiple-location'
+                                            id='select-multiple-age'
                                             label='location'
                                         />
                                     }
@@ -405,7 +405,7 @@ const Index = () => {
                                             value={name}
                                             style={getStyles(
                                                 name,
-                                                personName,
+                                                age,
                                                 theme
                                             )}
                                         >
@@ -415,19 +415,19 @@ const Index = () => {
                                 </Select>
                             </FormControl>
                             <FormControl sx={{ m: 1, width: 300 }}>
-                                <InputLabel id='demo-multiple-location-label'>
+                                <InputLabel id='competition-type-label'>
                                     <div className='flex'>Location</div>
                                 </InputLabel>
                                 <Select
-                                    labelId='demo-multiple-location-label'
-                                    id='demo-multiple-location'
+                                    labelId='competition-type-label'
+                                    id='competition-type'
                                     multiple
-                                    value={personName}
+                                    value={competitionType}
                                     onChange={handleChange}
                                     input={
                                         <OutlinedInput
-                                            id='select-multiple-location'
-                                            label='location'
+                                            id='select-multiple-competition-type'
+                                            label='Competition Type'
                                         />
                                     }
                                     renderValue={(selected) => (
@@ -454,7 +454,7 @@ const Index = () => {
                                             value={name}
                                             style={getStyles(
                                                 name,
-                                                personName,
+                                                competitionType,
                                                 theme
                                             )}
                                         >
@@ -473,7 +473,7 @@ const Index = () => {
                                     labelId='registration-requirements-label'
                                     id='registration-requirements'
                                     multiple
-                                    value={personName}
+                                    value={registrationRequirement}
                                     onChange={handleChange}
                                     input={
                                         <OutlinedInput
@@ -505,7 +505,7 @@ const Index = () => {
                                             value={name}
                                             style={getStyles(
                                                 name,
-                                                personName,
+                                                registrationRequirement,
                                                 theme
                                             )}
                                         >
