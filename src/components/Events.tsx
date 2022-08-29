@@ -60,8 +60,8 @@ const EVENTDATA: EventProps[] = [
         heading: 'FIBA 3x3 U23 World Cup (women)',
         price: 1600,
         details: [
-            { Age: '21' },
-            { 'Competition Type': 'single elimination' },
+            { Age: '15' },
+            { 'Competition Type': 'semi-round robins' },
             { location: 'USA' },
             {
                 'Registration Requirements': [
@@ -80,8 +80,8 @@ const EVENTDATA: EventProps[] = [
         heading: '2022 USA Basketball (boys)',
         price: 999,
         details: [
-            { Age: '21' },
-            { 'Competition Type': 'single elimination' },
+            { Age: '23' },
+            { 'Competition Type': 'multilevel' },
             { location: 'USA' },
             {
                 'Registration Requirements': [
@@ -100,8 +100,8 @@ const EVENTDATA: EventProps[] = [
         heading: '2022 USA Basketball Academy',
         price: 1090,
         details: [
-            { Age: '21' },
-            { 'Competition Type': 'single elimination' },
+            { Age: '32' },
+            { 'Competition Type': 'multilevel' },
             { location: 'USA' },
             {
                 'Registration Requirements': [
@@ -119,7 +119,7 @@ const EVENTDATA: EventProps[] = [
         heading: '2022 USA Basketball (girls)',
         price: 1100,
         details: [
-            { Age: '21' },
+            { Age: '18' },
             { 'Competition Type': 'single elimination' },
             { location: 'USA' },
             {
@@ -145,7 +145,7 @@ const Event = ({
     which,
 }: EventProps) => {
     return (
-        <div className='event max-w-[300px] min-w-[150px]'>
+        <div className='event max-w-[350px] min-w-[150px]'>
             <div className='event__side event__side--front'>
                 <div className={`event__picture event__picture--${which}`}>
                     <div className='event__picture--date'>
@@ -179,14 +179,27 @@ const Event = ({
                                                 : ''
                                         }
                                     >
-                                        <span>{key}</span>:
+                                        <span
+                                            className={
+                                                key ===
+                                                'Registration Requirements'
+                                                    ? 'font-medium'
+                                                    : ''
+                                            }
+                                        >
+                                            {key}
+                                        </span>
+                                        :
                                         <span className='font-medium'>
                                             {key ===
                                                 'Registration Requirements' &&
                                             Array.isArray(value) ? (
                                                 <span className='font-medium'>
                                                     {value.map((item) => (
-                                                        <li key={item} className={`event__details--list-${which}`}>
+                                                        <li
+                                                            key={item}
+                                                            className={`event__details--list-${which}`}
+                                                        >
                                                             {item}
                                                         </li>
                                                     ))}
