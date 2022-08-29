@@ -137,10 +137,12 @@ const Event = ({
                 <div className='event__details'>
                     {details.length > 0 &&
                         details.map((item, i) => {
-                            console.table(Object.values(item))
+                            const [key, value] = Object.entries(item)[0]
+
+                            console.log(value)
                             return (
                                 <ul key={i}>
-                                    <li><span>{Object.keys(item)}</span>: <span>{Object.values(item)}</span></li>
+                                    <li><span>{key}</span>: <span>{ 1 ? 'hee': value}</span></li>
                                 </ul>
                             )})}
                     <ul></ul>
