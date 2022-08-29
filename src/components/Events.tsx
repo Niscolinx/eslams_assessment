@@ -241,7 +241,7 @@ function Events() {
         console.log(showFilteredData)
 
         if(showFilteredData.Age){
-            console.log(showFilteredData.Age)
+            console.log(Object.keys(showFilteredData.Age))
           
             
 
