@@ -276,11 +276,13 @@ const Index = () => {
     const [registrationRequirement, setRegistrationRequirement] = useState<
         string[]
     >([])
-    const [filteredData, setFilteredData] = useState<{[key: string]: [string | string[]]}>({
+    const [filteredData, setFilteredData] = useState<{
+        [key: string]: [string | string[]]
+    }>({
         age: [''],
         location: [''],
         competitionType: [''],
-        registrationRequirement: ['']
+        registrationRequirement: [''],
     })
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
@@ -313,7 +315,7 @@ const Index = () => {
         setRegistrationRequirement([])
     }
 
-    const handleFilter = (e:any) => {
+    const handleFilter = (e: any) => {
         console.log(age, location, competitionType, registrationRequirement)
         handleClose(e)
     }
@@ -343,9 +345,7 @@ const Index = () => {
                     >
                         <GrFormClose className='text-3xl ' />
                     </button>
-                    <DialogTitle className='text-center'>
-                        Filters
-                    </DialogTitle>
+                    <DialogTitle className='text-center'>Filters</DialogTitle>
                     <DialogContent>
                         <Box
                             component='form'
