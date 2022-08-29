@@ -43,10 +43,18 @@ type contextTypes = {
     searchValue: string
     handleClickOpen: () => void
     setSearchValue: (searchValue: string) => void
+    age: string | string[]
+    location: string | string[]
+    competitionType: string | string[]
+    registrationRequirement: string | string[]
 }
 
 export const EventContext = createContext<contextTypes>({
     searchValue: '',
+    age: '',
+    location: '',
+    competitionType: '',
+    registrationRequirement: '',
     handleClickOpen: () => {},
     setSearchValue: (searchValue: string) => {},
 })
@@ -266,7 +274,6 @@ const Index = () => {
     >([])
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
-        console.log(event.target)
         const {
             target: { value, name },
         } = event
@@ -288,7 +295,6 @@ const Index = () => {
             )
         }
     }
-   
 
     return (
         <EventContext.Provider
@@ -296,13 +302,14 @@ const Index = () => {
                 searchValue,
                 setSearchValue,
                 handleClickOpen,
+                age,
+                location,
+                competitionType,
+                registrationRequirement,
             }}
         >
             <div className='marketplace'>
-                {/* <dialog
-                    className={` ${toggleModal ? 'filterDialog' : '!hidden'}`}
-                    id='filterDialog'
-                > */}
+               
 
                 <Dialog
                     disableEscapeKeyDown
@@ -544,18 +551,7 @@ const Index = () => {
                 </Dialog>
 
                 <div className='flex justify-around'>
-                    {/* <button
-                            className='bg-orange-300 text-[#1a1a2d] font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
-                            type='button'
-                        >
-                            Close
-                        </button> */}
-                    {/* <button
-                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
-                            type='submit'
-                        >
-                            {loading ? 'Loading...' : 'Submit'}
-                        </button> */}
+                   
                 </div>
                 {/* </dialog> */}
                 <div className='marketplace__container'>

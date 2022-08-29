@@ -230,7 +230,16 @@ const Event = ({
 }
 
 function Events() {
-    const { searchValue } = useContext(EventContext)
+    const {
+        searchValue,
+        age,
+        location,
+        competitionType,
+        registrationRequirement,
+    } = useContext(EventContext)
+
+
+    console.log({ age, location, competitionType, registrationRequirement })
     return (
         <div className='p-8 events'>
             <div className='events__heading'>
