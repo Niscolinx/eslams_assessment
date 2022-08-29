@@ -31,6 +31,10 @@ export const EventContext = createContext<contextTypes>({
 const SearchBox = () => {
     const { searchValue, setSearchValue, setToggleModal } = useContext(EventContext)
 
+    const callModalContext = () => {
+        setToggleModal(true)
+    }
+
     return (
         <div className='flex items-center gap-2'>
             <div className='hidden md:flex relative items-center '>
@@ -43,7 +47,7 @@ const SearchBox = () => {
                     className='rounded-3xl py-2 px-3 pl-10 w-80 outline-none border-none'
                 />
             </div>
-            <div className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl' onClick={(prev) => setToggleModal(!prev)}>
+            <div className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl cursor-pointer' onClick={callModalContext}>
                 <VscSettings />
                 <span className=' tracking-wide text-sm'>Filters</span>
             </div>
