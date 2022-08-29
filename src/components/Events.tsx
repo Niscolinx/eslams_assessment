@@ -246,16 +246,14 @@ function Events() {
                     const [min, max] = eachGroup.split('-')
                     const minAge = parseInt(min)
                     const maxAge = parseInt(max)
-                    console.log(minAge, maxAge)
+                    console.log('minmax', minAge, maxAge)
 
                     EVENTDATA.map((eachEvent) => {
-                        if(eachEvent.details[0].Age){
-                            console.log('details', typeof eachEvent.details[0].Age)
-                            const eventAge =  parseInt(eachEvent.details[0].Age)
-                            if(minAgeEvent >= minAge && maxAgeEvent <= maxAge){
-                                console.log(eachEvent)
+                        let eventAge = Number(eachEvent.details[0].Age)
+                            if(eventAge >= minAge && eventAge <= maxAge){
+                                console.log({eachEvent})
                             }
-                        }
+                        
                     })
                 }
                 
