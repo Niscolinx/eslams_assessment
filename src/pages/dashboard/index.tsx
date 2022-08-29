@@ -277,6 +277,7 @@ const Index = () => {
     const [registrationRequirement, setRegistrationRequirement] = useState<
         string[]
     >([])
+    const [priceRange, setPriceRange] = useState<number | number[]>(20)
     // const [filteredData, setFilteredData] = useState<{
     //     [key: string]: string | string[]
     // }>({
@@ -286,6 +287,7 @@ const Index = () => {
     //     registrationRequirement: [''],
     // })
     const [showFilteredData, setShowFilteredData] = useState<any>()
+
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const {
@@ -308,6 +310,7 @@ const Index = () => {
                 typeof value === 'string' ? value.split(',') : value
             )
         }
+       
     }
 
     const handleReset = () => {
@@ -570,8 +573,10 @@ const Index = () => {
                             </Typography>
                             <PriceSlider
                                 valueLabelDisplay='auto'
-                                aria-label='pretto slider'
-                                name='pretto'
+                                aria-label='price range'
+                                name='price-range'
+                                //value={priceRange}
+                                onChange={(e) => console.log({e})}
                                 defaultValue={10}
                                 min={10}
                                 max={100000}

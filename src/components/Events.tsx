@@ -239,6 +239,10 @@ function Events() {
        
         console.log({showFilteredData})
 
+        const filteredData = ''
+
+        console.log('filteres', filteredData)
+
     }, [showFilteredData])
 
     return (
@@ -250,6 +254,7 @@ function Events() {
             </div>
             <div className='events__container'>
                 {EVENTDATA.map((item) => {
+                    console.log(item.details)
                     return item.heading.toLowerCase().includes(searchValue) ? (
                         <Event key={item.heading} {...item} />
                     ) : null
