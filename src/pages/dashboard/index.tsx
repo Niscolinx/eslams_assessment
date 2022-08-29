@@ -48,7 +48,7 @@ type contextTypes = {
     competitionType: string | string[]
     registrationRequirement: string | string[]
     filteredData: {
-        [key: string]: [string | string[]]
+        [key: string]: string | string[]
     }
 }
 
@@ -277,7 +277,7 @@ const Index = () => {
         string[]
     >([])
     const [filteredData, setFilteredData] = useState<{
-        [key: string]: [string | string[]]
+        [key: string]: string | string[]
     }>({
         age: [''],
         location: [''],
@@ -316,7 +316,13 @@ const Index = () => {
     }
 
     const handleFilter = (e: any) => {
-        console.log(age, location, competitionType, registrationRequirement)
+        setFilteredData({
+            age,
+            location,
+            competitionType,
+            registrationRequirement,
+        })
+
         handleClose(e)
     }
     return (
