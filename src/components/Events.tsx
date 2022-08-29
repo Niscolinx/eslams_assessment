@@ -20,7 +20,7 @@ const EVENTDATA: EventProps[] = [
         heading: 'USA BASKETBALL SHOWCASE',
         price: 1200,
         details: [
-            { Age: '21' },
+            { Age: '10' },
             { 'Competition Type': 'single elimination' },
             { location: 'USA' },
             {
@@ -46,6 +46,7 @@ const EVENTDATA: EventProps[] = [
                 'Registration Requirements': [
                     '18 and Above',
                     'Individual Registration',
+                    'Group Registration',
                 ],
             },
         ],
@@ -76,7 +77,7 @@ const EVENTDATA: EventProps[] = [
         which: 3,
     },
     {
-        heading: '2022 USA Basketball Gold Camp (boys)',
+        heading: '2022 USA Basketball (boys)',
         price: 999,
         details: [
             { Age: '21' },
@@ -96,7 +97,7 @@ const EVENTDATA: EventProps[] = [
         which: 1,
     },
     {
-        heading: '2022 USA Basketball Coach Academy',
+        heading: '2022 USA Basketball Academy',
         price: 1090,
         details: [
             { Age: '21' },
@@ -115,7 +116,7 @@ const EVENTDATA: EventProps[] = [
         which: 2,
     },
     {
-        heading: '2022 USA Basketball Gold Camp (girls)',
+        heading: '2022 USA Basketball (girls)',
         price: 1100,
         details: [
             { Age: '21' },
@@ -164,21 +165,27 @@ const Event = ({
                         {heading}
                     </span>
                 </h4>
-                <div className='event__details'>
+                <div className='event__details '>
                     {details.length > 0 &&
                         details.map((item, i) => {
                             const [key, value] = Object.entries(item)[0]
 
                             console.log(Array.isArray(value))
                             return (
-                                <ul key={i}>
-                                    <li>
-                                        <span>{key}</span>:{' '}
-                                        <span>
+                                <ul key={i} className='event__details--list '>
+                                    <div
+                                        className={
+                                            key !== 'Registration Requirements'
+                                                ? 'flex gap-1 justify-items-end'
+                                                : ''
+                                        }
+                                    >
+                                        <span>{key}</span>:
+                                        <span className='font-medium'>
                                             {key ===
                                                 'Registration Requirements' &&
                                             Array.isArray(value) ? (
-                                                <span>
+                                                <span className='font-medium'>
                                                     {value.map((item) => (
                                                         <li key={item}>
                                                             {item}
@@ -189,7 +196,7 @@ const Event = ({
                                                 value
                                             )}
                                         </span>
-                                    </li>
+                                    </div>
                                 </ul>
                             )
                         })}
