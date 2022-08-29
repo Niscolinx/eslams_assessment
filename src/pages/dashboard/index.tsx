@@ -159,6 +159,7 @@ const Index = () => {
     
     useEffect(() => {
         const dialog = document.querySelector('#filterDialog') as any
+        console.log({dialog})
         if (toggleModal) {
             dialog.showModal()
         } else {
@@ -176,7 +177,7 @@ const Index = () => {
             }}
         >
             <div className='marketplace'>
-                <dialog className='filterDialog' id='filterDialog'>
+                <dialog className={`filterDialog ${toggleModal ? 'grid' : '!hidden'}`} id='filterDialog'>
                     <form
                         id='register'
                         className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2 gap-6 md:(w-2/5 mx-auto)'
