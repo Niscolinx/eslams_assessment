@@ -212,8 +212,18 @@ function Footer() {
 
 const Index = () => {
     const [searchValue, setSearchValue] = useState('')
-
     const [open, setOpen] = useState(false)
+      const theme = useTheme()
+
+    const [age, setAge] = useState<string[]>([])
+    const [location, setLocation] = useState<string[]>([])
+    const [competitionType, setCompetitionType] = useState<string[]>([])
+    const [registrationRequirement, setRegistrationRequirement] = useState<
+        string[]
+    >([])
+    
+
+    const [showFilteredData, setShowFilteredData] = useState<any>()
 
     const PriceSlider = styled(Slider)({
         color: '#D0E069',
@@ -270,16 +280,7 @@ const Index = () => {
         }
     }
 
-    const theme = useTheme()
-
-    const [age, setAge] = useState<string[]>([])
-    const [location, setLocation] = useState<string[]>([])
-    const [competitionType, setCompetitionType] = useState<string[]>([])
-    const [registrationRequirement, setRegistrationRequirement] = useState<
-        string[]
-    >([])
-
-    const [showFilteredData, setShowFilteredData] = useState<any>()
+  
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const {
@@ -324,7 +325,7 @@ const Index = () => {
             'Registration Requirements': registrationRequirement,
         }
 
-        setShowFilteredData({ filtered })
+        setShowFilteredData(filtered)
 
         handleClose(e)
     }
