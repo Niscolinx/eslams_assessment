@@ -21,7 +21,7 @@ const EVENTDATA: EventProps[] = [
         price: 12000,
         details: [
             { Age: '25' },
-            { 'Competition Type': 'round robin triple split' },
+            { 'Competition Type': 'Round Robin Triple Split' },
             { location: 'USA' },
             {
                 'Registration Requirements': ['18 and Above'],
@@ -37,7 +37,7 @@ const EVENTDATA: EventProps[] = [
         price: 1500,
         details: [
             { Age: '21' },
-            { 'Competition Type': 'single elimination' },
+            { 'Competition Type': 'Single Elimination' },
             { location: 'Canada' },
             {
                 'Registration Requirements': [
@@ -58,7 +58,7 @@ const EVENTDATA: EventProps[] = [
         price: 59000,
         details: [
             { Age: '15' },
-            { 'Competition Type': 'semi-round robins' },
+            { 'Competition Type': 'Semi-round Robins' },
             { location: 'USA' },
             {
                 'Registration Requirements': [
@@ -78,7 +78,7 @@ const EVENTDATA: EventProps[] = [
         price: 99094,
         details: [
             { Age: '23' },
-            { 'Competition Type': 'multilevel' },
+            { 'Competition Type': 'Multilevel' },
             { location: 'Mexico' },
             {
                 'Registration Requirements': ['Group Registration'],
@@ -95,7 +95,7 @@ const EVENTDATA: EventProps[] = [
         price: 11200,
         details: [
             { Age: '32' },
-            { 'Competition Type': 'multilevel' },
+            { 'Competition Type': 'Multilevel' },
             { location: 'Canada' },
             {
                 'Registration Requirements': ['Individual Registration'],
@@ -111,7 +111,7 @@ const EVENTDATA: EventProps[] = [
         price: 85070,
         details: [
             { Age: '18' },
-            { 'Competition Type': 'single elimination' },
+            { 'Competition Type': 'Single Elimination' },
             { location: 'Mexico' },
             {
                 'Registration Requirements': [
@@ -234,12 +234,11 @@ function Events() {
                 const [min, max] = eachGroup.split('-')
                 const minAge = parseInt(min)
                 const maxAge = parseInt(max)
-                console.log('minmax', minAge, maxAge)
 
                 EVENTDATA.map((eachEvent) => {
                     let eventAge = Number(eachEvent.details[0].Age)
                     if (eventAge >= minAge && eventAge <= maxAge) {
-                        console.log({ eachEvent })
+                        //console.log({ eachEvent })
                     }
                 })
             })
@@ -247,10 +246,11 @@ function Events() {
 
         if(showFilteredData['Competition Type']){
             Object.values(showFilteredData['Competition Type']).map((eachGroup) => {    
-                console.log({eachGroup})
 
                 EVENTDATA.map((eachEvent) => {
                     let eventCompetitionType = eachEvent.details[1]['Competition Type']
+
+                    console.log({eventCompetitionType, eachGroup})
                     if (eventCompetitionType === eachGroup) {
                         console.log('competition type', { eachEvent })
                     }

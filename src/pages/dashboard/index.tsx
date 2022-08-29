@@ -80,7 +80,7 @@ const LOCATIONS = ['USA', 'Canada', 'Mexico']
 
 const COMPETITIONTYPE = [
     'multilevel',
-    'single Elemination',
+    'single Elimination',
     'semi-round robins',
     'round robin tripple split',
 ]
