@@ -323,7 +323,7 @@ const Index = () => {
                     className='filterDialog'
                 >
                     <button
-                        className='flex cursor-pointer'
+                        className='flex cursor-pointer mr-auto'
                         onClick={handleClose}
                     >
                         <GrFormClose className='text-3xl ' />
@@ -554,7 +554,7 @@ const Index = () => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleReset}>Reset</Button>
-                        <Button onClick={handleClose}>Ok</Button>
+                        <Button onClick={handleFilter}>Ok</Button>
                     </DialogActions>
                 </Dialog>
 
