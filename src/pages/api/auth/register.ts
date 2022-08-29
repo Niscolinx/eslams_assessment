@@ -14,7 +14,6 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         await dbConnect()
 
         //console.log('req body', req.body)
-        console.log('register', req.body)
         const {
             firstName,
             lastName,
