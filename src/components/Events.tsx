@@ -236,6 +236,7 @@ function Events() {
     } = useContext(EventContext)
 
 
+
     console.log({ filteredData})
     return (
         <div className='p-8 events'>
