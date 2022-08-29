@@ -47,10 +47,10 @@ type contextTypes = {
     location: string | string[]
     competitionType: string | string[]
     registrationRequirement: string | string[]
-    filteredData: {
+  
+    showFilteredData: {
         [key: string]: string | string[]
     }
-    showFilteredData: boolean
 }
 
 export const EventContext = createContext<contextTypes>({
@@ -60,8 +60,7 @@ export const EventContext = createContext<contextTypes>({
     competitionType: '',
     registrationRequirement: '',
     handleClickOpen: () => {},
-    filteredData: {},
-    showFilteredData: false,
+    showFilteredData: {},
     setSearchValue: (searchValue: string) => {},
 })
 
@@ -278,15 +277,15 @@ const Index = () => {
     const [registrationRequirement, setRegistrationRequirement] = useState<
         string[]
     >([])
-    const [filteredData, setFilteredData] = useState<{
-        [key: string]: string | string[]
-    }>({
-        age: [''],
-        location: [''],
-        competitionType: [''],
-        registrationRequirement: [''],
-    })
-    const [showFilteredData, setShowFilteredData] = useState(false)
+    // const [filteredData, setFilteredData] = useState<{
+    //     [key: string]: string | string[]
+    // }>({
+    //     age: [''],
+    //     location: [''],
+    //     competitionType: [''],
+    //     registrationRequirement: [''],
+    // })
+    const [showFilteredData, setShowFilteredData] = useState<any>()
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const {
@@ -320,8 +319,15 @@ const Index = () => {
 
     const handleFilter = (e: any) => {
         console.log('trigger')
+        const filtered = {
+            age,
+            location,
+            competitionType,
+            registrationRequirement
+        }
     
-        setShowFilteredData(true)
+        setShowFilteredData({filtered})
+
         handleClose(e)
     }
     return (
@@ -334,7 +340,6 @@ const Index = () => {
                 showFilteredData,
                 location,
                 competitionType,
-                filteredData,
                 registrationRequirement,
             }}
         >
