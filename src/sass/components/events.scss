@@ -495,18 +495,18 @@
 
 .filterDialog {
     width: 100%;
-    background: transparent;
-    display: grid;
-    align-content: center;
-    transform: translate(15px, 20px);
+    // background: transparent;
+    // display: grid;
+    // align-content: center;
+    // transform: translate(15px, 20px);
 
-    @include respond(phone){
-        transform: translate(15px, 10px);
-    }
+    // @include respond(phone){
+    //     transform: translate(15px, 10px);
+    // }
    
 
-    &::backdrop {
-        background: rgba(26, 26, 45, 0.375);
-        backdrop-filter: blur(10px);
-    }
+    // &::backdrop {
+    //     background: rgba(26, 26, 45, 0.375);
+    //     backdrop-filter: blur(10px);
+    // }
 }

@@ -14,29 +14,73 @@ import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
 import { createContext, useState, useContext, useEffect } from 'react'
 
+import { Theme, useTheme } from '@mui/material/styles'
+import Box from '@mui/material/Box'
+import OutlinedInput from '@mui/material/OutlinedInput'
+
+import Chip from '@mui/material/Chip'
+import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent, Button } from '@mui/material'
+import Grid from '@mui/material/Grid'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogTitle from '@mui/material/DialogTitle'
+
+
 type contextTypes = {
     searchValue: string
-    toggleModal: boolean
-    setToggleModal: (prev: any) => void
+    handleClickOpen: () => void
     setSearchValue: (searchValue: string) => void
 }
 
 export const EventContext = createContext<contextTypes>({
     searchValue: '',
-    toggleModal: false,
-    setToggleModal: (toggleModal) => {},
+    handleClickOpen: () => { },
     setSearchValue: (searchValue: string) => {},
 })
 
-const SearchBox = () => {
-    const { searchValue, setSearchValue, setToggleModal } =
-        useContext(EventContext)
 
-    const callModalContext = () => {
-        setToggleModal((prev: boolean) => {
-            return !prev
-        })
+const ITEM_HEIGHT = 48
+const ITEM_PADDING_TOP = 8
+const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            width: 250,
+        },
+    },
+}
+
+const names = [
+    'Oliver Hansen',
+    'Van Henry',
+    'April Tucker',
+    'Ralph Hubbard',
+    'Omar Alexander',
+    'Carlos Abbott',
+    'Miriam Wagner',
+    'Bradley Wilkerson',
+    'Virginia Andrews',
+    'Kelly Snyder',
+]
+
+function getStyles(name: string, personName: readonly string[], theme: Theme) {
+    return {
+        fontWeight:
+            personName.indexOf(name) === -1
+                ? theme.typography.fontWeightRegular
+                : theme.typography.fontWeightMedium,
     }
+}
+
+const SearchBox = () => {
+    const {
+        searchValue,
+        setSearchValue,
+        handleClickOpen ,
+    } = useContext(EventContext)
+
+ 
 
     return (
         <div className='flex items-center gap-2'>
@@ -52,7 +96,7 @@ const SearchBox = () => {
             </div>
             <div
                 className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl cursor-pointer'
-                onClick={callModalContext}
+                onClick={handleClickOpen}
             >
                 <VscSettings />
                 <span className=' tracking-wide text-sm'>Filters</span>
@@ -146,158 +190,160 @@ function Footer() {
 
 const Index = () => {
     const [searchValue, setSearchValue] = useState('')
-    const [toggleModal, setToggleModal] = useState(false)
     const [selectedAction, setSelectedAction] =
         useState<HTMLSelectElement | null>(null)
 
-    const user = ''
+        const [open, setOpen] = useState(false)
+        const [age, setAge] = useState<number | string>('')
 
+        const handleChangeName = (event: SelectChangeEvent<typeof age>) => {
+            setAge(Number(event.target.value) || '')
+        }
+
+        const handleClickOpen = () => {
+            setOpen(true)
+        }
+
+        const handleClose = (
+            event: React.SyntheticEvent<unknown>,
+            reason?: string
+        ) => {
+            if (reason !== 'backdropClick') {
+                setOpen(false)
+            }
+        }
+
+const theme = useTheme()
+const [personName, setPersonName] = useState<string[]>([])
+
+const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+    const {
+        target: { value },
+    } = event
+    setPersonName(
+        // On autofill we get a stringified value.
+        typeof value === 'string' ? value.split(',') : value
+    )
+}
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
 
     
-    useEffect(() => {
-        const dialog = document.querySelector('#filterDialog') as any
-        console.log({dialog})
-        if (toggleModal) {
-            dialog.showModal()
-        } else {
-            dialog.close()
-        }
-    }, [toggleModal])
+    // useEffect(() => {
+    //     const dialog = document.querySelector('#filterDialog') as any
+    //     if (toggleModal) {
+    //         dialog.showModal()
+    //     } else {
+    //         dialog.close()
+    //     }
+    // }, [toggleModal])
 
     return (
         <EventContext.Provider
             value={{
                 searchValue,
                 setSearchValue,
-                setToggleModal,
-                toggleModal: false,
+                handleClickOpen,
             }}
         >
             <div className='marketplace'>
-                <dialog
+                {/* <dialog
                     className={` ${toggleModal ? 'filterDialog' : '!hidden'}`}
                     id='filterDialog'
+                > */}
+                <form
+                    id='register'
+                    className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2 gap-6 md:(w-2/5 mx-auto)'
+                    onSubmit={handleSubmit}
                 >
-                    <form
-                        id='register'
-                        className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2 gap-6 md:(w-2/5 mx-auto)'
-                        onSubmit={handleSubmit}
+                    <Button onClick={handleClickOpen}>
+                        Open select dialog
+                    </Button>
+                    <Dialog
+                        disableEscapeKeyDown
+                        open={open}
+                        onClose={handleClose}
                     >
-                        <div className='mb-2'>
-                            <div className='grid'>
-                                <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
-                                    Personal
-                                </h3>
-
-                                <div>
-                                    <label
-                                        className='block text-gray-700 text-sm mb-1'
-                                        htmlFor='username'
-                                    >
-                                        Username
-                                    </label>
-                                    <input
-                                        className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
-                                        id='username'
-                                        name='username'
-                                        
-                                        type='text'
-                                        minLength={4}
-                                        value={user}
-                                    />
-                                </div>
-                            </div>
-
-                            <div>
-                                <label
-                                    className='block text-gray-700 text-sm mb-1'
-                                    htmlFor='phoneNumber'
-                                >
-                                    Phone No
-                                </label>
-                                <input
-                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                    id='phoneNumber'
-                                    type='number'
-                                    name='phoneNumber'
-                                    disabled
-                                    value={user}
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    className='block text-gray-700 text-sm mb-1'
-                                    htmlFor='username'
-                                >
-                                    Email
-                                </label>
-                                <input
-                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                    id='email'
-                                    type='email'
-                                    name='email'
-                                    disabled
-                                    value={user}
-                                />
-                            </div>
-                        </div>
-
-                        <div className='grid'>
-                            <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
-                                Wallet Address
-                            </h3>
-
-                            <div>
-                                <label
-                                    className='block text-gray-700 text-sm mb-1'
-                                    htmlFor='usdtAddress'
-                                >
-                                    USDT TRC20
-                                </label>
-                                <input
-                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
-                                    id='usdtAddress'
-                                    disabled
-                                    name='usdtAddress'
-                                    type='text'
-                                    minLength={15}
-                                    value={user}
-                                />
-                            </div>
-                        </div>
-                        <div className='grid'>
-                            <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
-                                Details
-                            </h3>
-
-                            <div className='grid text-black'>
-                                <div className='flex justify-between'>
-                                    <p>Verified</p>
-                                    <p>{user.toString()}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='flex justify-around'>
-                            <button
-                                className='bg-orange-300 text-[#1a1a2d] font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
-                                type='button'
-                                onClick={() => setToggleModal(false)}
+                        <DialogTitle>Fill the form</DialogTitle>
+                        <DialogContent>
+                            <Box
+                                component='form'
+                                sx={{ display: 'flex', flexWrap: 'wrap' }}
                             >
-                                Close
-                            </button>
-                            {/* <button
+                                <FormControl sx={{ m: 1, width: 300 }}>
+                                    <InputLabel id='demo-multiple-chip-label'>
+                                        Chip
+                                    </InputLabel>
+                                    <Select
+                                        labelId='demo-multiple-chip-label'
+                                        id='demo-multiple-chip'
+                                        multiple
+                                        value={personName}
+                                        onChange={handleChange}
+                                        input={
+                                            <OutlinedInput
+                                                id='select-multiple-chip'
+                                                label='Chip'
+                                            />
+                                        }
+                                        renderValue={(selected) => (
+                                            <Box
+                                                sx={{
+                                                    display: 'flex',
+                                                    flexWrap: 'wrap',
+                                                    gap: 0.5,
+                                                }}
+                                            >
+                                                {selected.map((value) => (
+                                                    <Chip
+                                                        key={value}
+                                                        label={value}
+                                                    />
+                                                ))}
+                                            </Box>
+                                        )}
+                                        MenuProps={MenuProps}
+                                    >
+                                        {names.map((name) => (
+                                            <MenuItem
+                                                key={name}
+                                                value={name}
+                                                style={getStyles(
+                                                    name,
+                                                    personName,
+                                                    theme
+                                                )}
+                                            >
+                                                {name}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+                            </Box>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>Cancel</Button>
+                            <Button onClick={handleClose}>Ok</Button>
+                        </DialogActions>
+                    </Dialog>
+
+                    <div className='flex justify-around'>
+                        {/* <button
+                            className='bg-orange-300 text-[#1a1a2d] font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
+                            type='button'
+                        >
+                            Close
+                        </button> */}
+                        {/* <button
                             className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
                             type='submit'
                         >
                             {loading ? 'Loading...' : 'Submit'}
                         </button> */}
-                        </div>
-                    </form>
-                </dialog>
+                    </div>
+                </form>
+                {/* </dialog> */}
                 <div className='marketplace__container'>
                     <div className='grid relative z-3'>
                         <Header />
