@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { EventContext } from '../pages/dashboard'
 
 interface EventProps {
+    id: number
     heading: string
     details: {
         [key: string]: string | string[]
@@ -16,6 +17,7 @@ interface EventProps {
 
 const EVENTDATA: EventProps[] = [
     {
+        id: 1,
         heading: 'USA BASKETBALL SHOWCASE',
         price: 12000,
         details: [
@@ -32,6 +34,7 @@ const EVENTDATA: EventProps[] = [
         which: 1,
     },
     {
+        id: 2,
         heading: '2022 FIBA AmeriCup for Men',
         price: 1500,
         details: [
@@ -53,6 +56,7 @@ const EVENTDATA: EventProps[] = [
         which: 2,
     },
     {
+        id: 3,
         heading: 'FIBA 3x3 U23 World Cup (women)',
         price: 59000,
         details: [
@@ -73,6 +77,7 @@ const EVENTDATA: EventProps[] = [
         which: 3,
     },
     {
+        id: 4,
         heading: '2022 USA Basketball (boys)',
         price: 99094,
         details: [
@@ -90,6 +95,7 @@ const EVENTDATA: EventProps[] = [
         which: 1,
     },
     {
+        id: 5,
         heading: '2022 USA Basketball Academy',
         price: 11200,
         details: [
@@ -106,6 +112,7 @@ const EVENTDATA: EventProps[] = [
         which: 2,
     },
     {
+        id: 6,
         heading: '2022 USA Basketball (girls)',
         price: 85070,
         details: [
@@ -214,6 +221,7 @@ const Event = ({
                         <p className='event__price-value'>${price}</p>
                     </div>
                     <a href='#popup' className='btn btn--white'>
+                        {/* TODO send api to register users */}
                         Register now!
                     </a>
                 </div>
@@ -224,16 +232,19 @@ const Event = ({
 
 function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
-    const [filteredData, setFilteredData] = useState<any>(<div>hello</div>)
+    const [filteredData, setFilteredData] = useState<EventProps[]>(EVENTDATA)
 
+    const updatedEventList:any = []
     useEffect(() => {
-        //<Event key={item.heading} {...item} />
-
+        
+        //FIXME - this is a fix to filter the data
         if (searchValue) {
+            console.log('searchValue', searchValue)
             EVENTDATA.map((item) => {
+                console.log(item.heading.toLowerCase())
                 //console.log(item.details)
                 if (item.heading.toLowerCase().includes(searchValue)) {
-                    //setFilteredData(item)
+                    updatedEventList.push(item)
                 }
             })
         }
@@ -248,9 +259,9 @@ function Events() {
                     let eventAge = Number(eachEvent.details[0].Age)
                     if (eventAge >= minAge && eventAge <= maxAge) {
                         //console.log({ eachEvent })
-                        setFilteredData((prevState: any) => {
-                            // return [...prevState, eachEvent]
-                        })
+                        
+                        
+
                     }
                 })
             })
@@ -310,7 +321,8 @@ function Events() {
         }
     }, [showFilteredData])
 
-    console.log('filteredData', filteredData)
+
+    //TODO - filter the data based on the filters selected
 
     return (
         <div className='p-8 events'>
@@ -321,7 +333,9 @@ function Events() {
             </div>
             <div className='events__container'>
                 {EVENTDATA.map((item) => {
-                    return <Event key={item.heading} {...item} />
+                    return item.heading.toLowerCase().includes(searchValue) ? (
+                        <Event key={item.heading} {...item} />
+                    ) : null
                 })}
             </div>
         </div>

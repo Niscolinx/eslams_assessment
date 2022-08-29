@@ -148,13 +148,15 @@ const Header = () => (
                     </div>
                     <BiNotepad className='text-2xl' />
                 </div>
-                <div className='flex header__avatar'>
+                <div className='flex header__avatar cursor-pointer'>
+                    <Link href='/dashboard/profile'>
                     <Image
                         src='/img/avatar.jpeg'
                         width='100%'
                         height='100%'
                         objectFit='cover'
                     />
+                    </Link>
                 </div>
             </div>
         </div>
