@@ -17,7 +17,7 @@ import { createContext, useState, useContext, useEffect } from 'react'
 type contextTypes = {
     searchValue: string
     toggleModal: boolean
-    setToggleModal: (prev:any) => void
+    setToggleModal: (prev: any) => void
     setSearchValue: (searchValue: string) => void
 }
 
@@ -29,10 +29,11 @@ export const EventContext = createContext<contextTypes>({
 })
 
 const SearchBox = () => {
-    const { searchValue, setSearchValue, setToggleModal } = useContext(EventContext)
+    const { searchValue, setSearchValue, setToggleModal } =
+        useContext(EventContext)
 
     const callModalContext = () => {
-        setToggleModal((prev:boolean) => {
+        setToggleModal((prev: boolean) => {
             return !prev
         })
     }
@@ -49,7 +50,10 @@ const SearchBox = () => {
                     className='rounded-3xl py-2 px-3 pl-10 w-80 outline-none border-none'
                 />
             </div>
-            <div className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl cursor-pointer' onClick={callModalContext}>
+            <div
+                className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl cursor-pointer'
+                onClick={callModalContext}
+            >
                 <VscSettings />
                 <span className=' tracking-wide text-sm'>Filters</span>
             </div>
@@ -152,23 +156,15 @@ const Index = () => {
         e.preventDefault()
     }
 
+    const dialog = document.querySelector('#filterDialog') as any
+
     useEffect(() => {
-        console.log('before', {toggleModal})
-        console.log('after', {toggleModal})
+        if (toggleModal) {
+            dialog.showModal()
+        } else {
+            dialog.close()
+        }
     }, [toggleModal])
-
-    const showModel = () => {
-        const dialog = document.querySelector('#withdrawalDialog') as any
-        dialog.showModal()
-    }
-
-    const closeModal = () => {
-        const dialog = document.querySelector('#withdrawalDialog') as any
-
-        selectedAction!.selectedIndex = 0
-
-        dialog.close()
-    }
 
     return (
         <EventContext.Provider
@@ -176,11 +172,11 @@ const Index = () => {
                 searchValue,
                 setSearchValue,
                 setToggleModal,
-                toggleModal: false
+                toggleModal: false,
             }}
         >
             <div className='marketplace'>
-                <dialog className='withdrawalDialog' id='withdrawalDialog'>
+                <dialog className='filterDialog' id='filterDialog'>
                     <form
                         id='register'
                         className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2 gap-6 md:(w-2/5 mx-auto)'
@@ -285,7 +281,7 @@ const Index = () => {
                             <button
                                 className='bg-orange-300 text-[#1a1a2d] font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
                                 type='button'
-                                onClick={closeModal}
+                                onClick={() => dialog.close()}
                             >
                                 Close
                             </button>
