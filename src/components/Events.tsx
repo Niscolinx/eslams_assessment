@@ -139,10 +139,10 @@ const Event = ({
                         details.map((item, i) => {
                             const [key, value] = Object.entries(item)[0]
 
-                            console.log(typeof value, value)
+                            console.log(value)
                             return (
                                 <ul key={i}>
-                                    <li><span>{key}</span>: <span>{ typeof value === Object ? 'hee': value}</span></li>
+                                    <li><span>{key}</span>: <span>{ key === 'Registration Requirements'? '' : value}</span></li>
                                 </ul>
                             )})}
                     <ul></ul>
