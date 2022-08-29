@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react'
-import Image from 'next/image'
+import React, { useContext, useEffect, useState } from 'react'
 import { EventContext } from '../pages/dashboard'
+
 
 interface EventProps {
     heading: string
@@ -225,6 +225,7 @@ const Event = ({
 
 function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
+    const [filteredData, setFilteredData] = useState<any>()
 
     useEffect(() => {
         console.log(showFilteredData)
