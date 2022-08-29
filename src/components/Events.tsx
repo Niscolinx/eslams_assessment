@@ -145,7 +145,7 @@ const Event = ({
     which,
 }: EventProps) => {
     return (
-        <div className='event max-w-[350px] min-w-[150px]'>
+        <div className='event w-[350px]'>
             <div className='event__side event__side--front'>
                 <div className={`event__picture event__picture--${which}`}>
                     <div className='event__picture--date'>
