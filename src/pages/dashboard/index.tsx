@@ -62,17 +62,11 @@ const MenuProps = {
     },
 }
 
-const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
+const ageRange = [
+    '10',
+    '11-20',
+    '21-30',
+    '31-40'
 ]
 
 function getStyles(name: string, personName: readonly string[], theme: Theme) {
