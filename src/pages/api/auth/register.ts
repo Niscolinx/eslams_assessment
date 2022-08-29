@@ -64,17 +64,6 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         console.log({ checkForOtp })
 
-       // <Tilt
-                        //     onEnter={() => console.log('entered')}
-                        //    gyroscope
-                        //    className=' z-20 w-[40vw] absolute'
-                        //    trackOnWindow
-                        //    transitionSpeed={1000}
-                        //    transitionEasing={'cubic-bezier(.03,.98,.52,.99)'}
-                        //     tiltReverse
-                            // glareEnable={true}
-                          //  className='hidden'
-                      //  >
 
         if (checkForOtp[checkForOtp.length - 1].code !== Number(otp)) {
             console.log(checkForOtp[checkForOtp.length - 1].code, Number(otp))
