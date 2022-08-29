@@ -20,8 +20,8 @@ const EVENTDATA: EventProps[] = [
         heading: 'USA BASKETBALL SHOWCASE',
         price: 1200,
         details: [
-            { Age: '10' },
-            { 'Competition Type': 'single elimination' },
+            { Age: '25' },
+            { 'Competition Type': 'round robin triple split' },
             { location: 'USA' },
             {
                 'Registration Requirements': [
@@ -187,7 +187,7 @@ const Event = ({
                                             Array.isArray(value) ? (
                                                 <span className='font-medium'>
                                                     {value.map((item) => (
-                                                        <li key={item}>
+                                                        <li key={item} className='border'>
                                                             {item}
                                                         </li>
                                                     ))}
