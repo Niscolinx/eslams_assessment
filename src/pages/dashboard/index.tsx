@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
+import { GrFormClose } from 'react-icons/gr'
 import { createContext, useState, useContext, useEffect } from 'react'
 
 import { Theme, useTheme } from '@mui/material/styles'
@@ -19,13 +20,19 @@ import Box from '@mui/material/Box'
 import OutlinedInput from '@mui/material/OutlinedInput'
 
 import Chip from '@mui/material/Chip'
-import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent, Button } from '@mui/material'
+import {
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    SelectChangeEvent,
+    Button,
+} from '@mui/material'
 import Grid from '@mui/material/Grid'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
-
 
 type contextTypes = {
     searchValue: string
@@ -35,10 +42,9 @@ type contextTypes = {
 
 export const EventContext = createContext<contextTypes>({
     searchValue: '',
-    handleClickOpen: () => { },
+    handleClickOpen: () => {},
     setSearchValue: (searchValue: string) => {},
 })
-
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -74,13 +80,8 @@ function getStyles(name: string, personName: readonly string[], theme: Theme) {
 }
 
 const SearchBox = () => {
-    const {
-        searchValue,
-        setSearchValue,
-        handleClickOpen ,
-    } = useContext(EventContext)
-
- 
+    const { searchValue, setSearchValue, handleClickOpen } =
+        useContext(EventContext)
 
     return (
         <div className='flex items-center gap-2'>
@@ -190,46 +191,39 @@ function Footer() {
 
 const Index = () => {
     const [searchValue, setSearchValue] = useState('')
-    const [selectedAction, setSelectedAction] =
-        useState<HTMLSelectElement | null>(null)
 
-        const [open, setOpen] = useState(false)
-        const [age, setAge] = useState<number | string>('')
+    const [open, setOpen] = useState(false)
+    const [age, setAge] = useState<number | string>('')
 
-        const handleChangeName = (event: SelectChangeEvent<typeof age>) => {
-            setAge(Number(event.target.value) || '')
+    const handleClickOpen = () => {
+        setOpen(true)
+    }
+
+    const handleClose = (
+        event: React.SyntheticEvent<unknown>,
+        reason?: string
+    ) => {
+        if (reason !== 'backdropClick') {
+            setOpen(false)
         }
+    }
 
-        const handleClickOpen = () => {
-            setOpen(true)
-        }
+    const theme = useTheme()
+    const [personName, setPersonName] = useState<string[]>([])
 
-        const handleClose = (
-            event: React.SyntheticEvent<unknown>,
-            reason?: string
-        ) => {
-            if (reason !== 'backdropClick') {
-                setOpen(false)
-            }
-        }
-
-const theme = useTheme()
-const [personName, setPersonName] = useState<string[]>([])
-
-const handleChange = (event: SelectChangeEvent<typeof personName>) => {
-    const {
-        target: { value },
-    } = event
-    setPersonName(
-        // On autofill we get a stringified value.
-        typeof value === 'string' ? value.split(',') : value
-    )
-}
+    const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+        const {
+            target: { value },
+        } = event
+        setPersonName(
+            // On autofill we get a stringified value.
+            typeof value === 'string' ? value.split(',') : value
+        )
+    }
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
 
-    
     // useEffect(() => {
     //     const dialog = document.querySelector('#filterDialog') as any
     //     if (toggleModal) {
@@ -252,97 +246,94 @@ const handleChange = (event: SelectChangeEvent<typeof personName>) => {
                     className={` ${toggleModal ? 'filterDialog' : '!hidden'}`}
                     id='filterDialog'
                 > */}
-                <form
-                    id='register'
-                    className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2 gap-6 md:(w-2/5 mx-auto)'
-                    onSubmit={handleSubmit}
-                >
-                    <Button onClick={handleClickOpen}>
-                        Open select dialog
-                    </Button>
-                    <Dialog
-                        disableEscapeKeyDown
-                        open={open}
-                        onClose={handleClose}
-                    >
-                        <DialogTitle>Fill the form</DialogTitle>
-                        <DialogContent>
-                            <Box
-                                component='form'
-                                sx={{ display: 'flex', flexWrap: 'wrap' }}
-                            >
-                                <FormControl sx={{ m: 1, width: 300 }}>
-                                    <InputLabel id='demo-multiple-chip-label'>
-                                        Chip
-                                    </InputLabel>
-                                    <Select
-                                        labelId='demo-multiple-chip-label'
-                                        id='demo-multiple-chip'
-                                        multiple
-                                        value={personName}
-                                        onChange={handleChange}
-                                        input={
-                                            <OutlinedInput
-                                                id='select-multiple-chip'
-                                                label='Chip'
-                                            />
-                                        }
-                                        renderValue={(selected) => (
-                                            <Box
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexWrap: 'wrap',
-                                                    gap: 0.5,
-                                                }}
-                                            >
-                                                {selected.map((value) => (
-                                                    <Chip
-                                                        key={value}
-                                                        label={value}
-                                                    />
-                                                ))}
-                                            </Box>
-                                        )}
-                                        MenuProps={MenuProps}
-                                    >
-                                        {names.map((name) => (
-                                            <MenuItem
-                                                key={name}
-                                                value={name}
-                                                style={getStyles(
-                                                    name,
-                                                    personName,
-                                                    theme
-                                                )}
-                                            >
-                                                {name}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                            </Box>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleClose}>Cancel</Button>
-                            <Button onClick={handleClose}>Ok</Button>
-                        </DialogActions>
-                    </Dialog>
 
-                    <div className='flex justify-around'>
-                        {/* <button
+                <Dialog
+                    disableEscapeKeyDown
+                    open={open}
+                    onClose={handleClose}
+                    className='filterDialog'
+                >
+                    <DialogTitle className='text-center'>Filters</DialogTitle>
+                    <DialogContent>
+                        <Box
+                            component='form'
+                            sx={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                width: 300,
+                            }}
+                        >
+                            <FormControl sx={{ m: 1, width: 300 }}>
+                                <InputLabel id='demo-multiple-location-label'>
+                                    <div className='flex'>Location</div>
+                                </InputLabel>
+                                <Select
+                                    labelId='demo-multiple-location-label'
+                                    id='demo-multiple-location'
+                                    multiple
+                                    value={personName}
+                                    onChange={handleChange}
+                                    input={
+                                        <OutlinedInput
+                                            id='select-multiple-location'
+                                            label='location'
+                                        />
+                                    }
+                                    renderValue={(selected) => (
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                gap: 0.5,
+                                            }}
+                                        >
+                                            {selected.map((value) => (
+                                                <Chip
+                                                    key={value}
+                                                    label={value}
+                                                />
+                                            ))}
+                                        </Box>
+                                    )}
+                                    MenuProps={MenuProps}
+                                >
+                                    {names.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(
+                                                name,
+                                                personName,
+                                                theme
+                                            )}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button onClick={handleClose}>Ok</Button>
+                    </DialogActions>
+                </Dialog>
+
+                <div className='flex justify-around'>
+                    {/* <button
                             className='bg-orange-300 text-[#1a1a2d] font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
                             type='button'
                         >
                             Close
                         </button> */}
-                        {/* <button
+                    {/* <button
                             className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
                             type='submit'
                         >
                             {loading ? 'Loading...' : 'Submit'}
                         </button> */}
-                    </div>
-                </form>
+                </div>
                 {/* </dialog> */}
                 <div className='marketplace__container'>
                     <div className='grid relative z-3'>
