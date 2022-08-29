@@ -17,14 +17,14 @@ import { createContext, useState, useContext, useEffect } from 'react'
 type contextTypes = {
     searchValue: string
     toggleModal: boolean
-    setToggleModal: (toggleModal: boolean) => void
+    setToggleModal: (prev:any) => void
     setSearchValue: (searchValue: string) => void
 }
 
 export const EventContext = createContext<contextTypes>({
     searchValue: '',
     toggleModal: false,
-    setToggleModal: (toggleModal: boolean) => {},
+    setToggleModal: (toggleModal) => {},
     setSearchValue: (searchValue: string) => {},
 })
 
@@ -32,7 +32,9 @@ const SearchBox = () => {
     const { searchValue, setSearchValue, setToggleModal } = useContext(EventContext)
 
     const callModalContext = () => {
-        setToggleModal(true)
+        setToggleModal((prev:boolean) => {
+            return !prev
+        })
     }
 
     return (
