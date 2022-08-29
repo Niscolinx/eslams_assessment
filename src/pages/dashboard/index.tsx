@@ -322,10 +322,12 @@ const Index = () => {
                     onClose={handleClose}
                     className='filterDialog'
                 >
+                    <div className='flex bg-red-500 cursor-pointer'>
                         <GrFormClose
-                            className='text-3xl bg-red-500 cursor-pointer'
+                            className='text-3xl '
                             onClick={handleClose}
                         />
+                    </div>
                     <DialogTitle className='text-center -mt-8'>
                         Filters
                     </DialogTitle>
