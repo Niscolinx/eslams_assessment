@@ -66,7 +66,7 @@ export type handleInputProps = {
     institutionYearOfStudy: string
     birthDate: Date | null
 }
-export default function Checkout() {
+export default function RegisterForm() {
     const [otp, setOtp] = useState<string>('')
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
@@ -308,7 +308,6 @@ export default function Checkout() {
             otp,
         }
 
-        console.log('submit')
 
         setLoading(true)
         axios

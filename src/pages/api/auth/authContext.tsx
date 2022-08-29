@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { handleInputProps, ValidationError } from '../../../components/stepForm/Checkout'
+import { handleInputProps, ValidationError } from '../../../components/stepForm/RegisterForm'
 
 type ContextType = {
     setHandleInput: (handleInput: any) => void

@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 import User, { IUser } from '../../../models/User'
 import dbConnect from '../../../lib/dbConnect'
 import { setCookie } from 'cookies-next'
+import * as jose from 'jose'
 
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
     const { email, password } = req.body
@@ -12,7 +13,6 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
 
     try {
         await dbConnect()
-        return res.status(500).json({ message: 'Server Error' })
         
         const user = await User.findOne({
             email,
@@ -24,24 +24,27 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         if (!user) {
             return res.status(401).json('User not found')
         }
-       // if (!bcrypt.compareSync(password, user.password)) {
-         //   return res.status(401).json('Incorrect password')
-        //}
-        const token = jwt.sign(
-            { userId: user._id.toString(), email: user.email },
-            process.env.JWT_SECRET!
-        )
-        // setCookie('adminToken', token, {
-        //     secure: process.env.NODE_ENV! === 'production',
-        // })
+       if (!bcrypt.compareSync(password, user.password)) {
+           return res.status(401).json('Incorrect password')
+        }
+         const token = await new jose.SignJWT({
+             email: user.email,
+             userId: user!._id.toString(),
+         })
+             .setProtectedHeader({ alg: 'HS256' })
+             .setIssuedAt()
+             .setExpirationTime('30d')
+             .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
 
         //set cookie in nodejs
         res.setHeader(
             'Set-Cookie',
-            `tokenSession=${token}; Path=/; HttpOnly; Secure; Max-Age=${
+            `tokenCookie=${token}; Path=/; HttpOnly; Secure; Max-Age=${
                 60 * 60 * 24 * 7
             }`
         )
+
+       // req.Auth = ''
         return res.status(200).json({ user })
     } catch (err) {
         console.log({ err })

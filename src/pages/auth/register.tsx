@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { CtxOrReq } from 'next-auth/client/_utils'
-import { getCsrfToken, getProviders, signIn } from 'next-auth/react'
 import Router from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
 
 import HeroImg2 from '../../../public/hero-player.png'
-import Checkout from '../../components/stepForm/Checkout'
+import Checkout, { ValidationError } from '../../components/stepForm/RegisterForm'
 import Tilt from 'react-parallax-tilt'
+import dayjs from 'dayjs'
+import router from 'next/router'
 
 const Register = () => {
+    const [loginInput, setLoginInput] = useState<{
+        email: string
+        password: string
+    }>({
+        email: '',
+        password: '',
+    })
+    const [loading, setLoading] = useState(false)
+
+    const [validationErrors, setValidationErrors] =
+        useState<ValidationError | null>()
+
     useEffect(() => {
         axios
             .get('/api/connectDB')
@@ -22,25 +34,98 @@ const Register = () => {
             })
     }, [])
 
-    // useEffect(() => {
-    //     const image = document.querySelector(
-    //         '.main-1__image'
-    //     ) as HTMLImageElement
-    //     const container = document.querySelector(
-    //         '.register__main'
-    //     ) as HTMLDivElement
+    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target
+        setValidationErrors(null)
 
-    //     console.log({ image, container })
+        setLoginInput((prev) => ({
+            ...prev,
+            [name]: value,
+        }))
+    }
 
-    //     container.addEventListener('mousemove', (e) => {
-    //         const X = e.clientX - e.screenX
-    //         const Y = e.clientY - e.screenY
+    const formValidate = () => {
+        const errors = {} as ValidationError
+        const isValidMail = (e: string, cb: (checkValid: boolean) => void) => {
+            const emailRegex = new RegExp(
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            )
 
-    //         console.log({ X, Y })
+            const isValid = emailRegex.test(e)
 
-    //         //image.style.transform = `translate(${X}px, ${Y}px)`
-    //     })
-    // }, [])
+            return cb(isValid)
+        }
+
+        for (const key in loginInput) {
+            //Validation for the first step
+
+            if (key === 'email') {
+                isValidMail(loginInput[key], (cb) => {
+                    if (!cb) {
+                        errors[key] = 'Invalid email'
+
+                        setValidationErrors(errors)
+                    }
+                })
+            }
+
+            if (key === 'password') {
+                if (loginInput[key].length < 6) {
+                    errors[key as keyof typeof loginInput] =
+                        'Password must be at least 6 characters long'
+
+                    setValidationErrors(errors)
+                }
+            }
+
+            if (
+                loginInput[key as keyof typeof loginInput] === '' ||
+                loginInput[key as keyof typeof loginInput] === null
+            ) {
+                errors[key as keyof typeof loginInput] =
+                    'This field is required'
+
+                setValidationErrors(errors)
+            }
+        }
+
+        if (Object.keys(errors).length > 0) {
+            return false
+        }
+
+        return true
+    }
+
+
+    const loginSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        console.log('submit')
+        const isValid = formValidate()
+
+        setLoading(true)
+
+        if (!isValid) {
+            setLoading(false)
+            return
+        }
+
+
+        setLoading(true)
+        axios
+            .post('/api/auth/login', loginInput)
+            .then(({ data }) => {
+                console.log({ data })
+                setLoading(false)
+                router.push('/')
+            })
+            .catch(({ response: { data } }) => {
+                console.log({ data })
+             
+               
+                setLoading(false)
+            })
+        
+    }
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault()
@@ -91,7 +176,14 @@ const Register = () => {
                     </p>
                 </div>
 
+<<<<<<< HEAD
                 <form className=' register__header--form hidden' onSubmit={handleLogin}>
+=======
+                <form
+                    className='register__header--form hidden'
+                    onSubmit={loginSubmitHandler}
+                >
+>>>>>>> dev
                     <div className='header__form--item'>
                         <label
                             htmlFor='email'
@@ -101,10 +193,16 @@ const Register = () => {
                         </label>
 
                         <input
-                            type='text'
+                            type='email'
                             name='email'
                             id='email'
-                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
+                            value={loginInput['email']}
+                            onChange={inputHandler}
+                            className={` rounded-lg px-2 py-1 bg-[#E8E7E7] border outline-none ${
+                                validationErrors && validationErrors['email']
+                                    ? 'border-width-[2px] border-red-500  animate-shakeX transition-all animate-ease-[cubic-bezier(0.25,0.1,0.25,1)] animate-duration-[1s]'
+                                    : ''
+                            }`}
                         />
                     </div>
                     <div className='header__form--item'>
@@ -116,10 +214,16 @@ const Register = () => {
                         </label>
 
                         <input
-                            type='text'
-                            name='email'
-                            id='email'
-                            className='border-none outline-none rounded-lg px-2 py-1 bg-[#E8E7E7]'
+                            type='password'
+                            name='password'
+                            id='password'
+                            value={loginInput['password']}
+                            onChange={inputHandler}
+                            className={` rounded-lg px-2 py-1 bg-[#E8E7E7] border outline-none ${
+                                validationErrors && validationErrors['password']
+                                    ? 'border-width-[2px] border-red-500  animate-shakeX transition-all animate-ease-[cubic-bezier(0.25,0.1,0.25,1)] animate-duration-[1s]'
+                                    : ''
+                            }`}
                         />
 
                         <Link href='/'>
@@ -129,8 +233,16 @@ const Register = () => {
                         </Link>
                     </div>
 
+<<<<<<< HEAD
                     <button className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center' type='submit'>
                         Login
+=======
+                    <button
+                        className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center rounded-lg'
+                        type='submit'
+                    >
+                        {loading ? 'Loading...' : 'Login'}
+>>>>>>> dev
                     </button>
                 </form>
             </header>

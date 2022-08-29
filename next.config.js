@@ -3,24 +3,61 @@ const path = require('path')
 const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
-
 module.exports = {
-  reactStrictMode: true,
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
+    reactStrictMode: true,
+    sassOptions: {
+        includePaths: [path.join(__dirname, 'styles')],
+    },
 
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: [{ loader: '@svgr/webpack', options: { icons: true } }],
-    })
+    // webpack: (config, { nextRuntime }) => {
+    // undocumented property of next 12.
+    //  if (nextRuntime !== 'nodejs') return config
 
-   config.plugins.push(new WindiCSSWebpackPlugin())
+    // return {
+    //     ...config,
+    //     entry() {
+    //         return config.entry().then((entry) => ({
+    //             ...entry,
+    //             cli: path.resolve(process.cwd(), 'lib/cli.ts'),
+    //         }))
+    //     },
+    //     module: {
+    //         rules: [
+    //             {
+    //                 test: /\.svg$/,
+    //                 use: [
+    //                     {
+    //                         loader: '@svgr/webpack',
+    //                         options: { icons: true },
+    //                     },
+    //                 ],
+    //             },
+    //         ],
+    //     },
 
-    return config
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+    //     plugins: [new WindiCSSWebpackPlugin()]
+    //}
+
+    webpack(config, {nextRuntime}) {
+        
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: [{ loader: '@svgr/webpack', options: { icons: true } }],
+        })
+
+        config.plugins.push(new WindiCSSWebpackPlugin())
+        return config
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+    async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/dashboard',
+                permanent: true,
+            },
+        ]
+    },
 }

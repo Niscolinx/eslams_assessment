@@ -1,5 +1,4 @@
-import { IOtp } from './../../../models/Otp'
-import { IUser } from '../../../models/User'
+
 import { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcryptjs'
 import dbConnect from '../../../lib/dbConnect'
@@ -7,11 +6,8 @@ import User from '../../../models/User'
 import { transporter } from '../../../utils/emailTransport'
 import mjml2html from 'mjml'
 import Otp from '../../../models/Otp'
-import { setCookie } from 'cookies-next'
-import email from 'next-auth/providers/email'
-import user from '../connectDB'
-import jwt from 'jsonwebtoken'
-import { json } from 'stream/consumers'
+import * as jose from 'jose'
+
 
 async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
     try {
@@ -37,18 +33,12 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             otp,
         } = req.body
 
-        //Validate
-        // if (!personalEmail || !personalEmail.includes('@') || !password || !phoneNumber) {
-        //     console.log('failed')
-        //     res.status(422).json({ message: 'Invalid Data' })
-        //     return
-        // }
+       
 
         const existingEmail = await User.findOne({ personalEmail })
 
         const existingPhoneNumber = await User.findOne({ phoneNumber })
 
-                return res.status(500).json({ message: 'Server Error' })
 
 
         if (existingEmail) {
@@ -141,7 +131,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         <mj-text font-size='15px' align='center'>Your account has been activated!</mj-text>
 
         <mj-button font-size='20px' color='black' background-color='white' padding-top='30px'>
-            <a href='https://eslams-sdf.com/'>Go to Dashboard</a>
+            <a href='https://eslams-assessment.vercel.app'>Go to Dashboard</a>
         </mj-button>
 
 
@@ -181,21 +171,21 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             }
         })
 
-        const token = jwt.sign(
-            {
-                email: user.email,
-                userId: user!._id.toString(),
-            },
-            process.env.JWT_SECRET!,
-            {
-                expiresIn: '1hr',
-            }
-        )
+       const token = await new jose.SignJWT({
+           email: user.email,
+           userId: user!._id.toString(),
+       })
+           .setProtectedHeader({ alg: 'HS256' })
+           .setIssuedAt()
+           .setExpirationTime('30d')
+           .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
+
+      
 
         //set cookie in nodejs
         res.setHeader(
             'Set-Cookie',
-            `tokenSession=${token}; Path=/; HttpOnly; Secure; Max-Age=${
+            `tokenCookie=${token}; Path=/; HttpOnly; Secure; Max-Age=${
                 60 * 60 * 24 * 7
             }`
         )

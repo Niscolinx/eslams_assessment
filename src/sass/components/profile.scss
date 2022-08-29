@@ -275,10 +275,7 @@
         margin-top: 1rem;
 
         &__heading {
-            
-
-           
-
+  
             &--text {
                 font-size: 1.3rem;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -294,7 +291,7 @@
 
         &__container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
             font-size: 1rem;
             gap: 2rem;
             padding: 2rem 1rem;
