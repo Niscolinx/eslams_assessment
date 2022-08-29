@@ -4,7 +4,9 @@ import { EventContext } from '../pages/dashboard'
 
 interface EventProps {
     heading: string
-    details: string[]
+    details: {
+        [key: string]: string | string[]
+    }[]
     price: number
     which: number
     date: {
@@ -15,14 +17,14 @@ interface EventProps {
 
 const EVENTDATA: EventProps[] = [
     {
-        heading: 'USA BASKETBALL SHOWCASE PRESENTED BY COINBASE',
+        heading: 'USA BASKETBALL SHOWCASE',
         price: 1200,
-        details: [
-            'Basketball, Water and Training Supplies',
-            'Certfied Atletic trainers',
-            'Availability of Shuttles',
-            'NCAA Certified Checklist',
-        ],
+        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
+            'Registration Requirements':[
+                '18 and Above',
+                'Individual Registration',
+            ]
+        }],
         date: {
             from: '10th Sep',
         },
@@ -31,12 +33,12 @@ const EVENTDATA: EventProps[] = [
     {
         heading: '2022 FIBA AmeriCup for Men',
         price: 1500,
-        details: [
-            'Basketball, Water and Training Supplies',
-            'Certfied Atletic trainers',
-            'Availability of Shuttles',
-            'NCAA Certified Checklist',
-        ],
+        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
+            'Registration Requirements':[
+                '18 and Above',
+                'Individual Registration',
+            ]
+        }],
         date: {
             from: '5th Oct',
             to: '9th Oct',
@@ -46,12 +48,12 @@ const EVENTDATA: EventProps[] = [
     {
         heading: 'FIBA 3x3 U23 World Cup (women)',
         price: 1600,
-        details: [
-            'Basketball, Water and Training Supplies',
-            'Certfied Atletic trainers',
-            'Availability of Shuttles',
-            'NCAA Certified Checklist',
-        ],
+        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
+            'Registration Requirements':[
+                '18 and Above',
+                'Individual Registration',
+            ]
+        }],
         date: {
             from: '2nd Sep',
             to: '11th Sep',
@@ -61,12 +63,12 @@ const EVENTDATA: EventProps[] = [
     {
         heading: '2022 USA Basketball Gold Camp (boys)',
         price: 999,
-        details: [
-            'Basketball, Water and Training Supplies',
-            'Certfied Atletic trainers',
-            'Availability of Shuttles',
-            'NCAA Certified Checklist',
-        ],
+        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
+            'Registration Requirements':[
+                '18 and Above',
+                'Individual Registration',
+            ]
+        }],
         date: {
             from: '4th Sep',
             to: '5th Sep',
@@ -76,12 +78,12 @@ const EVENTDATA: EventProps[] = [
     {
         heading: '2022 USA Basketball Coach Academy',
         price: 1090,
-        details: [
-            'Basketball, Water and Training Supplies',
-            'Certfied Atletic trainers',
-            'Availability of Shuttles',
-            'NCAA Certified Checklist',
-        ],
+        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
+            'Registration Requirements':[
+                '18 and Above',
+                'Individual Registration',
+            ]
+        }],
         date: {
             from: '9th Sep',
         },
@@ -90,12 +92,12 @@ const EVENTDATA: EventProps[] = [
     {
         heading: '2022 USA Basketball Gold Camp (girls)',
         price: 1100,
-        details: [
-            'Basketball, Water and Training Supplies',
-            'Certfied Atletic trainers',
-            'Availability of Shuttles',
-            'NCAA Certified Checklist',
-        ],
+        details: [{ 'Age': '21' }, { 'Competition Type': 'single elimination' }, {'location': 'USA'}, {
+            'Registration Requirements':[
+                '18 and Above',
+                'Individual Registration',
+            ]
+        }],
         date: {
             from: '3rd Sep',
             to: '4th Sep',
@@ -111,8 +113,9 @@ const Event = ({
     date: { from, to },
     which,
 }: EventProps) => {
+    console.log({details})
     return (
-        <div className='event max-w-[300px]'>
+        <div className='event max-w-[300px] min-w-[150px]'>
             <div className='event__side event__side--front'>
                 <div className={`event__picture event__picture--${which}`}>
                     <div className='event__picture--date'>
@@ -134,11 +137,12 @@ const Event = ({
                 </h4>
                 <div className='event__details'>
                     {details.length > 0 &&
-                        details.map((item) => (
-                            <ul key={item}>
-                                <li>{item}</li>
-                            </ul>
-                        ))}
+                        details.map((item, i) => {
+                            return (
+                                <ul key={i}>
+                                    <li><span>{Object.keys(item)}</span>: <span>{Object.values(item)}</span></li>
+                                </ul>
+                            )})}
                     <ul></ul>
                 </div>
             </div>
