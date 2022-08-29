@@ -238,7 +238,7 @@ function Events() {
 
     useEffect(() => {
        
-        console.log({showFilteredData})
+        console.log(showFilteredData)
 
         EVENTDATA.filter((val) => {
             console.log({val})
