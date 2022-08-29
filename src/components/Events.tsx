@@ -240,8 +240,18 @@ function Events() {
        
         console.log(showFilteredData)
 
+        if(showFilteredData.Age){
+            console.log(showFilteredData.Age)
+          
+            
+
+        }
+
         EVENTDATA.filter((val) => {
-            console.log({val})
+            const filteredArr = Object.entries(showFilteredData)
+
+            console.log({filteredArr})
+            if(val.price ){}
         })
 
 
