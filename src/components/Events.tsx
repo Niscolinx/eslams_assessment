@@ -244,19 +244,52 @@ function Events() {
             })
         }
 
-        if(showFilteredData['Competition Type']){
-            Object.values(showFilteredData['Competition Type']).map((eachGroup) => {    
+        if (showFilteredData['Competition Type']) {
+            Object.values(showFilteredData['Competition Type']).map(
+                (eachGroup) => {
+                    EVENTDATA.map((eachEvent) => {
+                        let eventCompetitionType =
+                            eachEvent.details[1]['Competition Type']
+                        if (eventCompetitionType === eachGroup) {
+                            //console.log('competition type', { eachEvent })
+                        }
+                    })
+                }
+            )
+        }
 
+        if (showFilteredData.location) {
+            Object.values(showFilteredData.location).map((eachGroup) => {
                 EVENTDATA.map((eachEvent) => {
-                    let eventCompetitionType = eachEvent.details[1]['Competition Type']
-
-                    if (eventCompetitionType === eachGroup) {
-                        console.log('competition type', { eachEvent })
+                    let eventLocation = eachEvent.details[2].location
+                    if (eventLocation === eachGroup) {
+                        // console.log('location', { eachEvent })
                     }
                 })
-
             })
         }
+
+        if (showFilteredData['Registration Requirements']) {
+            Object.values(showFilteredData['Registration Requirements']).map(
+                (eachGroup) => {
+                    EVENTDATA.map((eachEvent) => {
+                        let eventRegistrationRequirements =
+                            eachEvent.details[3]['Registration Requirements']
+                        if (eventRegistrationRequirements.includes(eachGroup)) {
+                            // console.log('registration requirements', {
+                            //    eachEvent,
+                            //  })
+                        }
+                    })
+                }
+            )
+        }
+
+        if (showFilteredData.priceRange) {
+            Object.values(showFilteredData.priceRange).map((eachGroup) => {
+                console.log({eachGroup})
+               
+        })}
 
         EVENTDATA.filter((val) => {
             const filteredArr = Object.entries(showFilteredData)

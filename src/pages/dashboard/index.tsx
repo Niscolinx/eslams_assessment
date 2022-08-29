@@ -226,7 +226,7 @@ const Index = () => {
         location: ['USA'],
         priceRange: [20, 5323],
         Age: ['0-10', '11-20', '21-30', '31-40'],
-        'Competition Type': ['multilevel', 'single Elemination'],
+        'Competition Type': ['Multilevel', 'Single Elimination'],
         'Registration Requirements': ['Individual Registration'],
     })
 
