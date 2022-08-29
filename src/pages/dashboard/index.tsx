@@ -13,7 +13,13 @@ import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
 import { GrFormClose } from 'react-icons/gr'
-import React, { createContext, useState, useContext, useEffect, useRef } from 'react'
+import React, {
+    createContext,
+    useState,
+    useContext,
+    useEffect,
+    useRef,
+} from 'react'
 
 import { Theme, useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
@@ -256,8 +262,7 @@ const Index = () => {
         },
     })
 
-            const ref = useRef<number | number[]>()
-
+    const ref = useRef<number | number[]>()
 
     const handleClickOpen = () => {
         setOpen(true)
@@ -280,8 +285,7 @@ const Index = () => {
     const [registrationRequirement, setRegistrationRequirement] = useState<
         string[]
     >([])
-    const [priceRange, setPriceRange] = useState<number | number[]>()
-    
+
     const [showFilteredData, setShowFilteredData] = useState<any>()
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
@@ -307,25 +311,11 @@ const Index = () => {
         }
     }
 
-        let committedValue:any = []
-    function priceValue(this: any, value: number | number[]){
-        console.log({value})
-        committedValue.push(value)
-
-        ref.current = value
-      
-        localStorage.setItem('priceRange', JSON.stringify(committedValue))
-    
-       return committedValue
+    const priceValue =(value: number | number[]) => {
+       return ref.current = value
     }
 
-    console.log({committedValue, ref})
-
-    useEffect(() => {
-        console.log('price range function', committedValue)
-
-
-    }, [committedValue])
+    console.log(ref.current)
 
     const handleReset = () => {
         setAge([])
@@ -340,15 +330,13 @@ const Index = () => {
             location,
             competitionType,
             registrationRequirement,
-            priceRange,
+            priceRange: ref.current,
         }
 
         setShowFilteredData({ filtered })
 
         handleClose(e)
     }
-
-    console.log('price range', priceRange)
 
     return (
         <EventContext.Provider
@@ -590,9 +578,10 @@ const Index = () => {
                             </Typography>
                             <PriceSlider
                                 valueLabelDisplay='auto'
-                               
                                 //onChange={(_,value) => setPriceRange( value)}
-                                onChangeCommitted={(e,value) => priceValue(value)}
+                                onChangeCommitted={(e, value) =>
+                                    priceValue(value)
+                                }
                                 defaultValue={10}
                                 min={10}
                                 max={100000}
