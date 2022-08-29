@@ -308,8 +308,6 @@ const Index = () => {
         return (ref.current = value)
     }
 
-    console.log(ref.current)
-
     const handleReset = () => {
         setAge([])
         setLocation([])
