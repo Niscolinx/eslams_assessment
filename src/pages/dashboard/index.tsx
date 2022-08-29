@@ -576,7 +576,9 @@ const Index = () => {
                                 valueLabelDisplay='auto'
                                 aria-label='price range'
                                 name='price-range'
-                               onChangeCommitted={(e,value) => setPriceRange( value)}
+                                onChange={(e,value) => setPriceRange( value)}
+                               // onChangeCommitted={(e,value) => setPriceRange( value)}
+                                defaultValue={10}
                                 min={10}
                                 max={100000}
                             />
