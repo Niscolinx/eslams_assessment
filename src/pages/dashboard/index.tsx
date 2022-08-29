@@ -589,28 +589,3 @@ const Index = () => {
 
 export default Index
 
-// export async function getServerSideProps(
-//     context: GetSessionParams | undefined
-// ) {
-//     const session = await getSession(context)
-
-//     axios.get('/api/auth/checkAuth', {
-//         headers: {
-//             'Content-Type': 'application/json',
-//            // Authorization: 'Bearer ' + token,
-//         },
-//     })
-
-//     // if (!session) {
-//     //     return {
-//     //         redirect: {
-//     //             destination: '/auth/register',
-//     //             permanent: false,
-//     //         },
-//     //     }
-//     // }
-
-//     return {
-//         props: { session },
-//     }
-// }
