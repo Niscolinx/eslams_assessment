@@ -156,9 +156,9 @@ const Index = () => {
         e.preventDefault()
     }
 
-    const dialog = document.querySelector('#filterDialog') as any
-
+    
     useEffect(() => {
+        const dialog = document.querySelector('#filterDialog') as any
         if (toggleModal) {
             dialog.showModal()
         } else {
@@ -281,7 +281,7 @@ const Index = () => {
                             <button
                                 className='bg-orange-300 text-[#1a1a2d] font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
                                 type='button'
-                                onClick={() => dialog.close()}
+                                onClick={() => setToggleModal(false)}
                             >
                                 Close
                             </button>
