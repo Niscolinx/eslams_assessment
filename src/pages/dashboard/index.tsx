@@ -253,15 +253,17 @@ const Index = () => {
     }
 
     const theme = useTheme()
+
     const [age, setAge] = useState<string[]>([])
     const [location, setLocation] = useState<string[]>([])
-    const [personName, setPersonName] = useState<string[]>([])
+    const [competitionType, setCompetitionType] = useState<string[]>([])
+    const [registrationRequirement, setRegistrationRequirement] = useState<string[]>([])
 
-    const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+    const handleChange = (event: SelectChangeEvent<>) => {
         const {
             target: { value },
         } = event
-        setPersonName(
+        setAge(
             // On autofill we get a stringified value.
             typeof value === 'string' ? value.split(',') : value
         )
