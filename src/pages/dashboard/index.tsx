@@ -62,11 +62,11 @@ const MenuProps = {
     },
 }
 
-const ageRange = ['10', '11-20', '21-30', '31-40']
+const AGERANGE = ['10', '11-20', '21-30', '31-40']
 
-const locations = ['USA', 'Canada', 'Mexico']
+const LOCATIONS = ['USA', 'Canada', 'Mexico']
 
-const competitionType = [
+const COMPETITIONTYPE = [
     'multilevel',
     'single Elemination',
     'semi-round robins',
@@ -74,16 +74,16 @@ const competitionType = [
 
 ]
 
-const RegistrationRequirements = [
+const REGISTRATIONREQUIREMENTS = [
     'Individual Registration',
     'Group Registration',
     '18 and Above',
 ]
 
-function getStyles(name: string, personName: readonly string[], theme: Theme) {
+function getStyles(name: string, filterName: readonly string[], theme: Theme) {
     return {
         fontWeight:
-            personName.indexOf(name) === -1
+            filterName.indexOf(name) === -1
                 ? theme.typography.fontWeightRegular
                 : theme.typography.fontWeightMedium,
     }
@@ -279,14 +279,7 @@ const Index = () => {
         e.preventDefault()
     }
 
-    // useEffect(() => {
-    //     const dialog = document.querySelector('#filterDialog') as any
-    //     if (toggleModal) {
-    //         dialog.showModal()
-    //     } else {
-    //         dialog.close()
-    //     }
-    // }, [toggleModal])
+
 
     return (
         <EventContext.Provider
@@ -357,7 +350,7 @@ const Index = () => {
                                     )}
                                     MenuProps={MenuProps}
                                 >
-                                    {locations.map((name) => (
+                                    {LOCATIONS.map((name) => (
                                         <MenuItem
                                             key={name}
                                             value={name}
@@ -406,7 +399,7 @@ const Index = () => {
                                     )}
                                     MenuProps={MenuProps}
                                 >
-                                    {ageRange.map((name) => (
+                                    {AGERANGE.map((name) => (
                                         <MenuItem
                                             key={name}
                                             value={name}
@@ -451,7 +444,7 @@ const Index = () => {
                                     )}
                                     MenuProps={MenuProps}
                                 >
-                                    {competitionType.map((name) => (
+                                    {COMPETITIONTYPE.map((name) => (
                                         <MenuItem
                                             key={name}
                                             value={name}
@@ -502,7 +495,7 @@ const Index = () => {
                                     )}
                                     MenuProps={MenuProps}
                                 >
-                                    {registrationRequirement.map((name) => (
+                                    {REGISTRATIONREQUIREMENTS.map((name) => (
                                         <MenuItem
                                             key={name}
                                             value={name}
