@@ -13,7 +13,7 @@ import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
 import { GrFormClose } from 'react-icons/gr'
-import { createContext, useState, useContext, useEffect } from 'react'
+import React, { createContext, useState, useContext, useEffect } from 'react'
 
 import { Theme, useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
@@ -334,6 +334,10 @@ const Index = () => {
     }
 
     console.log('price range', priceRange)
+
+    const handlePriceFilter = ({ value }: { value: number | number[] }) => {
+        console.log({value })
+    }
     return (
         <EventContext.Provider
             value={{
@@ -577,7 +581,7 @@ const Index = () => {
                                 aria-label='price range'
                                 name='price-range'
                                 //value={priceRange}
-                                onChange={(e) => setPriceRange(e.target.value)}
+                                onChange={handlePriceFilter}
                                 defaultValue={10}
                                 min={10}
                                 max={100000}
