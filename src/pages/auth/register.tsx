@@ -5,7 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import HeroImg2 from '../../../public/hero-player.png'
-import Checkout, { ValidationError } from '../../components/stepForm/RegisterForm'
+import Checkout, {
+    ValidationError,
+} from '../../components/stepForm/RegisterForm'
 import Tilt from 'react-parallax-tilt'
 import dayjs from 'dayjs'
 import router from 'next/router'
@@ -96,7 +98,6 @@ const Register = () => {
         return true
     }
 
-
     const loginSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log('submit')
@@ -109,7 +110,6 @@ const Register = () => {
             return
         }
 
-
         setLoading(true)
         axios
             .post('/api/auth/login', loginInput)
@@ -120,52 +120,10 @@ const Register = () => {
             })
             .catch(({ response: { data } }) => {
                 console.log({ data })
-             
-               
+
                 setLoading(false)
             })
-        
     }
-
-    const handleLogin = (e: React.FormEvent) => {
-        e.preventDefault()
-
-        // const isValid = formValidate()
-
-        // if (!isValid) {
-        //     console.log('not valid')
-        //     return
-        // }
-
-        // setMessage(null)
-        // setLoading(true)
-
-        // const data = handleInput
-
-        // const updatedData = {
-        //     ...data,
-        // }
-
-        // setLoading(true)
-        // axios
-        //     .post('/api/auth/login', updatedData)
-        //     .then(({ data }) => {
-        //         console.log({ data })
-        //         setLoading(false)
-        //         router.push('/')
-        //     })
-        //     .catch(({ response: { data } }) => {
-        //         console.log({ data })
-        //         const { message } = data
-        //         setMessage({
-        //             message,
-        //             type: 'error',
-        //         })
-        //         setLoading(false)
-        //     })
-    }
-
-
 
     return (
         <div className='register relative'>
@@ -176,14 +134,10 @@ const Register = () => {
                     </p>
                 </div>
 
-<<<<<<< HEAD
-                <form className=' register__header--form hidden' onSubmit={handleLogin}>
-=======
                 <form
                     className='register__header--form hidden'
                     onSubmit={loginSubmitHandler}
                 >
->>>>>>> dev
                     <div className='header__form--item'>
                         <label
                             htmlFor='email'
@@ -233,16 +187,11 @@ const Register = () => {
                         </Link>
                     </div>
 
-<<<<<<< HEAD
-                    <button className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center' type='submit'>
-                        Login
-=======
                     <button
                         className='bg-black text-[#E8E7E7] py-1 px-6 justify-self-center self-center rounded-lg'
                         type='submit'
                     >
                         {loading ? 'Loading...' : 'Login'}
->>>>>>> dev
                     </button>
                 </form>
             </header>
