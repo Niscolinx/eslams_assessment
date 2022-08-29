@@ -296,6 +296,13 @@ const Index = () => {
         }
     }
 
+    const handleReset = () => {
+        setAge([])
+        setLocation([])
+        setCompetitionType([])
+        setRegistrationRequirement([])
+    }
+
     return (
         <EventContext.Provider
             value={{
@@ -309,17 +316,16 @@ const Index = () => {
             }}
         >
             <div className='marketplace'>
-               
-
                 <Dialog
                     disableEscapeKeyDown
                     open={open}
                     onClose={handleClose}
                     className='filterDialog'
                 >
-                    <div className=' p-4'>
-                        <GrFormClose className='text-xl' />
-                    </div>
+                        <GrFormClose
+                            className='text-3xl bg-red-500 cursor-pointer'
+                            onClick={handleClose}
+                        />
                     <DialogTitle className='text-center -mt-8'>
                         Filters
                     </DialogTitle>
@@ -545,14 +551,12 @@ const Index = () => {
                         </Box>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button onClick={handleReset}>Reset</Button>
                         <Button onClick={handleClose}>Ok</Button>
                     </DialogActions>
                 </Dialog>
 
-                <div className='flex justify-around'>
-                   
-                </div>
+                <div className='flex justify-around'></div>
                 {/* </dialog> */}
                 <div className='marketplace__container'>
                     <div className='grid relative z-3'>
