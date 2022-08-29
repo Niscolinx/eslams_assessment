@@ -62,7 +62,7 @@ const MenuProps = {
     },
 }
 
-const ageRange = [
+const names = [
     '10',
     '11-20',
     '21-30',
