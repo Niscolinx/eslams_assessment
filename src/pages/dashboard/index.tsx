@@ -277,15 +277,8 @@ const Index = () => {
     const [registrationRequirement, setRegistrationRequirement] = useState<
         string[]
     >([])
-    const [priceRange, setPriceRange] = useState<number | number[]>(20)
-    // const [filteredData, setFilteredData] = useState<{
-    //     [key: string]: string | string[]
-    // }>({
-    //     age: [''],
-    //     location: [''],
-    //     competitionType: [''],
-    //     registrationRequirement: [''],
-    // })
+    const [priceRange, setPriceRange] = useState<number | number[]>()
+    
     const [showFilteredData, setShowFilteredData] = useState<any>()
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
@@ -309,6 +302,11 @@ const Index = () => {
                 typeof value === 'string' ? value.split(',') : value
             )
         }
+    }
+
+    const priceValue = (value: any) => {
+        console.log({value})
+       return setPriceRange(value)
     }
 
     const handleReset = () => {
@@ -574,10 +572,9 @@ const Index = () => {
                             </Typography>
                             <PriceSlider
                                 valueLabelDisplay='auto'
-                                aria-label='price range'
-                                name='price-range'
-                                onChange={(e,value) => setPriceRange( value)}
-                               // onChangeCommitted={(e,value) => setPriceRange( value)}
+                               
+                                //onChange={(_,value) => setPriceRange( value)}
+                                onChangeCommitted={(e,value) => priceValue(value)}
                                 defaultValue={10}
                                 min={10}
                                 max={100000}
