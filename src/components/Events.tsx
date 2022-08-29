@@ -113,7 +113,6 @@ const Event = ({
     date: { from, to },
     which,
 }: EventProps) => {
-    console.log({details})
     return (
         <div className='event max-w-[300px] min-w-[150px]'>
             <div className='event__side event__side--front'>
@@ -138,6 +137,7 @@ const Event = ({
                 <div className='event__details'>
                     {details.length > 0 &&
                         details.map((item, i) => {
+                            console.table(Object.values(item))
                             return (
                                 <ul key={i}>
                                     <li><span>{Object.keys(item)}</span>: <span>{Object.values(item)}</span></li>
