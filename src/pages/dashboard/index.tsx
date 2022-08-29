@@ -12,20 +12,24 @@ import Link from 'next/link'
 import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
-import { createContext, useState, useContext } from 'react'
+import { createContext, useState, useContext, useEffect } from 'react'
 
 type contextTypes = {
     searchValue: string
+    toggleModal: boolean
+    setToggleModal: (toggleModal: boolean) => void
     setSearchValue: (searchValue: string) => void
 }
 
 export const EventContext = createContext<contextTypes>({
     searchValue: '',
+    toggleModal: false,
+    setToggleModal: (toggleModal: boolean) => {},
     setSearchValue: (searchValue: string) => {},
 })
 
 const SearchBox = () => {
-    const { searchValue, setSearchValue } = useContext(EventContext)
+    const { searchValue, setSearchValue, setToggleModal } = useContext(EventContext)
 
     return (
         <div className='flex items-center gap-2'>
@@ -39,7 +43,7 @@ const SearchBox = () => {
                     className='rounded-3xl py-2 px-3 pl-10 w-80 outline-none border-none'
                 />
             </div>
-            <div className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl'>
+            <div className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl' onClick={() => setToggleModal(false)}>
                 <VscSettings />
                 <span className=' tracking-wide text-sm'>Filters</span>
             </div>
@@ -132,6 +136,7 @@ function Footer() {
 
 const Index = () => {
     const [searchValue, setSearchValue] = useState('')
+    const [toggleModal, setToggleModal] = useState(false)
     const [selectedAction, setSelectedAction] =
         useState<HTMLSelectElement | null>(null)
 
@@ -140,6 +145,12 @@ const Index = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
+
+    useEffect(() => {
+        console.log('before', {toggleModal})
+        setToggleModal((prev) => !prev)
+        console.log('after', {toggleModal})
+    }, [toggleModal])
 
     const showModel = () => {
         const dialog = document.querySelector('#withdrawalDialog') as any
@@ -159,6 +170,8 @@ const Index = () => {
             value={{
                 searchValue,
                 setSearchValue,
+                setToggleModal,
+                toggleModal: false
             }}
         >
             <div className='marketplace'>
