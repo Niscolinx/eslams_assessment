@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Image from 'next/image'
 import { EventContext } from '../pages/dashboard'
 
@@ -233,9 +233,18 @@ function Events() {
     const {
         searchValue,
         filteredData,
+        showFilteredData
     } = useContext(EventContext)
 
+    useEffect(() => {
+        if(showFilteredData){
+            console.log('call the show function')
+        }
+        else{
+            console.log('call the hide function')
+        }
 
+    }, [showFilteredData])
 
     console.log({ filteredData})
     return (
