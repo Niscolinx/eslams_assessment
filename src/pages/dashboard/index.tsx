@@ -47,6 +47,9 @@ type contextTypes = {
     location: string | string[]
     competitionType: string | string[]
     registrationRequirement: string | string[]
+    filteredData: {
+        [key: string]: [string | string[]]
+    }
 }
 
 export const EventContext = createContext<contextTypes>({
@@ -56,6 +59,7 @@ export const EventContext = createContext<contextTypes>({
     competitionType: '',
     registrationRequirement: '',
     handleClickOpen: () => {},
+    filteredData: {},
     setSearchValue: (searchValue: string) => {},
 })
 
@@ -272,6 +276,12 @@ const Index = () => {
     const [registrationRequirement, setRegistrationRequirement] = useState<
         string[]
     >([])
+    const [filteredData, setFilteredData] = useState<{[key: string]: [string | string[]]}>({
+        age: [''],
+        location: [''],
+        competitionType: [''],
+        registrationRequirement: ['']
+    })
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const {
@@ -303,6 +313,10 @@ const Index = () => {
         setRegistrationRequirement([])
     }
 
+    const handleFilter = (e:any) => {
+        console.log(age, location, competitionType, registrationRequirement)
+        handleClose(e)
+    }
     return (
         <EventContext.Provider
             value={{
@@ -312,6 +326,7 @@ const Index = () => {
                 age,
                 location,
                 competitionType,
+                filteredData,
                 registrationRequirement,
             }}
         >
