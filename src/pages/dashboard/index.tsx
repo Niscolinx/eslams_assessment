@@ -49,10 +49,6 @@ type contextTypes = {
     searchValue: string
     handleClickOpen: () => void
     setSearchValue: (searchValue: string) => void
-    age: string | string[]
-    location: string | string[]
-    competitionType: string | string[]
-    registrationRequirement: string | string[]
 
     showFilteredData: {
         [key: string]: string | string[]
@@ -61,10 +57,7 @@ type contextTypes = {
 
 export const EventContext = createContext<contextTypes>({
     searchValue: '',
-    age: '',
-    location: '',
-    competitionType: '',
-    registrationRequirement: '',
+
     handleClickOpen: () => {},
     showFilteredData: {},
     setSearchValue: (searchValue: string) => {},
@@ -344,11 +337,7 @@ const Index = () => {
                 searchValue,
                 setSearchValue,
                 handleClickOpen,
-                age,
                 showFilteredData,
-                location,
-                competitionType,
-                registrationRequirement,
             }}
         >
             <div className='marketplace'>
