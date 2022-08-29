@@ -240,7 +240,9 @@ function Events() {
        
         console.log({showFilteredData})
 
-        
+        EVENTDATA.filter((val) => {
+            console.log({val})
+        })
 
 
     }, [showFilteredData])
