@@ -304,10 +304,14 @@ const Index = () => {
         }
     }
 
-    const priceValue = (value: any) => {
+    const priceValue = (value: number | number[]) => {
         console.log({value})
-       return setPriceRange(value)
+       return value
     }
+
+    useEffect(() => {
+        console.log('price range function', priceRange)
+    }, [priceRange])
 
     const handleReset = () => {
         setAge([])
