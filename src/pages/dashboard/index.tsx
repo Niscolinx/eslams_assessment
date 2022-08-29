@@ -43,7 +43,7 @@ const SearchBox = () => {
                     className='rounded-3xl py-2 px-3 pl-10 w-80 outline-none border-none'
                 />
             </div>
-            <div className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl' onClick={() => setToggleModal(false)}>
+            <div className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl' onClick={(prev) => setToggleModal(!prev)}>
                 <VscSettings />
                 <span className=' tracking-wide text-sm'>Filters</span>
             </div>
@@ -148,7 +148,6 @@ const Index = () => {
 
     useEffect(() => {
         console.log('before', {toggleModal})
-        setToggleModal((prev) => !prev)
         console.log('after', {toggleModal})
     }, [toggleModal])
 
