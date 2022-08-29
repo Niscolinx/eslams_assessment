@@ -62,11 +62,23 @@ const MenuProps = {
     },
 }
 
-const names = [
-    '10',
-    '11-20',
-    '21-30',
-    '31-40'
+const ageRange = ['10', '11-20', '21-30', '31-40']
+
+const locations = ['USA', 'Canada', 'Mexico']
+
+const competitionType = [
+    'multilevel',
+    'single Elemination',
+    'semi-round robins',
+    'round robin tripple split',
+
+]
+const names = ['']
+
+const RegistrationRequirements = [
+    'Individual Registration',
+    'Group Registration',
+    '18 and Above',
 ]
 
 function getStyles(name: string, personName: readonly string[], theme: Theme) {
@@ -251,7 +263,9 @@ const Index = () => {
     const [age, setAge] = useState<string[]>([])
     const [location, setLocation] = useState<string[]>([])
     const [competitionType, setCompetitionType] = useState<string[]>([])
-    const [registrationRequirement, setRegistrationRequirement] = useState<string[]>([])
+    const [registrationRequirement, setRegistrationRequirement] = useState<
+        string[]
+    >([])
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const {
@@ -397,11 +411,7 @@ const Index = () => {
                                         <MenuItem
                                             key={name}
                                             value={name}
-                                            style={getStyles(
-                                                name,
-                                                age,
-                                                theme
-                                            )}
+                                            style={getStyles(name, age, theme)}
                                         >
                                             {name}
                                         </MenuItem>
@@ -509,15 +519,17 @@ const Index = () => {
                                 </Select>
                             </FormControl>
 
-                                <Typography gutterBottom className='mt-5'>Price Range</Typography>
-                                <PrettoSlider
-                                    valueLabelDisplay='auto'
-                                    aria-label='pretto slider'
-                                    name='pretto'
-                                    defaultValue={10}
-                                    min={10}
-                                    max={100000}
-                                />
+                            <Typography gutterBottom className='mt-5'>
+                                Price Range
+                            </Typography>
+                            <PrettoSlider
+                                valueLabelDisplay='auto'
+                                aria-label='pretto slider'
+                                name='pretto'
+                                defaultValue={10}
+                                min={10}
+                                max={100000}
+                            />
                         </Box>
                     </DialogContent>
                     <DialogActions>
