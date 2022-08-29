@@ -250,7 +250,6 @@ function Events() {
                 EVENTDATA.map((eachEvent) => {
                     let eventCompetitionType = eachEvent.details[1]['Competition Type']
 
-                    console.log({eventCompetitionType, eachGroup})
                     if (eventCompetitionType === eachGroup) {
                         console.log('competition type', { eachEvent })
                     }

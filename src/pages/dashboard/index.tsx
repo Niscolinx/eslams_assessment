@@ -79,10 +79,10 @@ const AGERANGE = ['0-10', '11-20', '21-30', '31-40']
 const LOCATIONS = ['USA', 'Canada', 'Mexico']
 
 const COMPETITIONTYPE = [
-    'multilevel',
-    'single Elimination',
-    'semi-round robins',
-    'round robin tripple split',
+    'Multilevel',
+    'Single Elimination',
+    'Semi-round Robins',
+    'Round Robin Tripple Split',
 ]
 
 const REGISTRATIONREQUIREMENTS = [
