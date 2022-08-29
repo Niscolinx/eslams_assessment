@@ -335,7 +335,7 @@ const Index = () => {
 
     console.log('price range', priceRange)
 
-    const handlePriceFilter = ({ value }: { value: number | number[] }) => {
+    const handlePriceFilter = (event: Event, value: number | number[]) => {
         console.log({value })
     }
     return (
