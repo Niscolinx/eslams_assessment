@@ -18,7 +18,7 @@ interface EventProps {
 const EVENTDATA: EventProps[] = [
     {
         heading: 'USA BASKETBALL SHOWCASE',
-        price: 1200,
+        price: 12000,
         details: [
             { Age: '25' },
             { 'Competition Type': 'round robin triple split' },
@@ -58,7 +58,7 @@ const EVENTDATA: EventProps[] = [
     },
     {
         heading: 'FIBA 3x3 U23 World Cup (women)',
-        price: 1600,
+        price: 59000,
         details: [
             { Age: '15' },
             { 'Competition Type': 'semi-round robins' },
@@ -78,7 +78,7 @@ const EVENTDATA: EventProps[] = [
     },
     {
         heading: '2022 USA Basketball (boys)',
-        price: 999,
+        price: 99094,
         details: [
             { Age: '23' },
             { 'Competition Type': 'multilevel' },
@@ -98,7 +98,7 @@ const EVENTDATA: EventProps[] = [
     },
     {
         heading: '2022 USA Basketball Academy',
-        price: 1090,
+        price: 11200,
         details: [
             { Age: '32' },
             { 'Competition Type': 'multilevel' },
@@ -117,7 +117,7 @@ const EVENTDATA: EventProps[] = [
     },
     {
         heading: '2022 USA Basketball (girls)',
-        price: 1100,
+        price: 85070,
         details: [
             { Age: '18' },
             { 'Competition Type': 'single elimination' },

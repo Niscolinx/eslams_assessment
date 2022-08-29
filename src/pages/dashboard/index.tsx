@@ -28,7 +28,12 @@ import {
     SelectChangeEvent,
     Button,
 } from '@mui/material'
-import Grid from '@mui/material/Grid'
+import Slider, {
+    SliderThumb,
+    SliderValueLabelProps,
+} from '@mui/material/Slider'
+import { styled } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
@@ -193,7 +198,47 @@ const Index = () => {
     const [searchValue, setSearchValue] = useState('')
 
     const [open, setOpen] = useState(false)
-    const [age, setAge] = useState<number | string>('')
+
+    const PrettoSlider = styled(Slider)({
+        color: '#D0E069',
+        height: 5,
+        '& .MuiSlider-track': {
+            border: 'none',
+        },
+        '& .MuiSlider-thumb': {
+            height: 20,
+            width: 20,
+            backgroundColor: 'black',
+            border: '2px solid currentColor',
+            '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+                boxShadow: 'inherit',
+            },
+            '&:before': {
+                display: 'none',
+            },
+        },
+        '& .MuiSlider-valueLabel': {
+            lineHeight: 1.2,
+            fontSize: 12,
+            background: 'unset',
+            padding: 0,
+            width: 50,
+            color: 'black',
+            height: 50,
+            borderRadius: '50% 50% 50% 0',
+            backgroundColor: '#D0E069',
+            transformOrigin: 'bottom left',
+            transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
+            '&:before': { display: 'none' },
+            '&.MuiSlider-valueLabelOpen': {
+                transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+            },
+            '& > *': {
+                transform: 'rotate(45deg)',
+            },
+        },
+    })
+
 
     const handleClickOpen = () => {
         setOpen(true)
@@ -253,7 +298,12 @@ const Index = () => {
                     onClose={handleClose}
                     className='filterDialog'
                 >
-                    <DialogTitle className='text-center'>Filters</DialogTitle>
+                    <div className=' p-4'>
+                        <GrFormClose className='text-xl' />
+                    </div>
+                    <DialogTitle className='text-center -mt-8'>
+                        Filters
+                    </DialogTitle>
                     <DialogContent>
                         <Box
                             component='form'
@@ -264,18 +314,18 @@ const Index = () => {
                             }}
                         >
                             <FormControl sx={{ m: 1, width: 300 }}>
-                                <InputLabel id='demo-multiple-location-label'>
+                                <InputLabel id='location-label'>
                                     <div className='flex'>Location</div>
                                 </InputLabel>
                                 <Select
-                                    labelId='demo-multiple-location-label'
-                                    id='demo-multiple-location'
+                                    labelId='location-label'
+                                    id='location'
                                     multiple
                                     value={personName}
                                     onChange={handleChange}
                                     input={
                                         <OutlinedInput
-                                            id='select-multiple-location'
+                                            id='select-locations'
                                             label='location'
                                         />
                                     }
@@ -461,6 +511,15 @@ const Index = () => {
                                     ))}
                                 </Select>
                             </FormControl>
+                            <Box sx={{ m: 3 }} />
+                            <Typography gutterBottom>pretto.fr</Typography>
+                            <PrettoSlider
+                                valueLabelDisplay='auto'
+                                aria-label='pretto slider'
+                                defaultValue={20}
+                                min={10}
+                                max={100000}
+                            />
                         </Box>
                     </DialogContent>
                     <DialogActions>
