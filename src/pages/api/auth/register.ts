@@ -1,4 +1,3 @@
-
 import { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcryptjs'
 import dbConnect from '../../../lib/dbConnect'
@@ -7,7 +6,6 @@ import { transporter } from '../../../utils/emailTransport'
 import mjml2html from 'mjml'
 import Otp from '../../../models/Otp'
 import * as jose from 'jose'
-
 
 async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
     try {
@@ -32,21 +30,15 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             otp,
         } = req.body
 
-       
+        const existingEmail = await User.findOne({ email: personalEmail })
 
-        const existingEmail = await User.findOne({ personalEmail })
+        //const existingPhoneNumber = await User.findOne({ phoneNumber })
 
-        console.log('existingEmail', existingEmail)
-
-        // const existingPhoneNumber = await User.findOne({ phoneNumber })
-
-
-
-        // if (existingEmail) {
-        //     return res.status(401).json({
-        //         message: 'Email already exists',
-        //     })
-        // }
+        if (existingEmail) {
+            return res.status(401).json({
+                message: 'Email already exists',
+            })
+        }
 
         // if (existingPhoneNumber) {
         //     return res.status(401).json({
@@ -65,7 +57,6 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         }
 
         console.log({ checkForOtp })
-
 
         if (checkForOtp[checkForOtp.length - 1].code !== Number(otp)) {
             console.log(checkForOtp[checkForOtp.length - 1].code, Number(otp))
@@ -98,7 +89,6 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         if (!user) {
             return res.status(500).json({ message: 'Server Error' })
         }
-
 
         const fullName = `${firstName} ${lastName}`
 
@@ -161,16 +151,14 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             }
         })
 
-       const token = await new jose.SignJWT({
-           email: user.email,
-           userId: user!._id.toString(),
-       })
-           .setProtectedHeader({ alg: 'HS256' })
-           .setIssuedAt()
-           .setExpirationTime('30d')
-           .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
-
-      
+        const token = await new jose.SignJWT({
+            email: user.email,
+            userId: user!._id.toString(),
+        })
+            .setProtectedHeader({ alg: 'HS256' })
+            .setIssuedAt()
+            .setExpirationTime('30d')
+            .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
 
         //set cookie in nodejs
         res.setHeader(
@@ -181,8 +169,6 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
         )
         return res.status(200).json({ user })
         //setCookie('userSession', token, { req, res, maxAge: 60 * 60 * 24 })
-
-        
     } catch (err) {
         console.log({ err })
     }
