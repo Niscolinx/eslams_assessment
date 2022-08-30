@@ -15,7 +15,7 @@ interface EventProps {
     }
 }
 
-const EVENTDATA: EventProps[] = [
+export const EVENTDATA: EventProps[] = [
     {
         id: 1,
         heading: 'USA BASKETBALL SHOWCASE',

@@ -223,7 +223,6 @@ const Index = () => {
     const [registrationRequirement, setRegistrationRequirement] = useState<
         string[]
     >([])
-    const [registerEvent, setRegisterEvent] = useState<any>()
 
     const [showFilteredData, setShowFilteredData] = useState<any>({
         location: ['USA'],
@@ -334,6 +333,10 @@ const Index = () => {
         setShowFilteredData(filtered)
 
         handleClose(e)
+    }
+
+    const registerEvent = (e: number) => {
+        console.log(e)
     }
 
     return (
