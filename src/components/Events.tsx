@@ -224,7 +224,7 @@ const Event = ({
                         <p className='event__price-only'>Only</p>
                         <p className='event__price-value'>${price}</p>
                     </div>
-                    <button className='btn btn--white' onClick={(e: MouseEventHandler<HTMLButtonElement>, id:number)=> registerEvent(id)}>
+                    <button className='btn btn--white' onClick={(e: any)=> registerEvent(id)}>
                         Register now!
                     </button>
                 </div>
