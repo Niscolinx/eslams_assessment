@@ -34,7 +34,9 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
        
 
-        // const existingEmail = await User.findOne({ personalEmail })
+        const existingEmail = await User.findOne({ personalEmail })
+
+        console.log('existingEmail', existingEmail)
 
         // const existingPhoneNumber = await User.findOne({ phoneNumber })
 

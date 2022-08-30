@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import HeroImg2 from '../../../public/hero-player.png'
-import Checkout, {
+import RegisterForm, {
     ValidationError,
 } from '../../components/stepForm/RegisterForm'
 import Tilt from 'react-parallax-tilt'
@@ -239,7 +239,7 @@ const Register = () => {
                     </div>
                 </div>
                 <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-30 md: mx-0 ml-auto'>
-                    <Checkout />
+                    <RegisterForm />
                 </div>
                 <div className='main-signup'></div>
             </div>
