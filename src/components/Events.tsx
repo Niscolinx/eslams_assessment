@@ -335,7 +335,7 @@ function Events() {
                 {EVENTDATA.map((item) => {
                     return item.heading.toLowerCase().includes(searchValue) ? (
                         <Event key={item.heading} {...item} />
-                    ) : null
+                    ) : <p>No Event Found</p>
                 })}
             </div>
         </div>
