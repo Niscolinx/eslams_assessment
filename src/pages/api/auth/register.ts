@@ -34,23 +34,23 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
        
 
-        const existingEmail = await User.findOne({ personalEmail })
+        // const existingEmail = await User.findOne({ personalEmail })
 
-        const existingPhoneNumber = await User.findOne({ phoneNumber })
+        // const existingPhoneNumber = await User.findOne({ phoneNumber })
 
 
 
-        if (existingEmail) {
-            return res.status(401).json({
-                message: 'Email already exists',
-            })
-        }
+        // if (existingEmail) {
+        //     return res.status(401).json({
+        //         message: 'Email already exists',
+        //     })
+        // }
 
-        if (existingPhoneNumber) {
-            return res.status(401).json({
-                message: 'Number already in use',
-            })
-        }
+        // if (existingPhoneNumber) {
+        //     return res.status(401).json({
+        //         message: 'Number already in use',
+        //     })
+        // }
 
         const checkForOtp = await Otp.find({
             creatorEmail: personalEmail,
