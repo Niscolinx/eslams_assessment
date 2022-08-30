@@ -49,7 +49,7 @@ type contextTypes = {
     searchValue: string
     handleClickOpen: () => void
     setSearchValue: (searchValue: string) => void
-
+    registerEvent: ( id:number) => void
     showFilteredData: {
         [key: string]: string | string[]
     }
@@ -57,7 +57,7 @@ type contextTypes = {
 
 export const EventContext = createContext<contextTypes>({
     searchValue: '',
-
+    registerEvent: ( id: number) => {},
     handleClickOpen: () => {},
     showFilteredData: {},
     setSearchValue: (searchValue: string) => {},
@@ -223,6 +223,7 @@ const Index = () => {
     const [registrationRequirement, setRegistrationRequirement] = useState<
         string[]
     >([])
+    const [registerEvent, setRegisterEvent] = useState<any>()
 
     const [showFilteredData, setShowFilteredData] = useState<any>({
         location: ['USA'],
@@ -342,6 +343,7 @@ const Index = () => {
                 setSearchValue,
                 handleClickOpen,
                 showFilteredData,
+                registerEvent,
             }}
         >
             <div className='marketplace'>

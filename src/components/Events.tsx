@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { MouseEventHandler, useContext, useEffect, useState } from 'react'
 import { EventContext } from '../pages/dashboard'
 
 interface EventProps {
@@ -135,12 +135,16 @@ const EVENTDATA: EventProps[] = [
 ]
 
 const Event = ({
+    id,
     heading,
     details,
     price,
     date: { from, to },
     which,
 }: EventProps) => {
+
+    const { registerEvent } = useContext(EventContext)
+
     return (
         <div className='event md:w-[250px] lg:w-[350px]'>
             <div className='event__side event__side--front'>
@@ -220,10 +224,9 @@ const Event = ({
                         <p className='event__price-only'>Only</p>
                         <p className='event__price-value'>${price}</p>
                     </div>
-                    <a href='#popup' className='btn btn--white'>
-                        {/* TODO send api to register users */}
+                    <button className='btn btn--white' onClick={(e: MouseEventHandler<HTMLButtonElement>, id:number)=> registerEvent(id)}>
                         Register now!
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -335,7 +338,7 @@ function Events() {
                 {EVENTDATA.map((item) => {
                     return item.heading.toLowerCase().includes(searchValue) ? (
                         <Event key={item.heading} {...item} />
-                    ) : <p>No Event Found</p>
+                    ) : null
                 })}
             </div>
         </div>
