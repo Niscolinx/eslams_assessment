@@ -6,7 +6,7 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
     const tokenCookie = req.cookies.get('tokenCookie')
     const { url } = req
 
-    if (url.includes('/dashboard')) {
+    if (url.includes('/dashboard') || url.includes('/api')) {
         if (!tokenCookie) {
             return NextResponse.redirect(`${serverUrl}/auth/login`)
         } else {

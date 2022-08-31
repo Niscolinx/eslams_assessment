@@ -12,15 +12,42 @@ export interface IEvent {
         { registrationRequirements: string[] }
     ]
     date: {
-        from: string
-        to: string
+        from: Date
+        to: Date
     }
-    which: number
 }
 
 const eventSchema = new Schema<IEvent>(
     {
-       
+        heading: {
+            type: String,
+            required: true,
+        },
+
+        price: {
+            type: Number,
+            required: true,
+        },
+        details: [
+            {
+                age: {
+                    type: String,
+                    required: true,
+                },
+                competitionType: {
+                    type: String,
+                    required: true,
+                },
+                location: {
+                    type: String,
+                    required: true,
+                },
+                registrationRequirements: {
+                    type: [String],
+                    required: true,
+                },
+            },
+        ],
     },
     { timestamps: true }
 )
