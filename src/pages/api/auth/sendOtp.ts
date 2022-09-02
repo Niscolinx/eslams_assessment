@@ -26,7 +26,7 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
       <mj-column>
 
 
-        <mj-image width="70px" src="https://i.ibb.co/FXyQXg8/logo.jpg"></mj-image>
+        <mj-image width="70px" src="https://i.ibb.co/LJ2sGDH/logo.png"></mj-image>
 
         <mj-divider border-color="#112ea3" border-width='1px'></mj-divider>
 
