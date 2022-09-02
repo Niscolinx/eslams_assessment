@@ -1,33 +1,22 @@
-import { IUser } from './../../../models/User';
 import { IOtp } from './../../../models/Otp';
 import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../../lib/dbConnect'
 import { transporter } from '../../../utils/emailTransport'
 import mjml2html from 'mjml'
 import Otp from '../../../models/Otp'
-import User from '../../../models/User';
 
 async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
     try {
         await dbConnect()
 
         console.log('otp', req.body)
-        const {  email } = req.body
+        const {  personalEmail, firstName, lastName } = req.body
 
         //generate random 6 digit code
 
-        const user: IUser | null = await User.findOne({ email })
-
-        if(!user) {
-            return res.status(401).json({
-                message: 'User not found',
-            })
-        }
-
         const otp = Math.floor(100000 + Math.random() * 900000)
 
-        const username = user.
-
+        const fullName = `${firstName} ${lastName}`
 
         const htmlOutput = mjml2html(
             `
@@ -37,11 +26,11 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
       <mj-column>
 
 
-        <mj-image width="70px" src="https://i.ibb.co/LJ2sGDH/logo.png"></mj-image>
+        <mj-image width="70px" src="https://i.ibb.co/FXyQXg8/logo.jpg"></mj-image>
 
         <mj-divider border-color="#112ea3" border-width='1px'></mj-divider>
 
-        <mj-text font-size='20px' align='center'>Hello, ${username}</mj-text>
+        <mj-text font-size='20px' align='center'>Hello, ${fullName}</mj-text>
 
 
 
@@ -59,9 +48,9 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
         )
 
         const mail = {
-            from: 'admin@1960token.com',
-            to: email,
-            subject: `1960Token - Account Verification`,
+            from: 'admin@eslams.com',
+            to: personalEmail,
+            subject: `Eslams - Account Verification`,
             html: `${htmlOutput.html}`,
         }
 
@@ -86,7 +75,7 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
                 const pendingOtp = new Otp<IOtp>({
                     code: otp,
                     status: 'pending',
-                    creatorEmail: email
+                    creatorEmail: personalEmail
                 })
 
                 const theUser = await pendingOtp.save()
