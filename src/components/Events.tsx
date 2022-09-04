@@ -242,64 +242,65 @@ const Event = ({
 
 function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
+    const [updateEvent, setUpdateEvent] = useState<any>(new Set([]))
 
-    const updatedEventList = new Set<EventProps>()
-
-
-    console.log({showFilteredData})
     useEffect(() => {
-        //FIXME - this is a fix to filter the data
-       
 
-        if (showFilteredData.Age) {
-            console.log('Age')
-            Object.values(showFilteredData.Age).map((eachGroup) => {
-                const [min, max] = eachGroup.split('-')
-                const minAge = parseInt(min)
-                const maxAge = parseInt(max)
+        setUpdateEvent(new Set([]))
 
-                return EVENTDATA.map((eachEvent) => {
-                    let eventAge = Number(eachEvent.details[0].Age)
-                    if (eventAge >= minAge && eventAge <= maxAge) {
-                        updatedEventList.add(eachEvent)
-                    }
-                })
-            })
-        }
+        if (showFilteredData) {
+            if (showFilteredData.Age.length > 0) {
+                Object.values(showFilteredData.Age).map((eachGroup) => {
+                    const [min, max] = eachGroup.split('-')
+                    const minAge = parseInt(min)
+                    const maxAge = parseInt(max)
 
-        if (showFilteredData['Competition Type']) {
-            console.log('Competition Type')
-            Object.values(showFilteredData['Competition Type']).map(
-                (eachGroup) => {
-                    EVENTDATA.map((eachEvent) => {
-                        let eventCompetitionType =
-                            eachEvent.details[1]['Competition Type']
-                        if (eventCompetitionType === eachGroup) {
-                            //console.log('competition type', { eachEvent })
-                            updatedEventList.add(eachEvent)
+                    return EVENTDATA.map((eachEvent) => {
+                        let eventAge = Number(eachEvent.details[0].Age)
+                        if (eventAge >= minAge && eventAge <= maxAge) {
+                            setUpdateEvent((prev: any) => {
+                                return prev.add(eachEvent)
+                            })
                         }
                     })
-                }
-            )
-        }
-
-        if (showFilteredData.location) {
-            console.log('location')
-            Object.values(showFilteredData.location).map((eachGroup) => {
-                EVENTDATA.map((eachEvent) => {
-                    let eventLocation = eachEvent.details[2].location
-                    if (eventLocation === eachGroup) {
-                        // console.log('location', { eachEvent })
-                        updatedEventList.add(eachEvent)
-                    }
                 })
-            })
-        }
+            }
 
-        if (showFilteredData['Registration Requirements']) {
-            console.log('Registration Requirements')
-            Object.values(showFilteredData['Registration Requirements']).map(
-                (eachGroup) => {
+            if (showFilteredData['Competition Type'].length > 0) {
+                Object.values(showFilteredData['Competition Type']).map(
+                    (eachGroup) => {
+                        EVENTDATA.map((eachEvent) => {
+                            let eventCompetitionType =
+                                eachEvent.details[1]['Competition Type']
+                            if (eventCompetitionType === eachGroup) {
+                                //console.log('competition type', { eachEvent })
+                                setUpdateEvent((prev: any) => {
+                                    return prev.add(eachEvent)
+                                })
+                            }
+                        })
+                    }
+                )
+            }
+
+            if (showFilteredData.location.length > 0) {
+                Object.values(showFilteredData.location).map((eachGroup) => {
+                    EVENTDATA.map((eachEvent) => {
+                        let eventLocation = eachEvent.details[2].location
+                        if (eventLocation === eachGroup) {
+                            // console.log('location', { eachEvent })
+                            setUpdateEvent((prev: any) => {
+                                return prev.add(eachEvent)
+                            })
+                        }
+                    })
+                })
+            }
+
+            if (showFilteredData['Registration Requirements'].length > 0) {
+                Object.values(
+                    showFilteredData['Registration Requirements']
+                ).map((eachGroup) => {
                     EVENTDATA.map((eachEvent) => {
                         let eventRegistrationRequirements =
                             eachEvent.details[3]['Registration Requirements']
@@ -307,33 +308,37 @@ function Events() {
                             // console.log('registration requirements', {
                             //    eachEvent,
                             //  })
-                            updatedEventList.add(eachEvent)
+                            setUpdateEvent((prev: any) => {
+                                return prev.add(eachEvent)
+                            })
                         }
                     })
-                }
-            )
-        }
+                })
+            }
 
-        if (showFilteredData.priceRange) {
-            console.log('priceRange')
-            const values = showFilteredData.priceRange
-            const left = values[0]
-            const right = values[1]
-            EVENTDATA.map((eachEvent) => {
-                let eventPrice = eachEvent.price
-                if (eventPrice >= Number(left) && eventPrice <= Number(right)) {
-                    // console.log('price range', { eachEvent })
-                    updatedEventList.add(eachEvent)
-                }
-            })
+            if (showFilteredData.priceRange) {
+                const values = showFilteredData.priceRange
+                const left = values[0]
+                const right = values[1]
+                EVENTDATA.map((eachEvent) => {
+                    let eventPrice = eachEvent.price
+                    if (
+                        eventPrice >= Number(left) &&
+                        eventPrice <= Number(right)
+                    ) {
+                        // console.log('price range', { eachEvent })
+                        setUpdateEvent((prev: any) => {
+                            return prev.add(eachEvent)
+                        })
+                    }
+                })
+            }
         }
     }, [showFilteredData])
 
-
-
-
-
+    
     const showEvents = () => {
+        console.log({ updateEvent })
         let unMatchedEventsCount = 0
         let data = EVENTDATA.map((item) => {
             const arr = item.heading.includes(searchValue) && (
