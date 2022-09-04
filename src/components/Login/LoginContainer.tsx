@@ -1,26 +1,13 @@
-import React, { useContext, useMemo, useState } from 'react'
+import React, {useState } from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
-import Toolbar from '@mui/material/Toolbar'
 import Paper from '@mui/material/Paper'
-import Stepper from '@mui/material/Stepper'
-import Step from '@mui/material/Step'
-import StepLabel from '@mui/material/StepLabel'
-import Button from '@mui/material/Button'
-import Link from '@mui/material/Link'
-import Typography from '@mui/material/Typography'
+
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
-import OtpInput from 'react-otp-input'
-import { CircularProgress, Grid, TextField } from '@mui/material'
+import { CircularProgress, Grid, TextField, Typography } from '@mui/material'
 
-import { AuthContext } from '../../pages/api/auth/authContext'
 import axios from 'axios'
-import dayjs from 'dayjs'
-import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
@@ -196,13 +183,7 @@ export default function Checkout() {
                         Welcome Back
                     </Typography>
 
-                    {/* <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-                            {steps.map((label) => (
-                                <Step key={label}>
-                                    <StepLabel>{label}</StepLabel>
-                                </Step>
-                            ))}
-                        </Stepper> */}
+             
                     {message && message.type === 'error' && (
                         <p className='text-red-500 text-sm font-semibold text-center py-4'>
                             {message.message}
