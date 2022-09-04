@@ -11,15 +11,15 @@ export default async function events(req: NextApiRequest, res: NextApiResponse){
     try {
 
         EVENTDATA.forEach(async (event: any) => {
-            console.log(event)
+            console.log(event.details[0])
             const newEvent = new Event({
                 heading: event.heading,
                 price: event.price,
                 details: [{
                     age: event.details[0].Age,
-                    competitionType: event.details[0]['Competition Type'],
-                    location: event.details[0].location,
-                    registrationRequirements: event.details[0]['Registration Requirements']
+                    competitionType: event.details[1]['Competition Type'],
+                    location: event.details[2].location,
+                    registrationRequirements: event.details[3]['Registration Requirements']
                 }],
                 date: {
                     from: event.date.from,
