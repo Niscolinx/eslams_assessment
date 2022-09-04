@@ -327,21 +327,20 @@ function Events() {
         }
     }, [showFilteredData])
 
-    //TODO - filter the data based on the filters selected
 
     const showEvents = () => {
-        let count = 0
+        let unMatchedEventsCount = 0
         let data = filteredData.map((item) => {
             const arr = item.heading.includes(searchValue) && (
                 <Event {...item} key={item.id} />
             )
             if (!arr) {
-                count++
+                unMatchedEventsCount++
             }
             return arr
         })
 
-        if (count > 5) {
+        if (unMatchedEventsCount > 5) {
             return null
         }
         return data
