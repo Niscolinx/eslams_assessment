@@ -1,5 +1,4 @@
 import React, {
-    MouseEventHandler,
     useContext,
     useEffect,
     useState,
@@ -363,7 +362,7 @@ function Events() {
                 <h1 className='events__heading--text'>Upcoming Events</h1>{' '}
                 <span></span>
             </div>
-            <div className='events__container'>
+            <div className='events__container overflow-hidden'>
                 {showEvents() || <p>No events found</p>}
             </div>
         </div>
