@@ -5,9 +5,14 @@ export interface IEvent {
     _id?: Object
     heading: string
     price: number
-    details: {
-        [key: string]: any
-    }
+    details: [
+        {
+            heading: string
+            age: number
+            price: number
+            details: any
+        }
+    ]
     date: {
         from: Date
         to: Date
@@ -25,9 +30,22 @@ const eventSchema = new Schema<IEvent>(
             type: Number,
             required: true,
         },
-        details: { 
-            type: Object
-         },
+        details: [
+            {
+                heading: {
+                    type: String,
+                },
+                age: {
+                    type: Number,
+                },
+                price: {
+                    type: Number,
+                },
+                details: {
+                    type: Schema.Types.Mixed,
+                },
+            },
+        ],
     },
     { timestamps: true }
 )

@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { EventContext } from '../pages/dashboard'
 
 interface EventProps {
-    id: number
+    id?: number
     heading: string
     details: {
         [key: string]: any
@@ -18,8 +18,7 @@ interface EventProps {
 
 export const EVENTDATA: EventProps[] = [
     {
-        id: 1,
-        heading: 'USA Basketball Showcase',
+        heading: 'USA Basketball Showcase sdfsdfsdfsdf',
         price: 12000,
         details: [
             { age: 25 },
@@ -35,7 +34,6 @@ export const EVENTDATA: EventProps[] = [
         which: 1,
     },
     {
-        id: 2,
         heading: '2022 FIBA AmeriCup for Men',
         price: 1500,
         details: [
@@ -57,7 +55,6 @@ export const EVENTDATA: EventProps[] = [
         which: 2,
     },
     {
-        id: 3,
         heading: 'FIBA 3x3 U23 World Cup (women)',
         price: 59000,
         details: [
@@ -78,7 +75,6 @@ export const EVENTDATA: EventProps[] = [
         which: 3,
     },
     {
-        id: 4,
         heading: '2022 USA Basketball (boys)',
         price: 99094,
         details: [
@@ -96,7 +92,6 @@ export const EVENTDATA: EventProps[] = [
         which: 1,
     },
     {
-        id: 5,
         heading: '2022 USA Basketball Academy',
         price: 11200,
         details: [
@@ -113,7 +108,6 @@ export const EVENTDATA: EventProps[] = [
         which: 2,
     },
     {
-        id: 6,
         heading: '2022 USA Basketball (girls)',
         price: 85070,
         details: [
@@ -135,106 +129,106 @@ export const EVENTDATA: EventProps[] = [
     },
 ]
 
-const Event = ({
-    id,
-    heading,
-    details,
-    price,
-    date: { from, to },
-    which,
-}: EventProps) => {
-    const { registerEvent } = useContext(EventContext)
+// const Event = ({
+//     id,
+//     heading,
+//     details,
+//     price,
+//     date: { from, to },
+//     which,
+// }: EventProps) => {
+//     const { registerEvent } = useContext(EventContext)
 
-    return (
-        <div className='event md:w-[250px] lg:w-[350px]'>
-            <div className='event__side event__side--front'>
-                <div className={`event__picture event__picture--${which}`}>
-                    <div className='event__picture--date'>
-                        <span>
-                            {from.split(' ')[0]} <sup>{from.split(' ')[1]}</sup>
-                        </span>
-                        {to ? <span>&rarr;</span> : ''}
-                        <span>
-                            {to?.split(' ')[0]} <sup>{to?.split(' ')[1]}</sup>
-                        </span>
-                    </div>
-                </div>
-                <h4 className='event__heading'>
-                    <span
-                        className={`event__heading-span event__heading-span--${which}`}
-                    >
-                        {heading}
-                    </span>
-                </h4>
-                <div className='event__details '>
-                    {details.length > 0 &&
-                        details.map((item, i) => {
-                            const [key, value] = Object.entries(item)[0]
+//     return (
+//         <div className='event md:w-[250px] lg:w-[350px]'>
+//             <div className='event__side event__side--front'>
+//                 <div className={`event__picture event__picture--${which}`}>
+//                     <div className='event__picture--date'>
+//                         <span>
+//                             {from.split(' ')[0]} <sup>{from.split(' ')[1]}</sup>
+//                         </span>
+//                         {to ? <span>&rarr;</span> : ''}
+//                         <span>
+//                             {to?.split(' ')[0]} <sup>{to?.split(' ')[1]}</sup>
+//                         </span>
+//                     </div>
+//                 </div>
+//                 <h4 className='event__heading'>
+//                     <span
+//                         className={`event__heading-span event__heading-span--${which}`}
+//                     >
+//                         {heading}
+//                     </span>
+//                 </h4>
+//                 <div className='event__details '>
+//                     {details.length > 0 &&
+//                         details.map((item, i) => {
+//                             const [key, value] = Object.entries(item)[0]
 
-                            return (
-                                <ul key={i} className='event__details--list '>
-                                    <div
-                                        className={
-                                            key !== 'Registration Requirements'
-                                                ? 'flex gap-1 justify-items-end'
-                                                : ''
-                                        }
-                                    >
-                                        <span
-                                            className={
-                                                key ===
-                                                'Registration Requirements'
-                                                    ? 'font-medium'
-                                                    : ''
-                                            }
-                                        >
-                                            {key}
-                                        </span>
-                                        :
-                                        <span className='font-medium'>
-                                            {key ===
-                                                'Registration Requirements' &&
-                                            Array.isArray(value) ? (
-                                                <span className='font-medium'>
-                                                    {value.map((item) => (
-                                                        <li
-                                                            key={item}
-                                                            className={`event__details--list-${which}`}
-                                                        >
-                                                            {item}
-                                                        </li>
-                                                    ))}
-                                                </span>
-                                            ) : (
-                                                value
-                                            )}
-                                        </span>
-                                    </div>
-                                </ul>
-                            )
-                        })}
-                    <ul></ul>
-                </div>
-            </div>
-            <div
-                className={`event__side event__side--back event__side--back-${which}`}
-            >
-                <div className='event__cta'>
-                    <div className='event__price-box'>
-                        <p className='event__price-only'>Only</p>
-                        <p className='event__price-value'>${price}</p>
-                    </div>
-                    <button
-                        className='btn btn--white'
-                        onClick={(e: any) => registerEvent(id)}
-                    >
-                        Register now!
-                    </button>
-                </div>
-            </div>
-        </div>
-    )
-}
+//                             return (
+//                                 <ul key={i} className='event__details--list '>
+//                                     <div
+//                                         className={
+//                                             key !== 'Registration Requirements'
+//                                                 ? 'flex gap-1 justify-items-end'
+//                                                 : ''
+//                                         }
+//                                     >
+//                                         <span
+//                                             className={
+//                                                 key ===
+//                                                 'Registration Requirements'
+//                                                     ? 'font-medium'
+//                                                     : ''
+//                                             }
+//                                         >
+//                                             {key}
+//                                         </span>
+//                                         :
+//                                         <span className='font-medium'>
+//                                             {key ===
+//                                                 'Registration Requirements' &&
+//                                             Array.isArray(value) ? (
+//                                                 <span className='font-medium'>
+//                                                     {value.map((item) => (
+//                                                         <li
+//                                                             key={item}
+//                                                             className={`event__details--list-${which}`}
+//                                                         >
+//                                                             {item}
+//                                                         </li>
+//                                                     ))}
+//                                                 </span>
+//                                             ) : (
+//                                                 value
+//                                             )}
+//                                         </span>
+//                                     </div>
+//                                 </ul>
+//                             )
+//                         })}
+//                     <ul></ul>
+//                 </div>
+//             </div>
+//             <div
+//                 className={`event__side event__side--back event__side--back-${which}`}
+//             >
+//                 <div className='event__cta'>
+//                     <div className='event__price-box'>
+//                         <p className='event__price-only'>Only</p>
+//                         <p className='event__price-value'>${price}</p>
+//                     </div>
+//                     <button
+//                         className='btn btn--white'
+//                         onClick={(e: any) => registerEvent(id)}
+//                     >
+//                         Register now!
+//                     </button>
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }
 
 function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
@@ -242,10 +236,10 @@ function Events() {
 
     const postEvent = () => {
         console.log('clicked')
-        axios
-            .post('/api/events', { EVENTDATA })
+        
+        axios('/api/events')
             .then((res) => {
-                console.log('posted')
+                console.log('posted', res.data)
             })
             .catch((err) => {
                 console.log(err)
@@ -337,30 +331,30 @@ function Events() {
         }
     }, [showFilteredData])
 
-    const showEvents = () => {
-        const filteredEvents = Array.from(updateEvent)
+    // const showEvents = () => {
+    //     const filteredEvents = Array.from(updateEvent)
 
-        const eventArrToRender =
-            filteredEvents.length > 0 ? filteredEvents : EVENTDATA
-        let matchedEvents = 0
+    //     const eventArrToRender =
+    //         filteredEvents.length > 0 ? filteredEvents : EVENTDATA
+    //     let matchedEvents = 0
 
-        let data = eventArrToRender.map((item) => {
-            const arr = item.heading
-                .toLowerCase()
-                .includes(searchValue.toLowerCase()) && (
-                <Event {...item} key={item.id} />
-            )
-            if (arr) {
-                matchedEvents++
-                return arr
-            }
-        })
+    //     let data = eventArrToRender.map((item) => {
+    //         const arr = item.heading
+    //             .toLowerCase()
+    //             .includes(searchValue.toLowerCase()) && (
+    //             <Event {...item} key={item.id} />
+    //         )
+    //         if (arr) {
+    //             matchedEvents++
+    //             return arr
+    //         }
+    //     })
 
-        if (matchedEvents < 1) {
-            return null
-        }
-        return data
-    }
+    //     if (matchedEvents < 1) {
+    //         return null
+    //     }
+    //     return data
+    // }
 
     return (
         <div className='p-8 events'>
@@ -376,7 +370,7 @@ function Events() {
                 Click me
             </button>
             <div className='events__container overflow-hidden'>
-                {showEvents() || <p>No events found</p>}
+                {/* {showEvents() || <p>No events found</p>} */}
             </div>
         </div>
     )
