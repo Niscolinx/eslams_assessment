@@ -107,11 +107,15 @@ const SearchBox = () => {
 
     const searchBoxRef = useRef(0)
 
+    const increaseSearchBox = () => {
+        console.log('how are you')
+    }
+
     return (
         <div className='flex items-center gap-2'>
             <div
                 className='flex md:flex relative items-center searchBox'
-                onClick={() => searchBoxRef.current = 80}
+                onClick={increaseSearchBox}
             >
                 <FiSearch className='absolute left-2' />
                 <input
