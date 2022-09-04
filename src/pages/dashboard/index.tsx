@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-import { BiNotepad } from 'react-icons/bi'
 import { FiSearch } from 'react-icons/fi'
 import { VscSettings } from 'react-icons/vsc'
 
@@ -106,16 +105,21 @@ const SearchBox = () => {
         })
     }
 
+    const searchBoxRef = useRef(0)
+
     return (
         <div className='flex items-center gap-2'>
-            <div className='flex md:flex relative items-center searchBox'>
+            <div
+                className='flex md:flex relative items-center searchBox'
+                onClick={() => searchBoxRef.current = 80}
+            >
                 <FiSearch className='absolute left-2' />
                 <input
                     type='text'
                     placeholder='Search'
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className='rounded-3xl py-2 px-3 pl-10 w-80 outline-none border-none'
+                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-${searchBoxRef.current} md:w-80`}
                 />
             </div>
             <div
@@ -129,7 +133,7 @@ const SearchBox = () => {
                         </span>
                     </div>
                 )}
-                <VscSettings className='text-2xl md:text-lg'/>
+                <VscSettings className='text-2xl md:text-lg' />
                 <p className='hidden md:flex text-sm'>Filter</p>
             </div>
         </div>
