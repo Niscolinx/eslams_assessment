@@ -222,13 +222,15 @@ const Index = () => {
         string[]
     >([])
 
-    const [showFilteredData, setShowFilteredData] = useState<any>({
-        location: ['USA'],
-        priceRange: [20, 5323],
-        Age: ['0-10', '11-20', '21-30', '31-40'],
-        'Competition Type': ['Multilevel', 'Single Elimination'],
-        'Registration Requirements': ['Individual Registration'],
-    })
+    // {
+    //     location: ['USA'],
+    //     priceRange: [20, 5323],
+    //     Age: ['0-10', '11-20', '21-30', '31-40'],
+    //     'Competition Type': ['Multilevel', 'Single Elimination'],
+    //     'Registration Requirements': ['Individual Registration'],
+    // }
+
+    const [showFilteredData, setShowFilteredData] = useState<any>()
 
     const PriceSlider = styled(Slider)({
         color: '#D0E069',

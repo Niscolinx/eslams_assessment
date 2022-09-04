@@ -246,12 +246,13 @@ function Events() {
     const updatedEventList = new Set<EventProps>()
 
 
-    
+    console.log({showFilteredData})
     useEffect(() => {
         //FIXME - this is a fix to filter the data
        
 
         if (showFilteredData.Age) {
+            console.log('Age')
             Object.values(showFilteredData.Age).map((eachGroup) => {
                 const [min, max] = eachGroup.split('-')
                 const minAge = parseInt(min)
@@ -267,6 +268,7 @@ function Events() {
         }
 
         if (showFilteredData['Competition Type']) {
+            console.log('Competition Type')
             Object.values(showFilteredData['Competition Type']).map(
                 (eachGroup) => {
                     EVENTDATA.map((eachEvent) => {
@@ -282,6 +284,7 @@ function Events() {
         }
 
         if (showFilteredData.location) {
+            console.log('location')
             Object.values(showFilteredData.location).map((eachGroup) => {
                 EVENTDATA.map((eachEvent) => {
                     let eventLocation = eachEvent.details[2].location
@@ -294,6 +297,7 @@ function Events() {
         }
 
         if (showFilteredData['Registration Requirements']) {
+            console.log('Registration Requirements')
             Object.values(showFilteredData['Registration Requirements']).map(
                 (eachGroup) => {
                     EVENTDATA.map((eachEvent) => {
@@ -311,6 +315,7 @@ function Events() {
         }
 
         if (showFilteredData.priceRange) {
+            console.log('priceRange')
             const values = showFilteredData.priceRange
             const left = values[0]
             const right = values[1]
@@ -324,7 +329,6 @@ function Events() {
         }
     }, [showFilteredData])
 
-    console.log('updatedEventList 0', updatedEventList)
 
 
 
