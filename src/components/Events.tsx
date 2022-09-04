@@ -242,9 +242,10 @@ const Event = ({
 
 function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
-    const [filteredData, setFilteredData] = useState<EventProps[]>(EVENTDATA)
 
-    const updatedEventList = new Set()
+    const updatedEventList = new Set<EventProps>(EVENTDATA)
+
+
     
     useEffect(() => {
         //FIXME - this is a fix to filter the data
@@ -256,7 +257,7 @@ function Events() {
                 const minAge = parseInt(min)
                 const maxAge = parseInt(max)
 
-                EVENTDATA.map((eachEvent) => {
+                return EVENTDATA.map((eachEvent) => {
                     let eventAge = Number(eachEvent.details[0].Age)
                     if (eventAge >= minAge && eventAge <= maxAge) {
                         updatedEventList.add(eachEvent)
@@ -272,7 +273,7 @@ function Events() {
                         let eventCompetitionType =
                             eachEvent.details[1]['Competition Type']
                         if (eventCompetitionType === eachGroup) {
-                            console.log('competition type', { eachEvent })
+                            //console.log('competition type', { eachEvent })
                             updatedEventList.add(eachEvent)
                         }
                     })
@@ -323,12 +324,16 @@ function Events() {
         }
     }, [showFilteredData])
 
-    console.log({updatedEventList})
+    console.log('updatedEventList 0', updatedEventList)
+
+    updatedEventList.add(EVENTDATA[0])
+
+    console.log('updatedEventList 1', updatedEventList)
 
 
     const showEvents = () => {
         let unMatchedEventsCount = 0
-        let data = filteredData.map((item) => {
+        let data = EVENTDATA.map((item) => {
             const arr = item.heading.includes(searchValue) && (
                 <Event {...item} key={item.id} />
             )
