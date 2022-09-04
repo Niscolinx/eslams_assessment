@@ -49,7 +49,7 @@ type contextTypes = {
     searchValue: string
     handleClickOpen: () => void
     setSearchValue: (searchValue: string) => void
-    registerEvent: ( id:number) => void
+    registerEvent: (id: number) => void
     showFilteredData: {
         [key: string]: string | string[]
     }
@@ -57,7 +57,7 @@ type contextTypes = {
 
 export const EventContext = createContext<contextTypes>({
     searchValue: '',
-    registerEvent: ( id: number) => {},
+    registerEvent: (id: number) => {},
     handleClickOpen: () => {},
     showFilteredData: {},
     setSearchValue: (searchValue: string) => {},
@@ -133,7 +133,6 @@ const Header = () => (
             <Image
                 src='/logo.jpeg'
                 layout='responsive'
-                
                 objectFit={'contain'}
                 width='100%'
                 height='100%'
@@ -151,13 +150,14 @@ const Header = () => (
                 </div>
                 <div className='flex header__avatar cursor-pointer'>
                     <Link href='/dashboard/profile'>
-                    {/* <Image
-                        src='/img/avatar.jpeg'
-                        width='100%'
-                        height='100%'
-                        objectFit='cover'
-                    /> */}
-                    ds
+                        <a>
+                            <Image
+                                src='/img/avatar.jpeg'
+                                width='100%'
+                                height='100%'
+                                objectFit='cover'
+                            />
+                        </a>
                     </Link>
                 </div>
             </div>

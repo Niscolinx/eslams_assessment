@@ -330,7 +330,7 @@ function Events() {
     //TODO - filter the data based on the filters selected
 
     const showEvents = () => {
-        const data =  filteredData.map((item) => {
+        let data =  filteredData.map((item) => {
             return item.heading.includes(searchValue) && <Event {...item} key={item.id}/>
         })
 
