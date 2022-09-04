@@ -273,7 +273,6 @@ function Events() {
                             let eventCompetitionType =
                                 eachEvent.details[1]['Competition Type']
                             if (eventCompetitionType === eachGroup) {
-                                //console.log('competition type', { eachEvent })
                                 setUpdateEvent((prev: any) => {
                                     return prev.add(eachEvent)
                                 })
@@ -288,7 +287,6 @@ function Events() {
                     EVENTDATA.map((eachEvent) => {
                         let eventLocation = eachEvent.details[2].location
                         if (eventLocation === eachGroup) {
-                            // console.log('location', { eachEvent })
                             setUpdateEvent((prev: any) => {
                                 return prev.add(eachEvent)
                             })
@@ -305,9 +303,7 @@ function Events() {
                         let eventRegistrationRequirements =
                             eachEvent.details[3]['Registration Requirements']
                         if (eventRegistrationRequirements.includes(eachGroup)) {
-                            // console.log('registration requirements', {
-                            //    eachEvent,
-                            //  })
+                           
                             setUpdateEvent((prev: any) => {
                                 return prev.add(eachEvent)
                             })
