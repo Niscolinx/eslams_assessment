@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, {
     useContext,
     useEffect,
@@ -244,10 +245,12 @@ function Events() {
     const [updateEvent, setUpdateEvent] = useState(new Set<EventProps>([]))
 
 
-    useEffect(() => {
+   const postEvent = () => {
 
-            
-    }, [])
+        axios.post('/api/events', {EVENTDATA}).then((res) => {
+            console.log('posted')
+        })
+   }
 
     useEffect(() => {
         setUpdateEvent(new Set<EventProps>([]))
@@ -370,6 +373,7 @@ function Events() {
                 <h1 className='events__heading--text'>Upcoming Events</h1>{' '}
                 <span></span>
             </div>
+                <button className='bg-black text-white flex justify-center justify-self-center' onClick={postEvent}>Click me</button>
             <div className='events__container overflow-hidden'>
                 {showEvents() || <p>No events found</p>}
             </div>
