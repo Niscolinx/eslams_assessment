@@ -109,7 +109,7 @@ const SearchBox = () => {
 
     return (
         <div className='flex items-center gap-2'>
-            <div className='hidden md:flex relative items-center '>
+            <div className='flex md:flex relative items-center searchBox'>
                 <FiSearch className='absolute left-2' />
                 <input
                     type='text'
@@ -124,10 +124,10 @@ const SearchBox = () => {
                 onClick={handleClickOpen}
             >
                 <VscSettings />
-                <div className='tracking-wide text-sm'>
+                <div className='tracking-wide text-sm hidden md:flex'>
                     {count > 0 && (
                         <div className='absolute -top-2 -right-1 bg-[#CA494E] p-[1px] rounded-full w-[15px] h-[15px] grid place-content-center'>
-                            <span className='text-white text-[8px]'>
+                            <span className='text-white text-[8px] md:text-[10px]'>
                                 {count}
                             </span>
                         </div>
@@ -154,11 +154,11 @@ const Header = () => (
         <SearchBox />
         <div className='flex'>
             <div className='flex items-center gap-3'>
-                <div className='bg-[#d9d6d6] rounded-full w-[40px] h-[40px] flex items-center justify-center relative'>
-                    <div className='absolute -top-2 -right-2 bg-[#CA494E] p-[1px] rounded-full w-[20px] h-[20px] grid place-content-center'>
-                        <span className='text-white text-[12px]'>3</span>
+                <div className='bg-[#d9d6d6] rounded-full w-[30px] h-[30px] flex items-center justify-center relative'>
+                    <div className='absolute -top-2 -right-2 bg-[#CA494E] p-[1px] rounded-full w-[15px] h-[15px] grid place-content-center'>
+                        <span className='text-white text-[8px] md:text-[10px]'>3</span>
                     </div>
-                    <BiNotepad className='text-2xl' />
+                    <BiNotepad className='text-xl' />
                 </div>
                 <div className='flex header__avatar cursor-pointer'>
                     <Link href='/dashboard/profile'>
