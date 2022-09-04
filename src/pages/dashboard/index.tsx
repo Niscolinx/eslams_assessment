@@ -218,17 +218,11 @@ const Index = () => {
     const [age, setAge] = useState<string[]>([])
     const [location, setLocation] = useState<string[]>([])
     const [competitionType, setCompetitionType] = useState<string[]>([])
-    const [registrationRequirement, setRegistrationRequirement] = useState<
+    const [registrationRequirements, setRegistrationRequirements] = useState<
         string[]
     >([])
 
-    // {
-    //     location: ['USA'],
-    //     priceRange: [20, 5323],
-    //     Age: ['0-10', '11-20', '21-30', '31-40'],
-    //     'Competition Type': ['Multilevel', 'Single Elimination'],
-    //     'Registration Requirements': ['Individual Registration'],
-    // }
+    
 
     const [showFilteredData, setShowFilteredData] = useState<any>()
 
@@ -304,7 +298,7 @@ const Index = () => {
             )
         }
         if (name === 'registration-requirements') {
-            setRegistrationRequirement(
+            setRegistrationRequirements(
                 typeof value === 'string' ? value.split(',') : value
             )
         }
@@ -318,16 +312,16 @@ const Index = () => {
         setAge([])
         setLocation([])
         setCompetitionType([])
-        setRegistrationRequirement([])
+        setRegistrationRequirements([])
     }
 
     const handleFilter = (e: any) => {
         const filtered = {
             location,
             priceRange: ref.current,
-            Age: age,
-            'Competition Type': competitionType,
-            'Registration Requirements': registrationRequirement,
+             age,
+             competitionType,
+            registrationRequirements
         }
 
         setShowFilteredData(filtered)
@@ -528,7 +522,7 @@ const Index = () => {
                                     labelId='registration-requirements-label'
                                     id='registration-requirements'
                                     multiple
-                                    value={registrationRequirement}
+                                    value={registrationRequirements}
                                     onChange={handleChange}
                                     name='registration-requirements'
                                     input={
@@ -561,7 +555,7 @@ const Index = () => {
                                             value={name}
                                             style={getStyles(
                                                 name,
-                                                registrationRequirement,
+                                                registrationRequirements,
                                                 theme
                                             )}
                                         >
