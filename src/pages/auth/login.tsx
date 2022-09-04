@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
-import { CtxOrReq } from 'next-auth/client/_utils'
-import { getCsrfToken, getProviders, signIn } from 'next-auth/react'
-import Router from 'next/router'
-import Link from 'next/link'
 import Image from 'next/image'
 
-import HeroImg2 from '../../../public/hero-player.png'
 import Tilt from 'react-parallax-tilt'
 import LoginContainer from '../../components/Login/LoginContainer'
 
@@ -22,25 +17,7 @@ const Login = () => {
             })
     }, [])
 
-    // useEffect(() => {
-    //     const image = document.querySelector(
-    //         '.main-1__image'
-    //     ) as HTMLImageElement
-    //     const container = document.querySelector(
-    //         '.register__main'
-    //     ) as HTMLDivElement
-
-    //     console.log({ image, container })
-
-    //     container.addEventListener('mousemove', (e) => {
-    //         const X = e.clientX - e.screenX
-    //         const Y = e.clientY - e.screenY
-
-    //         console.log({ X, Y })
-
-    //         //image.style.transform = `translate(${X}px, ${Y}px)`
-    //     })
-    // }, [])
+   
 
     return (
         <div className='register relative grid h-screen overflow-hidden max-w-[1450px] mx-auto'>
@@ -101,12 +78,7 @@ const Login = () => {
                 </div>
                 <div className='main-signup'></div>
             </div>
-            {/* <div className='register__tag self-end'>
-                <h3 className='text-2xl'>
-                    online competition platform for every student,
-                    <span className='register__tag--rubik'>everywhere</span>
-                </h3>
-            </div> */}
+           
         </div>
     )
 }
