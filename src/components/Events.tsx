@@ -331,12 +331,17 @@ function Events() {
 
     const showEvents = () => {
         console.log('clicked')
+        let count = 0
         let data =  filteredData.map((item) => {
             const arr =  item.heading.includes(searchValue) && <Event {...item} key={item.id}/> 
-            console.log({arr})
+           // console.log({arr})
+            if(!arr) {
+                count++
+            }
             return arr
         })
 
+        console.log({count})
 
         return data
     }
