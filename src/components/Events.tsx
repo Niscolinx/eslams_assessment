@@ -245,7 +245,6 @@ function Events() {
     const [updateEvent, setUpdateEvent] = useState(new Set<EventProps>([]))
 
     useEffect(() => {
-
         setUpdateEvent(new Set<EventProps>([]))
 
         if (showFilteredData) {
@@ -303,7 +302,6 @@ function Events() {
                         let eventRegistrationRequirements =
                             eachEvent.details[3]['Registration Requirements']
                         if (eventRegistrationRequirements.includes(eachGroup)) {
-                           
                             setUpdateEvent((prev: any) => {
                                 return prev.add(eachEvent)
                             })
@@ -322,7 +320,6 @@ function Events() {
                         eventPrice >= Number(left) &&
                         eventPrice <= Number(right)
                     ) {
-                        // console.log('price range', { eachEvent })
                         setUpdateEvent((prev: any) => {
                             return prev.add(eachEvent)
                         })
@@ -332,18 +329,20 @@ function Events() {
         }
     }, [showFilteredData])
 
-    
     const showEvents = () => {
-
+        console.log('clicked')
         const filteredEvents = Array.from(updateEvent)
 
-        const eventArrToRender = filteredEvents.length > 0 ? filteredEvents : EVENTDATA
+        const eventArrToRender =
+            filteredEvents.length > 0 ? filteredEvents : EVENTDATA
         let unMatchedEventsCount = 0
         let data = eventArrToRender.map((item) => {
-            const arr = item.heading.includes(searchValue) && (
+            const arr = item.heading
+                .toLowerCase()
+                .includes(searchValue.toLowerCase()) && (
                 <Event {...item} key={item.id} />
             )
-            console.log('item', item)
+            console.log('arr', arr)
             if (!arr) {
                 unMatchedEventsCount++
             }
