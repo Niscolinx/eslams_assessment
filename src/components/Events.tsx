@@ -6,31 +6,31 @@ interface EventProps {
     id: number
     heading: string
     details: {
-        [key: string]: string | string[]
+        [key: string]: any
     }[]
     price: number
     which: number
     date: {
-        from: string
-        to?: string
+        from: any
+        to?: any
     }
 }
 
 export const EVENTDATA: EventProps[] = [
     {
         id: 1,
-        heading: 'USA BASKETBALL SHOWCASE',
+        heading: 'USA Basketball Showcase',
         price: 12000,
         details: [
-            { Age: '25' },
-            { 'Competition Type': 'Round Robin Triple Split' },
+            { age: 25 },
+            { competitionType: 'Round Robin Triple Split' },
             { location: 'USA' },
             {
-                'Registration Requirements': ['18 and Above'],
+                registrationRequirements: ['18 and Above'],
             },
         ],
         date: {
-            from: '10th Sep',
+            from: new Date('2022-09-10'),
         },
         which: 1,
     },
@@ -39,11 +39,11 @@ export const EVENTDATA: EventProps[] = [
         heading: '2022 FIBA AmeriCup for Men',
         price: 1500,
         details: [
-            { Age: '21' },
-            { 'Competition Type': 'Single Elimination' },
+            { age: 21 },
+            { competitionType: 'Single Elimination' },
             { location: 'Canada' },
             {
-                'Registration Requirements': [
+                registrationRequirements: [
                     '18 and Above',
                     'Individual Registration',
                     'Group Registration',
@@ -51,8 +51,8 @@ export const EVENTDATA: EventProps[] = [
             },
         ],
         date: {
-            from: '5th Oct',
-            to: '9th Oct',
+            from: new Date('2022-09-10'),
+            to: new Date('2022-09-10'),
         },
         which: 2,
     },
@@ -61,19 +61,19 @@ export const EVENTDATA: EventProps[] = [
         heading: 'FIBA 3x3 U23 World Cup (women)',
         price: 59000,
         details: [
-            { Age: '15' },
-            { 'Competition Type': 'Semi-round Robins' },
+            { age: 15 },
+            { competitionType: 'Semi-round Robins' },
             { location: 'USA' },
             {
-                'Registration Requirements': [
+                registrationRequirements: [
                     '18 and Above',
                     'Individual Registration',
                 ],
             },
         ],
         date: {
-            from: '2nd Sep',
-            to: '11th Sep',
+            from: new Date('2022-09-10'),
+            to: new Date('2022-09-10'),
         },
         which: 3,
     },
@@ -82,16 +82,16 @@ export const EVENTDATA: EventProps[] = [
         heading: '2022 USA Basketball (boys)',
         price: 99094,
         details: [
-            { Age: '23' },
-            { 'Competition Type': 'Multilevel' },
+            { age: 23 },
+            { competitionType: 'Multilevel' },
             { location: 'Mexico' },
             {
-                'Registration Requirements': ['Group Registration'],
+                registrationRequirements: ['Group Registration'],
             },
         ],
         date: {
-            from: '4th Sep',
-            to: '5th Sep',
+            from: new Date('2022-09-10'),
+            to: new Date('2022-09-10'),
         },
         which: 1,
     },
@@ -100,15 +100,15 @@ export const EVENTDATA: EventProps[] = [
         heading: '2022 USA Basketball Academy',
         price: 11200,
         details: [
-            { Age: '32' },
-            { 'Competition Type': 'Multilevel' },
+            { age: 32 },
+            { competitionType: 'Multilevel' },
             { location: 'Canada' },
             {
-                'Registration Requirements': ['Individual Registration'],
+                registrationRequirements: ['Individual Registration'],
             },
         ],
         date: {
-            from: '9th Sep',
+            from: new Date('2022-09-10'),
         },
         which: 2,
     },
@@ -117,19 +117,19 @@ export const EVENTDATA: EventProps[] = [
         heading: '2022 USA Basketball (girls)',
         price: 85070,
         details: [
-            { Age: '18' },
-            { 'Competition Type': 'Single Elimination' },
+            { age: 18 },
+            { competitionType: 'Single Elimination' },
             { location: 'Mexico' },
             {
-                'Registration Requirements': [
+                registrationRequirements: [
                     '18 and Above',
                     'Group Registration',
                 ],
             },
         ],
         date: {
-            from: '3rd Sep',
-            to: '4th Sep',
+            from: new Date('2022-09-10'),
+            to: new Date('2022-09-04'),
         },
         which: 3,
     },
@@ -256,7 +256,7 @@ function Events() {
         setUpdateEvent(new Set<EventProps>([]))
 
         if (showFilteredData) {
-            if (showFilteredData.Age.length > 0) {
+            if (showFilteredData.age.length > 0) {
                 Object.values(showFilteredData.Age).map((eachGroup) => {
                     const [min, max] = eachGroup.split('-')
                     const minAge = parseInt(min)
@@ -371,7 +371,7 @@ function Events() {
             </div>
             <button
                 className='bg-black text-white flex justify-center justify-self-center'
-                onClick={ postEvent}
+                onClick={postEvent}
             >
                 Click me
             </button>

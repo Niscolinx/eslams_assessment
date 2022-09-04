@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse} from 'next';
+import dbConnect from '../../lib/dbConnect';
 import Event from '../../models/event';
 
 
@@ -10,10 +11,11 @@ export default async function events(req: NextApiRequest, res: NextApiResponse){
 
 
     try {
+        await dbConnect()
 
-        const events = await Event.find()
+        const event = await Event.create(EVENTDATA)
             
-        console.log({events})
+        console.log({event})
 
     }
     catch (error) {
