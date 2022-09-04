@@ -234,9 +234,7 @@ function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
     const [updateEvent, setUpdateEvent] = useState(new Set<EventProps>([]))
 
-    const postEvent = () => {
-        console.log('clicked')
-        
+    useEffect(() => {
         axios('/api/events')
             .then((res) => {
                 console.log('posted', res.data)
@@ -244,7 +242,7 @@ function Events() {
             .catch((err) => {
                 console.log(err)
             })
-    }
+    }, [])
 
     useEffect(() => {
         setUpdateEvent(new Set<EventProps>([]))
@@ -363,12 +361,7 @@ function Events() {
                 <h1 className='events__heading--text'>Upcoming Events</h1>{' '}
                 <span></span>
             </div>
-            <button
-                className='bg-black text-white flex justify-center justify-self-center'
-                onClick={postEvent}
-            >
-                Click me
-            </button>
+
             <div className='events__container overflow-hidden'>
                 {/* {showEvents() || <p>No events found</p>} */}
             </div>
