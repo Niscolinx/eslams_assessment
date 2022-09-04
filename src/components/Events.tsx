@@ -140,7 +140,7 @@ const Event = ({
     const { registerEvent } = useContext(EventContext)
 
     return (
-        <div className='event'>
+        <div className='event w-[300px]'>
             <div className='event__side event__side--front'>
                 <div className={`event__picture event__picture--${which}`}>
                     <div className='event__picture--date'>
@@ -178,8 +178,8 @@ const Event = ({
                                             className={
                                                 key ===
                                                 'registrationRequirements'
-                                                    ? 'font-medium'
-                                                    : ''
+                                                    ? 'font-medium capitalize'
+                                                    : 'capitalize'
                                             }
                                         >
                                             {key}
@@ -255,6 +255,10 @@ function Events() {
                                     day: 'numeric',
                                     month: 'short',
                                 }),
+                            },
+                            details: {
+                                ...item.details,
+                                
                             }
                         }
                     }
