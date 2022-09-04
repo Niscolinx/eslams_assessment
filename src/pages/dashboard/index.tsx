@@ -125,7 +125,7 @@ const SearchBox = () => {
                     placeholder='Search'
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-${searchBoxWidth} md:w-80 transition-all duration-75`}
+                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-${searchBoxWidth} md:w-80 transition-all duration-75 ease-out`}
                 />
             </div>
             <div
