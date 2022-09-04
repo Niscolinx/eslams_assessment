@@ -244,19 +244,11 @@ function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
     const [filteredData, setFilteredData] = useState<EventProps[]>(EVENTDATA)
 
-    const updatedEventList: any = []
+    const updatedEventList = new Set()
+    
     useEffect(() => {
         //FIXME - this is a fix to filter the data
-        if (searchValue) {
-            console.log('searchValue', searchValue)
-            EVENTDATA.map((item) => {
-                console.log(item.heading.toLowerCase())
-                //console.log(item.details)
-                if (item.heading.toLowerCase().includes(searchValue)) {
-                    updatedEventList.push(item)
-                }
-            })
-        }
+       
 
         if (showFilteredData.Age) {
             Object.values(showFilteredData.Age).map((eachGroup) => {
@@ -267,7 +259,7 @@ function Events() {
                 EVENTDATA.map((eachEvent) => {
                     let eventAge = Number(eachEvent.details[0].Age)
                     if (eventAge >= minAge && eventAge <= maxAge) {
-                        //console.log({ eachEvent })
+                        updatedEventList.add(eachEvent)
                     }
                 })
             })
@@ -280,7 +272,8 @@ function Events() {
                         let eventCompetitionType =
                             eachEvent.details[1]['Competition Type']
                         if (eventCompetitionType === eachGroup) {
-                            //console.log('competition type', { eachEvent })
+                            console.log('competition type', { eachEvent })
+                            updatedEventList.add(eachEvent)
                         }
                     })
                 }
@@ -293,6 +286,7 @@ function Events() {
                     let eventLocation = eachEvent.details[2].location
                     if (eventLocation === eachGroup) {
                         // console.log('location', { eachEvent })
+                        updatedEventList.add(eachEvent)
                     }
                 })
             })
@@ -308,6 +302,7 @@ function Events() {
                             // console.log('registration requirements', {
                             //    eachEvent,
                             //  })
+                            updatedEventList.add(eachEvent)
                         }
                     })
                 }
@@ -322,10 +317,13 @@ function Events() {
                 let eventPrice = eachEvent.price
                 if (eventPrice >= Number(left) && eventPrice <= Number(right)) {
                     // console.log('price range', { eachEvent })
+                    updatedEventList.add(eachEvent)
                 }
             })
         }
     }, [showFilteredData])
+
+    console.log({updatedEventList})
 
 
     const showEvents = () => {
