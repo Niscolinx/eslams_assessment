@@ -13,12 +13,7 @@ import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
 import { GrFormClose } from 'react-icons/gr'
-import React, {
-    createContext,
-    useState,
-    useContext,
-    useRef,
-} from 'react'
+import React, { createContext, useState, useContext, useRef } from 'react'
 
 import { Theme, useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
@@ -70,7 +65,7 @@ const MenuProps = {
     },
 }
 
-const AGERANGE = [ '11-20', '21-30', '31-40']
+const AGERANGE = ['11-20', '21-30', '31-40']
 
 const LOCATIONS = ['USA', 'Canada', 'Mexico']
 
@@ -96,8 +91,22 @@ function getStyles(name: string, filterName: readonly string[], theme: Theme) {
 }
 
 const SearchBox = () => {
-    const { searchValue, setSearchValue, handleClickOpen } =
+    const { searchValue, setSearchValue, handleClickOpen, showFilteredData } =
         useContext(EventContext)
+    let count = 0
+    if (showFilteredData) {
+        const dataToCount = Object.values(showFilteredData)
+
+        dataToCount.forEach((data) => {
+            if (data) {
+                if (data.length > 0) {
+                    count++
+                }
+            }
+        })
+    }
+
+    console.log({ count })
 
     return (
         <div className='flex items-center gap-2'>
@@ -112,11 +121,20 @@ const SearchBox = () => {
                 />
             </div>
             <div
-                className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl cursor-pointer'
+                className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl cursor-pointer relative'
                 onClick={handleClickOpen}
             >
                 <VscSettings />
-                <span className=' tracking-wide text-sm'>Filters</span>
+                <div className='tracking-wide text-sm'>
+                    {count > 0 && (
+                        <div className='absolute -top-2 -right-1 bg-[#CA494E] p-[1px] rounded-full w-[15px] h-[15px] grid place-content-center'>
+                            <span className='text-white text-[8px]'>
+                                {count}
+                            </span>
+                        </div>
+                    )}
+                    Filter
+                </div>
             </div>
         </div>
     )
@@ -221,8 +239,6 @@ const Index = () => {
         string[]
     >([])
 
-    
-
     const [showFilteredData, setShowFilteredData] = useState<any>()
 
     const PriceSlider = styled(Slider)({
@@ -318,9 +334,9 @@ const Index = () => {
         const filtered = {
             location,
             priceRange: ref.current,
-             age,
-             competitionType,
-            registrationRequirements
+            age,
+            competitionType,
+            registrationRequirements,
         }
 
         setShowFilteredData(filtered)

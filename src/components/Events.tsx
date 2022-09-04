@@ -252,7 +252,6 @@ function Events() {
         let matchedEvents = 0
 
         let data = eventArrToRender.map((item) => {
-            console.log(item)
             const arr = item.heading
                 .toLowerCase()
                 .includes(searchValue.toLowerCase()) && (
