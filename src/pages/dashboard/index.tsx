@@ -92,6 +92,8 @@ function getStyles(name: string, filterName: readonly string[], theme: Theme) {
 const SearchBox = () => {
     const { searchValue, setSearchValue, handleClickOpen, showFilteredData } =
         useContext(EventContext)
+
+    const [searchBoxWidth, setSearchBoxWidth] = useState(0)
     let count = 0
     if (showFilteredData) {
         const dataToCount = Object.values(showFilteredData)
@@ -105,11 +107,10 @@ const SearchBox = () => {
         })
     }
 
-    let searchBoxWidth = 0
 
     const increaseSearchBox = () => {
         console.log('how are you')
-        searchBoxWidth = 80
+        setSearchBoxWidth(80)
     }
 
     return (
@@ -124,7 +125,7 @@ const SearchBox = () => {
                     placeholder='Search'
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-${searchBoxWidth} md:w-80`}
+                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-${searchBoxWidth} md:w-80 transition-all duration-75`}
                 />
             </div>
             <div
