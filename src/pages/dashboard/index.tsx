@@ -17,7 +17,6 @@ import React, {
     createContext,
     useState,
     useContext,
-    useEffect,
     useRef,
 } from 'react'
 
@@ -34,10 +33,7 @@ import {
     SelectChangeEvent,
     Button,
 } from '@mui/material'
-import Slider, {
-    SliderThumb,
-    SliderValueLabelProps,
-} from '@mui/material/Slider'
+import Slider from '@mui/material/Slider'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import Dialog from '@mui/material/Dialog'

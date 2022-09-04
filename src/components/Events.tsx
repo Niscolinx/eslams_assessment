@@ -243,7 +243,7 @@ const Event = ({
 function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
 
-    const updatedEventList = new Set<EventProps>(EVENTDATA)
+    const updatedEventList = new Set<EventProps>()
 
 
     
@@ -326,9 +326,7 @@ function Events() {
 
     console.log('updatedEventList 0', updatedEventList)
 
-    updatedEventList.add(EVENTDATA[0])
 
-    console.log('updatedEventList 1', updatedEventList)
 
 
     const showEvents = () => {
