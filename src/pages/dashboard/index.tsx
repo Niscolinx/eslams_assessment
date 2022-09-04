@@ -105,10 +105,11 @@ const SearchBox = () => {
         })
     }
 
-    const searchBoxRef = useRef(0)
+    let searchBoxWidth = 0
 
     const increaseSearchBox = () => {
         console.log('how are you')
+        searchBoxWidth = 80
     }
 
     return (
@@ -123,7 +124,7 @@ const SearchBox = () => {
                     placeholder='Search'
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-${searchBoxRef.current} md:w-80`}
+                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-${searchBoxWidth} md:w-80`}
                 />
             </div>
             <div
