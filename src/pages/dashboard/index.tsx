@@ -106,7 +106,6 @@ const SearchBox = () => {
         })
     }
 
-
     return (
         <div className='flex items-center gap-2'>
             <div className='flex md:flex relative items-center searchBox'>
@@ -123,17 +122,15 @@ const SearchBox = () => {
                 className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl cursor-pointer relative'
                 onClick={handleClickOpen}
             >
-                <VscSettings />
-                <div className='tracking-wide text-sm hidden md:flex'>
-                    {count > 0 && (
-                        <div className='absolute -top-2 -right-1 bg-[#CA494E] p-[1px] rounded-full w-[15px] h-[15px] grid place-content-center'>
-                            <span className='text-white text-[8px] md:text-[10px]'>
-                                {count}
-                            </span>
-                        </div>
-                    )}
-                    Filter
-                </div>
+                {count > 0 && (
+                    <div className='absolute -top-3 -right-1 md:(-top-2 -right-1) bg-[#CA494E] p-[1px] rounded-full w-[15px] h-[15px] grid place-content-center'>
+                        <span className='text-white text-[8px] md:text-[10px]'>
+                            {count}
+                        </span>
+                    </div>
+                )}
+                <VscSettings className='text-2xl'/>
+                <p className='hidden md:flex text-sm'>Filter</p>
             </div>
         </div>
     )
@@ -152,26 +149,21 @@ const Header = () => (
         </figure>
 
         <SearchBox />
-        <div className='flex'>
-            <div className='flex items-center gap-3'>
-                <div className='bg-[#d9d6d6] rounded-full w-[30px] h-[30px] flex items-center justify-center relative'>
-                    <div className='absolute -top-2 -right-2 bg-[#CA494E] p-[1px] rounded-full w-[15px] h-[15px] grid place-content-center'>
-                        <span className='text-white text-[8px] md:text-[10px]'>3</span>
-                    </div>
-                    <BiNotepad className='text-xl' />
-                </div>
-                <div className='flex header__avatar cursor-pointer'>
-                    <Link href='/dashboard/profile'>
-                        <a>
-                            <Image
-                                src='/img/avatar.jpeg'
-                                width='100%'
-                                height='100%'
-                                objectFit='cover'
-                            />
-                        </a>
-                    </Link>
-                </div>
+        <div className='flex relative'>
+            <div className='flex header__avatar cursor-pointer'>
+                <Link href='/dashboard/profile'>
+                    <a>
+                        <Image
+                            src='/img/avatar.jpeg'
+                            width='100%'
+                            height='100%'
+                            objectFit='cover'
+                        />
+                    </a>
+                </Link>
+            </div>
+            <div className='absolute -top-2 -right-2 bg-[#CA494E] p-[1px] rounded-full w-[15px] h-[15px] grid place-content-center'>
+                <span className='text-white text-[8px] md:text-[10px]'>3</span>
             </div>
         </div>
     </header>
