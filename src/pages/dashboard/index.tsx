@@ -106,7 +106,6 @@ const SearchBox = () => {
         })
     }
 
-    console.log({ count })
 
     return (
         <div className='flex items-center gap-2'>
