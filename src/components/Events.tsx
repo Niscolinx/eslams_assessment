@@ -140,7 +140,7 @@ const Event = ({
     const { registerEvent } = useContext(EventContext)
 
     return (
-        <div className='event md:w-[250px] lg:w-[350px]'>
+        <div className='event'>
             <div className='event__side event__side--front'>
                 <div className={`event__picture event__picture--${which}`}>
                     <div className='event__picture--date'>
@@ -163,13 +163,13 @@ const Event = ({
                 <div className='event__details '>
                     {details.length > 0 &&
                         details.map((item, i) => {
-                            const [key, value] = Object.entries(item)[0]
+                            const [key, value] = Object.entries(item)[1]
 
                             return (
                                 <ul key={i} className='event__details--list '>
                                     <div
                                         className={
-                                            key !== 'Registration Requirements'
+                                            key !== 'registrationRequirements'
                                                 ? 'flex gap-1 justify-items-end'
                                                 : ''
                                         }
@@ -177,7 +177,7 @@ const Event = ({
                                         <span
                                             className={
                                                 key ===
-                                                'Registration Requirements'
+                                                'registrationRequirements'
                                                     ? 'font-medium'
                                                     : ''
                                             }
@@ -187,7 +187,7 @@ const Event = ({
                                         :
                                         <span className='font-medium'>
                                             {key ===
-                                                'Registration Requirements' &&
+                                                'registrationRequirements' &&
                                             Array.isArray(value) ? (
                                                 <span className='font-medium'>
                                                     {value.map((item) => (
@@ -251,7 +251,7 @@ function Events() {
                                     day: 'numeric',
                                     month: 'short',
                                 }),
-                                to: new Date(item.date.to).toLocaleDateString('en-GB', {
+                                to: item.date.to && new Date(item.date.to).toLocaleDateString('en-GB', {
                                     day: 'numeric',
                                     month: 'short',
                                 }),
