@@ -1,4 +1,3 @@
-import { EVENTDATA } from './../../components/Events'
 import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../lib/dbConnect'
 import Event from '../../models/event'
