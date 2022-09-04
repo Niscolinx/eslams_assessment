@@ -16,7 +16,7 @@ interface EventProps {
     }
 }
 
-export const EVENTDATA =  [
+export const EVENTDATA = [
     {
         heading: 'USA Basketball Showcase sdfsdfsdfsdf',
         price: 12000,
@@ -238,16 +238,25 @@ function Events() {
     useEffect(() => {
         axios('/api/events')
             .then(({ data }) => {
-                console.log({data})
-                console.log({EVENTDATA})
+                console.log({ data })
+                console.log({ EVENTDATA })
 
+                const transFormedData = data.map(
+                    (item: EventProps, index: number) => {
+                        return {
+                            ...item,
+                            which: (index % 3) + 1,
+                        }
+                    }
+                )
+
+                console.log({ transFormedData })
                 setEventData(data)
             })
             .catch((err) => {
                 console.log(err)
             })
     }, [])
-
 
     useEffect(() => {
         setUpdateEvent(new Set<EventProps>([]))
@@ -342,7 +351,7 @@ function Events() {
         let matchedEvents = 0
 
         let data = eventArrToRender.map((item) => {
-          //  console.log({item})
+            //  console.log({item})
             const arr = item.heading
                 .toLowerCase()
                 .includes(searchValue.toLowerCase()) && (
