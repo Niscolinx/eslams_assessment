@@ -1,12 +1,15 @@
 import { NextApiRequest, NextApiResponse} from 'next';
+import Event from '../../models/event';
 
 
-export default function async(req: NextApiRequest, res: NextApiResponse){
+export default async function events(req: NextApiRequest, res: NextApiResponse){
 
     
     const {EVENTDATA} = req.body
 
-    return res..stjson({
+    const storeEvents = await new Event(EVENTDATA).save()
+
+    return res.status(200).json({
         message: 'stored'
     })
 
