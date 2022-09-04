@@ -333,9 +333,12 @@ function Events() {
         console.log('clicked')
         const filteredEvents = Array.from(updateEvent)
 
+        console.log(filteredEvents.length)
+
         const eventArrToRender =
             filteredEvents.length > 0 ? filteredEvents : EVENTDATA
         let unMatchedEventsCount = 0
+
         let data = eventArrToRender.map((item) => {
             const arr = item.heading
                 .toLowerCase()
@@ -343,15 +346,17 @@ function Events() {
                 <Event {...item} key={item.id} />
             )
             console.log('arr', arr)
-            if (!arr) {
+            if (arr) {
                 unMatchedEventsCount++
+                return arr
             }
-            return arr
         })
 
-        if (unMatchedEventsCount > 5) {
-            return null
-        }
+
+        console.log({unMatchedEventsCount})
+        // if (unMatchedEventsCount > 5) {
+        //     return null
+        // }
         return data
     }
 
