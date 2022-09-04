@@ -15,12 +15,12 @@ export default async function events(req: NextApiRequest, res: NextApiResponse){
             const newEvent = new Event({
                 heading: event.heading,
                 price: event.price,
-                details: [{
+                details: {
                     age: event.details[0].Age,
                     competitionType: event.details[1]['Competition Type'],
                     location: event.details[2].location,
                     registrationRequirements: event.details[3]['Registration Requirements']
-                }],
+                },
                 date: {
                     from: event.date.from,
                     to: event.date.to

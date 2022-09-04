@@ -5,12 +5,9 @@ export interface IEvent {
     _id?: Object
     heading: string
     price: number
-    details: [
-        { age: number },
-        { competitionType: string },
-        { location: string },
-        { registrationRequirements: string[] }
-    ]
+    details: {
+        [key: string]: any
+    }
     date: {
         from: Date
         to: Date
@@ -28,26 +25,7 @@ const eventSchema = new Schema<IEvent>(
             type: Number,
             required: true,
         },
-        details: [
-            {
-                age: {
-                    type: Number,
-                    required: true,
-                },
-                competitionType: {
-                    type: String,
-                    required: true,
-                },
-                location: {
-                    type: String,
-                    required: true,
-                },
-                registrationRequirements: {
-                    type: [String],
-                    required: true,
-                },
-            },
-        ],
+        details: { type: Array },
     },
     { timestamps: true }
 )
