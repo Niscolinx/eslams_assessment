@@ -123,13 +123,13 @@ const SearchBox = () => {
                 onClick={handleClickOpen}
             >
                 {count > 0 && (
-                    <div className='absolute -top-3 -right-1 md:(-top-2 -right-1) bg-[#CA494E] p-[1px] rounded-full w-[15px] h-[15px] grid place-content-center'>
+                    <div className='absolute -top-3 -right-3 md:(-top-2 -right-1) bg-[#CA494E] p-[1px] rounded-full w-[15px] h-[15px] grid place-content-center'>
                         <span className='text-white text-[8px] md:text-[10px]'>
                             {count}
                         </span>
                     </div>
                 )}
-                <VscSettings className='text-2xl'/>
+                <VscSettings className='text-2xl md:text-lg'/>
                 <p className='hidden md:flex text-sm'>Filter</p>
             </div>
         </div>
