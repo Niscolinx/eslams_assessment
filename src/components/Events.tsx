@@ -1,4 +1,9 @@
-import React, { MouseEventHandler, useContext, useEffect, useState } from 'react'
+import React, {
+    MouseEventHandler,
+    useContext,
+    useEffect,
+    useState,
+} from 'react'
 import { EventContext } from '../pages/dashboard'
 
 interface EventProps {
@@ -142,7 +147,6 @@ const Event = ({
     date: { from, to },
     which,
 }: EventProps) => {
-
     const { registerEvent } = useContext(EventContext)
 
     return (
@@ -224,7 +228,10 @@ const Event = ({
                         <p className='event__price-only'>Only</p>
                         <p className='event__price-value'>${price}</p>
                     </div>
-                    <button className='btn btn--white' onClick={(e: any)=> registerEvent(id)}>
+                    <button
+                        className='btn btn--white'
+                        onClick={(e: any) => registerEvent(id)}
+                    >
                         Register now!
                     </button>
                 </div>
@@ -237,9 +244,8 @@ function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
     const [filteredData, setFilteredData] = useState<EventProps[]>(EVENTDATA)
 
-    const updatedEventList:any = []
+    const updatedEventList: any = []
     useEffect(() => {
-        
         //FIXME - this is a fix to filter the data
         if (searchValue) {
             console.log('searchValue', searchValue)
@@ -262,9 +268,6 @@ function Events() {
                     let eventAge = Number(eachEvent.details[0].Age)
                     if (eventAge >= minAge && eventAge <= maxAge) {
                         //console.log({ eachEvent })
-                        
-                        
-
                     }
                 })
             })
@@ -324,8 +327,13 @@ function Events() {
         }
     }, [showFilteredData])
 
-
     //TODO - filter the data based on the filters selected
+
+    const showEvents = () => {
+        return filteredData.map((item) => {
+            return item.heading.includes(searchValue) && <Event {...item} key={item.id}/>
+        })
+    }
 
     return (
         <div className='p-8 events'>
@@ -335,9 +343,7 @@ function Events() {
                 <span></span>
             </div>
             <div className='events__container'>
-               {EVENTDATA.map((item) => {
-                  return null
-               }) || <p>No events found</p>}
+                {showEvents() || <p>No events found</p>}
             </div>
         </div>
     )
