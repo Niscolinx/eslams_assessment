@@ -6,7 +6,7 @@ export interface IEvent {
     heading: string
     price: number
     details: [
-        { age: string },
+        { age: number },
         { competitionType: string },
         { location: string },
         { registrationRequirements: string[] }
@@ -31,7 +31,7 @@ const eventSchema = new Schema<IEvent>(
         details: [
             {
                 age: {
-                    type: String,
+                    type: Number,
                     required: true,
                 },
                 competitionType: {
