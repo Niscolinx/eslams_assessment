@@ -133,6 +133,7 @@ const Header = () => (
             <Image
                 src='/logo.jpeg'
                 layout='responsive'
+                
                 objectFit={'contain'}
                 width='100%'
                 height='100%'
@@ -150,12 +151,13 @@ const Header = () => (
                 </div>
                 <div className='flex header__avatar cursor-pointer'>
                     <Link href='/dashboard/profile'>
-                    <Image
+                    {/* <Image
                         src='/img/avatar.jpeg'
                         width='100%'
                         height='100%'
                         objectFit='cover'
-                    />
+                    /> */}
+                    ds
                     </Link>
                 </div>
             </div>
