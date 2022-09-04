@@ -27,7 +27,7 @@ export type handleInputProps = {
 
     password: string
 }
-export default function Checkout() {
+export default function LoginContainer() {
     const [loading, setLoading] = useState(false)
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
@@ -125,10 +125,10 @@ export default function Checkout() {
         setLoading(true)
         axios
             .post('/api/auth/login', updatedData)
-            .then(({ data }) => {
-                console.log({ data })
+            .then((data) => {
+                console.log(data)
                 setLoading(false)
-                router.push('/')
+               router.push('/')
             })
             .catch(({ response: { data } }) => {
                 console.log({ data })
@@ -264,7 +264,7 @@ export default function Checkout() {
                             {loading ? (
                                 <CircularProgress
                                     className='text-white flex justify-self-center'
-                                    size={20}
+                                    size={15}
                                 />
                             ) : (
                                 'Login'
@@ -272,7 +272,6 @@ export default function Checkout() {
                         </button>
                     </div>
                 </Paper>
-                {/* <Copyright /> */}
                 <div className='grid justify-start'>
                     <a
                         href='/auth/register'
