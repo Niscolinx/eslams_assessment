@@ -330,19 +330,20 @@ function Events() {
     //TODO - filter the data based on the filters selected
 
     const showEvents = () => {
-        console.log('clicked')
         let count = 0
-        let data =  filteredData.map((item) => {
-            const arr =  item.heading.includes(searchValue) && <Event {...item} key={item.id}/> 
-           // console.log({arr})
-            if(!arr) {
+        let data = filteredData.map((item) => {
+            const arr = item.heading.includes(searchValue) && (
+                <Event {...item} key={item.id} />
+            )
+            if (!arr) {
                 count++
             }
             return arr
         })
 
-        console.log({count})
-
+        if (count > 5) {
+            return null
+        }
         return data
     }
 
