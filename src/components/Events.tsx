@@ -16,6 +16,119 @@ interface EventProps {
     }
 }
 
+export const EVENTDATA =  [
+    {
+        heading: 'USA Basketball Showcase sdfsdfsdfsdf',
+        price: 12000,
+        details: [
+            { age: 25 },
+            { competitionType: 'Round Robin Triple Split' },
+            { location: 'USA' },
+            {
+                registrationRequirements: ['18 and Above'],
+            },
+        ],
+        date: {
+            from: new Date('2022-09-10'),
+        },
+        which: 1,
+    },
+    {
+        heading: '2022 FIBA AmeriCup for Men',
+        price: 1500,
+        details: [
+            { age: 21 },
+            { competitionType: 'Single Elimination' },
+            { location: 'Canada' },
+            {
+                registrationRequirements: [
+                    '18 and Above',
+                    'Individual Registration',
+                    'Group Registration',
+                ],
+            },
+        ],
+        date: {
+            from: new Date('2022-09-10'),
+            to: new Date('2022-09-10'),
+        },
+        which: 2,
+    },
+    {
+        heading: 'FIBA 3x3 U23 World Cup (women)',
+        price: 59000,
+        details: [
+            { age: 15 },
+            { competitionType: 'Semi-round Robins' },
+            { location: 'USA' },
+            {
+                registrationRequirements: [
+                    '18 and Above',
+                    'Individual Registration',
+                ],
+            },
+        ],
+        date: {
+            from: new Date('2022-09-10'),
+            to: new Date('2022-09-10'),
+        },
+        which: 3,
+    },
+    {
+        heading: '2022 USA Basketball (boys)',
+        price: 99094,
+        details: [
+            { age: 23 },
+            { competitionType: 'Multilevel' },
+            { location: 'Mexico' },
+            {
+                registrationRequirements: ['Group Registration'],
+            },
+        ],
+        date: {
+            from: new Date('2022-09-10'),
+            to: new Date('2022-09-10'),
+        },
+        which: 1,
+    },
+    {
+        heading: '2022 USA Basketball Academy',
+        price: 11200,
+        details: [
+            { age: 32 },
+            { competitionType: 'Multilevel' },
+            { location: 'Canada' },
+            {
+                registrationRequirements: ['Individual Registration'],
+            },
+        ],
+        date: {
+            from: new Date('2022-09-10'),
+        },
+        which: 2,
+    },
+    {
+        heading: '2022 USA Basketball (girls)',
+        price: 85070,
+        details: [
+            { age: 18 },
+            { competitionType: 'Single Elimination' },
+            { location: 'Mexico' },
+            {
+                registrationRequirements: [
+                    '18 and Above',
+                    'Group Registration',
+                ],
+            },
+        ],
+        date: {
+            from: new Date('2022-09-10'),
+            to: new Date('2022-09-04'),
+        },
+        which: 3,
+    },
+]
+
 const Event = ({
     id,
     heading,
@@ -126,6 +239,7 @@ function Events() {
         axios('/api/events')
             .then(({ data }) => {
                 console.log({data})
+                console.log({EVENTDATA})
 
                 setEventData(data)
             })
