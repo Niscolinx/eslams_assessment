@@ -25,7 +25,9 @@ const eventSchema = new Schema<IEvent>(
             type: Number,
             required: true,
         },
-        details: { type: Array },
+        details: { 
+            type: Object
+         },
     },
     { timestamps: true }
 )

@@ -1,9 +1,5 @@
 import axios from 'axios'
-import React, {
-    useContext,
-    useEffect,
-    useState,
-} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { EventContext } from '../pages/dashboard'
 
 interface EventProps {
@@ -244,13 +240,17 @@ function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
     const [updateEvent, setUpdateEvent] = useState(new Set<EventProps>([]))
 
-
-   const postEvent = () => {
-
-        axios.post('/api/events', {EVENTDATA}).then((res) => {
-            console.log('posted')
-        })
-   }
+    const postEvent = () => {
+        console.log('clicked')
+        axios
+            .post('/api/events', { EVENTDATA })
+            .then((res) => {
+                console.log('posted')
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 
     useEffect(() => {
         setUpdateEvent(new Set<EventProps>([]))
@@ -340,9 +340,6 @@ function Events() {
     const showEvents = () => {
         const filteredEvents = Array.from(updateEvent)
 
-
-
-
         const eventArrToRender =
             filteredEvents.length > 0 ? filteredEvents : EVENTDATA
         let matchedEvents = 0
@@ -359,7 +356,6 @@ function Events() {
             }
         })
 
-
         if (matchedEvents < 1) {
             return null
         }
@@ -373,7 +369,12 @@ function Events() {
                 <h1 className='events__heading--text'>Upcoming Events</h1>{' '}
                 <span></span>
             </div>
-                <button className='bg-black text-white flex justify-center justify-self-center' onClick={postEvent}>Click me</button>
+            <button
+                className='bg-black text-white flex justify-center justify-self-center'
+                onClick={ postEvent}
+            >
+                Click me
+            </button>
             <div className='events__container overflow-hidden'>
                 {showEvents() || <p>No events found</p>}
             </div>
