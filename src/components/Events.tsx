@@ -243,6 +243,12 @@ function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
     const [updateEvent, setUpdateEvent] = useState(new Set<EventProps>([]))
 
+
+    useEffect(() => {
+
+            
+    }, [])
+
     useEffect(() => {
         setUpdateEvent(new Set<EventProps>([]))
 
@@ -330,6 +336,8 @@ function Events() {
 
     const showEvents = () => {
         const filteredEvents = Array.from(updateEvent)
+
+
 
 
         const eventArrToRender =
