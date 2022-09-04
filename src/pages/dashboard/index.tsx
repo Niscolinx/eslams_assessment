@@ -70,7 +70,7 @@ const MenuProps = {
     },
 }
 
-const AGERANGE = ['0-10', '11-20', '21-30', '31-40']
+const AGERANGE = [ '11-20', '21-30', '31-40']
 
 const LOCATIONS = ['USA', 'Canada', 'Mexico']
 
@@ -78,7 +78,6 @@ const COMPETITIONTYPE = [
     'Multilevel',
     'Single Elimination',
     'Semi-round Robins',
-    'Round Robin Tripple Split',
 ]
 
 const REGISTRATIONREQUIREMENTS = [

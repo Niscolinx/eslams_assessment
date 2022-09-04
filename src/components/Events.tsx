@@ -16,118 +16,7 @@ interface EventProps {
     }
 }
 
-export const EVENTDATA = [
-    {
-        heading: 'USA Basketball Showcase sdfsdfsdfsdf',
-        price: 12000,
-        details: [
-            { age: 25 },
-            { competitionType: 'Round Robin Triple Split' },
-            { location: 'USA' },
-            {
-                registrationRequirements: ['18 and Above'],
-            },
-        ],
-        date: {
-            from: new Date('2022-09-10'),
-        },
-        which: 1,
-    },
-    {
-        heading: '2022 FIBA AmeriCup for Men',
-        price: 1500,
-        details: [
-            { age: 21 },
-            { competitionType: 'Single Elimination' },
-            { location: 'Canada' },
-            {
-                registrationRequirements: [
-                    '18 and Above',
-                    'Individual Registration',
-                    'Group Registration',
-                ],
-            },
-        ],
-        date: {
-            from: new Date('2022-09-10'),
-            to: new Date('2022-09-10'),
-        },
-        which: 2,
-    },
-    {
-        heading: 'FIBA 3x3 U23 World Cup (women)',
-        price: 59000,
-        details: [
-            { age: 15 },
-            { competitionType: 'Semi-round Robins' },
-            { location: 'USA' },
-            {
-                registrationRequirements: [
-                    '18 and Above',
-                    'Individual Registration',
-                ],
-            },
-        ],
-        date: {
-            from: new Date('2022-09-10'),
-            to: new Date('2022-09-10'),
-        },
-        which: 3,
-    },
-    {
-        heading: '2022 USA Basketball (boys)',
-        price: 99094,
-        details: [
-            { age: 23 },
-            { competitionType: 'Multilevel' },
-            { location: 'Mexico' },
-            {
-                registrationRequirements: ['Group Registration'],
-            },
-        ],
-        date: {
-            from: new Date('2022-09-10'),
-            to: new Date('2022-09-10'),
-        },
-        which: 1,
-    },
-    {
-        heading: '2022 USA Basketball Academy',
-        price: 11200,
-        details: [
-            { age: 32 },
-            { competitionType: 'Multilevel' },
-            { location: 'Canada' },
-            {
-                registrationRequirements: ['Individual Registration'],
-            },
-        ],
-        date: {
-            from: new Date('2022-09-10'),
-        },
-        which: 2,
-    },
-    {
-        heading: '2022 USA Basketball (girls)',
-        price: 85070,
-        details: [
-            { age: 18 },
-            { competitionType: 'Single Elimination' },
-            { location: 'Mexico' },
-            {
-                registrationRequirements: [
-                    '18 and Above',
-                    'Group Registration',
-                ],
-            },
-        ],
-        date: {
-            from: new Date('2022-09-10'),
-            to: new Date('2022-09-04'),
-        },
-        which: 3,
-    },
-]
+
 
 const Event = ({
     id,
@@ -163,13 +52,17 @@ const Event = ({
                 <div className='event__details '>
                     {details.length > 0 &&
                         details.map((item, i) => {
-                            const [key, value] = Object.entries(item)[1]
+                            let [key, value] = Object.entries(item)[1]
+
+                            key =  key.split(/(?=[A-Z])/).join(' ')
+
+                            
 
                             return (
                                 <ul key={i} className='event__details--list '>
                                     <div
                                         className={
-                                            key !== 'registrationRequirements'
+                                            key !== 'registration Requirements'
                                                 ? 'flex gap-1 justify-items-end'
                                                 : ''
                                         }
@@ -177,7 +70,7 @@ const Event = ({
                                         <span
                                             className={
                                                 key ===
-                                                'registrationRequirements'
+                                                'registration Requirements'
                                                     ? 'font-medium capitalize'
                                                     : 'capitalize'
                                             }
@@ -187,7 +80,7 @@ const Event = ({
                                         :
                                         <span className='font-medium'>
                                             {key ===
-                                                'registrationRequirements' &&
+                                                'registration Requirements' &&
                                             Array.isArray(value) ? (
                                                 <span className='font-medium'>
                                                     {value.map((item) => (
@@ -238,8 +131,6 @@ function Events() {
     useEffect(() => {
         axios('/api/events')
             .then(({ data }) => {
-                console.log({ data })
-                console.log({ EVENTDATA })
 
                 const transFormedData = data.map(
                     (item: EventProps, index: number) => {
@@ -256,10 +147,7 @@ function Events() {
                                     month: 'short',
                                 }),
                             },
-                            details: {
-                                ...item.details,
-                                
-                            }
+                           
                         }
                     }
                 )
@@ -277,13 +165,14 @@ function Events() {
 
         if (showFilteredData) {
             if (showFilteredData.age.length > 0) {
-                Object.values(showFilteredData.Age).map((eachGroup) => {
+                Object.values(showFilteredData.age).map((eachGroup) => {
                     const [min, max] = eachGroup.split('-')
                     const minAge = parseInt(min)
                     const maxAge = parseInt(max)
 
                     return eventData.map((eachEvent) => {
-                        let eventAge = Number(eachEvent.details[0].Age)
+                       console.log(eachEvent.details[0].age)
+                        let eventAge = eachEvent.details[0].age
                         if (eventAge >= minAge && eventAge <= maxAge) {
                             setUpdateEvent((prev: any) => {
                                 return prev.add(eachEvent)
