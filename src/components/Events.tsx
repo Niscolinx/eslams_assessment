@@ -332,10 +332,11 @@ function Events() {
     const showEvents = () => {
         let eventsCount = true
         let data =  filteredData.map((item) => {
-            return item.heading.includes(searchValue) ? <Event {...item} key={item.id}/> : eventsCount = false
+            const arr =  item.heading.includes(searchValue) && <Event {...item} key={item.id}/> 
+            console.log({arr})
+            return arr
         })
 
-        console.log({eventsCount})
 
         return data
     }
