@@ -45,7 +45,7 @@ type contextTypes = {
     searchValue: string
     handleClickOpen: () => void
     setSearchValue: (searchValue: string) => void
-    registerEvent: (id: number) => void
+    registerEvent: (id: string) => void
     showFilteredData: {
         [key: string]: string | string[]
     }
@@ -53,7 +53,7 @@ type contextTypes = {
 
 export const EventContext = createContext<contextTypes>({
     searchValue: '',
-    registerEvent: (id: number) => {},
+    registerEvent: (id: string) => {},
     handleClickOpen: () => {},
     showFilteredData: {},
     setSearchValue: (searchValue: string) => {},
@@ -328,7 +328,7 @@ const Index = () => {
         handleClose(e)
     }
 
-    const registerEvent = (e: number) => {
+    const registerEvent = (e: string) => {
         console.log(e)
     }
 

@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { EventContext } from '../pages/dashboard'
 
 interface EventProps {
-    id: number
+    _id: string
     heading: string
     details: {
         [key: string]: any
@@ -19,7 +19,7 @@ interface EventProps {
 
 
 const Event = ({
-    id,
+    _id,
     heading,
     details,
     price,
@@ -113,7 +113,7 @@ const Event = ({
                     </div>
                     <button
                         className='btn btn--white'
-                        onClick={(e: any) => registerEvent(id)}
+                        onClick={(e: any) => registerEvent(_id)}
                     >
                         Register now!
                     </button>
@@ -152,7 +152,6 @@ function Events() {
                     }
                 )
 
-                console.log({ transFormedData })
                 setEventData(transFormedData)
             })
             .catch((err) => {
@@ -171,10 +170,9 @@ function Events() {
                     const maxAge = parseInt(max)
 
                     return eventData.map((eachEvent) => {
-                       console.log(eachEvent.details[0].age)
                         let eventAge = eachEvent.details[0].age
                         if (eventAge >= minAge && eventAge <= maxAge) {
-                            setUpdateEvent((prev: any) => {
+                            setUpdateEvent((prev: Set<EventProps>) => {
                                 return prev.add(eachEvent)
                             })
                         }
@@ -189,7 +187,7 @@ function Events() {
                             let eventCompetitionType =
                                 eachEvent.details[1].competitionType
                             if (eventCompetitionType === eachGroup) {
-                                setUpdateEvent((prev: any) => {
+                                setUpdateEvent((prev: Set<EventProps>) => {
                                     return prev.add(eachEvent)
                                 })
                             }
@@ -203,7 +201,7 @@ function Events() {
                     eventData.map((eachEvent) => {
                         let eventLocation = eachEvent.details[2].location
                         if (eventLocation === eachGroup) {
-                            setUpdateEvent((prev: any) => {
+                            setUpdateEvent((prev: Set<EventProps>) => {
                                 return prev.add(eachEvent)
                             })
                         }
@@ -219,7 +217,7 @@ function Events() {
                         let eventRegistrationRequirements =
                             eachEvent.details[3].registrationRequirements
                         if (eventRegistrationRequirements.includes(eachGroup)) {
-                            setUpdateEvent((prev: any) => {
+                            setUpdateEvent((prev: Set<EventProps>) => {
                                 return prev.add(eachEvent)
                             })
                         }
@@ -237,7 +235,7 @@ function Events() {
                         eventPrice >= Number(left) &&
                         eventPrice <= Number(right)
                     ) {
-                        setUpdateEvent((prev: any) => {
+                        setUpdateEvent((prev: Set<EventProps>) => {
                             return prev.add(eachEvent)
                         })
                     }
@@ -254,11 +252,11 @@ function Events() {
         let matchedEvents = 0
 
         let data = eventArrToRender.map((item) => {
-            //  console.log({item})
+            console.log(item)
             const arr = item.heading
                 .toLowerCase()
                 .includes(searchValue.toLowerCase()) && (
-                <Event {...item} key={item.id} />
+                <Event {...item} key={item._id} />
             )
             if (arr) {
                 matchedEvents++
