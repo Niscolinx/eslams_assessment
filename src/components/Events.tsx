@@ -289,12 +289,12 @@ function Events() {
                 })
             }
 
-            if (showFilteredData['Competition Type'].length > 0) {
-                Object.values(showFilteredData['Competition Type']).map(
+            if (showFilteredData.competitionType.length > 0) {
+                Object.values(showFilteredData.competitionType).map(
                     (eachGroup) => {
                         eventData.map((eachEvent) => {
                             let eventCompetitionType =
-                                eachEvent.details[1]['Competition Type']
+                                eachEvent.details[1].competitionType
                             if (eventCompetitionType === eachGroup) {
                                 setUpdateEvent((prev: any) => {
                                     return prev.add(eachEvent)
@@ -318,13 +318,13 @@ function Events() {
                 })
             }
 
-            if (showFilteredData['Registration Requirements'].length > 0) {
+            if (showFilteredData.registrationRequirements.length > 0) {
                 Object.values(
-                    showFilteredData['Registration Requirements']
+                    showFilteredData.registrationRequirements
                 ).map((eachGroup) => {
                     eventData.map((eachEvent) => {
                         let eventRegistrationRequirements =
-                            eachEvent.details[3]['Registration Requirements']
+                            eachEvent.details[3].registrationRequirements
                         if (eventRegistrationRequirements.includes(eachGroup)) {
                             setUpdateEvent((prev: any) => {
                                 return prev.add(eachEvent)
