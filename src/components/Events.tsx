@@ -347,7 +347,7 @@ function Events() {
             const arr = item.heading.includes(searchValue) && (
                 <Event {...item} key={item.id} />
             )
-            console.log('arr', arr)
+            console.log('item', item)
             if (!arr) {
                 unMatchedEventsCount++
             }
