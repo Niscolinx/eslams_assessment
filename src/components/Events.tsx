@@ -242,11 +242,11 @@ const Event = ({
 
 function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
-    const [updateEvent, setUpdateEvent] = useState<any>(new Set([]))
+    const [updateEvent, setUpdateEvent] = useState(new Set<EventProps>([]))
 
     useEffect(() => {
 
-        setUpdateEvent(new Set([]))
+        setUpdateEvent(new Set<EventProps>([]))
 
         if (showFilteredData) {
             if (showFilteredData.Age.length > 0) {
@@ -338,12 +338,16 @@ function Events() {
 
     
     const showEvents = () => {
-        console.log({ updateEvent })
+
+        const filteredEvents = Array.from(updateEvent)
+
+        const eventArrToRender = filteredEvents.length > 0 ? filteredEvents : EVENTDATA
         let unMatchedEventsCount = 0
-        let data = EVENTDATA.map((item) => {
+        let data = eventArrToRender.map((item) => {
             const arr = item.heading.includes(searchValue) && (
                 <Event {...item} key={item.id} />
             )
+            console.log('arr', arr)
             if (!arr) {
                 unMatchedEventsCount++
             }
