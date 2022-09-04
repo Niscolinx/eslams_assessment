@@ -246,12 +246,22 @@ function Events() {
                         return {
                             ...item,
                             which: (index % 3) + 1,
+                            date: {
+                                from: new Date(item.date.from).toLocaleDateString('en-GB', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                }),
+                                to: new Date(item.date.to).toLocaleDateString('en-GB', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                }),
+                            }
                         }
                     }
                 )
 
                 console.log({ transFormedData })
-                setEventData(data)
+                setEventData(transFormedData)
             })
             .catch((err) => {
                 console.log(err)
