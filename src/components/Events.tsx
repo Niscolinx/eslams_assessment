@@ -109,7 +109,7 @@ const Event = ({
                 <div className='event__cta'>
                     <div className='event__price-box'>
                         <p className='event__price-only'>Only</p>
-                        <p className='event__price-value'>${price}</p>
+                        <p className='event__price-value'>{price}</p>
                     </div>
                     <button
                         className='btn btn--white'
@@ -147,7 +147,10 @@ function Events() {
                                     month: 'short',
                                 }),
                             },
-                           
+                           price: item.price.toLocaleString('en-US', {
+                                style: 'currency',
+                                currency: 'USD',
+                            }),
                         }
                     }
                 )

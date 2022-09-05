@@ -109,7 +109,6 @@ export default function LoginContainer() {
          const isValid = formValidate()
 
          if (!isValid) {
-            console.log('not valid')
              return
          } 
         
@@ -166,12 +165,11 @@ export default function LoginContainer() {
                     variant='outlined'
                     sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
                 >
-                    <div className='absolute -right-22  top-0'>
+                    <div className='absolute -right-22 top-0'>
                         <img
                             src='/ball-icon.png'
-                            width='170px'
-                            height='170px'
-                            className='animate-spin-slow'
+                          
+                            className='animate-spin-slow w-40 h-40'
                         />
                     </div>
                     <Typography
@@ -211,7 +209,9 @@ export default function LoginContainer() {
                                 }
                                 variant='standard'
                                 onChange={setInput}
+                                className='login-input'
                             />
+
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <div className='flex items-center relative'>
