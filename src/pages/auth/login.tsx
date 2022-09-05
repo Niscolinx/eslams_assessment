@@ -73,7 +73,7 @@ const Login = () => {
                         </Tilt>
                     </div>
                 </div>
-                <div className='mx-auto w-full md:(grid) relative mt-30 register__form z-30 md: mx-0 ml-auto'>
+                <div className='mx-auto w-full md:(grid) relative md:mt-30 register__form z-30 md: mx-0 ml-auto'>
                     <LoginContainer />
                 </div>
                 <div className='main-signup'></div>

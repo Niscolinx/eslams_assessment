@@ -370,10 +370,10 @@ export default function RegisterForm() {
                             Create an account and step into greatness
                         </Typography>
 
-                        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+                        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }} >
                             {steps.map((label) => (
                                 <Step key={label}>
-                                    <StepLabel>{label}</StepLabel>
+                                    <StepLabel className='text-red-500 text-2xl'><span className='text-lg  md:text-base'>{label}</span></StepLabel>
                                 </Step>
                             ))}
                         </Stepper>

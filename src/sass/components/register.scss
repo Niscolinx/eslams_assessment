@@ -172,7 +172,7 @@
         @include respond(phone) {
             // margin: 0 auto;
            // position: absolute;
-            top: 10rem;
+          //  top: 10rem;
             left: 0;
             margin-inline: auto;
             right: 0;
@@ -213,15 +213,15 @@
 }
 
 
-.login-input{
+// .login-input{
     
-    input{
+//     input{
         
-        font-size: 1.2rem;
-    }
+//         font-size: 1.2rem;
+//     }
 
-    & > label{
-        font-size: 1.2rem;
-    }
-}
+//     & > label{
+//         font-size: 1.2rem;
+//     }
+// }
 
