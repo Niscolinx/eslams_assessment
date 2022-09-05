@@ -9,6 +9,7 @@ import {
     InputLabel,
     MenuItem,
     Select,
+    Typography,
 } from '@mui/material'
 import { useState } from 'react'
 import MuiPhoneNumber from 'material-ui-phone-number'
@@ -32,9 +33,14 @@ export default function Education() {
 
     return (
         <React.Fragment>
-            {/* <Typography variant='h6' gutterBottom>
-                Shipping address
-            </Typography> */}
+            <Typography
+                variant='h6'
+                gutterBottom
+                align='center'
+                className='heading__1 md:hidden'
+            >
+                Education
+            </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <FormControl fullWidth>

@@ -58,13 +58,13 @@ html {
 
     @include respond(tab-land) {
        // font-size: 62.5%;
-       font-size: 75%;
+     //  font-size: 75%;
     }
 
     @include respond(smaller-phone) {
-        font-size: 57%;
+      //  font-size: 57%;
     }
     @include respond(smallest-phone) {
-        font-size: 53%;
+        //font-size: 53%;
     }
 }

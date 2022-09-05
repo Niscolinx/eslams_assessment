@@ -9,7 +9,6 @@ import Stepper from '@mui/material/Stepper'
 import Step from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
 import Button from '@mui/material/Button'
-import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
@@ -24,10 +23,9 @@ import Education from './Education'
 import { AuthContext } from '../../pages/api/auth/authContext'
 import axios from 'axios'
 import dayjs from 'dayjs'
-import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 
-const steps = ['Personal details', 'Guardian/Parent', 'Education']
+const steps = ['Personal', 'Guardian/Parent', 'Education']
 
 function getStepContent(step: number) {
     switch (step) {
@@ -373,7 +371,7 @@ export default function RegisterForm() {
                         <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }} >
                             {steps.map((label) => (
                                 <Step key={label}>
-                                    <StepLabel className='text-red-500 text-2xl'><span className='text-lg  md:text-base'>{label}</span></StepLabel>
+                                    <StepLabel className='text-red-500 text-2xl'><span className='hidden md:flex'>{label}</span></StepLabel>
                                 </Step>
                             ))}
                         </Stepper>

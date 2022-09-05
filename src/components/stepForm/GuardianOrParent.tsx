@@ -1,9 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
-import FormControlLabel from '@mui/material/FormControlLabel'
 
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import { FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material'
 import MuiPhoneNumber from 'material-ui-phone-number'
 import { AuthContext } from '../../pages/api/auth/authContext'
 
@@ -23,6 +22,14 @@ export default function GuardianOrParent() {
 
     return (
         <React.Fragment>
+            <Typography
+                variant='h6'
+                gutterBottom
+                align='center'
+                className='heading__1 md:hidden'
+            >
+                Guardian/Parent
+            </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <TextField

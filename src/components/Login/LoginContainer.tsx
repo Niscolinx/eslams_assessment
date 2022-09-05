@@ -255,7 +255,7 @@ export default function LoginContainer() {
                             className={`flex justify-self-center bg-[#1976d2] text-white my-3 rounded-lg py-1 px-5 border-none outline-none ${
                                 loading
                                     ? 'h-8 justify-center items-center w-25 '
-                                    : 'text-xl'
+                                    : ''
                             }`}
                             onClick={handleLogin}
                         >
@@ -273,7 +273,7 @@ export default function LoginContainer() {
                 <div className='grid justify-start'>
                     <a
                         href='/auth/register'
-                        className='bg-white rounded-lg py-2 px-4 text-[#1976d2] text-xl'
+                        className='bg-white rounded-lg py-2 px-4 text-[#1976d2]'
                     >
                         Create Account
                     </a>

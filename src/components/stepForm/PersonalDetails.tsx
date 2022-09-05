@@ -6,7 +6,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import { FormControl, FormLabel, RadioGroup, Radio } from '@mui/material'
+import { FormControl, FormLabel, RadioGroup, Radio, Typography } from '@mui/material'
 import { useState } from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import MuiPhoneNumber from 'material-ui-phone-number'
@@ -38,9 +38,9 @@ export default function PersonalDetails() {
 
     return (
         <React.Fragment>
-            {/* <Typography variant='h6' gutterBottom>
-                Shipping address
-            </Typography> */}
+            <Typography variant='h6' gutterBottom align="center" className='heading__1 md:hidden'>
+                Personal Details
+            </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <TextField
