@@ -168,7 +168,6 @@ export default function LoginContainer() {
                     <div className='absolute -right-22 top-0'>
                         <img
                             src='/ball-icon.png'
-                          
                             className='animate-spin-slow w-40 h-40'
                         />
                     </div>
@@ -181,7 +180,6 @@ export default function LoginContainer() {
                         Welcome Back
                     </Typography>
 
-             
                     {message && message.type === 'error' && (
                         <p className='text-red-500 text-sm font-semibold text-center py-4'>
                             {message.message}
@@ -211,7 +209,6 @@ export default function LoginContainer() {
                                 onChange={setInput}
                                 className='login-input'
                             />
-
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <div className='flex items-center relative'>
@@ -237,6 +234,7 @@ export default function LoginContainer() {
                                             : false
                                     }
                                     onChange={setInput}
+                                    className='login-input'
                                 />
                                 {
                                     <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
@@ -254,10 +252,10 @@ export default function LoginContainer() {
                             </div>
                         </Grid>
                         <button
-                            className={`flex justify-self-center bg-[#1976d2] text-white my-3 rounded-lg py-1 px-3 text-lg border-none outline-none ${
+                            className={`flex justify-self-center bg-[#1976d2] text-white my-3 rounded-lg py-1 px-5 border-none outline-none ${
                                 loading
                                     ? 'h-8 justify-center items-center w-25 '
-                                    : ''
+                                    : 'text-xl'
                             }`}
                             onClick={handleLogin}
                         >
@@ -275,7 +273,7 @@ export default function LoginContainer() {
                 <div className='grid justify-start'>
                     <a
                         href='/auth/register'
-                        className='bg-white rounded-lg py-2 px-4 text-[#1976d2]'
+                        className='bg-white rounded-lg py-2 px-4 text-[#1976d2] text-xl'
                     >
                         Create Account
                     </a>
