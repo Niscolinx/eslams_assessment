@@ -140,7 +140,7 @@ const RegisteredEvents = ({
                         <Event key={index} {...event} />
                     ))
                 ) : (
-                    <p>No registered Event yet</p>
+                    <p className='text-center'>No registered Event yet</p>
                 )}
             </div>
         </div>
@@ -155,7 +155,6 @@ function profile() {
     useEffect(() => {
         axios('/api/getUserEvents')
             .then(({ data }) => {
-                console.log({ data })
 
                 const transFormedData = data.map(
                     (item: EventProps, index: number) => {
