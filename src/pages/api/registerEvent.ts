@@ -14,10 +14,18 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             tokenCookie,
             new TextEncoder().encode(process.env.JWT_SECRET!)
         )
+
+
+
+        const user: IUser | null = await User.findOne({ email: jwtData.email })
+
+        if (user) {
+
+        }
     }
     else{
         return res.status(401).json({
-            message: 'user not found'
+            message: 'token not valid'
         })
     }
 }
