@@ -25,6 +25,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
             const isRegistered = new Promise((resolve, reject) => {
                 return user.registeredEvents.some((eventId) => {
+                    console.log(typeof eventId, typeof event, eventId, event)
                     return eventId === event._id
                 })
             })
