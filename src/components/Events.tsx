@@ -1,3 +1,4 @@
+import CircularProgress from '@mui/material/CircularProgress'
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { EventContext } from '../pages/dashboard'
@@ -15,8 +16,6 @@ interface EventProps {
         to?: any
     }
 }
-
-
 
 const Event = ({
     _id,
@@ -54,9 +53,7 @@ const Event = ({
                         details.map((item, i) => {
                             let [key, value] = Object.entries(item)[1]
 
-                            key =  key.split(/(?=[A-Z])/).join(' ')
-
-                            
+                            key = key.split(/(?=[A-Z])/).join(' ')
 
                             return (
                                 <ul key={i} className='event__details--list '>
@@ -132,23 +129,29 @@ function Events() {
     useEffect(() => {
         axios('/api/events')
             .then(({ data }) => {
-                
                 const transFormedData = data.map(
                     (item: EventProps, index: number) => {
                         return {
                             ...item,
                             which: (index % 3) + 1,
                             date: {
-                                from: new Date(item.date.from).toLocaleDateString('en-GB', {
+                                from: new Date(
+                                    item.date.from
+                                ).toLocaleDateString('en-GB', {
                                     day: 'numeric',
                                     month: 'short',
                                 }),
-                                to: item.date.to && new Date(item.date.to).toLocaleDateString('en-GB', {
-                                    day: 'numeric',
-                                    month: 'short',
-                                }),
+                                to:
+                                    item.date.to &&
+                                    new Date(item.date.to).toLocaleDateString(
+                                        'en-GB',
+                                        {
+                                            day: 'numeric',
+                                            month: 'short',
+                                        }
+                                    ),
                             },
-                           price: item.price.toLocaleString('en-US', {
+                            price: item.price.toLocaleString('en-US', {
                                 style: 'currency',
                                 currency: 'USD',
                             }),
@@ -216,19 +219,23 @@ function Events() {
             }
 
             if (showFilteredData.registrationRequirements.length > 0) {
-                Object.values(
-                    showFilteredData.registrationRequirements
-                ).map((eachGroup) => {
-                    eventData.map((eachEvent) => {
-                        let eventRegistrationRequirements =
-                            eachEvent.details[3].registrationRequirements
-                        if (eventRegistrationRequirements.includes(eachGroup)) {
-                            setUpdateEvent((prev: Set<EventProps>) => {
-                                return prev.add(eachEvent)
-                            })
-                        }
-                    })
-                })
+                Object.values(showFilteredData.registrationRequirements).map(
+                    (eachGroup) => {
+                        eventData.map((eachEvent) => {
+                            let eventRegistrationRequirements =
+                                eachEvent.details[3].registrationRequirements
+                            if (
+                                eventRegistrationRequirements.includes(
+                                    eachGroup
+                                )
+                            ) {
+                                setUpdateEvent((prev: Set<EventProps>) => {
+                                    return prev.add(eachEvent)
+                                })
+                            }
+                        })
+                    }
+                )
             }
 
             if (showFilteredData.priceRange) {
@@ -282,7 +289,14 @@ function Events() {
             </div>
 
             <div className='events__container overflow-hidden'>
-                {showEvents() || <p>No events found</p>}
+                {loading ? (
+                    <CircularProgress
+                        className='text-white flex justify-self-center'
+                        size={15}
+                    />
+                ) : (
+                    showEvents() || <p>No events found</p>
+                )}
             </div>
         </div>
     )
