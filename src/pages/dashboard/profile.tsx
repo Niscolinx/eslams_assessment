@@ -2,11 +2,10 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 
 import { BsFillPencilFill, BsFillFilePersonFill } from 'react-icons/bs'
-import {IoMdSchool} from 'react-icons/io'
-import {MdFamilyRestroom} from 'react-icons/md'
+import { IoMdSchool } from 'react-icons/io'
+import { MdFamilyRestroom } from 'react-icons/md'
 
 import { CircularProgress } from '@mui/material'
-
 
 const routes = ['General', 'Events']
 
@@ -86,16 +85,13 @@ interface EventProps {
     }
 }
 
-const Event = ({
-    heading,
-    price,
-    date: { from, to },
-    which,
-}: EventProps) => {
+const Event = ({ heading, price, date: { from, to }, which }: EventProps) => {
     return (
         <div className='registeredEvent'>
             <div className='registeredEvent__side registeredEvent__side--front'>
-                <div className={`registeredEvent__picture registeredEvent__picture--${which}`}>
+                <div
+                    className={`registeredEvent__picture registeredEvent__picture--${which}`}
+                >
                     <div className='registeredEvent__picture--date'>
                         <span>
                             {from.split(' ')[0]} <sup>{from.split(' ')[1]}</sup>
@@ -105,7 +101,6 @@ const Event = ({
                             {to?.split(' ')[0]} <sup>{to?.split(' ')[1]}</sup>
                         </span>
                     </div>
-                 
                 </div>
                 <h4 className='registeredEvent__heading'>
                     <span
@@ -114,42 +109,50 @@ const Event = ({
                         {heading}
                     </span>
                 </h4>
-                
             </div>
-            
         </div>
     )
 }
 
-
-
-const RegisteredEvents = ({loading, eventData}: {loading: boolean, eventData: EventProps[]}) => {
-     return (
-         <div className=' registeredEvents'>
-             <div className='registeredEvents__heading'>
-                 <h3 className='registeredEvents__heading--text'>Registered Events</h3>{' '}
-             </div>
-             <div className='registeredEvents__container'>
-                 {loading ? <CircularProgress
-                        className='text-black flex justify-self-center'
+const RegisteredEvents = ({
+    loading,
+    eventData,
+}: {
+    loading: boolean
+    eventData: EventProps[]
+}) => {
+    return (
+        <div className=' registeredEvents'>
+            <div className='registeredEvents__heading'>
+                <h3 className='registeredEvents__heading--text'>
+                    Registered Events
+                </h3>{' '}
+            </div>
+            <div className='registeredEvents__container'>
+                {loading ? (
+                    <CircularProgress
+                        className='text-black! flex justify-self-center'
                         size={15}
-                    />: eventData}
-             </div>
-         </div>
-     )
+                    />
+                ) : (
+                    eventData.map((event, index) => (
+                        <Event key={index} {...event} />
+                    ))
+                )}
+            </div>
+        </div>
+    )
 }
-
-
 
 function profile() {
     const [route, routeToDisplay] = useState(<GeneralDetails />)
-       const [eventData, setEventData] = useState<EventProps[]>([])
-       const [loading, setLoading] = useState(true)
-
+    const [eventData, setEventData] = useState<EventProps[]>([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-            axios('/api/getUserEvents').then(({data}) => {
-                console.log({data})
+        axios('/api/getUserEvents')
+            .then(({ data }) => {
+                console.log({ data })
 
                 const transFormedData = data.map(
                     (item: EventProps, index: number) => {
@@ -173,14 +176,14 @@ function profile() {
                                         }
                                     ),
                             },
-                         
                         }
                     }
                 )
                 setLoading(false)
 
                 setEventData(transFormedData)
-            }).catch(err => console.log(err))
+            })
+            .catch((err) => console.log(err))
     }, [])
 
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
@@ -193,7 +196,9 @@ function profile() {
                 return routeToDisplay(<GeneralDetails />)
 
             case 'Events':
-                return routeToDisplay(<RegisteredEvents loading={loading} eventData={eventData} />)
+                return routeToDisplay(
+                    <RegisteredEvents loading={loading} eventData={eventData} />
+                )
 
             default:
                 return route
