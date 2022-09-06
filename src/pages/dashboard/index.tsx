@@ -360,13 +360,18 @@ const Index = () => {
             .post('/api/registerEvent', { event })
             .then((res) => {
                 console.log(res)
+                toast('Event Registered Successfully', {
+                    type: 'success'
+                })
             })
             .catch((err) => {
                 console.log(err)
+                toast('Already Registered for this event', {
+                    type: 'error',
+                })
             })
     }
 
-    const notify = () => toast('Wow so easy!')
 
     return (
         <EventContext.Provider
@@ -653,7 +658,6 @@ const Index = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button onClick={notify}>Notify!</button>
                             <ToastContainer />
                             <Events />
                         </main>
