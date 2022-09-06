@@ -18,18 +18,18 @@
             justify-items: center;
         }
 
-        span {
-            width: 20rem;
-            height: 1px;
-            background-color: rgba(0, 0, 0, 0.449);
+        // span {
+        //     width: 20rem;
+        //     height: 1px;
+        //     background-color: rgba(0, 0, 0, 0.449);
 
-            @include respond(bigger-phone) {
-                width: 10rem;
-                height: 1px;
-                background-color: rgba(0, 0, 0, 0.449);
-                //  background-color: red;
-            }
-        }
+        //     @include respond(bigger-phone) {
+        //         width: 10rem;
+        //         height: 1px;
+        //         background-color: rgba(0, 0, 0, 0.449);
+        //         //  background-color: red;
+        //     }
+        // }
 
         &--text {
             display: grid;
@@ -503,7 +503,6 @@
     // @include respond(phone){
     //     transform: translate(15px, 10px);
     // }
-   
 
     // &::backdrop {
     //     background: rgba(26, 26, 45, 0.375);

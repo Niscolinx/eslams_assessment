@@ -602,8 +602,7 @@ const Index = () => {
                     </DialogActions>
                 </Dialog>
 
-                <div className='flex justify-around'></div>
-                {/* </dialog> */}
+                
                 <div className='marketplace__container'>
                     <div className='grid relative z-3'>
                         <Header />

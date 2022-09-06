@@ -273,11 +273,9 @@ function Events() {
     }
 
     return (
-        <div className='p-8 events'>
+        <div className='events'>
             <div className='events__heading'>
-                <span></span>{' '}
-                <h1 className='events__heading--text'>Upcoming Events</h1>{' '}
-                <span></span>
+                <h1 className='events__heading--text'>Upcoming Events</h1>
             </div>
 
             <div className='events__container overflow-hidden'>

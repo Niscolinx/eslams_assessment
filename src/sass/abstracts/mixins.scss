@@ -20,13 +20,6 @@
 //450px/16 = 28em
 //350px/16 = 21.8
 
-@mixin clearfix {
-    &::after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
 
 @mixin absCenter {
     position: absolute;
