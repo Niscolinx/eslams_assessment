@@ -27,7 +27,19 @@ export default async function getUserEvents(
             email: jwtData.email,
         })
 
-        res.status(200).json(event)
+        if(!user){
+            return res.status(404).json({
+                message: 'User not found',
+            })
+        }
+
+        const userEvents = await Event.find({
+            _id: {
+                $in: user.registeredEvents,
+            },
+        })
+
+        res.status(200).json(userEvents)
     } catch (error) {
         res.status(500).json({ message: 'Something went wrong' })
     }
