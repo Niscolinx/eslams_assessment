@@ -10,7 +10,29 @@ import { IUser } from '../../models/User'
 
 const routes = ['General', 'Events']
 
-const GeneralDetails = () => {
+const GeneralDetails = ({userData}: {userData: IUser | null}) => {
+
+    if(userData!){
+        return null
+    }
+
+    console.log({userData})
+
+    const {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        GuardianEmail,
+        GuardianName,
+        GuardianPhoneNumber,
+        GuardianRelationship,
+        birthDay,
+        institutionName,
+        institutionType,
+        institutionYearOfStudy,
+    } = userData
+
     return (
         <div className='generalDetails'>
             <div className='generalDetails__content'>
@@ -149,10 +171,10 @@ const RegisteredEvents = ({
 }
 
 function profile() {
-    const [route, routeToDisplay] = useState(<GeneralDetails />)
+    const [userData, setUserData] = useState<IUser | null>(null)
+    const [route, routeToDisplay] = useState(<GeneralDetails userData={userData} />)
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
-    const [userData, setUserData] = useState<IUser | null>(null)
 
     useEffect(() => {
         axios('/api/getUserData')
@@ -196,12 +218,14 @@ function profile() {
 
     }, [])
 
+    
+
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
 
         switch (el) {
             case 'General':
-                return routeToDisplay(<GeneralDetails />)
+                return routeToDisplay(<GeneralDetails userData={userData}/>)
 
             case 'Events':
                 return routeToDisplay(
@@ -213,6 +237,13 @@ function profile() {
         }
     }
 
+    
+    const {
+        email,
+        firstName,
+        lastName,
+        createdAt
+    } = userData! || {}
     
 
     return (
@@ -247,13 +278,17 @@ function profile() {
                         </div>
                         <div className='profile__primary--details'>
                             <h3 className='details__name'>
-                                Igboanugwo Collins
+                                {firstName} {lastName}
                             </h3>
                             <p className='details__email'>
-                                Munisco12@gmail.com
+                                {email}
                             </p>
                             <p className='details__joined'>
-                                Joined February 2022
+                                Joined {createdAt && new Date(createdAt).toLocaleDateString('en-GB', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric',
+                                })}
                             </p>
                         </div>
                     </div>

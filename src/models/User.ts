@@ -3,6 +3,7 @@ import { model, models, Schema } from 'mongoose'
 export interface IUser {
     [x: string]: any
     _id: Object
+    createdAt: string
     firstName: string
     lastName: string
     email: string
