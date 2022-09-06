@@ -135,10 +135,12 @@ const RegisteredEvents = ({
                         size={15}
                         style={{ color: 'black' }}
                     />
-                ) : (
+                ) : eventData.length > 0 ? (
                     eventData.map((event, index) => (
                         <Event key={index} {...event} />
                     ))
+                ) : (
+                    <p>No registered Event yet</p>
                 )}
             </div>
         </div>
@@ -184,7 +186,10 @@ function profile() {
 
                 setEventData(transFormedData)
             })
-            .catch((err) => console.log(err))
+            .catch((err) => {
+                console.log(err)
+                setLoading(false)
+            })
     }, [])
 
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
