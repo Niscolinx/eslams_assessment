@@ -117,14 +117,14 @@ const SearchBox = () => {
                 className='flex md:flex relative items-center searchBox'
                 
             >
-                <input type="checkbox" className='w-full h-full absolute z-2 md:hidden' />
+                <input type="checkbox" className='w-full h-full absolute z-2 md:hidden searchBox__checkbox' id='searchBox__checkbox' />
                 <FiSearch className='absolute left-2' />
                 <input
                     type='text'
                     placeholder='Search'
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-0 md:w-80  transition-all duration-75 ease-out searchBox__input `}
+                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none md:w-80 transition-all duration-75 ease-out searchBox__input `}
                 />
             </div>
             <div

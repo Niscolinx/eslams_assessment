@@ -23,8 +23,8 @@
         }
     }
 
-    .searchBox__input {
-      
+    .searchBox__checkbox:checked ~ .searchBox__input {
+        background-color: red;
     }
 
     &__container {
@@ -49,9 +49,8 @@
             border-radius: 12px;
         }
 
-        @include respond(smaller-phone){
+        @include respond(smaller-phone) {
             width: 100%;
-            
         }
     }
 
@@ -64,12 +63,12 @@
             &__blob {
                 position: absolute;
                 left: 2rem;
-                
+
                 background: $color-red;
                 width: 200px;
                 height: 80%;
                 display: grid;
-               transform: translateY(10%);
+                transform: translateY(10%);
                 z-index: 3;
                 margin: auto 0;
             }
@@ -105,7 +104,7 @@
                 z-index: 5;
                 backdrop-filter: blur(5px);
 
-                @include respond(smaller-phone){
+                @include respond(smaller-phone) {
                     //justify-content: center;
                 }
             }
@@ -114,9 +113,6 @@
                 display: grid;
                 gap: 0.5rem;
 
-                
-
-              
                 &--text {
                     font-weight: 300;
                 }
@@ -150,15 +146,13 @@
                 }
             }
 
-            &__svg{
+            &__svg {
                 display: flex;
 
-                @include respond(smaller-phone){
+                @include respond(smaller-phone) {
                     display: none !important;
                 }
             }
         }
     }
-
-   
 }
