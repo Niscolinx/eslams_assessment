@@ -26,17 +26,19 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
             event = new mongoose.Types.ObjectId(event)
 
+            console.log('1')
             const isRegistered = new Promise((resolve, reject) => {
-                const checkEvent =  user.registeredEvents.some((eventId) => {
-                    
+                const checkEvent = user.registeredEvents.some((eventId) => {
                     return eventId === event._id
                 })
 
-                console.log({checkEvent})
-
-                return checkEvent
+                if (!checkEvent) {
+                    return reject(false)
+                }
+                resolve(true)
             })
 
+            console.log('2')
             console.log({ isRegistered })
 
             await user.save()
