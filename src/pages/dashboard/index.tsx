@@ -93,7 +93,7 @@ const SearchBox = () => {
     const { searchValue, setSearchValue, handleClickOpen, showFilteredData } =
         useContext(EventContext)
 
-    const [searchBoxWidth, setSearchBoxWidth] = useState(0)
+    const [searchBoxWidth, setSearchBoxWidth] = useState('w-0')
     let count = 0
     if (showFilteredData) {
         const dataToCount = Object.values(showFilteredData)
@@ -110,7 +110,7 @@ const SearchBox = () => {
 
     const increaseSearchBox = () => {
         console.log('how are you')
-        setSearchBoxWidth(80)
+        setSearchBoxWidth('w-90')
     }
 
     return (
@@ -125,7 +125,7 @@ const SearchBox = () => {
                     placeholder='Search'
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-${searchBoxWidth} md:w-80 transition-all duration-75 ease-out`}
+                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none ${searchBoxWidth} md:w-80 transition-all duration-75 ease-out`}
                 />
             </div>
             <div
