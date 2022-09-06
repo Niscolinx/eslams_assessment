@@ -171,7 +171,6 @@
         //border-radius: 0 0 12px 12px;
         border-radius: 1rem;
 
-
         @include respond(phone) {
             grid-template-columns: 1fr;
         }
@@ -188,8 +187,6 @@
                 border-radius: 1rem 0 0 1rem;
                 font-weight: 500;
 
-                
-
                 @include respond(phone) {
                     border-radius: 1rem 1rem 0 0;
                 }
@@ -199,7 +196,6 @@
                 padding: 0.5rem 2rem;
                 font-weight: 300;
                 cursor: pointer;
-
             }
 
             @include respond(phone) {
@@ -225,63 +221,60 @@
                 }
             }
 
-            @include respond(phone){
+            @include respond(phone) {
                 padding-top: 0;
             }
         }
     }
 
     .generalDetails {
-        &__content {
+        display: grid;
+        gap: 1rem;
+
+        .content-1 {
             display: grid;
-            gap: 1rem;
+            box-shadow: 1px 1px 1px #cccccc, -1px -1px 2px #f4f4f4;
+            background: $color-gray;
 
-            .content-1 {
+            &__heading {
+                font-size: 1.3rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                @include respond(smaller-phone) {
+                    flex-direction: column;
+                    gap: 0.2rem;
+                }
+
+                &--icon {
+                    font-size: 2rem;
+                    background: linear-gradient(
+                        to right,
+                        $color-blue,
+                        $color-red
+                    );
+                    color: $color-gray;
+                    border-radius: 50%;
+                    padding: 0.3rem;
+                }
+            }
+
+            &__box {
                 display: grid;
-                box-shadow: 1px 1px 1px #cccccc, -1px -1px 2px #f4f4f4;
-                background: $color-gray;
+                gap: 0.5rem;
+                grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            }
 
-                &__heading {
-                    font-size: 1.3rem;
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-                    padding: 1rem 0;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 1rem;
+            &__name {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
 
-                    @include respond(smaller-phone) {
-                        flex-direction: column;
-                        gap: 0.2rem;
-                    }
-
-                    &--icon {
-                        font-size: 2rem;
-                        background: linear-gradient(
-                            to right,
-                            $color-blue,
-                            $color-red
-                        );
-                        color: $color-gray;
-                        border-radius: 50%;
-                        padding: 0.3rem;
-                    }
-                }
-
-                &__box {
-                    display: grid;
-                    gap: 0.5rem;
-                                    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-
-                }
-
-                &__name {
-                    font-size: 1rem;
-                    padding: 0.5rem 1rem;
-
-                    span {
-                        font-weight: 300;
-                    }
+                span {
+                    font-weight: 300;
                 }
             }
         }
@@ -292,7 +285,6 @@
         //margin-top: 1rem;
 
         &__heading {
-  
             &--text {
                 font-size: 1.3rem;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -302,8 +294,8 @@
                 justify-content: center;
                 gap: 1rem;
 
-                @include respond(phone){
-                   margin-bottom: 2rem;
+                @include respond(phone) {
+                    margin-bottom: 2rem;
                 }
 
                 //grid-template-columns: 3rem 1fr 3rem;
@@ -326,7 +318,6 @@
     }
 
     .registeredEvent {
-     
         position: relative;
         max-width: 300px;
 
@@ -340,7 +331,7 @@
             backface-visibility: hidden;
             border-radius: 3px;
             overflow: hidden;
-          
+
             background: $color-gray;
             border: 1px solid black;
 
@@ -348,10 +339,8 @@
                 background-color: $color-gray;
                 position: relative;
             }
-
         }
 
-        
         &__picture {
             background-size: cover;
             height: 10rem;
@@ -376,7 +365,6 @@
                 font-weight: 700;
                 border-radius: 0 0 2rem;
             }
-           
 
             &--1 {
                 background-image: linear-gradient(
@@ -449,9 +437,6 @@
                 color: black;
             }
         }
-
-        
-        
 
         // FRONT SIDE STYLING
         &__cta {

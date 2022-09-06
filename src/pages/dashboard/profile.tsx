@@ -16,10 +16,10 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
         lastName,
         email,
         phoneNumber,
-        GuardianEmail,
-        GuardianName,
-        GuardianPhoneNumber,
-        GuardianRelationship,
+        guardianEmail,
+        guardianName,
+        guardianPhoneNumber,
+        guardianRelationship,
         birthDay,
         institutionName,
         institutionType,
@@ -28,7 +28,6 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
 
     return (
         <div className='generalDetails'>
-            <div className='generalDetails__content'>
                 <div className='content-1'>
                     <h3 className='content-1__heading'>
                         <BsFillFilePersonFill className='content-1__heading--icon' />
@@ -58,20 +57,22 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
                 <div className='content-1'>
                     <h3 className='content-1__heading'>
                         <MdFamilyRestroom className='content-1__heading--icon' />
-                        Guardian/Parent Details
+                        guardian/Parent Details
                     </h3>
                     <div className='content-1__box'>
                         <p className='content-1__name'>
-                            <span>Guardian/Parent Name:</span> {GuardianName}
+                            <span>guardian/Parent Name:</span> {guardianName}
                         </p>
                         <p className='content-1__name'>
-                            <span>Guardian/Parent Phone:</span> {GuardianPhoneNumber}
+                            <span>guardian/Parent Phone:</span>{' '}
+                            {guardianPhoneNumber}
                         </p>
                         <p className='content-1__name'>
-                            <span>Guardian/Parent Email:</span> {GuardianEmail}
+                            <span>guardian/Parent Email:</span> {guardianEmail}
                         </p>
                         <p className='content-1__name'>
-                            <span>Relationship with Guardian/Parent:</span> {GuardianRelationship}
+                            <span>Relationship with guardian/Parent:</span>{' '}
+                            {guardianRelationship}
                         </p>
                     </div>
                 </div>
@@ -92,7 +93,6 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
                         </p>
                     </div>
                 </div>
-            </div>
         </div>
     )
 }
@@ -226,7 +226,10 @@ function profile() {
 
             case 'Events':
                 return routeToDisplay(
-                    <RegisteredEvents loading={loading} eventData={eventData!} />
+                    <RegisteredEvents
+                        loading={loading}
+                        eventData={eventData!}
+                    />
                 )
 
             default:
@@ -315,7 +318,9 @@ function profile() {
                         </ul>
 
                         <div className='profile__secondary--details'>
-                            <div className='details__box'>{userData && route}</div>
+                            <div className='details__box'>
+                                {userData && route}
+                            </div>
                         </div>
                     </div>
                 </div>
