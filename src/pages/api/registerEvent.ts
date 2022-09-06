@@ -1,8 +1,11 @@
 import User, { IUser } from './../../models/User'
 import { NextApiRequest, NextApiResponse } from 'next'
 import * as jose from 'jose'
+import dbConnect from '../../lib/dbConnect'
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
+    await dbConnect()
+    
     const { event } = req.body
 
     const userCookie = req.cookies
@@ -20,7 +23,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         if (user) {
             user.registeredEvents.push(event)
             await user.save()
-            return res.status(200).json(user)
+            return res.status(200).json({
+                message: 'Event registered successfully',
+                event,
+                user
+            })
         } else {
             return res.status(400).json({
                 message: 'user not found',

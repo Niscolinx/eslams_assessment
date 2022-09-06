@@ -1,4 +1,4 @@
-import CircularProgress from '@mui/material/CircularProgress'
+import { CircularProgress } from '@mui/material'
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { EventContext } from '../pages/dashboard'
@@ -129,6 +129,7 @@ function Events() {
     useEffect(() => {
         axios('/api/events')
             .then(({ data }) => {
+                console.log({data})
                 const transFormedData = data.map(
                     (item: EventProps, index: number) => {
                         return {
@@ -291,7 +292,7 @@ function Events() {
             <div className='events__container overflow-hidden'>
                 {loading ? (
                     <CircularProgress
-                        className='text-white flex justify-self-center'
+                        className='text-black flex justify-self-center'
                         size={15}
                     />
                 ) : (

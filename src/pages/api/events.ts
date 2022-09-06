@@ -7,7 +7,7 @@ export default async function events(
     res: NextApiResponse
 ) {
     try {
-
+        await dbConnect()
         const event = await Event.find({})
 
         res.status(200).json(event)
