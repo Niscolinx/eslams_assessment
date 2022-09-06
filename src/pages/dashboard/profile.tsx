@@ -42,10 +42,16 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
                             <span>Email: </span> {email}
                         </p>
                         <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
+                            <span>Phone Number:</span> {phoneNumber}
                         </p>
                         <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
+                            <span>Institution Name:</span> {institutionName}
+                        </p>
+                        <p className='content-1__name'>
+                            <span>Institution Type:</span> {institutionType}
+                        </p>
+                        <p className='content-1__name'>
+                            <span>Year of Study:</span> {institutionYearOfStudy}
                         </p>
                     </div>
                 </div>
@@ -56,16 +62,16 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
                     </h3>
                     <div className='content-1__box'>
                         <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
+                            <span>Guardian/Parent Name:</span> {GuardianName}
                         </p>
                         <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
+                            <span>Guardian/Parent Phone:</span> {GuardianPhoneNumber}
                         </p>
                         <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
+                            <span>Guardian/Parent Email:</span> {GuardianEmail}
                         </p>
                         <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
+                            <span>Relationship with Guardian/Parent:</span> {GuardianRelationship}
                         </p>
                     </div>
                 </div>

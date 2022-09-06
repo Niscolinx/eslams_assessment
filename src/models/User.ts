@@ -10,11 +10,11 @@ export interface IUser {
     password: string
     phoneNumber: string
     birthDay: string
-    Gender: string
-    GuardianName: string
-    GuardianPhoneNumber: string
-    GuardianEmail: string
-    GuardianRelationship: string
+    gender: string
+    guardianName: string
+    guardianPhoneNumber: string
+    guardianEmail: string
+    guardianRelationship: string
     institutionType: string
     institutionName: string
     institutionYearOfStudy: string
@@ -53,23 +53,23 @@ const userSchema = new Schema<IUser>(
             type: String,
         },
 
-        Gender: {
+        gender: {
             type: String,
         },
 
-        GuardianName: {
+        guardianName: {
             type: String,
         },
 
-        GuardianPhoneNumber: {
+        guardianPhoneNumber: {
             type: String,
         },
 
-        GuardianEmail: {
+        guardianEmail: {
             type: String,
         },
 
-        GuardianRelationship: {
+        guardianRelationship: {
             type: String,
         },
 

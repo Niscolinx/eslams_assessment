@@ -301,12 +301,14 @@ export default function RegisterForm() {
 
         const data = handleInput
 
+        
         const updatedData = {
             ...data,
             birthDate: data.birthDate!.toISOString(),
             otp,
         }
-
+        
+        console.log(updatedData)
 
         setLoading(true)
         axios
