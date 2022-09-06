@@ -26,16 +26,20 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
             console.log('1')
             const isRegistered = new Promise((resolve, reject) => {
-                const checkEvent = user.registeredEvents.some((eventId) => {
-                    return eventId.toString() === event
-                })
+                setTimeout(() => {
 
-                if (checkEvent) {
-                    return reject(false)
-                }
-                resolve(true)
+                    const checkEvent = user.registeredEvents.some((eventId) => {
+                        return eventId.toString() === event
+                    })
+                    
+                    if (checkEvent) {
+                        return reject(false)
+                    }
+                    resolve(true)
+                }, 2000)
             })
-            console.log(isRegistered )
+            
+            await isRegistered
 
             console.log('2')
 
