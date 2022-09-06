@@ -354,7 +354,7 @@ const Index = () => {
 
     const registerEvent = async (event: string) => {
 
-       const postRegister =  await axios.post('/api/register', { event })
+       const postRegister =  await axios.post('/api/registerEvent', { event })
 
        if(postRegister){
               console.log(postRegister)
