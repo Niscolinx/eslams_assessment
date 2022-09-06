@@ -18,6 +18,7 @@ export interface IUser {
     institutionName: string
     institutionYearOfStudy: string
     verificationOtp: string
+    registeredEvents: string[]
 }
 
 const userSchema = new Schema<IUser>(
@@ -88,7 +89,7 @@ const userSchema = new Schema<IUser>(
             default: false,
         },
 
-        RegisteredEvent: [
+        registeredEvent: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'event',
