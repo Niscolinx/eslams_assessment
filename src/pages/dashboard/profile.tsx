@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import Image from 'next/image'
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
 import { BsFillPencilFill, BsFillFilePersonFill } from 'react-icons/bs'
 import {IoMdSchool} from 'react-icons/io'
 import {MdFamilyRestroom} from 'react-icons/md'
@@ -101,9 +101,7 @@ const Event = ({
                             {to?.split(' ')[0]} <sup>{to?.split(' ')[1]}</sup>
                         </span>
                     </div>
-                    {/* <div className="registeredEvent__paidTag">
-                        <p>Paid</p>
-                    </div> */}
+                 
                 </div>
                 <h4 className='registeredEvent__heading'>
                     <span
@@ -188,10 +186,12 @@ const RegisteredEvents = () => {
 function profile() {
     const [route, routeToDisplay] = useState(<GeneralDetails />)
 
-    // const renderToDisplay = (route: any) => {
-    //     console.log({route})
-    //     return <route/>
-    // }
+
+    useEffect(() => {
+            axios('/api/getUserEvents').then(({data}) => {
+                console.log({data})
+            }).catch(err => console.log(err))
+    }, [])
 
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
