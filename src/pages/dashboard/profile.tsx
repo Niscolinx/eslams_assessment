@@ -10,14 +10,7 @@ import { IUser } from '../../models/User'
 
 const routes = ['General', 'Events']
 
-const GeneralDetails = ({userData}: {userData: IUser | null}) => {
-
-    if(userData!){
-        return null
-    }
-
-    console.log({userData})
-
+const GeneralDetails = ({ userData }: { userData: IUser }) => {
     const {
         firstName,
         lastName,
@@ -43,10 +36,10 @@ const GeneralDetails = ({userData}: {userData: IUser | null}) => {
                     </h3>
                     <div className='content-1__box'>
                         <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
+                            <span>Name:</span> {firstName} {lastName}
                         </p>
                         <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
+                            <span>Email: </span> {email}
                         </p>
                         <p className='content-1__name'>
                             <span>Name:</span> Igboanugwo Collins
@@ -172,14 +165,14 @@ const RegisteredEvents = ({
 
 function profile() {
     const [userData, setUserData] = useState<IUser | null>(null)
-    const [route, routeToDisplay] = useState(<GeneralDetails userData={userData} />)
+    const [route, routeToDisplay] = useState<JSX.Element | null>(null)
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         axios('/api/getUserData')
             .then(({ data }) => {
-                const {user, userEvents} = data
+                const { user, userEvents } = data
                 const transFormedData = userEvents.map(
                     (item: EventProps, index: number) => {
                         return {
@@ -209,42 +202,33 @@ function profile() {
 
                 setEventData(transFormedData)
                 setUserData(user)
-
+                routeToDisplay(<GeneralDetails userData={user} />)
             })
             .catch((err) => {
                 console.log(err)
                 setLoading(false)
             })
-
     }, [])
 
-    
-
+    console.log(userData)
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
 
         switch (el) {
             case 'General':
-                return routeToDisplay(<GeneralDetails userData={userData}/>)
+                return routeToDisplay(<GeneralDetails userData={userData!} />)
 
             case 'Events':
                 return routeToDisplay(
-                    <RegisteredEvents loading={loading} eventData={eventData} />
+                    <RegisteredEvents loading={loading} eventData={eventData!} />
                 )
 
             default:
-                return route
+                return routeToDisplay(<GeneralDetails userData={userData!} />)
         }
     }
 
-    
-    const {
-        email,
-        firstName,
-        lastName,
-        createdAt
-    } = userData! || {}
-    
+    const { email, firstName, lastName, createdAt } = userData || {}
 
     return (
         <div className='profile'>
@@ -280,15 +264,18 @@ function profile() {
                             <h3 className='details__name'>
                                 {firstName} {lastName}
                             </h3>
-                            <p className='details__email'>
-                                {email}
-                            </p>
+                            <p className='details__email'>{email}</p>
                             <p className='details__joined'>
-                                Joined {createdAt && new Date(createdAt).toLocaleDateString('en-GB', {
-                                    day: 'numeric',
-                                    month: 'short',
-                                    year: 'numeric',
-                                })}
+                                Joined{' '}
+                                {createdAt &&
+                                    new Date(createdAt).toLocaleDateString(
+                                        'en-GB',
+                                        {
+                                            day: 'numeric',
+                                            month: 'short',
+                                            year: 'numeric',
+                                        }
+                                    )}
                             </p>
                         </div>
                     </div>
@@ -322,7 +309,7 @@ function profile() {
                         </ul>
 
                         <div className='profile__secondary--details'>
-                            <div className='details__box'>{route}</div>
+                            <div className='details__box'>{userData && route}</div>
                         </div>
                     </div>
                 </div>
