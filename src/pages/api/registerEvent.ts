@@ -12,6 +12,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     const { tokenCookie } = userCookie
 
+    try{
+
     if (tokenCookie) {
         const { payload: jwtData } = await jose.jwtVerify(
             tokenCookie,
@@ -65,4 +67,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             message: 'token not valid',
         })
     }
+} catch (error) {
+    console.log(error)
+    return res.status(400).json({
+        message: 'Internal Server Error',
+    })
+}
 }
