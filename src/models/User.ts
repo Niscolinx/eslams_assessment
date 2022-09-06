@@ -89,7 +89,7 @@ const userSchema = new Schema<IUser>(
             default: false,
         },
 
-        registeredEvent: [
+        registeredEvents: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'event',

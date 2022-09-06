@@ -5,7 +5,7 @@ import dbConnect from '../../lib/dbConnect'
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
     await dbConnect()
-    
+
     const { event } = req.body
 
     const userCookie = req.cookies
@@ -21,6 +21,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         const user: IUser | null = await User.findOne({ email: jwtData.email })
 
         if (user) {
+            console.log({user})
+
             user.registeredEvents.push(event)
             await user.save()
             return res.status(200).json({

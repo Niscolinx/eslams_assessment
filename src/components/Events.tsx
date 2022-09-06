@@ -129,7 +129,7 @@ function Events() {
     useEffect(() => {
         axios('/api/events')
             .then(({ data }) => {
-                console.log({data})
+                
                 const transFormedData = data.map(
                     (item: EventProps, index: number) => {
                         return {

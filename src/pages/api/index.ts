@@ -9,6 +9,5 @@ export default async function index(
     await dbConnect()
     const users = await User.find({ role: 'Customer' })
 
-    console.log({users})
     return res.json(users)
 }
