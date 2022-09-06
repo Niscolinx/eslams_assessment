@@ -1,8 +1,12 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+
 import { BsFillPencilFill, BsFillFilePersonFill } from 'react-icons/bs'
 import {IoMdSchool} from 'react-icons/io'
 import {MdFamilyRestroom} from 'react-icons/md'
+
+import { CircularProgress } from '@mui/material'
+
 
 const routes = ['General', 'Events']
 
@@ -119,63 +123,17 @@ const Event = ({
 
 
 
-const RegisteredEvents = () => {
+const RegisteredEvents = ({loading, eventData}: {loading: boolean, eventData: EventProps[]}) => {
      return (
          <div className=' registeredEvents'>
              <div className='registeredEvents__heading'>
                  <h3 className='registeredEvents__heading--text'>Registered Events</h3>{' '}
              </div>
              <div className='registeredEvents__container'>
-                 <Event
-                     heading='USA BASKETBALL SHOWCASE PRESENTED BY COINBASE'
-                     price={1200}
-                     
-                     date={{
-                         from: '10th Sep',
-                     }}
-                     which={1}
-                 />
-                 <Event
-                     heading='2022 FIBA AmeriCup for Men'
-                     price={1500}
-                     
-                     date={{
-                         from: '5th Oct',
-                         to: '9th Oct',
-                     }}
-                     which={2}
-                 />
-                 <Event
-                     heading='FIBA 3x3 U23 World Cup (women)'
-                     price={750}
-                     
-                     date={{ from: '2nd Sep', to: '11th Sep' }}
-                     which={3}
-                 />
-                 <Event
-                     heading='2022 USA Basketball Gold Camp (boys)'
-                     price={1500}
-                     
-                     date={{
-                         from: '4th Sep',
-                         to: '5th Sep',
-                     }}
-                     which={1}
-                 />
-                 <Event
-                     heading='2022 USA Basketball Coach Academy'
-                     price={1500}
-                     
-                     date={{ from: '10th Sep' }}
-                     which={2}
-                 />
-                 <Event
-                     heading='2022 USA Basketball Gold Camp (girls)'
-                     price={1500}
-                     
-                     date={{ from: '3rd Sep', to: '4th Sep' }}
-                     which={3}
-                 />
+                 {loading ? <CircularProgress
+                        className='text-black flex justify-self-center'
+                        size={15}
+                    />: eventData}
              </div>
          </div>
      )
@@ -185,11 +143,43 @@ const RegisteredEvents = () => {
 
 function profile() {
     const [route, routeToDisplay] = useState(<GeneralDetails />)
+       const [eventData, setEventData] = useState<EventProps[]>([])
+       const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
             axios('/api/getUserEvents').then(({data}) => {
                 console.log({data})
+
+                const transFormedData = data.map(
+                    (item: EventProps, index: number) => {
+                        return {
+                            ...item,
+                            which: (index % 3) + 1,
+                            date: {
+                                from: new Date(
+                                    item.date.from
+                                ).toLocaleDateString('en-GB', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                }),
+                                to:
+                                    item.date.to &&
+                                    new Date(item.date.to).toLocaleDateString(
+                                        'en-GB',
+                                        {
+                                            day: 'numeric',
+                                            month: 'short',
+                                        }
+                                    ),
+                            },
+                         
+                        }
+                    }
+                )
+                setLoading(false)
+
+                setEventData(transFormedData)
             }).catch(err => console.log(err))
     }, [])
 
@@ -203,7 +193,7 @@ function profile() {
                 return routeToDisplay(<GeneralDetails />)
 
             case 'Events':
-                return routeToDisplay(<RegisteredEvents />)
+                return routeToDisplay(<RegisteredEvents loading={loading} eventData={eventData} />)
 
             default:
                 return route
