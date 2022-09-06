@@ -15,22 +15,20 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             new TextEncoder().encode(process.env.JWT_SECRET!)
         )
 
-
-
         const user: IUser | null = await User.findOne({ email: jwtData.email })
 
         if (user) {
-
-        }
-        else{
+            user.registeredEvents.push(event)
+            await user.save()
+            return res.status(200).json(user)
+        } else {
             return res.status(400).json({
-                message: 'user not found'
+                message: 'user not found',
             })
         }
-    }
-    else{
+    } else {
         return res.status(401).json({
-            message: 'token not valid'
+            message: 'token not valid',
         })
     }
 }
