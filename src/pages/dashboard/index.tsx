@@ -251,6 +251,7 @@ const Index = () => {
     >([])
 
     const [showFilteredData, setShowFilteredData] = useState<any>()
+    const [notifyUser, setNotifyUser] = useState(false)
 
     const PriceSlider = styled(Slider)({
         color: '#D0E069',
