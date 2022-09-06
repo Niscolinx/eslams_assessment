@@ -2,7 +2,6 @@ import User, { IUser } from './../../models/User'
 import { NextApiRequest, NextApiResponse } from 'next'
 import * as jose from 'jose'
 import dbConnect from '../../lib/dbConnect'
-import mongoose from 'mongoose'
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
     await dbConnect()
@@ -24,26 +23,25 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         if (user) {
             console.log({ user })
 
-            event = new mongoose.Types.ObjectId(event)
 
             console.log('1')
             const isRegistered = new Promise((resolve, reject) => {
                 const checkEvent = user.registeredEvents.some((eventId) => {
-                    return eventId === event._id
+                    return eventId.toString() === event
                 })
 
-                if (!checkEvent) {
+                if (checkEvent) {
                     return reject(false)
                 }
                 resolve(true)
             })
+            console.log(isRegistered )
 
             console.log('2')
-            console.log({ isRegistered })
 
-            if(!isRegistered) {
-                return res.status(400).json({ message: 'User is already registered for this event' })
-            }
+            // if(isRegistered) {
+            //     return res.status(400).json({ message: 'User is already registered for this event' })
+            // }
 
             console.log('registered successfully')
 
