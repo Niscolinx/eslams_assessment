@@ -34,6 +34,7 @@ import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
+import axios from 'axios'
 
 type contextTypes = {
     searchValue: string
@@ -351,8 +352,16 @@ const Index = () => {
         handleClose(e)
     }
 
-    const registerEvent = (e: string) => {
-        console.log(e)
+    const registerEvent = async (event: string) => {
+
+       const postRegister =  await axios.post('/api/register', { event })
+
+       if(postRegister){
+              console.log(postRegister)
+       }
+       else{
+        console.log('error', postRegister)
+       }
     }
 
     return (
