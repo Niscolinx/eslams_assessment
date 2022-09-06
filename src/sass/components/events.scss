@@ -486,7 +486,8 @@
     background: transparent;
     backdrop-filter: blur(5px);
   
-    .css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+   
+    div[role='dialog']{
         margin: 0;
     }
 }
