@@ -129,10 +129,11 @@ const RegisteredEvents = ({
                 </h3>{' '}
             </div>
             <div className='registeredEvents__container'>
-                {loading ? (
+                {!loading ? (
                     <CircularProgress
-                        className='text-black! flex justify-self-center'
+                        className='flex justify-self-center'
                         size={15}
+                        style={{ color: 'black' }}
                     />
                 ) : (
                     eventData.map((event, index) => (

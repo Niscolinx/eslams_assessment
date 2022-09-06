@@ -292,8 +292,9 @@ function Events() {
             <div className='events__container overflow-hidden'>
                 {loading ? (
                     <CircularProgress
-                        className='text-black flex justify-self-center'
+                        className='flex justify-self-center'
                         size={15}
+                        style={{ color: 'black' }}
                     />
                 ) : (
                     showEvents() || <p>No events found</p>

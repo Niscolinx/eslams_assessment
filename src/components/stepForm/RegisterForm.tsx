@@ -369,10 +369,14 @@ export default function RegisterForm() {
                             Create an account and step into greatness
                         </Typography>
 
-                        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }} >
+                        <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
                             {steps.map((label) => (
                                 <Step key={label}>
-                                    <StepLabel className='text-red-500 text-2xl'><span className='hidden md:flex'>{label}</span></StepLabel>
+                                    <StepLabel className='text-red-500 text-2xl'>
+                                        <span className='hidden md:flex'>
+                                            {label}
+                                        </span>
+                                    </StepLabel>
                                 </Step>
                             ))}
                         </Stepper>
@@ -415,8 +419,11 @@ export default function RegisterForm() {
                                             >
                                                 {loading ? (
                                                     <CircularProgress
-                                                        className='text-white flex justify-self-center'
+                                                        className=' flex justify-self-center'
                                                         size={20}
+                                                        style={{
+                                                            color: 'white',
+                                                        }}
                                                     />
                                                 ) : (
                                                     'Confirm'
@@ -462,7 +469,7 @@ export default function RegisterForm() {
                             href='/auth/login'
                             className='bg-white rounded-lg py-2 px-4 text-[#1976d2]'
                         >
-                            Already have an account? <br/>
+                            Already have an account? <br />
                             Login
                         </a>
                     </div>

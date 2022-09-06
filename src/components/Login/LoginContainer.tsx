@@ -187,88 +187,91 @@ export default function LoginContainer() {
                     )}
                     <div className='grid gap-4 mt-10'>
                         <form onSubmit={handleLogin}>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id='email'
-                                name='email'
-                                type='email'
-                                fullWidth
-                                label='Email Address'
-                                value={handleInput.email}
-                                error={
-                                    validationError && validationError['email']
-                                        ? true
-                                        : false
-                                }
-                                helperText={
-                                    validationError && validationError['email']
-                                        ? validationError['email']
-                                        : false
-                                }
-                                variant='standard'
-                                onChange={setInput}
-                                className='login-input'
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <div className='flex items-center relative'>
+                            <Grid item xs={12} sm={6}>
                                 <TextField
                                     required
-                                    id='password'
-                                    name='password'
-                                    label='Password'
-                                    type='password'
-                                    variant='standard'
+                                    id='email'
+                                    name='email'
+                                    type='email'
                                     fullWidth
-                                    value={handleInput.password}
+                                    label='Email Address'
+                                    value={handleInput.email}
                                     error={
                                         validationError &&
-                                        validationError['password']
+                                        validationError['email']
                                             ? true
                                             : false
                                     }
                                     helperText={
                                         validationError &&
-                                        validationError['password']
-                                            ? validationError['password']
+                                        validationError['email']
+                                            ? validationError['email']
                                             : false
                                     }
+                                    variant='standard'
                                     onChange={setInput}
                                     className='login-input'
                                 />
-                                {
-                                    <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
-                                        {eyeIcon ? (
-                                            <AiOutlineEyeInvisible
-                                                onClick={toggleEyeIcon}
-                                            />
-                                        ) : (
-                                            <AiOutlineEye
-                                                onClick={toggleEyeIcon}
-                                            />
-                                        )}
-                                    </span>
-                                }
-                            </div>
-                        </Grid>
-                        <button
-                            className={`flex justify-self-center bg-[#1976d2] text-white my-3 rounded-lg py-1 px-5 border-none outline-none ${
-                                loading
-                                    ? 'h-8 justify-center items-center w-25 '
-                                    : ''
-                            }`}
-                            onClick={handleLogin}
-                        >
-                            {loading ? (
-                                <CircularProgress
-                                    className='text-white flex justify-self-center'
-                                    size={15}
-                                />
-                            ) : (
-                                'Login'
-                            )}
-                        </button>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <div className='flex items-center relative'>
+                                    <TextField
+                                        required
+                                        id='password'
+                                        name='password'
+                                        label='Password'
+                                        type='password'
+                                        variant='standard'
+                                        fullWidth
+                                        value={handleInput.password}
+                                        error={
+                                            validationError &&
+                                            validationError['password']
+                                                ? true
+                                                : false
+                                        }
+                                        helperText={
+                                            validationError &&
+                                            validationError['password']
+                                                ? validationError['password']
+                                                : false
+                                        }
+                                        onChange={setInput}
+                                        className='login-input'
+                                    />
+                                    {
+                                        <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
+                                            {eyeIcon ? (
+                                                <AiOutlineEyeInvisible
+                                                    onClick={toggleEyeIcon}
+                                                />
+                                            ) : (
+                                                <AiOutlineEye
+                                                    onClick={toggleEyeIcon}
+                                                />
+                                            )}
+                                        </span>
+                                    }
+                                </div>
+                            </Grid>
+                            <button
+                                className={`flex justify-self-center bg-[#1976d2] text-white my-3 rounded-lg py-1 px-5 border-none outline-none ${
+                                    loading
+                                        ? 'h-8 justify-center items-center w-25 '
+                                        : ''
+                                }`}
+                                onClick={handleLogin}
+                            >
+                                {loading ? (
+                                    <CircularProgress
+                                        className=' flex justify-self-center'
+                                        size={15}
+                                        style={{ color: 'white' }}
+                                    />
+                                ) : (
+                                    'Login'
+                                )}
+                            </button>
                         </form>
                     </div>
                 </Paper>
