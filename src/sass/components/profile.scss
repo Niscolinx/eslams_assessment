@@ -229,7 +229,7 @@
 
     .generalDetails {
         display: grid;
-        gap: 1rem;
+        gap: 3rem;
 
         .content-1 {
             display: grid;
@@ -267,6 +267,7 @@
                 display: grid;
                 gap: 0.5rem;
                 grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+                padding: 1rem;
             }
 
             &__name {

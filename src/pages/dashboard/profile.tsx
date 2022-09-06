@@ -28,71 +28,62 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
 
     return (
         <div className='generalDetails'>
-                <div className='content-1'>
-                    <h3 className='content-1__heading'>
-                        <BsFillFilePersonFill className='content-1__heading--icon' />
-                        Personal Details
-                    </h3>
-                    <div className='content-1__box'>
-                        <p className='content-1__name'>
-                            <span>Name:</span> {firstName} {lastName}
-                        </p>
-                        <p className='content-1__name'>
-                            <span>Email: </span> {email}
-                        </p>
-                        <p className='content-1__name'>
-                            <span>Phone Number:</span> {phoneNumber}
-                        </p>
-                        <p className='content-1__name'>
-                            <span>Institution Name:</span> {institutionName}
-                        </p>
-                        <p className='content-1__name'>
-                            <span>Institution Type:</span> {institutionType}
-                        </p>
-                        <p className='content-1__name'>
-                            <span>Year of Study:</span> {institutionYearOfStudy}
-                        </p>
-                    </div>
+            <div className='content-1'>
+                <h3 className='content-1__heading'>
+                    <BsFillFilePersonFill className='content-1__heading--icon' />
+                    Personal Details
+                </h3>
+                <div className='content-1__box'>
+                    <p className='content-1__name'>
+                        <span>Name:</span> {firstName} {lastName}
+                    </p>
+                    <p className='content-1__name'>
+                        <span>Email: </span> {email}
+                    </p>
+                    <p className='content-1__name'>
+                        <span>Phone Number:</span> {phoneNumber}
+                    </p>
                 </div>
-                <div className='content-1'>
-                    <h3 className='content-1__heading'>
-                        <MdFamilyRestroom className='content-1__heading--icon' />
-                        guardian/Parent Details
-                    </h3>
-                    <div className='content-1__box'>
-                        <p className='content-1__name'>
-                            <span>guardian/Parent Name:</span> {guardianName}
-                        </p>
-                        <p className='content-1__name'>
-                            <span>guardian/Parent Phone:</span>{' '}
-                            {guardianPhoneNumber}
-                        </p>
-                        <p className='content-1__name'>
-                            <span>guardian/Parent Email:</span> {guardianEmail}
-                        </p>
-                        <p className='content-1__name'>
-                            <span>Relationship with guardian/Parent:</span>{' '}
-                            {guardianRelationship}
-                        </p>
-                    </div>
+            </div>
+            <div className='content-1'>
+                <h3 className='content-1__heading'>
+                    <MdFamilyRestroom className='content-1__heading--icon' />
+                    Guardian/Parent Details
+                </h3>
+                <div className='content-1__box'>
+                    <p className='content-1__name'>
+                        <span>Guardian/Parent Name:</span> {guardianName}
+                    </p>
+                    <p className='content-1__name'>
+                        <span>Guardian/Parent Phone:</span>{' '}
+                        {guardianPhoneNumber}
+                    </p>
+                    <p className='content-1__name'>
+                        <span>Guardian/Parent Email:</span> {guardianEmail}
+                    </p>
+                    <p className='content-1__name'>
+                        <span>Guardian/Parent Relationship:</span>{' '}
+                        {guardianRelationship}
+                    </p>
                 </div>
-                <div className='content-1'>
-                    <h3 className='content-1__heading'>
-                        <IoMdSchool className='content-1__heading--icon' />
-                        Education{' '}
-                    </h3>
-                    <div className='content-1__box'>
-                        <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
-                        </p>
-                        <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
-                        </p>
-                        <p className='content-1__name'>
-                            <span>Name:</span> Igboanugwo Collins
-                        </p>
-                    </div>
+            </div>
+            <div className='content-1'>
+                <h3 className='content-1__heading'>
+                    <IoMdSchool className='content-1__heading--icon' />
+                    Education{' '}
+                </h3>
+                <div className='content-1__box'>
+                    <p className='content-1__name'>
+                        <span>Institution Name:</span> {institutionName}
+                    </p>
+                    <p className='content-1__name'>
+                        <span>Institution Type:</span> {institutionType}
+                    </p>
+                    <p className='content-1__name'>
+                        <span>Year of Study:</span> {institutionYearOfStudy}
+                    </p>
                 </div>
+            </div>
         </div>
     )
 }
