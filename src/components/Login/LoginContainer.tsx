@@ -186,6 +186,7 @@ export default function LoginContainer() {
                         </p>
                     )}
                     <div className='grid gap-4 mt-10'>
+                        <form onSubmit={handleLogin}>
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 required
@@ -268,6 +269,7 @@ export default function LoginContainer() {
                                 'Login'
                             )}
                         </button>
+                        </form>
                     </div>
                 </Paper>
                 <div className='grid justify-start'>
