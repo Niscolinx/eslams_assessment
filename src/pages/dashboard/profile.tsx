@@ -101,9 +101,9 @@ const Event = ({
                             {to?.split(' ')[0]} <sup>{to?.split(' ')[1]}</sup>
                         </span>
                     </div>
-                    <div className="registeredEvent__paidTag">
+                    {/* <div className="registeredEvent__paidTag">
                         <p>Paid</p>
-                    </div>
+                    </div> */}
                 </div>
                 <h4 className='registeredEvent__heading'>
                     <span
@@ -123,7 +123,7 @@ const Event = ({
 
 const RegisteredEvents = () => {
      return (
-         <div className=' registeredEvents -mt-10'>
+         <div className=' registeredEvents'>
              <div className='registeredEvents__heading'>
                  <h3 className='registeredEvents__heading--text'>Registered Events</h3>{' '}
              </div>

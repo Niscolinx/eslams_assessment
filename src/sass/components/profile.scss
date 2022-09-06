@@ -155,7 +155,7 @@
     }
 
     .profile__secondary {
-        width: 90%;
+        width: 100%;
         justify-self: center;
         margin-bottom: 2rem;
 
@@ -170,6 +170,7 @@
         grid-template-columns: max-content 1fr;
         //border-radius: 0 0 12px 12px;
         border-radius: 1rem;
+
 
         @include respond(phone) {
             grid-template-columns: 1fr;
@@ -187,8 +188,10 @@
                 border-radius: 1rem 0 0 1rem;
                 font-weight: 500;
 
-                @include respond(smaller-phone) {
-                    border-radius: 0;
+                
+
+                @include respond(phone) {
+                    border-radius: 1rem 1rem 0 0;
                 }
             }
 
@@ -202,6 +205,7 @@
             @include respond(phone) {
                 display: flex;
                 justify-content: center;
+                padding: 0;
             }
         }
 
@@ -215,6 +219,14 @@
                 background: $color-gray;
                 padding: 1rem;
                 //height: 30rem;
+
+                @include respond(smaller-phone) {
+                    padding: 0;
+                }
+            }
+
+            @include respond(phone){
+                padding-top: 0;
             }
         }
     }
@@ -275,7 +287,7 @@
 
     .registeredEvents {
         display: grid;
-        margin-top: 1rem;
+        //margin-top: 1rem;
 
         &__heading {
   
@@ -288,13 +300,17 @@
                 justify-content: center;
                 gap: 1rem;
 
+                @include respond(phone){
+                   margin-bottom: 2rem;
+                }
+
                 //grid-template-columns: 3rem 1fr 3rem;
             }
         }
 
         &__container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
             font-size: 1rem;
             gap: 2rem;
             padding: 2rem 1rem;
@@ -302,36 +318,15 @@
             border-radius: 0.5rem;
 
             @include respond(phone) {
-                //justify-content: center;
-                //justify-items: center;
+                padding: 0;
             }
         }
     }
 
     .registeredEvent {
-        //CUSTOM
-
-        // background: $color-gray;
-        //border-radius: 61px;
-        // background: #ffffff;
-        // box-shadow: 20px 20px 60px #bdbdbd, -20px -20px 60px #ffffff;
-
-        // FUNCTIONALITY
-        perspective: 150rem;
-        -moz-perspective: 150rem;
+     
         position: relative;
-       // height: 25rem;
-
-        // @include respond(phone) {
-        //     display: grid;
-        //     justify-self: center;
-        //     //min-width: 350px;
-        // }
-
-        // @include respond(smaller-phone) {
-        //     // min-width: 20px;
-        //     justify-self: center;
-        // }
+    
 
         &__side {
             transition: all 0.8s ease;
@@ -343,10 +338,8 @@
             backface-visibility: hidden;
             border-radius: 3px;
             overflow: hidden;
-            // box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
-            //border-radius: 61px;
+          
             background: $color-gray;
-            //box-shadow: 20px 20px 60px #bdbdbd, -20px -20px 60px #ffffff;
             border: 1px solid black;
 
             &--front {
@@ -354,47 +347,12 @@
                 position: relative;
             }
 
-            // &--back {
-            //     transform: rotateX(180deg);
-
-            //     &-1 {
-            //         background-image: linear-gradient(
-            //             to right bottom,
-            //             $color-secondary-light,
-            //             $color-secondary-dark
-            //         );
-            //     }
-
-            //     &-2 {
-            //         background-image: linear-gradient(
-            //             to right bottom,
-            //             $color-primary-light,
-            //             $color-primary-dark
-            //         );
-            //     }
-
-            //     &-3 {
-            //         background-image: linear-gradient(
-            //             to right bottom,
-            //             $color-tertiary-light,
-            //             $color-tertiary-dark
-            //         );
-            //     }
-            // }
         }
 
-        // &:hover &__side--front {
-        //     transform: rotateX(-180deg);
-        // }
-
-        // &:hover &__side--back {
-        //     transform: rotateX(0);
-        // }
-
-        // FRONT SIDE STYLING
+        
         &__picture {
             background-size: cover;
-            height: 15rem;
+            height: 10rem;
             width: 100%;
             background-blend-mode: screen;
             -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
@@ -416,19 +374,7 @@
                 font-weight: 700;
                 border-radius: 0 0 2rem;
             }
-            .registeredEvent__paidTag {
-                background-color: black;
-                display: flex;
-                justify-content: center;
-                justify-items: center;
-                position: absolute;
-                right: 0;
-                top: 0;
-                color: white;
-                backdrop-filter: blur(10px);
-                padding: 0.7rem 1.4rem;
-                font-weight: 700;
-            }
+           
 
             &--1 {
                 background-image: linear-gradient(
@@ -465,8 +411,8 @@
             text-align: right;
             color: $color-white;
             position: absolute;
-            top: 10rem;
-            right: 1rem;
+            top: 5rem;
+            right: 0;
             width: 75%;
         }
 
