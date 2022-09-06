@@ -2,11 +2,12 @@ import User, { IUser } from './../../models/User'
 import { NextApiRequest, NextApiResponse } from 'next'
 import * as jose from 'jose'
 import dbConnect from '../../lib/dbConnect'
+import mongoose from 'mongoose'
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
     await dbConnect()
 
-    const { event } = req.body
+    let { event } = req.body
 
     const userCookie = req.cookies
 
@@ -23,11 +24,17 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         if (user) {
             console.log({ user })
 
+            event = new mongoose.Types.ObjectId(event)
+
             const isRegistered = new Promise((resolve, reject) => {
-                return user.registeredEvents.some((eventId) => {
-                    console.log(typeof eventId, typeof event, eventId, event)
+                const checkEvent =  user.registeredEvents.some((eventId) => {
+                    
                     return eventId === event._id
                 })
+
+                console.log({checkEvent})
+
+                return checkEvent
             })
 
             console.log({ isRegistered })

@@ -9,7 +9,6 @@ async function sendOtp(req: NextApiRequest, res: NextApiResponse) {
     try {
         await dbConnect()
 
-        console.log('otp', req.body)
         const {  personalEmail, firstName, lastName } = req.body
 
         //generate random 6 digit code
