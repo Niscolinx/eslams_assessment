@@ -23,20 +23,27 @@
         }
     }
 
-   
-
-    .searchBox__checkbox:checked{
-        display: none;
-
+    .searchBox__checkbox:checked {
+        //  display: none;
+        width: 2rem;
+        right: 0;
     }
 
-    .searchBox__checkbox:checked + .searchBox__container > .searchBox__input {
+    .searchBox__checkbox:checked ~ .searchBox__input {
         width: 20rem;
-      
+
+        @include respond(smallest-phone) {
+            width: 100%;
+        }
+    }
+    .searchBox__checkbox:checked ~ .searchBox__closeIcon {
+        display: block;
+        width: 1rem;
+        right: 1rem;
+        position: absolute;
     }
 
-
-    .increaseSearchBox{
+    .increaseSearchBox {
         background-color: rgba(0, 0, 0, 0.395);
         backdrop-filter: blur(5px);
         position: absolute;
@@ -46,9 +53,9 @@
         right: 0;
         z-index: 1;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
     }
-
 
     &__container {
         width: 95vw;

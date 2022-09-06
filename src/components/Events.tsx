@@ -127,11 +127,12 @@ function Events() {
     const { searchValue, showFilteredData } = useContext(EventContext)
     const [updateEvent, setUpdateEvent] = useState(new Set<EventProps>([]))
     const [eventData, setEventData] = useState<EventProps[]>([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         axios('/api/events')
             .then(({ data }) => {
-
+                
                 const transFormedData = data.map(
                     (item: EventProps, index: number) => {
                         return {
@@ -154,11 +155,13 @@ function Events() {
                         }
                     }
                 )
+                setLoading(false)
 
                 setEventData(transFormedData)
             })
             .catch((err) => {
                 console.log(err)
+                setLoading(false)
             })
     }, [])
 

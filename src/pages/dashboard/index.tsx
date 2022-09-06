@@ -119,11 +119,11 @@ const SearchBox = () => {
 
     return (
         <div className='flex items-center gap-2 searchBox '>
-            <input type="checkbox" className='w-full h-full absolute z-2 md:hidden searchBox__checkbox' id='searchBox__checkbox' onClick={increaseSearchBox}/>
             <div
                 className='flex md:flex relative items-center searchBox__container z-1'
                 
             >
+            <input type="checkbox" className='w-full h-full absolute z-2 md:hidden opacity-0 searchBox__checkbox' id='searchBox__checkbox' onClick={increaseSearchBox}/>
                 <FiSearch className='absolute left-2' />
                 <input
                     type='text'
@@ -132,6 +132,7 @@ const SearchBox = () => {
                     onChange={(e) => setSearchValue(e.target.value)}
                     className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-0 md:w-80 transition-all duration-75 ease-out searchBox__input `}
                 />
+                <GrFormClose className='searchBox__closeIcon hidden'/>
             </div>
             <div
                 className='flex bg-[#d9d6d6] items-center gap-2 py-2 px-3 rounded-3xl cursor-pointer relative'
