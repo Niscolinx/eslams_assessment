@@ -152,7 +152,7 @@ function profile() {
     const [route, routeToDisplay] = useState(<GeneralDetails />)
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
-    const [userData, setUserData] = useState<IUser>()
+    const [userData, setUserData] = useState<IUser | null>(null)
 
     useEffect(() => {
         axios('/api/getUserData')
@@ -186,6 +186,8 @@ function profile() {
                 setLoading(false)
 
                 setEventData(transFormedData)
+                setUserData(user)
+
             })
             .catch((err) => {
                 console.log(err)
@@ -196,8 +198,6 @@ function profile() {
 
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
-
-        console.log(el)
 
         switch (el) {
             case 'General':
@@ -213,6 +213,8 @@ function profile() {
         }
     }
 
+    
+
     return (
         <div className='profile'>
             <div className='profile__box'>
@@ -226,7 +228,6 @@ function profile() {
                                     height='100%'
                                     className='picture__cover--img'
                                     alt='cover'
-                                    // layout='intrinsic'
                                 />
                             </div>
                             <div className='picture__avatar'>
