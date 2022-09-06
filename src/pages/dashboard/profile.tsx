@@ -129,7 +129,7 @@ const RegisteredEvents = ({
                 </h3>{' '}
             </div>
             <div className='registeredEvents__container'>
-                {!loading ? (
+                {loading ? (
                     <CircularProgress
                         className='flex justify-self-center'
                         size={15}

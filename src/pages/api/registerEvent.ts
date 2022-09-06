@@ -36,6 +36,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                 })
 
                 user.registeredEvents.push(event)
+
+                //user.registeredEvents = []
                 
                 await user.save()
                 return res.status(200).json({
