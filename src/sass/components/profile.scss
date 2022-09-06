@@ -175,6 +175,11 @@
             grid-template-columns: 1fr;
         }
 
+        @include respond(smaller-phone) {
+            
+            padding: 0.5rem;
+        }
+
         &--route {
             padding: 1rem 0;
 
@@ -268,6 +273,10 @@
                 gap: 0.5rem;
                 grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
                 padding: 1rem;
+
+                @include respond(smaller-phone) {
+                    padding: 0;
+                }
             }
 
             &__name {
