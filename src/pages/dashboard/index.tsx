@@ -156,7 +156,7 @@ const SearchBox = () => {
     )
 }
 
-const Header = () => (
+const Header = ({ notifyUser }) => (
     <header className='p-8 header relative'>
         <figure className='header__logo w-12 h-12'>
             <Image
@@ -182,9 +182,10 @@ const Header = () => (
                     </a>
                 </Link>
             </div>
-            <div className='absolute -top-2 -right-2 bg-[#CA494E] p-[1px] rounded-full w-[15px] h-[15px] grid place-content-center'>
-                <span className='text-white text-[8px] md:text-[10px]'>3</span>
-            </div>
+
+            {notifyUser && (
+                <span className='absolute -top-2 -right-2 bg-[#CA494E] p-[1px] rounded-full w-[10px] h-[10px] grid place-content-center'></span>
+            )}
         </div>
     </header>
 )
@@ -362,8 +363,9 @@ const Index = () => {
             .then((res) => {
                 console.log(res)
                 toast('Event Registered Successfully', {
-                    type: 'success'
+                    type: 'success',
                 })
+                setNotifyUser(true)
             })
             .catch((err) => {
                 console.log(err)
@@ -372,7 +374,6 @@ const Index = () => {
                 })
             })
     }
-
 
     return (
         <EventContext.Provider
@@ -629,7 +630,7 @@ const Index = () => {
 
                 <div className='marketplace__container'>
                     <div className='grid relative z-3'>
-                        <Header />
+                        <Header notifyUser={notifyUser} />
                         <main className='main'>
                             <div className='banner'>
                                 <div className='banner__blob'></div>
