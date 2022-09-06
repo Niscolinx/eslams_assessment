@@ -156,7 +156,7 @@ const SearchBox = () => {
     )
 }
 
-const Header = ({ notifyUser }) => (
+const Header = ({ notifyUser }: {notifyUser: boolean}) => (
     <header className='p-8 header relative'>
         <figure className='header__logo w-12 h-12'>
             <Image
@@ -184,7 +184,7 @@ const Header = ({ notifyUser }) => (
             </div>
 
             {notifyUser && (
-                <span className='absolute -top-2 -right-2 bg-[#CA494E] p-[1px] rounded-full w-[10px] h-[10px] grid place-content-center'></span>
+                <span className='absolute -top-1 -right-1 bg-[#CA494E] p-[1px] rounded-full w-[10px] h-[10px] grid place-content-center'></span>
             )}
         </div>
     </header>

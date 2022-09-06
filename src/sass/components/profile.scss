@@ -70,6 +70,7 @@
 
                     @include respond(phone) {
                         // background-color: blue;
+                        height: 8rem;
                     }
 
                     &--img {
@@ -93,8 +94,8 @@
 
                     @include respond(smaller-phone) {
                         margin: 0;
-                        width: 12rem;
-                        height: 12rem;
+                        width: 5rem;
+                        height: 5rem;
                         justify-self: center;
                     }
 
@@ -170,8 +171,8 @@
         //border-radius: 0 0 12px 12px;
         border-radius: 1rem;
 
-        @include respond(smaller-phone) {
-            padding-left: 0;
+        @include respond(phone) {
+            grid-template-columns: 1fr;
         }
 
         &--route {
@@ -196,9 +197,11 @@
                 font-weight: 300;
                 cursor: pointer;
 
-                @include respond(smaller-phone) {
-                    padding: 0.5rem 1rem;
-                }
+            }
+
+            @include respond(phone) {
+                display: flex;
+                justify-content: center;
             }
         }
 
