@@ -1,23 +1,24 @@
+import React, { createContext, useState, useContext, useRef } from 'react'
+
 import Image from 'next/image'
-
-import { FiSearch } from 'react-icons/fi'
-import { VscSettings } from 'react-icons/vsc'
-
-import Events from '../../components/Events'
-import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
-
-//Footer
 import Link from 'next/link'
+
 import { BsYoutube } from 'react-icons/bs'
 import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai'
 import { FaTwitterSquare } from 'react-icons/fa'
 import { GrFormClose } from 'react-icons/gr'
-import React, { createContext, useState, useContext, useRef } from 'react'
+import { FiSearch } from 'react-icons/fi'
+import { VscSettings } from 'react-icons/vsc'
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
+
+import axios from 'axios'
+
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { Theme, useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import OutlinedInput from '@mui/material/OutlinedInput'
-
 import Chip from '@mui/material/Chip'
 import {
     FormControl,
@@ -34,7 +35,8 @@ import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
-import axios from 'axios'
+
+import Events from '../../components/Events'
 
 type contextTypes = {
     searchValue: string
@@ -354,7 +356,7 @@ const Index = () => {
     }
 
     const registerEvent = async (event: string) => {
-         axios
+        axios
             .post('/api/registerEvent', { event })
             .then((res) => {
                 console.log(res)
@@ -362,10 +364,9 @@ const Index = () => {
             .catch((err) => {
                 console.log(err)
             })
-
-        
-           
     }
+
+    const notify = () => toast('Wow so easy!')
 
     return (
         <EventContext.Provider
@@ -652,6 +653,8 @@ const Index = () => {
                                     </div>
                                 </div>
                             </div>
+                            <button onClick={notify}>Notify!</button>
+                            <ToastContainer />
                             <Events />
                         </main>
                         <Footer />{' '}
