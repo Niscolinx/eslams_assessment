@@ -93,7 +93,6 @@ const SearchBox = () => {
     const { searchValue, setSearchValue, handleClickOpen, showFilteredData } =
         useContext(EventContext)
 
-    const [searchBoxWidth, setSearchBoxWidth] = useState('w-0')
     let count = 0
     if (showFilteredData) {
         const dataToCount = Object.values(showFilteredData)
@@ -109,23 +108,23 @@ const SearchBox = () => {
 
 
     const increaseSearchBox = () => {
-        console.log('how are you')
-        setSearchBoxWidth('w-90')
+       
     }
 
     return (
         <div className='flex items-center gap-2'>
             <div
                 className='flex md:flex relative items-center searchBox'
-                onClick={increaseSearchBox}
+                
             >
+                <input type="checkbox" className='w-full h-full absolute z-2 md:hidden' />
                 <FiSearch className='absolute left-2' />
                 <input
                     type='text'
                     placeholder='Search'
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none ${searchBoxWidth} md:w-80 transition-all duration-75 ease-out`}
+                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-0 md:w-80  transition-all duration-75 ease-out searchBox__input `}
                 />
             </div>
             <div
