@@ -41,6 +41,12 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             console.log('2')
             console.log({ isRegistered })
 
+            if(!isRegistered) {
+                return res.status(400).json({ message: 'User is already registered for this event' })
+            }
+
+            console.log('registered successfully')
+
             await user.save()
             return res.status(200).json({
                 message: 'Event registered successfully',
