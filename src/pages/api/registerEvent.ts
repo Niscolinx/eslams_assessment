@@ -27,7 +27,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
 
             console.log('1')
-            const isRegistered = new Promise((resolve, reject) => {
+            const isRegistered = await new Promise((resolve, reject) => {
                 setTimeout(() => {
 
                     const checkEvent = user.registeredEvents.some((eventId) => {
@@ -41,7 +41,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                 }, 2000)
             })
             
-            await isRegistered
+            console.log(isRegistered)
 
             console.log('2')
 
@@ -69,7 +69,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     }
 } catch (error) {
     console.log(error)
-    return res.status(400).json({
+    return res.status(500).json({
         message: 'Internal Server Error',
     })
 }
