@@ -12,65 +12,66 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     const { tokenCookie } = userCookie
 
-    try{
+    try {
+        if (tokenCookie) {
+            const { payload: jwtData } = await jose.jwtVerify(
+                tokenCookie,
+                new TextEncoder().encode(process.env.JWT_SECRET!)
+            )
 
-    if (tokenCookie) {
-        const { payload: jwtData } = await jose.jwtVerify(
-            tokenCookie,
-            new TextEncoder().encode(process.env.JWT_SECRET!)
-        )
+            const user: IUser | null = await User.findOne({
+                email: jwtData.email,
+            })
 
-        const user: IUser | null = await User.findOne({ email: jwtData.email })
+            if (user) {
+                console.log({ user })
 
-        if (user) {
-            console.log({ user })
-
-
-            console.log('1')
-            const isRegistered = await new Promise((resolve, reject) => {
-                setTimeout(() => {
-
+                console.log('1')
+                const isRegistered = await new Promise((resolve, reject) => {
                     const checkEvent = user.registeredEvents.some((eventId) => {
                         return eventId.toString() === event
                     })
-                    
+
                     if (checkEvent) {
-                        return reject(false)
+
+                        reject(false)
+                        return res.status(403).json({ message: 'Forbidden' })
                     }
                     resolve(true)
-                }, 2000)
-            })
-            
-            console.log(isRegistered)
+                })
 
-            console.log('2')
+                if (!isRegistered) {
+                    console.log('not registered')
+                }
 
-            // if(isRegistered) {
-            //     return res.status(400).json({ message: 'User is already registered for this event' })
-            // }
+                console.log('2')
 
-            console.log('registered successfully')
+                // if(isRegistered) {
+                //     return res.status(400).json({ message: 'User is already registered for this event' })
+                // }
 
-            await user.save()
-            return res.status(200).json({
-                message: 'Event registered successfully',
-                event,
-                user,
-            })
+                console.log('registered successfully')
+
+                await user.save()
+                return res.status(200).json({
+                    message: 'Event registered successfully',
+                    event,
+                    user,
+                })
+            } else {
+                return res.status(400).json({
+                    message: 'user not found',
+                })
+            }
         } else {
-            return res.status(400).json({
-                message: 'user not found',
+            return res.status(401).json({
+                message: 'Unauthorized',
             })
         }
-    } else {
-        return res.status(401).json({
-            message: 'token not valid',
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            message: 'Internal Server Error',
         })
     }
-} catch (error) {
-    console.log(error)
-    return res.status(500).json({
-        message: 'Internal Server Error',
-    })
-}
 }
