@@ -39,7 +39,10 @@ export default async function getUserEvents(
             },
         })
 
-        res.status(200).json(userEvents)
+        res.status(200).json({
+            user,
+            userEvents
+        })
     } catch (error) {
         res.status(500).json({ message: 'Something went wrong' })
     }

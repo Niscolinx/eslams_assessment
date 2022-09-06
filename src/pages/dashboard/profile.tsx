@@ -6,6 +6,7 @@ import { IoMdSchool } from 'react-icons/io'
 import { MdFamilyRestroom } from 'react-icons/md'
 
 import { CircularProgress } from '@mui/material'
+import { IUser } from '../../models/User'
 
 const routes = ['General', 'Events']
 
@@ -151,12 +152,13 @@ function profile() {
     const [route, routeToDisplay] = useState(<GeneralDetails />)
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
+    const [userData, setUserData] = useState<IUser>()
 
     useEffect(() => {
-        axios('/api/getUserEvents')
+        axios('/api/getUserData')
             .then(({ data }) => {
-
-                const transFormedData = data.map(
+                const {user, userEvents} = data
+                const transFormedData = userEvents.map(
                     (item: EventProps, index: number) => {
                         return {
                             ...item,
@@ -189,6 +191,7 @@ function profile() {
                 console.log(err)
                 setLoading(false)
             })
+
     }, [])
 
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {

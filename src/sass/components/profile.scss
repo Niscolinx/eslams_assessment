@@ -326,7 +326,7 @@
     .registeredEvent {
      
         position: relative;
-    
+        max-width: 300px;
 
         &__side {
             transition: all 0.8s ease;
