@@ -28,6 +28,8 @@
     transform: translate(-50%, -50%);
 }
 
+
+
 @mixin respond($breakpoint) {
     @if $breakpoint==smallest-phone {
         @media only screen and (max-width: 21.8em) {

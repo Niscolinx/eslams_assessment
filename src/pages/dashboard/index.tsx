@@ -108,23 +108,29 @@ const SearchBox = () => {
 
 
     const increaseSearchBox = () => {
-       
+       console.log('clicked')
+
+        const searchBox = document.querySelector('.searchBox')
+
+        if (searchBox) {
+            searchBox.classList.toggle('increaseSearchBox')
+        }
     }
 
     return (
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 searchBox '>
+            <input type="checkbox" className='w-full h-full absolute z-2 md:hidden searchBox__checkbox' id='searchBox__checkbox' onClick={increaseSearchBox}/>
             <div
-                className='flex md:flex relative items-center searchBox'
+                className='flex md:flex relative items-center searchBox__container z-1'
                 
             >
-                <input type="checkbox" className='w-full h-full absolute z-2 md:hidden searchBox__checkbox' id='searchBox__checkbox' />
                 <FiSearch className='absolute left-2' />
                 <input
                     type='text'
                     placeholder='Search'
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none md:w-80 transition-all duration-75 ease-out searchBox__input `}
+                    className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-0 md:w-80 transition-all duration-75 ease-out searchBox__input `}
                 />
             </div>
             <div
@@ -146,7 +152,7 @@ const SearchBox = () => {
 }
 
 const Header = () => (
-    <header className='p-8 header'>
+    <header className='p-8 header relative'>
         <figure className='header__logo w-12 h-12'>
             <Image
                 src='/logo.jpeg'
