@@ -24,31 +24,16 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             })
 
             if (user) {
-                console.log({ user })
-
-                console.log('1')
-                const isRegistered = await new Promise((resolve, reject) => {
+                await new Promise((resolve, reject) => {
                     const checkEvent = user.registeredEvents.some((eventId) => {
                         return eventId.toString() === event
                     })
 
                     if (checkEvent) {
-
                         reject(false)
-                        return res.status(403).json({ message: 'Forbidden' })
                     }
                     resolve(true)
                 })
-
-                if (!isRegistered) {
-                    console.log('not registered')
-                }
-
-                console.log('2')
-
-                // if(isRegistered) {
-                //     return res.status(400).json({ message: 'User is already registered for this event' })
-                // }
 
                 console.log('registered successfully')
 
@@ -59,7 +44,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                     user,
                 })
             } else {
-                return res.status(400).json({
+                return res.status(404).json({
                     message: 'user not found',
                 })
             }
@@ -70,8 +55,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         }
     } catch (error) {
         console.log(error)
-        return res.status(500).json({
-            message: 'Internal Server Error',
-        })
+        return res.status(403).json({ message: 'Forbidden' })
     }
 }
