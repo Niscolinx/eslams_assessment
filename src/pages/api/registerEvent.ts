@@ -21,14 +21,21 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         const user: IUser | null = await User.findOne({ email: jwtData.email })
 
         if (user) {
-            console.log({user})
+            console.log({ user })
 
-            user.registeredEvents.push(event)
+            const isRegistered = new Promise((resolve, reject) => {
+                return user.registeredEvents.some((eventId) => {
+                    return eventId === event._id
+                })
+            })
+
+            console.log({ isRegistered })
+
             await user.save()
             return res.status(200).json({
                 message: 'Event registered successfully',
                 event,
-                user
+                user,
             })
         } else {
             return res.status(400).json({
