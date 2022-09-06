@@ -35,8 +35,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                     resolve(true)
                 })
 
-                console.log('registered successfully')
-
+                user.registeredEvents.push(event)
                 await user.save()
                 return res.status(200).json({
                     message: 'Event registered successfully',
