@@ -9,7 +9,7 @@ export interface IUser {
     email: string
     password: string
     phoneNumber: string
-    birthDay: string
+    birthDate: string
     gender: string
     guardianName: string
     guardianPhoneNumber: string

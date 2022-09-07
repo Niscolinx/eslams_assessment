@@ -624,9 +624,10 @@
     }
 }
 
-.withdrawalDialog {
+.editProfile {
     width: 100%;
     background: transparent;
+    margin-inline: auto;
 
     &::backdrop {
         background: rgba(26, 26, 45, 0.375);

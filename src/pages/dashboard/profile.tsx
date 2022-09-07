@@ -11,9 +11,6 @@ import { IUser } from '../../models/User'
 const routes = ['General', 'Events']
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
-        const [selectedAction, setSelectedAction] =
-            useState<HTMLSelectElement | null>(null)
-
     const {
         firstName,
         lastName,
@@ -29,138 +26,8 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
         institutionYearOfStudy,
     } = userData
 
-     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-         e.preventDefault()
-     }
-     const closeModal = () => {
-         const dialog = document.querySelector('#withdrawalDialog') as any
-
-         selectedAction!.selectedIndex = 0
-
-         dialog.close()
-     }
-
-     const openDialog = () => {
-         const dialog = document.querySelector('#withdrawalDialog') as any
-            dialog.showModal()
-        }
-
     return (
         <div className='generalDetails'>
-            <button onClick={openDialog}>open</button>
-            <dialog className='withdrawalDialog' id='withdrawalDialog'>
-                <form
-                    id='register'
-                    className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2 gap-6 md:(w-2/5 mx-auto)'
-                    onSubmit={handleSubmit}
-                >
-                    <div className='mb-2'>
-                        <div className='grid'>
-                            <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
-                                Personal
-                            </h3>
-
-                            <div>
-                                <label
-                                    className='block text-gray-700 text-sm mb-1'
-                                    htmlFor='username'
-                                >
-                                    Firstname
-                                </label>
-                                <input
-                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
-                                    id='username'
-                                    name='username'
-                                    disabled
-                                    type='text'
-                                    minLength={4}
-                                    value={firstName}
-                                />
-                            </div>
-                        </div>
-
-                        <div>
-                            <label
-                                className='block text-gray-700 text-sm mb-1'
-                                htmlFor='phoneNumber'
-                            >
-                                Phone No
-                            </label>
-                            <input
-                                className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                id='phoneNumber'
-                                type='number'
-                                name='phoneNumber'
-                                disabled
-                                value={phoneNumber}
-                            />
-                        </div>
-                        <div>
-                            <label
-                                className='block text-gray-700 text-sm mb-1'
-                                htmlFor='username'
-                            >
-                                Email
-                            </label>
-                            <input
-                                className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                id='email'
-                                type='email'
-                                name='email'
-                                disabled
-                                value={email}
-                            />
-                        </div>
-                    </div>
-
-                    <div className='grid'>
-                        <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
-                            Wallet Address
-                        </h3>
-
-                        <div>
-                            <label
-                                className='block text-gray-700 text-sm mb-1'
-                                htmlFor='usdtAddress'
-                            >
-                                USDT TRC20
-                            </label>
-                            <input
-                                className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
-                                id='usdtAddress'
-                                disabled
-                                name='usdtAddress'
-                                type='text'
-                                minLength={15}
-                                value={''}
-                            />
-                        </div>
-                    </div>
-                    <div className='grid'>
-                        <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
-                            Details
-                        </h3>
-
-                      
-                    </div>
-
-                    <div className='flex justify-around'>
-                        <button
-                            className='bg-orange-300 text-[#1a1a2d] font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
-                            type='button'
-                            onClick={closeModal}
-                        >
-                            Close
-                        </button>
-                        {/* <button
-                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
-                            type='submit'
-                        >
-                            {loading ? 'Loading...' : 'Submit'}
-                        </button> */}
-                    </div>
-                </form>
-            </dialog>
             <div className='content-1'>
                 <h3 className='content-1__heading'>
                     <BsFillFilePersonFill className='content-1__heading--icon' />
@@ -302,6 +169,8 @@ function profile() {
     const [route, routeToDisplay] = useState<JSX.Element | null>(null)
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
+    const [selectedAction, setSelectedAction] =
+        useState<HTMLSelectElement | null>(null)
 
     useEffect(() => {
         axios('/api/getUserData')
@@ -364,11 +233,152 @@ function profile() {
         }
     }
 
-    const { email, firstName, lastName, createdAt } = userData || {}
+    const {
+        email,
+        firstName,
+        lastName,
+        createdAt,
+        phoneNumber,
+        guardianEmail,
+        guardianName,
+        guardianPhoneNumber,
+        guardianRelationship,
+        birthDate,
+        institutionName,
+        institutionType,
+        institutionYearOfStudy,
+    } = userData || {}
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+    }
+    const closeModal = () => {
+        const dialog = document.querySelector('#editProfile') as any
+
+        selectedAction!.selectedIndex = 0
+
+        dialog.close()
+    }
+
+    const openDialog = () => {
+        const dialog = document.querySelector('#editProfile') as any
+        dialog.showModal()
+    }
 
     return (
         <div className='profile'>
             <div className='profile__box'>
+                <dialog className='editProfile' id='editProfile'>
+                    <form
+                        id='register'
+                        className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2 gap-6 md:(w-2/5 mx-auto)'
+                        onSubmit={handleSubmit}
+                    >
+                        <div className='mb-2'>
+                            <div className='grid'>
+                                <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
+                                    Personal
+                                </h3>
+
+                                <div>
+                                    <label
+                                        className='block text-gray-700 text-sm mb-1'
+                                        htmlFor='username'
+                                    >
+                                        Firstname
+                                    </label>
+                                    <input
+                                        className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
+                                        id='username'
+                                        name='username'
+                                        disabled
+                                        type='text'
+                                        minLength={4}
+                                        value={firstName}
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label
+                                    className='block text-gray-700 text-sm mb-1'
+                                    htmlFor='phoneNumber'
+                                >
+                                    Phone No
+                                </label>
+                                <input
+                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
+                                    id='phoneNumber'
+                                    type='number'
+                                    name='phoneNumber'
+                                    disabled
+                                    value={phoneNumber}
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    className='block text-gray-700 text-sm mb-1'
+                                    htmlFor='username'
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
+                                    id='email'
+                                    type='email'
+                                    name='email'
+                                    disabled
+                                    value={email}
+                                />
+                            </div>
+                        </div>
+
+                        <div className='grid'>
+                            <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
+                                Wallet Address
+                            </h3>
+
+                            <div>
+                                <label
+                                    className='block text-gray-700 text-sm mb-1'
+                                    htmlFor='usdtAddress'
+                                >
+                                    USDT TRC20
+                                </label>
+                                <input
+                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
+                                    id='usdtAddress'
+                                    disabled
+                                    name='usdtAddress'
+                                    type='text'
+                                    minLength={15}
+                                    value={''}
+                                />
+                            </div>
+                        </div>
+                        <div className='grid'>
+                            <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
+                                Details
+                            </h3>
+                        </div>
+
+                        <div className='flex justify-around'>
+                            <button
+                                className='bg-orange-300 text-[#1a1a2d] font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
+                                type='button'
+                                onClick={closeModal}
+                            >
+                                Close
+                            </button>
+                            {/* <button
+                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
+                            type='submit'
+                        >
+                            {loading ? 'Loading...' : 'Submit'}
+                        </button> */}
+                        </div>
+                    </form>
+                </dialog>
                 <div className='profile__content'>
                     <div className='profile__primary'>
                         <div className='profile__primary--picture'>
@@ -394,7 +404,7 @@ function profile() {
                         </div>
                         <div className='profile__primary--edit'>
                             <BsFillPencilFill className='' />
-                            <p className='edit__btn'>Edit profile</p>
+                            <button className='edit__btn' onClick={openDialog}>Edit profile</button>
                         </div>
                         <div className='profile__primary--details'>
                             <h3 className='details__name'>
