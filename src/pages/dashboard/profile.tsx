@@ -334,15 +334,15 @@ function profile() {
                                     className='block text-gray-700 text-sm mb-1'
                                     htmlFor='username'
                                 >
-                                    Email
+                                    Password
                                 </label>
                                 <input
                                     className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                    id='email'
-                                    type='email'
-                                    name='email'
+                                    id='password'
+                                    type='password'
+                                    name='password'
                                     disabled
-                                    value={email}
+                                    value={''}
                                 />
                             </div>
                             <div>
@@ -350,15 +350,15 @@ function profile() {
                                     className='block text-gray-700 text-sm mb-1'
                                     htmlFor='username'
                                 >
-                                    Email
+                                    Phone number
                                 </label>
                                 <input
                                     className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                    id='email'
-                                    type='email'
-                                    name='email'
+                                    id='phoneNumber'
+                                    type='phoneNumber'
+                                    name='phoneNumber'
                                     disabled
-                                    value={email}
+                                    value={phoneNumber}
                                 />
                             </div>
                            
