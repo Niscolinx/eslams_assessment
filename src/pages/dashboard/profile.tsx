@@ -252,13 +252,13 @@ function profile() {
         e.preventDefault()
     }
     const closeModal = () => {
-        const dialog = document.querySelector('#editProfile') as any
+        const dialog = document.querySelector('#editProfile') as HTMLDialogElement
 
         dialog.close()
     }
 
     const openDialog = () => {
-        const dialog = document.querySelector('#editProfile') as any
+        const dialog = document.querySelector('#editProfile') as HTMLDialogElement
         dialog.showModal()
     }
 
