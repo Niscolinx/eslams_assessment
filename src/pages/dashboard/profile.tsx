@@ -248,6 +248,8 @@ function profile() {
         institutionYearOfStudy,
     } = userData || {}
 
+    console.log({userData})
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
@@ -282,13 +284,12 @@ function profile() {
                                         className='block text-gray-700 text-sm mb-1'
                                         htmlFor='username'
                                     >
-                                        Firstname
+                                        First name
                                     </label>
                                     <input
                                         className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
                                         id='username'
                                         name='username'
-                                        disabled
                                         type='text'
                                         minLength={4}
                                         value={firstName}
@@ -299,17 +300,17 @@ function profile() {
                             <div>
                                 <label
                                     className='block text-gray-700 text-sm mb-1'
-                                    htmlFor='phoneNumber'
+                                    htmlFor='lastName'
                                 >
-                                    Phone No
+                                    Last name
                                 </label>
+
                                 <input
-                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                    id='phoneNumber'
-                                    type='number'
-                                    name='phoneNumber'
-                                    disabled
-                                    value={phoneNumber}
+                                    className={`shadow appearance-none border rounded w-full py-3 px-3 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
+                                    id='lastName'
+                                    type='text'
+                                    name='lastName'
+                                    value={lastName}
                                 />
                             </div>
                             <div>
@@ -328,6 +329,39 @@ function profile() {
                                     value={email}
                                 />
                             </div>
+                            <div>
+                                <label
+                                    className='block text-gray-700 text-sm mb-1'
+                                    htmlFor='username'
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
+                                    id='email'
+                                    type='email'
+                                    name='email'
+                                    disabled
+                                    value={email}
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    className='block text-gray-700 text-sm mb-1'
+                                    htmlFor='username'
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
+                                    id='email'
+                                    type='email'
+                                    name='email'
+                                    disabled
+                                    value={email}
+                                />
+                            </div>
+                           
                         </div>
 
                         <div className='grid'>
