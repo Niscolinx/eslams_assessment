@@ -47,6 +47,7 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
 
     return (
         <div className='generalDetails'>
+            <button onClick={openDialog}>open</button>
             <dialog className='withdrawalDialog' id='withdrawalDialog'>
                 <form
                     id='register'
@@ -343,7 +344,6 @@ function profile() {
             })
     }, [])
 
-    console.log(userData)
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
 
