@@ -169,8 +169,7 @@ function profile() {
     const [route, routeToDisplay] = useState<JSX.Element | null>(null)
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
-    const [selectedAction, setSelectedAction] =
-        useState<HTMLSelectElement | null>(null)
+   
 
     useEffect(() => {
         axios('/api/getUserData')
@@ -254,8 +253,6 @@ function profile() {
     }
     const closeModal = () => {
         const dialog = document.querySelector('#editProfile') as any
-
-        selectedAction!.selectedIndex = 0
 
         dialog.close()
     }
