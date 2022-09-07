@@ -20,7 +20,7 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
         guardianName,
         guardianPhoneNumber,
         guardianRelationship,
-        birthDay,
+        birthDate,
         institutionName,
         institutionType,
         institutionYearOfStudy,
@@ -42,6 +42,9 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
                     </p>
                     <p className='content-1__name'>
                         <span>Phone Number:</span> {phoneNumber}
+                    </p>
+                    <p className='content-1__name'>
+                        <span>Date of Birth:</span> {new Date(birthDate).toLocaleDateString('en-GB')}
                     </p>
                 </div>
             </div>

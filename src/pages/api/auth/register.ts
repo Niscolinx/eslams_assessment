@@ -1,3 +1,4 @@
+import { IUser } from './../../../models/User';
 import { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcryptjs'
 import dbConnect from '../../../lib/dbConnect'
@@ -32,6 +33,7 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
 
         const existingEmail = await User.findOne({ email: personalEmail })
 
+
         //const existingPhoneNumber = await User.findOne({ phoneNumber })
 
         if (existingEmail) {
@@ -56,18 +58,15 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             })
         }
 
-        console.log({ checkForOtp })
 
         if (checkForOtp[checkForOtp.length - 1].code !== Number(otp)) {
-            console.log(checkForOtp[checkForOtp.length - 1].code, Number(otp))
             return res.status(401).json({
                 message: 'Invalid Otp',
             })
         }
 
-        // await Otp.findByIdAndDelete(checkForOtp._id)
 
-        const newUser = new User({
+        const newUser: IUser | null = new User({
             email: personalEmail,
             password: await bcrypt.hash(password, 12),
             firstName,
@@ -84,11 +83,12 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             institutionYearOfStudy,
         })
 
-        const user = await newUser.save()
-
-        if (!user) {
+        
+        if (!newUser) {
             return res.status(500).json({ message: 'Server Error' })
         }
+
+        const user = await newUser.save()
 
         const fullName = `${firstName} ${lastName}`
 

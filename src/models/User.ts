@@ -49,7 +49,7 @@ const userSchema = new Schema<IUser>(
             type: String,
         },
 
-        birthDay: {
+        birthDate: {
             type: String,
         },
 
