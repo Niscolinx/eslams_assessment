@@ -473,6 +473,12 @@ function profile() {
         }
     }
 
+    const changeProfilePhoto = async() => {
+
+        
+
+    }
+
     const { email, firstName, lastName, createdAt } = userData || {}
 
     return (
@@ -1014,7 +1020,7 @@ function profile() {
                             </div>
                             <div className='picture__avatar'>
                                 <input type="file" accept='image/*' id='profilePhoto' name='profilePhoto' hidden/>
-                                <label htmlFor='profilePhoto' className='cursor-pointer'>
+                                <label htmlFor='profilePhoto' className='cursor-pointer' onClick={changeProfilePhoto}>
                                 <img
                                     src={profilePhotoUrl}
                                     width='100%'
