@@ -15,8 +15,10 @@ import nodeMailer from 'nodemailer'
       },
   })
 
+const getPhotoUrl = selector => {
+    
+}
 
-  
 
   
 
