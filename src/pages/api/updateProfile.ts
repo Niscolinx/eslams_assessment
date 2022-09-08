@@ -57,17 +57,7 @@ export default async function Profile(
         }
         console.log({ update })
 
-        axios
-            .post('https://api.cloudinary.com/v1_1/eslams/upload', {
-                body: ''
-            })
-            .then((res) => {
-                console.log('success', res)
-            })
-            .catch((err) => {
-                console.log(err.response)
-            })
-
+       
         return res.status(200).json(update)
     } catch (err) {
         console.log({ err })

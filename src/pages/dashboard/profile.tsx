@@ -404,7 +404,7 @@ function profile() {
 
         return true
     }
-    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleSubmit = (e: any) => {
         const isValid = formValidate()
 
         if (!isValid) {
@@ -412,27 +412,38 @@ function profile() {
         }
         setIsUpdateUser(true)
 
-        axios
-            .post('/api/updateProfile', handleInput)
-            .then(({ data }) => {
-                console.log(data)
-                setUserData({ ...data })
-                routeToDisplay((prev: any) => {
-                    return {
-                        ...prev,
-                        props: {
-                            ...prev!.props,
-                            userData: data,
-                        },
-                    }
-                })
+        // axios
+        //     .post('/api/updateProfile', handleInput)
+        //     .then(({ data }) => {
+        //         console.log(data)
+        //         setUserData({ ...data })
+        //         routeToDisplay((prev: any) => {
+        //             return {
+        //                 ...prev,
+        //                 props: {
+        //                     ...prev!.props,
+        //                     userData: data,
+        //                 },
+        //             }
+        //         })
 
-                setIsUpdateUser(false)
-                setIsToast('Updated Successfully')
+        //         setIsUpdateUser(false)
+        //         setIsToast('Updated Successfully')
+        //     })
+        //     .catch((err) => {
+        //         console.log(err)
+        //         setIsUpdateUser(false)
+        //     })
+
+        axios
+            .post('https://api.cloudinary.com/v1_1/eslams/upload', {
+                body: '',
+            })
+            .then((res) => {
+                console.log('success', res)
             })
             .catch((err) => {
-                console.log(err)
-                setIsUpdateUser(false)
+                console.log(err.response)
             })
     }
 
@@ -506,58 +517,60 @@ function profile() {
                         Edit Profile
                     </DialogTitle>
 
-                    <div className='profile-upload'>
-                        <div className='profile-upload__cover'>
-                             <input
-                                type='file'
-                                accept='image/*'
-                                id='coverPhoto'
-                                name='coverPhoto'
-                                hidden
-                            />
-                            <label
-                                htmlFor='coverPhoto'
-                                className='cursor-pointer'
-                                onClick={changeProfilePhoto}
-                            >
-                            <img
-                                src='/img/event1.jpg'
-                                width='100%'
-                                height='100%'
-                                className='profile-upload__cover--img'
-                                alt='cover'
-                            />
-                            <div className='profile-upload__icon'>
-                                <TbCameraPlus />
-                            </div>
-                            </label>
-                        </div>
-                        <div className='profile-upload__avatar'>
-                            <input
-                                type='file'
-                                accept='image/*'
-                                id='profilePhoto'
-                                name='profilePhoto'
-                                hidden
-                            />
-                            <label
-                                htmlFor='profilePhoto'
-                                className='cursor-pointer'
-                                onClick={changeProfilePhoto}
-                            >
-                                <img
-                                    src={profilePhotoUrl}
-                                    width='100%'
-                                    height='100%'
-                                    className='profile-upload__avatar--img'
-                                    alt='cover'
+                    <form onSubmit={handleSubmit}>
+                        <div className='profile-upload'>
+                            <div className='profile-upload__cover'>
+                                <input
+                                    type='file'
+                                    accept='image/*'
+                                    id='coverPhoto'
+                                    name='coverPhoto'
+                                    hidden
                                 />
-                            <div className='profile-upload__icon'>
-                                <TbCameraPlus />
-                            </div>{' '}
-                            </label>
+                                <label
+                                    htmlFor='coverPhoto'
+                                    className='cursor-pointer'
+                                    onClick={changeProfilePhoto}
+                                >
+                                    <img
+                                        src='/img/event1.jpg'
+                                        width='100%'
+                                        height='100%'
+                                        className='profile-upload__cover--img'
+                                        alt='cover'
+                                    />
+                                    <div className='profile-upload__icon'>
+                                        <TbCameraPlus />
+                                    </div>
+                                </label>
+                            </div>
+                            <div className='profile-upload__avatar'>
+                                <input
+                                    type='file'
+                                    accept='image/*'
+                                    id='profilePhoto'
+                                    name='profilePhoto'
+                                    hidden
+                                />
+                                <label
+                                    htmlFor='profilePhoto'
+                                    className='cursor-pointer'
+                                    onClick={changeProfilePhoto}
+                                >
+                                    <img
+                                        src={profilePhotoUrl}
+                                        width='100%'
+                                        height='100%'
+                                        className='profile-upload__avatar--img'
+                                        alt='cover'
+                                    />
+                                    <div className='profile-upload__icon'>
+                                        <TbCameraPlus />
+                                    </div>{' '}
+                                </label>
+                            </div>
                         </div>
-                    </div>
+                    </form>
 
                     <DialogContent>
                         <Box
