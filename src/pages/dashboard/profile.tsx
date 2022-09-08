@@ -416,11 +416,10 @@ function profile() {
 
         const profilePhotoFile = new FormData()
 
-        profilePhotoFile.append('profileUrl', profilePhotoUrl)
+        profilePhotoFile.append('profilePhotoUrl', profilePhotoUrl)
 
-        Object.entries(profilePhotoFile).forEach((key) => {
-            console.log({ key })
-        })
+
+
 
         axios
             .post('/api/updateProfile', {
