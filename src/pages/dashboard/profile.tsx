@@ -424,7 +424,7 @@ function profile() {
             axios
                 .post('/api/updateProfileiiiiiiiiii', {
                     handleInput,
-                    profilePhotoUrl: profilePhotoRef
+                    profilePhotoUrl: profilePhotoRef.current
                 })
                 .then(({ data }) => {
                     console.log(data)
