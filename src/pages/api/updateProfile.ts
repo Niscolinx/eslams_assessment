@@ -9,6 +9,8 @@ export default async function Profile(
 ) {
     const { email, password } = req.body
 
+    console.log(req.body)
+
     try {
         await dbConnect()
         
