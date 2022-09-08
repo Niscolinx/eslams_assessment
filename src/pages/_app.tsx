@@ -9,8 +9,7 @@ import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
 import '../sass/main.scss'
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-    const router = useRouter()
+function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
 
     return (
         <>
