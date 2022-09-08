@@ -262,13 +262,13 @@ function profile() {
                     }
                 )
                 setLoading(false)
-
                 setEventData(transFormedData)
                 setUserData(user)
                 routeToDisplay(<GeneralDetails userData={user} />)
                 setHandleInput({
                     ...user,
                     password: '',
+                    personalEmail: user.email
                 })
             })
             .catch((err) => {

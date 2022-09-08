@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs'
 import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../lib/dbConnect'
 import User from '../../models/User'
+import * as jose from 'jose'
 
 export default async function Profile(
     req: NextApiRequest,
@@ -33,6 +34,25 @@ export default async function Profile(
                     : user.password,
             }
         )
+
+        if(password){
+             const token = await new jose.SignJWT({
+                 email: personalEmail,
+                 userId: user!._id.toString(),
+             })
+                 .setProtectedHeader({ alg: 'HS256' })
+                 .setIssuedAt()
+                 .setExpirationTime('30d')
+                 .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
+
+             //set cookie in nodejs
+             res.setHeader(
+                 'Set-Cookie',
+                 `tokenCookie=${token}; Path=/; HttpOnly; Secure; Max-Age=${
+                     60 * 60 * 24 * 7
+                 }`
+             )
+        }
 
         console.log({ update })
 
