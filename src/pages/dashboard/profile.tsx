@@ -28,11 +28,12 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
+import { AdvancedImage } from '@cloudinary/react'
+import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen'
 
 const routes = ['General', 'Events']
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
-
     const {
         firstName,
         lastName,
@@ -199,7 +200,10 @@ function profile() {
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)
-    const [profilePhotoUrl, setProfilePhotoUrl] = useState<string>('/img/avatar.jpeg')
+    const [profilePhotoUrl, setProfilePhotoUrl] = useState<string>(
+        'https://res.cloudinary.com/eslams/image/upload/v1662647837/eslams/IMG_0272_ldro6c.jpg'
+    )
+
 
     type ValidationError = { [key: string]: string }
 
@@ -473,11 +477,7 @@ function profile() {
         }
     }
 
-    const changeProfilePhoto = async() => {
-
-        
-
-    }
+    const changeProfilePhoto = async () => {}
 
     const { email, firstName, lastName, createdAt } = userData || {}
 
@@ -501,6 +501,41 @@ function profile() {
                             {isToast}
                         </p>
                     )}
+                  
+                    <div className='profile-upload'>
+                        <div className='profile-upload__cover'>
+                            <img
+                                src='/img/event1.jpg'
+                                width='100%'
+                                height='100%'
+                                className='profile-upload__cover--img'
+                                alt='cover'
+                            />
+                        </div>
+                        <div className='profile-upload__avatar'>
+                            <input
+                                type='file'
+                                accept='image/*'
+                                id='profilePhoto'
+                                name='profilePhoto'
+                                hidden
+                            />
+                            <label
+                                htmlFor='profilePhoto'
+                                className='cursor-pointer'
+                                onClick={changeProfilePhoto}
+                            >
+                                <img
+                                    src={profilePhotoUrl}
+                                    width='100%'
+                                    height='100%'
+                                    className='profile-upload__avatar--img'
+                                    alt='cover'
+                                />
+                            </label>
+                        </div>
+                    </div>
+                    
                     <DialogTitle className='text-center'>
                         Edit Profile
                     </DialogTitle>
@@ -1019,15 +1054,25 @@ function profile() {
                                 />
                             </div>
                             <div className='picture__avatar'>
-                                <input type="file" accept='image/*' id='profilePhoto' name='profilePhoto' hidden/>
-                                <label htmlFor='profilePhoto' className='cursor-pointer' onClick={changeProfilePhoto}>
-                                <img
-                                    src={profilePhotoUrl}
-                                    width='100%'
-                                    height='100%'
-                                    className='picture__avatar--img'
-                                    alt='cover'
+                                <input
+                                    type='file'
+                                    accept='image/*'
+                                    id='profilePhoto'
+                                    name='profilePhoto'
+                                    hidden
                                 />
+                                <label
+                                    htmlFor='profilePhoto'
+                                    className='cursor-pointer'
+                                    onClick={changeProfilePhoto}
+                                >
+                                    <img
+                                        src={profilePhotoUrl}
+                                        width='100%'
+                                        height='100%'
+                                        className='picture__avatar--img'
+                                        alt='cover'
+                                    />
                                 </label>
                             </div>
                         </div>
@@ -1089,7 +1134,6 @@ function profile() {
                         <div className='profile__secondary--details'>
                             <div className='details__box'>
                                 {userData && route}
-                               
                             </div>
                         </div>
                     </div>
