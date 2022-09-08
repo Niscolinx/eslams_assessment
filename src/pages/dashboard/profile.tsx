@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { BsFillPencilFill, BsFillFilePersonFill } from 'react-icons/bs'
 import { IoMdSchool } from 'react-icons/io'
 import { MdFamilyRestroom } from 'react-icons/md'
-import {TbCameraPlus} from 'react-icons/tb'
+import { TbCameraPlus } from 'react-icons/tb'
 
 import {
     Box,
@@ -515,6 +515,7 @@ function profile() {
                                 className='profile-upload__cover--img'
                                 alt='cover'
                             />
+                            <TbCameraPlus />
                         </div>
                         <div className='profile-upload__avatar'>
                             <input
@@ -537,6 +538,7 @@ function profile() {
                                     alt='cover'
                                 />
                             </label>
+                            <TbCameraPlus />
                         </div>
                     </div>
 
