@@ -1015,6 +1015,8 @@ function profile() {
                                 />
                             </div>
                             <div className='picture__avatar'>
+                                <input type="file" accept='image/*' id='profilePhoto' name='profilePhoto' hidden/>
+                                <label htmlFor='profilePhoto' className='cursor-pointer'>
                                 <img
                                     src='/img/avatar.jpeg
                                 '
@@ -1023,6 +1025,7 @@ function profile() {
                                     className='picture__avatar--img'
                                     alt='cover'
                                 />
+                                </label>
                             </div>
                         </div>
                         <div
