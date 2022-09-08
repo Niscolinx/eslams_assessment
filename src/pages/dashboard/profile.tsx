@@ -311,6 +311,8 @@ function profile() {
           }))
       }
 
+      console.log(handleInput)
+
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
