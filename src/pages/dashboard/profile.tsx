@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef} from 'react'
 
 import { BsFillPencilFill, BsFillFilePersonFill } from 'react-icons/bs'
 import { IoMdSchool } from 'react-icons/io'
@@ -34,7 +34,6 @@ import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen'
 import * as jose from 'jose'
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
-
 
 const routes = ['General', 'Events']
 
@@ -208,6 +207,8 @@ function profile() {
     const [profilePhotoUrl, setProfilePhotoUrl] =
         useState<string>('/img/avatar.jpeg')
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
+
+    const profilePhotoRef = useRef(profilePhotoUrl)
 
     type ValidationError = { [key: string]: string }
 
@@ -408,7 +409,7 @@ function profile() {
 
         return true
     }
-    const handleSubmit = async(e: any) => {
+    const handleSubmit = async (e: any) => {
         const isValid = formValidate()
 
         if (!isValid) {
@@ -416,33 +417,35 @@ function profile() {
         }
         setIsUpdateUser(true)
 
-        try{
-        axios
-            .post('/api/updateProfile', {
-                handleInput,
-                profilePhotoUrl
-            })
-            .then(({ data }) => {
-                console.log(data)
-                setUserData({ ...data })
-                routeToDisplay((prev: any) => {
-                    return {
-                        ...prev,
-                        props: {
-                            ...prev!.props,
-                            userData: data,
-                        },
-                    }
-                })
+        console.log('profile ref', profilePhotoRef)
 
-                setIsUpdateUser(false)
-                setIsToast('Updated Successfully')
-            })}
-        
-            catch(err){
-                console.log({err})
-                  setIsUpdateUser(false)
-            }
+        try {
+            console.log("try catch")
+            axios
+                .post('/api/updateProfileiiiiiiiiii', {
+                    handleInput,
+                    profilePhotoUrl: profilePhotoRef
+                })
+                .then(({ data }) => {
+                    console.log(data)
+                    setUserData({ ...data })
+                    routeToDisplay((prev: any) => {
+                        return {
+                            ...prev,
+                            props: {
+                                ...prev!.props,
+                                userData: data,
+                            },
+                        }
+                    })
+
+                    setIsUpdateUser(false)
+                    setIsToast('Updated Successfully')
+                })
+        } catch (err) {
+            console.log({ err })
+            setIsUpdateUser(false)
+        }
     }
 
     const toggleEyeIcon = () => {
@@ -490,8 +493,8 @@ function profile() {
         value: React.MouseEvent<HTMLLabelElement>
     ) => {
         const getUrl = await getPhotoUrl(`#profilePhoto`)
-
         setProfilePhotoUrl(getUrl)
+        profilePhotoRef.current = getUrl
     }
 
     const changeCoverPhoto = async (
