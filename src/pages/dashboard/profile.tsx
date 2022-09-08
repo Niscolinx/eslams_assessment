@@ -281,7 +281,7 @@ function profile() {
     }, [])
 
     useEffect(() => {
-        console.log("userData", userData)
+        console.log('userData', userData)
     }, [userData])
 
     useEffect(() => {
@@ -414,7 +414,7 @@ function profile() {
             .post('/api/updateProfile', handleInput)
             .then(({ data }) => {
                 console.log(data)
-                setUserData(data)
+                setUserData({...data})
 
                 setIsUpdateUser(false)
                 setIsToast('Updated Successfully')
@@ -466,7 +466,7 @@ function profile() {
         }
     }
 
-       const { email, firstName, lastName, createdAt } = userData || {}
+    const { email, firstName, lastName, createdAt } = userData || {}
 
     return (
         <div className='profile'>
