@@ -415,14 +415,8 @@ function profile() {
             return
         }
         setIsUpdateUser(true)
-
-        const profilePhotoFile = new FormData()
-
-        profilePhotoFile.append('profilePhotoUrl', coverPhotoUrl)
-
       
-      
-
+try{
         axios
             .post('/api/updateProfile', {
                 handleInput,
@@ -443,7 +437,7 @@ function profile() {
 
                 setIsUpdateUser(false)
                 setIsToast('Updated Successfully')
-            })
+            })}
             .catch((err) => {
                 console.log(err)
                 setIsUpdateUser(false)
