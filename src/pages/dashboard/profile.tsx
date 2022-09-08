@@ -418,21 +418,16 @@ function profile() {
 
         const profilePhotoFile = new FormData()
 
-        profilePhotoFile.append('profilePhotoUrl', profilePhotoUrl)
+        profilePhotoFile.append('profilePhotoUrl', coverPhotoUrl)
 
       
-        const profilePhoto = await new jose.SignJWT({
-             profilePhotoUrl
-         })
-             .setProtectedHeader({ alg: 'HS256' })
-             .setIssuedAt()
-             .sign(new TextEncoder().encode('profileUrl'))
+      
 
         axios
-            .post('/api/updateProfile', JSON.stringify({
+            .post('/api/updateProfile', {
                 handleInput,
-                profilePhoto,
-            }))
+                profilePhotoUrl
+            })
             .then(({ data }) => {
                 console.log(data)
                 setUserData({ ...data })
