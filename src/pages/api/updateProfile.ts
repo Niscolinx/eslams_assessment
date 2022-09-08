@@ -24,6 +24,7 @@ export default async function Profile(
         }
 
         if (password) {
+            console.log('password', password)
             user.password = await bcrypt.hash(password, 12)
         }
 
