@@ -23,9 +23,13 @@ export default async function getUserEvents(
             new TextEncoder().encode(process.env.JWT_SECRET!)
         )
 
+        console.log({jwtData})
+
         const user: IUser | null = await User.findOne({
             email: jwtData.email,
         })
+
+        console.log({user})
 
         if(!user){
             return res.status(404).json({

@@ -32,8 +32,14 @@ export default async function Profile(
                 password: password
                     ? await bcrypt.hash(password, 12)
                     : user.password,
+            }, 
+            {
+                new: true,
+                returnDocument: 'after',
             }
         )
+
+        console.log({ update })
 
         if(password){
              const token = await new jose.SignJWT({
