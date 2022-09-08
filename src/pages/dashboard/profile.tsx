@@ -33,7 +33,6 @@ const routes = ['General', 'Events']
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
 
-    console.log("from child", userData)
     const {
         firstName,
         lastName,
@@ -200,6 +199,7 @@ function profile() {
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)
+    const [profilePhotoUrl, setProfilePhotoUrl] = useState<string>('/img/avatar.jpeg')
 
     type ValidationError = { [key: string]: string }
 
@@ -474,8 +474,6 @@ function profile() {
     }
 
     const { email, firstName, lastName, createdAt } = userData || {}
-
-    console.log('from parent', { userData })
 
     return (
         <div className='profile'>
@@ -1018,8 +1016,7 @@ function profile() {
                                 <input type="file" accept='image/*' id='profilePhoto' name='profilePhoto' hidden/>
                                 <label htmlFor='profilePhoto' className='cursor-pointer'>
                                 <img
-                                    src='/img/avatar.jpeg
-                                '
+                                    src={profilePhotoUrl}
                                     width='100%'
                                     height='100%'
                                     className='picture__avatar--img'
