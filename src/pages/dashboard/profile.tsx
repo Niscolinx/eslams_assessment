@@ -375,7 +375,7 @@ function profile() {
                     disableEscapeKeyDown
                     open={open}
                     onClose={handleClose}
-                    className='filterDialog'
+                    className='dialogClass'
                 >
                     <button
                         className='flex cursor-pointer mr-auto'
@@ -383,7 +383,7 @@ function profile() {
                     >
                         <GrFormClose className='text-3xl ' />
                     </button>
-                    <DialogTitle className='text-center'>Filters</DialogTitle>
+                    <DialogTitle className='text-center'>Edit Profile</DialogTitle>
                     <DialogContent>
                         <Box
                             component='form'

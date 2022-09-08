@@ -390,7 +390,7 @@ const Index = () => {
                     disableEscapeKeyDown
                     open={open}
                     onClose={handleClose}
-                    className='filterDialog'
+                    className='dialogClass'
                 >
                     <button
                         className='flex cursor-pointer mr-auto'
