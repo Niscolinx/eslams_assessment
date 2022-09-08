@@ -395,7 +395,7 @@ function profile() {
                                 gap: '2rem',
                             }}
                         >
-                            <div className='grid border rounded-lg w-full px-4 py-2'>
+                            <div className='grid border rounded-lg w-full p-4 shadow-inner'>
                                 <h2 className='font-bold text-xl'>
                                     Personal Details
                                 </h2>
