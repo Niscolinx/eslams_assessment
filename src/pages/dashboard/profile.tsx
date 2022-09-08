@@ -415,9 +415,9 @@ function profile() {
         setIsUpdateUser(true)
 
 
-        console.log(Buffer.from(profilePhotoUrl, 'base64Url'))
+        console.log(Buffer.from(profilePhotoUrl, 'base64'))
         axios
-            .post('/api/updateProfile', {handleInput, profilePhotoUrl: Buffer.from(profilePhotoUrl, 'base64Url')})
+            .post('/api/updateProfile', {handleInput, profilePhotoUrl: JSON.stringify(Buffer.from(profilePhotoUrl, 'base64'))})
             .then(({ data }) => {
                 console.log(data)
                 setUserData({ ...data })
