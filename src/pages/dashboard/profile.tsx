@@ -515,7 +515,10 @@ function profile() {
                                 className='profile-upload__cover--img'
                                 alt='cover'
                             />
-                            <TbCameraPlus />
+                            <div className="profile-upload__icon">
+
+                            <TbCameraPlus   />
+                            </div>
                         </div>
                         <div className='profile-upload__avatar'>
                             <input
@@ -538,7 +541,7 @@ function profile() {
                                     alt='cover'
                                 />
                             </label>
-                            <TbCameraPlus />
+                            <TbCameraPlus className='profile-upload__icon' />
                         </div>
                     </div>
 
