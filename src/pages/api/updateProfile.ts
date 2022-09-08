@@ -24,21 +24,21 @@ export default async function Profile(
             return res.status(401).json('Not found')
         }
 
-        if (password) {
-            user.password = await bcrypt.hash(password, 12)
-            await user.save()
-        }
+        
 
         const update = await User.updateOne(
             { email },
             {
                 ...req.body,
                 email: personalEmail,
+                password: password ? await bcrypt.hash(password, 12) : user.password,
             },
             {
                 returnDocument: 'after',
             }
         ).getUpdate()
+
+      
 
         console.log({ update })
 
