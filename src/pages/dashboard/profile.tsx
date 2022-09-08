@@ -439,10 +439,10 @@ function profile() {
                 setIsToast('Updated Successfully')
             })}
         
-            catch((err) => {
-                console.log(err)
-                setIsUpdateUser(false)
-            })
+            catch(err){
+                console.log({err})
+                  setIsUpdateUser(false)
+            }
     }
 
     const toggleEyeIcon = () => {
