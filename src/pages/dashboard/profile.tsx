@@ -413,28 +413,16 @@ function profile() {
         }
         setIsUpdateUser(true)
 
-
         const profilePhotoFile = new FormData()
 
         profilePhotoFile.append('profilePhotoUrl', profilePhotoUrl)
 
-
-        fetch('/api/updateProfile', {
-            method: 'POST',
-            body:  JSON.stringify(
-                handleInput,
-                profilePhotoUrl
-            ),
-            headers: {
-                'Content-type': 'application/json'
-            }
-        })
-
+      
 
         axios
             .post('/api/updateProfile', {
                 handleInput,
-                 profilePhotoFile,
+                profilePhotoFile,
             })
             .then(({ data }) => {
                 console.log(data)
