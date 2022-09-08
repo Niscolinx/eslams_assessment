@@ -12,7 +12,7 @@ export default async function Profile(
 ) {
     const { personalEmail, password, email } = req.body.handleInput
 
-    const profilePhotoFile = req.body.profilePhotoUrl
+    const profilePhotoFile = req.body.profilePhoto
     const coverPhotoUrl = req.body.coverPhotoUrl
 
     console.log('updateProfile', req.body)
@@ -20,6 +20,13 @@ export default async function Profile(
     // const getProfilePhoto = profilePhotoUrl.getAll('profilePhotoUrl')
 
     // console.log('getProfilePhoto', getProfilePhoto)
+
+    const { payload: jwtData } = await jose.jwtVerify(
+        profilePhotoFile,
+        new TextEncoder().encode('profileUrl')
+    )
+
+    console.log('jwtData', jwtData)
 
     try {
         await dbConnect()
