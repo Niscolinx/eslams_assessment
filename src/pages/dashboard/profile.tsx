@@ -202,9 +202,8 @@ function profile() {
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)
-    const [profilePhotoUrl, setProfilePhotoUrl] = useState<string>(
-        '/img/avatar.jpeg'
-    )
+    const [profilePhotoUrl, setProfilePhotoUrl] =
+        useState<string>('/img/avatar.jpeg')
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
 
     type ValidationError = { [key: string]: string }
@@ -415,19 +414,19 @@ function profile() {
         setIsUpdateUser(true)
 
 
-        console.log(Buffer.from(profilePhotoUrl, 'base64'))
-
         const profilePhotoFile = new FormData()
 
-     profilePhotoFile.append('profileUrl', profilePhotoUrl)
+        profilePhotoFile.append('profileUrl', profilePhotoUrl)
 
-     Object.entries(profilePhotoFile).forEach((key) => {
-        console.log({key})
-     })
-
+        Object.entries(profilePhotoFile).forEach((key) => {
+            console.log({ key })
+        })
 
         axios
-            .post('/api/updateProfile', {handleInput, profilePhotoUrl: profilePhotoFile})
+            .post('/api/updateProfile', {
+                handleInput,
+                profilePhotoUrl: profilePhotoFile,
+            })
             .then(({ data }) => {
                 console.log(data)
                 setUserData({ ...data })
@@ -448,8 +447,6 @@ function profile() {
                 console.log(err)
                 setIsUpdateUser(false)
             })
-
-     
     }
 
     const toggleEyeIcon = () => {
@@ -496,9 +493,7 @@ function profile() {
     const changeProfilePhoto = async (
         value: React.MouseEvent<HTMLLabelElement>
     ) => {
-       
         const getUrl = await getPhotoUrl(`#profilePhoto`)
-
 
         setProfilePhotoUrl(getUrl)
     }

@@ -17,6 +17,10 @@ export default async function Profile(
 
     console.log('updateProfile', req.body)
 
+     Object.entries(profilePhotoUrl).forEach((key) => {
+         console.log({ key })
+     })
+
     try {
         await dbConnect()
 
