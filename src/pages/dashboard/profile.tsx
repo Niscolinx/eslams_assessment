@@ -203,7 +203,7 @@ function profile() {
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)
     const [profilePhotoUrl, setProfilePhotoUrl] = useState<string>(
-        'https://res.cloudinary.com/eslams/image/upload/v1662647837/eslams/IMG_0272_ldro6c.jpg'
+        '/img/avatar.jpeg'
     )
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
 
