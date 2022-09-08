@@ -26,17 +26,14 @@ export default async function Profile(
 
         
 
-        const update = await User.updateOne(
+        const update = User.updateOne(
             { email },
             {
                 ...req.body,
                 email: personalEmail,
                 password: password ? await bcrypt.hash(password, 12) : user.password,
-            },
-            {
-                returnDocument: 'after',
             }
-        ).getUpdate()
+        )
 
       
 
