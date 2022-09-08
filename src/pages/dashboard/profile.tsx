@@ -33,8 +33,8 @@ const routes = ['General', 'Events']
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
     useEffect(() => {
-        console.log('from child', {userData})
-    })
+        console.log('from child', { userData })
+    }, [userData])
 
     const {
         firstName,
@@ -285,10 +285,6 @@ function profile() {
     }, [])
 
     useEffect(() => {
-        console.log('userData', userData)
-    }, [userData])
-
-    useEffect(() => {
         if (isFocused) {
             setLabelClasses('-ml-5.5 mt-3 lg:-ml-4')
         } else {
@@ -472,7 +468,7 @@ function profile() {
 
     const { email, firstName, lastName, createdAt } = userData || {}
 
-    console.log('from parent', {userData})
+    console.log('from parent', { userData })
 
     return (
         <div className='profile'>
@@ -1080,6 +1076,7 @@ function profile() {
                         <div className='profile__secondary--details'>
                             <div className='details__box'>
                                 {userData && route}
+                                
                             </div>
                         </div>
                     </div>
