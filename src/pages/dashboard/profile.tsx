@@ -492,13 +492,15 @@ function profile() {
         }
     }
 
-    const changePhoto = async (value: React.MouseEvent<HTMLLabelElement>) => {
+    const changeProfilePhoto = async (value: React.MouseEvent<HTMLLabelElement>) => {
         console.log(value.target)
         const inputForm = value.currentTarget
 
         //console.log({fileInput})
         const getUrl = await getPhotoUrl('')
     }
+
+    const changeCoverPhoto = async (e:any) =>
 
     const { email, firstName, lastName, createdAt } = userData || {}
 
@@ -540,7 +542,7 @@ function profile() {
                                 <label
                                     htmlFor='coverPhoto'
                                     className='cursor-pointer'
-                                    onClick={(e) => changePhoto(e)}
+                                    onClick={ changeCoverPhoto}
                                 >
                                     <img
                                         src={coverPhotoUrl}
@@ -565,7 +567,7 @@ function profile() {
                                 <label
                                     htmlFor='profilePhoto'
                                     className='cursor-pointer'
-                                    onClick={(e) => changePhoto(e)}
+                                    onClick={changeProfilePhoto}
                                 >
                                     <img
                                         src={profilePhotoUrl}
