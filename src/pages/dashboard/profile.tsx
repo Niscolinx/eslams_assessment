@@ -395,7 +395,7 @@ function profile() {
                                 gap: '2rem',
                             }}
                         >
-                            <div className='grid border rounded-lg w-full p-4 shadow-inner'>
+                            <div className='grid border rounded-lg w-full p-5 shadow-inner'>
                                 <h2 className='font-bold text-xl'>
                                     Personal Details
                                 </h2>
@@ -605,7 +605,7 @@ function profile() {
                                 </Grid>
                             </div>
 
-                            <div className='grid border rounded-lg w-full px-4 py-2'>
+                            <div className='grid border rounded-lg w-full p-5 shadow-inner'>
                                 <h2 className='font-bold text-xl'>
                                     Guardian/Parent Details
                                 </h2>
@@ -768,7 +768,7 @@ function profile() {
                                     </Grid>
                                 </Grid>
                             </div>
-                            <div className='grid border rounded-lg w-full px-4 py-2'>
+                            <div className='grid border rounded-lg w-full p-5 shadow-inner'>
                                 <h2 className='font-bold text-xl'>Education</h2>
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={6}>
