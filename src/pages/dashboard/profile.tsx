@@ -27,6 +27,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import MuiPhoneNumber from 'material-ui-phone-number'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
+import dayjs from 'dayjs'
 
 const routes = ['General', 'Events']
 
@@ -315,8 +316,126 @@ function profile() {
     }
 
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+     const formValidate = () => {
+         const errors = {} as ValidationError
+         const isValidMail = (e: string, cb: (checkValid: boolean) => void) => {
+             const emailRegex = new RegExp(
+                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+             )
+
+             const isValid = emailRegex.test(e)
+
+             return cb(isValid)
+         }
+
+         let count = 0
+
+         for (const key in handleInput) {
+             count++
+
+             //Validation for the first step
+
+                 if (key === 'personalEmail') {
+                     isValidMail(handleInput[key], (cb) => {
+                         if (!cb) {
+                             errors[key] = 'Invalid email'
+
+                             setValidationError(errors)
+                         }
+                     })
+                 }
+
+                 if (key === 'lastName' || key === 'firstName') {
+                     if (handleInput[key].length < 3) {
+                         errors[key as keyof handleInputProps] =
+                             'This field must be at least 3 characters long'
+
+                         setValidationError(errors)
+                     }
+                 }
+
+                 if (key === 'password') {
+                     if (handleInput[key].length < 6) {
+                         errors[key as keyof handleInputProps] =
+                             'Password must be at least 6 characters long'
+
+                         setValidationError(errors)
+                     }
+                 }
+
+                 if (key === 'phoneNumber') {
+                     if (handleInput[key].length < 10) {
+                         errors[key as keyof handleInputProps] =
+                             'Phone number not valid'
+
+                         setValidationError(errors)
+                     }
+                 }
+                 if (key === 'birthDate') {
+                     if (!dayjs(handleInput[key]).isValid()) {
+                         errors[key as keyof handleInputProps] = 'Invalid Date'
+
+                         setValidationError(errors)
+                     }
+                 }
+
+                 if (
+                     handleInput[key as keyof handleInputProps] === '' ||
+                     handleInput[key as keyof handleInputProps] === null
+                 ) {
+                     errors[key as keyof handleInputProps] =
+                         'This field is required'
+
+                     setValidationError(errors)
+                 }
+                 if (key === 'guardianEmail') {
+                     isValidMail(handleInput[key], (cb) => {
+                         if (!cb) {
+                             errors[key] = 'Invalid email'
+
+                             setValidationError(errors)
+                         }
+                     })
+                 }
+
+                 if (key === 'guardianName') {
+                     if (handleInput[key].length < 3) {
+                         errors[key as keyof handleInputProps] =
+                             'This field must be at least 3 characters long'
+
+                         setValidationError(errors)
+                     }
+                 }
+
+                 if (key === 'guardianPhoneNumber') {
+                     if (handleInput[key].length < 10) {
+                         errors[key as keyof handleInputProps] =
+                             'Phone number not valid'
+
+                         setValidationError(errors)
+                     }
+                 }
+
+             
+             
+         }
+
+         if (Object.keys(errors).length > 0) {
+             return false
+         }
+
+         return true
+     }
+    const handleSubmit = (e: React.MouseEventHandler<HTMLAnchorElement>) => {
+        console.log('valid')
+        
+        const isValid = formValidate()
+
+          if (!isValid) {
+            return
+        } 
+
+
     }
 
     const toggleEyeIcon = () => {
@@ -426,7 +545,7 @@ function profile() {
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
-                                            required
+                                            
                                             id='lastName'
                                             name='lastName'
                                             label='Last name'
@@ -452,7 +571,7 @@ function profile() {
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
-                                            required
+                                            
                                             id='email'
                                             name='personalEmail'
                                             type='email'
@@ -480,7 +599,6 @@ function profile() {
                                     <Grid item xs={12} sm={6}>
                                         <div className='flex items-center relative'>
                                             <TextField
-                                                required
                                                 id='password'
                                                 name='password'
                                                 label='Password'
@@ -506,7 +624,7 @@ function profile() {
                                                           ]
                                                         : false
                                                 }
-                                                onChange={setInput}
+                                               onChange={setInput}
                                             />
                                             {
                                                 <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
@@ -529,8 +647,7 @@ function profile() {
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
                                         <MuiPhoneNumber
-                                            id='phone-number'
-                                            autoFocus={true}
+                                            id='phoneNumber'
                                             name='phoneNumber'
                                             value={handleInput.phoneNumber}
                                             placeholder='Phone Number'
@@ -552,7 +669,7 @@ function profile() {
                                                       ]
                                                     : false
                                             }
-                                            onChange={changePhoneNumber}
+                                           onChange={changePhoneNumber}
                                         />
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
@@ -587,8 +704,7 @@ function profile() {
                                                                   ]
                                                                 : false
                                                         }
-                                                        required
-                                                    />
+                                                            />
                                                 )}
                                             />
                                         </LocalizationProvider>
@@ -603,7 +719,7 @@ function profile() {
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
-                                            required
+                                            
                                             id='guardianName'
                                             name='guardianName'
                                             label='Guardian Name'
@@ -629,7 +745,7 @@ function profile() {
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
-                                            required
+                                            
                                             id='guardianEmail'
                                             name='guardianEmail'
                                             label='Guardian Email'
@@ -657,7 +773,6 @@ function profile() {
                                     <Grid item xs={12} sm={6}>
                                         <MuiPhoneNumber
                                             id='guardianPhoneNumber'
-                                            autoFocus={true}
                                             name='guardianPhoneNumber'
                                             placeholder='guardian/Parent Number'
                                             defaultCountry={'us'}
@@ -816,7 +931,7 @@ function profile() {
 
                                     <Grid item xs={12} sm={6}>
                                         <TextField
-                                            required
+                                            
                                             id='grade'
                                             name='institutionYearOfStudy'
                                             label='Grade/Year of Study'
@@ -849,7 +964,7 @@ function profile() {
                                     </Grid>
                                     <Grid item xs={12} sm={12}>
                                         <TextField
-                                            required
+                                            
                                             id='institutionName'
                                             name='institutionName'
                                             label='Name of Institution'
@@ -883,7 +998,7 @@ function profile() {
                     </DialogContent>
                     <DialogActions>
                         <Button>Cancel</Button>
-                        <Button>Save</Button>
+                        <Button onClick={() => handleSubmit()}>Save</Button>
                     </DialogActions>
                 </Dialog>
                 <div className='profile__content'>
