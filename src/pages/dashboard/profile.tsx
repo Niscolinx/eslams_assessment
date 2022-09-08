@@ -492,7 +492,9 @@ function profile() {
         }
     }
 
-    const changeProfilePhoto = async (value: React.MouseEvent<HTMLLabelElement>) => {
+    const changeProfilePhoto = async (
+        value: React.ChangeEvent<HTMLInputElement>
+    ) => {
         console.log(value.target)
         const inputForm = value.currentTarget
 
@@ -500,7 +502,7 @@ function profile() {
         const getUrl = await getPhotoUrl('')
     }
 
-    const changeCoverPhoto = async (e:any) =>
+    const changeCoverPhoto = async (e: any) => {}
 
     const { email, firstName, lastName, createdAt } = userData || {}
 
@@ -537,12 +539,12 @@ function profile() {
                                     accept='image/*'
                                     id='coverPhoto'
                                     name='coverPhoto'
+                                    onChange={changeCoverPhoto}
                                     hidden
                                 />
                                 <label
                                     htmlFor='coverPhoto'
                                     className='cursor-pointer'
-                                    onClick={ changeCoverPhoto}
                                 >
                                     <img
                                         src={coverPhotoUrl}
@@ -562,12 +564,12 @@ function profile() {
                                     accept='image/*'
                                     id='profilePhoto'
                                     name='profilePhoto'
+                                    onChange={changeProfilePhoto}
                                     hidden
                                 />
                                 <label
                                     htmlFor='profilePhoto'
                                     className='cursor-pointer'
-                                    onClick={changeProfilePhoto}
                                 >
                                     <img
                                         src={profilePhotoUrl}
