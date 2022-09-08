@@ -190,6 +190,7 @@ function profile() {
     const [route, routeToDisplay] = useState<JSX.Element | null>(null)
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
+    const [isUpdateUser, setIsUpdateUser] = useState(false)
     const [eyeIcon, setEyeIcon] = useState(false)
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
@@ -426,11 +427,16 @@ function profile() {
 
         const isValid = formValidate()
 
-        console.log('valid', isValid)
-
         if (!isValid) {
             return
         }
+
+        axios.post('/api/updateProfile', handleInput).then((res) => {
+            console.log(res)
+        }).catch((err) => {
+            console.log(err)
+        }
+        )
     }
 
     const toggleEyeIcon = () => {

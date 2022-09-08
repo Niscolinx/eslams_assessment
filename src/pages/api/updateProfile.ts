@@ -27,7 +27,7 @@ export default async function Profile(
         }
 
 
-        await user.save()
+       // await user.save()
 
         return res.status(200).json(user)
     } catch (err) {
