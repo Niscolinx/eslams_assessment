@@ -33,6 +33,7 @@ const routes = ['General', 'Events']
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
 
+    console.log("from child", userData)
     const {
         firstName,
         lastName,
@@ -412,7 +413,7 @@ function profile() {
             .then(({ data }) => {
                 console.log(data)
                 setUserData({ ...data })
-
+                routeToDisplay((prev) => <GeneralDetails userData={data} />)
                 setIsUpdateUser(false)
                 setIsToast('Updated Successfully')
             })
