@@ -426,10 +426,12 @@ function profile() {
 
          return true
      }
-    const handleSubmit = (e: React.MouseEventHandler<HTMLAnchorElement>) => {
+    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         console.log('valid')
         
         const isValid = formValidate()
+
+        console.log('valid', isValid)
 
           if (!isValid) {
             return
@@ -998,7 +1000,7 @@ function profile() {
                     </DialogContent>
                     <DialogActions>
                         <Button>Cancel</Button>
-                        <Button onClick={() => handleSubmit()}>Save</Button>
+                        <Button onClick={(e) => handleSubmit(e)}>Save</Button>
                     </DialogActions>
                 </Dialog>
                 <div className='profile__content'>
