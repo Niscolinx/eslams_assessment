@@ -52,6 +52,8 @@
             position: relative;
             width: 100%;
             height: 15rem;
+            cursor: pointer;
+            background-image: linear-gradient(to bottom, red, black);
 
             @include respond(phone) {
                 // background-color: blue;
@@ -60,9 +62,9 @@
             &--img {
                 width: 100%;
                 height: 100%;
-
                 object-position: center;
                 object-fit: cover;
+                filter: brightness(50%);
             }
         }
 
@@ -73,6 +75,7 @@
             height: 8rem;
             margin: 1rem;
             z-index: 1;
+            cursor: pointer;
 
             @include respond(smaller-phone) {
                 margin: 0;
@@ -89,6 +92,7 @@
                 border-radius: 50%;
                 outline: 2px solid $color-gray;
                 outline-offset: 2px;
+                filter: brightness(50%);
             }
         }
 
@@ -103,6 +107,11 @@
             align-content: center;
             align-items: center;
             color: white;
+
+            svg {
+                border-radius: 50%;
+                position: relative;
+            }
         }
     }
 

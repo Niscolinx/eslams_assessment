@@ -508,6 +508,18 @@ function profile() {
 
                     <div className='profile-upload'>
                         <div className='profile-upload__cover'>
+                             <input
+                                type='file'
+                                accept='image/*'
+                                id='coverPhoto'
+                                name='coverPhoto'
+                                hidden
+                            />
+                            <label
+                                htmlFor='cover'
+                                className='cursor-pointer'
+                                onClick={changeProfilePhoto}
+                            >
                             <img
                                 src='/img/event1.jpg'
                                 width='100%'
@@ -518,6 +530,7 @@ function profile() {
                             <div className='profile-upload__icon'>
                                 <TbCameraPlus />
                             </div>
+                            </label>
                         </div>
                         <div className='profile-upload__avatar'>
                             <input
@@ -539,10 +552,10 @@ function profile() {
                                     className='profile-upload__avatar--img'
                                     alt='cover'
                                 />
-                            </label>
                             <div className='profile-upload__icon'>
                                 <TbCameraPlus />
                             </div>{' '}
+                            </label>
                         </div>
                     </div>
 
