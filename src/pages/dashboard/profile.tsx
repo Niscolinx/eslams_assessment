@@ -350,10 +350,7 @@ function profile() {
                 }
             }
 
-            if (
-                key === 'password' &&
-               handleInput[key] !== '' 
-            ) {
+            if (key === 'password' && handleInput[key] !== '') {
                 if (handleInput[key].length < 6) {
                     errors[key as keyof handleInputProps] =
                         'Password must be at least 6 characters long'
@@ -431,12 +428,14 @@ function profile() {
             return
         }
 
-        axios.post('/api/updateProfile', handleInput).then((res) => {
-            console.log(res)
-        }).catch((err) => {
-            console.log(err)
-        }
-        )
+        axios
+            .post('/api/updateProfile', handleInput)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     const toggleEyeIcon = () => {
@@ -989,7 +988,17 @@ function profile() {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={(e) => handleSubmit(e)}>Save</Button>
+                        <Button onClick={(e) => handleSubmit(e)}>
+                            {isUpdateUser ? (
+                                <CircularProgress
+                                    className='flex justify-self-center'
+                                    size={15}
+                                    style={{ color: 'black' }}
+                                />
+                            ) : (
+                                'Save'
+                            )}
+                        </Button>
                     </DialogActions>
                 </Dialog>
                 <div className='profile__content'>
