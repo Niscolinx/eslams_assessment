@@ -406,7 +406,7 @@ function profile() {
 
         return true
     }
-    const handleSubmit = async(e: any) => {
+    const handleSubmit = (e: any) => {
         const isValid = formValidate()
 
         if (!isValid) {
@@ -419,9 +419,12 @@ function profile() {
 
         const profilePhotoFile = new FormData()
 
-        await profilePhotoFile.append('profileUrl', profilePhotoUrl)
+     profilePhotoFile.append('profileUrl', profilePhotoUrl)
 
-        console.log({profilePhotoFile})
+     Object.entries(profilePhotoFile).forEach((key) => {
+        console.log({key})
+     })
+
 
         axios
             .post('/api/updateProfile', {handleInput, profilePhotoUrl: profilePhotoFile})
