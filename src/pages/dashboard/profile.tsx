@@ -989,7 +989,7 @@ function profile() {
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
                         <Button onClick={(e) => handleSubmit(e)}>
-                            {isUpdateUser ? (
+                            {!isUpdateUser ? (
                                 <CircularProgress
                                     className='flex justify-self-center'
                                     size={15}
