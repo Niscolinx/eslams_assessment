@@ -1,3 +1,4 @@
+import { IUser } from './../../models/User';
 import bcrypt from 'bcryptjs'
 import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../lib/dbConnect'
@@ -14,7 +15,7 @@ export default async function Profile(
     try {
         await dbConnect()
         
-        const user = await User.findOne({
+        const user: IUser | null = await User.findOne({
             email,
         })
 
@@ -25,6 +26,9 @@ export default async function Profile(
         if (password) {
             user.password = await bcrypt.hash(password, 12)
         }
+
+        //update user
+        
 
 
        // await user.save()
