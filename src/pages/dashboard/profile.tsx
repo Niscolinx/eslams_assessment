@@ -281,6 +281,10 @@ function profile() {
     }, [])
 
     useEffect(() => {
+        console.log("userData", userData)
+    }, [userData])
+
+    useEffect(() => {
         if (isFocused) {
             setLabelClasses('-ml-5.5 mt-3 lg:-ml-4')
         } else {
@@ -462,7 +466,6 @@ function profile() {
         }
     }
 
-    const { email, firstName, lastName, createdAt } = userData || {}
 
     return (
         <div className='profile'>
@@ -1021,13 +1024,13 @@ function profile() {
                         </div>
                         <div className='profile__primary--details'>
                             <h3 className='details__name'>
-                                {firstName} {lastName}
+                                {userData?.firstName} {userData?.lastName}
                             </h3>
-                            <p className='details__email'>{email}</p>
+                            <p className='details__email'>{userData?.email}</p>
                             <p className='details__joined'>
                                 Joined{' '}
-                                {createdAt &&
-                                    new Date(createdAt).toLocaleDateString(
+                                {userData?.createdAt &&
+                                    new Date(userData.createdAt).toLocaleDateString(
                                         'en-GB',
                                         {
                                             day: 'numeric',
