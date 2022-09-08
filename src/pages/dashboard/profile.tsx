@@ -497,9 +497,9 @@ function profile() {
     ) => {
         const id = value.target.id
 
-        const getUrl = await getPhotoUrl(id)
+        const getUrl = await getPhotoUrl(`#${id}`)
 
-        console.log({getUrl})
+        setProfilePhotoUrl(getUrl)
     }
 
     const changeCoverPhoto = async (
