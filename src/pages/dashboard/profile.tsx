@@ -416,8 +416,13 @@ function profile() {
 
 
         console.log(Buffer.from(profilePhotoUrl, 'base64'))
+
+        const profilePhotoFile = new FormData()
+
+        profilePhotoFile.append('profileUrl', profilePhotoUrl)
+
         axios
-            .post('/api/updateProfile', {handleInput, profilePhotoUrl: JSON.stringify(Buffer.from(profilePhotoUrl, 'base64'))})
+            .post('/api/updateProfile', {handleInput, profilePhotoUrl: profilePhotoFile})
             .then(({ data }) => {
                 console.log(data)
                 setUserData({ ...data })
