@@ -48,7 +48,6 @@
         margin-bottom: 5rem;
         display: grid;
 
-
         &__cover {
             position: relative;
             width: 100%;
@@ -61,7 +60,7 @@
             &--img {
                 width: 100%;
                 height: 100%;
-                
+
                 object-position: center;
                 object-fit: cover;
             }
@@ -74,7 +73,6 @@
             height: 8rem;
             margin: 1rem;
             z-index: 1;
-          
 
             @include respond(smaller-phone) {
                 margin: 0;
@@ -94,9 +92,17 @@
             }
         }
 
-        &__icon{
+        &__icon {
             position: absolute;
-            background-color: red;
+            width: 100%;
+            display: flex;
+            height: 100%;
+            top: 0;
+            font-size: 2rem;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            color: white;
         }
     }
 
