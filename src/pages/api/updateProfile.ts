@@ -32,11 +32,8 @@ export default async function Profile(
                 password: password
                     ? bcrypt.hashSync(password, 10)
                     : user.password,
-            }, {
-                returnDocument: 'after',
             }
         )
-
 
         if (email !== personalEmail) {
             const token = await new jose.SignJWT({
@@ -56,7 +53,6 @@ export default async function Profile(
                 }`
             )
         }
-
 
         return res.status(200).json(update)
     } catch (err) {
