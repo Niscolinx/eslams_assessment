@@ -32,9 +32,6 @@ import dayjs from 'dayjs'
 const routes = ['General', 'Events']
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
-    useEffect(() => {
-        console.log('from child', { userData })
-    }, [userData])
 
     const {
         firstName,
@@ -1076,7 +1073,7 @@ function profile() {
                         <div className='profile__secondary--details'>
                             <div className='details__box'>
                                 {userData && route}
-                                
+                               
                             </div>
                         </div>
                     </div>
