@@ -422,7 +422,7 @@ function profile() {
         axios
             .post('/api/updateProfile', {
                 handleInput,
-                profilePhotoFile,
+                profilePhotoUrl,
             })
             .then(({ data }) => {
                 console.log(data)

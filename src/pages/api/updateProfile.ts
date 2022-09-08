@@ -12,7 +12,7 @@ export default async function Profile(
 ) {
     const { personalEmail, password, email } = req.body.handleInput
 
-    const profilePhotoFile = req.body.profilePhotoFile
+    const profilePhotoFile = req.body.profilePhotoUrl
     const coverPhotoUrl = req.body.coverPhotoUrl
 
     console.log('updateProfile', req.body)
