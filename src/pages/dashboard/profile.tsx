@@ -205,6 +205,7 @@ function profile() {
     const [profilePhotoUrl, setProfilePhotoUrl] = useState<string>(
         'https://res.cloudinary.com/eslams/image/upload/v1662647837/eslams/IMG_0272_ldro6c.jpg'
     )
+    const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
 
     type ValidationError = { [key: string]: string }
 
@@ -492,12 +493,10 @@ function profile() {
     }
 
     const changePhoto = async (value: React.MouseEvent<HTMLLabelElement>) => {
-        console.log(value.currentTarget)
+        console.log(value.target)
         const inputForm = value.currentTarget
-        
-        const fileInput = Array.from(inputForm.elements)
 
-        console.log({fileInput})
+        //console.log({fileInput})
         const getUrl = await getPhotoUrl('')
     }
 
@@ -544,7 +543,7 @@ function profile() {
                                     onClick={(e) => changePhoto(e)}
                                 >
                                     <img
-                                        src='/img/event1.jpg'
+                                        src={coverPhotoUrl}
                                         width='100%'
                                         height='100%'
                                         className='profile-upload__cover--img'
