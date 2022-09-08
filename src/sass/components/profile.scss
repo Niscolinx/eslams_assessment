@@ -45,6 +45,11 @@
 
     &-upload {
         position: relative;
+
+        @include respond(smaller-phone){
+            margin-bottom: 3rem;
+        }
+
         &__cover {
             position: relative;
 

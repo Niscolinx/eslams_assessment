@@ -204,7 +204,6 @@ function profile() {
         'https://res.cloudinary.com/eslams/image/upload/v1662647837/eslams/IMG_0272_ldro6c.jpg'
     )
 
-
     type ValidationError = { [key: string]: string }
 
     type handleInputProps = {
@@ -501,7 +500,7 @@ function profile() {
                             {isToast}
                         </p>
                     )}
-                  
+
                     <div className='profile-upload'>
                         <div className='profile-upload__cover'>
                             <img
@@ -535,7 +534,7 @@ function profile() {
                             </label>
                         </div>
                     </div>
-                    
+
                     <DialogTitle className='text-center'>
                         Edit Profile
                     </DialogTitle>
@@ -1054,26 +1053,13 @@ function profile() {
                                 />
                             </div>
                             <div className='picture__avatar'>
-                                <input
-                                    type='file'
-                                    accept='image/*'
-                                    id='profilePhoto'
-                                    name='profilePhoto'
-                                    hidden
+                                <img
+                                    src={profilePhotoUrl}
+                                    width='100%'
+                                    height='100%'
+                                    className='picture__avatar--img'
+                                    alt='cover'
                                 />
-                                <label
-                                    htmlFor='profilePhoto'
-                                    className='cursor-pointer'
-                                    onClick={changeProfilePhoto}
-                                >
-                                    <img
-                                        src={profilePhotoUrl}
-                                        width='100%'
-                                        height='100%'
-                                        className='picture__avatar--img'
-                                        alt='cover'
-                                    />
-                                </label>
                             </div>
                         </div>
                         <div
