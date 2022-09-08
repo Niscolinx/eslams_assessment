@@ -24,40 +24,41 @@ export default async function Profile(
             return res.status(401).json('Not found')
         }
 
+        if (password) {
+            user.password = await bcrypt.hash(password, 12)
+            await user.save()
+        }
+
         const update = await User.updateOne(
             { email },
             {
                 ...req.body,
                 email: personalEmail,
-                password: password
-                    ? await bcrypt.hash(password, 12)
-                    : user.password,
-            }, 
+            },
             {
-                new: true,
                 returnDocument: 'after',
             }
-        )
+        ).getUpdate()
 
         console.log({ update })
 
-        if(password){
-             const token = await new jose.SignJWT({
-                 email: personalEmail,
-                 userId: user!._id.toString(),
-             })
-                 .setProtectedHeader({ alg: 'HS256' })
-                 .setIssuedAt()
-                 .setExpirationTime('30d')
-                 .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
+        if (password) {
+            const token = await new jose.SignJWT({
+                email: personalEmail,
+                userId: user!._id.toString(),
+            })
+                .setProtectedHeader({ alg: 'HS256' })
+                .setIssuedAt()
+                .setExpirationTime('30d')
+                .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
 
-             //set cookie in nodejs
-             res.setHeader(
-                 'Set-Cookie',
-                 `tokenCookie=${token}; Path=/; HttpOnly; Secure; Max-Age=${
-                     60 * 60 * 24 * 7
-                 }`
-             )
+            //set cookie in nodejs
+            res.setHeader(
+                'Set-Cookie',
+                `tokenCookie=${token}; Path=/; HttpOnly; Secure; Max-Age=${
+                    60 * 60 * 24 * 7
+                }`
+            )
         }
 
         console.log({ update })
