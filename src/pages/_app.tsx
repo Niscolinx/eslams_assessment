@@ -4,8 +4,6 @@ import 'animate.css/animate.min.css'
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 
-import { useRouter } from 'next/router'
-
 import Layout from '../components/Layout'
 import '../sass/main.scss'
 

@@ -31,7 +31,10 @@ import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
 import { AdvancedImage } from '@cloudinary/react'
 import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen'
+import * as jose from 'jose'
+
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
+
 
 const routes = ['General', 'Events']
 
@@ -405,7 +408,7 @@ function profile() {
 
         return true
     }
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async(e: any) => {
         const isValid = formValidate()
 
         if (!isValid) {
@@ -418,12 +421,17 @@ function profile() {
         profilePhotoFile.append('profilePhotoUrl', profilePhotoUrl)
 
       
+        const token = await new jose.SignJWT({
+             profilePhotoUrl
+         })
+             .setIssuedAt()
+             .sign(new TextEncoder().encode('profileUrl'))
 
         axios
-            .post('/api/updateProfile', {
+            .post('/api/updateProfile', JSON.stringify({
                 handleInput,
                 profilePhotoUrl,
-            })
+            }))
             .then(({ data }) => {
                 console.log(data)
                 setUserData({ ...data })
