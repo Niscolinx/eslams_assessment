@@ -516,7 +516,7 @@ function profile() {
                                 hidden
                             />
                             <label
-                                htmlFor='cover'
+                                htmlFor='coverPhoto'
                                 className='cursor-pointer'
                                 onClick={changeProfilePhoto}
                             >
