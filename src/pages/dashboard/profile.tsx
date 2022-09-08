@@ -404,14 +404,17 @@ function profile() {
         if (!isValid) {
             return
         }
+        setIsUpdateUser(true)
 
         axios
             .post('/api/updateProfile', handleInput)
             .then((res) => {
                 console.log(res)
+                setIsUpdateUser(false)
             })
             .catch((err) => {
                 console.log(err)
+                setIsUpdateUser(false)
             })
     }
 
