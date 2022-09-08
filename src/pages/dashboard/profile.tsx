@@ -190,7 +190,8 @@ function profile() {
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
     const [eyeIcon, setEyeIcon] = useState(false)
-
+    const [validationError, setValidationError] =
+        useState<ValidationError | null>(null)
     const [isFocused, setIsFocused] = useState(false)
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
     type ValidationError = { [key: string]: string }
@@ -229,47 +230,50 @@ function profile() {
         institutionYearOfStudy: '',
     })
 
-  
-     useEffect(() => {
-         axios('/api/getUserData')
-             .then(({ data }) => {
-                 const { user, userEvents } = data
-                 const transFormedData = userEvents.map(
-                     (item: EventProps, index: number) => {
-                         return {
-                             ...item,
-                             which: (index % 3) + 1,
-                             date: {
-                                 from: new Date(
-                                     item.date.from
-                                 ).toLocaleDateString('en-GB', {
-                                     day: 'numeric',
-                                     month: 'short',
-                                 }),
-                                 to:
-                                     item.date.to &&
-                                     new Date(item.date.to).toLocaleDateString(
-                                         'en-GB',
-                                         {
-                                             day: 'numeric',
-                                             month: 'short',
-                                         }
-                                     ),
-                             },
-                         }
-                     }
-                 )
-                 setLoading(false)
+    useEffect(() => {
+        axios('/api/getUserData')
+            .then(({ data }) => {
+                const { user, userEvents } = data
+                const transFormedData = userEvents.map(
+                    (item: EventProps, index: number) => {
+                        return {
+                            ...item,
+                            which: (index % 3) + 1,
+                            date: {
+                                from: new Date(
+                                    item.date.from
+                                ).toLocaleDateString('en-GB', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                }),
+                                to:
+                                    item.date.to &&
+                                    new Date(item.date.to).toLocaleDateString(
+                                        'en-GB',
+                                        {
+                                            day: 'numeric',
+                                            month: 'short',
+                                        }
+                                    ),
+                            },
+                        }
+                    }
+                )
+                setLoading(false)
 
-                 setEventData(transFormedData)
-                 setUserData(user)
-                 routeToDisplay(<GeneralDetails userData={user} />)
-             })
-             .catch((err) => {
-                 console.log(err)
-                 setLoading(false)
-             })
-     }, [])
+                setEventData(transFormedData)
+                setUserData(user)
+                routeToDisplay(<GeneralDetails userData={user} />)
+                setHandleInput({
+                    ...user,
+                    password: ''
+                })
+            })
+            .catch((err) => {
+                console.log(err)
+                setLoading(false)
+            })
+    }, [])
 
     useEffect(() => {
         if (isFocused) {
@@ -299,25 +303,21 @@ function profile() {
         }
     }
 
-      const setInput = (e: any) => {
-          const { name, value } = e.target
+    const setInput = (e: any) => {
+        const { name, value } = e.target
 
-          console.log(name, value)
-          setValidationError(null)
+        setValidationError(null)
 
-          setHandleInput((prev: any) => ({
-              ...prev,
-              [name]: value,
-          }))
-      }
-
-      console.log(handleInput)
+        setHandleInput((prev: any) => ({
+            ...prev,
+            [name]: value,
+        }))
+    }
 
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
-  
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -332,8 +332,23 @@ function profile() {
         })
     }
 
-    const [validationError, setValidationError] =
-        useState<ValidationError | null>(null)
+    const changePhoneNumber = (value: any) => {
+        setInput({
+            target: {
+                name: 'phoneNumber',
+                value,
+            },
+        })
+    }
+
+    const changeGuardianPhoneNumber = (value: any) => {
+        setInput({
+            target: {
+                name: 'guardianPhoneNumber',
+                value,
+            },
+        })
+    }
 
     const [open, setOpen] = useState(false)
     const handleClose = (
@@ -345,21 +360,13 @@ function profile() {
         }
     }
 
-     const {
-         email,
-         firstName,
-         lastName,
-         createdAt,
-         phoneNumber,
-         guardianEmail,
-         guardianName,
-         guardianPhoneNumber,
-         guardianRelationship,
-         birthDate,
-         institutionName,
-         institutionType,
-         institutionYearOfStudy,
-     } = userData || {}
+    const {
+        email,
+        firstName,
+        lastName,
+        createdAt,
+       
+    } = userData || {}
 
     return (
         <div className='profile'>
@@ -545,14 +552,7 @@ function profile() {
                                                       ]
                                                     : false
                                             }
-                                            onChange={(value) =>
-                                                setInput({
-                                                    target: {
-                                                        name: 'phoneNumber',
-                                                        value,
-                                                    },
-                                                })
-                                            }
+                                            onChange={changePhoneNumber}
                                         />
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
@@ -685,14 +685,7 @@ function profile() {
                                                       ]
                                                     : false
                                             }
-                                            onChange={(value) =>
-                                                setInput({
-                                                    target: {
-                                                        name: 'guardianPhoneNumber',
-                                                        value,
-                                                    },
-                                                })
-                                            }
+                                            onChange={changeGuardianPhoneNumber}
                                         />
                                     </Grid>
 
@@ -916,14 +909,12 @@ function profile() {
                                 />
                             </div>
                         </div>
-                        <div className='profile__primary--edit'>
+                        <div
+                            className='profile__primary--edit'
+                            onClick={() => setOpen(true)}
+                        >
                             <BsFillPencilFill className='' />
-                            <button
-                                className='edit__btn'
-                                onClick={() => setOpen(true)}
-                            >
-                                Edit profile
-                            </button>
+                            <button className='edit__btn'>Edit profile</button>
                         </div>
                         <div className='profile__primary--details'>
                             <h3 className='details__name'>
