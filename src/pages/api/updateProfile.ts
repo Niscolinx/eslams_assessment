@@ -11,17 +11,15 @@ export default async function Profile(
     res: NextApiResponse
 ) {
     const { personalEmail, password, email } = req.body.handleInput
-    
-    const profilePhotoUrl = req.body.profilePhotoUrl
+
+    const profilePhotoFile = req.body.profilePhotoFile
     const coverPhotoUrl = req.body.coverPhotoUrl
 
     console.log('updateProfile', req.body)
 
-            const getProfilePhoto = profilePhotoUrl.getAll('profilePhotoUrl')
+    // const getProfilePhoto = profilePhotoUrl.getAll('profilePhotoUrl')
 
-            console.log('getProfilePhoto', getProfilePhoto)
-
-
+    // console.log('getProfilePhoto', getProfilePhoto)
 
     try {
         await dbConnect()
@@ -68,9 +66,7 @@ export default async function Profile(
         }
         console.log({ update })
 
-        console.log({profilePhotoUrl, coverPhotoUrl})
 
-       
         return res.status(200).json(update)
     } catch (err) {
         console.log({ err })
