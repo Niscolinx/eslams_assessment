@@ -93,6 +93,7 @@ export default function LoginContainer() {
 
     const setInput = (e: any) => {
         const { name, value } = e.target
+        setMessage(null)
         setValidationError(null)
 
         setHandleInput((prev: any) => ({
@@ -125,15 +126,13 @@ export default function LoginContainer() {
         axios
             .post('/api/auth/login', updatedData)
             .then((data) => {
-                console.log(data)
                 setLoading(false)
                router.push('/')
             })
             .catch(({ response: { data } }) => {
                 console.log({ data })
-                const { message } = data
                 setMessage({
-                    message,
+                    message: data,
                     type: 'error',
                 })
                 setLoading(false)
@@ -185,6 +184,8 @@ export default function LoginContainer() {
                             {message.message}
                         </p>
                     )}
+
+                    
                     <div className='grid gap-4 mt-10'>
                         <form onSubmit={handleLogin}>
                             <Grid item xs={12} sm={6}>

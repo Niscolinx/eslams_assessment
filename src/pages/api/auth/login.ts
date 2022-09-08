@@ -7,7 +7,6 @@ import { setCookie } from 'cookies-next'
 import * as jose from 'jose'
 
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
-    console.log('login')
     const { email, password } = req.body
 
     console.log(req.body)
@@ -21,10 +20,11 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         
         
 
-        console.log({ user })
         if (!user) {
             return res.status(401).json('User not found')
         }
+
+      
        if (!bcrypt.compareSync(password, user.password)) {
            return res.status(401).json('Incorrect password')
         }
