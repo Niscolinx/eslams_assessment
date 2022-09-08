@@ -5,15 +5,16 @@ export const getPhotoUrl = async(selector: string) => {
 
     const photo = selectPhoto as HTMLInputElement
 
-    const photoUrl = await new Promise((resolve, reject) => {
+    const photoUrl:string = await new Promise((resolve, reject) => {
         photo.addEventListener('change', (e) => {
             const file = e.target as HTMLInputElement
 
             const reader = new FileReader()
 
+            console.log({reader})
             reader.readAsDataURL(file.files![0])
 
-            reader.onload = () => resolve(reader.result)
+            reader.onload = () => resolve(reader.result as string)
 
             reader.onerror = (err) => reject(err)
         })

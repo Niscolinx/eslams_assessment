@@ -497,7 +497,10 @@ function profile() {
     ) => {
         const id = value.target.id
 
+        console.log('the change')
         const getUrl = await getPhotoUrl(`#${id}`)
+
+        console.log({getUrl})
 
         setProfilePhotoUrl(getUrl)
     }
@@ -541,12 +544,13 @@ function profile() {
                                     accept='image/*'
                                     id='coverPhoto'
                                     name='coverPhoto'
-                                    onChange={changeCoverPhoto}
                                     hidden
                                 />
                                 <label
                                     htmlFor='coverPhoto'
                                     className='cursor-pointer'
+                                                                        onClick={changeCoverPhoto}
+
                                 >
                                     <img
                                         src={coverPhotoUrl}
@@ -566,12 +570,13 @@ function profile() {
                                     accept='image/*'
                                     id='profilePhoto'
                                     name='profilePhoto'
-                                    onChange={changeProfilePhoto}
                                     hidden
                                 />
                                 <label
                                     htmlFor='profilePhoto'
                                     className='cursor-pointer'
+                                                                        onClick={changeProfilePhoto}
+
                                 >
                                     <img
                                         src={profilePhotoUrl}
