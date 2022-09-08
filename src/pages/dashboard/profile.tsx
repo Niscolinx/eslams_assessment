@@ -212,47 +212,6 @@ function profile() {
         birthDate: Date | null
     }
 
-    useEffect(() => {
-        axios('/api/getUserData')
-            .then(({ data }) => {
-                const { user, userEvents } = data
-                const transFormedData = userEvents.map(
-                    (item: EventProps, index: number) => {
-                        return {
-                            ...item,
-                            which: (index % 3) + 1,
-                            date: {
-                                from: new Date(
-                                    item.date.from
-                                ).toLocaleDateString('en-GB', {
-                                    day: 'numeric',
-                                    month: 'short',
-                                }),
-                                to:
-                                    item.date.to &&
-                                    new Date(item.date.to).toLocaleDateString(
-                                        'en-GB',
-                                        {
-                                            day: 'numeric',
-                                            month: 'short',
-                                        }
-                                    ),
-                            },
-                        }
-                    }
-                )
-                setLoading(false)
-
-                setEventData(transFormedData)
-                setUserData(user)
-                routeToDisplay(<GeneralDetails userData={user} />)
-            })
-            .catch((err) => {
-                console.log(err)
-                setLoading(false)
-            })
-    }, [])
-
     const [handleInput, setHandleInput] = useState<handleInputProps>({
         firstName: '',
         lastName: '',
@@ -270,15 +229,47 @@ function profile() {
         institutionYearOfStudy: '',
     })
 
-    const setInput = (e: any) => {
-        const { name, value } = e.target
-        setValidationError(null)
+  
+     useEffect(() => {
+         axios('/api/getUserData')
+             .then(({ data }) => {
+                 const { user, userEvents } = data
+                 const transFormedData = userEvents.map(
+                     (item: EventProps, index: number) => {
+                         return {
+                             ...item,
+                             which: (index % 3) + 1,
+                             date: {
+                                 from: new Date(
+                                     item.date.from
+                                 ).toLocaleDateString('en-GB', {
+                                     day: 'numeric',
+                                     month: 'short',
+                                 }),
+                                 to:
+                                     item.date.to &&
+                                     new Date(item.date.to).toLocaleDateString(
+                                         'en-GB',
+                                         {
+                                             day: 'numeric',
+                                             month: 'short',
+                                         }
+                                     ),
+                             },
+                         }
+                     }
+                 )
+                 setLoading(false)
 
-        setHandleInput((prev: any) => ({
-            ...prev,
-            [name]: value,
-        }))
-    }
+                 setEventData(transFormedData)
+                 setUserData(user)
+                 routeToDisplay(<GeneralDetails userData={user} />)
+             })
+             .catch((err) => {
+                 console.log(err)
+                 setLoading(false)
+             })
+     }, [])
 
     useEffect(() => {
         if (isFocused) {
@@ -308,41 +299,23 @@ function profile() {
         }
     }
 
-    const {
-        email,
-        firstName,
-        lastName,
-        createdAt,
-        phoneNumber,
-        guardianEmail,
-        guardianName,
-        guardianPhoneNumber,
-        guardianRelationship,
-        birthDate,
-        institutionName,
-        institutionType,
-        institutionYearOfStudy,
-    } = userData || {}
+      const setInput = (e: any) => {
+          const { name, value } = e.target
 
-    console.log({ userData })
+          console.log(name, value)
+          setValidationError(null)
+
+          setHandleInput((prev: any) => ({
+              ...prev,
+              [name]: value,
+          }))
+      }
+
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
-    const closeModal = () => {
-        const dialog = document.querySelector(
-            '#editProfile'
-        ) as HTMLDialogElement
-
-        dialog.close()
-    }
-
-    const openDialog = () => {
-        const dialog = document.querySelector(
-            '#editProfile'
-        ) as HTMLDialogElement
-        dialog.showModal()
-    }
+  
 
     const toggleEyeIcon = () => {
         setEyeIcon((prev) => !prev)
@@ -370,6 +343,22 @@ function profile() {
         }
     }
 
+     const {
+         email,
+         firstName,
+         lastName,
+         createdAt,
+         phoneNumber,
+         guardianEmail,
+         guardianName,
+         guardianPhoneNumber,
+         guardianRelationship,
+         birthDate,
+         institutionName,
+         institutionType,
+         institutionYearOfStudy,
+     } = userData || {}
+
     return (
         <div className='profile'>
             <div className='profile__box'>
@@ -395,7 +384,7 @@ function profile() {
                                 gap: '2rem',
                             }}
                         >
-                            <div className='grid border rounded-lg w-full p-5 shadow-inner'>
+                            <div className='grid border border-gray-300 rounded-lg w-full p-5 shadow-inner'>
                                 <h2 className='font-bold text-xl'>
                                     Personal Details
                                 </h2>
@@ -605,7 +594,7 @@ function profile() {
                                 </Grid>
                             </div>
 
-                            <div className='grid border rounded-lg w-full p-5 shadow-inner'>
+                            <div className='grid border border-gray-300 rounded-lg w-full p-5 shadow-inner'>
                                 <h2 className='font-bold text-xl'>
                                     Guardian/Parent Details
                                 </h2>
@@ -768,7 +757,7 @@ function profile() {
                                     </Grid>
                                 </Grid>
                             </div>
-                            <div className='grid border rounded-lg w-full p-5 shadow-inner'>
+                            <div className='grid border border-gray-300 rounded-lg w-full p-5 shadow-inner'>
                                 <h2 className='font-bold text-xl'>Education</h2>
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={6}>
