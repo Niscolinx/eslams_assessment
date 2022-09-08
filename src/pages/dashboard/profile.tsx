@@ -410,6 +410,8 @@ function profile() {
             .post('/api/updateProfile', handleInput)
             .then(({ data }) => {
                 console.log(data)
+                setUserData(data)
+
                 setIsUpdateUser(false)
                 setIsToast('Updated Successfully')
             })
@@ -477,9 +479,11 @@ function profile() {
                     >
                         <GrFormClose className='text-3xl ' />
                     </button>
-                    {
-                        isToast && <p className='text-green-500 text-center font-semibold'>{isToast}</p>
-                    }
+                    {isToast && (
+                        <p className='text-green-500 text-center font-semibold'>
+                            {isToast}
+                        </p>
+                    )}
                     <DialogTitle className='text-center'>
                         Edit Profile
                     </DialogTitle>
