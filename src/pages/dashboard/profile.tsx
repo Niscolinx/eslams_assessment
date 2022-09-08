@@ -32,6 +32,10 @@ import dayjs from 'dayjs'
 const routes = ['General', 'Events']
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
+    useEffect(() => {
+        console.log('from child', {userData})
+    })
+
     const {
         firstName,
         lastName,
@@ -414,7 +418,7 @@ function profile() {
             .post('/api/updateProfile', handleInput)
             .then(({ data }) => {
                 console.log(data)
-                setUserData({...data})
+                setUserData({ ...data })
 
                 setIsUpdateUser(false)
                 setIsToast('Updated Successfully')
@@ -467,6 +471,8 @@ function profile() {
     }
 
     const { email, firstName, lastName, createdAt } = userData || {}
+
+    console.log('from parent', {userData})
 
     return (
         <div className='profile'>

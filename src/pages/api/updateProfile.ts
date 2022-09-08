@@ -30,6 +30,8 @@ export default async function Profile(
                 password: password
                     ? bcrypt.hashSync(password, 10)
                     : user.password,
+            }, {
+                returnDocument: 'after'
             }
         )
 
