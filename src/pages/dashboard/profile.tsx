@@ -5,8 +5,28 @@ import { BsFillPencilFill, BsFillFilePersonFill } from 'react-icons/bs'
 import { IoMdSchool } from 'react-icons/io'
 import { MdFamilyRestroom } from 'react-icons/md'
 
-import { CircularProgress } from '@mui/material'
+import {
+    Box,
+    Button,
+    CircularProgress,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    FormControl,
+    Grid,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+    Typography,
+} from '@mui/material'
 import { IUser } from '../../models/User'
+import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import MuiPhoneNumber from 'material-ui-phone-number'
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
+import { GrFormClose } from 'react-icons/gr'
 
 const routes = ['General', 'Events']
 
@@ -169,7 +189,28 @@ function profile() {
     const [route, routeToDisplay] = useState<JSX.Element | null>(null)
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
-   
+    const [eyeIcon, setEyeIcon] = useState(false)
+
+    const [isFocused, setIsFocused] = useState(false)
+    const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
+    type ValidationError = { [key: string]: string }
+
+    type handleInputProps = {
+        firstName: string
+        lastName: string
+        personalEmail: string
+        password: string
+        phoneNumber: string
+        gender: string
+        guardianEmail: string
+        guardianPhoneNumber: string
+        guardianName: string
+        guardianRelationship: string
+        institutionName: string
+        institutionType: string
+        institutionYearOfStudy: string
+        birthDate: Date | null
+    }
 
     useEffect(() => {
         axios('/api/getUserData')
@@ -212,6 +253,41 @@ function profile() {
             })
     }, [])
 
+    const [handleInput, setHandleInput] = useState<handleInputProps>({
+        firstName: '',
+        lastName: '',
+        personalEmail: '',
+        phoneNumber: '',
+        password: '',
+        birthDate: null,
+        gender: '',
+        guardianEmail: '',
+        guardianPhoneNumber: '',
+        guardianName: '',
+        guardianRelationship: '',
+        institutionName: '',
+        institutionType: '',
+        institutionYearOfStudy: '',
+    })
+
+    const setInput = (e: any) => {
+        const { name, value } = e.target
+        setValidationError(null)
+
+        setHandleInput((prev: any) => ({
+            ...prev,
+            [name]: value,
+        }))
+    }
+
+    useEffect(() => {
+        if (isFocused) {
+            setLabelClasses('-ml-5.5 mt-3 lg:-ml-4')
+        } else {
+            setLabelClasses(labelClasses)
+        }
+    }, [isFocused, labelClasses])
+
     const handleNav = (route: React.ChangeEvent<HTMLInputElement>) => {
         const el = route.currentTarget.value
 
@@ -248,168 +324,579 @@ function profile() {
         institutionYearOfStudy,
     } = userData || {}
 
-    console.log({userData})
+    console.log({ userData })
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
     const closeModal = () => {
-        const dialog = document.querySelector('#editProfile') as HTMLDialogElement
+        const dialog = document.querySelector(
+            '#editProfile'
+        ) as HTMLDialogElement
 
         dialog.close()
     }
 
     const openDialog = () => {
-        const dialog = document.querySelector('#editProfile') as HTMLDialogElement
+        const dialog = document.querySelector(
+            '#editProfile'
+        ) as HTMLDialogElement
         dialog.showModal()
+    }
+
+    const toggleEyeIcon = () => {
+        setEyeIcon((prev) => !prev)
+    }
+
+    const handleDateChange = (e: Date | null) => {
+        setInput({
+            target: {
+                name: 'birthDate',
+                value: e,
+            },
+        })
+    }
+
+    const [validationError, setValidationError] =
+        useState<ValidationError | null>(null)
+
+    const [open, setOpen] = useState(false)
+    const handleClose = (
+        event: React.SyntheticEvent<unknown>,
+        reason?: string
+    ) => {
+        if (reason !== 'backdropClick') {
+            setOpen(false)
+        }
     }
 
     return (
         <div className='profile'>
             <div className='profile__box'>
-                <dialog className='editProfile' id='editProfile'>
-                    <form
-                        id='register'
-                        className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid m-2 gap-6 md:(w-2/5 mx-auto)'
-                        onSubmit={handleSubmit}
+                <Dialog
+                    disableEscapeKeyDown
+                    open={open}
+                    onClose={handleClose}
+                    className='filterDialog'
+                >
+                    <button
+                        className='flex cursor-pointer mr-auto'
+                        onClick={handleClose}
                     >
-                        <div className='mb-2'>
-                            <div className='grid'>
-                                <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
-                                    Personal
-                                </h3>
-
-                                <div>
-                                    <label
-                                        className='block text-gray-700 text-sm mb-1'
-                                        htmlFor='username'
-                                    >
-                                        First name
-                                    </label>
-                                    <input
-                                        className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
-                                        id='username'
-                                        name='username'
-                                        type='text'
-                                        minLength={4}
-                                        value={firstName}
-                                    />
-                                </div>
-                            </div>
-
-                            <div>
-                                <label
-                                    className='block text-gray-700 text-sm mb-1'
-                                    htmlFor='lastName'
-                                >
-                                    Last name
-                                </label>
-
-                                <input
-                                    className={`shadow appearance-none border rounded w-full py-3 px-3 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                    id='lastName'
-                                    type='text'
-                                    name='lastName'
-                                    value={lastName}
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    className='block text-gray-700 text-sm mb-1'
-                                    htmlFor='username'
-                                >
-                                    Email
-                                </label>
-                                <input
-                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                    id='email'
-                                    type='email'
-                                    name='email'
-                                    disabled
-                                    value={email}
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    className='block text-gray-700 text-sm mb-1'
-                                    htmlFor='username'
-                                >
-                                    Password
-                                </label>
-                                <input
-                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                    id='password'
-                                    type='password'
-                                    name='password'
-                                    disabled
-                                    value={''}
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    className='block text-gray-700 text-sm mb-1'
-                                    htmlFor='username'
-                                >
-                                    Phone number
-                                </label>
-                                <input
-                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-400 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white `}
-                                    id='phoneNumber'
-                                    type='phoneNumber'
-                                    name='phoneNumber'
-                                    disabled
-                                    value={phoneNumber}
-                                />
-                            </div>
-                           
-                        </div>
-
-                        <div className='grid'>
-                            <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
-                                Wallet Address
-                            </h3>
-
-                            <div>
-                                <label
-                                    className='block text-gray-700 text-sm mb-1'
-                                    htmlFor='usdtAddress'
-                                >
-                                    USDT TRC20
-                                </label>
-                                <input
-                                    className={`shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
-                                    id='usdtAddress'
-                                    disabled
-                                    name='usdtAddress'
-                                    type='text'
-                                    minLength={15}
-                                    value={''}
-                                />
-                            </div>
-                        </div>
-                        <div className='grid'>
-                            <h3 className='font-bold text-lg text-black border-b border-b-gray-400 mb-4'>
-                                Details
-                            </h3>
-                        </div>
-
-                        <div className='flex justify-around'>
-                            <button
-                                className='bg-orange-300 text-[#1a1a2d] font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
-                                type='button'
-                                onClick={closeModal}
-                            >
-                                Close
-                            </button>
-                            {/* <button
-                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline  justify-self-center'
-                            type='submit'
+                        <GrFormClose className='text-3xl ' />
+                    </button>
+                    <DialogTitle className='text-center'>Filters</DialogTitle>
+                    <DialogContent>
+                        <Box
+                            component='form'
+                            sx={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                            }}
                         >
-                            {loading ? 'Loading...' : 'Submit'}
-                        </button> */}
-                        </div>
-                    </form>
-                </dialog>
+                            <div className='grid'>
+                                <h2>Personal Details</h2>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            id='firstName'
+                                            name='firstName'
+                                            type='text'
+                                            label='First name'
+                                            fullWidth
+                                            variant='standard'
+                                            value={handleInput.firstName}
+                                            error={
+                                                validationError &&
+                                                validationError['firstName']
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                validationError &&
+                                                validationError['firstName']
+                                                    ? validationError[
+                                                          'firstName'
+                                                      ]
+                                                    : false
+                                            }
+                                            onChange={setInput}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            required
+                                            id='lastName'
+                                            name='lastName'
+                                            label='Last name'
+                                            value={handleInput.lastName}
+                                            fullWidth
+                                            error={
+                                                validationError &&
+                                                validationError['lastName']
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                validationError &&
+                                                validationError['lastName']
+                                                    ? validationError[
+                                                          'lastName'
+                                                      ]
+                                                    : false
+                                            }
+                                            variant='standard'
+                                            onChange={setInput}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            required
+                                            id='email'
+                                            name='personalEmail'
+                                            type='email'
+                                            label='Email Address'
+                                            value={handleInput.personalEmail}
+                                            fullWidth
+                                            error={
+                                                validationError &&
+                                                validationError['personalEmail']
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                validationError &&
+                                                validationError['personalEmail']
+                                                    ? validationError[
+                                                          'personalEmail'
+                                                      ]
+                                                    : false
+                                            }
+                                            variant='standard'
+                                            onChange={setInput}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <div className='flex items-center relative'>
+                                            <TextField
+                                                required
+                                                id='password'
+                                                name='password'
+                                                label='Password'
+                                                type={
+                                                    eyeIcon
+                                                        ? 'text'
+                                                        : 'password'
+                                                }
+                                                variant='standard'
+                                                fullWidth
+                                                value={handleInput.password}
+                                                error={
+                                                    validationError &&
+                                                    validationError['password']
+                                                        ? true
+                                                        : false
+                                                }
+                                                helperText={
+                                                    validationError &&
+                                                    validationError['password']
+                                                        ? validationError[
+                                                              'password'
+                                                          ]
+                                                        : false
+                                                }
+                                                onChange={setInput}
+                                            />
+                                            {
+                                                <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
+                                                    {eyeIcon ? (
+                                                        <AiOutlineEyeInvisible
+                                                            onClick={
+                                                                toggleEyeIcon
+                                                            }
+                                                        />
+                                                    ) : (
+                                                        <AiOutlineEye
+                                                            onClick={
+                                                                toggleEyeIcon
+                                                            }
+                                                        />
+                                                    )}
+                                                </span>
+                                            }
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <MuiPhoneNumber
+                                            id='phone-number'
+                                            autoFocus={true}
+                                            name='phoneNumber'
+                                            value={handleInput.phoneNumber}
+                                            placeholder='Phone Number'
+                                            defaultCountry={'us'}
+                                            variant='standard'
+                                            label='Phone Number'
+                                            fullWidth
+                                            error={
+                                                validationError &&
+                                                validationError['phoneNumber']
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                validationError &&
+                                                validationError['phoneNumber']
+                                                    ? validationError[
+                                                          'phoneNumber'
+                                                      ]
+                                                    : false
+                                            }
+                                            onChange={(value) =>
+                                                setInput({
+                                                    target: {
+                                                        name: 'phoneNumber',
+                                                        value,
+                                                    },
+                                                })
+                                            }
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <LocalizationProvider
+                                            dateAdapter={AdapterDayjs}
+                                        >
+                                            <DatePicker
+                                                label='Date of Birth'
+                                                value={handleInput.birthDate}
+                                                onChange={handleDateChange}
+                                                renderInput={(params) => (
+                                                    <TextField
+                                                        {...params}
+                                                        name='birthDate'
+                                                        fullWidth
+                                                        variant='standard'
+                                                        error={
+                                                            validationError &&
+                                                            validationError[
+                                                                'birthDate'
+                                                            ]
+                                                                ? true
+                                                                : false
+                                                        }
+                                                        helperText={
+                                                            validationError &&
+                                                            validationError[
+                                                                'birthDate'
+                                                            ]
+                                                                ? validationError[
+                                                                      'birthDate'
+                                                                  ]
+                                                                : false
+                                                        }
+                                                        required
+                                                    />
+                                                )}
+                                            />
+                                        </LocalizationProvider>
+                                    </Grid>
+                                </Grid>
+                            </div>
+
+                            <div className='grid'>
+                                <h2>Guardian/Parent Details</h2>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            required
+                                            id='guardianName'
+                                            name='guardianName'
+                                            label='Guardian Name'
+                                            fullWidth
+                                            variant='standard'
+                                            value={handleInput.guardianName}
+                                            error={
+                                                validationError &&
+                                                validationError['guardianName']
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                validationError &&
+                                                validationError['guardianName']
+                                                    ? validationError[
+                                                          'guardianName'
+                                                      ]
+                                                    : false
+                                            }
+                                            onChange={setInput}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            required
+                                            id='guardianEmail'
+                                            name='guardianEmail'
+                                            label='Guardian Email'
+                                            fullWidth
+                                            autoComplete='Email address'
+                                            variant='standard'
+                                            value={handleInput.guardianEmail}
+                                            error={
+                                                validationError &&
+                                                validationError['guardianEmail']
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                validationError &&
+                                                validationError['guardianEmail']
+                                                    ? validationError[
+                                                          'guardianEmail'
+                                                      ]
+                                                    : false
+                                            }
+                                            onChange={setInput}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <MuiPhoneNumber
+                                            id='guardianPhoneNumber'
+                                            autoFocus={true}
+                                            name='guardianPhoneNumber'
+                                            placeholder='guardian/Parent Number'
+                                            defaultCountry={'us'}
+                                            variant='standard'
+                                            label='Guardian Number'
+                                            fullWidth
+                                            value={
+                                                handleInput.guardianPhoneNumber
+                                            }
+                                            error={
+                                                validationError &&
+                                                validationError[
+                                                    'guardianPhoneNumber'
+                                                ]
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                validationError &&
+                                                validationError[
+                                                    'guardianPhoneNumber'
+                                                ]
+                                                    ? validationError[
+                                                          'guardianPhoneNumber'
+                                                      ]
+                                                    : false
+                                            }
+                                            onChange={(value) =>
+                                                setInput({
+                                                    target: {
+                                                        name: 'guardianPhoneNumber',
+                                                        value,
+                                                    },
+                                                })
+                                            }
+                                        />
+                                    </Grid>
+
+                                    <Grid item xs={12} sm={6}>
+                                        <FormControl fullWidth>
+                                            <InputLabel
+                                                id='select-label'
+                                                className={`${labelClasses}`}
+                                            >
+                                                Relationship
+                                            </InputLabel>
+                                            <Select
+                                                labelId='select-label'
+                                                id='select'
+                                                onFocus={(prev) =>
+                                                    setIsFocused(
+                                                        (prev) => !prev
+                                                    )
+                                                }
+                                                onBlur={() =>
+                                                    setLabelClasses(
+                                                        labelClasses
+                                                    )
+                                                }
+                                                variant='standard'
+                                                label='Relationship'
+                                                name='guardianRelationship'
+                                                value={
+                                                    handleInput.guardianRelationship
+                                                }
+                                                error={
+                                                    validationError &&
+                                                    validationError[
+                                                        'guardianRelationship'
+                                                    ]
+                                                        ? true
+                                                        : false
+                                                }
+                                                onChange={setInput}
+                                            >
+                                                <MenuItem value='father'>
+                                                    Father
+                                                </MenuItem>
+                                                <MenuItem value='mother'>
+                                                    Mother
+                                                </MenuItem>
+                                                <MenuItem value='guardian'>
+                                                    Guardian
+                                                </MenuItem>
+                                            </Select>
+                                            {validationError &&
+                                            validationError[
+                                                'guardianRelationship'
+                                            ] ? (
+                                                <span className='text-xs text-red-600'>
+                                                    {
+                                                        validationError[
+                                                            'guardianRelationship'
+                                                        ]
+                                                    }
+                                                </span>
+                                            ) : null}
+                                        </FormControl>
+                                    </Grid>
+                                </Grid>
+                            </div>
+                            <div className='grid'>
+                                <h2>Education</h2>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12} sm={6}>
+                                        <FormControl fullWidth>
+                                            <InputLabel
+                                                id='select-label'
+                                                className={`${labelClasses}`}
+                                            >
+                                                Institution Type
+                                            </InputLabel>
+                                            <Select
+                                                onFocus={() =>
+                                                    setIsFocused(
+                                                        (prev) => !prev
+                                                    )
+                                                }
+                                                onBlur={() =>
+                                                    setLabelClasses(
+                                                        labelClasses
+                                                    )
+                                                }
+                                                labelId='select-label'
+                                                id='select'
+                                                variant='standard'
+                                                label='Institution Type'
+                                                name='institutionType'
+                                                value={
+                                                    handleInput.institutionType
+                                                }
+                                                error={
+                                                    validationError &&
+                                                    validationError[
+                                                        'institutionType'
+                                                    ]
+                                                        ? true
+                                                        : false
+                                                }
+                                                onChange={setInput}
+                                            >
+                                                <MenuItem value={'school'}>
+                                                    School
+                                                </MenuItem>
+                                                <MenuItem value={'college'}>
+                                                    College
+                                                </MenuItem>
+                                            </Select>
+                                            {validationError &&
+                                            validationError[
+                                                'institutionType'
+                                            ] ? (
+                                                <span className='text-xs text-red-600'>
+                                                    {
+                                                        validationError[
+                                                            'institutionType'
+                                                        ]
+                                                    }
+                                                </span>
+                                            ) : null}
+                                        </FormControl>
+                                    </Grid>
+
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            required
+                                            id='grade'
+                                            name='institutionYearOfStudy'
+                                            label='Grade/Year of Study'
+                                            fullWidth
+                                            type={'number'}
+                                            variant='standard'
+                                            value={
+                                                handleInput.institutionYearOfStudy
+                                            }
+                                            error={
+                                                validationError &&
+                                                validationError[
+                                                    'institutionYearOfStudy'
+                                                ]
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                validationError &&
+                                                validationError[
+                                                    'institutionYearOfStudy'
+                                                ]
+                                                    ? validationError[
+                                                          'institutionYearOfStudy'
+                                                      ]
+                                                    : false
+                                            }
+                                            onChange={setInput}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12}>
+                                        <TextField
+                                            required
+                                            id='institutionName'
+                                            name='institutionName'
+                                            label='Name of Institution'
+                                            fullWidth
+                                            variant='standard'
+                                            value={handleInput.institutionName}
+                                            error={
+                                                validationError &&
+                                                validationError[
+                                                    'institutionName'
+                                                ]
+                                                    ? true
+                                                    : false
+                                            }
+                                            helperText={
+                                                validationError &&
+                                                validationError[
+                                                    'institutionName'
+                                                ]
+                                                    ? validationError[
+                                                          'institutionName'
+                                                      ]
+                                                    : false
+                                            }
+                                            onChange={setInput}
+                                        />
+                                    </Grid>
+                                </Grid>
+                            </div>
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        {/* <Button onClick={handleReset}>Reset</Button>
+                        <Button onClick={handleFilter}>Ok</Button> */}
+                    </DialogActions>
+                </Dialog>
                 <div className='profile__content'>
                     <div className='profile__primary'>
                         <div className='profile__primary--picture'>
@@ -435,7 +922,12 @@ function profile() {
                         </div>
                         <div className='profile__primary--edit'>
                             <BsFillPencilFill className='' />
-                            <button className='edit__btn' onClick={openDialog}>Edit profile</button>
+                            <button
+                                className='edit__btn'
+                                onClick={() => setOpen(true)}
+                            >
+                                Edit profile
+                            </button>
                         </div>
                         <div className='profile__primary--details'>
                             <h3 className='details__name'>
