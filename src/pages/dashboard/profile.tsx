@@ -466,6 +466,7 @@ function profile() {
         }
     }
 
+       const { email, firstName, lastName, createdAt } = userData || {}
 
     return (
         <div className='profile'>
@@ -1024,13 +1025,13 @@ function profile() {
                         </div>
                         <div className='profile__primary--details'>
                             <h3 className='details__name'>
-                                {userData?.firstName} {userData?.lastName}
+                                {firstName} {lastName}
                             </h3>
-                            <p className='details__email'>{userData?.email}</p>
+                            <p className='details__email'>{email}</p>
                             <p className='details__joined'>
                                 Joined{' '}
-                                {userData?.createdAt &&
-                                    new Date(userData.createdAt).toLocaleDateString(
+                                {createdAt &&
+                                    new Date(createdAt).toLocaleDateString(
                                         'en-GB',
                                         {
                                             day: 'numeric',
