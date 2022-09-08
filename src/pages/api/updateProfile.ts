@@ -7,7 +7,7 @@ export default async function Profile(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const { email, password, usdtAddress } = req.body
+    const { email, password } = req.body
 
     try {
         await dbConnect()
@@ -24,9 +24,6 @@ export default async function Profile(
             user.password = await bcrypt.hash(password, 12)
         }
 
-        if (usdtAddress) {
-            user.usdtAddress = usdtAddress
-        }
 
         await user.save()
 
