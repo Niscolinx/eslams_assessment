@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../lib/dbConnect'
 import User from '../../models/User'
 import * as jose from 'jose'
+import axios from 'axios'
 
 export default async function Profile(
     req: NextApiRequest,
@@ -30,8 +31,9 @@ export default async function Profile(
                 password: password
                     ? bcrypt.hashSync(password, 10)
                     : user.password,
-            }, {
-                returnDocument: 'after'
+            },
+            {
+                returnDocument: 'after',
             }
         )
 
@@ -54,6 +56,17 @@ export default async function Profile(
             )
         }
         console.log({ update })
+
+        axios
+            .post('https://api.cloudinary.com/v1_1/eslams/upload', {
+                body: ''
+            })
+            .then((res) => {
+                console.log('success', res)
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
 
         return res.status(200).json(update)
     } catch (err) {
