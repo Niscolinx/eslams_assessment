@@ -415,8 +415,8 @@ function profile() {
             return
         }
         setIsUpdateUser(true)
-      
-try{
+
+        try{
         axios
             .post('/api/updateProfile', {
                 handleInput,
@@ -438,7 +438,8 @@ try{
                 setIsUpdateUser(false)
                 setIsToast('Updated Successfully')
             })}
-            .catch((err) => {
+        
+            catch((err) => {
                 console.log(err)
                 setIsUpdateUser(false)
             })
