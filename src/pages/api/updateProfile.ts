@@ -29,7 +29,7 @@ export default async function Profile(
         const update = await User.findOneAndUpdate(
             { email },
             {
-                ...req.body,
+                ...req.body.handleInput,
                 email: personalEmail,
                 password: password
                     ? bcrypt.hashSync(password, 10)

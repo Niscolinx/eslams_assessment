@@ -414,7 +414,6 @@ function profile() {
         }
         setIsUpdateUser(true)
 
-        const ImageUploadData = new FormData()
 
         axios
             .post('/api/updateProfile', {handleInput, profilePhotoUrl, coverPhotoUrl})
