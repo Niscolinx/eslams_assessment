@@ -31,6 +31,7 @@ import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
 import { AdvancedImage } from '@cloudinary/react'
 import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen'
+import { getPhotoUrl } from '../../utils/getPhotoUrl'
 
 const routes = ['General', 'Events']
 
@@ -412,6 +413,8 @@ function profile() {
         }
         setIsUpdateUser(true)
 
+        const ImageUploadData = new FormData()
+
         // axios
         //     .post('/api/updateProfile', handleInput)
         //     .then(({ data }) => {
@@ -488,7 +491,15 @@ function profile() {
         }
     }
 
-    const changeProfilePhoto = async () => {}
+    const changePhoto = async (value: React.MouseEvent<HTMLLabelElement>) => {
+        console.log(value.currentTarget)
+        const inputForm = value.currentTarget
+        
+        const fileInput = Array.from(inputForm.elements)
+
+        console.log({fileInput})
+        const getUrl = await getPhotoUrl('')
+    }
 
     const { email, firstName, lastName, createdAt } = userData || {}
 
@@ -517,7 +528,7 @@ function profile() {
                         Edit Profile
                     </DialogTitle>
 
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id='imageUpload'>
                         <div className='profile-upload'>
                             <div className='profile-upload__cover'>
                                 <input
@@ -530,7 +541,7 @@ function profile() {
                                 <label
                                     htmlFor='coverPhoto'
                                     className='cursor-pointer'
-                                    onClick={changeProfilePhoto}
+                                    onClick={(e) => changePhoto(e)}
                                 >
                                     <img
                                         src='/img/event1.jpg'
@@ -555,7 +566,7 @@ function profile() {
                                 <label
                                     htmlFor='profilePhoto'
                                     className='cursor-pointer'
-                                    onClick={changeProfilePhoto}
+                                    onClick={(e) => changePhoto(e)}
                                 >
                                     <img
                                         src={profilePhotoUrl}
