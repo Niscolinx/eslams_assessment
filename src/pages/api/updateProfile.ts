@@ -24,22 +24,20 @@ export default async function Profile(
             return res.status(401).json('Not found')
         }
 
-        
-
-        const update = User.updateOne(
+        const update = await User.findOneAndUpdate(
             { email },
             {
                 ...req.body,
                 email: personalEmail,
-                password: password ? await bcrypt.hash(password, 12) : user.password,
+                password: password
+                    ? bcrypt.hashSync(password, 10)
+                    : user.password,
             }
         )
 
-      
-
         console.log({ update })
 
-        if (password) {
+        if (email !== personalEmail) {
             const token = await new jose.SignJWT({
                 email: personalEmail,
                 userId: user!._id.toString(),
