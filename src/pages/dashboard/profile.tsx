@@ -327,13 +327,7 @@ function profile() {
             return cb(isValid)
         }
 
-
         for (const key in handleInput) {
-                            console.log(
-                                handleInput[key as keyof handleInputProps]
-                            )
-
-
             //Validation for the first step
 
             if (key === 'personalEmail') {
@@ -355,7 +349,10 @@ function profile() {
                 }
             }
 
-            if (key === 'password') {
+            if (
+                key === 'password' &&
+               handleInput[key] !== '' 
+            ) {
                 if (handleInput[key].length < 6) {
                     errors[key as keyof handleInputProps] =
                         'Password must be at least 6 characters long'
@@ -381,7 +378,7 @@ function profile() {
             }
 
             if (
-                (handleInput[key as keyof handleInputProps] !== 'password' &&
+                (key !== 'password' &&
                     handleInput[key as keyof handleInputProps] === '') ||
                 handleInput[key as keyof handleInputProps] === null
             ) {
@@ -985,7 +982,7 @@ function profile() {
                         </Box>
                     </DialogContent>
                     <DialogActions>
-                        <Button>Cancel</Button>
+                        <Button onClick={handleClose}>Cancel</Button>
                         <Button onClick={(e) => handleSubmit(e)}>Save</Button>
                     </DialogActions>
                 </Dialog>
