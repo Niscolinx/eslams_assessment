@@ -57,9 +57,8 @@ export default async function Profile(
             )
         }
 
-        console.log({ update })
 
-        return res.status(200).json(user)
+        return res.status(200).json(update)
     } catch (err) {
         console.log({ err })
         res.status(400).json('error')
