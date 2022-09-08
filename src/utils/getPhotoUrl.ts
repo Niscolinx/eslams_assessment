@@ -1,6 +1,8 @@
 export const getPhotoUrl = async(selector: string) => {
     const selectPhoto = document.querySelector(selector)
 
+    console.log({selector})
+
     if (!selectPhoto) return 'no photo selected'
 
     const photo = selectPhoto as HTMLInputElement
