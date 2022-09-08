@@ -11,8 +11,6 @@ export default async function Profile(
 ) {
     const { personalEmail, password, email } = req.body
 
-    console.log(req.body)
-
     try {
         await dbConnect()
 
@@ -53,7 +51,7 @@ export default async function Profile(
                 }`
             )
         }
-        console.log(update)
+        console.log({ update })
 
         return res.status(200).json(update)
     } catch (err) {
