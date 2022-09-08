@@ -392,10 +392,13 @@ function profile() {
                             sx={{
                                 display: 'flex',
                                 flexWrap: 'wrap',
+                                gap: '2rem',
                             }}
                         >
                             <div className='grid'>
-                                <h2>Personal Details</h2>
+                                <h2 className='font-bold text-xl'>
+                                    Personal Details
+                                </h2>
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
@@ -603,7 +606,9 @@ function profile() {
                             </div>
 
                             <div className='grid'>
-                                <h2>Guardian/Parent Details</h2>
+                                <h2 className='font-bold text-xl'>
+                                    Guardian/Parent Details
+                                </h2>
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
@@ -764,7 +769,7 @@ function profile() {
                                 </Grid>
                             </div>
                             <div className='grid'>
-                                <h2>Education</h2>
+                                <h2 className='font-bold text-xl'>Education</h2>
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={6}>
                                         <FormControl fullWidth>
