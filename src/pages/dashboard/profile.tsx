@@ -331,7 +331,7 @@ function profile() {
         for (const key in handleInput) {
             //Validation for the first step
 
-            if (key === 'personalEmail') {
+            if (key === 'personalEmail' || key === 'guardianEmail') {
                 isValidMail(handleInput[key], (cb) => {
                     if (!cb) {
                         errors[key] = 'Invalid email'
@@ -341,7 +341,11 @@ function profile() {
                 })
             }
 
-            if (key === 'lastName' || key === 'firstName') {
+            if (
+                key === 'lastName' ||
+                key === 'firstName' ||
+                key === 'guardianName'
+            ) {
                 if (handleInput[key].length < 3) {
                     errors[key as keyof handleInputProps] =
                         'This field must be at least 3 characters long'
@@ -359,7 +363,7 @@ function profile() {
                 }
             }
 
-            if (key === 'phoneNumber') {
+            if (key === 'phoneNumber' || key === 'guardianPhoneNumber') {
                 if (handleInput[key].length < 10) {
                     errors[key as keyof handleInputProps] =
                         'Phone number not valid'
@@ -383,33 +387,6 @@ function profile() {
                 errors[key as keyof handleInputProps] = 'This field is required'
 
                 setValidationError(errors)
-            }
-            if (key === 'guardianEmail') {
-                isValidMail(handleInput[key], (cb) => {
-                    if (!cb) {
-                        errors[key] = 'Invalid email'
-
-                        setValidationError(errors)
-                    }
-                })
-            }
-
-            if (key === 'guardianName') {
-                if (handleInput[key].length < 3) {
-                    errors[key as keyof handleInputProps] =
-                        'This field must be at least 3 characters long'
-
-                    setValidationError(errors)
-                }
-            }
-
-            if (key === 'guardianPhoneNumber') {
-                if (handleInput[key].length < 10) {
-                    errors[key as keyof handleInputProps] =
-                        'Phone number not valid'
-
-                    setValidationError(errors)
-                }
             }
         }
 
@@ -989,7 +966,7 @@ function profile() {
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
                         <Button onClick={(e) => handleSubmit(e)}>
-                            {!isUpdateUser ? (
+                            {isUpdateUser ? (
                                 <CircularProgress
                                     className='flex justify-self-center'
                                     size={15}
