@@ -898,8 +898,8 @@ function profile() {
                         </Box>
                     </DialogContent>
                     <DialogActions>
-                        {/* <Button onClick={handleReset}>Reset</Button>
-                        <Button onClick={handleFilter}>Ok</Button> */}
+                        <Button>Cancel</Button>
+                        <Button>Save</Button>
                     </DialogActions>
                 </Dialog>
                 <div className='profile__content'>
