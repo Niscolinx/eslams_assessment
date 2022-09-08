@@ -15,6 +15,8 @@ export default async function Profile(
     const profilePhotoUrl = req.body.profilePhotoUrl
     const coverPhotoUrl = req.body.coverPhotoUrl
 
+    console.log('updateProfile', req.body)
+
     try {
         await dbConnect()
 

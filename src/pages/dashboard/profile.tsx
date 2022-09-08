@@ -416,7 +416,7 @@ function profile() {
 
 
         axios
-            .post('/api/updateProfile', {profilePhotoUrl})
+            .post('/api/updateProfile', {profilePhotoUrl: ''})
             .then(({ data }) => {
                 console.log(data)
                 setUserData({ ...data })
