@@ -8,7 +8,7 @@ export default async function Profile(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const { personalEmail, password } = req.body
+    const { personalEmail, password, email} = req.body
 
     console.log(req.body)
 
@@ -16,7 +16,7 @@ export default async function Profile(
         await dbConnect()
         
         const user: IUser | null = await User.findOne({
-            email: personalEmail,
+            email,
         })
 
         if (!user) {
@@ -30,7 +30,10 @@ export default async function Profile(
 
         //update user data
        
-        const update = await User.updateOne({ email: personalEmail }, req.body)
+        const update = await User.updateOne({ email }, {
+            ...req.body,
+            email: personalEmail,
+        })
 
     console.log({update})
 
