@@ -438,16 +438,7 @@ function profile() {
                 setIsUpdateUser(false)
             })
 
-        // axios
-        //     .post('https://api.cloudinary.com/v1_1/eslams/upload', {
-        //         body: '',
-        //     })
-        //     .then((res) => {
-        //         console.log('success', res)
-        //     })
-        //     .catch((err) => {
-        //         console.log(err.response)
-        //     })
+     
     }
 
     const toggleEyeIcon = () => {
