@@ -496,10 +496,8 @@ function profile() {
         value: React.MouseEvent<HTMLLabelElement>
     ) => {
        
-        console.log('the change')
         const getUrl = await getPhotoUrl(`#profilePhoto`)
 
-        console.log({ getUrl })
 
         setProfilePhotoUrl(getUrl)
     }
