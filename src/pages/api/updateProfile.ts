@@ -8,7 +8,7 @@ export default async function Profile(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const { email, password } = req.body
+    const { personalEmail, password } = req.body
 
     console.log(req.body)
 
@@ -16,7 +16,7 @@ export default async function Profile(
         await dbConnect()
         
         const user: IUser | null = await User.findOne({
-            email,
+            email: personalEmail,
         })
 
         if (!user) {
@@ -27,8 +27,11 @@ export default async function Profile(
             user.password = await bcrypt.hash(password, 12)
         }
 
-        //update user
-        
+        //update user data
+       
+        const update = await User.updateOne({ email: personalEmail }, req.body)
+
+    console.log({update})
 
 
        // await user.save()
