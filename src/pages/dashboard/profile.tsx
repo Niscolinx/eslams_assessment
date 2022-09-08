@@ -267,7 +267,7 @@ function profile() {
                 routeToDisplay(<GeneralDetails userData={user} />)
                 setHandleInput({
                     ...user,
-                    password: ''
+                    password: '',
                 })
             })
             .catch((err) => {
@@ -315,129 +315,125 @@ function profile() {
         }))
     }
 
+    const formValidate = () => {
+        const errors = {} as ValidationError
+        const isValidMail = (e: string, cb: (checkValid: boolean) => void) => {
+            const emailRegex = new RegExp(
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            )
 
-     const formValidate = () => {
-         const errors = {} as ValidationError
-         const isValidMail = (e: string, cb: (checkValid: boolean) => void) => {
-             const emailRegex = new RegExp(
-                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-             )
+            const isValid = emailRegex.test(e)
 
-             const isValid = emailRegex.test(e)
+            return cb(isValid)
+        }
 
-             return cb(isValid)
-         }
 
-         let count = 0
+        for (const key in handleInput) {
+                            console.log(
+                                handleInput[key as keyof handleInputProps]
+                            )
 
-         for (const key in handleInput) {
-             count++
 
-             //Validation for the first step
+            //Validation for the first step
 
-                 if (key === 'personalEmail') {
-                     isValidMail(handleInput[key], (cb) => {
-                         if (!cb) {
-                             errors[key] = 'Invalid email'
+            if (key === 'personalEmail') {
+                isValidMail(handleInput[key], (cb) => {
+                    if (!cb) {
+                        errors[key] = 'Invalid email'
 
-                             setValidationError(errors)
-                         }
-                     })
-                 }
+                        setValidationError(errors)
+                    }
+                })
+            }
 
-                 if (key === 'lastName' || key === 'firstName') {
-                     if (handleInput[key].length < 3) {
-                         errors[key as keyof handleInputProps] =
-                             'This field must be at least 3 characters long'
+            if (key === 'lastName' || key === 'firstName') {
+                if (handleInput[key].length < 3) {
+                    errors[key as keyof handleInputProps] =
+                        'This field must be at least 3 characters long'
 
-                         setValidationError(errors)
-                     }
-                 }
+                    setValidationError(errors)
+                }
+            }
 
-                 if (key === 'password') {
-                     if (handleInput[key].length < 6) {
-                         errors[key as keyof handleInputProps] =
-                             'Password must be at least 6 characters long'
+            if (key === 'password') {
+                if (handleInput[key].length < 6) {
+                    errors[key as keyof handleInputProps] =
+                        'Password must be at least 6 characters long'
 
-                         setValidationError(errors)
-                     }
-                 }
+                    setValidationError(errors)
+                }
+            }
 
-                 if (key === 'phoneNumber') {
-                     if (handleInput[key].length < 10) {
-                         errors[key as keyof handleInputProps] =
-                             'Phone number not valid'
+            if (key === 'phoneNumber') {
+                if (handleInput[key].length < 10) {
+                    errors[key as keyof handleInputProps] =
+                        'Phone number not valid'
 
-                         setValidationError(errors)
-                     }
-                 }
-                 if (key === 'birthDate') {
-                     if (!dayjs(handleInput[key]).isValid()) {
-                         errors[key as keyof handleInputProps] = 'Invalid Date'
+                    setValidationError(errors)
+                }
+            }
+            if (key === 'birthDate') {
+                if (!dayjs(handleInput[key]).isValid()) {
+                    errors[key as keyof handleInputProps] = 'Invalid Date'
 
-                         setValidationError(errors)
-                     }
-                 }
+                    setValidationError(errors)
+                }
+            }
 
-                 if (
-                     handleInput[key as keyof handleInputProps] === '' ||
-                     handleInput[key as keyof handleInputProps] === null
-                 ) {
-                     errors[key as keyof handleInputProps] =
-                         'This field is required'
+            if (
+                (handleInput[key as keyof handleInputProps] !== 'password' &&
+                    handleInput[key as keyof handleInputProps] === '') ||
+                handleInput[key as keyof handleInputProps] === null
+            ) {
+                errors[key as keyof handleInputProps] = 'This field is required'
 
-                     setValidationError(errors)
-                 }
-                 if (key === 'guardianEmail') {
-                     isValidMail(handleInput[key], (cb) => {
-                         if (!cb) {
-                             errors[key] = 'Invalid email'
+                setValidationError(errors)
+            }
+            if (key === 'guardianEmail') {
+                isValidMail(handleInput[key], (cb) => {
+                    if (!cb) {
+                        errors[key] = 'Invalid email'
 
-                             setValidationError(errors)
-                         }
-                     })
-                 }
+                        setValidationError(errors)
+                    }
+                })
+            }
 
-                 if (key === 'guardianName') {
-                     if (handleInput[key].length < 3) {
-                         errors[key as keyof handleInputProps] =
-                             'This field must be at least 3 characters long'
+            if (key === 'guardianName') {
+                if (handleInput[key].length < 3) {
+                    errors[key as keyof handleInputProps] =
+                        'This field must be at least 3 characters long'
 
-                         setValidationError(errors)
-                     }
-                 }
+                    setValidationError(errors)
+                }
+            }
 
-                 if (key === 'guardianPhoneNumber') {
-                     if (handleInput[key].length < 10) {
-                         errors[key as keyof handleInputProps] =
-                             'Phone number not valid'
+            if (key === 'guardianPhoneNumber') {
+                if (handleInput[key].length < 10) {
+                    errors[key as keyof handleInputProps] =
+                        'Phone number not valid'
 
-                         setValidationError(errors)
-                     }
-                 }
+                    setValidationError(errors)
+                }
+            }
+        }
 
-             
-             
-         }
+        if (Object.keys(errors).length > 0) {
+            return false
+        }
 
-         if (Object.keys(errors).length > 0) {
-             return false
-         }
-
-         return true
-     }
+        return true
+    }
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         console.log('valid')
-        
+
         const isValid = formValidate()
 
         console.log('valid', isValid)
 
-          if (!isValid) {
+        if (!isValid) {
             return
-        } 
-
-
+        }
     }
 
     const toggleEyeIcon = () => {
@@ -481,13 +477,7 @@ function profile() {
         }
     }
 
-    const {
-        email,
-        firstName,
-        lastName,
-        createdAt,
-       
-    } = userData || {}
+    const { email, firstName, lastName, createdAt } = userData || {}
 
     return (
         <div className='profile'>
@@ -504,7 +494,9 @@ function profile() {
                     >
                         <GrFormClose className='text-3xl ' />
                     </button>
-                    <DialogTitle className='text-center'>Edit Profile</DialogTitle>
+                    <DialogTitle className='text-center'>
+                        Edit Profile
+                    </DialogTitle>
                     <DialogContent>
                         <Box
                             component='form'
@@ -547,7 +539,6 @@ function profile() {
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
-                                            
                                             id='lastName'
                                             name='lastName'
                                             label='Last name'
@@ -573,7 +564,6 @@ function profile() {
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
-                                            
                                             id='email'
                                             name='personalEmail'
                                             type='email'
@@ -626,7 +616,7 @@ function profile() {
                                                           ]
                                                         : false
                                                 }
-                                               onChange={setInput}
+                                                onChange={setInput}
                                             />
                                             {
                                                 <span className='cursor-pointer absolute grid self-start justify-self-center right-5 bottom-2'>
@@ -671,7 +661,7 @@ function profile() {
                                                       ]
                                                     : false
                                             }
-                                           onChange={changePhoneNumber}
+                                            onChange={changePhoneNumber}
                                         />
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
@@ -706,7 +696,7 @@ function profile() {
                                                                   ]
                                                                 : false
                                                         }
-                                                            />
+                                                    />
                                                 )}
                                             />
                                         </LocalizationProvider>
@@ -721,7 +711,6 @@ function profile() {
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
-                                            
                                             id='guardianName'
                                             name='guardianName'
                                             label='Guardian Name'
@@ -747,7 +736,6 @@ function profile() {
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
-                                            
                                             id='guardianEmail'
                                             name='guardianEmail'
                                             label='Guardian Email'
@@ -933,7 +921,6 @@ function profile() {
 
                                     <Grid item xs={12} sm={6}>
                                         <TextField
-                                            
                                             id='grade'
                                             name='institutionYearOfStudy'
                                             label='Grade/Year of Study'
@@ -966,7 +953,6 @@ function profile() {
                                     </Grid>
                                     <Grid item xs={12} sm={12}>
                                         <TextField
-                                            
                                             id='institutionName'
                                             name='institutionName'
                                             label='Name of Institution'
