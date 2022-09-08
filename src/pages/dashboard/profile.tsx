@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { BsFillPencilFill, BsFillFilePersonFill } from 'react-icons/bs'
 import { IoMdSchool } from 'react-icons/io'
 import { MdFamilyRestroom } from 'react-icons/md'
+import {TbCameraPlus} from 'react-icons/tb'
 
 import {
     Box,
@@ -501,6 +502,10 @@ function profile() {
                         </p>
                     )}
 
+                    <DialogTitle className='text-center -mt-7'>
+                        Edit Profile
+                    </DialogTitle>
+
                     <div className='profile-upload'>
                         <div className='profile-upload__cover'>
                             <img
@@ -535,9 +540,6 @@ function profile() {
                         </div>
                     </div>
 
-                    <DialogTitle className='text-center'>
-                        Edit Profile
-                    </DialogTitle>
                     <DialogContent>
                         <Box
                             component='form'
