@@ -11,7 +11,6 @@ export const getPhotoUrl = async(selector: string) => {
 
             const reader = new FileReader()
 
-            console.log({reader})
             reader.readAsDataURL(file.files![0])
 
             reader.onload = () => resolve(reader.result as string)

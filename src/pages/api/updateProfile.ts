@@ -10,7 +10,10 @@ export default async function Profile(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const { personalEmail, password, email } = req.body
+    const { personalEmail, password, email } = req.body.handleInput
+    
+    const profilePhotoUrl = req.body.profilePhotoUrl
+    const coverPhotoUrl = req.body.coverPhotoUrl
 
     try {
         await dbConnect()
@@ -56,6 +59,8 @@ export default async function Profile(
             )
         }
         console.log({ update })
+
+        console.log({profilePhotoUrl, coverPhotoUrl})
 
        
         return res.status(200).json(update)

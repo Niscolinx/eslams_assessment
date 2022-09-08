@@ -416,39 +416,39 @@ function profile() {
 
         const ImageUploadData = new FormData()
 
-        // axios
-        //     .post('/api/updateProfile', handleInput)
-        //     .then(({ data }) => {
-        //         console.log(data)
-        //         setUserData({ ...data })
-        //         routeToDisplay((prev: any) => {
-        //             return {
-        //                 ...prev,
-        //                 props: {
-        //                     ...prev!.props,
-        //                     userData: data,
-        //                 },
-        //             }
-        //         })
-
-        //         setIsUpdateUser(false)
-        //         setIsToast('Updated Successfully')
-        //     })
-        //     .catch((err) => {
-        //         console.log(err)
-        //         setIsUpdateUser(false)
-        //     })
-
         axios
-            .post('https://api.cloudinary.com/v1_1/eslams/upload', {
-                body: '',
-            })
-            .then((res) => {
-                console.log('success', res)
+            .post('/api/updateProfile', {handleInput, profilePhotoUrl, coverPhotoUrl})
+            .then(({ data }) => {
+                console.log(data)
+                setUserData({ ...data })
+                routeToDisplay((prev: any) => {
+                    return {
+                        ...prev,
+                        props: {
+                            ...prev!.props,
+                            userData: data,
+                        },
+                    }
+                })
+
+                setIsUpdateUser(false)
+                setIsToast('Updated Successfully')
             })
             .catch((err) => {
-                console.log(err.response)
+                console.log(err)
+                setIsUpdateUser(false)
             })
+
+        // axios
+        //     .post('https://api.cloudinary.com/v1_1/eslams/upload', {
+        //         body: '',
+        //     })
+        //     .then((res) => {
+        //         console.log('success', res)
+        //     })
+        //     .catch((err) => {
+        //         console.log(err.response)
+        //     })
     }
 
     const toggleEyeIcon = () => {
