@@ -53,6 +53,7 @@ export default async function Profile(
                 }`
             )
         }
+        console.log(update)
 
         return res.status(200).json(update)
     } catch (err) {
