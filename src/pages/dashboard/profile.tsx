@@ -495,14 +495,14 @@ function profile() {
     const changeProfilePhoto = async (
         value: React.ChangeEvent<HTMLInputElement>
     ) => {
-        console.log(value.target)
-        const inputForm = value.currentTarget
+        const id = value.target.id
 
-        //console.log({fileInput})
-        const getUrl = await getPhotoUrl('')
+        const getUrl = await getPhotoUrl(id)
     }
 
-    const changeCoverPhoto = async (e: any) => {}
+    const changeCoverPhoto = async (
+        value: React.ChangeEvent<HTMLInputElement>
+    ) => {}
 
     const { email, firstName, lastName, createdAt } = userData || {}
 
