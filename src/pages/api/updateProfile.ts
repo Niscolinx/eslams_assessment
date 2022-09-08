@@ -35,7 +35,6 @@ export default async function Profile(
             }
         )
 
-        console.log({ update })
 
         if (email !== personalEmail) {
             const token = await new jose.SignJWT({

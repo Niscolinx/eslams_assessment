@@ -28,6 +28,7 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
+import { toast, ToastContainer } from 'react-toastify'
 
 const routes = ['General', 'Events']
 
@@ -196,6 +197,8 @@ function profile() {
         useState<ValidationError | null>(null)
     const [isFocused, setIsFocused] = useState(false)
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
+        const [open, setOpen] = useState(false)
+
     type ValidationError = { [key: string]: string }
 
     type handleInputProps = {
@@ -329,7 +332,6 @@ function profile() {
         }
 
         for (const key in handleInput) {
-            //Validation for the first step
 
             if (key === 'personalEmail' || key === 'guardianEmail') {
                 isValidMail(handleInput[key], (cb) => {
@@ -397,7 +399,6 @@ function profile() {
         return true
     }
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-        console.log('valid')
 
         const isValid = formValidate()
 
@@ -408,9 +409,12 @@ function profile() {
 
         axios
             .post('/api/updateProfile', handleInput)
-            .then((res) => {
-                console.log(res)
+            .then(({data}) => {
+                console.log(data)
                 setIsUpdateUser(false)
+                toast('Profile updated successfully', {
+                    type: 'success',
+                })
             })
             .catch((err) => {
                 console.log(err)
@@ -449,7 +453,6 @@ function profile() {
         })
     }
 
-    const [open, setOpen] = useState(false)
     const handleClose = (
         event: React.SyntheticEvent<unknown>,
         reason?: string
