@@ -413,7 +413,16 @@ function profile() {
             .then(({ data }) => {
                 console.log(data)
                 setUserData({ ...data })
-                routeToDisplay((prev) => <GeneralDetails userData={data} />)
+                routeToDisplay((prev: any) => {
+                    return {
+                        ...prev,
+                        props: {
+                            ...prev!.props,
+                            userData: data,
+                        },
+                    }
+                })
+
                 setIsUpdateUser(false)
                 setIsToast('Updated Successfully')
             })
