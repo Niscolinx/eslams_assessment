@@ -431,6 +431,7 @@ function profile() {
             .then(({ data }) => {
                 console.log(data)
                 setUserData({ ...data })
+                dispatch(update(data))
                 routeToDisplay((prev: any) => {
                     return {
                         ...prev,
