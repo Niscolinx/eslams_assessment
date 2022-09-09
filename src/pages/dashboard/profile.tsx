@@ -502,10 +502,9 @@ function profile() {
     ) => {
         console.log('clicked')
         const getUrl = await getPhotoUrl(`#profilePhoto`)
-        setProfilePhotoUrl({
-            url: getUrl,
-            changed: true
-        })
+        setProfilePhotoUrl(getUrl)
+
+        console.log({getUrl})
         
     }
 

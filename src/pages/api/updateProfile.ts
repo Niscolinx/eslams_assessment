@@ -10,10 +10,12 @@ export default async function Profile(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const { personalEmail, password, email } = req.body.handleInput
+    // const { personalEmail, password, email } = req.body.handleInput
 
-    const profilePhotoFile = req.body.jwt
-    const coverPhotoUrl = req.body.coverPhotoUrl
+    // const profilePhotoFile = req.body.profilePhotoFile
+    // const coverPhotoUrl = req.body.coverPhotoUrl
+
+    const { personalEmail, password, email } = req.body
 
     console.log('updateProfile', req.body)
 
@@ -30,42 +32,41 @@ export default async function Profile(
             return res.status(401).json('Not found')
         }
 
-        const update = await User.findOneAndUpdate(
-            { email },
-            {
-                ...req.body.handleInput,
-                email: personalEmail,
-                password: password
-                    ? bcrypt.hashSync(password, 10)
-                    : user.password,
-            },
-            {
-                returnDocument: 'after',
-            }
-        )
+        // const update = await User.findOneAndUpdate(
+        //     { email },
+        //     {
+        //         ...req.body.handleInput,
+        //         email: personalEmail,
+        //         password: password
+        //             ? bcrypt.hashSync(password, 10)
+        //             : user.password,
+        //     },
+        //     {
+        //         returnDocument: 'after',
+        //     }
+        // )
 
-        if (email !== personalEmail) {
-            const token = await new jose.SignJWT({
-                email: personalEmail,
-                userId: user!._id.toString(),
-            })
-                .setProtectedHeader({ alg: 'HS256' })
-                .setIssuedAt()
-                .setExpirationTime('30d')
-                .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
+        // if (email !== personalEmail) {
+        //     const token = await new jose.SignJWT({
+        //         email: personalEmail,
+        //         userId: user!._id.toString(),
+        //     })
+        //         .setProtectedHeader({ alg: 'HS256' })
+        //         .setIssuedAt()
+        //         .setExpirationTime('30d')
+        //         .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
 
-            //set cookie in nodejs
-            res.setHeader(
-                'Set-Cookie',
-                `tokenCookie=${token}; Path=/; HttpOnly; Secure; Max-Age=${
-                    60 * 60 * 24 * 7
-                }`
-            )
-        }
-        console.log({ update })
+        //     //set cookie in nodejs
+        //     res.setHeader(
+        //         'Set-Cookie',
+        //         `tokenCookie=${token}; Path=/; HttpOnly; Secure; Max-Age=${
+        //             60 * 60 * 24 * 7
+        //         }`
+        //     )
+        // }
 
 
-        return res.status(200).json(update)
+        return res.status(200).json(user)
     } catch (err) {
         console.log({ err })
         res.status(400).json('error')
