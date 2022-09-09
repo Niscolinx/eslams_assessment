@@ -205,9 +205,12 @@ function profile() {
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)
-    const [profilePhotoUrl, setProfilePhotoUrl] =
-        useState<string>(userDetails.profilePhotoUrl)
-    const [coverPhotoUrl, setCoverPhotoUrl] = useState(userDetails.coverPhotoUrl)
+    const [profilePhotoUrl, setProfilePhotoUrl] = useState<string>(
+        userDetails.profilePhotoUrl
+    )
+    const [coverPhotoUrl, setCoverPhotoUrl] = useState(
+        userDetails.coverPhotoUrl
+    )
 
     console.log({ userDetails })
 
@@ -418,36 +421,36 @@ function profile() {
         }
         setIsUpdateUser(true)
 
+        if (userDetails.profilePhotoUrl !== profilePhotoUrl) {
+            const upload = await axios.post(
+                `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`,
+                {
+                    upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
+                    file: profilePhotoUrl,
+                }
+            )
 
-        if(userDetails.profilePhotoUrl !== profilePhotoUrl){
-
-            console.log('changed occured in profilePhotoUrl')
-
-        }
-        else{
-            console.log("no changed occured in profilePhotoUrl")
-        }
-        if(userDetails.coverPhotoUrl !== coverPhotoUrl){
-
-            console.log('changed occured in coverPhotoUrl')
-
-        }
-        else{
-            console.log("no changed occured in coverPhotoUrl!")
+            console.log({upload})
         }
 
-        // const upload = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`, {
-        //     upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
-        //     file: profilePhotoUrl
-        // })
+        if (userDetails.coverPhotoUrl !== coverPhotoUrl) {
+            const upload = await axios.post(
+                `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`,
+                {
+                    upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
+                    file: coverPhotoUrl,
+                }
+            )
+
+            console.log({upload})
+        }
 
         axios
-            .post('/api/updateProfile', {
+            .post('/api/updateProfile', 
                 handleInput,
-                file: profilePhotoUrl,
-            })
+            )
             .then(({ data }) => {
-                console.log(data)
+                console.log({data})
                 setUserData({ ...data })
                 dispatch(updateUser(data))
                 routeToDisplay((prev: any) => {
@@ -551,58 +554,58 @@ function profile() {
                         Edit Profile
                     </DialogTitle>
 
-                        <div className='profile-upload'>
-                            <div className='profile-upload__cover'>
-                                <input
-                                    type='file'
-                                    accept='image/*'
-                                    id='coverPhoto'
-                                    name='coverPhoto'
-                                    hidden
+                    <div className='profile-upload'>
+                        <div className='profile-upload__cover'>
+                            <input
+                                type='file'
+                                accept='image/*'
+                                id='coverPhoto'
+                                name='coverPhoto'
+                                hidden
+                            />
+                            <label
+                                htmlFor='coverPhoto'
+                                className='cursor-pointer'
+                                onClick={changeCoverPhoto}
+                            >
+                                <img
+                                    src={coverPhotoUrl}
+                                    width='100%'
+                                    height='100%'
+                                    className='profile-upload__cover--img'
+                                    alt='cover'
                                 />
-                                <label
-                                    htmlFor='coverPhoto'
-                                    className='cursor-pointer'
-                                    onClick={changeCoverPhoto}
-                                >
-                                    <img
-                                        src={coverPhotoUrl}
-                                        width='100%'
-                                        height='100%'
-                                        className='profile-upload__cover--img'
-                                        alt='cover'
-                                    />
-                                    <div className='profile-upload__icon'>
-                                        <TbCameraPlus />
-                                    </div>
-                                </label>
-                            </div>
-                            <div className='profile-upload__avatar'>
-                                <input
-                                    type='file'
-                                    accept='image/*'
-                                    id='profilePhoto'
-                                    name='profilePhoto'
-                                    hidden
-                                />
-                                <label
-                                    htmlFor='profilePhoto'
-                                    className='cursor-pointer'
-                                    onClick={changeProfilePhoto}
-                                >
-                                    <img
-                                        src={profilePhotoUrl}
-                                        width='100%'
-                                        height='100%'
-                                        className='profile-upload__avatar--img'
-                                        alt='cover'
-                                    />
-                                    <div className='profile-upload__icon'>
-                                        <TbCameraPlus />
-                                    </div>{' '}
-                                </label>
-                            </div>
+                                <div className='profile-upload__icon'>
+                                    <TbCameraPlus />
+                                </div>
+                            </label>
                         </div>
+                        <div className='profile-upload__avatar'>
+                            <input
+                                type='file'
+                                accept='image/*'
+                                id='profilePhoto'
+                                name='profilePhoto'
+                                hidden
+                            />
+                            <label
+                                htmlFor='profilePhoto'
+                                className='cursor-pointer'
+                                onClick={changeProfilePhoto}
+                            >
+                                <img
+                                    src={profilePhotoUrl}
+                                    width='100%'
+                                    height='100%'
+                                    className='profile-upload__avatar--img'
+                                    alt='cover'
+                                />
+                                <div className='profile-upload__icon'>
+                                    <TbCameraPlus />
+                                </div>{' '}
+                            </label>
+                        </div>
+                    </div>
 
                     <DialogContent>
                         <Box
