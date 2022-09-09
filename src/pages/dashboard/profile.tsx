@@ -205,7 +205,7 @@ function profile() {
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)
     const [profilePhotoUrl, setProfilePhotoUrl] =
-        useState<string>('/img/avatar.jpeg')
+        useState<string>("https://res.cloudinary.com/eslams/image/upload/v1662722166/my-uploads/ftbhpfybt37syaii55fa.jpg")
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
 
 
@@ -416,32 +416,39 @@ function profile() {
         }
         setIsUpdateUser(true)
 
-
+ 
      
-            axios.post('https://api.cloudinary.com/v1_1/eslams/upload', {
-                upload_preset: 'eslams-upload_preset',
+            const upload = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`, {
+                upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
                 file: profilePhotoUrl
             })
+
+
+            axios
+                .post('/api/updateProfile', {
+                    handleInput,
+                    file: profilePhotoUrl,
+                })
                 .then(({ data }) => {
                     console.log(data)
-                    // setUserData({ ...data })
-                    // routeToDisplay((prev: any) => {
-                    //     return {
-                    //         ...prev,
-                    //         props: {
-                    //             ...prev!.props,
-                    //             userData: data,
-                    //         },
-                    //     }
-                    // })
+                    setUserData({ ...data })
+                    routeToDisplay((prev: any) => {
+                        return {
+                            ...prev,
+                            props: {
+                                ...prev!.props,
+                                userData: data,
+                            },
+                        }
+                    })
 
                     setIsUpdateUser(false)
                     setIsToast('Updated Successfully')
                 })
-        .catch ((err) => {
-            console.log({ err })
-            setIsUpdateUser(false)
-        })
+                .catch((err) => {
+                    console.log({ err })
+                    setIsUpdateUser(false)
+                })
     }
 
     const toggleEyeIcon = () => {
