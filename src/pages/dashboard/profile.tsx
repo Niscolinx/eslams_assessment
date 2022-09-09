@@ -212,7 +212,6 @@ function profile() {
         userDetails.coverPhotoUrl
     )
 
-
     type ValidationError = { [key: string]: string }
 
     type handleInputProps = {
@@ -413,7 +412,6 @@ function profile() {
         return true
     }
 
-
     const handleSubmit = async (e: any) => {
         const isValid = formValidate()
 
@@ -433,8 +431,9 @@ function profile() {
                 }
             )
 
-            
-            const {data: {secure_url}} = upload
+            const {
+                data: { secure_url },
+            } = upload
 
             uploadedProfilePhotoUrl = secure_url
         }
@@ -448,17 +447,19 @@ function profile() {
                 }
             )
 
-                        const {data: {secure_url}} = upload
+            const {
+                data: { secure_url },
+            } = upload
 
-                uploadedCoverPhotoUrl = secure_url
+            uploadedCoverPhotoUrl = secure_url
         }
 
+        console.log({uploadedProfileUrl, uploadedCoverPhotoUrl})
+
         axios
-            .post('/api/updateProfile', 
-                handleInput,
-            )
+            .post('/api/updateProfile', handleInput)
             .then(({ data }) => {
-                console.log({data})
+                console.log({ data })
                 setUserData({ ...data })
                 dispatch(updateUser(data))
                 routeToDisplay((prev: any) => {
