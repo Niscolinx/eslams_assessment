@@ -551,7 +551,6 @@ function profile() {
                         Edit Profile
                     </DialogTitle>
 
-                    <form onSubmit={handleSubmit} id='imageUpload'>
                         <div className='profile-upload'>
                             <div className='profile-upload__cover'>
                                 <input
@@ -604,7 +603,6 @@ function profile() {
                                 </label>
                             </div>
                         </div>
-                    </form>
 
                     <DialogContent>
                         <Box
@@ -1113,7 +1111,7 @@ function profile() {
                         <div className='profile__primary--picture'>
                             <div className='picture__cover'>
                                 <img
-                                    src='/img/event1.jpg'
+                                    src={coverPhotoUrl}
                                     width='100%'
                                     height='100%'
                                     className='picture__cover--img'
