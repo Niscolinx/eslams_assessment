@@ -30,6 +30,7 @@ import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
+import { selectUser } from '../../store/user/UserSlice'
 
 const routes = ['General', 'Events']
 
@@ -204,6 +205,10 @@ function profile() {
         useState<string>('/img/avatar.jpeg')
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
     const [isPhotoChanged, setIsPhotoChanged] = useState(false)
+
+    const userDetails = useAppSelector(selectUser)
+
+    console.log({userDetails})
 
     type ValidationError = { [key: string]: string }
 
