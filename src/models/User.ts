@@ -7,6 +7,8 @@ export interface IUser {
     firstName: string
     lastName: string
     email: string
+    profilePhotoUrl?: string
+    coverPhotoUrl?: string
     password: string
     phoneNumber: string
     birthDate: string
@@ -88,6 +90,12 @@ const userSchema = new Schema<IUser>(
         joinedCommunity: {
             type: Boolean,
             default: false,
+        },
+        coverPhotoUrl: {
+            type: String,
+        },
+        profilePhotoUrl: {
+            type: String,
         },
 
         registeredEvents: [

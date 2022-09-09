@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState, useEffect, useRef} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import { BsFillPencilFill, BsFillFilePersonFill } from 'react-icons/bs'
 import { IoMdSchool } from 'react-icons/io'
@@ -28,7 +28,6 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
-
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
 
@@ -202,10 +201,9 @@ function profile() {
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)
     const [profilePhotoUrl, setProfilePhotoUrl] =
-        useState<string>("/img/avatar.jpeg")
+        useState<string>('/img/avatar.jpeg')
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
     const [isPhotoChanged, setIsPhotoChanged] = useState(false)
-
 
     type ValidationError = { [key: string]: string }
 
@@ -414,44 +412,38 @@ function profile() {
         }
         setIsUpdateUser(true)
 
+        
 
-            const prevProfilePhotoUrl = profilePhotoUrl
+        // const upload = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`, {
+        //     upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
+        //     file: profilePhotoUrl
+        // })
 
-            console.log({prevProfilePhotoUrl})
-            console.log({profilePhotoUrl})
- 
-     
-            // const upload = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`, {
-            //     upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
-            //     file: profilePhotoUrl
-            // })
-
-
-            axios
-                .post('/api/updateProfile', {
-                    handleInput,
-                    file: profilePhotoUrl,
+        axios
+            .post('/api/updateProfile', {
+                handleInput,
+                file: profilePhotoUrl,
+            })
+            .then(({ data }) => {
+                console.log(data)
+                setUserData({ ...data })
+                routeToDisplay((prev: any) => {
+                    return {
+                        ...prev,
+                        props: {
+                            ...prev!.props,
+                            userData: data,
+                        },
+                    }
                 })
-                .then(({ data }) => {
-                    console.log(data)
-                    setUserData({ ...data })
-                    routeToDisplay((prev: any) => {
-                        return {
-                            ...prev,
-                            props: {
-                                ...prev!.props,
-                                userData: data,
-                            },
-                        }
-                    })
 
-                    setIsUpdateUser(false)
-                    setIsToast('Updated Successfully')
-                })
-                .catch((err) => {
-                    console.log({ err })
-                    setIsUpdateUser(false)
-                })
+                setIsUpdateUser(false)
+                setIsToast('Updated Successfully')
+            })
+            .catch((err) => {
+                console.log({ err })
+                setIsUpdateUser(false)
+            })
     }
 
     const toggleEyeIcon = () => {
@@ -498,17 +490,16 @@ function profile() {
     const changeProfilePhoto = async (
         value: React.MouseEvent<HTMLLabelElement>
     ) => {
-        console.log('clicked')
         const getUrl = await getPhotoUrl(`#profilePhoto`)
         setProfilePhotoUrl(getUrl)
-
-        console.log({getUrl})
-        
     }
 
     const changeCoverPhoto = async (
         value: React.MouseEvent<HTMLLabelElement>
-    ) => {}
+    ) => {
+        const getUrl = await getPhotoUrl(`#coverPhoto`)
+        setCoverPhotoUrl(getUrl)
+    }
 
     const { email, firstName, lastName, createdAt } = userData || {}
 
