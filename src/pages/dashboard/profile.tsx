@@ -212,7 +212,6 @@ function profile() {
         userDetails.coverPhotoUrl
     )
 
-    console.log({ userDetails })
 
     type ValidationError = { [key: string]: string }
 
@@ -413,6 +412,8 @@ function profile() {
 
         return true
     }
+
+
     const handleSubmit = async (e: any) => {
         const isValid = formValidate()
 
@@ -423,9 +424,9 @@ function profile() {
 
         if (userDetails.profilePhotoUrl !== profilePhotoUrl) {
             const upload = await axios.post(
-                `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`,
+                `https://api.cloudinary.com/v1_1/eslams/upload`,
                 {
-                    upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
+                    upload_preset: `eslams-upload_preset`,
                     file: profilePhotoUrl,
                 }
             )
@@ -435,12 +436,13 @@ function profile() {
 
         if (userDetails.coverPhotoUrl !== coverPhotoUrl) {
             const upload = await axios.post(
-                `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`,
+                `https://api.cloudinary.com/v1_1/eslams/upload`,
                 {
-                    upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
+                    upload_preset: `,
                     file: coverPhotoUrl,
                 }
             )
+
 
             console.log({upload})
         }

@@ -14,8 +14,6 @@ export default async function Profile(
 
     const { personalEmail, password, email } = req.body
 
-  console.log(req.body)
-
 
     try {
         await dbConnect()
@@ -31,7 +29,7 @@ export default async function Profile(
         const update = await User.findOneAndUpdate(
             { email },
             {
-                ...req.body.handleInput,
+                ...req.body,
                 email: personalEmail,
                 password: password
                     ? bcrypt.hashSync(password, 10)
