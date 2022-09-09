@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
 import { BsFillPencilFill, BsFillFilePersonFill } from 'react-icons/bs'
 import { IoMdSchool } from 'react-icons/io'
@@ -29,7 +29,9 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
 
+import {userDetails} from '../../Context/userDetails'
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
+
 
 const routes = ['General', 'Events']
 
@@ -204,6 +206,9 @@ function profile() {
         useState<string>('/img/avatar.jpeg')
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
     const [isPhotoChanged, setIsPhotoChanged] = useState(false)
+    
+
+    const {lastName} = useContext(userDetails)
 
     type ValidationError = { [key: string]: string }
 

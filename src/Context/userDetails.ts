@@ -3,7 +3,7 @@ import { createContext } from "react";
 
 export const userContext = createContext<IUser>({
     firstName: '',
-    lastName: '',
+    lastName: 'sdfsffddfs',
     email: '',
     profilePhotoUrl: '',
     coverPhotoUrl: '',
