@@ -419,8 +419,8 @@ function profile() {
 
      
             axios.post('https://api.cloudinary.com/v1_1/eslams/upload', {
-                'upload_preset': 'eslams-upload_preset'
-
+                'upload_preset': 'eslams-upload_preset',
+                profilePhotoUrl
             })
                 .then(({ data }) => {
                     console.log(data)
@@ -490,7 +490,6 @@ function profile() {
     ) => {
         const getUrl = await getPhotoUrl(`#profilePhoto`)
         setProfilePhotoUrl(getUrl)
-        profilePhotoRef.current = getUrl
     }
 
     const changeCoverPhoto = async (
