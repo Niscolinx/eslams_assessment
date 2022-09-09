@@ -208,7 +208,6 @@ function profile() {
         useState<string>('/img/avatar.jpeg')
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
 
-    const profilePhotoRef = useRef(profilePhotoUrl)
 
     type ValidationError = { [key: string]: string }
 
@@ -417,35 +416,32 @@ function profile() {
         }
         setIsUpdateUser(true)
 
-        console.log('profile ref', profilePhotoRef)
 
-        try {
-            console.log("try catch")
-            axios
-                .post('/api/updateProfileiiiiiiiiii', {
-                    handleInput,
-                    profilePhotoUrl: profilePhotoRef.current
-                })
+     
+            axios.post('https://api.cloudinary.com/v1_1/eslams/upload', {
+                'upload_preset': 'eslams-upload_preset'
+
+            })
                 .then(({ data }) => {
                     console.log(data)
-                    setUserData({ ...data })
-                    routeToDisplay((prev: any) => {
-                        return {
-                            ...prev,
-                            props: {
-                                ...prev!.props,
-                                userData: data,
-                            },
-                        }
-                    })
+                    // setUserData({ ...data })
+                    // routeToDisplay((prev: any) => {
+                    //     return {
+                    //         ...prev,
+                    //         props: {
+                    //             ...prev!.props,
+                    //             userData: data,
+                    //         },
+                    //     }
+                    // })
 
                     setIsUpdateUser(false)
                     setIsToast('Updated Successfully')
                 })
-        } catch (err) {
+        .catch ((err) => {
             console.log({ err })
             setIsUpdateUser(false)
-        }
+        })
     }
 
     const toggleEyeIcon = () => {
