@@ -433,7 +433,7 @@ function profile() {
 
         }
         else{
-            console.log("no changed occured in coverPhotoUrl")
+            console.log("no changed occured in coverPhotoUrl!")
         }
 
         // const upload = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`, {
