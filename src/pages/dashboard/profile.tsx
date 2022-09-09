@@ -205,7 +205,7 @@ function profile() {
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)
     const [profilePhotoUrl, setProfilePhotoUrl] =
-        useState<string>("https://res.cloudinary.com/eslams/image/upload/v1662722166/my-uploads/ftbhpfybt37syaii55fa.jpg")
+        useState<string>("/img/avatar.jpg")
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
 
 
@@ -416,12 +416,17 @@ function profile() {
         }
         setIsUpdateUser(true)
 
+
+            const prevProfilePhotoUrl = profilePhotoUrl
+
+            console.log({prevProfilePhotoUrl})
+            console.log({profilePhotoUrl})
  
      
-            const upload = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`, {
-                upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
-                file: profilePhotoUrl
-            })
+            // const upload = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`, {
+            //     upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
+            //     file: profilePhotoUrl
+            // })
 
 
             axios
@@ -495,8 +500,13 @@ function profile() {
     const changeProfilePhoto = async (
         value: React.MouseEvent<HTMLLabelElement>
     ) => {
+        console.log('clicked')
         const getUrl = await getPhotoUrl(`#profilePhoto`)
-        setProfilePhotoUrl(getUrl)
+        setProfilePhotoUrl({
+            url: getUrl,
+            changed: true
+        })
+        
     }
 
     const changeCoverPhoto = async (
