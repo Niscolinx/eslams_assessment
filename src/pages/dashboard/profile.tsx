@@ -29,7 +29,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
 
-import {userDetails} from '../../Context/userDetails'
+import {userContext} from '../../Context/userContext'
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
 
 
@@ -208,7 +208,7 @@ function profile() {
     const [isPhotoChanged, setIsPhotoChanged] = useState(false)
     
 
-    const {lastName} = useContext(userDetails)
+    let {lastName} = useContext(userContext)
 
     type ValidationError = { [key: string]: string }
 
@@ -506,7 +506,7 @@ function profile() {
         setCoverPhotoUrl(getUrl)
     }
 
-    const { email, firstName, lastName, createdAt } = userData || {}
+    const { email, firstName, createdAt } = userData || {}
 
     return (
         <div className='profile'>
