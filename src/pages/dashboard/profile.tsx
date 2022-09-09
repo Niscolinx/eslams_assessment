@@ -190,6 +190,9 @@ const RegisteredEvents = ({
 }
 
 function profile() {
+        const dispatch = useAppDispatch()()
+
+        
     const [userData, setUserData] = useState<IUser | null>(null)
     const [route, routeToDisplay] = useState<JSX.Element | null>(null)
     const [eventData, setEventData] = useState<EventProps[]>([])
