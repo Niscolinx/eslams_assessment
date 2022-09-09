@@ -419,8 +419,8 @@ function profile() {
 
      
             axios.post('https://api.cloudinary.com/v1_1/eslams/upload', {
-                'upload_preset': 'eslams-upload_preset',
-                profilePhotoUrl
+                upload_preset: 'eslams-upload_preset',
+                file: profilePhotoUrl
             })
                 .then(({ data }) => {
                     console.log(data)
