@@ -37,6 +37,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 
 import Events from '../../components/Events'
+import userDetails from '../../Context/userContext'
 
 type contextTypes = {
     searchValue: string
@@ -156,38 +157,40 @@ const SearchBox = () => {
     )
 }
 
-const Header = ({ notifyUser }: {notifyUser: boolean}) => (
-    <header className='p-8 header relative'>
-        <figure className='header__logo w-12 h-12'>
-            <Image
-                src='/logo.jpeg'
-                layout='responsive'
-                objectFit={'contain'}
-                width='100%'
-                height='100%'
-            />
-        </figure>
+const Header = ({ notifyUser }: { notifyUser: boolean }) => (
+    <userDetails>
+        <header className='p-8 header relative'>
+            <figure className='header__logo w-12 h-12'>
+                <Image
+                    src='/logo.jpeg'
+                    layout='responsive'
+                    objectFit={'contain'}
+                    width='100%'
+                    height='100%'
+                />
+            </figure>
 
-        <SearchBox />
-        <div className='flex relative'>
-            <div className='flex header__avatar cursor-pointer'>
-                <Link href='/dashboard/profile'>
-                    <a>
-                        <Image
-                            src='/img/avatar.jpeg'
-                            width='100%'
-                            height='100%'
-                            objectFit='cover'
-                        />
-                    </a>
-                </Link>
+            <SearchBox />
+            <div className='flex relative'>
+                <div className='flex header__avatar cursor-pointer'>
+                    <Link href='/dashboard/profile'>
+                        <a>
+                            <Image
+                                src='/img/avatar.jpeg'
+                                width='100%'
+                                height='100%'
+                                objectFit='cover'
+                            />
+                        </a>
+                    </Link>
+                </div>
+
+                {notifyUser && (
+                    <span className='absolute -top-1 -right-1 bg-[#CA494E] p-[1px] rounded-full w-[10px] h-[10px] grid place-content-center'></span>
+                )}
             </div>
-
-            {notifyUser && (
-                <span className='absolute -top-1 -right-1 bg-[#CA494E] p-[1px] rounded-full w-[10px] h-[10px] grid place-content-center'></span>
-            )}
-        </div>
-    </header>
+        </header>
+    </userDetails>
 )
 
 function Footer() {

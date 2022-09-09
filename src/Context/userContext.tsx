@@ -1,9 +1,9 @@
 import { IUser } from '../models/User'
 import { createContext, useState } from 'react'
 
-const userDetails = () => {
-   
 
+
+const userDetails: React.FC<{}> = ({children}) => {
     const [user, setUserDetails] = useState<IUser>({
         firstName: '',
         lastName: '',
@@ -24,13 +24,14 @@ const userDetails = () => {
         registeredEvents: [],
     })
 
-     const userContext = createContext<{
-        user: IUser,
+    const UserContext = createContext<{
+        user: IUser
         setUserDetails: (user: IUser) => void
-     }>({
-        user,
-        setUserDetails: () => {}
-     })
+    }>(null as any)
 
-     return userContext
+    return <UserContext.Provider value={{user, setUserDetails}}>
+        {children}
+    </UserContext.Provider>
 }
+
+export default userDetails
