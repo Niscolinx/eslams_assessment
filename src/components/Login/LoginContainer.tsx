@@ -11,7 +11,7 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { useAppDispatch } from '../../store/app/hooks'
-import { update } from '../../store/user/UserSlice'
+import { updateUser } from '../../store/user/UserSlice'
 
 const theme = createTheme({
     typography: {
@@ -127,7 +127,7 @@ export default function LoginContainer() {
             .post('/api/auth/login', updatedData)
             .then(({ data }) => {
                 setLoading(false)
-                dispatch(update(data.user))
+                dispatch(updateUser(data.user))
                 router.push('/')
             })
             .catch(({ response: { data } }) => {

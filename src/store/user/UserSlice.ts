@@ -29,7 +29,7 @@ export const UserSlice = createSlice({
     name: 'userData',
     initialState,
     reducers: {
-        update: (state, action) => {
+        updateUser: (state, action) => {
             const {payload} = action
 
             Object.entries(payload).forEach((field) => {
@@ -42,7 +42,7 @@ export const UserSlice = createSlice({
     
 })
 
-export const { update } = UserSlice.actions
+export const { updateUser } = UserSlice.actions
 
 export const selectUser = (state: AppState) => state
 
