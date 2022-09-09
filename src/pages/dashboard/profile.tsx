@@ -420,7 +420,22 @@ function profile() {
         setIsUpdateUser(true)
 
 
-        if(userDetails.profilePhotoUrl !== profilePhotoUrl)
+        if(userDetails.profilePhotoUrl !== profilePhotoUrl){
+
+            console.log('changed occured in profilePhotoUrl')
+
+        }
+        else{
+            console.log("no changed occured in profilePhotoUrl")
+        }
+        if(userDetails.coverPhotoUrl !== coverPhotoUrl){
+
+            console.log('changed occured in coverPhotoUrl')
+
+        }
+        else{
+            console.log("no changed occured in coverPhotoUrl")
+        }
 
         // const upload = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUDNAME}/upload`, {
         //     upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
