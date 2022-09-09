@@ -94,12 +94,12 @@ const userSchema = new Schema<IUser>(
         coverPhotoUrl: {
             type: String,
             default:
-                'https://res.cloudinary.com/eslams/image/upload/v1662732877/eslams/event1_yeyj5r.jpg',
+                'https://res.cloudinary.com/eslams/image/upload/v1662750659/my-uploads/ahhne5dzmripmv9nh50v.jpg',
         },
         profilePhotoUrl: {
             type: String,
             default:
-                'https://res.cloudinary.com/eslams/image/upload/v1662732842/eslams/avatar_mcnnoi.jpg',
+                'https://res.cloudinary.com/eslams/image/upload/v1662752486/my-uploads/avatar_nav1ya.jpg',
         },
 
         registeredEvents: [
