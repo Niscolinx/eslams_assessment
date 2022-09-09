@@ -37,7 +37,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 
 import Events from '../../components/Events'
-import userDetails from '../../Context/userDetails'
+import UserDetails from '../../Context/userDetails'
 
 type contextTypes = {
     searchValue: string
@@ -158,7 +158,7 @@ const SearchBox = () => {
 }
 
 const Header = ({ notifyUser }: { notifyUser: boolean }) => (
-    <userDetails>
+    <UserDetails>
         <header className='p-8 header relative'>
             <figure className='header__logo w-12 h-12'>
                 <Image
@@ -190,7 +190,7 @@ const Header = ({ notifyUser }: { notifyUser: boolean }) => (
                 )}
             </div>
         </header>
-    </userDetails>
+    </UserDetails>
 )
 
 function Footer() {
