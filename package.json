@@ -46,6 +46,7 @@
         "react-icons": "^4.4.0",
         "react-otp-input": "^2.4.0",
         "react-parallax-tilt": "^1.7.60",
+        "react-redux": "^8.0.2",
         "react-toastify": "^9.0.8",
         "swiper": "^8.2.4",
         "swr": "^1.0.1",

@@ -30,7 +30,6 @@ import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
-import UserDetails from '../../Context/userDetails'
 
 const routes = ['General', 'Events']
 

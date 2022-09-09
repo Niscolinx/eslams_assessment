@@ -126,6 +126,7 @@ function Events() {
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
 
+
     useEffect(() => {
         axios('/api/events')
             .then(({ data }) => {
