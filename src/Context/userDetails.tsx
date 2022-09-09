@@ -2,7 +2,7 @@ import { IUser } from '../models/User'
 import { createContext, useState } from 'react'
 
 
- const UserContext = createContext<{
+ export const UserContext = createContext<{
      user: IUser
      setUserDetails: (user: IUser) => void
  }>(null as any)

@@ -37,7 +37,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 
 import Events from '../../components/Events'
-import UserDetails from '../../Context/userDetails'
+import UserDetails, { UserContext } from '../../Context/userDetails'
 
 type contextTypes = {
     searchValue: string
@@ -251,6 +251,7 @@ const Index = () => {
     const [registrationRequirements, setRegistrationRequirements] = useState<
         string[]
     >([])
+    const userContext = useContext(UserContext)
 
     const [showFilteredData, setShowFilteredData] = useState<any>()
     const [notifyUser, setNotifyUser] = useState(false)
@@ -309,6 +310,8 @@ const Index = () => {
             setOpen(false)
         }
     }
+
+    console.log({userContext})
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const {
