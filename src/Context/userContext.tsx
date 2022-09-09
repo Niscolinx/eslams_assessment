@@ -5,7 +5,7 @@ import { createContext, useState } from 'react'
 
 const userDetails: React.FC<{}> = ({children}) => {
     const [user, setUserDetails] = useState<IUser>({
-        firstName: '',
+        firstName: 'sdfdsff',
         lastName: '',
         email: '',
         profilePhotoUrl: '',
