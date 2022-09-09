@@ -7,8 +7,8 @@ export interface IUser {
     firstName: string
     lastName: string
     email: string
-    profilePhotoUrl?: string
-    coverPhotoUrl?: string
+    profilePhotoUrl: string
+    coverPhotoUrl: string
     password: string
     phoneNumber: string
     birthDate: string
@@ -93,9 +93,13 @@ const userSchema = new Schema<IUser>(
         },
         coverPhotoUrl: {
             type: String,
+            default:
+                'https://res.cloudinary.com/eslams/image/upload/v1662732877/eslams/event1_yeyj5r.jpg',
         },
         profilePhotoUrl: {
             type: String,
+            default:
+                'https://res.cloudinary.com/eslams/image/upload/v1662732842/eslams/avatar_mcnnoi.jpg',
         },
 
         registeredEvents: [
