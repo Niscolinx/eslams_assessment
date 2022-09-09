@@ -422,29 +422,35 @@ function profile() {
         }
         setIsUpdateUser(true)
 
+        let uploadedCoverPhotoUrl = ''
+        let uploadedProfilePhotoUrl = ''
         if (userDetails.profilePhotoUrl !== profilePhotoUrl) {
             const upload = await axios.post(
-                `https://api.cloudinary.com/v1_1/eslams/upload`,
+                `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME}/upload`,
                 {
-                    upload_preset: `eslams-upload_preset`,
+                    upload_preset: `${process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}`,
                     file: profilePhotoUrl,
                 }
             )
 
-            console.log({upload})
+            
+            const {data: {secure_url}} = upload
+
+            uploadedProfilePhotoUrl = secure_url
         }
 
         if (userDetails.coverPhotoUrl !== coverPhotoUrl) {
             const upload = await axios.post(
-                `https://api.cloudinary.com/v1_1/eslams/upload`,
+                `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME}/upload`,
                 {
-                    upload_preset: `,
+                    upload_preset: `${process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}`,
                     file: coverPhotoUrl,
                 }
             )
 
+                        const {data: {secure_url}} = upload
 
-            console.log({upload})
+                uploadedCoverPhotoUrl = secure_url
         }
 
         axios
