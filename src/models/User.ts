@@ -2,8 +2,8 @@ import { model, models, Schema } from 'mongoose'
 
 export interface IUser {
     [x: string]: any
-    _id: Object
-    createdAt: string
+    _id?: Object
+    createdAt?: string
     firstName: string
     lastName: string
     email: string
@@ -20,7 +20,7 @@ export interface IUser {
     institutionType: string
     institutionName: string
     institutionYearOfStudy: string
-    verificationOtp: string
+    verificationOtp?: string
     registeredEvents: string[]
 }
 

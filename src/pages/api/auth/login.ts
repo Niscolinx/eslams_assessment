@@ -9,8 +9,6 @@ import * as jose from 'jose'
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
     const { email, password } = req.body
 
-    console.log(req.body)
-
     try {
         await dbConnect()
         
