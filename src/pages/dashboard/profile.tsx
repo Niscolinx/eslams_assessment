@@ -30,6 +30,7 @@ import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
+import userDetails from '../../Context/userDetails'
 
 
 const routes = ['General', 'Events']
@@ -205,6 +206,7 @@ function profile() {
         useState<string>('/img/avatar.jpeg')
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
     const [isPhotoChanged, setIsPhotoChanged] = useState(false)
+
     
 
 
@@ -507,6 +509,7 @@ function profile() {
     const { email, firstName, lastName, createdAt } = userData || {}
 
     return (
+        <userDetails>
         <div className='profile'>
             <div className='profile__box'>
                 <Dialog
@@ -1174,6 +1177,8 @@ function profile() {
                 </div>
             </div>
         </div>
+                </userDetails>
+
     )
 }
 

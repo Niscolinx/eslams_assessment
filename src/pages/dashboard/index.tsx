@@ -37,7 +37,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 
 import Events from '../../components/Events'
-import userDetails from '../../Context/userContext'
+import userDetails from '../../Context/userDetails'
 
 type contextTypes = {
     searchValue: string

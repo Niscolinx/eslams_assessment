@@ -2,7 +2,12 @@ import { IUser } from '../models/User'
 import { createContext, useState } from 'react'
 
 
+ const UserContext = createContext<{
+     user: IUser
+     setUserDetails: (user: IUser) => void
+ }>(null as any)
 
+ 
 const userDetails: React.FC<{}> = ({children}) => {
     const [user, setUserDetails] = useState<IUser>({
         firstName: 'sdfdsff',
@@ -23,11 +28,6 @@ const userDetails: React.FC<{}> = ({children}) => {
         institutionYearOfStudy: '',
         registeredEvents: [],
     })
-
-    const UserContext = createContext<{
-        user: IUser
-        setUserDetails: (user: IUser) => void
-    }>(null as any)
 
     return <UserContext.Provider value={{user, setUserDetails}}>
         {children}
