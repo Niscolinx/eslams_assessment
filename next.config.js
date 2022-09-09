@@ -9,37 +9,7 @@ module.exports = {
         includePaths: [path.join(__dirname, 'styles')],
     },
 
-    // webpack: (config, { nextRuntime }) => {
-    // undocumented property of next 12.
-    //  if (nextRuntime !== 'nodejs') return config
-
-    // return {
-    //     ...config,
-    //     entry() {
-    //         return config.entry().then((entry) => ({
-    //             ...entry,
-    //             cli: path.resolve(process.cwd(), 'lib/cli.ts'),
-    //         }))
-    //     },
-    //     module: {
-    //         rules: [
-    //             {
-    //                 test: /\.svg$/,
-    //                 use: [
-    //                     {
-    //                         loader: '@svgr/webpack',
-    //                         options: { icons: true },
-    //                     },
-    //                 ],
-    //             },
-    //         ],
-    //     },
-
-    //     plugins: [new WindiCSSWebpackPlugin()]
-    //}
-
-    webpack(config, {nextRuntime}) {
-        
+    webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,
             use: [{ loader: '@svgr/webpack', options: { icons: true } }],
@@ -59,5 +29,8 @@ module.exports = {
                 permanent: true,
             },
         ]
+    },
+    images: {
+        domains: ['res.cloudinary.com'],
     },
 }
