@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs'
 import { NextApiRequest, NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken'
-import User, { IUser } from '../../../models/User'
+import User from '../../../models/User'
 import dbConnect from '../../../lib/dbConnect'
 import { setCookie } from 'cookies-next'
 import * as jose from 'jose'
@@ -43,8 +43,10 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
             }`
         )
 
+        
+
        // req.Auth = ''
-        return res.status(200).json({ ...user, password: null, role: null })
+        return res.status(200).json({user})
     } catch (err) {
         console.log({ err })
         res.status(400).json('error')

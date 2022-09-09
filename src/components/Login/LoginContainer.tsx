@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 import Container from '@mui/material/Container'
 import Paper from '@mui/material/Paper'
@@ -12,8 +12,6 @@ import { useRouter } from 'next/router'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { useAppDispatch } from '../../store/app/hooks'
 import { update } from '../../store/user/UserSlice'
-
-
 
 const theme = createTheme({
     typography: {
@@ -108,34 +106,29 @@ export default function LoginContainer() {
         }))
     }
 
-   
-
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault()
 
-         const isValid = formValidate()
+        const isValid = formValidate()
 
-         if (!isValid) {
-             return
-         } 
-        
+        if (!isValid) {
+            return
+        }
+
         setMessage(null)
         setLoading(true)
-
 
         const updatedData = {
             ...handleInput,
         }
 
-
         setLoading(true)
         axios
             .post('/api/auth/login', updatedData)
-            .then(({data}) => {
+            .then(({ data }) => {
                 setLoading(false)
-                console.log({ data })
                 dispatch(update(data.user))
-               router.push('/')
+                router.push('/')
             })
             .catch(({ response: { data } }) => {
                 setMessage({
@@ -192,7 +185,6 @@ export default function LoginContainer() {
                         </p>
                     )}
 
-                    
                     <div className='grid gap-4 mt-10'>
                         <form onSubmit={handleLogin}>
                             <Grid item xs={12} sm={6}>

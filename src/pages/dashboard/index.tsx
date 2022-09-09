@@ -37,6 +37,8 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 
 import Events from '../../components/Events'
+import { useAppSelector } from '../../store/app/hooks'
+import { selectUser } from '../../store/user/UserSlice'
 
 type contextTypes = {
     searchValue: string
@@ -156,38 +158,38 @@ const SearchBox = () => {
     )
 }
 
-const Header = ({ notifyUser }: { notifyUser: boolean }) => (
-        <header className='p-8 header relative'>
-            <figure className='header__logo w-12 h-12'>
-                <Image
-                    src='/logo.jpeg'
-                    layout='responsive'
-                    objectFit={'contain'}
-                    width='100%'
-                    height='100%'
-                />
-            </figure>
+const Header = ({ notifyUser, profilePhotoUrl }: { notifyUser: boolean, profilePhotoUrl: string }) => (
+    <header className='p-8 header relative'>
+        <figure className='header__logo w-12 h-12'>
+            <Image
+                src='/logo.jpeg'
+                layout='responsive'
+                objectFit={'contain'}
+                width='100%'
+                height='100%'
+            />
+        </figure>
 
-            <SearchBox />
-            <div className='flex relative'>
-                <div className='flex header__avatar cursor-pointer'>
-                    <Link href='/dashboard/profile'>
-                        <a>
-                            <Image
-                                src='/img/avatar.jpeg'
-                                width='100%'
-                                height='100%'
-                                objectFit='cover'
-                            />
-                        </a>
-                    </Link>
-                </div>
-
-                {notifyUser && (
-                    <span className='absolute -top-1 -right-1 bg-[#CA494E] p-[1px] rounded-full w-[10px] h-[10px] grid place-content-center'></span>
-                )}
+        <SearchBox />
+        <div className='flex relative'>
+            <div className='flex header__avatar cursor-pointer'>
+                <Link href='/dashboard/profile'>
+                    <a>
+                        <Image
+                            src={profilePhotoUrl}
+                            width='100%'
+                            height='100%'
+                            objectFit='cover'
+                        />
+                    </a>
+                </Link>
             </div>
-        </header>
+
+            {notifyUser && (
+                <span className='absolute -top-1 -right-1 bg-[#CA494E] p-[1px] rounded-full w-[10px] h-[10px] grid place-content-center'></span>
+            )}
+        </div>
+    </header>
 )
 
 function Footer() {
@@ -240,6 +242,8 @@ function Footer() {
 }
 
 const Index = () => {
+    const userDetails = useAppSelector(selectUser)
+
     const [searchValue, setSearchValue] = useState('')
     const [open, setOpen] = useState(false)
     const theme = useTheme()
@@ -309,7 +313,6 @@ const Index = () => {
         }
     }
 
-
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const {
             target: { value, name },
@@ -377,309 +380,298 @@ const Index = () => {
     }
 
     return (
-            <EventContext.Provider
-                value={{
-                    searchValue,
-                    setSearchValue,
-                    handleClickOpen,
-                    showFilteredData,
-                    registerEvent,
-                }}
-            >
-                <div className='marketplace'>
-                    <Dialog
-                        disableEscapeKeyDown
-                        open={open}
-                        onClose={handleClose}
-                        className='dialogClass'
+        <EventContext.Provider
+            value={{
+                searchValue,
+                setSearchValue,
+                handleClickOpen,
+                showFilteredData,
+                registerEvent,
+            }}
+        >
+            <div className='marketplace'>
+                <Dialog
+                    disableEscapeKeyDown
+                    open={open}
+                    onClose={handleClose}
+                    className='dialogClass'
+                >
+                    <button
+                        className='flex cursor-pointer mr-auto'
+                        onClick={handleClose}
                     >
-                        <button
-                            className='flex cursor-pointer mr-auto'
-                            onClick={handleClose}
+                        <GrFormClose className='text-3xl ' />
+                    </button>
+                    <DialogTitle className='text-center'>Filters</DialogTitle>
+                    <DialogContent>
+                        <Box
+                            component='form'
+                            sx={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                width: 300,
+                            }}
                         >
-                            <GrFormClose className='text-3xl ' />
-                        </button>
-                        <DialogTitle className='text-center'>
-                            Filters
-                        </DialogTitle>
-                        <DialogContent>
-                            <Box
-                                component='form'
-                                sx={{
-                                    display: 'flex',
-                                    flexWrap: 'wrap',
-                                    width: 300,
-                                }}
-                            >
-                                <FormControl sx={{ m: 1, width: 300 }}>
-                                    <InputLabel id='location-label'>
-                                        <div className='flex'>Location</div>
-                                    </InputLabel>
-                                    <Select
-                                        labelId='location-label'
-                                        id='location'
-                                        multiple
-                                        value={location}
-                                        name='location'
-                                        onChange={handleChange}
-                                        input={
-                                            <OutlinedInput
-                                                id='select-locations'
-                                                label='location'
-                                            />
-                                        }
-                                        renderValue={(selected) => (
-                                            <Box
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexWrap: 'wrap',
-                                                    gap: 0.5,
-                                                }}
-                                            >
-                                                {selected.map((value) => (
-                                                    <Chip
-                                                        key={value}
-                                                        label={value}
-                                                    />
-                                                ))}
-                                            </Box>
-                                        )}
-                                        MenuProps={MenuProps}
-                                    >
-                                        {LOCATIONS.map((name) => (
-                                            <MenuItem
-                                                key={name}
-                                                value={name}
-                                                style={getStyles(
-                                                    name,
-                                                    location,
-                                                    theme
-                                                )}
-                                            >
-                                                {name}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                                <FormControl sx={{ m: 1, width: 300 }}>
-                                    <InputLabel id='age-label'>
-                                        <div className='flex'>Age</div>
-                                    </InputLabel>
-                                    <Select
-                                        labelId='age-label'
-                                        id='multiple-age'
-                                        multiple
-                                        value={age}
-                                        name='age'
-                                        onChange={handleChange}
-                                        input={
-                                            <OutlinedInput
-                                                id='select-age'
-                                                label='Age'
-                                            />
-                                        }
-                                        renderValue={(selected) => (
-                                            <Box
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexWrap: 'wrap',
-                                                    gap: 0.5,
-                                                }}
-                                            >
-                                                {selected.map((value) => (
-                                                    <Chip
-                                                        key={value}
-                                                        label={value}
-                                                    />
-                                                ))}
-                                            </Box>
-                                        )}
-                                        MenuProps={MenuProps}
-                                    >
-                                        {AGERANGE.map((name) => (
-                                            <MenuItem
-                                                key={name}
-                                                value={name}
-                                                style={getStyles(
-                                                    name,
-                                                    age,
-                                                    theme
-                                                )}
-                                            >
-                                                {name}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                                <FormControl sx={{ m: 1, width: 300 }}>
-                                    <InputLabel id='competition-type-label'>
-                                        <div className='flex'>
-                                            Competition Type
-                                        </div>
-                                    </InputLabel>
-                                    <Select
-                                        labelId='competition-type-label'
-                                        id='competition-type'
-                                        name='competition-type'
-                                        multiple
-                                        value={competitionType}
-                                        onChange={handleChange}
-                                        input={
-                                            <OutlinedInput
-                                                id='select-multiple-competition-type'
-                                                label='Competition Type'
-                                            />
-                                        }
-                                        renderValue={(selected) => (
-                                            <Box
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexWrap: 'wrap',
-                                                    gap: 0.5,
-                                                }}
-                                            >
-                                                {selected.map((value) => (
-                                                    <Chip
-                                                        key={value}
-                                                        label={value}
-                                                    />
-                                                ))}
-                                            </Box>
-                                        )}
-                                        MenuProps={MenuProps}
-                                    >
-                                        {COMPETITIONTYPE.map((name) => (
-                                            <MenuItem
-                                                key={name}
-                                                value={name}
-                                                style={getStyles(
-                                                    name,
-                                                    competitionType,
-                                                    theme
-                                                )}
-                                            >
-                                                {name}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                                <FormControl sx={{ m: 1, width: 300 }}>
-                                    <InputLabel id='registration-requirements-label'>
-                                        <div className='flex'>
-                                            Registration Requirements
-                                        </div>
-                                    </InputLabel>
-                                    <Select
-                                        labelId='registration-requirements-label'
-                                        id='registration-requirements'
-                                        multiple
-                                        value={registrationRequirements}
-                                        onChange={handleChange}
-                                        name='registration-requirements'
-                                        input={
-                                            <OutlinedInput
-                                                id='select-registration-requirements'
-                                                label='Registration Requirements'
-                                            />
-                                        }
-                                        renderValue={(selected) => (
-                                            <Box
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexWrap: 'wrap',
-                                                    gap: 0.5,
-                                                }}
-                                            >
-                                                {selected.map((value) => (
-                                                    <Chip
-                                                        key={value}
-                                                        label={value}
-                                                    />
-                                                ))}
-                                            </Box>
-                                        )}
-                                        MenuProps={MenuProps}
-                                    >
-                                        {REGISTRATIONREQUIREMENTS.map(
-                                            (name) => (
-                                                <MenuItem
-                                                    key={name}
-                                                    value={name}
-                                                    style={getStyles(
-                                                        name,
-                                                        registrationRequirements,
-                                                        theme
-                                                    )}
-                                                >
-                                                    {name}
-                                                </MenuItem>
-                                            )
-                                        )}
-                                    </Select>
-                                </FormControl>
-
-                                <Typography gutterBottom className='mt-5'>
-                                    Price Range
-                                </Typography>
-                                <PriceSlider
-                                    valueLabelDisplay='auto'
-                                    //onChange={(_,value) => setPriceRange( value)}
-                                    onChangeCommitted={(_, value) =>
-                                        priceValue(value)
+                            <FormControl sx={{ m: 1, width: 300 }}>
+                                <InputLabel id='location-label'>
+                                    <div className='flex'>Location</div>
+                                </InputLabel>
+                                <Select
+                                    labelId='location-label'
+                                    id='location'
+                                    multiple
+                                    value={location}
+                                    name='location'
+                                    onChange={handleChange}
+                                    input={
+                                        <OutlinedInput
+                                            id='select-locations'
+                                            label='location'
+                                        />
                                     }
-                                    defaultValue={[10, 100000]}
-                                    min={10}
-                                    max={100000}
-                                />
-                            </Box>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleReset}>Reset</Button>
-                            <Button onClick={handleFilter}>Ok</Button>
-                        </DialogActions>
-                    </Dialog>
+                                    renderValue={(selected) => (
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                gap: 0.5,
+                                            }}
+                                        >
+                                            {selected.map((value) => (
+                                                <Chip
+                                                    key={value}
+                                                    label={value}
+                                                />
+                                            ))}
+                                        </Box>
+                                    )}
+                                    MenuProps={MenuProps}
+                                >
+                                    {LOCATIONS.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(
+                                                name,
+                                                location,
+                                                theme
+                                            )}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                            <FormControl sx={{ m: 1, width: 300 }}>
+                                <InputLabel id='age-label'>
+                                    <div className='flex'>Age</div>
+                                </InputLabel>
+                                <Select
+                                    labelId='age-label'
+                                    id='multiple-age'
+                                    multiple
+                                    value={age}
+                                    name='age'
+                                    onChange={handleChange}
+                                    input={
+                                        <OutlinedInput
+                                            id='select-age'
+                                            label='Age'
+                                        />
+                                    }
+                                    renderValue={(selected) => (
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                gap: 0.5,
+                                            }}
+                                        >
+                                            {selected.map((value) => (
+                                                <Chip
+                                                    key={value}
+                                                    label={value}
+                                                />
+                                            ))}
+                                        </Box>
+                                    )}
+                                    MenuProps={MenuProps}
+                                >
+                                    {AGERANGE.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(name, age, theme)}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                            <FormControl sx={{ m: 1, width: 300 }}>
+                                <InputLabel id='competition-type-label'>
+                                    <div className='flex'>Competition Type</div>
+                                </InputLabel>
+                                <Select
+                                    labelId='competition-type-label'
+                                    id='competition-type'
+                                    name='competition-type'
+                                    multiple
+                                    value={competitionType}
+                                    onChange={handleChange}
+                                    input={
+                                        <OutlinedInput
+                                            id='select-multiple-competition-type'
+                                            label='Competition Type'
+                                        />
+                                    }
+                                    renderValue={(selected) => (
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                gap: 0.5,
+                                            }}
+                                        >
+                                            {selected.map((value) => (
+                                                <Chip
+                                                    key={value}
+                                                    label={value}
+                                                />
+                                            ))}
+                                        </Box>
+                                    )}
+                                    MenuProps={MenuProps}
+                                >
+                                    {COMPETITIONTYPE.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(
+                                                name,
+                                                competitionType,
+                                                theme
+                                            )}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                            <FormControl sx={{ m: 1, width: 300 }}>
+                                <InputLabel id='registration-requirements-label'>
+                                    <div className='flex'>
+                                        Registration Requirements
+                                    </div>
+                                </InputLabel>
+                                <Select
+                                    labelId='registration-requirements-label'
+                                    id='registration-requirements'
+                                    multiple
+                                    value={registrationRequirements}
+                                    onChange={handleChange}
+                                    name='registration-requirements'
+                                    input={
+                                        <OutlinedInput
+                                            id='select-registration-requirements'
+                                            label='Registration Requirements'
+                                        />
+                                    }
+                                    renderValue={(selected) => (
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                gap: 0.5,
+                                            }}
+                                        >
+                                            {selected.map((value) => (
+                                                <Chip
+                                                    key={value}
+                                                    label={value}
+                                                />
+                                            ))}
+                                        </Box>
+                                    )}
+                                    MenuProps={MenuProps}
+                                >
+                                    {REGISTRATIONREQUIREMENTS.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(
+                                                name,
+                                                registrationRequirements,
+                                                theme
+                                            )}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
 
-                    <div className='marketplace__container'>
-                        <div className='grid relative z-3'>
-                            <Header notifyUser={notifyUser} />
-                            <main className='main'>
-                                <div className='banner'>
-                                    <div className='banner__blob'></div>
-                                    <div className='banner__backgroundImage'></div>
-                                    <div className='banner__content'>
-                                        <div className='banner__details'>
-                                            <h3 className='banner__details--heading'>
-                                                You are invited to our
-                                                Community!
-                                            </h3>
-                                            <p className='banner__details--text'>
-                                                Please follow guildlines about
-                                                interactions and events
-                                            </p>
-                                            <button className='banner__details--btn'>
-                                                Access Community
-                                                <HiOutlineArrowNarrowRight className='banner__details--btn-icon' />
-                                            </button>
-                                        </div>
-                                        <div className='banner__svg'>
-                                            <Image
-                                                src='/banner.svg'
-                                                width='500px'
-                                                height='200px'
-                                                objectFit='cover'
-                                                objectPosition='top'
-                                            />
-                                        </div>
+                            <Typography gutterBottom className='mt-5'>
+                                Price Range
+                            </Typography>
+                            <PriceSlider
+                                valueLabelDisplay='auto'
+                                //onChange={(_,value) => setPriceRange( value)}
+                                onChangeCommitted={(_, value) =>
+                                    priceValue(value)
+                                }
+                                defaultValue={[10, 100000]}
+                                min={10}
+                                max={100000}
+                            />
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleReset}>Reset</Button>
+                        <Button onClick={handleFilter}>Ok</Button>
+                    </DialogActions>
+                </Dialog>
+
+                <div className='marketplace__container'>
+                    <div className='grid relative z-3'>
+                        <Header notifyUser={notifyUser} profilePhotoUrl={userDetails.profilePhotoUrl} />
+                        <main className='main'>
+                            <div className='banner'>
+                                <div className='banner__blob'></div>
+                                <div className='banner__backgroundImage'></div>
+                                <div className='banner__content'>
+                                    <div className='banner__details'>
+                                        <h3 className='banner__details--heading'>
+                                            You are invited to our Community!
+                                        </h3>
+                                        <p className='banner__details--text'>
+                                            Please follow guildlines about
+                                            interactions and events
+                                        </p>
+                                        <button className='banner__details--btn'>
+                                            Access Community
+                                            <HiOutlineArrowNarrowRight className='banner__details--btn-icon' />
+                                        </button>
+                                    </div>
+                                    <div className='banner__svg'>
+                                        <Image
+                                            src='/banner.svg'
+                                            width='500px'
+                                            height='200px'
+                                            objectFit='cover'
+                                            objectPosition='top'
+                                        />
                                     </div>
                                 </div>
-                                <ToastContainer />
-                                <Events />
-                            </main>
-                            <Footer />{' '}
-                        </div>
+                            </div>
+                            <ToastContainer />
+                            <Events />
+                        </main>
+                        <Footer />{' '}
                     </div>
                 </div>
-            </EventContext.Provider>
+            </div>
+        </EventContext.Provider>
     )
 }
 
