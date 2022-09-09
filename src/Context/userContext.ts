@@ -6,7 +6,7 @@ const userDetails = () => {
 
     const [user, setUserDetails] = useState<IUser>({
         firstName: '',
-        lastName: 'sdfsffddfs',
+        lastName: '',
         email: '',
         profilePhotoUrl: '',
         coverPhotoUrl: '',
@@ -24,5 +24,13 @@ const userDetails = () => {
         registeredEvents: [],
     })
 
-     const userContext = createContext<IUser>(user)
+     const userContext = createContext<{
+        user: IUser,
+        setUserDetails: (user: IUser) => void
+     }>({
+        user,
+        setUserDetails: () => {}
+     })
+
+     return userContext
 }
