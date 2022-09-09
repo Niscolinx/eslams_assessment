@@ -23,6 +23,7 @@
         "@types/mjml": "^4.7.0",
         "@types/nodemailer-express-handlebars": "^4.0.2",
         "@types/react-copy-to-clipboard": "^5.0.3",
+        "@types/redux-persist": "^4.3.1",
         "@windicss/plugin-animations": "^1.0.9",
         "animate.css": "^4.1.1",
         "axios": "^0.27.2",
@@ -48,6 +49,7 @@
         "react-parallax-tilt": "^1.7.60",
         "react-redux": "^8.0.2",
         "react-toastify": "^9.0.8",
+        "redux-persist": "^6.0.0",
         "swiper": "^8.2.4",
         "swr": "^1.0.1",
         "windicss": "^3.5.1"

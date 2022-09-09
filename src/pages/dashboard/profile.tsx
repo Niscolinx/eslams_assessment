@@ -208,7 +208,6 @@ function profile() {
     const [profilePhotoUrl, setProfilePhotoUrl] =
         useState<string>(userDetails.profilePhotoUrl)
     const [coverPhotoUrl, setCoverPhotoUrl] = useState(userDetails.coverPhotoUrl)
-    const [isPhotoChanged, setIsPhotoChanged] = useState(false)
 
     console.log({ userDetails })
 
