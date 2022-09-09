@@ -204,6 +204,7 @@ function profile() {
     const [profilePhotoUrl, setProfilePhotoUrl] =
         useState<string>("/img/avatar.jpeg")
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
+    const [isPhotoChanged, setIsPhotoChanged] = useState(false)
 
 
     type ValidationError = { [key: string]: string }

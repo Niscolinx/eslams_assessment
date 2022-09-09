@@ -19,6 +19,7 @@ export default async function Profile(
 
     console.log('updateProfile', req.body)
 
+    return res.status(200).json({ message: 'updateProfile' })
 
 
     try {
