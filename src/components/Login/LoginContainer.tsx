@@ -10,6 +10,10 @@ import { CircularProgress, Grid, TextField, Typography } from '@mui/material'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
+import { useAppDispatch } from '../../store/app/hooks'
+import { update } from '../../store/user/UserSlice'
+
+
 
 const theme = createTheme({
     typography: {
@@ -28,6 +32,8 @@ export type handleInputProps = {
     password: string
 }
 export default function LoginContainer() {
+    const dispatch = useAppDispatch()()
+
     const [loading, setLoading] = useState(false)
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
@@ -125,12 +131,13 @@ export default function LoginContainer() {
         setLoading(true)
         axios
             .post('/api/auth/login', updatedData)
-            .then((data) => {
+            .then(({data}) => {
                 setLoading(false)
+                console.log({ data })
+                dispatch(update(data.user))
                router.push('/')
             })
             .catch(({ response: { data } }) => {
-                console.log({ data })
                 setMessage({
                     message: data,
                     type: 'error',

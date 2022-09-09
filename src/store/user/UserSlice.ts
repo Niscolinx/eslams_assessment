@@ -46,7 +46,17 @@ export const getUser = createAsyncThunk(
 export const UserSlice = createSlice({
     name: 'userData',
     initialState,
-    reducers: {},
+    reducers: {
+        update: (state, action) => {
+            const {payload} = action
+
+            console.log({payload})
+            Object.entries(payload).forEach((field) => {
+                const key = field[0] as 'username'
+                state[key] = field[1] as string
+            })
+        },
+    },
 
     extraReducers: (builder) => {
         builder
@@ -54,10 +64,8 @@ export const UserSlice = createSlice({
                 state.status = 'loading'
             })
             .addCase(getUser.fulfilled, (state, action) => {
-                const payload:any = action.payload
+                const payload: any = action.payload
                 state.status = 'success'
-
-             
 
                 Object.entries(payload).forEach((field) => {
                     const key = field[0] as 'username'
@@ -67,10 +75,11 @@ export const UserSlice = createSlice({
             .addCase(getUser.rejected, (state) => {
                 state.status = 'failed'
             })
-           
     },
 })
 
-export const selectUser = (state: AppState) => state.user
+export const { update } = UserSlice.actions
+
+export const selectUser = (state: AppState) => state
 
 export default UserSlice.reducer

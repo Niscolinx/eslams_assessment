@@ -31,6 +31,7 @@ import dayjs from 'dayjs'
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
 import { selectUser } from '../../store/user/UserSlice'
+import { useAppSelector } from '../../store/app/hooks'
 
 const routes = ['General', 'Events']
 

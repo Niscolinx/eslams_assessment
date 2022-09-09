@@ -44,7 +44,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         )
 
        // req.Auth = ''
-        return res.status(200).json({ user })
+        return res.status(200).json({ ...user, password: null, role: null })
     } catch (err) {
         console.log({ err })
         res.status(400).json('error')

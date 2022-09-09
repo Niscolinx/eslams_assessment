@@ -1,4 +1,4 @@
-import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit'
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
 import UserReducer from '../user/UserSlice'
 
