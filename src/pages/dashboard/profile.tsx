@@ -454,10 +454,14 @@ function profile() {
             uploadedCoverPhotoUrl = secure_url
         }
 
-        console.log({uploadedProfileUrl, uploadedCoverPhotoUrl})
+        console.log({ uploadedProfilePhotoUrl, uploadedCoverPhotoUrl })
 
         axios
-            .post('/api/updateProfile', handleInput)
+            .post('/api/updateProfile', {
+                handleInput,
+                uploadedProfilePhotoUrl,
+                uploadedCoverPhotoUrl,
+            })
             .then(({ data }) => {
                 console.log({ data })
                 setUserData({ ...data })

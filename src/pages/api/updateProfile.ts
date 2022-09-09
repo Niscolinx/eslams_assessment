@@ -4,7 +4,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../lib/dbConnect'
 import User from '../../models/User'
 import * as jose from 'jose'
-import axios from 'axios'
 
 export default async function Profile(
     req: NextApiRequest,
@@ -12,7 +11,9 @@ export default async function Profile(
 ) {
   
 
-    const { personalEmail, password, email } = req.body
+    const { personalEmail, password, email } = req.body.handleInput
+    const uploadedCoverPhotoUrl = req.body.uploadedCoverPhotoUrl
+    const uploadedProfilePhotoUrl = req.body.uploadedProfilePhotoUrl
 
 
     try {
@@ -30,6 +31,8 @@ export default async function Profile(
             { email },
             {
                 ...req.body,
+                coverPhotoUrl: uploadedCoverPhotoUrl || user.coverPhotoUrl,
+                profilePhotoUrl: uploadedProfilePhotoUrl || user.profilePhotoUrl,
                 email: personalEmail,
                 password: password
                     ? bcrypt.hashSync(password, 10)
