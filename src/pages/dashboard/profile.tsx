@@ -205,7 +205,7 @@ function profile() {
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)
     const [profilePhotoUrl, setProfilePhotoUrl] =
-        useState<string>("/img/avatar.jpg")
+        useState<string>("/img/avatar.jpeg")
     const [coverPhotoUrl, setCoverPhotoUrl] = useState('/img/event1.jpg')
 
 
