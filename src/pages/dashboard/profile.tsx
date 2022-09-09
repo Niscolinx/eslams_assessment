@@ -502,7 +502,6 @@ function profile() {
     const { email, firstName, lastName, createdAt } = userData || {}
 
     return (
-        <UserDetails>
             <div className='profile'>
                 <div className='profile__box'>
                     <Dialog
@@ -1206,7 +1205,6 @@ function profile() {
                     </div>
                 </div>
             </div>
-        </UserDetails>
     )
 }
 
