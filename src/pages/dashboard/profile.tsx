@@ -39,13 +39,13 @@ import { useAppSelector, useAppDispatch } from '../../store/app/hooks'
 
 
 
-const router = useRouter()
 
 const routes = ['General', 'Events']
 
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
     const [cookies, setCookie] = useCookies()
+    const router = useRouter()
 
     const {
         firstName,
