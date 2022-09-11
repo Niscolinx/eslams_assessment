@@ -11,15 +11,15 @@ export default async function getUserEvents(
     try {
         await dbConnect()
 
-        const { tokenCookie } = req.cookies
+        const { token } = req.cookies
 
-        if (!tokenCookie) {
+        if (!token) {
             return res.status(401).json({
                 message: 'Unauthorized',
             })
         }
         const { payload: jwtData } = await jose.jwtVerify(
-            tokenCookie,
+            token,
             new TextEncoder().encode(process.env.JWT_SECRET!)
         )
 

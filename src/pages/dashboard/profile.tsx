@@ -28,6 +28,7 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
+import { useRouter } from 'next/router'
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
 import { selectUser, updateUser } from '../../store/user/UserSlice'
@@ -36,6 +37,8 @@ import { useAppSelector, useAppDispatch } from '../../store/app/hooks'
 const routes = ['General', 'Events']
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
+    const router = useRouter()
+
     const {
         firstName,
         lastName,
@@ -50,6 +53,12 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
         institutionType,
         institutionYearOfStudy,
     } = userData
+
+    const handleLogout = () => {
+        document.cookie = 'token=; Max-Age=0; path=/; domain=' + location.hostname
+
+        router.push('/auth/login')
+    }
 
     return (
         <div className='generalDetails'>
@@ -113,6 +122,12 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
                     </p>
                 </div>
             </div>
+            <button
+                className='border border-red-400 px-4 py-1 flex justify-self-center my-1 rounded-lg shadow-lg'
+                onClick={handleLogout}
+            >
+                Logout
+            </button>
         </div>
     )
 }
@@ -202,6 +217,7 @@ function profile() {
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
     const [isFocused, setIsFocused] = useState(false)
+
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)

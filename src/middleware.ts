@@ -3,7 +3,7 @@ import { serverUrl } from './config'
 import * as jose from 'jose'
 
 export default async function middleware(req: NextRequest, res: NextResponse) {
-    const tokenCookie = req.cookies.get('tokenCookie')
+    const tokenCookie = req.cookies.get('token')
     const { url } = req
 
 
@@ -12,12 +12,10 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
             return NextResponse.redirect(`${serverUrl}/auth/login`)
         } else {
             try {
-
                 const { payload: jwtData } = await jose.jwtVerify(
                     tokenCookie,
                     new TextEncoder().encode(process.env.JWT_SECRET!)
                 )
-                
 
                 NextResponse.next()
             } catch (err) {
@@ -29,13 +27,11 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
     if (url.includes('/auth')) {
         if (tokenCookie) {
             try {
-                
                 const { payload: jwtData } = await jose.jwtVerify(
                     tokenCookie,
                     new TextEncoder().encode(process.env.JWT_SECRET!)
                 )
 
-                 
                 return NextResponse.redirect(`${serverUrl}/dashboard`)
             } catch (err) {
                 return NextResponse.next()
