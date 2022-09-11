@@ -6,7 +6,6 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
     const tokenCookie = req.cookies.get('token')
     const { url } = req
 
-    console.log({tokenCookie})
 
     if (url.includes('/dashboard')) {
         if (!tokenCookie) {
