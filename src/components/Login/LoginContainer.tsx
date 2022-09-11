@@ -131,8 +131,11 @@ export default function LoginContainer() {
                 setLoading(false)
 
                 dispatch(updateUser(data.user))
-                console.log({ data })
-                setCookie('token', data.token)
+                setCookie('token', data.token, {
+                    path: '/',
+                    maxAge: 60 * 60 * 24 * 7,
+                    secure: true
+                })
                 router.push('/')
             })
             .catch(({ response: { data } }) => {
