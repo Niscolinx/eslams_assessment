@@ -4,6 +4,8 @@ import * as jose from 'jose'
 
 export default async function middleware(req: NextRequest, res: NextResponse) {
     const tokenCookie = req.cookies.get('userToken')
+
+    console.log({ tokenCookie })
     const { url } = req
 
 
