@@ -43,6 +43,8 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         //     }`
         // )
 
+        console.log('...login')
+
         
 
         return res.status(200).json({user, token})
