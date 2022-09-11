@@ -55,10 +55,9 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
     } = userData
 
     const handleLogout = () => {
-        document.cookie = 'token=; Max-Age=0; path=/; domain=' + location.host
+        document.cookie = 'token=; Max-Age=0; path=/; domain=' + location.hostname
 
-        console.log(document.cookie)
-        // router.push('/auth/login')
+        router.push('/auth/login')
     }
 
     return (
