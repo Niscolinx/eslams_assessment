@@ -28,18 +28,16 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
-import { useCookies } from "react-cookie";
-
+import { useCookies } from 'react-cookie'
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
 import { selectUser, updateUser } from '../../store/user/UserSlice'
 import { useAppSelector, useAppDispatch } from '../../store/app/hooks'
 
-
 const routes = ['General', 'Events']
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
-      const [cookies, setCookie] = useCookies();
+    const [cookies, setCookie] = useCookies()
 
     const {
         firstName,
@@ -57,8 +55,7 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
     } = userData
 
     const handleLogout = () => {
-
-       console.log({cookies})
+        console.log({ cookies })
     }
 
     return (
@@ -123,7 +120,12 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
                     </p>
                 </div>
             </div>
-            <button className='border border-red-400 px-4 py-1 flex justify-self-center my-1 rounded-lg shadow-lg' onClick={handleLogout}>Logout</button>
+            <button
+                className='border border-red-400 px-4 py-1 flex justify-self-center my-1 rounded-lg shadow-lg'
+                onClick={handleLogout}
+            >
+                Logout
+            </button>
         </div>
     )
 }
