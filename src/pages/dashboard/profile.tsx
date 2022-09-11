@@ -269,9 +269,13 @@ function profile() {
         institutionYearOfStudy: '',
     })
 
-    co
+    const {token} = cookies
     useEffect(() => {
-        axios('/api/getUserData')
+        axios('/api/getUserData', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then(({ data }) => {
                 const { user, userEvents } = data
                 const transFormedData = userEvents.map(
