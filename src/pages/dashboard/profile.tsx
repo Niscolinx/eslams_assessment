@@ -52,7 +52,10 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
     } = userData
 
     const handleLogout = () => {
-        
+
+        const tokenSession = document.cookie
+
+        console.log({tokenSession})
     }
 
     return (
