@@ -3,20 +3,20 @@ import { serverUrl } from './config'
 import * as jose from 'jose'
 
 export default async function middleware(req: NextRequest, res: NextResponse) {
-    const tokenCookie = req.cookies.get('userToken')
+    const token = req.headers.get('Authorization')
 
-    console.log({ tokenCookie })
+    console.log({ token })
     const { url } = req
 
 
     // if (url.includes('/dashboard')) {
-    //     if (!tokenCookie) {
+    //     if (!token) {
     //         return NextResponse.redirect(`${serverUrl}/auth/login`)
     //     } else {
     //         try {
 
     //             const { payload: jwtData } = await jose.jwtVerify(
-    //                 tokenCookie,
+    //                 token,
     //                 new TextEncoder().encode(process.env.JWT_SECRET!)
     //             )
                 
@@ -29,11 +29,11 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
     // }
 
     // if (url.includes('/auth')) {
-    //     if (tokenCookie) {
+    //     if (token) {
     //         try {
                 
     //             const { payload: jwtData } = await jose.jwtVerify(
-    //                 tokenCookie,
+    //                 token,
     //                 new TextEncoder().encode(process.env.JWT_SECRET!)
     //             )
 
