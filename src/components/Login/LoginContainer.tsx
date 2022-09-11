@@ -132,7 +132,7 @@ export default function LoginContainer() {
 
                 dispatch(updateUser(data.user))
                 console.log({ data })
-                setCookie('userToken', data.token)
+                //setCookie('userToken', data.token)
                 router.push('/')
             })
             .catch(({ response: { data } }) => {
