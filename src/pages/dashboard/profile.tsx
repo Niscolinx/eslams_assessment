@@ -64,11 +64,8 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
 
     const handleLogout = () => {
 
-        removeCookie('token', {
-            
-        })
-
-        router.push('/auth/login')
+        console.log({removeCookie})
+       // router.push('/auth/login')
        
     }
 
@@ -229,7 +226,6 @@ function profile() {
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
     const [isFocused, setIsFocused] = useState(false)
-        const [cookies, setCookie] = useCookies()
 
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
     const [open, setOpen] = useState(false)
