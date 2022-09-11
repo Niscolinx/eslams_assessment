@@ -36,14 +36,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
              .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
 
         //set cookie in nodejs
-        res.setHeader(
-            'Set-Cookie',
-            `tokenCookie=${token}; Path=/; HttpOnly; Secure; Max-Age=${
-                60 * 60 * 24 * 7
-            }`
-        )
-
-        console.log('...login')
+      
 
         
 

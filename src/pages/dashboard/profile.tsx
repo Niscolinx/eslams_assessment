@@ -221,6 +221,8 @@ function profile() {
     const [validationError, setValidationError] =
         useState<ValidationError | null>(null)
     const [isFocused, setIsFocused] = useState(false)
+        const [cookies, setCookie] = useCookies()
+
     const [labelClasses, setLabelClasses] = useState('-ml-5.5 mt-2.5 lg:-ml-4')
     const [open, setOpen] = useState(false)
     const [isToast, setIsToast] = useState<string | null>(null)
@@ -267,6 +269,7 @@ function profile() {
         institutionYearOfStudy: '',
     })
 
+    co
     useEffect(() => {
         axios('/api/getUserData')
             .then(({ data }) => {

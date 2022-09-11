@@ -13,6 +13,8 @@ export default async function getUserEvents(
 
         const { tokenCookie } = req.cookies
 
+        console.log({tokenCookie})
+
         if (!tokenCookie) {
             return res.status(401).json({
                 message: 'Unauthorized',
