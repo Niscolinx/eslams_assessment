@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { useAppDispatch } from '../../store/app/hooks'
 import { updateUser } from '../../store/user/UserSlice'
+import { useCookies } from 'react-cookie'
 
 const theme = createTheme({
     typography: {
@@ -31,6 +32,7 @@ export type handleInputProps = {
 }
 export default function LoginContainer() {
     const dispatch = useAppDispatch()()
+    const [cookies, setCookie] = useCookies()
 
     const [loading, setLoading] = useState(false)
     const [validationError, setValidationError] =
@@ -127,7 +129,10 @@ export default function LoginContainer() {
             .post('/api/auth/login', updatedData)
             .then(({ data }) => {
                 setLoading(false)
+
+                console.log({data})
                 dispatch(updateUser(data.user))
+                setCookie('token', data.token)
                 router.push('/')
             })
             .catch(({ response: { data } }) => {
