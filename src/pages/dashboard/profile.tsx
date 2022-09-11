@@ -29,12 +29,20 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
 import { useCookies } from 'react-cookie'
+import { useRouter } from 'next/router'
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
 import { selectUser, updateUser } from '../../store/user/UserSlice'
 import { useAppSelector, useAppDispatch } from '../../store/app/hooks'
 
+
+
+
+
+const router = useRouter()
+
 const routes = ['General', 'Events']
+
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
     const [cookies, setCookie] = useCookies()
@@ -57,10 +65,9 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
     const handleLogout = () => {
         console.log({ cookies })
 
-        const tokenCookie = document.cookie
+        setCookie('token', null)
 
-        console.log({tokenCookie})
-
+        router.push('/auth/login')
        
     }
 
@@ -269,7 +276,6 @@ function profile() {
         institutionYearOfStudy: '',
     })
 
-    const {token} = cookies
     useEffect(() => {
         axios('/api/getUserData')
             .then(({ data }) => {
