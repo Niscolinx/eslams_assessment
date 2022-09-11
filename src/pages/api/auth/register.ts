@@ -160,14 +160,9 @@ async function signupHandler(req: NextApiRequest, res: NextApiResponse) {
             .setExpirationTime('30d')
             .sign(new TextEncoder().encode(process.env.JWT_SECRET!))
 
-        //set cookie in nodejs
-        res.setHeader(
-            'Set-Cookie',
-            `tokenCookie=${token}; Path=/; HttpOnly; Secure; Max-Age=${
-                60 * 60 * 24 * 7
-            }`
-        )
-        return res.status(200).json({ user })
+     
+       
+        return res.status(200).json({ user, token })
         //setCookie('userSession', token, { req, res, maxAge: 60 * 60 * 24 })
     } catch (err) {
         console.log({ err })

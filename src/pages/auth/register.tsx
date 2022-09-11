@@ -11,8 +11,11 @@ import RegisterForm, {
 import Tilt from 'react-parallax-tilt'
 import dayjs from 'dayjs'
 import router from 'next/router'
+import { useCookies } from 'react-cookie'
 
 const Register = () => {
+        const [cookies, setCookie] = useCookies()
+
     const [loginInput, setLoginInput] = useState<{
         email: string
         password: string
@@ -114,6 +117,11 @@ const Register = () => {
             .post('/api/auth/login', loginInput)
             .then(({ data }) => {
                 console.log({ data })
+                setCookie('token', data.token, {
+                    path: '/',
+                    maxAge: 60 * 60 * 24 * 7,
+                    secure: true,
+                })
                 setLoading(false)
                 router.push('/')
             })

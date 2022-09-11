@@ -24,6 +24,7 @@ import { AuthContext } from '../../pages/api/auth/authContext'
 import axios from 'axios'
 import dayjs from 'dayjs'
 import { useRouter } from 'next/router'
+import { useCookies } from 'react-cookie'
 
 const steps = ['Personal', 'Guardian/Parent', 'Education']
 
@@ -65,6 +66,8 @@ export type handleInputProps = {
     birthDate: Date | null
 }
 export default function RegisterForm() {
+    const [cookies, setCookie] = useCookies()
+
     const [otp, setOtp] = useState<string>('')
     const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
@@ -266,7 +269,7 @@ export default function RegisterForm() {
                 }
                 sendOtp()
             }
-       }
+        }
     }
 
     const handleBack = () => {
@@ -300,13 +303,11 @@ export default function RegisterForm() {
 
         const data = handleInput
 
-        
         const updatedData = {
             ...data,
             birthDate: data.birthDate!.toISOString(),
             otp,
         }
-        
 
         setLoading(true)
         axios
@@ -314,6 +315,11 @@ export default function RegisterForm() {
             .then(({ data }) => {
                 console.log({ data })
                 setLoading(false)
+                setCookie('token', data.token, {
+                    path: '/',
+                    maxAge: 60 * 60 * 24 * 7,
+                    secure: true,
+                })
                 router.push('/')
             })
             .catch(({ response: { data } }) => {
@@ -324,9 +330,6 @@ export default function RegisterForm() {
                     type: 'error',
                 })
                 setLoading(false)
-
-                
-                 
             })
     }
 
