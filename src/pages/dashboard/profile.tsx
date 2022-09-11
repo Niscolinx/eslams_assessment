@@ -271,11 +271,7 @@ function profile() {
 
     const {token} = cookies
     useEffect(() => {
-        axios('/api/getUserData', {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
+        axios('/api/getUserData')
             .then(({ data }) => {
                 const { user, userEvents } = data
                 const transFormedData = userEvents.map(

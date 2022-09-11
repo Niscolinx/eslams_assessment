@@ -3,47 +3,42 @@ import { serverUrl } from './config'
 import * as jose from 'jose'
 
 export default async function middleware(req: NextRequest, res: NextResponse) {
-    const token = req.headers.get('Authorization')
-
-    console.log({ token })
+    const tokenCookie = req.cookies.get('token')
     const { url } = req
 
+    console.log({tokenCookie})
 
-    // if (url.includes('/dashboard')) {
-    //     if (!token) {
-    //         return NextResponse.redirect(`${serverUrl}/auth/login`)
-    //     } else {
-    //         try {
+    if (url.includes('/dashboard')) {
+        if (!tokenCookie) {
+            return NextResponse.redirect(`${serverUrl}/auth/login`)
+        } else {
+            try {
+                const { payload: jwtData } = await jose.jwtVerify(
+                    tokenCookie,
+                    new TextEncoder().encode(process.env.JWT_SECRET!)
+                )
 
-    //             const { payload: jwtData } = await jose.jwtVerify(
-    //                 token,
-    //                 new TextEncoder().encode(process.env.JWT_SECRET!)
-    //             )
-                
+                NextResponse.next()
+            } catch (err) {
+                return NextResponse.redirect(`${serverUrl}/auth/login`)
+            }
+        }
+    }
 
-    //             NextResponse.next()
-    //         } catch (err) {
-    //             return NextResponse.redirect(`${serverUrl}/auth/login`)
-    //         }
-    //     }
-    // }
+    if (url.includes('/auth')) {
+        if (tokenCookie) {
+            try {
+                const { payload: jwtData } = await jose.jwtVerify(
+                    tokenCookie,
+                    new TextEncoder().encode(process.env.JWT_SECRET!)
+                )
 
-    // if (url.includes('/auth')) {
-    //     if (token) {
-    //         try {
-                
-    //             const { payload: jwtData } = await jose.jwtVerify(
-    //                 token,
-    //                 new TextEncoder().encode(process.env.JWT_SECRET!)
-    //             )
-
-                 
-    //             return NextResponse.redirect(`${serverUrl}/dashboard`)
-    //         } catch (err) {
-    //             return NextResponse.next()
-    //         }
-    //     }
-    // }
+                return NextResponse.redirect(`${serverUrl}/dashboard`)
+            } catch (err) {
+                return NextResponse.next()
+            }
+        }
+    }
 
     return NextResponse.next()
 }
