@@ -100,7 +100,6 @@ const Register = () => {
 
     const loginSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log('submit')
         const isValid = formValidate()
 
         setLoading(true)

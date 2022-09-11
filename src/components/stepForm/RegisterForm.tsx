@@ -28,7 +28,6 @@ import { useRouter } from 'next/router'
 const steps = ['Personal', 'Guardian/Parent', 'Education']
 
 function getStepContent(step: number) {
-    debugger
     switch (step) {
         case 0:
             return <PersonalDetails />
