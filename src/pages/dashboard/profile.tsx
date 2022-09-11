@@ -51,6 +51,10 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
         institutionYearOfStudy,
     } = userData
 
+    const handleLogout = () => {
+        
+    }
+
     return (
         <div className='generalDetails'>
             <div className='content-1'>
@@ -113,7 +117,7 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
                     </p>
                 </div>
             </div>
-            <button className='border border-red-300 px-4 py-1 flex justify-self-center my-1 rounded-lg shadow-lg'>Logout</button>
+            <button className='border border-red-400 px-4 py-1 flex justify-self-center my-1 rounded-lg shadow-lg' onClick={handleLogout}>Logout</button>
         </div>
     )
 }
