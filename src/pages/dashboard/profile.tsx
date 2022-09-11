@@ -28,7 +28,6 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
-import {get} from 'react-cookie'
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
 import { selectUser, updateUser } from '../../store/user/UserSlice'
@@ -55,9 +54,10 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
 
     const handleLogout = () => {
 
-        const tokenCookie = get('tokenCookie')
+        const tokenCookie = document.cookie
 
-        console.log({tokenCookie})
+
+        console.table({tokenCookie})
     }
 
     return (
