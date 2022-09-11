@@ -57,7 +57,7 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
         const tokenCookie = document.cookie
 
 
-        console.table({tokenCookie})
+        console.log({tokenCookie})
     }
 
     return (
