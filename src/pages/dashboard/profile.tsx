@@ -44,7 +44,7 @@ const routes = ['General', 'Events']
 
 
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
-    const [cookies, setCookie] = useCookies()
+    const [removeCookie] = useCookies()
     const router = useRouter()
 
     const {
@@ -63,9 +63,10 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
     } = userData
 
     const handleLogout = () => {
-        console.log({ cookies })
 
-        setCookie('token', null)
+        removeCookie('token', {
+            
+        })
 
         router.push('/auth/login')
        
