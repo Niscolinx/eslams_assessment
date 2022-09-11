@@ -7,8 +7,10 @@ const initialState: IUser = {
     firstName: '',
     lastName: '',
     email: '',
-    profilePhotoUrl: '',
-    coverPhotoUrl: '',
+    profilePhotoUrl:
+        'https://res.cloudinary.com/eslams/image/upload/v1662752486/my-uploads/avatar_nav1ya.jpg',
+    coverPhotoUrl:
+        'https://res.cloudinary.com/eslams/image/upload/v1662750659/my-uploads/ahhne5dzmripmv9nh50v.jpg',
     password: '',
     phoneNumber: '',
     birthDate: '',
