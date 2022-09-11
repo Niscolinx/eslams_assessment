@@ -28,23 +28,15 @@ import MuiPhoneNumber from 'material-ui-phone-number'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { GrFormClose } from 'react-icons/gr'
 import dayjs from 'dayjs'
-import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
 
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
 import { selectUser, updateUser } from '../../store/user/UserSlice'
 import { useAppSelector, useAppDispatch } from '../../store/app/hooks'
 
-
-
-
-
-
 const routes = ['General', 'Events']
 
-
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
-    const [removeCookie] = useCookies()
     const router = useRouter()
 
     const {
@@ -63,10 +55,10 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
     } = userData
 
     const handleLogout = () => {
+        document.cookie = 'token=; Max-Age=0; path=/; domain=' + location.host
 
-        console.log({removeCookie})
-       // router.push('/auth/login')
-       
+        console.log(document.cookie)
+        // router.push('/auth/login')
     }
 
     return (
