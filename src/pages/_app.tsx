@@ -5,7 +5,7 @@ import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { persistedStore, store } from '../store/app/store'
 import { PersistGate } from 'redux-persist/integration/react'
-
+import { CookiesProvider } from 'react-cookie'
 
 import Layout from '../components/Layout'
 import '../sass/main.scss'
@@ -15,9 +15,11 @@ function MyApp({ Component, pageProps: { ...pageProps } }: AppProps) {
         <>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistedStore}>
-                    <Layout>
-                        <Component {...pageProps} />
-                    </Layout>
+                    <CookiesProvider>
+                        <Layout>
+                            <Component {...pageProps} />
+                        </Layout>
+                    </CookiesProvider>
                 </PersistGate>
             </Provider>
         </>
