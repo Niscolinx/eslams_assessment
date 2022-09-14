@@ -69,7 +69,6 @@ export default function RegisterForm() {
     const [cookies, setCookie] = useCookies()
 
     const [otp, setOtp] = useState<string>('')
-    const [keepOtp, setKeepOtp] = useState<string[]>([])
     const [activeStep, setActiveStep] = useState(0)
     const [loading, setLoading] = useState(false)
     const [validationError, setValidationError] =
@@ -284,7 +283,6 @@ export default function RegisterForm() {
 
     const otpHandler = (input: string) => {
         setOtp(input)
-        setKeepOtp((singleOtp) => [input])
         setMessage(null)
         if (input.length < 6) {
             setIsOtpLengthInValid(true)
@@ -386,10 +384,7 @@ export default function RegisterForm() {
                         <React.Fragment>
                             {activeStep === steps.length ? (
                                 <React.Fragment>
-                                    {/* <Typography variant='h5' gutterBottom>
-                                    Type in the 6-digit code you received in
-                                    your Email
-                                </Typography> */}
+                                  
                                     <Typography variant='subtitle1'>
                                         <form
                                             className='grid w-full place-content-stretch md:w-3/4 md:mx-auto'
