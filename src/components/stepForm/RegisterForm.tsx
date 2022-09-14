@@ -255,7 +255,6 @@ export default function RegisterForm() {
 
                 const sendOtp = async () => {
                     try {
-                        console.log('sending otp...')
                         const { data } = await axios.post('/api/auth/sendOtp', {
                             firstName,
                             lastName,
