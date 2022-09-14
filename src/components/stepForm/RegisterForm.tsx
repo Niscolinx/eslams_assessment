@@ -66,7 +66,7 @@ export type handleInputProps = {
     birthDate: Date | null
 }
 export default function RegisterForm() {
-    const [cookies, setCookie] = useCookies()
+    const [_, setCookie] = useCookies()
 
     const [otp, setOtp] = useState<string>('')
     const [activeStep, setActiveStep] = useState(0)
