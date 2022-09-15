@@ -121,6 +121,21 @@ const SearchBox = () => {
         }
     }
 
+    const debounceSearch = (fn: any, delay: number) => {
+        let timer: NodeJS.Timeout | null = null
+        return function (...args: any) {
+            if (timer) {
+                clearTimeout(timer)
+            }
+            timer = setTimeout(() => {
+                fn(...args)
+            }, delay)
+        }
+    }
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        debounceSearch(setSearchValue(e.target.value), 1000)
+    }
     return (
         <div className='flex items-center gap-2 searchBox '>
             <div className='flex md:flex relative items-center searchBox__container z-1'>
@@ -135,7 +150,7 @@ const SearchBox = () => {
                     type='text'
                     placeholder='Search'
                     value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleSearch}
                     className={`rounded-3xl py-2 px-3 pl-10 outline-none border-none w-0 md:w-80 transition-all duration-75 ease-out searchBox__input `}
                 />
                 <GrFormClose className='searchBox__closeIcon hidden' />
@@ -158,7 +173,13 @@ const SearchBox = () => {
     )
 }
 
-const Header = ({ notifyUser, profilePhotoUrl }: { notifyUser: boolean, profilePhotoUrl: string }) => (
+const Header = ({
+    notifyUser,
+    profilePhotoUrl,
+}: {
+    notifyUser: boolean
+    profilePhotoUrl: string
+}) => (
     <header className='p-8 header relative'>
         <figure className='header__logo w-12 h-12'>
             <Image
@@ -634,7 +655,10 @@ const Index = () => {
 
                 <div className='marketplace__container'>
                     <div className='grid relative z-3'>
-                        <Header notifyUser={notifyUser} profilePhotoUrl={userDetails.profilePhotoUrl} />
+                        <Header
+                            notifyUser={notifyUser}
+                            profilePhotoUrl={userDetails.profilePhotoUrl}
+                        />
                         <main className='main'>
                             <div className='banner'>
                                 <div className='banner__blob'></div>

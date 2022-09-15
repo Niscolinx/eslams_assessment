@@ -126,11 +126,9 @@ function Events() {
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
 
-
     useEffect(() => {
         axios('/api/events')
             .then(({ data }) => {
-                
                 const transFormedData = data.map(
                     (item: EventProps, index: number) => {
                         return {
@@ -245,9 +243,9 @@ function Events() {
                 const left = values[0]
                 const right = values[1]
                 eventData.map((eachEvent) => {
-                    let eventPrice = Number(eachEvent.price.toString().replace(/[$,]/g, ''))
-
-                
+                    let eventPrice = Number(
+                        eachEvent.price.toString().replace(/[$,]/g, '')
+                    )
 
                     if (
                         eventPrice >= Number(left) &&
@@ -269,10 +267,13 @@ function Events() {
             filteredEvents.length > 0 ? filteredEvents : eventData
         let matchedEvents = 0
 
+      
+
         let data = eventArrToRender.map((item) => {
-            const arr = item.heading
+            const searchQuery = item.heading
                 .toLowerCase()
-                .includes(searchValue.toLowerCase()) && (
+                .includes(searchValue.toLowerCase())
+            const arr = searchQuery && (
                 <Event {...item} key={item._id} />
             )
             if (arr) {
@@ -286,7 +287,6 @@ function Events() {
         }
         return data
     }
-    console.log("searching")
 
     return (
         <div className='events'>
