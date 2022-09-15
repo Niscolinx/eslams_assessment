@@ -241,11 +241,15 @@ function Events() {
             }
 
             if (showFilteredData.priceRange) {
+                console.log("price range", showFilteredData.priceRange)
                 const values = showFilteredData.priceRange
                 const left = values[0]
                 const right = values[1]
                 eventData.map((eachEvent) => {
-                    let eventPrice = eachEvent.price
+                    let eventPrice = Number(eachEvent.price.toString().replace(/[$,]/g, ''))
+
+                
+
                     if (
                         eventPrice >= Number(left) &&
                         eventPrice <= Number(right)
