@@ -125,7 +125,7 @@ function Events() {
     const [updateEvent, setUpdateEvent] = useState(new Set<EventProps>([]))
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
-    const [deboncedValue, setDeboncedValue] = useState('')
+    const [debouncedValue, setDebouncedValue] = useState('')
 
     useEffect(() => {
         axios('/api/events')
@@ -264,9 +264,10 @@ function Events() {
 
     useEffect(() => {
         const debounce = setTimeout(() => {
-            setDeboncedValue(searchValue)
+            setDebouncedValue(searchValue)
         }, 500)
 
+        console.log({debouncedValue})
         return () => {
             clearTimeout(debounce)
         }
@@ -284,7 +285,7 @@ function Events() {
         let data = eventArrToRender.map((item) => {
             const searchQuery = item.heading
                 .toLowerCase()
-                .includes(deboncedValue.toLowerCase())
+                .includes(debouncedValue.toLowerCase())
 
             const arr = searchQuery && <Event {...item} key={item._id} />
             if (arr) {
