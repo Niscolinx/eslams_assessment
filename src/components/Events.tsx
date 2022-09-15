@@ -267,7 +267,6 @@ function Events() {
             setDebouncedValue(searchValue)
         }, 1000)
 
-        console.log({debouncedValue})
         return () => {
             clearTimeout(debounce)
         }
