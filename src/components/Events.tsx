@@ -241,7 +241,6 @@ function Events() {
             }
 
             if (showFilteredData.priceRange) {
-                console.log("price range", showFilteredData.priceRange)
                 const values = showFilteredData.priceRange
                 const left = values[0]
                 const right = values[1]
@@ -287,6 +286,7 @@ function Events() {
         }
         return data
     }
+    console.log("searching")
 
     return (
         <div className='events'>
