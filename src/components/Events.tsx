@@ -273,6 +273,9 @@ function Events() {
             const searchQuery = item.heading
                 .toLowerCase()
                 .includes(searchValue.toLowerCase())
+
+              
+
             const arr = searchQuery && (
                 <Event {...item} key={item._id} />
             )
