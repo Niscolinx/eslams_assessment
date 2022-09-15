@@ -265,12 +265,14 @@ function Events() {
     useEffect(() => {
         const debounced = setTimeout(() => {
             setDeboncedValue(searchValue)
-        }, 1000)
+        }, 500)
 
         return () => {
             clearTimeout(debounced)
         }
     }, [searchValue])
+
+    console.log("render")
 
 
     const showEvents = () => {
