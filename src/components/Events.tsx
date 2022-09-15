@@ -125,6 +125,7 @@ function Events() {
     const [updateEvent, setUpdateEvent] = useState(new Set<EventProps>([]))
     const [eventData, setEventData] = useState<EventProps[]>([])
     const [loading, setLoading] = useState(true)
+    const [deboncedValue, setDeboncedValue] = useState('')
 
     useEffect(() => {
         axios('/api/events')
@@ -260,6 +261,18 @@ function Events() {
         }
     }, [showFilteredData])
 
+
+    useEffect(() => {
+        const debounced = setTimeout(() => {
+            setDeboncedValue(searchValue)
+        }, 1000)
+
+        return () => {
+            clearTimeout(debounced)
+        }
+    }, [searchValue])
+
+
     const showEvents = () => {
         const filteredEvents = Array.from(updateEvent)
 
@@ -267,18 +280,12 @@ function Events() {
             filteredEvents.length > 0 ? filteredEvents : eventData
         let matchedEvents = 0
 
-      
-
         let data = eventArrToRender.map((item) => {
             const searchQuery = item.heading
                 .toLowerCase()
-                .includes(searchValue.toLowerCase())
+                .includes(deboncedValue.toLowerCase())
 
-              
-
-            const arr = searchQuery && (
-                <Event {...item} key={item._id} />
-            )
+            const arr = searchQuery && <Event {...item} key={item._id} />
             if (arr) {
                 matchedEvents++
                 return arr
