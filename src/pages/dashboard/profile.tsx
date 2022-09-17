@@ -33,11 +33,18 @@ import { useRouter } from 'next/router'
 import { getPhotoUrl } from '../../utils/getPhotoUrl'
 import { selectUser, updateUser } from '../../store/user/UserSlice'
 import { useAppSelector, useAppDispatch } from '../../store/app/hooks'
+import {signal} from '@preact/signals-react'
 
 const routes = ['General', 'Events']
 
+
+
 const GeneralDetails = ({ userData }: { userData: IUser }) => {
     const router = useRouter()
+
+    const data = signal(0)
+
+   console.log()
 
     const {
         firstName,
