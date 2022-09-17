@@ -44,7 +44,7 @@ const GeneralDetails = ({ userData }: { userData: IUser }) => {
 
     const data = signal(0)
 
-   console.log()
+   console.log('value', data.value)
 
     const {
         firstName,
