@@ -204,7 +204,6 @@ const Register = () => {
             </header>
 
             <div className='register__main'>
-                <div className='grid absolute top-50 left-0 bg-[#1776d1] opacity-40 z-2 w-[200px] h-[150px]'></div>
 
                 <div className=''>
                     <div className='register__overlay z-3 md:(max-w-[433px])'></div>
